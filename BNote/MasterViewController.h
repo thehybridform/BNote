@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopicEditorViewController.h"
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <TopicEditorViewControllerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) NSMutableArray *data;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

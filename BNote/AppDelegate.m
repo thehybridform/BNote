@@ -7,10 +7,11 @@
 //
 
 #import "AppDelegate.h"
-
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
+#import "BNoteWriter.h"
+#import "BNoteReader.h"
+#import "BNoteFactory.h"
 
 @implementation AppDelegate
 
@@ -33,8 +34,10 @@
     UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
 
     masterViewController.detailViewController = detailViewController;
-    [masterViewController setManagedObjectContext:[self managedObjectContext]];
-
+    
+    [[BNoteWriter instance] setContext:[self managedObjectContext]];
+    [[BNoteReader instance] setContext:[self managedObjectContext]];
+        
     self.splitViewController = [[UISplitViewController alloc] init];
     self.splitViewController.delegate = detailViewController;
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];

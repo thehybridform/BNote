@@ -12,6 +12,7 @@
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
 #import "Topic.h"
+#import "LayerFormater.h"
 
 @interface MasterViewController () 
 @property (readwrite, assign) Topic *currentTopic;
@@ -22,7 +23,6 @@
 
 @synthesize detailViewController = _detailViewController;
 @synthesize data = _data;
-@synthesize managedObjectContext = _managedObjectContext;
 @synthesize currentTopic = _currentTopic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,15 +46,15 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.title = NSLocalizedString(@"Topics", @"Topics");
 
-    [self setData:[BNoteReader allTopicsInContext:[self managedObjectContext]]];
+    [self setData:[[BNoteReader instance] allTopics]];
     
     if ([[self data] count] == 0) {
-        Topic *newTopic = [BNoteFactory createTopicWithName:@"Help" inContext:[self managedObjectContext]]; 
+        Topic *newTopic = [BNoteFactory createTopic:@"Help"]; 
         [self setData:[NSMutableArray  arrayWithObject:newTopic]];
     }
     
     [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    
+        
     [self updateCellColors];
 }
 
@@ -93,6 +93,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
     static NSString *cellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -100,10 +101,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
         [cell setShowsReorderControl:YES];
+        [LayerFormater roundCornersForView:cell];
+        [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
+        [[cell selectedBackgroundView] setBackgroundColor:UIColorFromRGB([currentTopic color])];
     }
 
-    Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[currentTopic title]];
+    NSString *text = @"   ";
+    [[cell textLabel] setText:[text stringByAppendingString:[currentTopic title]]];
     
     return cell;
 }
@@ -131,12 +135,12 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+        [[BNoteWriter instance] removeTopic:topic];
+
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
-        
-        Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-        [BNoteWriter removeTopic:topic inContext:[self managedObjectContext]];
     }
 }
 
@@ -146,10 +150,10 @@
     
     for (int i = 0; i < [[self data] count]; i++) {
         Topic *topic = [[self data] objectAtIndex:i];
-        [topic setIndex:[NSNumber numberWithInt:i]];
+        [topic setIndex:i];
     }
     
-    [BNoteWriter updateContext:[self managedObjectContext]];
+    [[BNoteWriter instance] update];
 }
 
 /*
@@ -164,7 +168,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [[self detailViewController] setDetailItem:topic];
+    [[self detailViewController] setTopic:topic];
+    [[self detailViewController] configureView];
 }
 
 
@@ -176,13 +181,14 @@
         if ([topicEditor isEditing]) {
             [[self currentTopic] setTitle:title];
             [[self currentTopic] setColor:[topicEditor currentColor]];
-            [[self managedObjectContext] save:nil];
         } else {
-            Topic *topic = [BNoteFactory createTopicWithName:title inContext:[self managedObjectContext]]; 
+            Topic *topic = [BNoteFactory createTopic:title]; 
             [topic setColor:[topicEditor currentColor]];
-            [topic setIndex:[NSNumber numberWithInt:[[self data] count]]];
+            [topic setIndex:[[self data] count]];
             [[self data] addObject:topic];
         }
+        
+        [[BNoteWriter instance] update];
         
         [[self tableView] reloadData];
         [self updateCellColors];
@@ -196,18 +202,20 @@
 
 - (void)updateCellColors
 {
+    /*
     for (int i = 0; i < [[self data] count]; i++) {
         NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
         Topic *topic = [[self data] objectAtIndex:i];
         
         UIColor *color;
         if ([topic color] > 0) {
-            color = UIColorFromRGB([[topic color] intValue]);
+            color = UIColorFromRGB([topic color]);
         } else {
             color = [UIColor whiteColor];
         }
         
         [[[self tableView] cellForRowAtIndexPath:path] setBackgroundColor:color];
     }
+     */
 }
 @end

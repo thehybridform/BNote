@@ -8,18 +8,58 @@
 
 #import "BNoteWriter.h"
 
-@implementation BNoteWriter
+@interface BNoteWriter()
 
-+ (void)removeTopic:(Topic *)topic inContext:(NSManagedObjectContext *)context
+- (id)initSingleton;
+
+@end
+
+@implementation BNoteWriter
+@synthesize context = _context;
+
+- (id)initSingleton
 {
-    [context deleteObject:topic];
-    [BNoteWriter updateContext:context];
+    self = [super init];
+    
+    return self;
 }
 
-
-+ (void)updateContext:(NSManagedObjectContext *)context
++ (BNoteWriter *)instance
 {
-    [context save:nil];    
+    static BNoteWriter *_default = nil;
+    
+    if (_default != nil) {
+        return _default;
+    }
+    
+    static dispatch_once_t safer;
+    dispatch_once(&safer, ^{
+        _default = [[BNoteWriter alloc] initSingleton];
+    });
+    
+    return _default;
+}
+
+- (id)insertNewObjectForEntityForName:(NSString *)name
+{
+    return [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:[self context]];
+}
+
+- (void)removeTopic:(Topic *)topic
+{
+    [[self context] deleteObject:topic];
+    [self update];
+}
+
+- (void)removeNote:(Note *)note
+{
+    [[self context] deleteObject:note];
+    [self update];
+}
+
+- (void)update
+{
+    [[self context] save:nil];    
 }
 
 @end

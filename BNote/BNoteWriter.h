@@ -8,10 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "Topic.h"
+#import "Note.h"
 
 @interface BNoteWriter : NSObject
 
-+ (void)removeTopic:(Topic *)topic inContext:(NSManagedObjectContext *)context;
-+ (void)updateContext:(NSManagedObjectContext *)context;
+@property (strong, nonatomic) NSManagedObjectContext *context;
+
++ (BNoteWriter *)instance;
+- (void)removeTopic:(Topic *)topic;
+- (void)update;
+- (void)removeNote:(Note *)note;
+
+
+- (id)insertNewObjectForEntityForName:(NSString *)name;
+
 
 @end

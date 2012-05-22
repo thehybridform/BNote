@@ -8,44 +8,95 @@
 
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
+#import "BNoteReader.h"
 
 @implementation BNoteFactory
 
-+ (Topic *)createTopicWithName:(NSString *)name inContext:(NSManagedObjectContext *)context
++ (Topic *)createTopic:(NSString *)name
 {
-    Topic *topic = [NSEntityDescription insertNewObjectForEntityForName:@"Topic" inManagedObjectContext:context];
-    [topic setCreated:[NSDate date]];
+    Topic *topic = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Topic"];
+
+    [topic setCreated:[NSDate timeIntervalSinceReferenceDate]];
     [topic setLastUpdated:[topic created]];
     [topic setTitle:name];
-    [topic setColor:[NSNumber numberWithInt:0xFFFFFF]];
+    [topic setColor:0xFFFFFF];
     
-    [BNoteWriter updateContext:context];
+    [[BNoteWriter instance] update];
     
     return topic;
 }
 
-+ (Note *)createNoteForTopic:(Topic *)topic inContext:(NSManagedObjectContext *)context
++ (Note *)createNote:(Topic *)topic
 {
-    Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
-    [note setCreated:[NSDate date]];
+    Note *note = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Note"];
+    [note setCreated:[NSDate timeIntervalSinceReferenceDate]];
     [note setLastUpdated:[note created]];
-    [topic addNotesObject:note];
+    [note setTopic:topic];
+        
+    [[BNoteWriter instance] update];
+
+    for (int i = 0; i < 4; i++) {
+        [BNoteFactory createQuestion:note];
+    }
     
-    [BNoteWriter updateContext:context];
 
     return note;
 }
 
-+ (Entry *)createEntryForNote:(Note *)note inContext:(NSManagedObjectContext *)context
++ (Question *)createQuestion:(Note *)note
 {
-    Entry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:context];
-    [entry setCreated:[NSDate date]];
-    [entry setLastUpdated:[entry created]];
-    [note addEntriesObject:entry];
+    Question *entry = (Question *)[BNoteFactory createEntry:@"Question" forNote:note];
     
-    [BNoteWriter updateContext:context];
+    [[BNoteWriter instance] update];
 
     return entry;
+}
+
++ (ActionItem *)createActionItem:(Note *)note
+{
+    ActionItem *entry = (ActionItem *)[BNoteFactory createEntry:@"ActionItem" forNote:note];
+    
+    [[BNoteWriter instance] update];
+    
+    return entry;
+}
+
++ (KeyPoint *)createKeyPoint:(Note *)note
+{
+    KeyPoint *entry = (KeyPoint *)[BNoteFactory createEntry:@"KeyPoint" forNote:note];
+    
+    [[BNoteWriter instance] update];
+    
+    return entry;
+}
+
++ (Decision *)createDecision:(Note *)note
+{
+    Decision *entry = (Decision *)[BNoteFactory createEntry:@"Decision" forNote:note];
+    
+    [[BNoteWriter instance] update];
+    
+    return entry;
+}
+
++ (Entry *)createEntry:(NSString *)name forNote:(Note *)note
+{
+    Entry *entry = [[BNoteWriter instance] insertNewObjectForEntityForName:name];
+    [entry setCreated:[NSDate timeIntervalSinceReferenceDate]];
+    [entry setLastUpdated:[entry created]];
+    [entry setText:@"Touch to Update"];
+    [entry setNote:note];
+    
+    return entry;
+}
+
++(UIView *)createHighlightSliver:(UIColor *)color
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 44)];
+    [view setBackgroundColor:color];
+    
+
+    return view;
 }
 
 @end

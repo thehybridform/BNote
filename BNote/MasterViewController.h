@@ -15,6 +15,5 @@
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (strong, nonatomic) NSMutableArray *data;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

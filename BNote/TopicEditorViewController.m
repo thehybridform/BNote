@@ -77,19 +77,13 @@
 # pragma mark - Actions
 - (IBAction)done:(id)sender
 {
-    id<TopicEditorViewControllerDelegate> delegate = [self delegate];
-    if (delegate) {
-        [delegate didFinish:self];
-    }
+    [[self delegate] didFinish:self];
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)cancel:(id)sender
 {
-    id<TopicEditorViewControllerDelegate> delegate = [self delegate];
-    if (delegate) {
-        [delegate didCancel:self];
-    }
+    [[self delegate] didCancel:self];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -100,7 +94,7 @@
     [[button layer] setMasksToBounds:YES];
     [[button layer] setBorderWidth:1];
     
-    [[self buttons] addObject:[ButtonMetaData createWithIndex:index andButton:button andColor:[NSNumber numberWithInt:color]]];
+    [[self buttons] addObject:[ButtonMetaData createWithIndex:index andButton:button andColor:color]];
 }
 
 - (void)updateHighlightColor:(NSInteger)index
@@ -120,7 +114,7 @@
 {
     for (int i = 0; i < [[self buttons] count]; i++) {
         ButtonMetaData *data = [[self buttons] objectAtIndex:i];
-        if ([[[self topic] color] intValue] == [[data color] intValue]) {
+        if ([[self topic] color] == [data color]) {
             [self setCurrentColor:[data color]];
             [[self selectedColor] setBackgroundColor:[[data button] backgroundColor]];
             
@@ -180,7 +174,6 @@
     [self setTopic:nil];
     [self setTitleTextLabel:nil];
     [self setSelectedColor:nil];
-    [self setCurrentColor:nil];
     
     [self setButtons:nil];
     [self setButton_1:nil];

@@ -30,7 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *button_8;
 @property (strong, nonatomic) IBOutlet UIButton *button_9;
 @property (strong, nonatomic) IBOutlet UIButton *selectedColor;
-@property (strong, nonatomic) NSNumber *currentColor;
+@property (assign, nonatomic) int currentColor;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;

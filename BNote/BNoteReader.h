@@ -10,6 +10,9 @@
 
 @interface BNoteReader : NSObject
 
-+ (NSMutableArray *)allTopicsInContext:(NSManagedObjectContext *)context;
+@property (strong, nonatomic) NSManagedObjectContext *context;
+
++ (BNoteReader *)instance;
+- (NSMutableArray *)allTopics;
 
 @end

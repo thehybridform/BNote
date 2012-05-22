@@ -8,9 +8,40 @@
 
 #import "BNoteReader.h"
 
-@implementation BNoteReader
+@interface BNoteReader()
 
-+ (NSMutableArray *)allTopicsInContext:(NSManagedObjectContext *)context
+- (id)initSingleton;
+
+@end
+
+@implementation BNoteReader
+@synthesize context = _context;
+
+- (id)initSingleton
+{
+    self = [super init];
+    
+    return self;
+}
+
++ (BNoteReader *)instance
+{
+    static BNoteReader *_default = nil;
+    
+    if (_default != nil) {
+        return _default;
+    }
+    
+    static dispatch_once_t safer;
+    dispatch_once(&safer, ^{
+        _default = [[BNoteReader alloc] initSingleton];
+    });
+    
+    return _default;
+}
+
+
+- (NSMutableArray *)allTopics
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
     
@@ -18,7 +49,7 @@
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     NSError *error = nil;
-    NSArray *topics = [context executeFetchRequest:fetchRequest error:&error];
+    NSArray *topics = [[self context] executeFetchRequest:fetchRequest error:&error];
     
     if (topics != nil) {
         return [topics mutableCopy];

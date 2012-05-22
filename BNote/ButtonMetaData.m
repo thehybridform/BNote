@@ -14,7 +14,7 @@
 @synthesize button = _button;
 @synthesize color = _color;
 
-+ (ButtonMetaData *)createWithIndex:(NSInteger)index andButton:(UIButton *)button andColor:(NSNumber *)color
++ (ButtonMetaData *)createWithIndex:(NSInteger)index andButton:(UIButton *)button andColor:(int)color
 {
     ButtonMetaData *data = [[ButtonMetaData alloc] init];
     [data setIndex:index];

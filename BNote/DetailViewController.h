@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Topic.h"
+#import "NoteViewController.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@class Topic;
 
-@property (strong, nonatomic) Topic *detailItem;
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate,
+                                                    NoteViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) Topic *topic;
+@property (strong, nonatomic) IBOutlet UIButton *defaultNoteButton;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *notesScrollView;
+@property (strong, nonatomic) IBOutlet UIView *entrySummariesView;
+
+- (IBAction)createNewNote:(id)sender;
+- (void)configureView;
 
 @end

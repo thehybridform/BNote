@@ -12,8 +12,8 @@
 
 @property (assign, nonatomic) NSInteger index;
 @property (strong, nonatomic) UIButton *button;
-@property (strong, nonatomic) NSNumber *color;
+@property (assign, nonatomic) int color;
 
-+ (ButtonMetaData *)createWithIndex:(NSInteger)index andButton:(UIButton *)button andColor:(NSNumber *)color;
++ (ButtonMetaData *)createWithIndex:(NSInteger)index andButton:(UIButton *)button andColor:(int)color;
 
 @end

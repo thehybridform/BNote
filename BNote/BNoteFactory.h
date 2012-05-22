@@ -9,12 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "Topic.h"
 #import "Note.h"
-#import "Entry.h"
+#import "Question.h"
+#import "ActionItem.h"
+#import "KeyPoint.h"
+#import "Decision.h"
 
 @interface BNoteFactory : NSObject
 
-+ (Topic *)createTopicWithName:(NSString *)name inContext:(NSManagedObjectContext *)context;
-+ (Note *)createNoteForTopic:(Topic *)topic inContext:(NSManagedObjectContext *)context;
-+ (Entry *)createEntryForNote:(Note *)note inContext:(NSManagedObjectContext *)context;
++ (Topic *)createTopic:(NSString *)name;
++ (Note *)createNote:(Topic *)topic;
++ (Question *)createQuestion:(Note *)note;
++ (ActionItem *)createActionItem:(Note *)note;
++ (KeyPoint *)createKeyPoint:(Note *)note;
++ (Decision *)createDecision:(Note *)note;
+
++(UIView *)createHighlightSliver:(UIColor *)color;
 
 @end

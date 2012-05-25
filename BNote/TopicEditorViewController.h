@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Topic.h"
 
-@protocol TopicEditorViewControllerDelegate;
+@protocol TopicEditorViewControllerListener;
 
 @interface TopicEditorViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UILabel *titleTextLabel;
-@property (strong, nonatomic) id<TopicEditorViewControllerDelegate> delegate;
+@property (strong, nonatomic) id<TopicEditorViewControllerListener> listener;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (strong, nonatomic) Topic *topic;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonAction;
@@ -48,7 +48,7 @@
 
 @end
 
-@protocol TopicEditorViewControllerDelegate <NSObject>
+@protocol TopicEditorViewControllerListener <NSObject>
 
 @required
 - (void)didFinish:(TopicEditorViewController *)controller;

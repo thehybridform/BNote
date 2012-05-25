@@ -18,7 +18,7 @@
 
 @synthesize nameTextField = _nameTextField;
 @synthesize titleTextLabel= _titleTextLabel;
-@synthesize delegate = _delegate;
+@synthesize listener = _listener;
 @synthesize indexPath = _indexPath;
 @synthesize topic = _topic;
 @synthesize buttonAction = _buttonAction;
@@ -34,6 +34,31 @@
 @synthesize selectedColor = _selectedColor;
 @synthesize currentColor = _currentColor;
 @synthesize buttons = _buttons;
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setButtonAction:nil];
+    [self setIndexPath:nil];
+    [self setNameTextField:nil];
+    [self setListener:nil];
+    [self setTopic:nil];
+    [self setTitleTextLabel:nil];
+    [self setSelectedColor:nil];
+    
+    [self setButtons:nil];
+    [self setButton_1:nil];
+    [self setButton_2:nil];
+    [self setButton_3:nil];
+    [self setButton_4:nil];
+    [self setButton_5:nil];
+    [self setButton_6:nil];
+    [self setButton_7:nil];
+    [self setButton_8:nil];
+    [self setButton_9:nil];
+    [self setButtons:nil];
+}
 
 - (id)initWithDefaultNib
 {
@@ -77,13 +102,13 @@
 # pragma mark - Actions
 - (IBAction)done:(id)sender
 {
-    [[self delegate] didFinish:self];
+    [[self listener] didFinish:self];
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)cancel:(id)sender
 {
-    [[self delegate] didCancel:self];
+    [[self listener] didCancel:self];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -166,28 +191,6 @@
 - (IBAction)color9Selected:(id)sender
 {
     [self updateHighlightColor:9];
-}
-
-- (void)viewDidUnload
-{
-    [self setDelegate:nil];
-    [self setTopic:nil];
-    [self setTitleTextLabel:nil];
-    [self setSelectedColor:nil];
-    
-    [self setButtons:nil];
-    [self setButton_1:nil];
-    [self setButton_2:nil];
-    [self setButton_3:nil];
-    [self setButton_4:nil];
-    [self setButton_5:nil];
-    [self setButton_6:nil];
-    [self setButton_7:nil];
-    [self setButton_8:nil];
-    [self setButton_9:nil];
-    [self setButtons:nil];
-    
-    [super viewDidUnload];
 }
 
 @end

@@ -12,13 +12,15 @@
 
 @protocol NoteViewControllerDelegate;
 
-@interface NoteViewController : UIViewController <UIActionSheetDelegate, NoteEditorViewControllerDelegate>
+@interface NoteViewController : UIViewController <NoteEditorViewControllerListener>
 
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UILabel *subject;
+@property (assign, nonatomic) id<NoteViewControllerDelegate> noteViewControllerDelegate;
 
-- (id)initWithNote:(Note *)note andDelegate:(id<NoteViewControllerDelegate>)delegate;
+- (id)initWithNote:(Note *)note ;
+- (Note *)note;
 
 @end
 
@@ -28,6 +30,7 @@
 @required
 - (void)noteDeleted:(NoteViewController *)controller;
 - (void)noteUpdated:(NoteViewController *)controller;
+- (void)presentActionSheetForController:(CGRect)rect;
 
 @end
 

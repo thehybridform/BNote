@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
+#import "EntriesViewController.h"
 
-@protocol NoteEditorViewControllerDelegate;
+@protocol NoteEditorViewControllerListener;
 
 @interface NoteEditorViewController : UIViewController
 
@@ -19,19 +20,37 @@
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UITextField *subject;
+@property (strong, nonatomic) IBOutlet UILabel *subjectLable;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *entityToolbar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *keyPointButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *questionButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *actionItemButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *modeButton;
+@property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
+@property (assign, nonatomic) id<NoteEditorViewControllerListener> listener;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *detailButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *peopleButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *datesButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *keyWordsButton;
 
-- (id)initWithNote:(Note *)note andDelegate:(id<NoteEditorViewControllerDelegate>)delegate;
+- (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;
-- (IBAction)cancel:(id)sender;
+- (IBAction)editMode:(id)sender;
+
+- (IBAction)addKeyPoint:(id)sender;
+- (IBAction)addQuestion:(id)sender;
+- (IBAction)addDecision:(id)sender;
+- (IBAction)addActionItem:(id)sender;
 
 @end
 
-@protocol NoteEditorViewControllerDelegate <NSObject>
+@protocol NoteEditorViewControllerListener <NSObject>
 
 @required
-- (void)didFinish:(NoteEditorViewController *)controller;
-- (void)didCancel:(NoteEditorViewController *)controller;
+- (void)didFinish;
 
 
 @end

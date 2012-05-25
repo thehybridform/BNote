@@ -57,6 +57,12 @@
     [self update];
 }
 
+- (void)removeEntry:(Entry *)entry
+{
+    [[self context] deleteObject:entry];
+    [self update];
+}
+
 - (void)update
 {
     [[self context] save:nil];    

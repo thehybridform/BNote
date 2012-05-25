@@ -2,7 +2,7 @@
 //  Entry.h
 //  BNote
 //
-//  Created by Young Kristin on 5/15/12.
+//  Created by Young Kristin on 5/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 
 @interface Entry : NSManagedObject
 
-@property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSDate * lastUpdated;
+@property (nonatomic) NSTimeInterval created;
+@property (nonatomic) NSTimeInterval lastUpdated;
+@property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) Note *note;
 
 @end

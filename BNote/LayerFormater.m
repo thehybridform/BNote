@@ -21,4 +21,14 @@
     [layer setMasksToBounds:YES];
     [layer setBorderWidth:1];
 }
+
++ (void)setBorderWidth:(int)thickness forView:(UIView *)view
+{
+    [[view layer] setBorderWidth:thickness];
+}
+
++ (void)setBorderColor:(UIColor *)color forView:(UIView *)view
+{
+    [[view layer] setBorderColor:[color CGColor]];
+}
 @end

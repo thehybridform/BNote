@@ -12,7 +12,8 @@
 @class Topic;
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate,
-                                                    NoteViewControllerDelegate>
+                                                    NoteViewControllerDelegate,
+                                                    UIActionSheetDelegate>
 
 @property (strong, nonatomic) Topic *topic;
 @property (strong, nonatomic) IBOutlet UIButton *defaultNoteButton;

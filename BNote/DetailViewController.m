@@ -14,6 +14,8 @@
 #import "EntrySummariesTableViewController.h"
 #import "NoteViewController.h"
 #import "NoteEditorViewController.h"
+#import "BNoteSessionData.h"
+#import "LayerFormater.h"
 
 @class Note;
 
@@ -21,6 +23,7 @@
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property (strong, nonatomic) NSMutableArray *noteViewControllers;
 @property (strong, nonatomic) EntrySummariesTableViewController *tableViewController;
+@property (strong, nonatomic) UIActionSheet *actionSheet;
 
 @end
 
@@ -33,8 +36,33 @@
 @synthesize defaultNoteButton = _defaultNoteButton;
 @synthesize noteViewControllers = _noteViewControllers;
 @synthesize tableViewController = _tableViewController;
+@synthesize actionSheet = _actionSheet;
 
-#pragma mark - Managing the detail item
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [self setMasterPopoverController:nil];
+    [self setNoteViewControllers:nil];
+    [self setTableViewController:nil];
+    [self setTopic:nil];
+    [self setMasterPopoverController:nil];
+    [self setNotesScrollView:nil];
+    [self setEntrySummariesView:nil];
+    [self setDefaultNoteButton:nil];
+    [self setNoteViewControllers:nil];
+    [self setActionSheet:nil];
+}
+     
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self setNoteViewControllers:[[NSMutableArray alloc] init]];
+    }
+    return self;
+}
+
 
 - (void)configureView
 {
@@ -61,26 +89,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];        
-    [self configureView];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self setNoteViewControllers:[[NSMutableArray alloc] init]];
-    }
-    return self;
 }
 
 - (void)addNotesToView
@@ -110,8 +118,9 @@
 
 - (void)addNoteToView:(Note *)note
 {
-    NoteViewController *controller = [[NoteViewController alloc] initWithNote:note andDelegate:self];
+    NoteViewController *controller = [[NoteViewController alloc] initWithNote:note];
     
+    [controller setNoteViewControllerDelegate:self];
     [[self notesScrollView] addSubview:[controller view]];
     [[self noteViewControllers] addObject:controller];
 }
@@ -136,12 +145,65 @@
 
 - (void)noteDeleted:(NoteViewController *)controller
 {
-    [self configureView];
 }
 
 - (void)noteUpdated:(NoteViewController *)controller
 {
-    [self configureView];
+
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (void)presentActionSheetForController:(CGRect)rect
+{
+    NoteViewController *controller = [[BNoteSessionData instance] currentNoteViewController];
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+    [actionSheet setDelegate:self];
+    [actionSheet addButtonWithTitle:@"Delete Note"];
+    [actionSheet addButtonWithTitle:@"Cancel"];
+    
+    [actionSheet showFromRect:rect inView:[controller view] animated:YES];
+    
+    [LayerFormater setBorderWidth:5 forView:[controller view]];
+    [LayerFormater setBorderColor:[UIColor redColor] forView:[controller view]];
+}
+
+#pragma mark - UIActionSheetDelegate Methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NoteViewController *controller = [[BNoteSessionData instance] currentNoteViewController];
+    UIView *view = [controller view];
+    
+    switch (buttonIndex) {
+        case 0:
+            [view removeFromSuperview];
+            [[BNoteWriter instance] removeNote:[controller note]];
+            [[self noteViewControllers] removeObject:controller];
+            [self updateNoteScrollView];
+            break;
+        case 1:
+            [LayerFormater setBorderWidth:1 forView:view];
+            [LayerFormater setBorderColor:[UIColor blackColor] forView:view];
+            break;
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NoteViewController *controller = [[BNoteSessionData instance] currentNoteViewController];
+    UIView *view = [controller view];
+    [LayerFormater setBorderWidth:1 forView:view];
+    [LayerFormater setBorderColor:[UIColor blackColor] forView:view];
+    [self setActionSheet:nil];
+}
+
+- (void)updateNoteScrollView
+{
+    
 }
 
 @end

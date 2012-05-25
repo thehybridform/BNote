@@ -2,7 +2,7 @@
 //  Note.h
 //  BNote
 //
-//  Created by Young Kristin on 5/17/12.
+//  Created by Young Kristin on 5/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,9 +13,9 @@
 
 @interface Note : NSManagedObject
 
-@property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSDate * lastUpdated;
-@property (nonatomic, retain) NSNumber * index;
+@property (nonatomic) NSTimeInterval created;
+@property (nonatomic) NSTimeInterval lastUpdated;
+@property (nonatomic, retain) NSString * subject;
 @property (nonatomic, retain) NSOrderedSet *entries;
 @property (nonatomic, retain) Topic *topic;
 @end

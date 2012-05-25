@@ -13,6 +13,35 @@
 #import "ActionItem.h"
 #import "KeyPoint.h"
 #import "Decision.h"
+#import "Attendant.h"
+
+extern NSString *const ACTION_ITEM_ACTIVE;
+extern NSString *const ACTION_ITEM_INACTIVE;
+extern NSString *const ATTENDIES_ACTIVE;
+extern NSString *const ATTENDIES_INACTIVE;
+extern NSString *const DECISION_ACTIVE;
+extern NSString *const DECISION_INACTIVE;
+extern NSString *const KEY_POINT_ACTIVE;
+extern NSString *const KEY_POINT_INACTIVE;
+extern NSString *const QUESTION_ACTIVE;
+extern NSString *const QUESTION_INACTIVE;
+
+typedef enum {
+    ActionItemIcon,
+    AttentiesIcon,
+    DecisionIcon,
+    KeyPointIcon,
+    QuestionIcon,
+    
+    ActionItemIconActive,
+    AttentiesIconActive,
+    DecisionIconActive,
+    KeyPointIconActive,
+    QuestionIconActive,
+    
+    Unknown
+} BNoteIconType;
+
 
 @interface BNoteFactory : NSObject
 
@@ -23,6 +52,9 @@
 + (KeyPoint *)createKeyPoint:(Note *)note;
 + (Decision *)createDecision:(Note *)note;
 
-+(UIView *)createHighlightSliver:(UIColor *)color;
++ (UIView *)createHighlightSliver:(UIColor *)color;
++ (UIView *)createHighlight:(UIColor *)color;
++ (UIImageView *)createIcon:(BNoteIconType)type;
++ (UIImageView *)createIcon:(Entry *)entry active:(BOOL)active;
 
 @end

@@ -2,7 +2,7 @@
 //  Topic.m
 //  BNote
 //
-//  Created by Young Kristin on 5/17/12.
+//  Created by Young Kristin on 5/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,10 +12,10 @@
 
 @implementation Topic
 
+@dynamic color;
 @dynamic created;
 @dynamic lastUpdated;
 @dynamic title;
-@dynamic color;
 @dynamic index;
 @dynamic notes;
 

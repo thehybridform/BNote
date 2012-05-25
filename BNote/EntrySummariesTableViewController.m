@@ -9,6 +9,7 @@
 #import "EntrySummariesTableViewController.h"
 #import "Note.h"
 #import "Entry.h"
+#import "BNoteFactory.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) Topic *topic;
@@ -78,10 +79,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
         [cell setShowsReorderControl:YES];
+        
     }
     
     Entry *entry = [[self entries] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[entry text]];
+    
+    NSString *text = @"     ";
+    if ([entry text]) {
+        [[cell textLabel] setText:[text stringByAppendingString:[entry text]]];
+    }
+    [cell addSubview:[BNoteFactory createIcon:entry active:NO]];
     
     return cell;
 }

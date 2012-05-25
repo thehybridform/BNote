@@ -72,7 +72,7 @@
 - (void)add:(id)sender
 {
     TopicEditorViewController *topicEditor = [[TopicEditorViewController alloc] initWithDefaultNib];
-    [topicEditor setDelegate:self];
+    [topicEditor setListener:self];
     [topicEditor setModalPresentationStyle:UIModalPresentationFormSheet];
     [topicEditor setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentModalViewController:topicEditor animated:YES];
@@ -103,7 +103,7 @@
         [cell setShowsReorderControl:YES];
         [LayerFormater roundCornersForView:cell];
         [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
-        [[cell selectedBackgroundView] setBackgroundColor:UIColorFromRGB([currentTopic color])];
+        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     }
 
     NSString *text = @"   ";
@@ -120,7 +120,7 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     TopicEditorViewController *topicEditor = [[TopicEditorViewController alloc] initWithDefaultNib];
-    [topicEditor setDelegate:self];
+    [topicEditor setListener:self];
     [topicEditor setEditing:YES];
     [topicEditor setIndexPath:indexPath];
     

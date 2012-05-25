@@ -13,6 +13,8 @@
 
 + (void)roundCornersForView:(UIView *)view;
 + (void)roundCornersForLayer:(CALayer *)layer;
++ (void)setBorderWidth:(int)thickness forView:(UIView *)view;
++ (void)setBorderColor:(UIColor *)color forView:(UIView *)view;
 
 
 @end

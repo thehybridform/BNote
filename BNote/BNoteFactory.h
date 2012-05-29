@@ -42,7 +42,6 @@ typedef enum {
     Unknown
 } BNoteIconType;
 
-
 @interface BNoteFactory : NSObject
 
 + (Topic *)createTopic:(NSString *)name;

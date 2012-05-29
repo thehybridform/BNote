@@ -97,7 +97,7 @@ NSString *const QUESTION_INACTIVE = @"question_icon.png";
 
 +(UIView *)createHighlightSliver:(UIColor *)color
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 44)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 24, 44)];
     [view setBackgroundColor:color];
 
     return view;

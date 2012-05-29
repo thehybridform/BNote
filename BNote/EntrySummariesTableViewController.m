@@ -10,6 +10,9 @@
 #import "Note.h"
 #import "Entry.h"
 #import "BNoteFactory.h"
+#import "LayerFormater.h"
+#import "NoteEditorViewController.h"
+
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) Topic *topic;
@@ -27,16 +30,6 @@
     if (self) {
         [self setTopic:topic];
         [self setEntries:[[NSMutableArray alloc] init]];
-
-        NSEnumerator *notes = [[[self topic] notes] objectEnumerator];
-        Note *note;
-        while (note = [notes nextObject]) {
-            NSEnumerator *entries = [[note entries] objectEnumerator];
-            Entry *entry;
-            while (entry = [entries nextObject]) {
-                [[self entries] addObject:entry];
-            }
-        }
     }
     
     return self;
@@ -46,6 +39,16 @@
 {
     [super viewDidLoad];
     [self setClearsSelectionOnViewWillAppear:NO];
+
+    NSEnumerator *notes = [[[self topic] notes] objectEnumerator];
+    Note *note;
+    while (note = [notes nextObject]) {
+        NSEnumerator *entries = [[note entries] objectEnumerator];
+        Entry *entry;
+        while (entry = [entries nextObject]) {
+            [[self entries] addObject:entry];
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -79,7 +82,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
         [cell setShowsReorderControl:YES];
-        
+        [LayerFormater roundCornersForView:cell];
+        [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([[self topic] color])]];
     }
     
     Entry *entry = [[self entries] objectAtIndex:[indexPath row]];
@@ -93,14 +97,10 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
 
 /*
 // Override to support editing the table view.
@@ -123,26 +123,15 @@
 }
 */
 
-/*
-// Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return NO;
 }
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 @end

@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Entry.h"
 
 @interface BNoteStringUtils : NSObject
 
 + (NSString *)trim:(NSString *)string;
 + (BOOL)nilOrEmpty:(NSString *)string;
+
++ (NSString *)nameForEntry:(Entry *)entry;
 
 @end

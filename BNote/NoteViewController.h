@@ -19,8 +19,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *subject;
 @property (assign, nonatomic) id<NoteViewControllerDelegate> noteViewControllerDelegate;
 
+@property (strong, nonatomic) IBOutlet UIView *deleteMask;
+
 - (id)initWithNote:(Note *)note ;
 - (Note *)note;
+- (void)reset;
+- (void)storeCurrentTransform;
+- (void)show;
 
 @end
 
@@ -30,7 +35,7 @@
 @required
 - (void)noteDeleted:(NoteViewController *)controller;
 - (void)noteUpdated:(NoteViewController *)controller;
-- (void)presentActionSheetForController:(CGRect)rect;
+- (void)setupForDeleteMove:(NoteViewController *)controller;
 
 @end
 

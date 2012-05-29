@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 #import "EntriesViewController.h"
+#import "DatePickerViewController.h"
 
 @protocol NoteEditorViewControllerListener;
 
-@interface NoteEditorViewController : UIViewController
+@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener>
 
 @property (strong, nonatomic) IBOutlet UIView *dateView;
 @property (strong, nonatomic) IBOutlet UIView *subjectView;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UITextField *subject;
@@ -28,13 +28,10 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *actionItemButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *modeButton;
+
+
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (assign, nonatomic) id<NoteEditorViewControllerListener> listener;
-
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *detailButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *peopleButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *datesButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *keyWordsButton;
 
 - (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;
@@ -44,6 +41,7 @@
 - (IBAction)addQuestion:(id)sender;
 - (IBAction)addDecision:(id)sender;
 - (IBAction)addActionItem:(id)sender;
+
 
 @end
 

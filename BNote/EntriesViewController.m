@@ -10,21 +10,21 @@
 #import "LayerFormater.h"
 #import "BNoteSessionData.h"
 #import "BNoteWriter.h"
+#import "BNoteAnimation.h"
 
 @interface EntriesViewController ()
 @property (strong, nonatomic) NSMutableArray *entryReviewViewControllers;
-@property (assign, nonatomic) float yPosition;
-@property (assign, nonatomic) float xPosition;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (assign, nonatomic) CGPoint currentScrollViewOffset;
+@property (strong, nonatomic) QuickWordsViewController *quickWorkdsController;
 
 @end
 
 @implementation EntriesViewController
 @synthesize entryReviewViewControllers = _entryReviewViewControllers;
 @synthesize note = _note;
-@synthesize xPosition = _xPosition;
-@synthesize yPosition = _yPosition;
-@synthesize actionSheet = _actionSheet;
+@synthesize maskView = _maskView;
+@synthesize currentScrollViewOffset = _currentScrollViewOffset;
+@synthesize quickWorkdsController = _quickWorkdsController;
 
 - (void)viewDidUnload
 {
@@ -32,15 +32,23 @@
     
     [self setEntryReviewViewControllers:nil];
     [self setNote:nil];
-    [self setActionSheet:nil];
+    [self setMaskView:nil];
+    [self setQuickWorkdsController:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UIView *parent = [self view];
-    [self setXPosition:[parent bounds].size.width / 2.0];
+    [[self maskView] setHidden:YES];
+    
+    UITapGestureRecognizer *tap = 
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(finishedEntryMoveDelete:)];
+    [[self maskView] addGestureRecognizer:tap];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification object:[[self view] window]];
+
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -48,7 +56,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self setEntryReviewViewControllers:[[NSMutableArray alloc] init]];
-        [self setYPosition:0];
     }
     
     return self;
@@ -65,77 +72,81 @@
 
 - (void)addEntry:(Entry *)entry
 {
-    EntryReviewViewController *controller = [[EntryReviewViewController alloc] initWithEntry:entry];
-    [[self entryReviewViewControllers] addObject:controller];
-    [controller setEntryReviewViewControllerDelegate:self];
+    if (![self isDeletingAnEntry]) {
+        EntryReviewViewController *controller = [[EntryReviewViewController alloc] initWithEntry:entry];
+        [controller setEntryReviewViewControllerDelegate:self];
     
-    UIView *view = [controller view];
-    float height = [view bounds].size.height;
-    [self setYPosition:([self yPosition] + height / 2.0)];
+        UIView *view = [controller view];
+        [view setFrame:CGRectMake(0, [self yPosition], [view bounds].size.width, [view bounds].size.height)];
+
+        [[self view] addSubview:view];
+        
+        [[self entryReviewViewControllers] addObject:controller];
+        [self updateScrollViewSize];
+    }
+}
+
+- (void)startEditingEntry:(Entry *)entry
+{
+    NSEnumerator *items = [[self entryReviewViewControllers] objectEnumerator];
+    EntryReviewViewController *controller;
+    while (controller = [items nextObject]) {
+        if ([controller entry] == entry) {
+            [controller startEditing];
+        }
+    }
+}
+
+- (float)yPosition
+{
+    float height = 0.0;
+    NSEnumerator *items = [[self entryReviewViewControllers] objectEnumerator];
+    EntryReviewViewController *controller;
+    while (controller = [items nextObject]) {
+        height += [[controller view] bounds].size.height;
+    }
     
-    [view setCenter:CGPointMake([self xPosition], [self yPosition])];
-    [[self view] addSubview:view];
-    
-    [self setYPosition:([self yPosition] + height / 2.0)];
-    
-    [self updateScrollViewSize];
+    return height;
 }
 
 - (void) updateScrollViewSize
-{
-    float height = 0.0;
-    
+{    
     UIScrollView *scrollView = (UIScrollView *) [self view];
     
-    NSEnumerator *items = [[scrollView subviews] objectEnumerator];
-    UIView *view;
-    while (view = [items nextObject]) {
-        height += [view bounds].size.height;
-    }
-    
     float width = [scrollView bounds].size.width;
-    [scrollView setContentSize:CGSizeMake(width, height)];
+    [scrollView setContentSize:CGSizeMake(width, [self yPosition])];
 }
 
 
 - (void)updateScrollView
 {
+    UIScrollView *scrollView = (UIScrollView *) [self view];
+    [self setCurrentScrollViewOffset:[scrollView contentOffset]];
+
+    [[self maskView] setHidden:YES];
+
     float delay = 0.1 * [[self entryReviewViewControllers] count];
     float lastY = 0.0;
     NSEnumerator *items = [[self entryReviewViewControllers] objectEnumerator];
     EntryReviewViewController *controller;
     while (controller = [items nextObject]) {
+        [controller setupForReviewing];
         UIView *view = [controller view];
             
         float currentY = [view frame].origin.y;
         float deltaY = lastY - currentY;
             
-        [self moveEntryView:[controller view] yPixels:deltaY withDelay:(delay -= 0.1)];
+        [BNoteAnimation moveEntryView:view xPixels:0 yPixels:deltaY withDelay:(delay -= 0.1)];
         lastY = [view frame].origin.y + [view bounds].size.height;
             
-        [self setYPosition:lastY];
+        [controller storeCurrentTransform];
     }
     
-    UIScrollView *scrollView = (UIScrollView *) [self view];
     float width = [scrollView bounds].size.width;
     [scrollView setContentSize:CGSizeMake(width, [self yPosition])];
+    [scrollView setScrollEnabled:YES];
+    [scrollView setContentOffset:[self currentScrollViewOffset] animated:YES];
 
-}
-
-- (void)moveEntryView:(UIView *)view yPixels:(float)y withDelay:(float)delay
-{
-    if (y != 0) {
-        CGAffineTransform move = CGAffineTransformTranslate([view transform], 0, y);
-        [UIView animateWithDuration:0.3
-                              delay:delay
-                            options:(UIViewAnimationOptionCurveEaseIn)
-                         animations:^(void) {
-                             [view setTransform:move];
-                         }
-                         completion:^(BOOL finished) {
-                         }
-         ];
-    }
 }
 
 - (void)setupForReviewing
@@ -145,52 +156,6 @@
     while (controller = [items nextObject]) {
         [controller setupForReviewing];
     }
-}
-
-- (void)presentActionSheetForController:(CGRect)rect
-{
-    EntryReviewViewController *controller = [[BNoteSessionData instance] currentEntryReviewViewController];
-
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    [actionSheet setDelegate:self];
-    [actionSheet addButtonWithTitle:@"Delete Entry"];
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    
-    [actionSheet showFromRect:rect inView:[controller view] animated:YES];
-    
-    [LayerFormater setBorderWidth:5 forView:[controller view]];
-    [LayerFormater setBorderColor:[UIColor redColor] forView:[controller view]];
-}
-
-#pragma mark - UIActionSheetDelegate Methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    
-    EntryReviewViewController *controller = [[BNoteSessionData instance] currentEntryReviewViewController];
-    UIView *view = [controller view];
-    
-    switch (buttonIndex) {
-        case 0:
-            [view removeFromSuperview];
-            [[BNoteWriter instance] removeEntry:[controller entry]];
-            [[self entryReviewViewControllers] removeObject:controller];
-            [self updateScrollView];
-            break;
-        case 1:
-            [LayerFormater setBorderWidth:1 forView:view];
-            [LayerFormater setBorderColor:[UIColor blackColor] forView:view];
-            break;
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    EntryReviewViewController *controller = [[BNoteSessionData instance] currentEntryReviewViewController];
-    UIView *view = [controller view];
-    [LayerFormater setBorderWidth:1 forView:view];
-    [LayerFormater setBorderColor:[UIColor blackColor] forView:view];
-    [self setActionSheet:nil];
 }
 
 - (void)selectedController
@@ -203,6 +168,132 @@
             [controller setupForReviewing];
         }
     }
+}
+
+- (void)deletedEntry:(EntryReviewViewController *)controller
+{
+    UIView *view = [controller view];
+
+    [view removeFromSuperview];
+    [[BNoteWriter instance] removeEntry:[controller entry]];
+    [[self entryReviewViewControllers] removeObject:controller];
+    [self updateScrollView];    
+}
+
+- (void)deleteCandidate:(EntryReviewViewController *)c
+{
+    NSEnumerator *items = [[self entryReviewViewControllers] objectEnumerator];
+    EntryReviewViewController *controller;
+    while (controller = [items nextObject]) {
+        if (controller == c) {
+            [controller setupForDelete];
+        } else {
+            [controller setupForReviewing];
+        }
+    }
+    
+    [self showMaskView:c];
+}
+
+- (void)editCandidate:(EntryReviewViewController *)controller
+{
+    UIScrollView *view = (UIScrollView *) [self view];
+    [self setCurrentScrollViewOffset:[view contentOffset]];
+    
+    [view setContentOffset:[[controller view] frame].origin animated:YES];
+    [self showQuickView:controller];
+}
+
+- (void)showQuickView:(EntryReviewViewController *)controller
+{
+    QuickWordsViewController *currentQuick = [self quickWorkdsController];
+    
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntry:[controller entry]];
+    [self setQuickWorkdsController:quick];
+    [quick setListener:self];
+    [quick setTargetTextView:[controller textView]];
+    
+    float x = 12;
+    float width = [[quick view] bounds].size.width;
+    float height = [[quick view] bounds].size.height;
+    float y = 156 - height + 44;
+    [[quick view] setFrame:CGRectMake(x, y, width, height)];
+    [[[self view] superview] addSubview:[quick view]];
+    
+    if (currentQuick) {
+        [[currentQuick view] removeFromSuperview];
+        [[[self view] superview] addSubview:[quick view]];
+    } else {
+        [quick presentView:[[self view] superview]];
+    }
+}
+
+- (void)finishedEntryMoveDelete:(id)sender
+{
+    [[self maskView] setHidden:YES];
+    NSEnumerator *items = [[self entryReviewViewControllers] objectEnumerator];
+    EntryReviewViewController *controller;
+    while (controller = [items nextObject]) {
+        [controller setupForReviewing];
+    }
+    [self updateScrollView];    
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification
+{
+    if (![self isEditingAnEntry]) {
+        UIScrollView *view = (UIScrollView *) [self view];
+        [view setContentOffset:[self currentScrollViewOffset] animated:YES];
+        [self didFinishFromQuickWords];
+    }
+}
+
+- (BOOL)isEditingAnEntry
+{
+    NSEnumerator *items = [[self entryReviewViewControllers] objectEnumerator];
+    EntryReviewViewController *controller;
+    while (controller = [items nextObject]) {
+        if ([controller isEditingEntry]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)isDeletingAnEntry
+{
+    NSEnumerator *items = [[self entryReviewViewControllers] objectEnumerator];
+    EntryReviewViewController *controller;
+    while (controller = [items nextObject]) {
+        if ([controller isDeletingEntry]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)showMaskView:(EntryReviewViewController *)c
+{
+    UIScrollView *view = (UIScrollView *) [self view];
+    [view setScrollEnabled:NO];
+    float width = [view bounds].size.width;
+    float cHeight = [view contentSize].height;
+    float fHeight = [view frame].size.height;
+    float bHeight = [view bounds].size.height;
+    
+    [[self maskView] setHidden:NO];
+    [[self maskView] setFrame:CGRectMake(0, -2000, width, MAX(MAX(cHeight, fHeight), bHeight) + 2000)];
+    [view bringSubviewToFront:[self maskView]];
+    [view bringSubviewToFront:[c view]];
+}
+
+- (void)didFinishFromQuickWords
+{
+    [[self quickWorkdsController] hideView];
+    [self setQuickWorkdsController:nil];
+    [self setupForReviewing];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

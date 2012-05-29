@@ -21,9 +21,7 @@
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-@property (strong, nonatomic) NSMutableArray *noteViewControllers;
 @property (strong, nonatomic) EntrySummariesTableViewController *tableViewController;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
 
 @end
 
@@ -31,47 +29,26 @@
 
 @synthesize topic = _topic;
 @synthesize masterPopoverController = _masterPopoverController;
-@synthesize notesScrollView = _notesScrollView;
 @synthesize entrySummariesView = _entrySummariesView;
-@synthesize defaultNoteButton = _defaultNoteButton;
-@synthesize noteViewControllers = _noteViewControllers;
+@synthesize addNewNoteButton = _addNewNoteButton;
 @synthesize tableViewController = _tableViewController;
-@synthesize actionSheet = _actionSheet;
-
+@synthesize notesViewController = notesViewController;
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     [self setMasterPopoverController:nil];
-    [self setNoteViewControllers:nil];
     [self setTableViewController:nil];
     [self setTopic:nil];
     [self setMasterPopoverController:nil];
-    [self setNotesScrollView:nil];
     [self setEntrySummariesView:nil];
-    [self setDefaultNoteButton:nil];
-    [self setNoteViewControllers:nil];
-    [self setActionSheet:nil];
+    [self setAddNewNoteButton:nil];
+    [self setNotesViewController:nil];
+    
 }
      
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)configureView:(int)indexPath
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self setNoteViewControllers:[[NSMutableArray alloc] init]];
-    }
-    return self;
-}
-
-
-- (void)configureView
-{
-    NSEnumerator *notes = [[self noteViewControllers] objectEnumerator];
-    NoteViewController *note;
-    while (note = [notes nextObject]) {
-        [[note view] removeFromSuperview]; 
-    }
-    
     [[[self tableViewController] view] removeFromSuperview];
     
     if (self.masterPopoverController != nil) {
@@ -79,11 +56,14 @@
     }
 
     [self setTitle:[[self topic] title]];
-    [self addNotesToView];
-    [self addEntriesToView];
-    
-    float height = [[self notesScrollView] contentSize].height;
-    [[self notesScrollView] setContentSize:CGSizeMake([[[self topic] notes] count] * 155, height)];
+    if (indexPath > 0) {
+        [[self view] setHidden:NO];
+        [self addEntriesToView];
+        [[self notesViewController] configureView:[self topic]];
+        [[self notesViewController] setListener:self];
+    } else {
+        [[self view] setHidden:YES];
+    }
 }
 
 - (void)viewDidLoad
@@ -91,13 +71,9 @@
     [super viewDidLoad];        
 }
 
-- (void)addNotesToView
+- (void)didFinish
 {
-    NSEnumerator *notes = [[[self topic] notes] objectEnumerator];
-    Note *note;
-    while (note = [notes nextObject]) {
-        [self addNoteToView:note];
-    }
+    [self addEntriesToView];
 }
 
 - (void)addEntriesToView
@@ -112,17 +88,8 @@
 
 - (IBAction)createNewNote:(id)sender
 {
-    [BNoteFactory createNote:[self topic]];
-    [self configureView];
-}
-
-- (void)addNoteToView:(Note *)note
-{
-    NoteViewController *controller = [[NoteViewController alloc] initWithNote:note];
-    
-    [controller setNoteViewControllerDelegate:self];
-    [[self notesScrollView] addSubview:[controller view]];
-    [[self noteViewControllers] addObject:controller];
+    Note *note = [BNoteFactory createNote:[self topic]];
+    [[self notesViewController] addNote:note];
 }
 
 #pragma mark - Split view
@@ -141,69 +108,11 @@
     self.masterPopoverController = nil;
 }
 
-#pragma mark NoteViewControllerDelegate
-
-- (void)noteDeleted:(NoteViewController *)controller
-{
-}
-
-- (void)noteUpdated:(NoteViewController *)controller
-{
-
-}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
 
-- (void)presentActionSheetForController:(CGRect)rect
-{
-    NoteViewController *controller = [[BNoteSessionData instance] currentNoteViewController];
-    
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    [actionSheet setDelegate:self];
-    [actionSheet addButtonWithTitle:@"Delete Note"];
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    
-    [actionSheet showFromRect:rect inView:[controller view] animated:YES];
-    
-    [LayerFormater setBorderWidth:5 forView:[controller view]];
-    [LayerFormater setBorderColor:[UIColor redColor] forView:[controller view]];
-}
 
-#pragma mark - UIActionSheetDelegate Methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NoteViewController *controller = [[BNoteSessionData instance] currentNoteViewController];
-    UIView *view = [controller view];
-    
-    switch (buttonIndex) {
-        case 0:
-            [view removeFromSuperview];
-            [[BNoteWriter instance] removeNote:[controller note]];
-            [[self noteViewControllers] removeObject:controller];
-            [self updateNoteScrollView];
-            break;
-        case 1:
-            [LayerFormater setBorderWidth:1 forView:view];
-            [LayerFormater setBorderColor:[UIColor blackColor] forView:view];
-            break;
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    NoteViewController *controller = [[BNoteSessionData instance] currentNoteViewController];
-    UIView *view = [controller view];
-    [LayerFormater setBorderWidth:1 forView:view];
-    [LayerFormater setBorderColor:[UIColor blackColor] forView:view];
-    [self setActionSheet:nil];
-}
-
-- (void)updateNoteScrollView
-{
-    
-}
 
 @end

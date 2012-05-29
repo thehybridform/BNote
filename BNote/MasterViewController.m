@@ -13,9 +13,9 @@
 #import "BNoteWriter.h"
 #import "Topic.h"
 #import "LayerFormater.h"
+#import "BNoteSessionData.h"
 
 @interface MasterViewController () 
-@property (readwrite, assign) Topic *currentTopic;
 
 @end
 
@@ -23,7 +23,6 @@
 
 @synthesize detailViewController = _detailViewController;
 @synthesize data = _data;
-@synthesize currentTopic = _currentTopic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,7 +53,8 @@
     }
     
     [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-        
+    [[self detailViewController] configureView:0];
+
     [self updateCellColors];
 }
 
@@ -102,8 +102,11 @@
         [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
         [cell setShowsReorderControl:YES];
         [LayerFormater roundCornersForView:cell];
-        [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
-        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
+        
+        if ([indexPath row] > 0) {
+            [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
+            [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
+        }
     }
 
     NSString *text = @"   ";
@@ -129,7 +132,7 @@
     [topicEditor setModalPresentationStyle:UIModalPresentationFormSheet];
     [topicEditor setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentModalViewController:topicEditor animated:YES];
-    [self setCurrentTopic:topic];
+    [[BNoteSessionData instance] setCurrentTopic:topic];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -141,6 +144,7 @@
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
+        [[self detailViewController] configureView:0];
     }
 }
 
@@ -169,7 +173,7 @@
 {
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     [[self detailViewController] setTopic:topic];
-    [[self detailViewController] configureView];
+    [[self detailViewController] configureView:[indexPath row]];
 }
 
 
@@ -179,8 +183,8 @@
     NSString *title = [[topicEditor nameTextField] text];
     if (title && [title length] > 0) {
         if ([topicEditor isEditing]) {
-            [[self currentTopic] setTitle:title];
-            [[self currentTopic] setColor:[topicEditor currentColor]];
+            [[[BNoteSessionData instance] currentTopic] setTitle:title];
+            [[[BNoteSessionData instance] currentTopic] setColor:[topicEditor currentColor]];
         } else {
             Topic *topic = [BNoteFactory createTopic:title]; 
             [topic setColor:[topicEditor currentColor]];
@@ -192,6 +196,7 @@
         
         [[self tableView] reloadData];
         [self updateCellColors];
+
     }
 }
 

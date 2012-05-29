@@ -16,6 +16,7 @@
 #import "Decision.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
+#import "BNoteWriter.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -26,7 +27,6 @@
 
 @synthesize dateView = _dateView;
 @synthesize subjectView = _subjectView;
-@synthesize scrollView = _scrollView;
 @synthesize date = _date;
 @synthesize time = _time;
 @synthesize subject = _subject;
@@ -42,10 +42,6 @@
 @synthesize actionItemButton = _actionItemButton;
 @synthesize modeButton = _modeButton;
 @synthesize entriesViewController = _entriesViewController;
-@synthesize detailButton = _detailButton;
-@synthesize peopleButton = _peopleButton;
-@synthesize datesButton = _datesButton;
-@synthesize keyWordsButton = _keyWordsButton;
 
 - (void)viewDidUnload
 {
@@ -55,7 +51,6 @@
     [self setToolbarEditColor:nil];
     [self setDateView:nil];
     [self setSubjectView:nil];
-    [self setScrollView:nil];
     [self setDate:nil];
     [self setTime:nil];
     [self setSubject:nil];
@@ -69,10 +64,6 @@
     [self setModeButton:nil];
     [self setEntriesViewController:nil];
     [self setListener:nil];
-    [self setDetailButton:nil];
-    [self setPeopleButton:nil];
-    [self setDatesButton:nil];
-    [self setKeyWordsButton:nil];
 }
 
 
@@ -93,26 +84,18 @@
     Note *note = [self note];
     if ([note subject] && [[note subject] length] > 0) {
         [[self subject] setText:[note subject]];
+    } else {
+        [[self subject] becomeFirstResponder];
     }
-    
+
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
-    
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-
-    [format setDateFormat:@"MMMM dd, YYYY"];
-    NSString *dateString = [format stringFromDate:date];
-    
-    [format setDateFormat:@"hh:mm aaa"];
-    NSString *timeString = [format stringFromDate:date];
-
-    [[self date] setText:dateString];
-    [[self time] setText:timeString];
+    [self setupDateTime:date];
     
     [[self view] setBackgroundColor:UIColorFromRGB([[note topic] color])];
                                     
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater roundCornersForView:[self subjectView]];
-    [LayerFormater roundCornersForView:[self scrollView]];
+    [LayerFormater roundCornersForView:[[self entriesViewController] view]];
     [LayerFormater roundCornersForView:[self entityToolbar]];
     
     [self setToolbarEditColor:[[self toolbar] tintColor]];
@@ -123,10 +106,8 @@
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] update];
     
-    [[self detailButton] setEnabled:NO];
-    [[self peopleButton] setEnabled:NO];
-    [[self datesButton] setEnabled:NO];
-    [[self keyWordsButton] setEnabled:NO];
+    UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
+    [[self dateView] addGestureRecognizer:normalTap];
 }
 
 - (IBAction)done:(id)sender
@@ -135,6 +116,8 @@
     [[self listener] didFinish];
     [self dismissModalViewControllerAnimated:YES];
     [[self entriesViewController] setupForReviewing];
+    
+    [[BNoteWriter instance] update];
 }
 
 - (IBAction)editMode:(id)sender
@@ -156,28 +139,18 @@
     [[self subjectLable] setHidden:YES];
     [[self modeButton] setTitle:@"Add"];
     
-    [[self detailButton] setEnabled:YES];
-    [[self peopleButton] setEnabled:YES];
-    [[self datesButton] setEnabled:YES];
-    [[self keyWordsButton] setEnabled:YES];
-
     [[BNoteSessionData instance] setPhase:Editing];
 }
 
 - (void)reviewing
 {
-    [[self toolbar] setTintColor:[UIColor grayColor]];
-    [[self entityToolbar] setTintColor:[UIColor grayColor]];
+    [[self toolbar] setTintColor:[UIColor lightGrayColor]];
+    [[self entityToolbar] setTintColor:[UIColor lightGrayColor]];
     [[self subject] setHidden:YES];
     [[self subjectLable] setHidden:NO];
     [[self subjectLable] setText:[[self subject] text]];
     [[self modeButton] setTitle:@"Filter"];
     
-    [[self detailButton] setEnabled:NO];
-    [[self peopleButton] setEnabled:NO];
-    [[self datesButton] setEnabled:NO];
-    [[self keyWordsButton] setEnabled:NO];
-
     [[BNoteSessionData instance] setPhase:Reviewing];
     [[self entriesViewController] setupForReviewing];
 }
@@ -185,41 +158,72 @@
 - (IBAction)addKeyPoint:(id)sender
 {
     if ([[BNoteSessionData instance] canEditEntry]) {
-        [[self entriesViewController] addEntry:[BNoteFactory createKeyPoint:[self note]]];
+        [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
     }
 }
 
 - (IBAction)addQuestion:(id)sender
 {
     if ([[BNoteSessionData instance] canEditEntry]) {
-        [[self entriesViewController] addEntry:[BNoteFactory createQuestion:[self note]]];
+        [self addEntry:[BNoteFactory createQuestion:[self note]]];
     }
 }
 
 - (IBAction)addDecision:(id)sender
 {
     if ([[BNoteSessionData instance] canEditEntry]) {
-        [[self entriesViewController] addEntry:[BNoteFactory createDecision:[self note]]];
+        [self addEntry:[BNoteFactory createDecision:[self note]]];
     }
 }
 
 - (IBAction)addActionItem:(id)sender
 {
     if ([[BNoteSessionData instance] canEditEntry]) {
-        [[self entriesViewController] addEntry:[BNoteFactory createActionItem:[self note]]];
+        [self addEntry:[BNoteFactory createActionItem:[self note]]];
     }
 }
 
-- (void)didFinish:(Entry *)entry
+- (void)addEntry:(Entry *)entry
 {
     [[self entriesViewController] addEntry:entry];
+    [[self entriesViewController] startEditingEntry:entry];
 }
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
 }
 
+- (void)showDatePicker:(id)sender
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
+
+    DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
+    [[controller view] setBackgroundColor:[[self view] backgroundColor]];
+    [controller setListener:self];
+    [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
+    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [[self entriesViewController] presentModalViewController:controller animated:YES];
+}
+
+- (void)dateTimeUpdated:(NSDate *)date
+{
+    [[self note] setCreated:[date timeIntervalSinceReferenceDate]];
+    [self setupDateTime:date];
+}
+
+- (void)setupDateTime:(NSDate *)date
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    
+    [format setDateFormat:@"MMMM dd, YYYY"];
+    NSString *dateString = [format stringFromDate:date];
+    
+    [format setDateFormat:@"hh:mm aaa"];
+    NSString *timeString = [format stringFromDate:date];
+    
+    [[self date] setText:dateString];
+    [[self time] setText:timeString];
+}
 
 @end
 

@@ -18,6 +18,7 @@
 @synthesize phase = _phase;
 @synthesize currentNoteViewController = _currentNoteViewController;
 @synthesize currentEntryReviewViewController = _currentEntryReviewViewController;
+@synthesize currentTopic = _currentTopic;
 
 - (void)setPhase:(BNotePhase)phase
 {
@@ -26,7 +27,7 @@
 
 - (BOOL)canEditEntry
 {
-    return [self phase] == Editing;
+    return YES;
 }
 
 - (id)initSingleton

@@ -11,13 +11,12 @@
 #import "Note.h"
 #import "Topic.h"
 #import "BNoteFactory.h"
-#import "BNoteWriter.h"
 #import "BNoteSessionData.h"
+#import "BNoteAnimation.h"
 
 @interface EntryReviewViewController ()
 @property (strong, nonatomic) Entry *entry;
-@property (assign, nonatomic) BOOL editingEntry;
-
+@property (assign, nonatomic) CGAffineTransform currentTransform;
 @end
 
 @implementation EntryReviewViewController
@@ -26,8 +25,10 @@
 @synthesize imageViewParent = _imageViewParent;
 @synthesize textLable = _textLable;
 @synthesize entryReviewViewControllerDelegate = _entryReviewViewControllerDelegate;
-@synthesize editingEntry = _editingEntry;
 @synthesize textView = _textView;
+@synthesize deleteButton = _deleteButton;
+@synthesize currentTransform = _currentTransform;
+@synthesize deleteMaskView = _deleteMaskView;
 
 - (void)viewDidUnload
 {
@@ -38,6 +39,8 @@
     [self setImageViewParent:nil];
     [self setTextLable:nil];
     [self setEntryReviewViewControllerDelegate:nil];
+    [self setDeleteButton:nil];
+    [self setDeleteMaskView:nil];
 }
 
 - (id)initWithEntry:(Entry *)entry
@@ -45,7 +48,6 @@
     self = [super initWithNibName:@"EntryReviewViewController" bundle:nil];
     if (self) {
         [self setEntry:entry];
-        [self setEditingEntry:NO];
     }
     return self;
 }
@@ -54,80 +56,121 @@
 {
     [super viewDidLoad];
     
-    [[self imageView] setImage:[[BNoteFactory createIcon:[self entry] active:NO] image]];
+    [self storeCurrentTransform];
+    [self setupForReviewing];
+    
     [[self imageViewParent] setBackgroundColor:UIColorFromRGB([[[[self entry] note] topic] color])];
-    [[self textLable] setText:[[self entry] text]];
-    [[self textView] setText:[[self entry] text]];
-    [[self textView] setHidden:YES];
 
     [LayerFormater setBorderWidth:1 forView:[self view]];
     [LayerFormater roundCornersForView:[self view]];
     [LayerFormater roundCornersForView:[self textView]];
     [LayerFormater setBorderColor:[UIColor blackColor] forView:[self view]];
-    
-    UITapGestureRecognizer *doubleTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doublePressTap:)];      
-    [doubleTap setNumberOfTapsRequired:2];
-    [[self view] addGestureRecognizer:doubleTap];
-
-    UILongPressGestureRecognizer *longPress =
-        [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
-    [[self view] addGestureRecognizer:longPress];
-
-    UITapGestureRecognizer *tap = 
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
-    [tap requireGestureRecognizerToFail:doubleTap];
-    [[self view] addGestureRecognizer:tap];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedTextEntry:)
+                                                 name:UITextViewTextDidEndEditingNotification object:[[self textView] window]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedTextEntry:)
+                                                 name:UITextViewTextDidChangeNotification object:[[self textView] window]];
 }
 
-- (void)doublePressTap:(id)sender
+- (void)storeCurrentTransform
 {
-    [[BNoteSessionData instance] setCurrentEntryReviewViewController:self];
-
-    UIGestureRecognizer *gesture = (UIGestureRecognizer *) sender;
-    CGPoint location = [gesture locationInView:[self view]];
-    CGRect rect = CGRectMake(location.x, location.y, 1, 1);
-    [[self entryReviewViewControllerDelegate] presentActionSheetForController:rect];
+    [self setCurrentTransform:[[self view] transform]];
 }
 
 - (void)normalPressTap:(id)sender
 {
-    if ([[BNoteSessionData instance] canEditEntry] && ![self editingEntry]) {
-        [self setupForEditing];
-    } else {
+    if ([self isEditingEntry]) {
         [self setupForReviewing];
+    } else {
+        [[BNoteSessionData instance] setCurrentEntryReviewViewController:self];
+        [[self entryReviewViewControllerDelegate] selectedController];
+        [[self imageView] setImage:[[BNoteFactory createIcon:[self entry] active:YES] image]];
+        
+        [[self textLable] setHidden:YES];
+        
+        UITextView *textView = [self textView];
+        [textView setText:[[self entry] text]];
+        [textView setHidden:NO];
+        [textView becomeFirstResponder];
+        
+        [[self entryReviewViewControllerDelegate] editCandidate:self];
     }
 }
 
 -(void)longPressTap:(id)sender
 {
-    NSLog(@"longPressTap");
+    if (![self isDeletingEntry]) {
+        [[BNoteSessionData instance] setCurrentEntryReviewViewController:self];
+        [[self entryReviewViewControllerDelegate] deleteCandidate:self];
+    }
 }
 
-- (void)setupForEditing
+- (void)setupForDelete
 {
-    [[BNoteSessionData instance] setCurrentEntryReviewViewController:self];
-    [[self entryReviewViewControllerDelegate] selectedController];
-
-    [self setEditingEntry:YES];
-    [[self textView] setHidden:NO];
-    [[self textLable] setHidden:YES];
-    [[self imageView] setImage:[[BNoteFactory createIcon:[self entry] active:YES] image]];
+    [BNoteAnimation startWobble:[self view]];
+    [[self deleteMaskView] setHidden:NO];
+    [[self deleteButton] setHidden:NO];
+    [[self deleteButton] becomeFirstResponder];
     
-    [[self textView] setText:[[self entry] text]];
+    [[self textView] resignFirstResponder];
 }
 
 - (void)setupForReviewing
 {
-    [[self textView] resignFirstResponder];
-    [self setEditingEntry:NO];
+    [[self deleteButton] setHidden:YES];
+    [[self deleteMaskView] setHidden:YES];
+    
     [[self textView] setHidden:YES];
+    [[self textView] setText:[[self entry] text]];
+    [[self textView] resignFirstResponder];
+    
     [[self textLable] setHidden:NO];
+    [[self textLable] setText:[[self entry] text]];
+    
     [[self imageView] setImage:[[BNoteFactory createIcon:[self entry] active:NO] image]];
     
-    [[self textLable] setText:[[self textView] text]];
-    [[self entry] setText:[[self textView] text]];
-    [[BNoteWriter instance] update];
+    [[self view] setTransform:[self currentTransform]];
+    [[[self view] layer] removeAllAnimations];
+
+    UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
+    [[self imageViewParent] addGestureRecognizer:normalTap];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
+    [[self view] addGestureRecognizer:longPress];
+}
+
+- (IBAction)deleteEntry:(id)sender
+{
+    [[self entryReviewViewControllerDelegate] deletedEntry:self];
+}
+
+- (void)finishedTextEntry:(NSNotification *)notification
+{
+    UITextView *textView = [self textView];
+    [[self entry] setText:[textView text]];
+    [[self textLable] setText:[[self entry] text]];
+    [self setupForReviewing];
+}
+- (void)updatedTextEntry:(NSNotification *)notification
+{
+    UITextView *textView = [self textView];
+    [[self entry] setText:[textView text]];
+    [[self textLable] setText:[[self entry] text]];
+}
+
+- (BOOL)isEditingEntry
+{
+    return ![[self textView] isHidden];
+}
+
+- (BOOL)isDeletingEntry
+{
+    return ![[self deleteButton] isHidden];
+}
+
+- (void)startEditing
+{
+    [self normalPressTap:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

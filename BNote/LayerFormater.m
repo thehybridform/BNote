@@ -15,9 +15,19 @@
     [LayerFormater roundCornersForLayer:[view layer]];
 }
 
++ (void)roundCornersForView:(UIView *)view to:(float)radius
+{
+    [LayerFormater roundCornersForLayer:[view layer] to:radius];
+}
+
 + (void)roundCornersForLayer:(CALayer *)layer
 {
-    [layer setCornerRadius:7.0];
+    [LayerFormater roundCornersForLayer:layer to:7.0];
+}
+
++ (void)roundCornersForLayer:(CALayer *)layer to:(float)radius
+{
+    [layer setCornerRadius:radius];
     [layer setMasksToBounds:YES];
     [layer setBorderWidth:1];
 }

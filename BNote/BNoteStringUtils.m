@@ -7,6 +7,11 @@
 //
 
 #import "BNoteStringUtils.h"
+#import "Question.h"
+#import "ActionItem.h"
+#import "KeyPoint.h"
+#import "Decision.h"
+#import "Attendant.h"
 
 @implementation BNoteStringUtils
 
@@ -22,6 +27,23 @@
 + (BOOL)nilOrEmpty:(NSString *)string
 {
     return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] == nil;
+}
+
++ (NSString *)nameForEntry:(Entry *)entry
+{
+    if ([entry isKindOfClass:[ActionItem class]]) {
+        return @"Action Item";
+    } else if ([entry isKindOfClass:[Attendant class]]) {
+        return @"Attendant";
+    } else if ([entry isKindOfClass:[Decision class]]) {
+        return @"Decision";
+    } else if ([entry isKindOfClass:[KeyPoint class]]) {
+        return @"Key Point";
+    } else if ([entry isKindOfClass:[Question class]]) {
+        return @"Question";
+    }
+    
+    return @"Details";
 }
 
 @end

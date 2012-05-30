@@ -197,6 +197,7 @@
     [[self entriesViewController] addEntry:entry];
     [[self entriesViewController] startEditingEntry:entry];
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;

@@ -19,5 +19,6 @@
 + (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andActionItem:(ActionItem *)actionItem;
 + (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andQuestion:(Question *)question;
 + (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andNote:(Note *)note;
++ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andKeyPoint:(KeyPoint *)keyPoint;
 
 @end

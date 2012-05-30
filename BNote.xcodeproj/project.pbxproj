@@ -52,6 +52,7 @@
 		1879F1081575CF38003814C2 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F1071575CF38003814C2 /* Question.m */; };
 		1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F10A1575D802003814C2 /* QuestionQuickButton.m */; };
 		18A1DE5F1575F96A004A2022 /* AttendantQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */; };
+		18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE611576027E004A2022 /* KeyPointButton.m */; };
 		18E9FF11156A343700F22272 /* LayerFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF10156A343700F22272 /* LayerFormater.m */; };
 		18E9FF1D156B772D00F22272 /* action_item_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF15156B772D00F22272 /* action_item_active_icon.png */; };
 		18E9FF1E156B772D00F22272 /* action_item_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF16156B772D00F22272 /* action_item_icon.png */; };
@@ -155,6 +156,8 @@
 		1879F10A1575D802003814C2 /* QuestionQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionQuickButton.m; sourceTree = "<group>"; };
 		18A1DE5D1575F96A004A2022 /* AttendantQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantQuickButton.h; sourceTree = "<group>"; };
 		18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantQuickButton.m; sourceTree = "<group>"; };
+		18A1DE601576027E004A2022 /* KeyPointButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointButton.h; sourceTree = "<group>"; };
+		18A1DE611576027E004A2022 /* KeyPointButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointButton.m; sourceTree = "<group>"; };
 		18E9FF0F156A343700F22272 /* LayerFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerFormater.h; sourceTree = "<group>"; };
 		18E9FF10156A343700F22272 /* LayerFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerFormater.m; sourceTree = "<group>"; };
 		18E9FF15156B772D00F22272 /* action_item_active_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_item_active_icon.png; sourceTree = "<group>"; };
@@ -392,20 +395,54 @@
 		1879F0791574CA50003814C2 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				18A1DE66157609DB004A2022 /* Key Point */,
+				18A1DE65157609D1004A2022 /* Question */,
+				18A1DE64157609C6004A2022 /* Action Item */,
+				18A1DE63157609BA004A2022 /* Attendant */,
 				1879F06A1574B1BD003814C2 /* QuickWordButton.h */,
 				1879F06B1574B1BD003814C2 /* QuickWordButton.m */,
 				1879F0761574CA12003814C2 /* DateQuickButton.h */,
 				1879F0771574CA12003814C2 /* DateQuickButton.m */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		18A1DE63157609BA004A2022 /* Attendant */ = {
+			isa = PBXGroup;
+			children = (
+				18A1DE5D1575F96A004A2022 /* AttendantQuickButton.h */,
+				18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */,
+			);
+			name = Attendant;
+			sourceTree = "<group>";
+		};
+		18A1DE64157609C6004A2022 /* Action Item */ = {
+			isa = PBXGroup;
+			children = (
 				1879F09A1575C85A003814C2 /* ActionItemQuickButton.h */,
 				1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */,
 				1879F09E1575CA36003814C2 /* ActionItemMarkDone.h */,
 				1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */,
+			);
+			name = "Action Item";
+			sourceTree = "<group>";
+		};
+		18A1DE65157609D1004A2022 /* Question */ = {
+			isa = PBXGroup;
+			children = (
 				1879F1091575D802003814C2 /* QuestionQuickButton.h */,
 				1879F10A1575D802003814C2 /* QuestionQuickButton.m */,
-				18A1DE5D1575F96A004A2022 /* AttendantQuickButton.h */,
-				18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */,
 			);
-			name = Buttons;
+			name = Question;
+			sourceTree = "<group>";
+		};
+		18A1DE66157609DB004A2022 /* Key Point */ = {
+			isa = PBXGroup;
+			children = (
+				18A1DE601576027E004A2022 /* KeyPointButton.h */,
+				18A1DE611576027E004A2022 /* KeyPointButton.m */,
+			);
+			name = "Key Point";
 			sourceTree = "<group>";
 		};
 		18E9FF0D156A340900F22272 /* UI */ = {
@@ -597,6 +634,7 @@
 				1879F1081575CF38003814C2 /* Question.m in Sources */,
 				1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */,
 				18A1DE5F1575F96A004A2022 /* AttendantQuickButton.m in Sources */,
+				18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

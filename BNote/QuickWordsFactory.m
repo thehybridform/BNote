@@ -14,6 +14,7 @@
 #import "ActionItemMarkDone.h"
 #import "QuestionQuickButton.h"
 #import "AttendantQuickButton.h"
+#import "KeyPointButton.h"
 
 @implementation QuickWordsFactory
 
@@ -60,6 +61,15 @@
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
+    button = [[ActionItemQuickButton alloc] initWithName:@"responsibility" andTextView:textView];
+    [button setActionItem:actionItem];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
+    
+    button = [[ActionItemQuickButton alloc] initWithName:@"due date" andTextView:textView];
+    [button setActionItem:actionItem];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
     
     return data;
 }
@@ -78,7 +88,7 @@
     [button setQuestion:question];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
-
+    
     return data;
 }
 
@@ -98,6 +108,24 @@
     [data addObject:button];
     
 
+    return data;
+}
+
++ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andKeyPoint:(KeyPoint *)keyPoint
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    KeyPointButton *button;
+
+    button = [[KeyPointButton alloc] initWithName:@"photos" andTextView:textView];
+    [button setKeyPoint:keyPoint];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
+    
+    button = [[KeyPointButton alloc] initWithName:@"camera" andTextView:textView];
+    [button setKeyPoint:keyPoint];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
+    
     return data;
 }
 

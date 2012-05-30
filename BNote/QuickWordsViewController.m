@@ -182,10 +182,8 @@ static float speed = 0.40;
         return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andActionItem:(ActionItem *)entry] objectEnumerator];
     } else if ([entry isKindOfClass:[Attendant class]]) {
         return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andNote:[[self entry] note]] objectEnumerator];
-    } else if ([entry isKindOfClass:[Decision class]]) {
-        return nil;
     } else if ([entry isKindOfClass:[KeyPoint class]]) {
-        return nil;
+        return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andKeyPoint:(KeyPoint *)entry] objectEnumerator];
     } else if ([entry isKindOfClass:[Question class]]) {
         return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andQuestion:(Question *)entry] objectEnumerator];
     }

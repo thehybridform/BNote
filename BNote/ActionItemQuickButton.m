@@ -11,5 +11,9 @@
 @implementation ActionItemQuickButton
 @synthesize actionItem = _actionItem;
 
+- (void)execute:(id)sender
+{
+
+}
 
 @end

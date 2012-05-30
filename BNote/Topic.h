@@ -2,7 +2,7 @@
 //  Topic.h
 //  BNote
 //
-//  Created by Young Kristin on 5/20/12.
+//  Created by Young Kristin on 5/29/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 
 @property (nonatomic) int32_t color;
 @property (nonatomic) NSTimeInterval created;
+@property (nonatomic) int32_t index;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic) int32_t index;
 @property (nonatomic, retain) NSOrderedSet *notes;
 @end
 

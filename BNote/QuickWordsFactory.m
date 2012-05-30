@@ -10,34 +10,95 @@
 #import "BNoteFactory.h"
 #import "QuickWordButton.h"
 #import "DateQuickButton.h"
+#import "ActionItemQuickButton.h"
+#import "ActionItemMarkDone.h"
+#import "QuestionQuickButton.h"
+#import "AttendantQuickButton.h"
 
 @implementation QuickWordsFactory
 
-+ (NSArray *)buildDateButtonsForTextView:(UITextView *)textView
++ (NSMutableArray *)buildDateButtonsForTextView:(UITextView *)textView
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
+    DateQuickButton *button;
     
-    DateQuickButton *qdb = [[DateQuickButton alloc] initWithName:@"yesterday" andTextView:textView];
-    [qdb setOffset:-1];
-    [qdb setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:qdb];
+    button = [[DateQuickButton alloc] initWithName:@"yesterday" andTextView:textView];
+    [button setOffset:-1];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
     
-    qdb = [[DateQuickButton alloc] initWithName:@"tomorrow" andTextView:textView];
-    [qdb setOffset:1];
-    [qdb setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:qdb];
+    button = [[DateQuickButton alloc] initWithName:@"tomorrow" andTextView:textView];
+    [button setOffset:1];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
 
-    qdb = [[DateQuickButton alloc] initWithName:@"week ago" andTextView:textView];
-    [qdb setOffset:-7];
-    [qdb setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:qdb];
+    button = [[DateQuickButton alloc] initWithName:@"week ago" andTextView:textView];
+    [button setOffset:-7];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
     
-    qdb = [[DateQuickButton alloc] initWithName:@"week form now" andTextView:textView];
-    [qdb setOffset:7];
-    [qdb setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:qdb];
+    button = [[DateQuickButton alloc] initWithName:@"week form now" andTextView:textView];
+    [button setOffset:7];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
     
-    return [[NSArray alloc] initWithArray:data];
+    return data;
+}
+
++ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andActionItem:(ActionItem *)actionItem
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    ActionItemQuickButton *button;
+
+    if ([actionItem completed]) {
+        button = [[ActionItemMarkDone alloc] initWithName:@" mark complete " andTextView:textView];
+    } else {
+        button = [[ActionItemMarkDone alloc] initWithName:@"mark incomplete" andTextView:textView];
+    }
+    
+    [button setActionItem:actionItem];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
+
+    
+    return data;
+}
+
++ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andQuestion:(Question *)question
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    QuestionQuickButton *button;
+
+    if ([question answer]){
+        button = [[QuestionQuickButton alloc] initWithName:@"clear answer" andTextView:textView];
+    } else {
+        button = [[QuestionQuickButton alloc] initWithName:@"   answer   " andTextView:textView];
+    }
+    
+    [button setQuestion:question];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
+
+    return data;
+}
+
++ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andNote:(Note *)note
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    AttendantQuickButton *button;
+    
+    button = [[AttendantQuickButton alloc] initWithName:@"contacts" andTextView:textView];
+    [button setNote:note];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
+
+    button = [[AttendantQuickButton alloc] initWithName:@"add contact" andTextView:textView];
+    [button setNote:note];
+    [button setBackgroundColor:[QuickWordsFactory normal]];
+    [data addObject:button];
+    
+
+    return data;
 }
 
 + (UIColor *)normal

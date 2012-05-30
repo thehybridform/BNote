@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *subjectLable;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) IBOutlet UIToolbar *entityToolbar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *participantsButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *keyPointButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *questionButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
@@ -37,6 +38,7 @@
 - (IBAction)done:(id)sender;
 - (IBAction)editMode:(id)sender;
 
+- (IBAction)addAttendee:(id)sender;
 - (IBAction)addKeyPoint:(id)sender;
 - (IBAction)addQuestion:(id)sender;
 - (IBAction)addDecision:(id)sender;

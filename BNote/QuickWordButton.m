@@ -10,16 +10,18 @@
 #import "LayerFormater.h"
 
 @interface QuickWordButton()
-
+@property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) UIColor *highlightColor;
 @end
 
 @implementation QuickWordButton
 @synthesize textView = _textView;
+@synthesize color = _color;
+@synthesize highlightColor = _highlightColor;
 
 - (id)initWithName:(NSString *)name andTextView:(UITextView *)textView
 {
-    float width = [name length] * 11;
-    self = [super initWithFrame:CGRectMake(0, 0, width, 40)];
+    self = [super init];
     if (self) {
         [self setTitle:name forState:UIControlStateNormal];
         
@@ -27,17 +29,33 @@
         
         [self setTitle:name forState:UIControlStateNormal];
         [self setTextView:textView];
+        
+        [self addTarget:self action:@selector(execute:) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:self action:@selector(unhighlight:) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:self action:@selector(highlight:) forControlEvents:UIControlEventTouchDown];
+        [self setFrame:CGRectMake(0, 0, [[[self titleLabel] text] length] * 11, 40)];
+        
+        [self setHighlightColor:[UIColor blueColor]];
     }
     
     return self;
 }
 
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)highlight:(id)sender
 {
-    [self execute];
+    [self setColor:[self backgroundColor]];
+    [self setBackgroundColor:[self highlightColor]];
 }
 
-- (void)execute {}
+- (void)unhighlight:(id)sender
+{
+    [self setBackgroundColor:[self color]];
+}
+
+- (void)execute:(id)sender
+{
+    NSLog(@"Need to everi this method in subclass: %s", __PRETTY_FUNCTION__);
+}
 
 @end
 

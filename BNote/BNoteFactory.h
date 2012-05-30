@@ -50,6 +50,7 @@ typedef enum {
 + (ActionItem *)createActionItem:(Note *)note;
 + (KeyPoint *)createKeyPoint:(Note *)note;
 + (Decision *)createDecision:(Note *)note;
++ (Attendant *)createAttendant:(Note *)note;
 
 + (UIView *)createHighlightSliver:(UIColor *)color;
 + (UIView *)createHighlight:(UIColor *)color;

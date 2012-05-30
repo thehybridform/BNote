@@ -12,10 +12,14 @@
 
 @synthesize offset = _offset;
 
-- (void)execute
+- (void)execute:(id)sender
 {
-    NSString *text = [[self textView] text];
-    [[self textView] setText:[text stringByAppendingString:[self dateText]]];
+    UITextView *textView = [self textView];
+    NSRange cursorPosition = [textView selectedRange];
+    
+    NSMutableString *text = [[NSMutableString alloc] initWithString:[textView text]];
+    [text replaceCharactersInRange:cursorPosition withString:[self dateText]];
+    [textView setText:text];
 }
 
 - (NSString *)dateText

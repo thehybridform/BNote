@@ -14,8 +14,10 @@
 
 @interface QuickWordsViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *attendantToolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *decisionToolbar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *detailButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *peopleButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *datesButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *keyWordsButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
@@ -35,6 +37,8 @@
 
 - (void)presentView:(UIView *)parent;
 - (void)hideView;
+
+- (void)checkDisableDetailButton;
 
 @end
 

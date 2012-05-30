@@ -12,8 +12,8 @@
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
-NSString *const ATTENDIES_ACTIVE = @"attendies_active_icon.png";
-NSString *const ATTENDIES_INACTIVE = @"attendies_icon.png";
+NSString *const ATTENDIES_ACTIVE = @"attendees_active_icon.png";
+NSString *const ATTENDIES_INACTIVE = @"attendees_icon.png";
 NSString *const DECISION_ACTIVE = @"decision_active_icon.png";
 NSString *const DECISION_INACTIVE = @"decision_icon.png";
 NSString *const KEY_POINT_ACTIVE = @"key_point_active_icon.png";
@@ -47,6 +47,15 @@ NSString *const QUESTION_INACTIVE = @"question_icon.png";
     [[BNoteWriter instance] update];
 
     return note;
+}
+
++ (Attendant *)createAttendant:(Note *)note
+{
+    Attendant *entry = (Attendant *)[BNoteFactory createEntry:@"Attendant" forNote:note];
+
+    [[BNoteWriter instance] update];
+    
+    return entry;
 }
 
 + (Question *)createQuestion:(Note *)note

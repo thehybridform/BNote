@@ -223,6 +223,8 @@
     if (currentQuick) {
         [[currentQuick view] removeFromSuperview];
         [[[self view] superview] addSubview:[quick view]];
+        [quick detail:nil]; 
+        [quick checkDisableDetailButton];
     } else {
         [quick presentView:[[self view] superview]];
     }

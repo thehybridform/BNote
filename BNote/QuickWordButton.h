@@ -14,7 +14,7 @@
 @property (strong, nonatomic) UITextView *textView;
 
 - (id)initWithName:(NSString *)name andTextView:(UITextView *)textView;
-- (void)execute;
+- (void)execute:(id)sender;
 
 @end
 

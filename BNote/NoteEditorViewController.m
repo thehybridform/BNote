@@ -36,6 +36,7 @@
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
 @synthesize entityToolbar = _entityToolbar;
+@synthesize participantsButton = _participantsButton;
 @synthesize keyPointButton = _keyPointButton;
 @synthesize questionButton= _questionButton;
 @synthesize decisionButton = _decisionButton;
@@ -57,6 +58,7 @@
     [self setSubjectLable:nil];
     [self setToolbar:nil];
     [self setEntityToolbar:nil];
+    [self setParticipantsButton:nil];
     [self setKeyPointButton:nil];
     [self setQuestionButton:nil];
     [self setDecisionButton:nil];
@@ -153,6 +155,13 @@
     
     [[BNoteSessionData instance] setPhase:Reviewing];
     [[self entriesViewController] setupForReviewing];
+}
+
+- (IBAction)addAttendee:(id)sender
+{
+    if ([[BNoteSessionData instance] canEditEntry]) {
+        [self addEntry:[BNoteFactory createAttendant:[self note]]];
+    }
 }
 
 - (IBAction)addKeyPoint:(id)sender

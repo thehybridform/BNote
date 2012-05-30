@@ -11,16 +11,6 @@
 		1810693815638E9E0018B03B /* BNoteWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810693715638E9E0018B03B /* BNoteWriter.m */; };
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181967C31569E50100DA31A3 /* EntrySummariesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181967C11569E50100DA31A3 /* EntrySummariesTableViewController.xib */; };
-		181968231569F1C600DA31A3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968221569F1C600DA31A3 /* Question.m */; };
-		181968261569F1C600DA31A3 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968251569F1C600DA31A3 /* KeyPoint.m */; };
-		1819682C1569F1C600DA31A3 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819682B1569F1C600DA31A3 /* Attendant.m */; };
-		1819682F1569F1C700DA31A3 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819682E1569F1C700DA31A3 /* Phone.m */; };
-		181968351569F1C700DA31A3 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968341569F1C700DA31A3 /* Decision.m */; };
-		181968381569F1C700DA31A3 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968371569F1C700DA31A3 /* ActionItem.m */; };
-		1819683B1569F1C700DA31A3 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819683A1569F1C700DA31A3 /* Email.m */; };
-		1819683E1569F1C700DA31A3 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819683D1569F1C700DA31A3 /* Entry.m */; };
-		181968411569F20500DA31A3 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968401569F20500DA31A3 /* Topic.m */; };
-		181968441569FAD100DA31A3 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968431569FAD100DA31A3 /* Note.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
 		1819684D156A0AB200DA31A3 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819684B156A0AB200DA31A3 /* NoteViewController.m */; };
@@ -48,6 +38,20 @@
 		1879F06C1574B1BD003814C2 /* QuickWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F06B1574B1BD003814C2 /* QuickWordButton.m */; };
 		1879F0721574BEE9003814C2 /* QuickWordsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0711574BEE9003814C2 /* QuickWordsFactory.m */; };
 		1879F0781574CA12003814C2 /* DateQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0771574CA12003814C2 /* DateQuickButton.m */; };
+		1879F09C1575C85A003814C2 /* ActionItemQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */; };
+		1879F0A01575CA37003814C2 /* ActionItemMarkDone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */; };
+		1879F0ED1575CF37003814C2 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0EC1575CF37003814C2 /* Topic.m */; };
+		1879F0F01575CF37003814C2 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0EF1575CF37003814C2 /* Entry.m */; };
+		1879F0F31575CF37003814C2 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0F21575CF37003814C2 /* KeyPoint.m */; };
+		1879F0F61575CF37003814C2 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0F51575CF37003814C2 /* ActionItem.m */; };
+		1879F0F91575CF37003814C2 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0F81575CF37003814C2 /* Decision.m */; };
+		1879F0FC1575CF37003814C2 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0FB1575CF37003814C2 /* Email.m */; };
+		1879F0FF1575CF38003814C2 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0FE1575CF38003814C2 /* Attendant.m */; };
+		1879F1021575CF38003814C2 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F1011575CF38003814C2 /* Note.m */; };
+		1879F1051575CF38003814C2 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F1041575CF38003814C2 /* Phone.m */; };
+		1879F1081575CF38003814C2 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F1071575CF38003814C2 /* Question.m */; };
+		1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F10A1575D802003814C2 /* QuestionQuickButton.m */; };
+		18A1DE5F1575F96A004A2022 /* AttendantQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */; };
 		18E9FF11156A343700F22272 /* LayerFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF10156A343700F22272 /* LayerFormater.m */; };
 		18E9FF1D156B772D00F22272 /* action_item_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF15156B772D00F22272 /* action_item_active_icon.png */; };
 		18E9FF1E156B772D00F22272 /* action_item_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF16156B772D00F22272 /* action_item_icon.png */; };
@@ -60,8 +64,6 @@
 		18E9FF27156C6D7E00F22272 /* key_point_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF25156C6D7E00F22272 /* key_point_active_icon.png */; };
 		18E9FF28156C6D7E00F22272 /* key_point_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF26156C6D7E00F22272 /* key_point_icon.png */; };
 		18E9FF2C156C705100F22272 /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF2B156C705100F22272 /* EntriesViewController.m */; };
-		18E9FF30156C716500F22272 /* AttendantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF2E156C716500F22272 /* AttendantViewController.m */; };
-		18E9FF31156C716500F22272 /* AttendantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF2F156C716500F22272 /* AttendantViewController.xib */; };
 		18E9FF34156C791800F22272 /* bnote.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF32156C791800F22272 /* bnote.png */; };
 		18E9FF35156C791800F22272 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF33156C791800F22272 /* note.png */; };
 		18E9FF39156C7A2400F22272 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF38156C7A2400F22272 /* bnote-144.png */; };
@@ -82,26 +84,6 @@
 		181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummariesTableViewController.h; sourceTree = "<group>"; };
 		181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummariesTableViewController.m; sourceTree = "<group>"; };
 		181967C11569E50100DA31A3 /* EntrySummariesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntrySummariesTableViewController.xib; sourceTree = "<group>"; };
-		181968211569F1C600DA31A3 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		181968221569F1C600DA31A3 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		181968241569F1C600DA31A3 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
-		181968251569F1C600DA31A3 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
-		1819682A1569F1C600DA31A3 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
-		1819682B1569F1C600DA31A3 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
-		1819682D1569F1C700DA31A3 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
-		1819682E1569F1C700DA31A3 /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
-		181968331569F1C700DA31A3 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
-		181968341569F1C700DA31A3 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
-		181968361569F1C700DA31A3 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		181968371569F1C700DA31A3 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
-		181968391569F1C700DA31A3 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
-		1819683A1569F1C700DA31A3 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
-		1819683C1569F1C700DA31A3 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		1819683D1569F1C700DA31A3 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		1819683F1569F20500DA31A3 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		181968401569F20500DA31A3 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
-		181968421569FAD100DA31A3 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		181968431569FAD100DA31A3 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
 		181968461569FB0700DA31A3 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		181968471569FB0700DA31A3 /* NoteEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteEditorViewController.xib; sourceTree = "<group>"; };
@@ -145,6 +127,34 @@
 		1879F0711574BEE9003814C2 /* QuickWordsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickWordsFactory.m; sourceTree = "<group>"; };
 		1879F0761574CA12003814C2 /* DateQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateQuickButton.h; sourceTree = "<group>"; };
 		1879F0771574CA12003814C2 /* DateQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateQuickButton.m; sourceTree = "<group>"; };
+		1879F09A1575C85A003814C2 /* ActionItemQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemQuickButton.h; sourceTree = "<group>"; };
+		1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemQuickButton.m; sourceTree = "<group>"; };
+		1879F09E1575CA36003814C2 /* ActionItemMarkDone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemMarkDone.h; sourceTree = "<group>"; };
+		1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemMarkDone.m; sourceTree = "<group>"; };
+		1879F0EB1575CF37003814C2 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		1879F0EC1575CF37003814C2 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		1879F0EE1575CF37003814C2 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		1879F0EF1575CF37003814C2 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		1879F0F11575CF37003814C2 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		1879F0F21575CF37003814C2 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
+		1879F0F41575CF37003814C2 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		1879F0F51575CF37003814C2 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		1879F0F71575CF37003814C2 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
+		1879F0F81575CF37003814C2 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
+		1879F0FA1575CF37003814C2 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
+		1879F0FB1575CF37003814C2 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
+		1879F0FD1575CF38003814C2 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
+		1879F0FE1575CF38003814C2 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
+		1879F1001575CF38003814C2 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		1879F1011575CF38003814C2 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		1879F1031575CF38003814C2 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
+		1879F1041575CF38003814C2 /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
+		1879F1061575CF38003814C2 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		1879F1071575CF38003814C2 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		1879F1091575D802003814C2 /* QuestionQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionQuickButton.h; sourceTree = "<group>"; };
+		1879F10A1575D802003814C2 /* QuestionQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionQuickButton.m; sourceTree = "<group>"; };
+		18A1DE5D1575F96A004A2022 /* AttendantQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantQuickButton.h; sourceTree = "<group>"; };
+		18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantQuickButton.m; sourceTree = "<group>"; };
 		18E9FF0F156A343700F22272 /* LayerFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerFormater.h; sourceTree = "<group>"; };
 		18E9FF10156A343700F22272 /* LayerFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerFormater.m; sourceTree = "<group>"; };
 		18E9FF15156B772D00F22272 /* action_item_active_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_item_active_icon.png; sourceTree = "<group>"; };
@@ -159,9 +169,6 @@
 		18E9FF26156C6D7E00F22272 /* key_point_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_point_icon.png; sourceTree = "<group>"; };
 		18E9FF2A156C705100F22272 /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
 		18E9FF2B156C705100F22272 /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
-		18E9FF2D156C716500F22272 /* AttendantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantViewController.h; sourceTree = "<group>"; };
-		18E9FF2E156C716500F22272 /* AttendantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantViewController.m; sourceTree = "<group>"; };
-		18E9FF2F156C716500F22272 /* AttendantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendantViewController.xib; sourceTree = "<group>"; };
 		18E9FF32156C791800F22272 /* bnote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bnote.png; sourceTree = "<group>"; };
 		18E9FF33156C791800F22272 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
 		18E9FF38156C7A2400F22272 /* bnote-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bnote-144.png"; path = "../bnote-144.png"; sourceTree = "<group>"; };
@@ -286,27 +293,27 @@
 		18368F4A156610B800E511CB /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				1819683F1569F20500DA31A3 /* Topic.h */,
-				181968401569F20500DA31A3 /* Topic.m */,
-				1819683C1569F1C700DA31A3 /* Entry.h */,
-				1819683D1569F1C700DA31A3 /* Entry.m */,
-				181968391569F1C700DA31A3 /* Email.h */,
-				1819683A1569F1C700DA31A3 /* Email.m */,
-				181968361569F1C700DA31A3 /* ActionItem.h */,
-				181968371569F1C700DA31A3 /* ActionItem.m */,
-				181968331569F1C700DA31A3 /* Decision.h */,
-				181968341569F1C700DA31A3 /* Decision.m */,
-				1819682D1569F1C700DA31A3 /* Phone.h */,
-				1819682E1569F1C700DA31A3 /* Phone.m */,
-				1819682A1569F1C600DA31A3 /* Attendant.h */,
-				1819682B1569F1C600DA31A3 /* Attendant.m */,
-				181968241569F1C600DA31A3 /* KeyPoint.h */,
-				181968251569F1C600DA31A3 /* KeyPoint.m */,
-				181968211569F1C600DA31A3 /* Question.h */,
-				181968221569F1C600DA31A3 /* Question.m */,
+				1879F1061575CF38003814C2 /* Question.h */,
+				1879F1071575CF38003814C2 /* Question.m */,
+				1879F1031575CF38003814C2 /* Phone.h */,
+				1879F1041575CF38003814C2 /* Phone.m */,
+				1879F1001575CF38003814C2 /* Note.h */,
+				1879F1011575CF38003814C2 /* Note.m */,
+				1879F0FD1575CF38003814C2 /* Attendant.h */,
+				1879F0FE1575CF38003814C2 /* Attendant.m */,
+				1879F0FA1575CF37003814C2 /* Email.h */,
+				1879F0FB1575CF37003814C2 /* Email.m */,
+				1879F0F71575CF37003814C2 /* Decision.h */,
+				1879F0F81575CF37003814C2 /* Decision.m */,
+				1879F0F41575CF37003814C2 /* ActionItem.h */,
+				1879F0F51575CF37003814C2 /* ActionItem.m */,
+				1879F0F11575CF37003814C2 /* KeyPoint.h */,
+				1879F0F21575CF37003814C2 /* KeyPoint.m */,
+				1879F0EE1575CF37003814C2 /* Entry.h */,
+				1879F0EF1575CF37003814C2 /* Entry.m */,
+				1879F0EB1575CF37003814C2 /* Topic.h */,
+				1879F0EC1575CF37003814C2 /* Topic.m */,
 				1834D395156372500065788F /* BNote.xcdatamodeld */,
-				181968421569FAD100DA31A3 /* Note.h */,
-				181968431569FAD100DA31A3 /* Note.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -389,6 +396,14 @@
 				1879F06B1574B1BD003814C2 /* QuickWordButton.m */,
 				1879F0761574CA12003814C2 /* DateQuickButton.h */,
 				1879F0771574CA12003814C2 /* DateQuickButton.m */,
+				1879F09A1575C85A003814C2 /* ActionItemQuickButton.h */,
+				1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */,
+				1879F09E1575CA36003814C2 /* ActionItemMarkDone.h */,
+				1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */,
+				1879F1091575D802003814C2 /* QuestionQuickButton.h */,
+				1879F10A1575D802003814C2 /* QuestionQuickButton.m */,
+				18A1DE5D1575F96A004A2022 /* AttendantQuickButton.h */,
+				18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -433,9 +448,6 @@
 		18E9FF51156DA5E200F22272 /* Review Attendant */ = {
 			isa = PBXGroup;
 			children = (
-				18E9FF2D156C716500F22272 /* AttendantViewController.h */,
-				18E9FF2E156C716500F22272 /* AttendantViewController.m */,
-				18E9FF2F156C716500F22272 /* AttendantViewController.xib */,
 			);
 			name = "Review Attendant";
 			sourceTree = "<group>";
@@ -529,7 +541,6 @@
 				18E9FF24156B772D00F22272 /* question_icon.png in Resources */,
 				18E9FF27156C6D7E00F22272 /* key_point_active_icon.png in Resources */,
 				18E9FF28156C6D7E00F22272 /* key_point_icon.png in Resources */,
-				18E9FF31156C716500F22272 /* AttendantViewController.xib in Resources */,
 				18E9FF34156C791800F22272 /* bnote.png in Resources */,
 				18E9FF35156C791800F22272 /* note.png in Resources */,
 				18E9FF39156C7A2400F22272 /* bnote-144.png in Resources */,
@@ -558,21 +569,10 @@
 				1810693815638E9E0018B03B /* BNoteWriter.m in Sources */,
 				18368F371564DBF200E511CB /* ButtonMetaData.m in Sources */,
 				181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */,
-				181968231569F1C600DA31A3 /* Question.m in Sources */,
-				181968261569F1C600DA31A3 /* KeyPoint.m in Sources */,
-				1819682C1569F1C600DA31A3 /* Attendant.m in Sources */,
-				1819682F1569F1C700DA31A3 /* Phone.m in Sources */,
-				181968351569F1C700DA31A3 /* Decision.m in Sources */,
-				181968381569F1C700DA31A3 /* ActionItem.m in Sources */,
-				1819683B1569F1C700DA31A3 /* Email.m in Sources */,
-				1819683E1569F1C700DA31A3 /* Entry.m in Sources */,
-				181968411569F20500DA31A3 /* Topic.m in Sources */,
-				181968441569FAD100DA31A3 /* Note.m in Sources */,
 				181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */,
 				1819684D156A0AB200DA31A3 /* NoteViewController.m in Sources */,
 				18E9FF11156A343700F22272 /* LayerFormater.m in Sources */,
 				18E9FF2C156C705100F22272 /* EntriesViewController.m in Sources */,
-				18E9FF30156C716500F22272 /* AttendantViewController.m in Sources */,
 				18E9FF44156C828200F22272 /* EntryReviewViewController.m in Sources */,
 				18E9FF57156DCE4600F22272 /* BNoteStringUtils.m in Sources */,
 				18E9FF5B156DE6A200F22272 /* BNoteSessionData.m in Sources */,
@@ -583,6 +583,20 @@
 				1879F06C1574B1BD003814C2 /* QuickWordButton.m in Sources */,
 				1879F0721574BEE9003814C2 /* QuickWordsFactory.m in Sources */,
 				1879F0781574CA12003814C2 /* DateQuickButton.m in Sources */,
+				1879F09C1575C85A003814C2 /* ActionItemQuickButton.m in Sources */,
+				1879F0A01575CA37003814C2 /* ActionItemMarkDone.m in Sources */,
+				1879F0ED1575CF37003814C2 /* Topic.m in Sources */,
+				1879F0F01575CF37003814C2 /* Entry.m in Sources */,
+				1879F0F31575CF37003814C2 /* KeyPoint.m in Sources */,
+				1879F0F61575CF37003814C2 /* ActionItem.m in Sources */,
+				1879F0F91575CF37003814C2 /* Decision.m in Sources */,
+				1879F0FC1575CF37003814C2 /* Email.m in Sources */,
+				1879F0FF1575CF38003814C2 /* Attendant.m in Sources */,
+				1879F1021575CF38003814C2 /* Note.m in Sources */,
+				1879F1051575CF38003814C2 /* Phone.m in Sources */,
+				1879F1081575CF38003814C2 /* Question.m in Sources */,
+				1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */,
+				18A1DE5F1575F96A004A2022 /* AttendantQuickButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,6 @@
 #import "BNoteSessionData.h"
 
 @interface BNoteSessionData()
-@property (assign, nonatomic) BNotePhase phase;
 - (id)initSingleton;
 
 @end
@@ -17,13 +16,7 @@
 @implementation BNoteSessionData
 @synthesize phase = _phase;
 @synthesize currentNoteViewController = _currentNoteViewController;
-@synthesize currentEntryReviewViewController = _currentEntryReviewViewController;
 @synthesize currentTopic = _currentTopic;
-
-- (void)setPhase:(BNotePhase)phase
-{
-    _phase = phase;
-}
 
 - (BOOL)canEditEntry
 {

@@ -15,10 +15,10 @@
 {
     if ([[self actionItem] completed]) {
         [[self actionItem] setCompleted:NO]; 
-        [self setTitle:@"mark incomplete" forState:UIControlStateNormal];
+        [self setTitle:@"mark complete" forState:UIControlStateNormal];
     } else {
         [[self actionItem] setCompleted:YES]; 
-        [self setTitle:@" mark complete " forState:UIControlStateNormal];
+        [self setTitle:@" mark incomplete " forState:UIControlStateNormal];
     }
     
     [[BNoteWriter instance] update];

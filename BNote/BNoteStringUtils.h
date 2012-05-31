@@ -13,6 +13,7 @@
 
 + (NSString *)trim:(NSString *)string;
 + (BOOL)nilOrEmpty:(NSString *)string;
++ (int)lineCount:(NSString *)string;
 
 + (NSString *)nameForEntry:(Entry *)entry;
 

@@ -7,24 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EntryReviewViewController.h"
 #import "NoteViewController.h"
 #import "Topic.h"
 
 @interface BNoteSessionData : NSObject
-
-@property (strong, nonatomic) EntryReviewViewController *currentEntryReviewViewController;
-@property (strong, nonatomic) NoteViewController *currentNoteViewController;
-@property (strong, nonatomic) Topic *currentTopic;
 
 typedef enum {
     Reviewing,
     Editing
 } BNotePhase;
 
+
+@property (strong, nonatomic) NoteViewController *currentNoteViewController;
+@property (strong, nonatomic) Topic *currentTopic;
+@property (assign, nonatomic) BNotePhase phase;
+
 + (BNoteSessionData *)instance;
 
 - (BOOL)canEditEntry;
-- (void)setPhase:(BNotePhase)phase;
 
 @end

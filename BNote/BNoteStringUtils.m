@@ -18,7 +18,7 @@
 + (NSString *)trim:(NSString *)string
 {
     if (string) {
-        return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     }
 
     return nil;
@@ -45,5 +45,17 @@
     
     return @"Details";
 }
+
++ (int)lineCount:(NSString *)string
+{
+    unsigned numberOfLines, index, stringLength = [string length];
+    for (index = 0, numberOfLines = 0; index < stringLength; numberOfLines++) {
+        index = NSMaxRange([string lineRangeForRange:NSMakeRange(index, 0)]);
+    }
+    
+    return numberOfLines;
+}
+
+
 
 @end

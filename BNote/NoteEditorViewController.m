@@ -21,6 +21,7 @@
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
+
 @end
 
 @implementation NoteEditorViewController
@@ -42,6 +43,7 @@
 @synthesize decisionButton = _decisionButton;
 @synthesize actionItemButton = _actionItemButton;
 @synthesize modeButton = _modeButton;
+@synthesize editButton = _editButton;
 @synthesize entriesViewController = _entriesViewController;
 
 - (void)viewDidUnload
@@ -64,6 +66,7 @@
     [self setDecisionButton:nil];
     [self setActionItemButton:nil];
     [self setModeButton:nil];
+    [self setEditButton:nil];
     [self setEntriesViewController:nil];
     [self setListener:nil];
 }
@@ -106,7 +109,6 @@
     [[self modeButton] setTitle:@"Add"];
     
     [[self entriesViewController] setNote:note];
-    [[self entriesViewController] update];
     
     UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
     [[self dateView] addGestureRecognizer:normalTap];
@@ -117,7 +119,6 @@
     [[self note] setSubject:[[self subject] text]];
     [[self listener] didFinish];
     [self dismissModalViewControllerAnimated:YES];
-    [[self entriesViewController] setupForReviewing];
     
     [[BNoteWriter instance] update];
 }
@@ -128,8 +129,11 @@
     
     if ([control selectedSegmentIndex] == 0) {
         [self editing];
+        [[self editButton] setEnabled:YES];
     } else {
+        [self setupTableViewEditReady];
         [self reviewing];
+        [[self editButton] setEnabled:NO];
     }
 }
 
@@ -140,6 +144,8 @@
     [[self subject] setHidden:NO];
     [[self subjectLable] setHidden:YES];
     [[self modeButton] setTitle:@"Add"];
+    [[self entriesViewController] setFilter:nil];
+    [[self participantsButton] setEnabled:YES];
     
     [[BNoteSessionData instance] setPhase:Editing];
 }
@@ -152,55 +158,90 @@
     [[self subjectLable] setHidden:NO];
     [[self subjectLable] setText:[[self subject] text]];
     [[self modeButton] setTitle:@"Filter"];
+    [[self participantsButton] setEnabled:NO];
     
     [[BNoteSessionData instance] setPhase:Reviewing];
-    [[self entriesViewController] setupForReviewing];
 }
 
 - (IBAction)addAttendee:(id)sender
 {
-    if ([[BNoteSessionData instance] canEditEntry]) {
+    if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createAttendant:[self note]]];
     }
 }
 
 - (IBAction)addKeyPoint:(id)sender
 {
-    if ([[BNoteSessionData instance] canEditEntry]) {
+    if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
+    } else {
+        [[self entriesViewController] setFilter:[KeyPoint class]];
     }
 }
 
 - (IBAction)addQuestion:(id)sender
 {
-    if ([[BNoteSessionData instance] canEditEntry]) {
+    if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createQuestion:[self note]]];
+    } else {
+        [[self entriesViewController] setFilter:[Question class]];
     }
 }
 
 - (IBAction)addDecision:(id)sender
 {
-    if ([[BNoteSessionData instance] canEditEntry]) {
+    if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createDecision:[self note]]];
+    } else {
+        [[self entriesViewController] setFilter:[Decision class]];
     }
 }
 
 - (IBAction)addActionItem:(id)sender
 {
-    if ([[BNoteSessionData instance] canEditEntry]) {
+    if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createActionItem:[self note]]];
+    } else {
+        [[self entriesViewController] setFilter:[ActionItem class]];
     }
 }
 
 - (void)addEntry:(Entry *)entry
 {
-    [[self entriesViewController] addEntry:entry];
-    [[self entriesViewController] startEditingEntry:entry];
+    [[self entriesViewController] reload];
+    [[self entriesViewController] selectLastCell];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (IBAction)editEntries:(id)sender
 {
-	return YES;
+    if ([[self entriesViewController] isEditing]) {
+        [self setupTableViewEditReady];
+    } else {
+        [self setupTableViewForEditing];
+    }
+}
+
+- (void)setupTableViewEditReady
+{
+    [[self entriesViewController] setEditing:NO animated:YES]; 
+    [[self keyPointButton] setEnabled:YES];
+    [[self questionButton] setEnabled:YES];
+    [[self decisionButton] setEnabled:YES];
+    [[self actionItemButton] setEnabled:YES];
+    [[self participantsButton] setEnabled:YES];
+    [[self editButton] setTitle:@"Edit"];
+}
+
+- (void)setupTableViewForEditing
+{
+    [[self entriesViewController] clearSelectedCell];
+    [[self entriesViewController] setEditing:YES animated:YES]; 
+    [[self keyPointButton] setEnabled:NO];
+    [[self questionButton] setEnabled:NO];
+    [[self decisionButton] setEnabled:NO];
+    [[self actionItemButton] setEnabled:NO];
+    [[self participantsButton] setEnabled:NO];
+    [[self editButton] setTitle:@"Done"];
 }
 
 - (void)showDatePicker:(id)sender
@@ -233,6 +274,11 @@
     
     [[self date] setText:dateString];
     [[self time] setText:timeString];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return YES;
 }
 
 @end

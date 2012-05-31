@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *actionItemButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *modeButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
@@ -43,7 +44,7 @@
 - (IBAction)addQuestion:(id)sender;
 - (IBAction)addDecision:(id)sender;
 - (IBAction)addActionItem:(id)sender;
-
+- (IBAction)editEntries:(id)sender;
 
 @end
 

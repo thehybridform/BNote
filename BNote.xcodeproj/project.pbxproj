@@ -51,6 +51,8 @@
 		1879F1051575CF38003814C2 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F1041575CF38003814C2 /* Phone.m */; };
 		1879F1081575CF38003814C2 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F1071575CF38003814C2 /* Question.m */; };
 		1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F10A1575D802003814C2 /* QuestionQuickButton.m */; };
+		18810E5F15770159002B59DA /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
+		18810E6815770E5C002B59DA /* EntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E6715770E5C002B59DA /* EntryTableViewCell.m */; };
 		18A1DE5F1575F96A004A2022 /* AttendantQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */; };
 		18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE611576027E004A2022 /* KeyPointButton.m */; };
 		18E9FF11156A343700F22272 /* LayerFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF10156A343700F22272 /* LayerFormater.m */; };
@@ -64,13 +66,10 @@
 		18E9FF24156B772D00F22272 /* question_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF1C156B772D00F22272 /* question_icon.png */; };
 		18E9FF27156C6D7E00F22272 /* key_point_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF25156C6D7E00F22272 /* key_point_active_icon.png */; };
 		18E9FF28156C6D7E00F22272 /* key_point_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF26156C6D7E00F22272 /* key_point_icon.png */; };
-		18E9FF2C156C705100F22272 /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF2B156C705100F22272 /* EntriesViewController.m */; };
 		18E9FF34156C791800F22272 /* bnote.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF32156C791800F22272 /* bnote.png */; };
 		18E9FF35156C791800F22272 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF33156C791800F22272 /* note.png */; };
 		18E9FF39156C7A2400F22272 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF38156C7A2400F22272 /* bnote-144.png */; };
 		18E9FF3B156C7C9600F22272 /* attendant_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF3A156C7C9500F22272 /* attendant_icon.png */; };
-		18E9FF44156C828200F22272 /* EntryReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF42156C828100F22272 /* EntryReviewViewController.m */; };
-		18E9FF45156C828200F22272 /* EntryReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF43156C828200F22272 /* EntryReviewViewController.xib */; };
 		18E9FF57156DCE4600F22272 /* BNoteStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF56156DCE4600F22272 /* BNoteStringUtils.m */; };
 		18E9FF5B156DE6A200F22272 /* BNoteSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF5A156DE6A200F22272 /* BNoteSessionData.m */; };
 		18E9FF6A1571835600F22272 /* BNoteAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF691571835600F22272 /* BNoteAnimation.m */; };
@@ -154,6 +153,10 @@
 		1879F1071575CF38003814C2 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		1879F1091575D802003814C2 /* QuestionQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionQuickButton.h; sourceTree = "<group>"; };
 		1879F10A1575D802003814C2 /* QuestionQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionQuickButton.m; sourceTree = "<group>"; };
+		18810E5D15770159002B59DA /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
+		18810E5E15770159002B59DA /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
+		18810E6615770E5C002B59DA /* EntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTableViewCell.h; sourceTree = "<group>"; };
+		18810E6715770E5C002B59DA /* EntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTableViewCell.m; sourceTree = "<group>"; };
 		18A1DE5D1575F96A004A2022 /* AttendantQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantQuickButton.h; sourceTree = "<group>"; };
 		18A1DE5E1575F96A004A2022 /* AttendantQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantQuickButton.m; sourceTree = "<group>"; };
 		18A1DE601576027E004A2022 /* KeyPointButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointButton.h; sourceTree = "<group>"; };
@@ -170,15 +173,10 @@
 		18E9FF1C156B772D00F22272 /* question_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_icon.png; sourceTree = "<group>"; };
 		18E9FF25156C6D7E00F22272 /* key_point_active_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_point_active_icon.png; sourceTree = "<group>"; };
 		18E9FF26156C6D7E00F22272 /* key_point_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_point_icon.png; sourceTree = "<group>"; };
-		18E9FF2A156C705100F22272 /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
-		18E9FF2B156C705100F22272 /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
 		18E9FF32156C791800F22272 /* bnote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bnote.png; sourceTree = "<group>"; };
 		18E9FF33156C791800F22272 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
 		18E9FF38156C7A2400F22272 /* bnote-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bnote-144.png"; path = "../bnote-144.png"; sourceTree = "<group>"; };
 		18E9FF3A156C7C9500F22272 /* attendant_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attendant_icon.png; sourceTree = "<group>"; };
-		18E9FF41156C828100F22272 /* EntryReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryReviewViewController.h; sourceTree = "<group>"; };
-		18E9FF42156C828100F22272 /* EntryReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryReviewViewController.m; sourceTree = "<group>"; };
-		18E9FF43156C828200F22272 /* EntryReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryReviewViewController.xib; sourceTree = "<group>"; };
 		18E9FF55156DCE4500F22272 /* BNoteStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteStringUtils.h; sourceTree = "<group>"; };
 		18E9FF56156DCE4600F22272 /* BNoteStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteStringUtils.m; sourceTree = "<group>"; };
 		18E9FF59156DE6A200F22272 /* BNoteSessionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteSessionData.h; sourceTree = "<group>"; };
@@ -462,24 +460,15 @@
 				1879F05C15747AFB003814C2 /* Quick Words */,
 				1879F05615746E72003814C2 /* Date Picker */,
 				18E9FF51156DA5E200F22272 /* Review Attendant */,
-				18E9FF4F156DA59B00F22272 /* Review Entries */,
 				181968451569FB0700DA31A3 /* NoteEditorViewController.h */,
 				181968461569FB0700DA31A3 /* NoteEditorViewController.m */,
 				181968471569FB0700DA31A3 /* NoteEditorViewController.xib */,
-				18E9FF2A156C705100F22272 /* EntriesViewController.h */,
-				18E9FF2B156C705100F22272 /* EntriesViewController.m */,
+				18810E5D15770159002B59DA /* EntriesViewController.h */,
+				18810E5E15770159002B59DA /* EntriesViewController.m */,
+				18810E6615770E5C002B59DA /* EntryTableViewCell.h */,
+				18810E6715770E5C002B59DA /* EntryTableViewCell.m */,
 			);
 			name = "Edit Notes";
-			sourceTree = "<group>";
-		};
-		18E9FF4F156DA59B00F22272 /* Review Entries */ = {
-			isa = PBXGroup;
-			children = (
-				18E9FF41156C828100F22272 /* EntryReviewViewController.h */,
-				18E9FF42156C828100F22272 /* EntryReviewViewController.m */,
-				18E9FF43156C828200F22272 /* EntryReviewViewController.xib */,
-			);
-			name = "Review Entries";
 			sourceTree = "<group>";
 		};
 		18E9FF51156DA5E200F22272 /* Review Attendant */ = {
@@ -582,7 +571,6 @@
 				18E9FF35156C791800F22272 /* note.png in Resources */,
 				18E9FF39156C7A2400F22272 /* bnote-144.png in Resources */,
 				18E9FF3B156C7C9600F22272 /* attendant_icon.png in Resources */,
-				18E9FF45156C828200F22272 /* EntryReviewViewController.xib in Resources */,
 				1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */,
 				1879F06115747B18003814C2 /* QuickWordsViewController.xib in Resources */,
 			);
@@ -609,8 +597,6 @@
 				181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */,
 				1819684D156A0AB200DA31A3 /* NoteViewController.m in Sources */,
 				18E9FF11156A343700F22272 /* LayerFormater.m in Sources */,
-				18E9FF2C156C705100F22272 /* EntriesViewController.m in Sources */,
-				18E9FF44156C828200F22272 /* EntryReviewViewController.m in Sources */,
 				18E9FF57156DCE4600F22272 /* BNoteStringUtils.m in Sources */,
 				18E9FF5B156DE6A200F22272 /* BNoteSessionData.m in Sources */,
 				18E9FF6A1571835600F22272 /* BNoteAnimation.m in Sources */,
@@ -635,6 +621,8 @@
 				1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */,
 				18A1DE5F1575F96A004A2022 /* AttendantQuickButton.m in Sources */,
 				18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */,
+				18810E5F15770159002B59DA /* EntriesViewController.m in Sources */,
+				18810E6815770E5C002B59DA /* EntryTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

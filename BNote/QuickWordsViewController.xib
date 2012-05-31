@@ -40,9 +40,10 @@
 					<object class="IBUIScrollView" id="541531706">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">294</int>
-						<string key="NSFrameSize">{747, 106}</string>
+						<string key="NSFrameSize">{768, 106}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="414714750"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -54,9 +55,10 @@
 					<object class="IBUIToolbar" id="414714750">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">270</int>
-						<string key="NSFrame">{{0, 106}, {747, 44}}</string>
+						<string key="NSFrame">{{0, 106}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="269649485"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -97,9 +99,10 @@
 					<object class="IBUIToolbar" id="269649485">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">270</int>
-						<string key="NSFrame">{{0, 106}, {747, 44}}</string>
+						<string key="NSFrame">{{0, 106}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="1012202376"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -122,9 +125,10 @@
 					<object class="IBUIToolbar" id="1012202376">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">270</int>
-						<string key="NSFrame">{{0, 106}, {747, 44}}</string>
+						<string key="NSFrame">{{0, 106}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -157,10 +161,10 @@
 						</array>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {747, 150}}</string>
+				<string key="NSFrame">{{0, 20}, {768, 150}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="414714750"/>
+				<reference key="NSNextKeyView" ref="541531706"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>

@@ -17,10 +17,17 @@
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
 #import "BNoteWriter.h"
+#import "BNoteStringUtils.h"
+#import "KeyPointFilter.h"
+#import "ActionItemFilter.h"
+#import "QuestionFilter.h"
+#import "DecisionFilter.h"
+#import "IdentityFillter.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
+@property (strong, nonatomic) DatePickerViewController *datePickerViewController;
 
 @end
 
@@ -43,8 +50,9 @@
 @synthesize decisionButton = _decisionButton;
 @synthesize actionItemButton = _actionItemButton;
 @synthesize modeButton = _modeButton;
-@synthesize editButton = _editButton;
+@synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
+@synthesize datePickerViewController = _datePickerViewController;
 
 - (void)viewDidUnload
 {
@@ -66,9 +74,10 @@
     [self setDecisionButton:nil];
     [self setActionItemButton:nil];
     [self setModeButton:nil];
-    [self setEditButton:nil];
+    [self setTrashButton:nil];
     [self setEntriesViewController:nil];
     [self setListener:nil];
+    [self setDatePickerViewController:nil];
 }
 
 
@@ -129,11 +138,9 @@
     
     if ([control selectedSegmentIndex] == 0) {
         [self editing];
-        [[self editButton] setEnabled:YES];
     } else {
-        [self setupTableViewEditReady];
+        [self setupTableViewAddingEntries];
         [self reviewing];
-        [[self editButton] setEnabled:NO];
     }
 }
 
@@ -143,9 +150,9 @@
     [[self entityToolbar] setTintColor:[self toolbarEditColor]];
     [[self subject] setHidden:NO];
     [[self subjectLable] setHidden:YES];
-    [[self modeButton] setTitle:@"Add"];
-    [[self entriesViewController] setFilter:nil];
     [[self participantsButton] setEnabled:YES];
+    [[self trashButton] setEnabled:YES];
+    [[self entriesViewController] setFilter:[[IdentityFillter alloc] init]];
     
     [[BNoteSessionData instance] setPhase:Editing];
 }
@@ -157,8 +164,8 @@
     [[self subject] setHidden:YES];
     [[self subjectLable] setHidden:NO];
     [[self subjectLable] setText:[[self subject] text]];
-    [[self modeButton] setTitle:@"Filter"];
     [[self participantsButton] setEnabled:NO];
+    [[self trashButton] setEnabled:NO];
     
     [[BNoteSessionData instance] setPhase:Reviewing];
 }
@@ -175,7 +182,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[KeyPoint class]];
+        [[self entriesViewController] setFilter:[[KeyPointFilter alloc] init]];
     }
 }
 
@@ -184,7 +191,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createQuestion:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[Question class]];
+        [[self entriesViewController] setFilter:[[QuestionFilter alloc] init]];
     }
 }
 
@@ -193,7 +200,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createDecision:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[Decision class]];
+        [[self entriesViewController] setFilter:[[DecisionFilter alloc] init]];
     }
 }
 
@@ -202,7 +209,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createActionItem:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[ActionItem class]];
+        [[self entriesViewController] setFilter:[[ActionItemFilter alloc] init]];
     }
 }
 
@@ -215,13 +222,13 @@
 - (IBAction)editEntries:(id)sender
 {
     if ([[self entriesViewController] isEditing]) {
-        [self setupTableViewEditReady];
+        [self setupTableViewAddingEntries];
     } else {
-        [self setupTableViewForEditing];
+        [self setupTableViewForDeletingRows];
     }
 }
 
-- (void)setupTableViewEditReady
+- (void)setupTableViewAddingEntries
 {
     [[self entriesViewController] setEditing:NO animated:YES]; 
     [[self keyPointButton] setEnabled:YES];
@@ -229,31 +236,41 @@
     [[self decisionButton] setEnabled:YES];
     [[self actionItemButton] setEnabled:YES];
     [[self participantsButton] setEnabled:YES];
-    [[self editButton] setTitle:@"Edit"];
+    [[self modeButton] setEnabled:YES];
 }
 
-- (void)setupTableViewForEditing
+- (void)setupTableViewForDeletingRows
 {
-    [[self entriesViewController] clearSelectedCell];
     [[self entriesViewController] setEditing:YES animated:YES]; 
     [[self keyPointButton] setEnabled:NO];
     [[self questionButton] setEnabled:NO];
     [[self decisionButton] setEnabled:NO];
     [[self actionItemButton] setEnabled:NO];
     [[self participantsButton] setEnabled:NO];
-    [[self editButton] setTitle:@"Done"];
+    [[self modeButton] setEnabled:NO];
 }
 
 - (void)showDatePicker:(id)sender
 {
-    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
+    if ([self datePickerViewController]) {
+        [[self datePickerViewController] didFinish:nil];
+        [self setDatePickerViewController:nil];
+    } else {
+        NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
 
-    DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
-    [[controller view] setBackgroundColor:[[self view] backgroundColor]];
-    [controller setListener:self];
-    [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
-    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [[self entriesViewController] presentModalViewController:controller animated:YES];
+        DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
+        [[controller view] setBackgroundColor:[[self view] backgroundColor]];
+        [controller setListener:self];
+        [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
+        [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        [[self entriesViewController] presentModalViewController:controller animated:YES];
+        [self setDatePickerViewController:controller];
+    }
+}
+
+- (void)didFinishDatePicker
+{
+    [self setDatePickerViewController:nil];
 }
 
 - (void)dateTimeUpdated:(NSDate *)date
@@ -264,16 +281,8 @@
 
 - (void)setupDateTime:(NSDate *)date
 {
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    
-    [format setDateFormat:@"MMMM dd, YYYY"];
-    NSString *dateString = [format stringFromDate:date];
-    
-    [format setDateFormat:@"hh:mm aaa"];
-    NSString *timeString = [format stringFromDate:date];
-    
-    [[self date] setText:dateString];
-    [[self time] setText:timeString];
+    [[self date] setText:[BNoteStringUtils dateToString:date]];
+    [[self time] setText:[BNoteStringUtils timeToString:date]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

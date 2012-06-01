@@ -20,7 +20,7 @@
 
 - (BOOL)canEditEntry
 {
-    return YES;
+    return [self phase] == Editing;
 }
 
 - (id)initSingleton

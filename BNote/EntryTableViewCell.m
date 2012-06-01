@@ -26,7 +26,7 @@
 @synthesize entry = _entry;
 @synthesize textView = _textView;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -39,10 +39,15 @@
         [[self textView] setFont:[UIFont systemFontOfSize:15]];
         [[self textLabel] setFont:[UIFont systemFontOfSize:15]];
         [[self textLabel] setLineBreakMode:UILineBreakModeWordWrap];
-
-        [[self imageView] setAutoresizingMask:UIViewAutoresizingNone];
+        [[self textLabel] setHighlightedTextColor:[UIColor blackColor]];
         
         [[self detailTextLabel] setTextColor:UIColorFromRGB(0x336633)];
+        [[self detailTextLabel] setHighlightedTextColor:UIColorFromRGB(0x336633)];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                     name:UITextViewTextDidEndEditingNotification object:[[self textView] window]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                     name:UITextViewTextDidChangeNotification object:[[self textView] window]];
     }
     
     return self;
@@ -61,11 +66,10 @@
     [self handleQuestionType:entry];
     [self handleActionItemType:entry];    
     
-    UIView *backgroudView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
-    [backgroudView setBackgroundColor:[UIColor whiteColor]];
-    [self setSelectedBackgroundView:backgroudView];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
+    [backgroundView setBackgroundColor:[UIColor whiteColor]];
+    [self setSelectedBackgroundView:backgroundView];
 
-    
     [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:[entry text]]];
 
     [self setNeedsDisplay];
@@ -82,9 +86,9 @@
     [[self textView] setText:[[self entry] text]];
     [[self textView] setHidden:NO];
     
-    float x = 45;
+    float x = 65;
     float y = 5;
-    float width = [[self contentView] frame].size.width - 50;
+    float width = [[self contentView] frame].size.width - 70;
     float hieght = [[self contentView] frame].size.height - 10;
     
     [[self textView] setFrame:CGRectMake(x, y, width, hieght)];
@@ -98,9 +102,6 @@
     UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
     [[self imageView] setImage:[imageView image]];
 
-    NSString *text = [BNoteStringUtils trim:[[self textView] text]];
-    [[self entry] setText:text];
-    [[self textLabel] setText:text];
     [[self textView] setHidden:YES];
     [[self textLabel] setHidden:NO];
     [[self detailTextLabel] setHidden:NO];
@@ -117,6 +118,13 @@
     [self handleActionItemType:[self entry]];    
 
     [self setNeedsDisplay];
+}
+
+- (void)updateText:(id)sender
+{
+    NSString *text = [BNoteStringUtils trim:[[self textView] text]];
+    [[self entry] setText:text];
+    [[self textLabel] setText:text];    
 }
 
 - (void)handleQuestionType:(Entry *)entry
@@ -137,7 +145,9 @@
     if ([entry isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) entry;
         if ([actionItem completed]) {
-            [[self detailTextLabel] setText:@"Completed"];
+            NSDate *completed = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem completed]]; 
+            NSString *date = [@"Completed on " stringByAppendingString:[BNoteStringUtils dateToString:completed]];
+            [[self detailTextLabel] setText:date];
         } else {
             [[self detailTextLabel] setText:nil];
         }

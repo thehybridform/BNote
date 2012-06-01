@@ -56,6 +56,20 @@
     return numberOfLines;
 }
 
++ (NSString *)dateToString:(NSDate *)date
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMMM dd, YYYY"];
+    return [format stringFromDate:date];
+}
+
++ (NSString *)timeToString:(NSDate *)date
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"hh:mm aaa"];
+    return [format stringFromDate:date];
+}
+
 
 
 @end

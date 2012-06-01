@@ -14,11 +14,11 @@
 - (void)execute:(id)sender
 {
     if ([[self actionItem] completed]) {
-        [[self actionItem] setCompleted:NO]; 
-        [self setTitle:@"mark complete" forState:UIControlStateNormal];
+        [[self actionItem] setCompleted:0]; 
+        [self setTitle:@" mark complete " forState:UIControlStateNormal];
     } else {
-        [[self actionItem] setCompleted:YES]; 
-        [self setTitle:@" mark incomplete " forState:UIControlStateNormal];
+        [[self actionItem] setCompleted:[NSDate timeIntervalSinceReferenceDate]]; 
+        [self setTitle:@"mark incomplete" forState:UIControlStateNormal];
     }
     
     [[BNoteWriter instance] update];

@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Entry.h"
 
-
-
 @interface EntryTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) UITextView *textView;
 
+- (id)initWithIdentifier:(NSString *)reuseIdentifier;
 - (void)edit;
 - (void)finishedEdit;
 

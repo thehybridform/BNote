@@ -2,7 +2,7 @@
 //  ActionItem.h
 //  BNote
 //
-//  Created by Young Kristin on 5/29/12.
+//  Created by Young Kristin on 5/31/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @interface ActionItem : Entry
 
-@property (nonatomic) BOOL completed;
+@property (nonatomic) NSTimeInterval completed;
 @property (nonatomic) NSTimeInterval dueDate;
 @property (nonatomic, retain) NSString * responsibility;
 

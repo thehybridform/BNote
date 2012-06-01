@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 #import "QuickWordsViewController.h"
+#import "BNoteFilter.h"
 
 @interface EntriesViewController : UITableViewController <QuickWordsViewControllerListener>
 
 @property (assign, nonatomic) IBOutlet UITableViewCell *entryCell;
 @property (strong, nonatomic) Note *note;
-@property (strong, nonatomic) Class filter;
+@property (strong, nonatomic) id<BNoteFilter> filter;
 
-- (BOOL)clearSelectedCell;
 - (void)reload;
 - (void)selectLastCell;
 

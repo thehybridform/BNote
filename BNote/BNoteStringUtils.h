@@ -15,6 +15,9 @@
 + (BOOL)nilOrEmpty:(NSString *)string;
 + (int)lineCount:(NSString *)string;
 
++ (NSString *)dateToString:(NSDate *)date;
++ (NSString *)timeToString:(NSDate *)date;
+
 + (NSString *)nameForEntry:(Entry *)entry;
 
 @end

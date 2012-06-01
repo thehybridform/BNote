@@ -35,9 +35,10 @@
     [[self listener] dateTimeUpdated:[picker date]];
 }
 
-- (IBAction)didFinish:(id)sender
+- (void)didFinish:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+    [[self listener] didFinishDatePicker];
 }
 
 - (void)viewDidLoad
@@ -48,6 +49,10 @@
     [LayerFormater roundCornersForView:[self datePicker]];
     [[self datePicker] setMinuteInterval:5];
     [[self datePicker] setDate:[self date]];
+    
+    UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didFinish:)];
+    [[self view] addGestureRecognizer:normalTap];
+
 }
 
 - (void)viewDidUnload

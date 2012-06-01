@@ -20,7 +20,7 @@
 - (id)initWithDate:(NSDate *)date;
 
 - (IBAction)updateDateTime:(id)sender;
-- (IBAction)didFinish:(id)sender;
+- (void)didFinish:(id)sender;
 
 @end
 
@@ -28,5 +28,6 @@
 
 @required
 - (void)dateTimeUpdated:(NSDate *)date;
+- (void)didFinishDatePicker;
 
 @end

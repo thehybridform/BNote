@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18070DE81578598C003486E3 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DE71578598C003486E3 /* ActionItem.m */; };
+		18070DEC15785C42003486E3 /* EntrySummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */; };
+		18070DF015785FB2003486E3 /* IdentityFillter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DEF15785FB2003486E3 /* IdentityFillter.m */; };
+		18070DF41578613F003486E3 /* KeyPointFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF31578613F003486E3 /* KeyPointFilter.m */; };
+		18070DF7157861CA003486E3 /* ActionItemFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF6157861CA003486E3 /* ActionItemFilter.m */; };
+		18070DFA157861D9003486E3 /* ActionItemCompleteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF9157861D9003486E3 /* ActionItemCompleteFilter.m */; };
+		18070DFD157861E6003486E3 /* ActionItemInCompleteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DFC157861E6003486E3 /* ActionItemInCompleteFilter.m */; };
+		18070E00157861F6003486E3 /* QuestionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DFF157861F6003486E3 /* QuestionFilter.m */; };
+		18070E031578620A003486E3 /* QuestionUnansweredFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070E021578620A003486E3 /* QuestionUnansweredFilter.m */; };
+		18070E0615786218003486E3 /* QuestionAnsweredFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070E0515786218003486E3 /* QuestionAnsweredFilter.m */; };
+		18070E091578623E003486E3 /* DecisionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070E081578623D003486E3 /* DecisionFilter.m */; };
 		1810692E15637A6A0018B03B /* BNoteReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810692D15637A6A0018B03B /* BNoteReader.m */; };
 		1810693815638E9E0018B03B /* BNoteWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810693715638E9E0018B03B /* BNoteWriter.m */; };
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
@@ -43,7 +54,6 @@
 		1879F0ED1575CF37003814C2 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0EC1575CF37003814C2 /* Topic.m */; };
 		1879F0F01575CF37003814C2 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0EF1575CF37003814C2 /* Entry.m */; };
 		1879F0F31575CF37003814C2 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0F21575CF37003814C2 /* KeyPoint.m */; };
-		1879F0F61575CF37003814C2 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0F51575CF37003814C2 /* ActionItem.m */; };
 		1879F0F91575CF37003814C2 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0F81575CF37003814C2 /* Decision.m */; };
 		1879F0FC1575CF37003814C2 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0FB1575CF37003814C2 /* Email.m */; };
 		1879F0FF1575CF38003814C2 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0FE1575CF38003814C2 /* Attendant.m */; };
@@ -77,6 +87,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18070DE61578598C003486E3 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		18070DE71578598C003486E3 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		18070DEA15785C42003486E3 /* EntrySummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummaryTableViewCell.h; sourceTree = "<group>"; };
+		18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummaryTableViewCell.m; sourceTree = "<group>"; };
+		18070DED15785F83003486E3 /* BNoteFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNoteFilter.h; sourceTree = "<group>"; };
+		18070DEE15785FB2003486E3 /* IdentityFillter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityFillter.h; sourceTree = "<group>"; };
+		18070DEF15785FB2003486E3 /* IdentityFillter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityFillter.m; sourceTree = "<group>"; };
+		18070DF21578613F003486E3 /* KeyPointFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointFilter.h; sourceTree = "<group>"; };
+		18070DF31578613F003486E3 /* KeyPointFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointFilter.m; sourceTree = "<group>"; };
+		18070DF5157861CA003486E3 /* ActionItemFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemFilter.h; sourceTree = "<group>"; };
+		18070DF6157861CA003486E3 /* ActionItemFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemFilter.m; sourceTree = "<group>"; };
+		18070DF8157861D9003486E3 /* ActionItemCompleteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemCompleteFilter.h; sourceTree = "<group>"; };
+		18070DF9157861D9003486E3 /* ActionItemCompleteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemCompleteFilter.m; sourceTree = "<group>"; };
+		18070DFB157861E6003486E3 /* ActionItemInCompleteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemInCompleteFilter.h; sourceTree = "<group>"; };
+		18070DFC157861E6003486E3 /* ActionItemInCompleteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemInCompleteFilter.m; sourceTree = "<group>"; };
+		18070DFE157861F6003486E3 /* QuestionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionFilter.h; sourceTree = "<group>"; };
+		18070DFF157861F6003486E3 /* QuestionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionFilter.m; sourceTree = "<group>"; };
+		18070E011578620A003486E3 /* QuestionUnansweredFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionUnansweredFilter.h; sourceTree = "<group>"; };
+		18070E021578620A003486E3 /* QuestionUnansweredFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionUnansweredFilter.m; sourceTree = "<group>"; };
+		18070E0415786218003486E3 /* QuestionAnsweredFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnsweredFilter.h; sourceTree = "<group>"; };
+		18070E0515786218003486E3 /* QuestionAnsweredFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnsweredFilter.m; sourceTree = "<group>"; };
+		18070E071578623D003486E3 /* DecisionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionFilter.h; sourceTree = "<group>"; };
+		18070E081578623D003486E3 /* DecisionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionFilter.m; sourceTree = "<group>"; };
 		1810692C15637A6A0018B03B /* BNoteReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteReader.h; sourceTree = "<group>"; };
 		1810692D15637A6A0018B03B /* BNoteReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteReader.m; sourceTree = "<group>"; };
 		1810693615638E9E0018B03B /* BNoteWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteWriter.h; sourceTree = "<group>"; };
@@ -137,8 +170,6 @@
 		1879F0EF1575CF37003814C2 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		1879F0F11575CF37003814C2 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
 		1879F0F21575CF37003814C2 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
-		1879F0F41575CF37003814C2 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		1879F0F51575CF37003814C2 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
 		1879F0F71575CF37003814C2 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
 		1879F0F81575CF37003814C2 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
 		1879F0FA1575CF37003814C2 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
@@ -202,6 +233,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18070DF115786123003486E3 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				18070DEE15785FB2003486E3 /* IdentityFillter.h */,
+				18070DEF15785FB2003486E3 /* IdentityFillter.m */,
+				18070DED15785F83003486E3 /* BNoteFilter.h */,
+				18070DF21578613F003486E3 /* KeyPointFilter.h */,
+				18070DF31578613F003486E3 /* KeyPointFilter.m */,
+				18070DF5157861CA003486E3 /* ActionItemFilter.h */,
+				18070DF6157861CA003486E3 /* ActionItemFilter.m */,
+				18070DF8157861D9003486E3 /* ActionItemCompleteFilter.h */,
+				18070DF9157861D9003486E3 /* ActionItemCompleteFilter.m */,
+				18070DFB157861E6003486E3 /* ActionItemInCompleteFilter.h */,
+				18070DFC157861E6003486E3 /* ActionItemInCompleteFilter.m */,
+				18070DFE157861F6003486E3 /* QuestionFilter.h */,
+				18070DFF157861F6003486E3 /* QuestionFilter.m */,
+				18070E011578620A003486E3 /* QuestionUnansweredFilter.h */,
+				18070E021578620A003486E3 /* QuestionUnansweredFilter.m */,
+				18070E0415786218003486E3 /* QuestionAnsweredFilter.h */,
+				18070E0515786218003486E3 /* QuestionAnsweredFilter.m */,
+				18070E071578623D003486E3 /* DecisionFilter.h */,
+				18070E081578623D003486E3 /* DecisionFilter.m */,
+			);
+			name = Filters;
+			sourceTree = "<group>";
+		};
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,14 +363,14 @@
 				1879F0FB1575CF37003814C2 /* Email.m */,
 				1879F0F71575CF37003814C2 /* Decision.h */,
 				1879F0F81575CF37003814C2 /* Decision.m */,
-				1879F0F41575CF37003814C2 /* ActionItem.h */,
-				1879F0F51575CF37003814C2 /* ActionItem.m */,
 				1879F0F11575CF37003814C2 /* KeyPoint.h */,
 				1879F0F21575CF37003814C2 /* KeyPoint.m */,
 				1879F0EE1575CF37003814C2 /* Entry.h */,
 				1879F0EF1575CF37003814C2 /* Entry.m */,
 				1879F0EB1575CF37003814C2 /* Topic.h */,
 				1879F0EC1575CF37003814C2 /* Topic.m */,
+				18070DE61578598C003486E3 /* ActionItem.h */,
+				18070DE71578598C003486E3 /* ActionItem.m */,
 				1834D395156372500065788F /* BNote.xcdatamodeld */,
 			);
 			name = Persistence;
@@ -322,6 +379,7 @@
 		18368F4B156610D200E511CB /* Service Core */ = {
 			isa = PBXGroup;
 			children = (
+				18070DF115786123003486E3 /* Filters */,
 				1834D3A5156375560065788F /* BNoteFactory.h */,
 				1834D3A6156375560065788F /* BNoteFactory.m */,
 				1810692C15637A6A0018B03B /* BNoteReader.h */,
@@ -496,6 +554,8 @@
 				181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */,
 				181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */,
 				181967C11569E50100DA31A3 /* EntrySummariesTableViewController.xib */,
+				18070DEA15785C42003486E3 /* EntrySummaryTableViewCell.h */,
+				18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */,
 			);
 			name = "Entries Scroll View";
 			sourceTree = "<group>";
@@ -611,7 +671,6 @@
 				1879F0ED1575CF37003814C2 /* Topic.m in Sources */,
 				1879F0F01575CF37003814C2 /* Entry.m in Sources */,
 				1879F0F31575CF37003814C2 /* KeyPoint.m in Sources */,
-				1879F0F61575CF37003814C2 /* ActionItem.m in Sources */,
 				1879F0F91575CF37003814C2 /* Decision.m in Sources */,
 				1879F0FC1575CF37003814C2 /* Email.m in Sources */,
 				1879F0FF1575CF38003814C2 /* Attendant.m in Sources */,
@@ -623,6 +682,17 @@
 				18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */,
 				18810E5F15770159002B59DA /* EntriesViewController.m in Sources */,
 				18810E6815770E5C002B59DA /* EntryTableViewCell.m in Sources */,
+				18070DE81578598C003486E3 /* ActionItem.m in Sources */,
+				18070DEC15785C42003486E3 /* EntrySummaryTableViewCell.m in Sources */,
+				18070DF015785FB2003486E3 /* IdentityFillter.m in Sources */,
+				18070DF41578613F003486E3 /* KeyPointFilter.m in Sources */,
+				18070DF7157861CA003486E3 /* ActionItemFilter.m in Sources */,
+				18070DFA157861D9003486E3 /* ActionItemCompleteFilter.m in Sources */,
+				18070DFD157861E6003486E3 /* ActionItemInCompleteFilter.m in Sources */,
+				18070E00157861F6003486E3 /* QuestionFilter.m in Sources */,
+				18070E031578620A003486E3 /* QuestionUnansweredFilter.m in Sources */,
+				18070E0615786218003486E3 /* QuestionAnsweredFilter.m in Sources */,
+				18070E091578623E003486E3 /* DecisionFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

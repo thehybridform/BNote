@@ -52,9 +52,9 @@
     ActionItemQuickButton *button;
 
     if ([actionItem completed]) {
-        button = [[ActionItemMarkDone alloc] initWithName:@" mark complete " andTextView:textView];
-    } else {
         button = [[ActionItemMarkDone alloc] initWithName:@"mark incomplete" andTextView:textView];
+    } else {
+        button = [[ActionItemMarkDone alloc] initWithName:@" mark complete " andTextView:textView];
     }
     
     [button setActionItem:actionItem];

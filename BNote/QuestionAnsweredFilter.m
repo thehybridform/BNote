@@ -8,6 +8,7 @@
 
 #import "QuestionAnsweredFilter.h"
 #import "Question.h"
+#import "BNoteStringUtils.h"
 
 @implementation QuestionAnsweredFilter
 
@@ -15,7 +16,7 @@
 {
     if ([item isKindOfClass:[Question class]]) {
         Question *question = (Question *) item;
-        return [question answer] == nil;
+        return ![BNoteStringUtils nilOrEmpty:[question answer]];
     }
     
     return NO;

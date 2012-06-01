@@ -21,7 +21,6 @@
 		1810692E15637A6A0018B03B /* BNoteReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810692D15637A6A0018B03B /* BNoteReader.m */; };
 		1810693815638E9E0018B03B /* BNoteWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810693715638E9E0018B03B /* BNoteWriter.m */; };
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
-		181967C31569E50100DA31A3 /* EntrySummariesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181967C11569E50100DA31A3 /* EntrySummariesTableViewController.xib */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
 		1819684D156A0AB200DA31A3 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819684B156A0AB200DA31A3 /* NoteViewController.m */; };
@@ -116,7 +115,6 @@
 		1810693715638E9E0018B03B /* BNoteWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteWriter.m; sourceTree = "<group>"; };
 		181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummariesTableViewController.h; sourceTree = "<group>"; };
 		181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummariesTableViewController.m; sourceTree = "<group>"; };
-		181967C11569E50100DA31A3 /* EntrySummariesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntrySummariesTableViewController.xib; sourceTree = "<group>"; };
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
 		181968461569FB0700DA31A3 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		181968471569FB0700DA31A3 /* NoteEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteEditorViewController.xib; sourceTree = "<group>"; };
@@ -553,7 +551,6 @@
 			children = (
 				181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */,
 				181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */,
-				181967C11569E50100DA31A3 /* EntrySummariesTableViewController.xib */,
 				18070DEA15785C42003486E3 /* EntrySummaryTableViewCell.h */,
 				18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */,
 			);
@@ -614,7 +611,6 @@
 				1834D35515634A650065788F /* MasterViewController.xib in Resources */,
 				1834D35815634A650065788F /* DetailViewController.xib in Resources */,
 				1834D383156364840065788F /* TopicEditorViewController.xib in Resources */,
-				181967C31569E50100DA31A3 /* EntrySummariesTableViewController.xib in Resources */,
 				181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */,
 				1819684E156A0AB200DA31A3 /* NoteViewController.xib in Resources */,
 				18E9FF1D156B772D00F22272 /* action_item_active_icon.png in Resources */,

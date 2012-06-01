@@ -53,15 +53,13 @@
     }
     
     [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    [[self detailViewController] configureView:0];
+//    [[self detailViewController] configureView:0];
 
-    [self updateCellColors];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -144,7 +142,7 @@
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
-        [[self detailViewController] configureView:0];
+//        [[self detailViewController] configureView:0];
     }
 }
 
@@ -160,20 +158,10 @@
     [[BNoteWriter instance] update];
 }
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     [[self detailViewController] setTopic:topic];
-    [[self detailViewController] configureView:[indexPath row]];
 }
 
 
@@ -195,32 +183,12 @@
         [[BNoteWriter instance] update];
         
         [[self tableView] reloadData];
-        [self updateCellColors];
 
     }
 }
 
 - (void)didCancel:(TopicEditorViewController *)topicEditor
 {
-    [self updateCellColors];
 }
 
-- (void)updateCellColors
-{
-    /*
-    for (int i = 0; i < [[self data] count]; i++) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
-        Topic *topic = [[self data] objectAtIndex:i];
-        
-        UIColor *color;
-        if ([topic color] > 0) {
-            color = UIColorFromRGB([topic color]);
-        } else {
-            color = [UIColor whiteColor];
-        }
-        
-        [[[self tableView] cellForRowAtIndexPath:path] setBackgroundColor:color];
-    }
-     */
-}
 @end

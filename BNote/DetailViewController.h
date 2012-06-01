@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NotesViewController.h"
+#import "EntrySummariesTableViewController.h"
 
 @class Topic;
 
@@ -15,11 +16,9 @@
 
 @property (strong, nonatomic) Topic *topic;
 @property (strong, nonatomic) IBOutlet UIButton *addNewNoteButton;
-
+@property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *tableViewController;
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
-@property (strong, nonatomic) IBOutlet UIView *entrySummariesView;
 
 - (IBAction)createNewNote:(id)sender;
-- (void)configureView:(int)indexPath;
 
 @end

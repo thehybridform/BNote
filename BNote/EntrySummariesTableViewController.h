@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Topic.h"
-#import "BNoteFilter.h"
 
 @interface EntrySummariesTableViewController : UITableViewController
 
-@property (assign, nonatomic) id<BNoteFilter> filter;
+@property (strong, nonatomic) Topic *topic;
 
-- (id)initWithTopic:(Topic *)topic;
-                     
 @end

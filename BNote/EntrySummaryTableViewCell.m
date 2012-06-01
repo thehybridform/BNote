@@ -25,12 +25,8 @@
 {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-
         [[self textLabel] setFont:[UIFont systemFontOfSize:14]];
-
-    
         [[self detailTextLabel] setTextColor:UIColorFromRGB(0x336633)];
-
     }
     
     return self;
@@ -42,15 +38,15 @@
     
     [[self textLabel] setText:[entry text]];
 
-    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
-    [[self imageView] setImage:[imageView image]];
-    
     [self handleQuestionType:entry];
     [self handleActionItemType:entry];    
     
-    UIView *backgroudView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
-    [backgroudView setBackgroundColor:[UIColor whiteColor]];
-    [self setSelectedBackgroundView:backgroudView];
+    UIColor *color = UIColorFromRGB([[[entry note] topic] color]);
+    [self setSelectedBackgroundView:[BNoteFactory createHighlight:color]];
+
+    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
+    [[self imageView] setImage:[imageView image]];
+    [[self imageView] setBackgroundColor:color];
     
     [self setNeedsDisplay];
 }
@@ -86,8 +82,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

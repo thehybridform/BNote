@@ -29,14 +29,6 @@
 @synthesize filteredEntries = _filteredEntries;
 @synthesize selectEntryTableViewCell = _selectEntryTableViewCell;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

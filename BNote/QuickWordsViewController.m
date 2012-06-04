@@ -20,6 +20,7 @@
 
 @interface QuickWordsViewController ()
 @property (strong, nonatomic) Entry *entry;
+@property (strong, nonatomic) UIViewController *parent;
 
 @end
 
@@ -35,6 +36,7 @@
 @synthesize entry = _entry;
 @synthesize scrollView = _scrollView;
 @synthesize targetTextView = _targetTextView;
+@synthesize parent = _parent;
 
 static float spacing = 10;
 static float speed = 0.40;
@@ -79,6 +81,7 @@ static float speed = 0.40;
     [self setScrollView:nil];
     [self setAttendantToolbar:nil];
     [self setDecisionToolbar:nil];
+    [self setParent:nil];
 }
 
 - (IBAction)done:(id)sender
@@ -136,17 +139,16 @@ static float speed = 0.40;
     }
 }
 
-- (void)presentView:(UIView *)parent
+- (void)presentView:(UIViewController *)parent
 {
-    [self checkDisableDetailButton];
-    
+    [self setParent:parent];
     UIView *view = [self view];
     CGRect rect = [view frame];
     
     float x = rect.origin.x;
     
     [view setFrame:CGRectMake(x-900, rect.origin.y, rect.size.width, rect.size.height)];
-    [parent addSubview:view];
+    [[[parent view] superview] addSubview:view];
     
     [UIView animateWithDuration:speed
                           delay:0
@@ -180,8 +182,6 @@ static float speed = 0.40;
 {
     if ([entry isKindOfClass:[ActionItem class]]) {
         return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andActionItem:(ActionItem *)entry] objectEnumerator];
-    } else if ([entry isKindOfClass:[Attendant class]]) {
-        return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andNote:[[self entry] note]] objectEnumerator];
     } else if ([entry isKindOfClass:[KeyPoint class]]) {
         return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andKeyPoint:(KeyPoint *)entry] objectEnumerator];
     } else if ([entry isKindOfClass:[Question class]]) {
@@ -189,14 +189,6 @@ static float speed = 0.40;
     }
     
     return nil;
-}
-
-- (void)checkDisableDetailButton
-{
-    if ([[self entry] isKindOfClass:[Decision class]]) {
-//        [[self detailButton] setEnabled:NO];
-//        [[self detailButton] setTitle:nil];
-    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

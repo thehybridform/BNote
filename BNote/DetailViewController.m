@@ -60,11 +60,7 @@
 
 - (void)didFinish
 {
-    [self addEntriesToView];
-}
-
-- (void)addEntriesToView
-{
+    [self setTopic:[self topic]];
 }
 
 - (IBAction)createNewNote:(id)sender

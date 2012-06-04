@@ -14,6 +14,7 @@
 #import "KeyPoint.h"
 #import "Decision.h"
 #import "Attendant.h"
+#import "EntryTableViewCell.h"
 
 extern NSString *const ACTION_ITEM_ACTIVE;
 extern NSString *const ACTION_ITEM_INACTIVE;
@@ -25,6 +26,7 @@ extern NSString *const KEY_POINT_ACTIVE;
 extern NSString *const KEY_POINT_INACTIVE;
 extern NSString *const QUESTION_ACTIVE;
 extern NSString *const QUESTION_INACTIVE;
+extern NSString *const ATTENDANT;
 
 typedef enum {
     ActionItemIcon,
@@ -39,7 +41,8 @@ typedef enum {
     KeyPointIconActive,
     QuestionIconActive,
     
-    Unknown
+    AttendantIcon
+    
 } BNoteIconType;
 
 @interface BNoteFactory : NSObject
@@ -56,5 +59,7 @@ typedef enum {
 + (UIView *)createHighlight:(UIColor *)color;
 + (UIImageView *)createIcon:(BNoteIconType)type;
 + (UIImageView *)createIcon:(Entry *)entry active:(BOOL)active;
+
++ (EntryTableViewCell *)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier;
 
 @end

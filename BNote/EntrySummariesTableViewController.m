@@ -19,6 +19,7 @@
 #import "ActionItemInCompleteFilter.h"
 #import "DecisionFilter.h"
 #import "KeyPointFilter.h"
+#import "IdentityFillter.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -27,6 +28,9 @@
 @property (strong, nonatomic) NSArray *actionItemsComplete;
 @property (strong, nonatomic) NSArray *keyPoints;
 @property (strong, nonatomic) NSArray *decisions;
+@property (strong, nonatomic) NSArray *entries;
+@property (assign, nonatomic) BOOL groupEntries;
+@property (assign, nonatomic) SortType sortType;
 
 @end
 
@@ -38,11 +42,18 @@
 @synthesize decisions = _decisions;
 @synthesize actionItemsComplete = _actionItemsComplete;
 @synthesize actionItemsUncomplete = _actionItemsUncomplete;
+@synthesize sorting = _sorting;
+@synthesize grouping = _grouping;
+@synthesize groupEntries = _groupEntries;
+@synthesize entries = _entries;
+@synthesize sortType = _sortType;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setClearsSelectionOnViewWillAppear:NO];
+    [self setGroupEntries:YES];
+    [[self sorting] setTitle:@"No Sorting"];
 }
 
 - (void)viewDidUnload
@@ -55,6 +66,8 @@
     [self setDecisions:nil];
     [self setActionItemsComplete:nil];
     [self setActionItemsUncomplete:nil];
+    [self setGrouping:nil];
+    [self setSorting:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -78,7 +91,33 @@
         }
     }
     
-    return [NSArray arrayWithArray:array];
+    [array sortUsingComparator:^NSComparisonResult(id entry1, id entry2) {
+        switch ([self sortType]) {
+            case DateAcending:
+                if ([entry1 created] > [entry2 created]) {
+                    return (NSComparisonResult)NSOrderedDescending;
+                }
+                if ([entry1 created] < [entry2 created]) {
+                    return (NSComparisonResult)NSOrderedAscending;
+                }
+                
+                break;
+            case DateDecending:
+                if ([entry1 created] < [entry2 created]) {
+                    return (NSComparisonResult)NSOrderedDescending;
+                }
+                if ([entry1 created] > [entry2 created]) {
+                    return (NSComparisonResult)NSOrderedAscending;
+                }
+
+                break;
+            default:
+                break;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    }];
+    
+    return array;
 }
 
 - (void)reload
@@ -89,6 +128,7 @@
     [self setActionItemsUncomplete:[self filterEntries:[[ActionItemInCompleteFilter alloc] init]]];
     [self setDecisions:[self filterEntries:[[DecisionFilter alloc] init]]];
     [self setKeyPoints:[self filterEntries:[[KeyPointFilter alloc] init]]];
+    [self setEntries:[self filterEntries:[[IdentityFillter alloc] init]]];
     
     [[self tableView] reloadData];
 }
@@ -97,16 +137,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    if ([self groupEntries]) {
+        return 6;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self entriesForSection:section] count];
+    if ([self groupEntries]) {
+        return [[self entriesForSection:section] count];
+    } else {
+        return [[self entries] count];
+    }
 }
 
 - (NSArray *)entriesForSection:(int)section
 {
+    if (![self groupEntries]) {
+        return [self entries];
+    }
+    
     switch (section) {
         case 0:
             return [self actionItemsComplete];
@@ -135,6 +187,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    if (![self groupEntries]) {
+        return @"All";
+    }
+
     switch (section) {
         case 0:
             return @"Action Items - Complete";
@@ -191,6 +247,53 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
+    NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:[entry note]];
+    [controller setListener:self];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentModalViewController:controller animated:YES];
+
+}
+
+- (IBAction)group:(id)sender
+{
+    UISegmentedControl *control = (UISegmentedControl *)sender;
+    
+    if ([control selectedSegmentIndex] == 0) {
+        [self setGroupEntries:YES];
+    } else {
+        [self setGroupEntries:NO];
+    }
+
+    [self reload];
+}
+
+- (IBAction)sort:(id)sender
+{
+    switch ([self sortType]) {
+        case None:
+            [self setSortType:DateAcending];
+            [[self sorting] setTitle:@"Date Ascending"];
+            break;
+        case DateAcending:
+            [self setSortType:DateDecending];
+            [[self sorting] setTitle:@"Date Decending"];
+            break;
+        case DateDecending:
+            [self setSortType:None];
+            [[self sorting] setTitle:@"No Sorting"];
+            break;
+        default:
+            break;
+    }
+    
+    [self reload];
+}
+
+- (void)didFinish
+{
+    [self reload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

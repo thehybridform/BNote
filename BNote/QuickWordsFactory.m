@@ -13,7 +13,6 @@
 #import "ActionItemQuickButton.h"
 #import "ActionItemMarkDone.h"
 #import "QuestionQuickButton.h"
-#import "AttendantQuickButton.h"
 #import "KeyPointButton.h"
 
 @implementation QuickWordsFactory
@@ -89,25 +88,6 @@
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    return data;
-}
-
-+ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andNote:(Note *)note
-{
-    NSMutableArray *data = [[NSMutableArray alloc] init];
-    AttendantQuickButton *button;
-    
-    button = [[AttendantQuickButton alloc] initWithName:@"contacts" andTextView:textView];
-    [button setNote:note];
-    [button setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:button];
-
-    button = [[AttendantQuickButton alloc] initWithName:@"add contact" andTextView:textView];
-    [button setNote:note];
-    [button setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:button];
-    
-
     return data;
 }
 

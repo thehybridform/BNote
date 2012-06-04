@@ -20,6 +20,7 @@ NSString *const KEY_POINT_ACTIVE = @"key_point_active_icon.png";
 NSString *const KEY_POINT_INACTIVE = @"key_point_icon.png";
 NSString *const QUESTION_ACTIVE = @"question_active_icon.png";
 NSString *const QUESTION_INACTIVE = @"question_icon.png";
+NSString *const ATTENDANT = @"attendant_icon.png";
 
 @implementation BNoteFactory
 
@@ -155,6 +156,9 @@ NSString *const QUESTION_INACTIVE = @"question_icon.png";
         case QuestionIconActive:
             icon = QUESTION_ACTIVE;
             break;
+        case AttendantIcon:
+            icon = ATTENDANT;
+            break; 
         default:
             break;
     }
@@ -195,7 +199,7 @@ NSString *const QUESTION_INACTIVE = @"question_icon.png";
         return QuestionIconActive;
     }
 
-    return Unknown;
+    return -1;
 }
 
 + (BNoteIconType)inactiveType:(Entry *)entry
@@ -212,8 +216,11 @@ NSString *const QUESTION_INACTIVE = @"question_icon.png";
         return QuestionIcon;
     }
     
-    return Unknown;
+    return -1;
 }
 
-
++ (EntryTableViewCell *)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier
+{
+    return [[EntryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+}
 @end

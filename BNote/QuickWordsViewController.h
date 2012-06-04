@@ -35,10 +35,8 @@
 - (IBAction)dates:(id)sender;
 - (IBAction)keyWords:(id)sender;
 
-- (void)presentView:(UIView *)parent;
+- (void)presentView:(UIViewController *)parent;
 - (void)hideView;
-
-- (void)checkDisableDetailButton;
 
 @end
 
@@ -47,6 +45,7 @@
 @required
 
 - (void)didFinishFromQuickWords;
+- (UIViewController *)controller;
 
 @end
 

@@ -14,6 +14,8 @@
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
 #import "IdentityFillter.h"
+#import "BNoteFactory.h"
+#import "Attendant.h"
 
 @interface EntriesViewController ()
 @property (strong, nonatomic) EntryTableViewCell *selectEntryTableViewCell;
@@ -79,12 +81,10 @@
 {
     static NSString *cellIdentifier = @"EntryTableViewCell";
     
-    EntryTableViewCell *cell = 
-        [[EntryTableViewCell alloc] initWithIdentifier:cellIdentifier];
-    
-    [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
-
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
+
+    EntryTableViewCell *cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
+    [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
     [cell setEntry:entry];
         
     [LayerFormater roundCornersForView:cell];
@@ -158,7 +158,7 @@
         [[currentQuick view] removeFromSuperview];
         [[[self view] superview] addSubview:[quick view]];
     } else {
-        [quick presentView:[[self view] superview]];
+        [quick presentView:self];
     }
 }
 
@@ -186,7 +186,9 @@
     Entry *entry;
     while (entry = [entries nextObject]) {
         if ([[self filter] accept:entry]) {
-            [[self filteredEntries] addObject:entry];
+            if (![entry isKindOfClass:[Attendant class]]) {
+                [[self filteredEntries] addObject:entry];
+            }
         }
     }
     
@@ -198,6 +200,11 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([[self filteredEntries] count] - 1) inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+}
+
+- (UIViewController *)controller
+{
+    return self;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

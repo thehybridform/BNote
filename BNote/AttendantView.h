@@ -1,20 +1,16 @@
 //
-//  Attendant.m
+//  AttendantView.h
 //  BNote
 //
 //  Created by Young Kristin on 6/3/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "Attendant.h"
 
+@interface AttendantView : UIView
 
-@implementation Attendant
-
-@dynamic firstName;
-@dynamic image;
-@dynamic lastName;
-@dynamic email;
-@dynamic phone;
+@property (strong, nonatomic) Attendant *attendant;
 
 @end

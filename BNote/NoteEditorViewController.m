@@ -28,6 +28,7 @@
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
+@property (strong, nonatomic) ABPeoplePickerNavigationController *contactPicker; 
 
 @end
 
@@ -44,7 +45,6 @@
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
 @synthesize entityToolbar = _entityToolbar;
-@synthesize participantsButton = _participantsButton;
 @synthesize keyPointButton = _keyPointButton;
 @synthesize questionButton= _questionButton;
 @synthesize decisionButton = _decisionButton;
@@ -53,6 +53,10 @@
 @synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
 @synthesize datePickerViewController = _datePickerViewController;
+@synthesize attendantsImageView = _attendantsImageView;
+@synthesize attendantsScrollView = _attendantsScrollView;
+@synthesize contactPicker = _contactPicker;
+@synthesize attendantsViewController = _attendantsViewController;
 
 - (void)viewDidUnload
 {
@@ -68,7 +72,6 @@
     [self setSubjectLable:nil];
     [self setToolbar:nil];
     [self setEntityToolbar:nil];
-    [self setParticipantsButton:nil];
     [self setKeyPointButton:nil];
     [self setQuestionButton:nil];
     [self setDecisionButton:nil];
@@ -78,6 +81,10 @@
     [self setEntriesViewController:nil];
     [self setListener:nil];
     [self setDatePickerViewController:nil];
+    [self setAttendantsImageView:nil];
+    [self setContactPicker:nil];
+    [self setAttendantsViewController:nil];
+    
 }
 
 
@@ -111,6 +118,7 @@
     [LayerFormater roundCornersForView:[self subjectView]];
     [LayerFormater roundCornersForView:[[self entriesViewController] view]];
     [LayerFormater roundCornersForView:[self entityToolbar]];
+    [LayerFormater roundCornersForView:[self attendantsScrollView]];
     
     [self setToolbarEditColor:[[self toolbar] tintColor]];
     [[self subjectLable] setHidden:YES];
@@ -121,15 +129,22 @@
     
     UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
     [[self dateView] addGestureRecognizer:normalTap];
+    
+    normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showContactPicker:)];
+    [[self attendantsScrollView] addGestureRecognizer:normalTap];
+    
+    [[self attendantsViewController] setNote:note];
+    [[self attendantsViewController] update];
 }
 
 - (IBAction)done:(id)sender
 {
     [[self note] setSubject:[[self subject] text]];
-    [[self listener] didFinish];
     [self dismissModalViewControllerAnimated:YES];
     
     [[BNoteWriter instance] update];
+    
+    [[self listener] didFinish];
 }
 
 - (IBAction)editMode:(id)sender
@@ -150,7 +165,6 @@
     [[self entityToolbar] setTintColor:[self toolbarEditColor]];
     [[self subject] setHidden:NO];
     [[self subjectLable] setHidden:YES];
-    [[self participantsButton] setEnabled:YES];
     [[self trashButton] setEnabled:YES];
     [[self entriesViewController] setFilter:[[IdentityFillter alloc] init]];
     
@@ -164,7 +178,6 @@
     [[self subject] setHidden:YES];
     [[self subjectLable] setHidden:NO];
     [[self subjectLable] setText:[[self subject] text]];
-    [[self participantsButton] setEnabled:NO];
     [[self trashButton] setEnabled:NO];
     
     [[BNoteSessionData instance] setPhase:Reviewing];
@@ -235,7 +248,6 @@
     [[self questionButton] setEnabled:YES];
     [[self decisionButton] setEnabled:YES];
     [[self actionItemButton] setEnabled:YES];
-    [[self participantsButton] setEnabled:YES];
     [[self modeButton] setEnabled:YES];
 }
 
@@ -246,7 +258,6 @@
     [[self questionButton] setEnabled:NO];
     [[self decisionButton] setEnabled:NO];
     [[self actionItemButton] setEnabled:NO];
-    [[self participantsButton] setEnabled:NO];
     [[self modeButton] setEnabled:NO];
 }
 
@@ -285,10 +296,78 @@
     [[self time] setText:[BNoteStringUtils timeToString:date]];
 }
 
+- (void)showContactPicker:(id)sender
+{
+    if ([self contactPicker]) {
+        [self finishedContactPicker];
+    } else {
+        [[self attendantsImageView] setImage:[[BNoteFactory createIcon:AttentiesIconActive] image]];
+        ABPeoplePickerNavigationController *controller = [[ABPeoplePickerNavigationController alloc] init];
+        [self setContactPicker:controller];
+        
+        [controller setPeoplePickerDelegate:self];
+        [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
+        [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        [[self entriesViewController] presentModalViewController:controller animated:YES];
+    }
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    [self finishedContactPicker];
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    Attendant *attendant = [BNoteFactory createAttendant:[self note]];
+    NSString *name = (__bridge NSString *) ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    [attendant setFirstName:name];
+    
+    name = (__bridge NSString *) ABRecordCopyValue(person, kABPersonLastNameProperty);
+    [attendant setLastName:name];
+
+    /*
+    ABMultiValueRef emailMultiValue = ABRecordCopyValue(person, kABPersonEmailProperty);
+    NSArray *emails = (__bridge NSArray *) ABMultiValueCopyArrayOfAllValues(emailMultiValue);
+    if ([emails count] > 1) {
+        EmailPickerViewController *emailPicker = [[EmailPickerViewController alloc] initWithEmails:emails forAttendant:attendant];
+        [emailPicker setDelegate:self];
+        [emailPicker setModalPresentationStyle:UIModalPresentationFormSheet];
+        [emailPicker setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self presentModalViewController:emailPicker animated:YES];
+    } else {
+        [self finishedContactPicker];
+    }
+     */
+    
+    return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    [self finishedContactPicker];
+    return NO;
+}
+
+- (void)finishedContactPicker
+{
+    [self setContactPicker:nil];
+    [[self attendantsImageView] setImage:[[BNoteFactory createIcon:AttentiesIcon] image]];
+    [[self entriesViewController] dismissModalViewControllerAnimated:YES];
+}
+
+- (void)didFinishEmailPicker
+{
+    [self dismissModalViewControllerAnimated:YES];
+    [[self attendantsViewController] update];
+    [self finishedContactPicker];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
 }
+
 
 @end
 

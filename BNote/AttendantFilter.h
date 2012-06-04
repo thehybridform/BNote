@@ -1,5 +1,5 @@
 //
-//  KeyPoint.h
+//  AttendantFilter.h
 //  BNote
 //
 //  Created by Young Kristin on 6/3/12.
@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import "Entry.h"
+#import "BNoteFilter.h"
 
-
-@interface KeyPoint : Entry
-
+@interface AttendantFilter : NSObject <BNoteFilter>
 
 @end

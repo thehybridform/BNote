@@ -11,13 +11,11 @@
 #import "EntriesViewController.h"
 #import "AttendantsViewController.h"
 #import "DatePickerViewController.h"
-#import "EmailPickerViewController.h"
 
 
 @protocol NoteEditorViewControllerListener;
 
-@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, ABPeoplePickerNavigationControllerDelegate,
-    EmailPickerViewController>
+@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, ABPeoplePickerNavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *dateView;
 @property (strong, nonatomic) IBOutlet UIView *subjectView;
@@ -35,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 @property (strong, nonatomic) IBOutlet UIImageView *attendantsImageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *attendantsScrollView;
+
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;

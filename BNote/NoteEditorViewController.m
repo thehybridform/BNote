@@ -23,12 +23,14 @@
 #import "QuestionFilter.h"
 #import "DecisionFilter.h"
 #import "IdentityFillter.h"
+#import "BNoteEntryUtils.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *contactPicker; 
+@property (strong, nonatomic) Attendant *selectedAttendant;
 
 @end
 
@@ -57,6 +59,7 @@
 @synthesize attendantsScrollView = _attendantsScrollView;
 @synthesize contactPicker = _contactPicker;
 @synthesize attendantsViewController = _attendantsViewController;
+@synthesize selectedAttendant = _selectedAttendant;
 
 - (void)viewDidUnload
 {
@@ -84,7 +87,7 @@
     [self setAttendantsImageView:nil];
     [self setContactPicker:nil];
     [self setAttendantsViewController:nil];
-    
+    [self setSelectedAttendant:nil];
 }
 
 
@@ -131,7 +134,7 @@
     [[self dateView] addGestureRecognizer:normalTap];
     
     normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showContactPicker:)];
-    [[self attendantsScrollView] addGestureRecognizer:normalTap];
+    [[self attendantsImageView] addGestureRecognizer:normalTap];
     
     [[self attendantsViewController] setNote:note];
     [[self attendantsViewController] update];
@@ -314,38 +317,45 @@
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
+    if ([self selectedAttendant]) {
+        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
+    }
+
     [self finishedContactPicker];
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
-    Attendant *attendant = [BNoteFactory createAttendant:[self note]];
-    NSString *name = (__bridge NSString *) ABRecordCopyValue(person, kABPersonFirstNameProperty);
-    [attendant setFirstName:name];
-    
-    name = (__bridge NSString *) ABRecordCopyValue(person, kABPersonLastNameProperty);
-    [attendant setLastName:name];
-
-    /*
-    ABMultiValueRef emailMultiValue = ABRecordCopyValue(person, kABPersonEmailProperty);
-    NSArray *emails = (__bridge NSArray *) ABMultiValueCopyArrayOfAllValues(emailMultiValue);
-    if ([emails count] > 1) {
-        EmailPickerViewController *emailPicker = [[EmailPickerViewController alloc] initWithEmails:emails forAttendant:attendant];
-        [emailPicker setDelegate:self];
-        [emailPicker setModalPresentationStyle:UIModalPresentationFormSheet];
-        [emailPicker setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [self presentModalViewController:emailPicker animated:YES];
-    } else {
-        [self finishedContactPicker];
+    if ([self selectedAttendant]) {
+        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
     }
-     */
     
+    NSString *firstname = (__bridge NSString *) ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    NSString *lastname = (__bridge NSString *) ABRecordCopyValue(person, kABPersonLastNameProperty);
+    
+    Attendant *attendant = [BNoteEntryUtils findMatch:[self note] withFirstName:firstname andLastName:lastname];
+    if (!attendant) {
+        attendant = [BNoteFactory createAttendant:[self note]];
+        [attendant setFirstName:firstname];
+        [attendant setLastName:lastname];
+    }
+    
+    [self setSelectedAttendant:attendant];
+    
+    [peoplePicker setDisplayedProperties:[NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]]];
+
     return YES;
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
 {
+    ABMultiValueRef emails = ABRecordCopyValue(person, property);
+    int idx = ABMultiValueGetIndexForIdentifier(emails, identifier);
+    
+    [[self selectedAttendant] setEmail:(__bridge NSString *)ABMultiValueCopyValueAtIndex(emails, idx)];
+    
     [self finishedContactPicker];
+    
     return NO;
 }
 
@@ -354,13 +364,8 @@
     [self setContactPicker:nil];
     [[self attendantsImageView] setImage:[[BNoteFactory createIcon:AttentiesIcon] image]];
     [[self entriesViewController] dismissModalViewControllerAnimated:YES];
-}
-
-- (void)didFinishEmailPicker
-{
-    [self dismissModalViewControllerAnimated:YES];
+    [self setSelectedAttendant:nil];
     [[self attendantsViewController] update];
-    [self finishedContactPicker];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

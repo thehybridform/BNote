@@ -48,13 +48,10 @@
     [self setData:[[BNoteReader instance] allTopics]];
     
     if ([[self data] count] == 0) {
-        Topic *newTopic = [BNoteFactory createTopic:@"Help"]; 
-        [self setData:[NSMutableArray  arrayWithObject:newTopic]];
+        [self setData:[[NSMutableArray alloc] init]];
+    } else {
+        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     }
-    
-    [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-//    [[self detailViewController] configureView:0];
-
 }
 
 - (void)viewDidUnload
@@ -101,10 +98,8 @@
         [cell setShowsReorderControl:YES];
         [LayerFormater roundCornersForView:cell];
         
-        if ([indexPath row] > 0) {
-            [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
-            [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
-        }
+        [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
+        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     }
 
     NSString *text = @"   ";
@@ -115,7 +110,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [indexPath row] > 0;
+    return YES;
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +137,6 @@
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
-//        [[self detailViewController] configureView:0];
     }
 }
 

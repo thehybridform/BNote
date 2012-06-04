@@ -53,8 +53,6 @@
 		18810E5F15770159002B59DA /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
 		18810E6815770E5C002B59DA /* EntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E6715770E5C002B59DA /* EntryTableViewCell.m */; };
 		18A05685157B5BCC002A4A78 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A05684157B5BCC002A4A78 /* AddressBook.framework */; };
-		18A0568E157B607A002A4A78 /* EmailPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0568C157B607A002A4A78 /* EmailPickerViewController.m */; };
-		18A0568F157B607A002A4A78 /* EmailPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A0568D157B607A002A4A78 /* EmailPickerViewController.xib */; };
 		18A05692157B662D002A4A78 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A05691157B662D002A4A78 /* Attendant.m */; };
 		18A05695157B662D002A4A78 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A05694157B662D002A4A78 /* Entry.m */; };
 		18A05698157B662D002A4A78 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A05697157B662D002A4A78 /* KeyPoint.m */; };
@@ -64,9 +62,12 @@
 		18A056A4157B662D002A4A78 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056A3157B662D002A4A78 /* Topic.m */; };
 		18A056A7157B662D002A4A78 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056A6157B662D002A4A78 /* ActionItem.m */; };
 		18A056AE157B71BA002A4A78 /* AttendantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056AD157B71BA002A4A78 /* AttendantsViewController.m */; };
-		18A056B0157B766C002A4A78 /* AttendantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056AF157B766C002A4A78 /* AttendantView.xib */; };
 		18A056B6157BFD72002A4A78 /* AttendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056B5157BFD71002A4A78 /* AttendantView.m */; };
 		18A056BC157C6944002A4A78 /* AttendantFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056BB157C6944002A4A78 /* AttendantFilter.m */; };
+		18A056C4157C7B26002A4A78 /* BNoteEntryUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056C3157C7B26002A4A78 /* BNoteEntryUtils.m */; };
+		18A056CA157C905D002A4A78 /* bnote-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056C9157C905D002A4A78 /* bnote-big.png */; };
+		18A056D4157C9671002A4A78 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056D2157C9671002A4A78 /* HelpViewController.m */; };
+		18A056D5157C9671002A4A78 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D3157C9671002A4A78 /* HelpViewController.xib */; };
 		18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE611576027E004A2022 /* KeyPointButton.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18E9FF11156A343700F22272 /* LayerFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF10156A343700F22272 /* LayerFormater.m */; };
@@ -172,9 +173,6 @@
 		18810E6615770E5C002B59DA /* EntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTableViewCell.h; sourceTree = "<group>"; };
 		18810E6715770E5C002B59DA /* EntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTableViewCell.m; sourceTree = "<group>"; };
 		18A05684157B5BCC002A4A78 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		18A0568B157B607A002A4A78 /* EmailPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailPickerViewController.h; sourceTree = "<group>"; };
-		18A0568C157B607A002A4A78 /* EmailPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailPickerViewController.m; sourceTree = "<group>"; };
-		18A0568D157B607A002A4A78 /* EmailPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailPickerViewController.xib; sourceTree = "<group>"; };
 		18A05690157B662D002A4A78 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
 		18A05691157B662D002A4A78 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
 		18A05693157B662D002A4A78 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
@@ -193,11 +191,16 @@
 		18A056A6157B662D002A4A78 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
 		18A056AC157B71BA002A4A78 /* AttendantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsViewController.h; sourceTree = "<group>"; };
 		18A056AD157B71BA002A4A78 /* AttendantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsViewController.m; sourceTree = "<group>"; };
-		18A056AF157B766C002A4A78 /* AttendantView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendantView.xib; sourceTree = "<group>"; };
 		18A056B4157BFD71002A4A78 /* AttendantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantView.h; sourceTree = "<group>"; };
 		18A056B5157BFD71002A4A78 /* AttendantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantView.m; sourceTree = "<group>"; };
 		18A056BA157C6944002A4A78 /* AttendantFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantFilter.h; sourceTree = "<group>"; };
 		18A056BB157C6944002A4A78 /* AttendantFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantFilter.m; sourceTree = "<group>"; };
+		18A056C2157C7B26002A4A78 /* BNoteEntryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteEntryUtils.h; sourceTree = "<group>"; };
+		18A056C3157C7B26002A4A78 /* BNoteEntryUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteEntryUtils.m; sourceTree = "<group>"; };
+		18A056C9157C905D002A4A78 /* bnote-big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-big.png"; sourceTree = "<group>"; };
+		18A056D1157C9671002A4A78 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		18A056D2157C9671002A4A78 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		18A056D3157C9671002A4A78 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		18A1DE601576027E004A2022 /* KeyPointButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointButton.h; sourceTree = "<group>"; };
 		18A1DE611576027E004A2022 /* KeyPointButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointButton.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -275,6 +278,7 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18A056C9157C905D002A4A78 /* bnote-big.png */,
 				18E9FF38156C7A2400F22272 /* bnote-144.png */,
 				18E9FF3A156C7C9500F22272 /* attendant_icon.png */,
 				18E9FF32156C791800F22272 /* bnote.png */,
@@ -399,6 +403,8 @@
 				1810693715638E9E0018B03B /* BNoteWriter.m */,
 				18E9FF55156DCE4500F22272 /* BNoteStringUtils.h */,
 				18E9FF56156DCE4600F22272 /* BNoteStringUtils.m */,
+				18A056C2157C7B26002A4A78 /* BNoteEntryUtils.h */,
+				18A056C3157C7B26002A4A78 /* BNoteEntryUtils.m */,
 			);
 			name = "Service Core";
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 		18368F5415662D8000E511CB /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				18A056CB157C9090002A4A78 /* Help Pages */,
 				1834D35015634A650065788F /* DetailViewController.h */,
 				1834D35115634A650065788F /* DetailViewController.m */,
 				1834D35615634A650065788F /* DetailViewController.xib */,
@@ -473,14 +480,14 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
-		18A056AB157B6DBE002A4A78 /* Email Picker */ = {
+		18A056CB157C9090002A4A78 /* Help Pages */ = {
 			isa = PBXGroup;
 			children = (
-				18A0568B157B607A002A4A78 /* EmailPickerViewController.h */,
-				18A0568C157B607A002A4A78 /* EmailPickerViewController.m */,
-				18A0568D157B607A002A4A78 /* EmailPickerViewController.xib */,
+				18A056D1157C9671002A4A78 /* HelpViewController.h */,
+				18A056D2157C9671002A4A78 /* HelpViewController.m */,
+				18A056D3157C9671002A4A78 /* HelpViewController.xib */,
 			);
-			name = "Email Picker";
+			name = "Help Pages";
 			sourceTree = "<group>";
 		};
 		18A1DE64157609C6004A2022 /* Action Item */ = {
@@ -535,7 +542,6 @@
 		18E9FF29156C6FDA00F22272 /* Edit Notes */ = {
 			isa = PBXGroup;
 			children = (
-				18A056AB157B6DBE002A4A78 /* Email Picker */,
 				18BF3F60157B456100B6E226 /* Entry View Cell */,
 				1879F05C15747AFB003814C2 /* Quick Words */,
 				1879F05615746E72003814C2 /* Date Picker */,
@@ -546,7 +552,6 @@
 				18810E5E15770159002B59DA /* EntriesViewController.m */,
 				18A056AC157B71BA002A4A78 /* AttendantsViewController.h */,
 				18A056AD157B71BA002A4A78 /* AttendantsViewController.m */,
-				18A056AF157B766C002A4A78 /* AttendantView.xib */,
 				18A056B4157BFD71002A4A78 /* AttendantView.h */,
 				18A056B5157BFD71002A4A78 /* AttendantView.m */,
 			);
@@ -648,8 +653,8 @@
 				18E9FF3B156C7C9600F22272 /* attendant_icon.png in Resources */,
 				1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */,
 				1879F06115747B18003814C2 /* QuickWordsViewController.xib in Resources */,
-				18A0568F157B607A002A4A78 /* EmailPickerViewController.xib in Resources */,
-				18A056B0157B766C002A4A78 /* AttendantView.xib in Resources */,
+				18A056CA157C905D002A4A78 /* bnote-big.png in Resources */,
+				18A056D5157C9671002A4A78 /* HelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,7 +704,6 @@
 				18070E031578620A003486E3 /* QuestionUnansweredFilter.m in Sources */,
 				18070E0615786218003486E3 /* QuestionAnsweredFilter.m in Sources */,
 				18070E091578623E003486E3 /* DecisionFilter.m in Sources */,
-				18A0568E157B607A002A4A78 /* EmailPickerViewController.m in Sources */,
 				18A05692157B662D002A4A78 /* Attendant.m in Sources */,
 				18A05695157B662D002A4A78 /* Entry.m in Sources */,
 				18A05698157B662D002A4A78 /* KeyPoint.m in Sources */,
@@ -711,6 +715,8 @@
 				18A056AE157B71BA002A4A78 /* AttendantsViewController.m in Sources */,
 				18A056B6157BFD72002A4A78 /* AttendantView.m in Sources */,
 				18A056BC157C6944002A4A78 /* AttendantFilter.m in Sources */,
+				18A056C4157C7B26002A4A78 /* BNoteEntryUtils.m in Sources */,
+				18A056D4157C9671002A4A78 /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

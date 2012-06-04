@@ -7,8 +7,8 @@
 //
 
 #import "AttendantsViewController.h"
-#import "AttendantView.h"
 #import "BNoteFactory.h"
+#import "BNoteWriter.h"
 #import "LayerFormater.h"
 #import "AttendantFilter.h"
 
@@ -18,6 +18,7 @@
 
 @implementation AttendantsViewController
 @synthesize note = _note;
+@synthesize attendantHelpLable = _attendantHelpLable;
 
 - (void)viewDidLoad
 {
@@ -29,26 +30,40 @@
 {
     [super viewDidUnload];
 
+    [self setNote:nil];
+    [self setAttendantHelpLable:nil];
 }
 
 - (void)update
 {
-    NSEnumerator *attendants = [[self filterAttendants] objectEnumerator];
+    NSArray *attendants = [self filterAttendants];
+    if ([attendants count] > 0) {
+        [[self attendantHelpLable] setHidden:YES];
+    }
+    
+    NSEnumerator *items = [attendants objectEnumerator];
     Attendant *attendant;
     
-    float x = 10;
-    float width = 120;
+    float x = 3;
+    float width = 100;
     int index = 0;
     
-    while (attendant = [attendants nextObject]) {
-        AttendantView *view = [[AttendantView alloc] initWithFrame:CGRectMake((width * index++) + x , 6, 120, 82)];
+    while (attendant = [items nextObject]) {
+        AttendantView *view = [[AttendantView alloc] initWithFrame:CGRectMake((width * index++) + x , 3, 100, 69)];
+        [view setDelegate:self];
+         
         [LayerFormater roundCornersForView:view];
-    
         [view setAttendant:attendant];
-    
         [[self view] addSubview:view];
     }
      
+    UIScrollView *view = (UIScrollView *) [self view];
+    float height = [view frame].size.height;
+    width = [attendants count] * 100;
+
+    if (width > 0) {
+        [view setContentSize:CGSizeMake(width, height)];
+    }
 }
 
 - (NSArray *)filterAttendants
@@ -65,6 +80,20 @@
     
     return array;
 }
+
+- (void)remove:(Attendant *)attendant
+{
+    [[BNoteWriter instance] removeEntry:attendant];
+    
+    NSEnumerator *views = [[[self view] subviews] objectEnumerator];
+    UIView *view;
+    while (view = [views nextObject]) {
+        [view setHidden:YES];
+    }
+    
+    [self update];
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

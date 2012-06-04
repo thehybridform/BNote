@@ -39,7 +39,7 @@
 @synthesize parent = _parent;
 
 static float spacing = 10;
-static float speed = 0.40;
+static float speed = 0.1;
 
 - (id)initWithEntry:(Entry *)entry;
 {
@@ -143,19 +143,14 @@ static float speed = 0.40;
 {
     [self setParent:parent];
     UIView *view = [self view];
-    CGRect rect = [view frame];
-    
-    float x = rect.origin.x;
-    
-    [view setFrame:CGRectMake(x-900, rect.origin.y, rect.size.width, rect.size.height)];
+    [view setAlpha:0.0];
     [[[parent view] superview] addSubview:view];
     
     [UIView animateWithDuration:speed
                           delay:0
                         options:(UIViewAnimationOptionCurveLinear)
                      animations:^(void) {
-                         CGAffineTransform move = CGAffineTransformMakeTranslation(900, 0);
-                         [view setTransform:move];
+                         [view setAlpha:1.0];
                      }
                      completion:^(BOOL finished) {
                          [self detail:nil]; 
@@ -165,15 +160,16 @@ static float speed = 0.40;
 
 - (void)hideView
 {
+    UIView *view = [self view];
+
     [UIView animateWithDuration:speed
                           delay:0
                         options:(UIViewAnimationOptionCurveLinear)
                      animations:^(void) {
-                         CGAffineTransform move = CGAffineTransformTranslate([[self view] transform], 900, 0);
-                         [[self view] setTransform:move];
+                         [view setAlpha:0.0];
                      }
                      completion:^(BOOL finished) {
-                         [[self view] removeFromSuperview];
+                         [view removeFromSuperview];
                      }
      ];
 }

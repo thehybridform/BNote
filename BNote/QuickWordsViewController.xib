@@ -40,7 +40,7 @@
 					<object class="IBUIScrollView" id="541531706">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">294</int>
-						<string key="NSFrameSize">{768, 106}</string>
+						<string key="NSFrameSize">{768, 95}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="414714750"/>
@@ -55,7 +55,7 @@
 					<object class="IBUIToolbar" id="414714750">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">270</int>
-						<string key="NSFrame">{{0, 106}, {768, 44}}</string>
+						<string key="NSFrame">{{0, 95}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="269649485"/>
@@ -99,7 +99,7 @@
 					<object class="IBUIToolbar" id="269649485">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">270</int>
-						<string key="NSFrame">{{0, 106}, {768, 44}}</string>
+						<string key="NSFrame">{{0, 95}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1012202376"/>
@@ -125,10 +125,9 @@
 					<object class="IBUIToolbar" id="1012202376">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">270</int>
-						<string key="NSFrame">{{0, 106}, {768, 44}}</string>
+						<string key="NSFrame">{{0, 95}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -161,7 +160,7 @@
 						</array>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {768, 150}}</string>
+				<string key="NSFrame">{{0, 20}, {768, 139}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="541531706"/>
@@ -329,8 +328,8 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="414714750"/>
 							<reference ref="541531706"/>
+							<reference ref="414714750"/>
 							<reference ref="269649485"/>
 							<reference ref="1012202376"/>
 						</array>

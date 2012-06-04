@@ -16,12 +16,12 @@
 #import "NoteEditorViewController.h"
 #import "BNoteSessionData.h"
 #import "LayerFormater.h"
+#import "HelpViewController.h"
 
 @class Note;
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-
 @end
 
 @implementation DetailViewController
@@ -31,6 +31,7 @@
 @synthesize addNewNoteButton = _addNewNoteButton;
 @synthesize tableViewController = _tableViewController;
 @synthesize notesViewController = notesViewController;
+@synthesize toolbar = _toolbar;
 
 - (void)viewDidUnload
 {
@@ -41,13 +42,17 @@
     [self setMasterPopoverController:nil];
     [self setAddNewNoteButton:nil];
     [self setNotesViewController:nil];
-    
 }
 
 - (void)setTopic:(Topic *)topic
 {
     _topic = topic;
     
+    [[self addNewNoteButton] setHidden:NO];
+    [[[self tableViewController] view] setHidden:NO];
+    [[[self notesViewController] view] setHidden:NO];
+    [[self toolbar] setHidden:NO];
+
     [[self tableViewController] setTopic:topic];
     [[self notesViewController] configureView:[self topic]];
     [[self notesViewController] setListener:self];
@@ -55,7 +60,25 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];        
+    [super viewDidLoad];       
+    
+    if (![self topic]) {
+        [[self addNewNoteButton] setHidden:YES];
+        [[[self tableViewController] view] setHidden:YES];
+        [[[self notesViewController] view] setHidden:YES];
+        [[self toolbar] setHidden:YES];
+        
+        HelpViewController *help = [[HelpViewController alloc] initWith:self];
+        [help setModalPresentationStyle:UIModalPresentationFormSheet];
+        [help setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self presentModalViewController:help animated:YES];
+    }
+    
+    UIBarButtonItem *addButton =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(add:)];
+    
+//    self.navigationItem.rightBarButtonItem = addButton;
+
 }
 
 - (void)didFinish
@@ -90,6 +113,9 @@
     return YES;
 }
 
-
+- (void)dismissHelp:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 @end

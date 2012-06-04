@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
+#import "AttendantView.h"
 
-@interface AttendantsViewController : UIViewController
+
+@interface AttendantsViewController : UIViewController <AttendantViewDelegate>
 
 @property (strong, nonatomic) Note *note;
+@property (strong, nonatomic) IBOutlet UILabel *attendantHelpLable;
 
 - (void)update;
+
 
 @end

@@ -10,7 +10,7 @@
 #import "Topic.h"
 #import "NoteEditorViewController.h"
 
-@interface EntrySummariesTableViewController : UITableViewController <NoteEditorViewControllerListener>
+@interface EntrySummariesTableViewController : UITableViewController
 
 typedef enum {
     None,
@@ -26,5 +26,6 @@ typedef enum {
 
 - (IBAction)group:(id)sender;
 - (IBAction)sort:(id)sender;
+- (void)reload;
 
 @end

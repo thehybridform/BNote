@@ -79,16 +79,16 @@
     }
     
     [self setButtons:[[NSMutableArray alloc] init]];
-    
-    [self initButton:[self button_1] withColor:0xffffff andIndex:1];
-    [self initButton:[self button_2] withColor:0xfce5cd andIndex:2];
-    [self initButton:[self button_3] withColor:0x7098bc andIndex:3];
-    [self initButton:[self button_4] withColor:0xf9b56E andIndex:4];
-    [self initButton:[self button_5] withColor:0xcfe2f3 andIndex:5];
-    [self initButton:[self button_6] withColor:0xCCCC11 andIndex:6];
-    [self initButton:[self button_7] withColor:0x11AA11 andIndex:7];
-    [self initButton:[self button_8] withColor:0xCCCCCC andIndex:8];
-    [self initButton:[self button_9] withColor:0xE1DED3 andIndex:9];
+
+    [self initButton:[self button_1] withColor:0xd7a779 andIndex:1];
+    [self initButton:[self button_2] withColor:0xd1c5a4 andIndex:2];
+    [self initButton:[self button_3] withColor:0x665d51 andIndex:3];
+    [self initButton:[self button_4] withColor:0x98bac3 andIndex:4];
+    [self initButton:[self button_5] withColor:0xcb694d andIndex:5];
+    [self initButton:[self button_6] withColor:0x8e9c6d andIndex:6];
+    [self initButton:[self button_7] withColor:0xc4d1c5 andIndex:7];
+    [self initButton:[self button_8] withColor:0xc19cb5 andIndex:8];
+    [self initButton:[self button_9] withColor:0xd7cd79 andIndex:9];
     [self initButton:[self selectedColor] withColor:0xffffff andIndex:10];
 
     [self initHighlightColor];

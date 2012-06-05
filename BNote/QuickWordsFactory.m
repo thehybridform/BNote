@@ -16,6 +16,7 @@
 #import "KeyPointButton.h"
 #import "KeyPointCameraButton.h"
 #import "KeyPointPhotoPickerButton.h"
+#import "ActionItemResponabiltyButton.h"
 
 @implementation QuickWordsFactory
 
@@ -62,7 +63,7 @@
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
-    button = [[ActionItemQuickButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
+    button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
     [button setActionItem:actionItem];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];

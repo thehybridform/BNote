@@ -249,7 +249,6 @@
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
     NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:[entry note]];
-    [controller setListener:self];
     [controller setModalPresentationStyle:UIModalPresentationPageSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentModalViewController:controller animated:YES];
@@ -288,11 +287,6 @@
             break;
     }
     
-    [self reload];
-}
-
-- (void)didFinish
-{
     [self reload];
 }
 

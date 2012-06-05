@@ -42,7 +42,7 @@
 @synthesize time = _time;
 @synthesize subject = _subject;
 @synthesize note = _note;
-@synthesize listener = _listener;
+@synthesize delegate = _delegate;
 @synthesize toolbar = _toolbar;
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
@@ -82,7 +82,7 @@
     [self setModeButton:nil];
     [self setTrashButton:nil];
     [self setEntriesViewController:nil];
-    [self setListener:nil];
+    [self setDelegate:nil];
     [self setDatePickerViewController:nil];
     [self setAttendantsImageView:nil];
     [self setContactPicker:nil];
@@ -144,10 +144,8 @@
 {
     [[self note] setSubject:[[self subject] text]];
     [self dismissModalViewControllerAnimated:YES];
-    
-    [[BNoteWriter instance] update];
-    
-    [[self listener] didFinish];
+        
+    [[self delegate] didFinishEditingNote:[self note]];
 }
 
 - (IBAction)editMode:(id)sender

@@ -42,7 +42,6 @@
     [sheet showFromRect:rect inView:self animated:YES];
     
     [self setSheet:sheet];
-
 }
 
 - (void)setAttendant:(Attendant *)attendant

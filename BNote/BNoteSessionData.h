@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NoteViewController.h"
 #import "Topic.h"
 
 @interface BNoteSessionData : NSObject
@@ -17,8 +16,6 @@ typedef enum {
     Editing
 } BNotePhase;
 
-
-@property (strong, nonatomic) NoteViewController *currentNoteViewController;
 @property (strong, nonatomic) Topic *currentTopic;
 @property (assign, nonatomic) BNotePhase phase;
 

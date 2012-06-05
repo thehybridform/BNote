@@ -22,8 +22,6 @@
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
-		1819684D156A0AB200DA31A3 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819684B156A0AB200DA31A3 /* NoteViewController.m */; };
-		1819684E156A0AB200DA31A3 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1819684C156A0AB200DA31A3 /* NoteViewController.xib */; };
 		1834D33C15634A650065788F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33B15634A650065788F /* UIKit.framework */; };
 		1834D33E15634A650065788F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33D15634A650065788F /* Foundation.framework */; };
 		1834D34015634A650065788F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33F15634A650065788F /* CoreGraphics.framework */; };
@@ -55,7 +53,6 @@
 		18A05685157B5BCC002A4A78 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A05684157B5BCC002A4A78 /* AddressBook.framework */; };
 		18A05692157B662D002A4A78 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A05691157B662D002A4A78 /* Attendant.m */; };
 		18A05695157B662D002A4A78 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A05694157B662D002A4A78 /* Entry.m */; };
-		18A05698157B662D002A4A78 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A05697157B662D002A4A78 /* KeyPoint.m */; };
 		18A0569B157B662D002A4A78 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0569A157B662D002A4A78 /* Question.m */; };
 		18A0569E157B662D002A4A78 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0569D157B662D002A4A78 /* Decision.m */; };
 		18A056A1157B662D002A4A78 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056A0157B662D002A4A78 /* Note.m */; };
@@ -72,6 +69,10 @@
 		18A056D9157D7E90002A4A78 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D8157D7E8F002A4A78 /* Default-Landscape~ipad.png */; };
 		18A056DF157D81AC002A4A78 /* KeyPointPhotoPickerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056DE157D81AC002A4A78 /* KeyPointPhotoPickerButton.m */; };
 		18A056E2157D8214002A4A78 /* KeyPointCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056E1157D8213002A4A78 /* KeyPointCameraButton.m */; };
+		18A056E6157D9BDA002A4A78 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056E5157D9BDA002A4A78 /* NoteView.m */; };
+		18A056E9157DEB99002A4A78 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056E8157DEB99002A4A78 /* KeyPoint.m */; };
+		18A056EC157DEB99002A4A78 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056EB157DEB99002A4A78 /* Photo.m */; };
+		18A056EF157DEE8D002A4A78 /* ActionItemResponabiltyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056EE157DEE8D002A4A78 /* ActionItemResponabiltyButton.m */; };
 		18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE611576027E004A2022 /* KeyPointButton.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18E9FF11156A343700F22272 /* LayerFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF10156A343700F22272 /* LayerFormater.m */; };
@@ -126,9 +127,6 @@
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
 		181968461569FB0700DA31A3 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		181968471569FB0700DA31A3 /* NoteEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteEditorViewController.xib; sourceTree = "<group>"; };
-		1819684A156A0AB200DA31A3 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
-		1819684B156A0AB200DA31A3 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
-		1819684C156A0AB200DA31A3 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		1834D33715634A650065788F /* BNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1834D33B15634A650065788F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1834D33D15634A650065788F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -181,8 +179,6 @@
 		18A05691157B662D002A4A78 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
 		18A05693157B662D002A4A78 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
 		18A05694157B662D002A4A78 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		18A05696157B662D002A4A78 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
-		18A05697157B662D002A4A78 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
 		18A05699157B662D002A4A78 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		18A0569A157B662D002A4A78 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		18A0569C157B662D002A4A78 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
@@ -211,6 +207,14 @@
 		18A056DE157D81AC002A4A78 /* KeyPointPhotoPickerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPhotoPickerButton.m; sourceTree = "<group>"; };
 		18A056E0157D8213002A4A78 /* KeyPointCameraButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointCameraButton.h; sourceTree = "<group>"; };
 		18A056E1157D8213002A4A78 /* KeyPointCameraButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointCameraButton.m; sourceTree = "<group>"; };
+		18A056E4157D9BD9002A4A78 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
+		18A056E5157D9BDA002A4A78 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
+		18A056E7157DEB99002A4A78 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		18A056E8157DEB99002A4A78 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
+		18A056EA157DEB99002A4A78 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		18A056EB157DEB99002A4A78 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		18A056ED157DEE8D002A4A78 /* ActionItemResponabiltyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemResponabiltyButton.h; sourceTree = "<group>"; };
+		18A056EE157DEE8D002A4A78 /* ActionItemResponabiltyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemResponabiltyButton.m; sourceTree = "<group>"; };
 		18A1DE601576027E004A2022 /* KeyPointButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointButton.h; sourceTree = "<group>"; };
 		18A1DE611576027E004A2022 /* KeyPointButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointButton.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -383,12 +387,14 @@
 			isa = PBXGroup;
 			children = (
 				1834D395156372500065788F /* BNote.xcdatamodeld */,
+				18A056EA157DEB99002A4A78 /* Photo.h */,
+				18A056EB157DEB99002A4A78 /* Photo.m */,
+				18A056E7157DEB99002A4A78 /* KeyPoint.h */,
+				18A056E8157DEB99002A4A78 /* KeyPoint.m */,
 				18A05690157B662D002A4A78 /* Attendant.h */,
 				18A05691157B662D002A4A78 /* Attendant.m */,
 				18A05693157B662D002A4A78 /* Entry.h */,
 				18A05694157B662D002A4A78 /* Entry.m */,
-				18A05696157B662D002A4A78 /* KeyPoint.h */,
-				18A05697157B662D002A4A78 /* KeyPoint.m */,
 				18A05699157B662D002A4A78 /* Question.h */,
 				18A0569A157B662D002A4A78 /* Question.m */,
 				18A0569C157B662D002A4A78 /* Decision.h */,
@@ -517,6 +523,8 @@
 				1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */,
 				1879F09E1575CA36003814C2 /* ActionItemMarkDone.h */,
 				1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */,
+				18A056ED157DEE8D002A4A78 /* ActionItemResponabiltyButton.h */,
+				18A056EE157DEE8D002A4A78 /* ActionItemResponabiltyButton.m */,
 			);
 			name = "Action Item";
 			sourceTree = "<group>";
@@ -587,9 +595,8 @@
 			children = (
 				18E9FF6B15729EF900F22272 /* NotesViewController.h */,
 				18E9FF6C15729EF900F22272 /* NotesViewController.m */,
-				1819684A156A0AB200DA31A3 /* NoteViewController.h */,
-				1819684B156A0AB200DA31A3 /* NoteViewController.m */,
-				1819684C156A0AB200DA31A3 /* NoteViewController.xib */,
+				18A056E4157D9BD9002A4A78 /* NoteView.h */,
+				18A056E5157D9BDA002A4A78 /* NoteView.m */,
 			);
 			name = "Notes Scroll View";
 			sourceTree = "<group>";
@@ -660,7 +667,6 @@
 				1834D35815634A650065788F /* DetailViewController.xib in Resources */,
 				1834D383156364840065788F /* TopicEditorViewController.xib in Resources */,
 				181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */,
-				1819684E156A0AB200DA31A3 /* NoteViewController.xib in Resources */,
 				18E9FF1D156B772D00F22272 /* action_item_active_icon.png in Resources */,
 				18E9FF1E156B772D00F22272 /* action_item_icon.png in Resources */,
 				18E9FF1F156B772D00F22272 /* attendees_active_icon.png in Resources */,
@@ -703,7 +709,6 @@
 				18368F371564DBF200E511CB /* ButtonMetaData.m in Sources */,
 				181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */,
 				181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */,
-				1819684D156A0AB200DA31A3 /* NoteViewController.m in Sources */,
 				18E9FF11156A343700F22272 /* LayerFormater.m in Sources */,
 				18E9FF57156DCE4600F22272 /* BNoteStringUtils.m in Sources */,
 				18E9FF5B156DE6A200F22272 /* BNoteSessionData.m in Sources */,
@@ -732,7 +737,6 @@
 				18070E091578623E003486E3 /* DecisionFilter.m in Sources */,
 				18A05692157B662D002A4A78 /* Attendant.m in Sources */,
 				18A05695157B662D002A4A78 /* Entry.m in Sources */,
-				18A05698157B662D002A4A78 /* KeyPoint.m in Sources */,
 				18A0569B157B662D002A4A78 /* Question.m in Sources */,
 				18A0569E157B662D002A4A78 /* Decision.m in Sources */,
 				18A056A1157B662D002A4A78 /* Note.m in Sources */,
@@ -745,6 +749,10 @@
 				18A056D4157C9671002A4A78 /* HelpViewController.m in Sources */,
 				18A056DF157D81AC002A4A78 /* KeyPointPhotoPickerButton.m in Sources */,
 				18A056E2157D8214002A4A78 /* KeyPointCameraButton.m in Sources */,
+				18A056E6157D9BDA002A4A78 /* NoteView.m in Sources */,
+				18A056E9157DEB99002A4A78 /* KeyPoint.m in Sources */,
+				18A056EC157DEB99002A4A78 /* Photo.m in Sources */,
+				18A056EF157DEE8D002A4A78 /* ActionItemResponabiltyButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

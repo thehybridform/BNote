@@ -12,7 +12,7 @@
 
 @class Topic;
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, NotesViewControllerListener>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) Topic *topic;
 @property (strong, nonatomic) IBOutlet UIButton *addNewNoteButton;

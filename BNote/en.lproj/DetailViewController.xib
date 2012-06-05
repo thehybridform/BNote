@@ -101,32 +101,10 @@
 					<object class="IBUIScrollView" id="167299971">
 						<reference key="NSNextResponder" ref="647120888"/>
 						<int key="NSvFlags">290</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIView" id="757406077">
-								<reference key="NSNextResponder" ref="167299971"/>
-								<int key="NSvFlags">310</int>
-								<string key="NSFrame">{{-69, -441}, {768, 1004}}</string>
-								<reference key="NSSuperview" ref="167299971"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="115174170"/>
-								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
-								</object>
-								<float key="IBUIAlpha">0.40000000596046448</float>
-								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
-									<string key="IBUIAccessibilityLabel"/>
-									<integer value="0" key="IBUIAccessibilityTraits"/>
-									<boolean value="NO" key="IBUIIsAccessibilityElement"/>
-								</object>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-							</object>
-						</array>
 						<string key="NSFrame">{{128, 14}, {630, 122}}</string>
 						<reference key="NSSuperview" ref="647120888"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="757406077"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -298,14 +276,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">maskView</string>
-						<reference key="source" ref="578321571"/>
-						<reference key="destination" ref="757406077"/>
-					</object>
-					<int key="connectionID">115</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">view</string>
 						<reference key="source" ref="928085364"/>
 						<reference key="destination" ref="212682730"/>
@@ -395,9 +365,7 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">68</int>
 						<reference key="object" ref="167299971"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="757406077"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="647120888"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -410,12 +378,6 @@
 						<int key="objectID">88</int>
 						<reference key="object" ref="332500208"/>
 						<reference key="parent" ref="647120888"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">114</int>
-						<reference key="object" ref="757406077"/>
-						<reference key="parent" ref="167299971"/>
-						<string key="objectName">Mask View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">117</int>
@@ -470,7 +432,6 @@
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="108.CustomClassName">NotesViewController</string>
 				<string key="108.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="114.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="117.CustomClassName">EntrySummariesTableViewController</string>
 				<string key="117.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="118.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -573,17 +534,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NotesViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">maskView</string>
-						<string key="NS.object.0">UIView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">maskView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">maskView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/NotesViewController.h</string>

@@ -7,34 +7,31 @@
 //
 
 #import "NotesViewController.h"
-#import "NoteViewController.h"
 #import "LayerFormater.h"
 #import "BNoteAnimation.h"
 #import "BNoteWriter.h"
+#import "NoteView.h"
+#import "Note.h"
 
 @interface NotesViewController ()
-
-@property (strong, nonatomic) NSMutableArray *noteViewControllers;
 
 @end
 
 @implementation NotesViewController
-@synthesize noteViewControllers = _noteViewControllers;
-@synthesize maskView = _maskView;
-@synthesize listener = _listener;
+@synthesize topic = _topic;
+@synthesize entrySummariesTableViewController = _entrySummariesTableViewController;
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self setNoteViewControllers:nil];
-    [self setMaskView:nil];
+    [self setTopic:nil];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setNoteViewControllers:[[NSMutableArray alloc] init]];
+
     }
     
     return self;
@@ -46,134 +43,62 @@
     
     [LayerFormater roundCornersForView:[self view]];
     [LayerFormater setBorderWidth:0 forView:[self view]];
-    [[self maskView] setHidden:YES];
     
-    UITapGestureRecognizer *tap = 
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(finishedEntryMoveDelete:)];
-    [[self maskView] addGestureRecognizer:tap];
-
+    [self update];
 }
 
-- (void)configureView:(Topic *)topic
+- (void)setTopic:(Topic *)topic
 {
-    [self clearView];
+    _topic = topic;
     
-    NSEnumerator *items = [[topic notes] objectEnumerator];
-    Note *note;
-    while (note = [items nextObject]) {
-        [self addNoteToView:note];
+    [self update];
+}
+
+- (void)update
+{    
+    NSEnumerator *views = [[[self view] subviews] objectEnumerator];
+    UIView *view;
+    while (view = [views nextObject]) {
+        [view setHidden:YES];
     }
     
-    [self updateScrollViewSize];
-}
-
-- (NoteViewController *)addNoteToView:(Note *)note
-{
-    NoteViewController *controller = [[NoteViewController alloc] initWithNote:note];
-    [controller setNoteViewControllerDelegate:self];
-    
-    UIView *view = [controller view];
-    [view setFrame:CGRectMake([self xPosition], 11, [view bounds].size.width, [view bounds].size.height)];
-    [[self view] addSubview:view];
-    
-    [[self noteViewControllers] addObject:controller];
-    
-    return controller;
-}
-
-- (void)clearView
-{
-    NSEnumerator *items = [[self noteViewControllers] objectEnumerator];
-    NoteViewController *controller;
-    while (controller = [items nextObject]) {
-        [[controller view] removeFromSuperview];
-    }    
-    
-    [[self noteViewControllers] removeAllObjects];
-    [[self maskView] setHidden:YES];
-
-}
-
-- (float)xPosition
-{
-    float width = 0.0;
-    NSEnumerator *items = [[self noteViewControllers] objectEnumerator];
-    NoteViewController *controller;
-    while (controller = [items nextObject]) {
-        width += [[controller view] bounds].size.width + 15;
-    }
-
-    return width;
-}
-
-- (void)updateScrollViewSize
-{
     UIScrollView *scrollView = (UIScrollView *) [self view];
     
-    float height = [scrollView bounds].size.height;
-    [scrollView setContentSize:CGSizeMake([self xPosition], height)];
-}
-
-- (void)addNote:(Note *)note
-{
-    NoteViewController *controller = [self addNoteToView:note];
-    [self updateScrollViewSize];
+    float x = -100;
+    float width = 100;
     
-    [controller show];
-}
-
-- (void)noteDeleted:(NoteViewController *)c
-{
-    [self finishedEntryMoveDelete:nil];
-    [[BNoteWriter instance] removeNote:[c note]];
-    [[self noteViewControllers] removeObject:c];
-    
-    float delay = 0.1 * [[self noteViewControllers] count];
-    float lastX = 0.0;
-    NSEnumerator *items = [[self noteViewControllers] objectEnumerator];
-    NoteViewController *controller;
-    while (controller = [items nextObject]) {
-        UIView *view = [controller view];
-        
-        float currentX = [view frame].origin.x - 15;
-        float deltaX = lastX - currentX;
-
-        [BNoteAnimation moveEntryView:view xPixels:deltaX yPixels:0 withDelay:(delay -= 0.1)];
-         
-        lastX = [view frame].origin.x + [view bounds].size.width;
-        
-        [controller storeCurrentTransform];
+    NSOrderedSet *notes = [[self topic] notes];
+    NSEnumerator *items = [notes objectEnumerator];
+    Note *note;
+    while (note = [items nextObject]) {
+        x += width + 10;
+        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x, 11, 100, 100)];
+        [noteView setNote:note];
+        [noteView setDelegate:self];
+        [scrollView addSubview:noteView];
     }
     
-    [self updateScrollViewSize];
-    [[self listener] didFinish];
-}
+    width = x + 110;
 
-- (void)noteUpdated:(NoteViewController *)controller
-{
-    [[self listener] didFinish];
-}
-
-- (void)setupForDeleteMove:(NoteViewController *)controller
-{
-    [[self maskView] setHidden:NO];
-    
-    float width = [((UIScrollView *)[self view]) contentSize].width;
-    float height = [((UIScrollView *)[self view]) contentSize].height;
-    [[self maskView] setFrame:CGRectMake(0, 0, width, height)];
-    
-    [[self view] bringSubviewToFront:[self maskView]];
-    [[self view] bringSubviewToFront:[controller view]];
-}
-
-- (void)finishedEntryMoveDelete:(id)sender
-{
-    [[self maskView] setHidden:YES];
-    NSEnumerator *items = [[self noteViewControllers] objectEnumerator];
-    NoteViewController *controller;
-    while (controller = [items nextObject]) {
-        [controller reset];
+    if (width > 0) {
+        [scrollView setContentSize:CGSizeMake(width, [view bounds].size.height)];
     }
+    
+    [[self entrySummariesTableViewController] reload]; 
+}
+
+- (void)deleteNote:(Note *)note
+{
+    [[BNoteWriter instance] removeNote:note];
+
+    [self setTopic:[self topic]];
+}
+
+- (void)didFinishEditingNote:(Note *)note
+{
+    [[BNoteWriter instance] update];
+    
+    [self setTopic:[self topic]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -70,7 +70,7 @@ const float y = 5;
                                                      name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
 
         [self setPhotosScrollView:[[UIScrollView alloc] init]];
-        
+        [[self photosScrollView] setHidden:YES];
     }
     
     return self;
@@ -185,7 +185,23 @@ const float y = 5;
             [[self detailTextLabel] setText:nil];
         }
     }
-    
 }
+
++ (int)cellHieght:(Entry *)entry
+{
+    int lineCount = [BNoteStringUtils lineCount:[entry text]];
+    
+    int size = MAX(4, lineCount) * 25;
+    
+    if ([entry isKindOfClass:[KeyPoint class]]) {
+        KeyPoint *keyPoint = (KeyPoint *) entry;
+        if ([keyPoint photos] && [[keyPoint photos] count] > 0) {
+
+        }
+    }
+    
+    return size;
+}
+
 
 @end

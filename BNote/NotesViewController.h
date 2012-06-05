@@ -7,25 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Note.h"
 #import "Topic.h"
-#import "NoteViewController.h"
+#import "NoteView.h"
+#import "NoteEditorViewController.h"
+#import "EntrySummariesTableViewController.h"
 
-@protocol NotesViewControllerListener;
+@interface NotesViewController : UIViewController <NoteViewDelegate, NoteEditorViewControllerDelegate>
 
-@interface NotesViewController : UIViewController <NoteViewControllerDelegate>
+@property (strong, nonatomic) Topic *topic;
+@property (strong, nonatomic) EntrySummariesTableViewController *entrySummariesTableViewController;
 
-@property (strong, nonatomic) IBOutlet UIView *maskView;
-@property (assign, nonatomic) id<NotesViewControllerListener> listener;
-
-- (void)configureView:(Topic *)topic;
-- (void)addNote:(Note *)note;
-
-@end
-
-@protocol NotesViewControllerListener <NSObject>
-
-@required
-- (void)didFinish;
+- (void)update;
 
 @end
+

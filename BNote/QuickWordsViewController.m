@@ -98,7 +98,6 @@ static float speed = 0.1;
 - (IBAction)people:(id)sender
 {
     [self clearScrollView];
-    
 }
 
 - (IBAction)dates:(id)sender
@@ -110,7 +109,6 @@ static float speed = 0.1;
 - (IBAction)keyWords:(id)sender
 {
     [self clearScrollView];
-    
 }
 
 - (void)buildButtons:(NSEnumerator *)items

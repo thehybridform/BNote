@@ -112,12 +112,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]];
-    int lineCount = [BNoteStringUtils lineCount:[entry text]];
     
-    return MAX(4, lineCount) * 25;
+    return [EntryTableViewCell cellHieght:entry];
 }
-
-#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

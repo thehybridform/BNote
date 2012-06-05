@@ -9,16 +9,13 @@
 #import "DetailViewController.h"
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
-#import "NoteViewController.h"
 #import "Entry.h"
+#import "Note.h"
 #import "EntrySummariesTableViewController.h"
-#import "NoteViewController.h"
 #import "NoteEditorViewController.h"
 #import "BNoteSessionData.h"
 #import "LayerFormater.h"
 #import "HelpViewController.h"
-
-@class Note;
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -42,6 +39,7 @@
     [self setMasterPopoverController:nil];
     [self setAddNewNoteButton:nil];
     [self setNotesViewController:nil];
+    [self setToolbar:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -54,45 +52,36 @@
     [[self toolbar] setHidden:NO];
 
     [[self tableViewController] setTopic:topic];
-    [[self notesViewController] configureView:[self topic]];
-    [[self notesViewController] setListener:self];
+    [[self notesViewController] setTopic:topic];
+    [[self notesViewController] setEntrySummariesTableViewController:[self tableViewController]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];       
     
+    [[self view] setBackgroundColor:UIColorFromRGB(0xf5f3e6)];
+    
     if (![self topic]) {
         [[self addNewNoteButton] setHidden:YES];
         [[[self tableViewController] view] setHidden:YES];
         [[[self notesViewController] view] setHidden:YES];
         [[self toolbar] setHidden:YES];
-        
-//        HelpViewController *help = [[HelpViewController alloc] initWith:self];
-//        [help setModalPresentationStyle:UIModalPresentationFormSheet];
-//        [help setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-//        [self presentModalViewController:help animated:YES];
     }
-    
-//    UIBarButtonItem *addButton =
-//    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(add:)];
-    
-//    self.navigationItem.rightBarButtonItem = addButton;
-
-}
-
-- (void)didFinish
-{
-    [self setTopic:[self topic]];
 }
 
 - (IBAction)createNewNote:(id)sender
 {
     Note *note = [BNoteFactory createNote:[self topic]];
-    [[self notesViewController] addNote:note];
+    [[self notesViewController] update];
+    
+    NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:note];
+    [controller setDelegate:(id<NoteEditorViewControllerDelegate>) [self notesViewController]];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    
+    [self presentModalViewController:controller animated:YES];
 }
-
-#pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {

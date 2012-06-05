@@ -13,7 +13,7 @@
 #import "DatePickerViewController.h"
 
 
-@protocol NoteEditorViewControllerListener;
+@protocol NoteEditorViewControllerDelegate;
 
 @interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, ABPeoplePickerNavigationControllerDelegate>
 
@@ -37,7 +37,7 @@
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
-@property (assign, nonatomic) id<NoteEditorViewControllerListener> listener;
+@property (assign, nonatomic) id<NoteEditorViewControllerDelegate> delegate;
 
 - (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;
@@ -52,10 +52,10 @@
 
 @end
 
-@protocol NoteEditorViewControllerListener <NSObject>
+@protocol NoteEditorViewControllerDelegate <NSObject>
 
 @required
-- (void)didFinish;
+- (void)didFinishEditingNote:(Note *)note;
 
 
 @end

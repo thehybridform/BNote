@@ -21,6 +21,8 @@
 - (void)edit;
 - (void)finishedEdit;
 
++ (int)cellHieght:(Entry *)entry;
+
 @end
 
 @protocol EntryCellDelegate <NSObject>

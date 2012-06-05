@@ -105,6 +105,17 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     return entry;
 }
 
++ (Photo *)createPhoto:(KeyPoint *)keyPoint
+{
+    Photo *photo = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Photo"];
+    [photo setCreated:[NSDate timeIntervalSinceReferenceDate]];
+    [photo setKeyPoint:keyPoint];
+    
+    [[BNoteWriter instance] update];
+
+    return photo;
+}
+
 +(UIView *)createHighlightSliver:(UIColor *)color
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 24, 44)];

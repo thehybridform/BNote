@@ -15,7 +15,6 @@
 
 @implementation BNoteSessionData
 @synthesize phase = _phase;
-@synthesize currentNoteViewController = _currentNoteViewController;
 @synthesize currentTopic = _currentTopic;
 
 - (BOOL)canEditEntry

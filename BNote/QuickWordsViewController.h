@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Entry.h"
+#import "EntryTableViewCell.h"
 
 @protocol QuickWordsViewControllerListener;
 
@@ -21,9 +22,9 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *datesButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *keyWordsButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
-
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) UITextView *targetTextView;
+
+@property (strong, nonatomic) EntryTableViewCell *entryViewCell;
 
 @property (assign, nonatomic) id<QuickWordsViewControllerListener> listener;
 

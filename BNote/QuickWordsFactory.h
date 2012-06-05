@@ -13,12 +13,13 @@
 #import "Decision.h"
 #import "Attendant.h"
 #import "QuickWordsViewController.h"
+#import "EntryTableViewCell.h"
 
 @interface QuickWordsFactory : NSObject
 
-+ (NSMutableArray *)buildDateButtonsForTextView:(UITextView *)textView;
-+ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andActionItem:(ActionItem *)actionItem;
-+ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andQuestion:(Question *)question;
-+ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andKeyPoint:(KeyPoint *)keyPoint;
++ (NSMutableArray *)buildDateButtonsForEntryCellView:(EntryTableViewCell *)entryCellView;
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andActionItem:(ActionItem *)actionItem;
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andQuestion:(Question *)question;
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andKeyPoint:(KeyPoint *)keyPoint;
 
 @end

@@ -14,7 +14,7 @@
 
 - (void)execute:(id)sender
 {
-    UITextView *textView = [self textView];
+    UITextView *textView = [[self entryCellView] targetTextView];
     NSRange cursorPosition = [textView selectedRange];
     
     NSMutableString *text = [[NSMutableString alloc] initWithString:[textView text]];

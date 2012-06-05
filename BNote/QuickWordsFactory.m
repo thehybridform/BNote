@@ -14,30 +14,32 @@
 #import "ActionItemMarkDone.h"
 #import "QuestionQuickButton.h"
 #import "KeyPointButton.h"
+#import "KeyPointCameraButton.h"
+#import "KeyPointPhotoPickerButton.h"
 
 @implementation QuickWordsFactory
 
-+ (NSMutableArray *)buildDateButtonsForTextView:(UITextView *)textView
++ (NSMutableArray *)buildDateButtonsForEntryCellView:(EntryTableViewCell *)entryCellView
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     DateQuickButton *button;
     
-    button = [[DateQuickButton alloc] initWithName:@"yesterday" andTextView:textView];
+    button = [[DateQuickButton alloc] initWithName:@"yesterday" andEntryCellView:entryCellView];
     [button setOffset:-1];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[DateQuickButton alloc] initWithName:@"tomorrow" andTextView:textView];
+    button = [[DateQuickButton alloc] initWithName:@"tomorrow" andEntryCellView:entryCellView];
     [button setOffset:1];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
-    button = [[DateQuickButton alloc] initWithName:@"week ago" andTextView:textView];
+    button = [[DateQuickButton alloc] initWithName:@"week ago" andEntryCellView:entryCellView];
     [button setOffset:-7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[DateQuickButton alloc] initWithName:@"week form now" andTextView:textView];
+    button = [[DateQuickButton alloc] initWithName:@"week form now" andEntryCellView:entryCellView];
     [button setOffset:7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
@@ -45,27 +47,27 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andActionItem:(ActionItem *)actionItem
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andActionItem:(ActionItem *)actionItem
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     ActionItemQuickButton *button;
 
     if ([actionItem completed]) {
-        button = [[ActionItemMarkDone alloc] initWithName:@"mark incomplete" andTextView:textView];
+        button = [[ActionItemMarkDone alloc] initWithName:@"mark incomplete" andEntryCellView:entryCellView];
     } else {
-        button = [[ActionItemMarkDone alloc] initWithName:@" mark complete " andTextView:textView];
+        button = [[ActionItemMarkDone alloc] initWithName:@" mark complete " andEntryCellView:entryCellView];
     }
     
     [button setActionItem:actionItem];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
-    button = [[ActionItemQuickButton alloc] initWithName:@"responsibility" andTextView:textView];
+    button = [[ActionItemQuickButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
     [button setActionItem:actionItem];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[ActionItemQuickButton alloc] initWithName:@"due date" andTextView:textView];
+    button = [[ActionItemQuickButton alloc] initWithName:@"due date" andEntryCellView:entryCellView];
     [button setActionItem:actionItem];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
@@ -73,17 +75,10 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andQuestion:(Question *)question
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andQuestion:(Question *)question
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
-    QuestionQuickButton *button;
-
-    if ([question answer]){
-        button = [[QuestionQuickButton alloc] initWithName:@"clear answer" andTextView:textView];
-    } else {
-        button = [[QuestionQuickButton alloc] initWithName:@"   answer   " andTextView:textView];
-    }
-    
+    QuestionQuickButton *button = [[QuestionQuickButton alloc] initWithName:@"answer" andEntryCellView:entryCellView];
     [button setQuestion:question];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
@@ -91,20 +86,23 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForTextView:(UITextView *)textView andKeyPoint:(KeyPoint *)keyPoint
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andKeyPoint:(KeyPoint *)keyPoint
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     KeyPointButton *button;
 
-    button = [[KeyPointButton alloc] initWithName:@"photos" andTextView:textView];
+    button = [[KeyPointPhotoPickerButton alloc] initWithName:@"photos" andEntryCellView:entryCellView];
     [button setKeyPoint:keyPoint];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[KeyPointButton alloc] initWithName:@"camera" andTextView:textView];
-    [button setKeyPoint:keyPoint];
-    [button setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:button];
+    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    if (hasCamera) {
+        button = [[KeyPointCameraButton alloc] initWithName:@"camera" andEntryCellView:entryCellView];
+        [button setKeyPoint:keyPoint];
+        [button setBackgroundColor:[QuickWordsFactory normal]];
+        [data addObject:button];
+    }
     
     return data;
 }

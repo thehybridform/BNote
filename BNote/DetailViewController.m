@@ -68,14 +68,14 @@
         [[[self notesViewController] view] setHidden:YES];
         [[self toolbar] setHidden:YES];
         
-        HelpViewController *help = [[HelpViewController alloc] initWith:self];
-        [help setModalPresentationStyle:UIModalPresentationFormSheet];
-        [help setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [self presentModalViewController:help animated:YES];
+//        HelpViewController *help = [[HelpViewController alloc] initWith:self];
+//        [help setModalPresentationStyle:UIModalPresentationFormSheet];
+//        [help setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+//        [self presentModalViewController:help animated:YES];
     }
     
-    UIBarButtonItem *addButton =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(add:)];
+//    UIBarButtonItem *addButton =
+//    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(add:)];
     
 //    self.navigationItem.rightBarButtonItem = addButton;
 

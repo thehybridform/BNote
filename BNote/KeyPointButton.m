@@ -11,9 +11,5 @@
 @implementation KeyPointButton
 @synthesize keyPoint = _keyPoint;
 
-- (void)execute:(id)sender
-{
-
-}
 
 @end

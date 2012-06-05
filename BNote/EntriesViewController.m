@@ -145,12 +145,12 @@
     [self setQuickWordsViewController:quick];
     [quick setListener:self];
     
-    [quick setTargetTextView:[cell textView]];
+    [quick setEntryViewCell:cell];
     
     float x = 0;
     float width = [[quick view] bounds].size.width;
     float height = [[quick view] bounds].size.height;
-    float y = 211 - height + 50;
+    float y = 205 - height + 50;
     [[quick view] setFrame:CGRectMake(x, y, width, height)];
     [[[self view] superview] addSubview:[quick view]];
     

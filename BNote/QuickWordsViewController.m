@@ -35,8 +35,8 @@
 @synthesize listener = _listener;
 @synthesize entry = _entry;
 @synthesize scrollView = _scrollView;
-@synthesize targetTextView = _targetTextView;
 @synthesize parent = _parent;
+@synthesize entryViewCell = _entryViewCell;
 
 static float spacing = 10;
 static float speed = 0.1;
@@ -82,6 +82,7 @@ static float speed = 0.1;
     [self setAttendantToolbar:nil];
     [self setDecisionToolbar:nil];
     [self setParent:nil];
+    [self setEntryViewCell:nil];
 }
 
 - (IBAction)done:(id)sender
@@ -102,7 +103,7 @@ static float speed = 0.1;
 
 - (IBAction)dates:(id)sender
 {
-    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForTextView:[self targetTextView]] objectEnumerator];
+    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryCellView:[self entryViewCell]] objectEnumerator];
     [self buildButtons:items];
 }
 
@@ -177,11 +178,11 @@ static float speed = 0.1;
 - (NSEnumerator *)enumeratorForEntry:(Entry *)entry
 {
     if ([entry isKindOfClass:[ActionItem class]]) {
-        return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andActionItem:(ActionItem *)entry] objectEnumerator];
+        return [[QuickWordsFactory buildButtionsForEntryCellView:[self entryViewCell] andActionItem:(ActionItem *)entry] objectEnumerator];
     } else if ([entry isKindOfClass:[KeyPoint class]]) {
-        return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andKeyPoint:(KeyPoint *)entry] objectEnumerator];
+        return [[QuickWordsFactory buildButtionsForEntryCellView:[self entryViewCell] andKeyPoint:(KeyPoint *)entry] objectEnumerator];
     } else if ([entry isKindOfClass:[Question class]]) {
-        return [[QuickWordsFactory buildButtionsForTextView:[self targetTextView] andQuestion:(Question *)entry] objectEnumerator];
+        return [[QuickWordsFactory buildButtionsForEntryCellView:[self entryViewCell] andQuestion:(Question *)entry] objectEnumerator];
     }
     
     return nil;

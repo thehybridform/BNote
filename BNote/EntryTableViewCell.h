@@ -13,6 +13,9 @@
 
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) UITextView *textView;
+@property (assign, nonatomic) UITextView *targetTextView;
+@property (strong, nonatomic) UITextView *subTextView;
+@property (strong, nonatomic) UIScrollView *photosScrollView;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
 - (void)edit;

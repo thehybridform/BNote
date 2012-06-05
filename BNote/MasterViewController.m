@@ -50,7 +50,9 @@
     if ([[self data] count] == 0) {
         [self setData:[[NSMutableArray alloc] init]];
     } else {
-        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 }
 
@@ -85,7 +87,6 @@
     return [[self data] count];
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
@@ -178,6 +179,10 @@
         
         [[self tableView] reloadData];
 
+        int index = ([[self data] count] - 1);
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 }
 

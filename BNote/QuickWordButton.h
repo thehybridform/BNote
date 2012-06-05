@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EntryTableViewCell.h"
 
 @protocol QuickWordsCallback;
 
 @interface QuickWordButton : UIButton
-@property (strong, nonatomic) UITextView *textView;
+@property (strong, nonatomic) EntryTableViewCell *entryCellView;
 
-- (id)initWithName:(NSString *)name andTextView:(UITextView *)textView;
+- (id)initWithName:(NSString *)name andEntryCellView:(EntryTableViewCell *)entryCellView;
 - (void)execute:(id)sender;
 
 @end

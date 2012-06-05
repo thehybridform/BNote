@@ -15,11 +15,11 @@
 @end
 
 @implementation QuickWordButton
-@synthesize textView = _textView;
 @synthesize color = _color;
 @synthesize highlightColor = _highlightColor;
+@synthesize entryCellView = _entryCellView;
 
-- (id)initWithName:(NSString *)name andTextView:(UITextView *)textView
+- (id)initWithName:(NSString *)name andEntryCellView:(EntryTableViewCell *)entryCellView
 {
     self = [super init];
     if (self) {
@@ -28,7 +28,7 @@
         [LayerFormater roundCornersForView:self];
         
         [self setTitle:name forState:UIControlStateNormal];
-        [self setTextView:textView];
+        [self setEntryCellView:entryCellView];
         
         [self addTarget:self action:@selector(execute:) forControlEvents:UIControlEventTouchUpInside];
         [self addTarget:self action:@selector(unhighlight:) forControlEvents:UIControlEventTouchUpInside];

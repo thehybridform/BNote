@@ -40,15 +40,30 @@
 
     [self handleQuestionType:entry];
     [self handleActionItemType:entry];    
+    [self handleIcon:entry];
     
     UIColor *color = UIColorFromRGB([[[entry note] topic] color]);
     [self setSelectedBackgroundView:[BNoteFactory createHighlight:color]];
 
-    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
-    [[self imageView] setImage:[imageView image]];
     [[self imageView] setBackgroundColor:color];
     
     [self setNeedsDisplay];
+}
+
+- (void)handleIcon:(Entry *)entry
+{
+    if ([entry isKindOfClass:[KeyPoint class]]) {
+        KeyPoint *keyPoint = (KeyPoint *) entry;
+        if ([keyPoint photo]) {
+            UIImage *image = [UIImage imageWithData:[[keyPoint photo] small]];
+            [[self imageView] setImage:image];
+
+            return;
+        }
+    }
+
+    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
+    [[self imageView] setImage:[imageView image]];
 }
 
 - (void)handleQuestionType:(Entry *)entry

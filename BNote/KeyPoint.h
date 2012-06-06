@@ -2,7 +2,7 @@
 //  KeyPoint.h
 //  BNote
 //
-//  Created by Young Kristin on 6/5/12.
+//  Created by Young Kristin on 6/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,17 +10,10 @@
 #import <CoreData/CoreData.h>
 #import "Entry.h"
 
+@class Photo;
 
 @interface KeyPoint : Entry
 
-@property (nonatomic, retain) NSSet *photos;
-@end
-
-@interface KeyPoint (CoreDataGeneratedAccessors)
-
-- (void)addPhotosObject:(NSManagedObject *)value;
-- (void)removePhotosObject:(NSManagedObject *)value;
-- (void)addPhotos:(NSSet *)values;
-- (void)removePhotos:(NSSet *)values;
+@property (nonatomic, retain) Photo *photo;
 
 @end

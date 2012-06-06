@@ -16,8 +16,11 @@
 @property (assign, nonatomic) IBOutlet UITableViewCell *entryCell;
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) id<BNoteFilter> filter;
+@property (assign, nonatomic) BOOL keepQuickViewAlive;
+@property (assign, nonatomic) UIViewController *parentController;
 
 - (void)reload;
 - (void)selectLastCell;
+- (void)cleanupEntries;
 
 @end

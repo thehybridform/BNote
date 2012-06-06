@@ -13,24 +13,8 @@
 
 @interface TopicEditorViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
-@property (strong, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (strong, nonatomic) id<TopicEditorViewControllerListener> listener;
-@property (strong, nonatomic) NSIndexPath *indexPath;
 @property (strong, nonatomic) Topic *topic;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonAction;
-
-@property (strong, nonatomic) IBOutlet UIButton *button_1;
-@property (strong, nonatomic) IBOutlet UIButton *button_2;
-@property (strong, nonatomic) IBOutlet UIButton *button_3;
-@property (strong, nonatomic) IBOutlet UIButton *button_4;
-@property (strong, nonatomic) IBOutlet UIButton *button_5;
-@property (strong, nonatomic) IBOutlet UIButton *button_6;
-@property (strong, nonatomic) IBOutlet UIButton *button_7;
-@property (strong, nonatomic) IBOutlet UIButton *button_8;
-@property (strong, nonatomic) IBOutlet UIButton *button_9;
-@property (strong, nonatomic) IBOutlet UIButton *selectedColor;
-@property (assign, nonatomic) int currentColor;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
@@ -51,8 +35,8 @@
 @protocol TopicEditorViewControllerListener <NSObject>
 
 @required
-- (void)didFinish:(TopicEditorViewController *)controller;
-- (void)didCancel:(TopicEditorViewController *)controller;
+- (void)didFinish:(Topic *)topic;
+- (void)didCancel;
 
 
 @end

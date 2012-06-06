@@ -17,6 +17,7 @@
 #import "LayerFormater.h"
 #import "HelpViewController.h"
 
+
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @end
@@ -60,7 +61,7 @@
 {
     [super viewDidLoad];       
     
-    [[self view] setBackgroundColor:UIColorFromRGB(0xf5f3e6)];
+    [[self view] setBackgroundColor:[BNoteConstants appColor1]];
     
     if (![self topic]) {
         [[self addNewNoteButton] setHidden:YES];

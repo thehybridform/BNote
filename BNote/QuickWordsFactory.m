@@ -92,14 +92,18 @@
     NSMutableArray *data = [[NSMutableArray alloc] init];
     KeyPointButton *button;
 
-    button = [[KeyPointPhotoPickerButton alloc] initWithName:@"photos" andEntryCellView:entryCellView];
+    if ([keyPoint photo]) {
+        button = [[KeyPointPhotoPickerButton alloc] initWithName:@"change photo" andEntryCellView:entryCellView];\
+    } else {
+        button = [[KeyPointPhotoPickerButton alloc] initWithName:@"photos" andEntryCellView:entryCellView];\
+    }
     [button setKeyPoint:keyPoint];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
     BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     if (hasCamera) {
-        button = [[KeyPointCameraButton alloc] initWithName:@"camera" andEntryCellView:entryCellView];
+        button = [[KeyPointCameraButton alloc] initWithName:@"take picture" andEntryCellView:entryCellView];
         [button setKeyPoint:keyPoint];
         [button setBackgroundColor:[QuickWordsFactory normal]];
         [data addObject:button];

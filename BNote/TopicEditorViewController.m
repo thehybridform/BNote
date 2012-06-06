@@ -8,10 +8,26 @@
 
 #import "TopicEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ButtonMetaData.h"
+#import "BNoteFactory.h"
+#import "BNoteWriter.h"
 
 @interface TopicEditorViewController ()
-@property (strong, nonatomic) NSMutableArray *buttons;
+@property (strong, nonatomic) IBOutlet UIButton *selectedColorButton;
+@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonAction;
+
+@property (strong, nonatomic) IBOutlet UIButton *button_1;
+@property (strong, nonatomic) IBOutlet UIButton *button_2;
+@property (strong, nonatomic) IBOutlet UIButton *button_3;
+@property (strong, nonatomic) IBOutlet UIButton *button_4;
+@property (strong, nonatomic) IBOutlet UIButton *button_5;
+@property (strong, nonatomic) IBOutlet UIButton *button_6;
+@property (strong, nonatomic) IBOutlet UIButton *button_7;
+@property (strong, nonatomic) IBOutlet UIButton *button_8;
+@property (strong, nonatomic) IBOutlet UIButton *button_9;
+@property (assign, nonatomic) int selectedColor;
+
 @end
 
 @implementation TopicEditorViewController
@@ -19,7 +35,6 @@
 @synthesize nameTextField = _nameTextField;
 @synthesize titleTextLabel= _titleTextLabel;
 @synthesize listener = _listener;
-@synthesize indexPath = _indexPath;
 @synthesize topic = _topic;
 @synthesize buttonAction = _buttonAction;
 @synthesize button_1 = _button_1;
@@ -31,23 +46,20 @@
 @synthesize button_7 = _button_7;
 @synthesize button_8 = _button_8;
 @synthesize button_9 = _button_9;
+@synthesize selectedColorButton = _selectedColorButton;
 @synthesize selectedColor = _selectedColor;
-@synthesize currentColor = _currentColor;
-@synthesize buttons = _buttons;
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     
     [self setButtonAction:nil];
-    [self setIndexPath:nil];
     [self setNameTextField:nil];
     [self setListener:nil];
     [self setTopic:nil];
     [self setTitleTextLabel:nil];
-    [self setSelectedColor:nil];
+    [self setSelectedColorButton:nil];
     
-    [self setButtons:nil];
     [self setButton_1:nil];
     [self setButton_2:nil];
     [self setButton_3:nil];
@@ -57,7 +69,6 @@
     [self setButton_7:nil];
     [self setButton_8:nil];
     [self setButton_9:nil];
-    [self setButtons:nil];
 }
 
 - (id)initWithDefaultNib
@@ -69,29 +80,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if ([self isEditing]) {
+
+    [self initButton:[self selectedColorButton] withColor:ColorWhite];
+
+    if ([self topic]) {
+        [[self selectedColorButton] setBackgroundColor:UIColorFromRGB([[self topic] color])];
         [[self nameTextField] setText:[[self topic] title]];
         [[self titleTextLabel] setText:@"Edit Topic"];
-        [[self buttonAction] setTitle:@"Update"];
+        [[self buttonAction] setTitle:@"Update"];        
     } else {
         [[self titleTextLabel] setText:@"New Topic"];
         [[self buttonAction] setTitle:@"Create"];
     }
     
-    [self setButtons:[[NSMutableArray alloc] init]];
-
-    [self initButton:[self button_1] withColor:0xd7a779 andIndex:1];
-    [self initButton:[self button_2] withColor:0xd1c5a4 andIndex:2];
-    [self initButton:[self button_3] withColor:0x665d51 andIndex:3];
-    [self initButton:[self button_4] withColor:0x98bac3 andIndex:4];
-    [self initButton:[self button_5] withColor:0xcb694d andIndex:5];
-    [self initButton:[self button_6] withColor:0x8e9c6d andIndex:6];
-    [self initButton:[self button_7] withColor:0xc4d1c5 andIndex:7];
-    [self initButton:[self button_8] withColor:0xc19cb5 andIndex:8];
-    [self initButton:[self button_9] withColor:0xd7cd79 andIndex:9];
-    [self initButton:[self selectedColor] withColor:0xffffff andIndex:10];
-
-    [self initHighlightColor];
+    [self initButton:[self button_1] withColor:Color1];
+    [self initButton:[self button_2] withColor:Color2];
+    [self initButton:[self button_3] withColor:Color3];
+    [self initButton:[self button_4] withColor:Color4];
+    [self initButton:[self button_5] withColor:Color5];
+    [self initButton:[self button_6] withColor:Color6];
+    [self initButton:[self button_7] withColor:Color7];
+    [self initButton:[self button_8] withColor:Color8];
+    [self initButton:[self button_9] withColor:Color9];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -99,98 +109,103 @@
 	return YES;
 }
 
-# pragma mark - Actions
 - (IBAction)done:(id)sender
 {
-    [[self listener] didFinish:self];
+    NSString *title = [[self nameTextField] text];
+    
+    Topic *topic = [self topic];
+    if ([self topic]) {
+        topic = [self topic];
+    } else {
+        topic = [BNoteFactory createTopic:title]; 
+    }
+    
+    if (title && [title length] > 0) {
+        [topic setTitle:title];
+    } else {
+        [topic setTitle:@"Topic Title"];
+    }
+
+    [topic setColor:[self selectedColor]];
+    [[BNoteWriter instance] update];
+    
+    [[self listener] didFinish:topic];
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)cancel:(id)sender
 {
-    [[self listener] didCancel:self];
+    [[self listener] didCancel];
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)initButton:(UIButton *)button withColor:(int)color andIndex:(NSInteger)index
+- (void)initButton:(UIButton *)button withColor:(int)color
 {
     [button setBackgroundColor:UIColorFromRGB(color)];
     [[button layer] setCornerRadius:7.0];
     [[button layer] setMasksToBounds:YES];
     [[button layer] setBorderWidth:1];
-    
-    [[self buttons] addObject:[ButtonMetaData createWithIndex:index andButton:button andColor:color]];
 }
 
-- (void)updateHighlightColor:(NSInteger)index
+- (void)updateHighlightColor:(UIButton *)button
 {
-    for (int i = 0; i < [[self buttons] count]; i++) {
-        ButtonMetaData *data = [[self buttons] objectAtIndex:i];
-        if ([data index] == index) {
-            [self setCurrentColor:[data color]];
-            [[self selectedColor] setBackgroundColor:[[data button] backgroundColor]];
-            
-            break;
-        }
-    }
-}
+    UIColor *color = [button backgroundColor];
 
-- (void)initHighlightColor
-{
-    for (int i = 0; i < [[self buttons] count]; i++) {
-        ButtonMetaData *data = [[self buttons] objectAtIndex:i];
-        if ([[self topic] color] == [data color]) {
-            [self setCurrentColor:[data color]];
-            [[self selectedColor] setBackgroundColor:[[data button] backgroundColor]];
-            
-            break;
-        }
-    }
+    [[self selectedColorButton] setBackgroundColor:color];
 }
 
 - (IBAction)color1Selected:(id)sender
 {
-    [self updateHighlightColor:1];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color1];
 }
 
 - (IBAction)color2Selected:(id)sender
 {
-    [self updateHighlightColor:2];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color2];
 }
 
 - (IBAction)color3Selected:(id)sender
 {
-    [self updateHighlightColor:3];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color3];
 }
 
 - (IBAction)color4Selected:(id)sender
 {
-    [self updateHighlightColor:4];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color4];
 }
 
 - (IBAction)color5Selected:(id)sender
 {
-    [self updateHighlightColor:5];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color5];
 }
 
 - (IBAction)color6Selected:(id)sender
 {
-    [self updateHighlightColor:6];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color6];
 }
 
 - (IBAction)color7Selected:(id)sender
 {
-    [self updateHighlightColor:7];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color7];
 }
 
 - (IBAction)color8Selected:(id)sender
 {
-    [self updateHighlightColor:8];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color8];
 }
 
 - (IBAction)color9Selected:(id)sender
 {
-    [self updateHighlightColor:9];
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:Color9];
 }
 
 @end

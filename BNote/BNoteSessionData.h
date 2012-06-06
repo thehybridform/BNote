@@ -16,7 +16,6 @@ typedef enum {
     Editing
 } BNotePhase;
 
-@property (strong, nonatomic) Topic *currentTopic;
 @property (assign, nonatomic) BNotePhase phase;
 
 + (BNoteSessionData *)instance;

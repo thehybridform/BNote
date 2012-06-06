@@ -51,6 +51,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[self view] setBackgroundColor:[BNoteConstants appColor1]];
+    
     [self setClearsSelectionOnViewWillAppear:NO];
     [self setGroupEntries:YES];
     [[self sorting] setTitle:@"No Sorting"];

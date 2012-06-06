@@ -47,25 +47,41 @@
 
 - (void)removeTopic:(Topic *)topic
 {
-    [[self context] deleteObject:topic];
-    [self update];
+    [self deleteObject:topic];
 }
 
 - (void)removeNote:(Note *)note
 {
-    [[self context] deleteObject:note];
-    [self update];
+    [self deleteObject:note];
 }
 
 - (void)removeEntry:(Entry *)entry
 {
-    [[self context] deleteObject:entry];
-    [self update];
+    [self deleteObject:entry];
+}
+
+- (void)removePhoto:(Photo *)photo
+{
+    [self deleteObject:photo];
+}
+
+- (void)deleteObject:(id)object
+{
+    if (object) {
+        [[self context] deleteObject:object];
+    }
 }
 
 - (void)update
 {
-    [[self context] save:nil];    
+    NSError *error = nil;
+
+    BOOL success = [[self context] save:&error];  
+    
+    if (!success) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+
 }
 
 @end

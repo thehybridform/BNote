@@ -108,8 +108,6 @@
     Note *note = [self note];
     if ([note subject] && [[note subject] length] > 0) {
         [[self subject] setText:[note subject]];
-    } else {
-        [[self subject] becomeFirstResponder];
     }
 
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
@@ -129,6 +127,7 @@
     [[self modeButton] setTitle:@"Add"];
     
     [[self entriesViewController] setNote:note];
+    [[self entriesViewController] setParentController:self];
     
     UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
     [[self dateView] addGestureRecognizer:normalTap];
@@ -144,7 +143,7 @@
 {
     [[self note] setSubject:[[self subject] text]];
     [self dismissModalViewControllerAnimated:YES];
-        
+    [[self entriesViewController] cleanupEntries];    
     [[self delegate] didFinishEditingNote:[self note]];
 }
 

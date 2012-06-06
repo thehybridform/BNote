@@ -36,9 +36,16 @@
         [self setFrame:CGRectMake(0, 0, [[[self titleLabel] text] length] * 11, 40)];
         
         [self setHighlightColor:[UIColor blueColor]];
+        
+        [self initCommon];
     }
     
     return self;
+}
+
+- (void)initCommon
+{
+    
 }
 
 - (void)highlight:(id)sender

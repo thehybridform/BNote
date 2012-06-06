@@ -21,6 +21,8 @@
 @property (strong, nonatomic) EntryTableViewCell *selectEntryTableViewCell;
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 @property (strong, nonatomic) NSMutableArray *filteredEntries;
+@property (strong, nonatomic) NSMutableArray *deletedEntries;
+
 @end
 
 @implementation EntriesViewController
@@ -30,11 +32,16 @@
 @synthesize filter = _filter;
 @synthesize filteredEntries = _filteredEntries;
 @synthesize selectEntryTableViewCell = _selectEntryTableViewCell;
+@synthesize keepQuickViewAlive = _keepQuickViewAlive;
+@synthesize parentController = _parentController;
+@synthesize deletedEntries = _deletedEntries;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    [[self view] setBackgroundColor:[BNoteConstants appColor1]];
+     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification object:[[self view] window]];
 }
@@ -49,6 +56,8 @@
     [self setFilter:nil];
     [self setFilteredEntries:nil];
     [self setSelectEntryTableViewCell:nil];
+    [self setParentController:nil];
+    [self setDeletedEntries:nil];
 }
 
 - (void)setFilter:(id<BNoteFilter>)filter
@@ -63,6 +72,7 @@
 {
     _note = note;
     [self setFilter:[[IdentityFillter alloc] init]];
+    [self setDeletedEntries:[[NSMutableArray alloc] init]];
 }
 
 #pragma mark - Table view data source
@@ -86,6 +96,7 @@
     EntryTableViewCell *cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
     [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
     [cell setEntry:entry];
+    [cell setParentController:self];
         
     [LayerFormater roundCornersForView:cell];
     
@@ -101,8 +112,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
-        [[BNoteWriter instance] removeEntry:entry];
 
+        [[self deletedEntries] addObject:entry];
         [[self filteredEntries] removeObject:entry];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
@@ -161,7 +172,9 @@
 
 - (void)keyboardDidHide:(id)sender
 {
-    [self clearModalViews];
+    if (![self keepQuickViewAlive]) {
+        [self clearModalViews];
+    }
 }
 
 - (void)didFinishFromQuickWords
@@ -184,7 +197,9 @@
     while (entry = [entries nextObject]) {
         if ([[self filter] accept:entry]) {
             if (![entry isKindOfClass:[Attendant class]]) {
-                [[self filteredEntries] addObject:entry];
+                if (![[self deletedEntries] containsObject:entry]) {
+                    [[self filteredEntries] addObject:entry];
+                }
             }
         }
     }
@@ -202,6 +217,15 @@
 - (UIViewController *)controller
 {
     return self;
+}
+
+- (void)cleanupEntries
+{
+    NSEnumerator *entries = [[self deletedEntries] objectEnumerator];
+    Entry *entry;
+    while (entry = [entries nextObject]) {
+        [[BNoteWriter instance] removeEntry:entry];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -42,7 +42,6 @@
     [super viewDidLoad];
     
     [LayerFormater roundCornersForView:[self view]];
-    [LayerFormater setBorderWidth:0 forView:[self view]];
     
     [self update];
 }

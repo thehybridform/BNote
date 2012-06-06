@@ -14,6 +14,5 @@
 @interface MasterViewController : UITableViewController <TopicEditorViewControllerListener>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
-@property (strong, nonatomic) NSMutableArray *data;
 
 @end

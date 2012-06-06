@@ -16,6 +16,7 @@
 #import "BNoteSessionData.h"
 
 @interface MasterViewController () 
+@property (strong, nonatomic) NSMutableArray *data;
 
 @end
 
@@ -37,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self view] setBackgroundColor:UIColorFromRGB(0xf5f3e6)];
+    [[self view] setBackgroundColor:[BNoteConstants appColor1]];
 
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
@@ -98,7 +99,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-        [cell setShowsReorderControl:YES];
+        [cell setShowsReorderControl:NO];
         [LayerFormater roundCornersForView:cell];
         
         [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
@@ -120,15 +121,12 @@
 {
     TopicEditorViewController *topicEditor = [[TopicEditorViewController alloc] initWithDefaultNib];
     [topicEditor setListener:self];
-    [topicEditor setEditing:YES];
-    [topicEditor setIndexPath:indexPath];
     
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     [topicEditor setTopic:topic];
     [topicEditor setModalPresentationStyle:UIModalPresentationFormSheet];
     [topicEditor setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentModalViewController:topicEditor animated:YES];
-    [[BNoteSessionData instance] setCurrentTopic:topic];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,18 +141,6 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-    [[self data] exchangeObjectAtIndex:[fromIndexPath row] withObjectAtIndex:[toIndexPath row]];
-    
-    for (int i = 0; i < [[self data] count]; i++) {
-        Topic *topic = [[self data] objectAtIndex:i];
-        [topic setIndex:i];
-    }
-    
-    [[BNoteWriter instance] update];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
@@ -163,32 +149,21 @@
 
 
 #pragma mark TopicEditorViewControllerDelegate
-- (void)didFinish:(TopicEditorViewController *)topicEditor
+- (void)didFinish:(Topic *)topic
 {
-    NSString *title = [[topicEditor nameTextField] text];
-    if (title && [title length] > 0) {
-        if ([topicEditor isEditing]) {
-            [[[BNoteSessionData instance] currentTopic] setTitle:title];
-            [[[BNoteSessionData instance] currentTopic] setColor:[topicEditor currentColor]];
-        } else {
-            Topic *topic = [BNoteFactory createTopic:title]; 
-            [topic setColor:[topicEditor currentColor]];
-            [topic setIndex:[[self data] count]];
-            [[self data] addObject:topic];
-        }
-        
-        [[BNoteWriter instance] update];
-        
-        [[self tableView] reloadData];
-
-        int index = ([[self data] count] - 1);
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    if (![[self data] containsObject:topic]) {
+        [[self data] addObject:topic];
     }
+    
+    [[self tableView] reloadData];
+
+    int index = ([[self data] count] - 1);
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+    [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
 
-- (void)didCancel:(TopicEditorViewController *)topicEditor
+- (void)didCancel
 {
 }
 

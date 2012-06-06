@@ -17,19 +17,25 @@
 #import "Attendant.h"
 #import "BNoteFactory.h"
 #import "BNoteStringUtils.h"
+#import "BNoteWriter.h"
+#import "PhotoViewController.h"
+#import "EntriesViewController.h"
 
 @interface EntryTableViewCell()
-
+@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
 @end
 
 @implementation EntryTableViewCell
 @synthesize entry = _entry;
 @synthesize textView = _textView;
 @synthesize subTextView = _subTextView;
-@synthesize photosScrollView = _photosScrollView;
 @synthesize targetTextView = _targetTextView;
+@synthesize parentController = _parentController;
+@synthesize actionSheet = _actionSheet;
+@synthesize longPress = _longPress;
 
-const float x = 65;
+const float x = 100;
 const float y = 5;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier
@@ -47,7 +53,7 @@ const float y = 5;
         [[self subTextView] setAutoresizingMask:[[self subTextView] autoresizingMask]];
         [LayerFormater roundCornersForView:[self subTextView]];
         [LayerFormater setBorderWidth:5 forView:[self subTextView]];
-        [LayerFormater setBorderColor:UIColorFromRGB(0x336633) forView:[self subTextView]];
+        [LayerFormater setBorderColor:UIColorFromRGB(AnswerColor) forView:[self subTextView]];
         [[self contentView] addSubview:[self subTextView]];
         [[self subTextView] setFont:[UIFont systemFontOfSize:15]];
         [[self subTextView] setHidden:YES];
@@ -56,21 +62,17 @@ const float y = 5;
         [[self textLabel] setLineBreakMode:UILineBreakModeWordWrap];
         [[self textLabel] setHighlightedTextColor:[UIColor blackColor]];
         
-        [[self detailTextLabel] setTextColor:UIColorFromRGB(0x336633)];
-        [[self detailTextLabel] setHighlightedTextColor:UIColorFromRGB(0x336633)];
+        [[self detailTextLabel] setTextColor:UIColorFromRGB(AnswerColor)];
+        [[self detailTextLabel] setHighlightedTextColor:UIColorFromRGB(AnswerColor)];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
                                                      name:UITextViewTextDidEndEditingNotification object:[[self textView] window]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
                                                      name:UITextViewTextDidChangeNotification object:[[self textView] window]];
-
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
                                                      name:UITextViewTextDidEndEditingNotification object:[[self subTextView] window]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
                                                      name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
-
-        [self setPhotosScrollView:[[UIScrollView alloc] init]];
-        [[self photosScrollView] setHidden:YES];
     }
     
     return self;
@@ -83,11 +85,9 @@ const float y = 5;
     [[self textView] setText:[entry text]];
     [[self textLabel] setText:[entry text]];
     
-    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
-    [[self imageView] setImage:[imageView image]];
-                              
     [self handleQuestionType:entry];
-    [self handleActionItemType:entry];    
+    [self handleActionItemType:entry];
+    [self handleImageIcon:entry active:NO];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
     [backgroundView setBackgroundColor:[UIColor whiteColor]];
@@ -100,8 +100,7 @@ const float y = 5;
 
 - (void)edit
 {
-    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:YES];
-    [[self imageView] setImage:[imageView image]];
+    [self handleImageIcon:[self entry] active:YES];
 
     [[self textLabel] setHidden:YES];
     [[self detailTextLabel] setHidden:YES];
@@ -109,7 +108,7 @@ const float y = 5;
     [[self textView] setText:[[self entry] text]];
     [[self textView] setHidden:NO];
     
-    float width = [[self contentView] frame].size.width - 70;
+    float width = [[self contentView] frame].size.width - x - 20;
     float hieght = [[self contentView] frame].size.height - 10;
     
     [[self textView] setFrame:CGRectMake(x, y, width, hieght)];
@@ -123,8 +122,7 @@ const float y = 5;
 {
     [[self textView] resignFirstResponder];
 
-    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
-    [[self imageView] setImage:[imageView image]];
+    [self handleImageIcon:[self entry] active:NO];
 
     [[self textView] setHidden:YES];
     [[self textLabel] setHidden:NO];
@@ -187,20 +185,105 @@ const float y = 5;
     }
 }
 
-+ (int)cellHieght:(Entry *)entry
+- (void)handleImageIcon:(Entry *)entry active:(BOOL)active
 {
-    int lineCount = [BNoteStringUtils lineCount:[entry text]];
-    
-    int size = MAX(4, lineCount) * 25;
-    
     if ([entry isKindOfClass:[KeyPoint class]]) {
         KeyPoint *keyPoint = (KeyPoint *) entry;
-        if ([keyPoint photos] && [[keyPoint photos] count] > 0) {
 
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:keyPoint];
+
+        if ([keyPoint photo]) {
+            [[self imageView] setImage:[self keyImage:[keyPoint photo]]];
+            
+            UILongPressGestureRecognizer *longPress =
+            [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
+            [self addGestureRecognizer:longPress];
+            [self setLongPress:longPress];
+            
+            return;
         }
     }
     
-    return size;
+    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:active];
+    [[self imageView] setImage:[imageView image]];
+}
+
+- (void)longPressTap:(id)sender
+{
+    if (![self actionSheet]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Key Point" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove Photo" otherButtonTitles:@"View Photo Full Screen", nil];
+        [self setActionSheet:actionSheet];
+    
+        CGRect rect = [self bounds];
+        [actionSheet showFromRect:rect inView:self animated:YES];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [self removePhotos];
+            break;
+        case 1:    
+            [self showPhoto];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self setActionSheet:nil];
+}
+
+- (void)removePhotos
+{
+    KeyPoint *keyPoint = (KeyPoint *) [self entry];
+    [[BNoteWriter instance] removePhoto:[keyPoint photo]];
+    [self updateImageViewForKeyPoint:keyPoint];
+}
+
+- (void)updateImageView:(id)object
+{
+    NSNotification *notification = (NSNotification *) object;
+    KeyPoint *keyPoint = (KeyPoint *) [notification object];
+    [self updateImageViewForKeyPoint:keyPoint];
+}
+
+- (void)updateImageViewForKeyPoint:(KeyPoint *)keyPoint
+{
+    if ([keyPoint photo]) {
+        [[self imageView] setImage:[self keyImage:[keyPoint photo]]];
+    } else {
+        [self removeGestureRecognizer:[self longPress]];
+        [self setLongPress:nil];
+        UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
+        [[self imageView] setImage:[imageView image]];
+    }
+}
+
+- (UIImage *)keyImage:(Photo *)photo
+{
+    return [UIImage imageWithData:[photo thumbnail]];
+}
+
+- (void)showPhoto
+{
+    KeyPoint *keyPoint = (KeyPoint *) [self entry];
+    Photo *photo = [keyPoint photo];
+    
+    UIImage *image = [UIImage imageWithData:[photo original]];
+    PhotoViewController *controller = [[PhotoViewController alloc] initWithImage:image];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [[[self parentController] parentController] presentModalViewController:controller animated:YES];
+}
+
++ (int)cellHieght:(Entry *)entry
+{
+    return MAX(4, [BNoteStringUtils lineCount:[entry text]]) * 25;
 }
 
 

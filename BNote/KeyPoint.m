@@ -2,15 +2,16 @@
 //  KeyPoint.m
 //  BNote
 //
-//  Created by Young Kristin on 6/5/12.
+//  Created by Young Kristin on 6/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "KeyPoint.h"
+#import "Photo.h"
 
 
 @implementation KeyPoint
 
-@dynamic photos;
+@dynamic photo;
 
 @end

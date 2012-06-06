@@ -10,6 +10,8 @@
 #import "Topic.h"
 #import "Note.h"
 #import "Entry.h"
+#import "Photo.h"
+#import "KeyPoint.h"
 
 @interface BNoteWriter : NSObject
 
@@ -22,6 +24,7 @@
 - (void)removeNote:(Note *)note;
 - (void)removeEntry:(Entry *)entry;
 
+- (void)removePhoto:(Photo *)photo;
 
 - (id)insertNewObjectForEntityForName:(NSString *)name;
 

@@ -15,7 +15,6 @@
 
 @implementation BNoteSessionData
 @synthesize phase = _phase;
-@synthesize currentTopic = _currentTopic;
 
 - (BOOL)canEditEntry
 {

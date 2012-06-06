@@ -7,7 +7,38 @@
 //
 
 #import "KeyPointCameraButton.h"
+#import "EntriesViewController.h"
 
 @implementation KeyPointCameraButton
+
+- (void)execute:(id)sender
+{
+    EntryTableViewCell *cell = [self entryCellView];
+    EntriesViewController *controller = [cell parentController];
+    [controller setKeepQuickViewAlive:YES];
+    
+    [[cell textView] resignFirstResponder];
+    [[cell subTextView] resignFirstResponder];
+    
+    [self presentCamera];
+}
+
+- (void)presentCamera
+{
+    [[self imagePickerController] setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [[self imagePickerController] setModalPresentationStyle:UIModalPresentationFullScreen];
+    [[self imagePickerController] setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    UIViewController *controller = [[[self entryCellView] parentController] parentController];
+    [controller presentModalViewController:[self imagePickerController] animated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIViewController *controller = [[[self entryCellView] parentController] parentController];
+    [controller dismissModalViewControllerAnimated:YES];
+    UIImage *image = [self handlePhoto:info];
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+}
 
 @end

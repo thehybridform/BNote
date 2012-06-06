@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Entry.h"
 
-@interface EntryTableViewCell : UITableViewCell
+@class EntriesViewController;
+
+@interface EntryTableViewCell : UITableViewCell <UIActionSheetDelegate>
 
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) UITextView *textView;
 @property (assign, nonatomic) UITextView *targetTextView;
 @property (strong, nonatomic) UITextView *subTextView;
-@property (strong, nonatomic) UIScrollView *photosScrollView;
+@property (assign, nonatomic) EntriesViewController *parentController;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
 - (void)edit;

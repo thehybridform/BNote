@@ -19,6 +19,9 @@
 		18070E091578623E003486E3 /* DecisionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070E081578623D003486E3 /* DecisionFilter.m */; };
 		1810692E15637A6A0018B03B /* BNoteReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810692D15637A6A0018B03B /* BNoteReader.m */; };
 		1810693815638E9E0018B03B /* BNoteWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810693715638E9E0018B03B /* BNoteWriter.m */; };
+		1818B54E15803C2500928BAF /* ResponsibilityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */; };
+		1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
+		1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5521580654100928BAF /* DueDateActionItemButton.m */; };
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
@@ -125,6 +128,11 @@
 		1810692D15637A6A0018B03B /* BNoteReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteReader.m; sourceTree = "<group>"; };
 		1810693615638E9E0018B03B /* BNoteWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteWriter.h; sourceTree = "<group>"; };
 		1810693715638E9E0018B03B /* BNoteWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteWriter.m; sourceTree = "<group>"; };
+		1818B54B15803C2500928BAF /* ResponsibilityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsibilityTableViewController.h; sourceTree = "<group>"; };
+		1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsibilityTableViewController.m; sourceTree = "<group>"; };
+		1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResponsibilityTableViewController.xib; sourceTree = "<group>"; };
+		1818B5511580654000928BAF /* DueDateActionItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DueDateActionItemButton.h; sourceTree = "<group>"; };
+		1818B5521580654100928BAF /* DueDateActionItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DueDateActionItemButton.m; sourceTree = "<group>"; };
 		181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummariesTableViewController.h; sourceTree = "<group>"; };
 		181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummariesTableViewController.m; sourceTree = "<group>"; };
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
@@ -535,6 +543,11 @@
 				1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */,
 				18A056ED157DEE8D002A4A78 /* ActionItemResponabiltyButton.h */,
 				18A056EE157DEE8D002A4A78 /* ActionItemResponabiltyButton.m */,
+				1818B54B15803C2500928BAF /* ResponsibilityTableViewController.h */,
+				1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */,
+				1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */,
+				1818B5511580654000928BAF /* DueDateActionItemButton.h */,
+				1818B5521580654100928BAF /* DueDateActionItemButton.m */,
 			);
 			name = "Action Item";
 			sourceTree = "<group>";
@@ -701,6 +714,7 @@
 				18A056D7157D7E7D002A4A78 /* Default-Portrait~ipad.png in Resources */,
 				18A056D9157D7E90002A4A78 /* Default-Landscape~ipad.png in Resources */,
 				18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */,
+				1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +783,8 @@
 				18A056FB157F3762002A4A78 /* PhotoViewController.m in Sources */,
 				18A05705157F4A26002A4A78 /* KeyPoint.m in Sources */,
 				18A05708157F4A26002A4A78 /* Photo.m in Sources */,
+				1818B54E15803C2500928BAF /* ResponsibilityTableViewController.m in Sources */,
+				1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

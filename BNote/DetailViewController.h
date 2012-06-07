@@ -21,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
 - (IBAction)createNewNote:(id)sender;
+- (void)reload;
 
 @end

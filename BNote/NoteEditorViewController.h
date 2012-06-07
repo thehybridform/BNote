@@ -12,6 +12,7 @@
 #import "AttendantsViewController.h"
 #import "DatePickerViewController.h"
 
+@class DetailViewController;
 
 @protocol NoteEditorViewControllerDelegate;
 
@@ -43,7 +44,6 @@
 - (IBAction)done:(id)sender;
 - (IBAction)editMode:(id)sender;
 
-- (IBAction)addAttendee:(id)sender;
 - (IBAction)addKeyPoint:(id)sender;
 - (IBAction)addQuestion:(id)sender;
 - (IBAction)addDecision:(id)sender;

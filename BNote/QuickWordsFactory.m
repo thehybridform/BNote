@@ -17,6 +17,7 @@
 #import "KeyPointCameraButton.h"
 #import "KeyPointPhotoPickerButton.h"
 #import "ActionItemResponabiltyButton.h"
+#import "DueDateActionItemButton.h"
 
 @implementation QuickWordsFactory
 
@@ -68,7 +69,7 @@
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[ActionItemQuickButton alloc] initWithName:@"due date" andEntryCellView:entryCellView];
+    button = [[DueDateActionItemButton alloc] initWithName:@"due date" andEntryCellView:entryCellView];
     [button setActionItem:actionItem];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];

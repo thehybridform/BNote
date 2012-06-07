@@ -70,9 +70,11 @@
 {
     if ([entry isKindOfClass:[Question class]]) {
         Question *question = (Question *) entry;
-        if ([question answer]) {
-            NSString *answer = [@"Answer: " stringByAppendingString:[question answer]];
-            [[self detailTextLabel] setText:answer];
+        
+        NSString *detail = [BNoteEntryUtils formatDetailTextForQuestion:question];
+        
+        if (detail) {
+            [[self detailTextLabel] setText:detail];
         } else {
             [[self detailTextLabel] setText:nil];
         }
@@ -83,12 +85,12 @@
 {
     if ([entry isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) entry;
-        if ([actionItem completed]) {
-            NSDate *completed = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem completed]]; 
-            NSString *date = [@"Completed on " stringByAppendingString:[BNoteStringUtils dateToString:completed]];
-            [[self detailTextLabel] setText:date];
-        } else {
+        NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
+        
+        if ([BNoteStringUtils nilOrEmpty:detail]) {
             [[self detailTextLabel] setText:nil];
+        } else {
+            [[self detailTextLabel] setText:detail];
         }
     }
     

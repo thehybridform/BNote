@@ -7,7 +7,8 @@
 //
 
 #import "ActionItemQuickButton.h"
+#import "ResponsibilityTableViewController.h"
 
-@interface ActionItemResponabiltyButton : ActionItemQuickButton
+@interface ActionItemResponabiltyButton : ActionItemQuickButton <ResponsibilityTableViewControllerDelegate>
 
 @end

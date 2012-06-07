@@ -18,7 +18,6 @@
 @synthesize listener = _listener;
 @synthesize datePicker = _datePicker;
 @synthesize date = _date;
-@synthesize toolBar = _toolbar;
 
 - (id)initWithDate:(NSDate *)date
 {
@@ -38,15 +37,12 @@
 - (void)didFinish:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
-    [[self listener] didFinishDatePicker];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [LayerFormater roundCornersForView:[self toolBar]];
-    [LayerFormater roundCornersForView:[self datePicker]];
     [[self datePicker] setMinuteInterval:5];
     [[self datePicker] setDate:[self date]];
     
@@ -62,7 +58,6 @@
     [self setDoneButton:nil];
     [self setDatePicker:nil];
     [self setDate:nil];
-    [self setToolBar:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

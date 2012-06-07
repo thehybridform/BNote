@@ -12,6 +12,7 @@
 #import "BNoteWriter.h"
 #import "NoteView.h"
 #import "Note.h"
+#import "DetailViewController.h"
 
 @interface NotesViewController ()
 
@@ -19,22 +20,13 @@
 
 @implementation NotesViewController
 @synthesize topic = _topic;
-@synthesize entrySummariesTableViewController = _entrySummariesTableViewController;
+@synthesize parentController = _parentController;
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     [self setTopic:nil];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-
-    }
-    
-    return self;
+    [self setParentController:nil];
 }
 
 - (void)viewDidLoad
@@ -43,17 +35,10 @@
     
     [LayerFormater roundCornersForView:[self view]];
     
-    [self update];
+    [self reload];
 }
 
-- (void)setTopic:(Topic *)topic
-{
-    _topic = topic;
-    
-    [self update];
-}
-
-- (void)update
+- (void)reload
 {    
     NSEnumerator *views = [[[self view] subviews] objectEnumerator];
     UIView *view;
@@ -82,22 +67,20 @@
     if (width > 0) {
         [scrollView setContentSize:CGSizeMake(width, [view bounds].size.height)];
     }
-    
-    [[self entrySummariesTableViewController] reload]; 
 }
 
 - (void)deleteNote:(Note *)note
 {
     [[BNoteWriter instance] removeNote:note];
 
-    [self setTopic:[self topic]];
+    [[self parentController] reload]; 
 }
 
 - (void)didFinishEditingNote:(Note *)note
 {
     [[BNoteWriter instance] update];
     
-    [self setTopic:[self topic]];
+    [[self parentController] reload]; 
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

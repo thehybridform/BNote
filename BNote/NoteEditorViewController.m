@@ -28,9 +28,9 @@
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
-@property (strong, nonatomic) DatePickerViewController *datePickerViewController;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *contactPicker; 
 @property (strong, nonatomic) Attendant *selectedAttendant;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 @end
 
@@ -54,12 +54,12 @@
 @synthesize modeButton = _modeButton;
 @synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
-@synthesize datePickerViewController = _datePickerViewController;
 @synthesize attendantsImageView = _attendantsImageView;
 @synthesize attendantsScrollView = _attendantsScrollView;
 @synthesize contactPicker = _contactPicker;
 @synthesize attendantsViewController = _attendantsViewController;
 @synthesize selectedAttendant = _selectedAttendant;
+@synthesize popup = _popup;
 
 - (void)viewDidUnload
 {
@@ -83,11 +83,11 @@
     [self setTrashButton:nil];
     [self setEntriesViewController:nil];
     [self setDelegate:nil];
-    [self setDatePickerViewController:nil];
     [self setAttendantsImageView:nil];
     [self setContactPicker:nil];
     [self setAttendantsViewController:nil];
     [self setSelectedAttendant:nil];
+    [self setPopup:nil];
 }
 
 
@@ -263,25 +263,22 @@
 
 - (void)showDatePicker:(id)sender
 {
-    if ([self datePickerViewController]) {
-        [[self datePickerViewController] didFinish:nil];
-        [self setDatePickerViewController:nil];
-    } else {
-        NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
+    
+    DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
+    [controller setListener:self];
 
-        DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
-        [[controller view] setBackgroundColor:[[self view] backgroundColor]];
-        [controller setListener:self];
-        [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
-        [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-        [[self entriesViewController] presentModalViewController:controller animated:YES];
-        [self setDatePickerViewController:controller];
-    }
-}
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [self setPopup:popup];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = [self dateView];
+    CGRect rect = [view bounds];
 
-- (void)didFinishDatePicker
-{
-    [self setDatePickerViewController:nil];
+    [popup presentPopoverFromRect:rect inView:view
+                     permittedArrowDirections:UIPopoverArrowDirectionAny 
+                                     animated:YES];
 }
 
 - (void)dateTimeUpdated:(NSDate *)date

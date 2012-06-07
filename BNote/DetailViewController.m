@@ -47,20 +47,30 @@
 {
     _topic = topic;
     
+    [[self tableViewController] setTopic:[self topic]];
+    [[self notesViewController] setTopic:[self topic]];
+
+    [self reload];
+}
+
+- (void)reload
+{
+    [[BNoteWriter instance] update];
+
     [[self addNewNoteButton] setHidden:NO];
     [[[self tableViewController] view] setHidden:NO];
     [[[self notesViewController] view] setHidden:NO];
     [[self toolbar] setHidden:NO];
 
-    [[self tableViewController] setTopic:topic];
-    [[self notesViewController] setTopic:topic];
-    [[self notesViewController] setEntrySummariesTableViewController:[self tableViewController]];
+    [[self tableViewController] reload];
+    [[self notesViewController] reload];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];       
     
+    [[self notesViewController] setParentController:self];
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
     
     if (![self topic]) {
@@ -74,7 +84,7 @@
 - (IBAction)createNewNote:(id)sender
 {
     Note *note = [BNoteFactory createNote:[self topic]];
-    [[self notesViewController] update];
+    [[self notesViewController] reload];
     
     NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:note];
     [controller setDelegate:(id<NoteEditorViewControllerDelegate>) [self notesViewController]];

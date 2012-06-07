@@ -73,7 +73,7 @@ const float y = 5;
                                                      name:UITextViewTextDidEndEditingNotification object:[[self subTextView] window]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
                                                      name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
-    }
+}
     
     return self;
 }
@@ -121,7 +121,6 @@ const float y = 5;
 - (void)finishedEdit
 {
     [[self textView] resignFirstResponder];
-
     [self handleImageIcon:[self entry] active:NO];
 
     [[self textView] setHidden:YES];
@@ -145,6 +144,11 @@ const float y = 5;
 - (void)updateText:(id)sender
 {
     NSString *text = [BNoteStringUtils trim:[[self textView] text]];
+    
+    if ([BNoteStringUtils nilOrEmpty:text]) {
+        text = nil;
+    }
+    
     [[self entry] setText:text];
     [[self textLabel] setText:text];    
 }
@@ -154,6 +158,11 @@ const float y = 5;
     if ([[self entry] isKindOfClass:[Question class]]) {
         Question *question = (Question *) [self entry];
         NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
+        
+        if ([BNoteStringUtils nilOrEmpty:text]) {
+            text = nil;
+        }
+
         [question setAnswer:text];
         [[self detailTextLabel] setText:text];
     }
@@ -163,8 +172,11 @@ const float y = 5;
 {
     if ([entry isKindOfClass:[Question class]]) {
         Question *question = (Question *) entry;
-        if ([question answer]) {
-            [[self detailTextLabel] setText:[question answer]];
+        
+        NSString *detail = [BNoteEntryUtils formatDetailTextForQuestion:question];
+        
+        if (detail) {
+            [[self detailTextLabel] setText:detail];
         } else {
             [[self detailTextLabel] setText:nil];
         }
@@ -175,12 +187,13 @@ const float y = 5;
 {
     if ([entry isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) entry;
-        if ([actionItem completed]) {
-            NSDate *completed = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem completed]]; 
-            NSString *date = [@"Completed on " stringByAppendingString:[BNoteStringUtils dateToString:completed]];
-            [[self detailTextLabel] setText:date];
-        } else {
+        
+        NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
+        
+        if ([BNoteStringUtils nilOrEmpty:detail]) {
             [[self detailTextLabel] setText:nil];
+        } else {
+            [[self detailTextLabel] setText:detail];
         }
     }
 }

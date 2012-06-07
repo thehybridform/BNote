@@ -73,12 +73,6 @@
     [self setSorting:nil];
 }
 
-- (void)setTopic:(Topic *)topic
-{
-    _topic = topic;
-    [self reload];
-}
-
 - (NSArray *)filterEntries:(id<BNoteFilter>)filter
 {
     NSMutableArray *array = [[NSMutableArray alloc] init];

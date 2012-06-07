@@ -9,9 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "Attendant.h"
 #import "Note.h"
+#import "ActionItem.h"
+#import "Question.h"
 
 @interface BNoteEntryUtils : NSObject
 
 + (Attendant *)findMatch:(Note *)note withFirstName:(NSString *)first andLastName:(NSString *)last;
+
++ (NSString *)formatDetailTextForActionItem:(ActionItem *)actionItem;
++ (NSString *)formatDetailTextForQuestion:(Question *)question;
 
 @end

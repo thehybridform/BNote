@@ -10,14 +10,15 @@
 #import "Topic.h"
 #import "NoteView.h"
 #import "NoteEditorViewController.h"
-#import "EntrySummariesTableViewController.h"
+
+@class DetailViewController;
 
 @interface NotesViewController : UIViewController <NoteViewDelegate, NoteEditorViewControllerDelegate>
 
 @property (strong, nonatomic) Topic *topic;
-@property (strong, nonatomic) EntrySummariesTableViewController *entrySummariesTableViewController;
+@property (assign, nonatomic) DetailViewController *parentController;
 
-- (void)update;
+- (void)reload;
 
 @end
 

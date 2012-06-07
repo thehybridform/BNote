@@ -20,4 +20,6 @@
 
 + (NSString *)nameForEntry:(Entry *)entry;
 
++ (NSString *)append:(NSArray *)strings;
+
 @end

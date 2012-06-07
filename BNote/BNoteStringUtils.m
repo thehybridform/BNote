@@ -26,7 +26,8 @@
 
 + (BOOL)nilOrEmpty:(NSString *)string
 {
-    return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] == nil;
+    NSString *s = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    return s == nil || [s length] == 0;
 }
 
 + (NSString *)nameForEntry:(Entry *)entry
@@ -70,6 +71,18 @@
     return [format stringFromDate:date];
 }
 
++ (NSString *)append:(NSArray *)strings
+{
+    NSString *result = [[NSString alloc] init];
+    
+    NSEnumerator *items = [strings objectEnumerator];
+    NSString *s;
+    while (s = [items nextObject]) {
+        result = [result stringByAppendingString:s];
+    }
+    
+    return result;
+}
 
 
 @end

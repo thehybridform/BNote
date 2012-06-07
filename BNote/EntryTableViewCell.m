@@ -85,9 +85,9 @@ const float y = 5;
     [[self textView] setText:[entry text]];
     [[self textLabel] setText:[entry text]];
     
-    [self handleQuestionType:entry];
-    [self handleActionItemType:entry];
-    [self handleImageIcon:entry active:NO];
+    [self handleQuestionType];
+    [self handleActionItemType];
+    [self handleImageIcon:NO];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
     [backgroundView setBackgroundColor:[UIColor whiteColor]];
@@ -100,7 +100,7 @@ const float y = 5;
 
 - (void)edit
 {
-    [self handleImageIcon:[self entry] active:YES];
+    [self handleImageIcon:YES];
 
     [[self textLabel] setHidden:YES];
     [[self detailTextLabel] setHidden:YES];
@@ -121,7 +121,7 @@ const float y = 5;
 - (void)finishedEdit
 {
     [[self textView] resignFirstResponder];
-    [self handleImageIcon:[self entry] active:NO];
+    [self handleImageIcon:NO];
 
     [[self textView] setHidden:YES];
     [[self textLabel] setHidden:NO];
@@ -135,43 +135,47 @@ const float y = 5;
     [[self textLabel] setFrame:CGRectMake(x, y, width, height)];
     
     [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:[[self entry] text]]];
-    [self handleQuestionType:[self entry]];
-    [self handleActionItemType:[self entry]];    
 
     [self setNeedsDisplay];
 }
 
 - (void)updateText:(id)sender
 {
-    NSString *text = [BNoteStringUtils trim:[[self textView] text]];
+    NSNotification *notification = sender;
+    if ([notification object] == [self textView]) {
+        NSString *text = [BNoteStringUtils trim:[[self textView] text]];
     
-    if ([BNoteStringUtils nilOrEmpty:text]) {
-        text = nil;
+        if ([BNoteStringUtils nilOrEmpty:text]) {
+            text = nil;
+        }
+    
+        [[self entry] setText:text];
+        [[self textLabel] setText:text];    
     }
-    
-    [[self entry] setText:text];
-    [[self textLabel] setText:text];    
 }
 
 - (void)updateSubText:(id)sender
 {
-    if ([[self entry] isKindOfClass:[Question class]]) {
-        Question *question = (Question *) [self entry];
-        NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
+    NSNotification *notification = sender;
+    if ([notification object] == [self subTextView]) {
+        if ([[self entry] isKindOfClass:[Question class]]) {
+            Question *question = (Question *) [self entry];
+            NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
         
-        if ([BNoteStringUtils nilOrEmpty:text]) {
-            text = nil;
-        }
+            if ([BNoteStringUtils nilOrEmpty:text]) {
+                text = nil;
+            }
 
-        [question setAnswer:text];
-        [[self detailTextLabel] setText:text];
+            [question setAnswer:text];
+            [[self detailTextLabel] setText:text];
+        }
     }
 }
 
-- (void)handleQuestionType:(Entry *)entry
+- (void)handleQuestionType
 {
-    if ([entry isKindOfClass:[Question class]]) {
-        Question *question = (Question *) entry;
+    if ([[self entry] isKindOfClass:[Question class]]) {
+        Question *question = (Question *) [self entry];
         
         NSString *detail = [BNoteEntryUtils formatDetailTextForQuestion:question];
         
@@ -183,10 +187,10 @@ const float y = 5;
     }
 }
 
-- (void)handleActionItemType:(Entry *)entry
+- (void)handleActionItemType
 {
-    if ([entry isKindOfClass:[ActionItem class]]) {
-        ActionItem *actionItem = (ActionItem *) entry;
+    if ([[self entry] isKindOfClass:[ActionItem class]]) {
+        ActionItem *actionItem = (ActionItem *) [self entry];
         
         NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
         
@@ -198,10 +202,10 @@ const float y = 5;
     }
 }
 
-- (void)handleImageIcon:(Entry *)entry active:(BOOL)active
+- (void)handleImageIcon:(BOOL)active
 {
-    if ([entry isKindOfClass:[KeyPoint class]]) {
-        KeyPoint *keyPoint = (KeyPoint *) entry;
+    if ([[self entry] isKindOfClass:[KeyPoint class]]) {
+        KeyPoint *keyPoint = (KeyPoint *) [self entry];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:keyPoint];
 

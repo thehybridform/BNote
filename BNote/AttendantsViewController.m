@@ -36,6 +36,8 @@
 
 - (void)update
 {
+    [[BNoteWriter instance] update];
+
     NSArray *attendants = [self filterAttendants];
     if ([attendants count] > 0) {
         [[self attendantHelpLable] setHidden:YES];
@@ -84,7 +86,6 @@
 - (void)remove:(Attendant *)attendant
 {
     [[BNoteWriter instance] removeEntry:attendant];
-    [[BNoteWriter instance] update];
     
     NSEnumerator *views = [[[self view] subviews] objectEnumerator];
     UIView *view;

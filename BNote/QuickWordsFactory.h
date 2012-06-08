@@ -21,5 +21,6 @@
 + (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andActionItem:(ActionItem *)actionItem;
 + (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andQuestion:(Question *)question;
 + (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andKeyPoint:(KeyPoint *)keyPoint;
++ (NSMutableArray *)buildKeyWordButtionsForEntryCellView:(EntryTableViewCell *)entryCellView;
 
 @end

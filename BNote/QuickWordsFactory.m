@@ -7,7 +7,6 @@
 //
 
 #import "QuickWordsFactory.h"
-#import "BNoteFactory.h"
 #import "QuickWordButton.h"
 #import "DateQuickButton.h"
 #import "ActionItemQuickButton.h"
@@ -18,6 +17,9 @@
 #import "KeyPointPhotoPickerButton.h"
 #import "ActionItemResponabiltyButton.h"
 #import "DueDateActionItemButton.h"
+#import "KeyWordButton.h"
+#import "KeyWord.h"
+#import "BNoteReader.h"
 
 @implementation QuickWordsFactory
 
@@ -45,6 +47,22 @@
     [button setOffset:7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
+    
+    return data;
+}
+
++ (NSMutableArray *)buildKeyWordButtionsForEntryCellView:(EntryTableViewCell *)entryCellView
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    
+    NSEnumerator *keyWords = [[[BNoteReader instance] allKeyWords] objectEnumerator];
+    KeyWord *keyWord;
+    while (keyWord = [keyWords nextObject]) {
+        KeyWordButton *button = [[KeyWordButton alloc] initWithName:[keyWord word] andEntryCellView:entryCellView];
+        [button setKeyWord:keyWord];
+        [button setBackgroundColor:[QuickWordsFactory normal]];
+        [data addObject:button];
+    }
     
     return data;
 }

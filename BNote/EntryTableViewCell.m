@@ -73,7 +73,9 @@ const float y = 5;
                                                      name:UITextViewTextDidEndEditingNotification object:[[self subTextView] window]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
                                                      name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
-}
+        
+        
+    }
     
     return self;
 }
@@ -264,9 +266,11 @@ const float y = 5;
 
 - (void)updateImageView:(id)object
 {
-    NSNotification *notification = (NSNotification *) object;
-    KeyPoint *keyPoint = (KeyPoint *) [notification object];
-    [self updateImageViewForKeyPoint:keyPoint];
+    NSNotification *notification = object;
+    if ([notification object] == [self entry]) {
+        KeyPoint *keyPoint = (KeyPoint *) [notification object];
+        [self updateImageViewForKeyPoint:keyPoint];
+    }
 }
 
 - (void)updateImageViewForKeyPoint:(KeyPoint *)keyPoint

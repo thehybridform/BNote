@@ -116,6 +116,23 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     return photo;
 }
 
++ (KeyWord *)createKeyWord:(NSString *)word
+{
+    if ([BNoteStringUtils nilOrEmpty:word]) {
+        return nil;
+    }
+    
+    KeyWord *keyWord = [[BNoteReader instance] keyWorkFor:word];
+    if (!keyWord) {
+        keyWord = [[BNoteWriter instance] insertNewObjectForEntityForName:@"KeyWord"];
+        [keyWord setWord:word];
+    
+        [[BNoteWriter instance] update];
+    }
+    
+    return keyWord;
+}
+
 +(UIView *)createHighlightSliver:(UIColor *)color
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 24, 44)];

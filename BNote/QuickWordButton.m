@@ -24,6 +24,7 @@
     self = [super init];
     if (self) {
         [self setTitle:name forState:UIControlStateNormal];
+        [self setFont:[UIFont systemFontOfSize:15]];
         
         [LayerFormater roundCornersForView:self];
         
@@ -33,7 +34,10 @@
         [self addTarget:self action:@selector(execute:) forControlEvents:UIControlEventTouchUpInside];
         [self addTarget:self action:@selector(unhighlight:) forControlEvents:UIControlEventTouchUpInside];
         [self addTarget:self action:@selector(highlight:) forControlEvents:UIControlEventTouchDown];
-        [self setFrame:CGRectMake(0, 0, [[[self titleLabel] text] length] * 11, 40)];
+        
+        float width = MAX([[[self titleLabel] text] length] * 10, 40);
+        
+        [self setFrame:CGRectMake(0, 0, width, 35)];
         
         [self setHighlightColor:[UIColor blueColor]];
         

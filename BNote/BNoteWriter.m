@@ -65,6 +65,11 @@
     [self deleteObject:photo];
 }
 
+- (void)removeKeyWord:(KeyWord *)keyWord
+{
+    [self deleteObject:keyWord];
+}
+
 - (void)deleteObject:(id)object
 {
     if (object) {

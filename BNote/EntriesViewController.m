@@ -22,6 +22,7 @@
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 @property (strong, nonatomic) NSMutableArray *filteredEntries;
 @property (strong, nonatomic) NSMutableArray *deletedEntries;
+@property (assign, nonatomic) UITextView *textView;
 
 @end
 
@@ -35,6 +36,7 @@
 @synthesize keepQuickViewAlive = _keepQuickViewAlive;
 @synthesize parentController = _parentController;
 @synthesize deletedEntries = _deletedEntries;
+@synthesize textView = _textView;
 
 - (void)viewDidLoad
 {
@@ -44,6 +46,15 @@
      
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification object:[[self view] window]];
+
+    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Add Key Word" action:@selector(addQuickWord:)];
+    [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObjects:menuItem, nil]];
+    [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
+                                                 name:UITextViewTextDidBeginEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedEditing:)
+                                                 name:UITextViewTextDidEndEditingNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -226,6 +237,27 @@
     while (entry = [entries nextObject]) {
         [[BNoteWriter instance] removeEntry:entry];
     }
+}
+
+- (void)addQuickWord:(id)sender
+{
+    UITextView *textView = [self textView];
+    UITextRange *range = [textView selectedTextRange];
+    NSString *keyWord = [textView textInRange:range];
+    
+    [BNoteFactory createKeyWord:keyWord];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KeyWordsUpdated object:nil];
+}
+
+- (void)startedEditing:(id)sender
+{
+    NSNotification *notification = sender;
+    [self setTextView:[notification object]];
+}
+
+- (void)finishedEditing:(id)sender
+{
+    [self setTextView:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

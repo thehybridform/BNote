@@ -26,6 +26,7 @@ const int AppColor1 = 0xf5f3e6;
 const int ColorWhite = 0xffffff;
 
 const NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
+const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
 
 @implementation BNoteConstants
 

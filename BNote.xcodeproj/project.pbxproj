@@ -22,6 +22,9 @@
 		1818B54E15803C2500928BAF /* ResponsibilityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */; };
 		1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
 		1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5521580654100928BAF /* DueDateActionItemButton.m */; };
+		1818B55615807CDE00928BAF /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B55515807CDE00928BAF /* KeyWord.m */; };
+		1818B55A15807F7B00928BAF /* KeyWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B55915807F7B00928BAF /* KeyWordButton.m */; };
+		1818B5611580865100928BAF /* EntryTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5601580865100928BAF /* EntryTextView.m */; };
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
@@ -133,6 +136,12 @@
 		1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResponsibilityTableViewController.xib; sourceTree = "<group>"; };
 		1818B5511580654000928BAF /* DueDateActionItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DueDateActionItemButton.h; sourceTree = "<group>"; };
 		1818B5521580654100928BAF /* DueDateActionItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DueDateActionItemButton.m; sourceTree = "<group>"; };
+		1818B55415807CDE00928BAF /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
+		1818B55515807CDE00928BAF /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
+		1818B55815807F7B00928BAF /* KeyWordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordButton.h; sourceTree = "<group>"; };
+		1818B55915807F7B00928BAF /* KeyWordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordButton.m; sourceTree = "<group>"; };
+		1818B55F1580865100928BAF /* EntryTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTextView.h; sourceTree = "<group>"; };
+		1818B5601580865100928BAF /* EntryTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTextView.m; sourceTree = "<group>"; };
 		181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummariesTableViewController.h; sourceTree = "<group>"; };
 		181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummariesTableViewController.m; sourceTree = "<group>"; };
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
@@ -305,6 +314,15 @@
 			name = Filters;
 			sourceTree = "<group>";
 		};
+		1818B55715807F5F00928BAF /* Key Words */ = {
+			isa = PBXGroup;
+			children = (
+				1818B55815807F7B00928BAF /* KeyWordButton.h */,
+				1818B55915807F7B00928BAF /* KeyWordButton.m */,
+			);
+			name = "Key Words";
+			sourceTree = "<group>";
+		};
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +421,8 @@
 			isa = PBXGroup;
 			children = (
 				1834D395156372500065788F /* BNote.xcdatamodeld */,
+				1818B55415807CDE00928BAF /* KeyWord.h */,
+				1818B55515807CDE00928BAF /* KeyWord.m */,
 				18A05703157F4A25002A4A78 /* KeyPoint.h */,
 				18A05704157F4A25002A4A78 /* KeyPoint.m */,
 				18A05706157F4A26002A4A78 /* Photo.h */,
@@ -489,7 +509,7 @@
 			name = "Date Picker";
 			sourceTree = "<group>";
 		};
-		1879F05C15747AFB003814C2 /* Quick Words */ = {
+		1879F05C15747AFB003814C2 /* Quick Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				1879F0791574CA50003814C2 /* Buttons */,
@@ -499,12 +519,13 @@
 				1879F05E15747B18003814C2 /* QuickWordsViewController.m */,
 				1879F05F15747B18003814C2 /* QuickWordsViewController.xib */,
 			);
-			name = "Quick Words";
+			name = "Quick Buttons";
 			sourceTree = "<group>";
 		};
 		1879F0791574CA50003814C2 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1818B55715807F5F00928BAF /* Key Words */,
 				18A056E3157D890F002A4A78 /* Dates */,
 				18A1DE66157609DB004A2022 /* Key Point */,
 				18A1DE65157609D1004A2022 /* Question */,
@@ -582,6 +603,8 @@
 				18A056F8157F3762002A4A78 /* PhotoViewController.h */,
 				18A056F9157F3762002A4A78 /* PhotoViewController.m */,
 				18A056FA157F3762002A4A78 /* PhotoViewController.xib */,
+				1818B55F1580865100928BAF /* EntryTextView.h */,
+				1818B5601580865100928BAF /* EntryTextView.m */,
 			);
 			name = "Entry View Cell";
 			sourceTree = "<group>";
@@ -601,7 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				18BF3F60157B456100B6E226 /* Entry View Cell */,
-				1879F05C15747AFB003814C2 /* Quick Words */,
+				1879F05C15747AFB003814C2 /* Quick Buttons */,
 				1879F05615746E72003814C2 /* Date Picker */,
 				181968451569FB0700DA31A3 /* NoteEditorViewController.h */,
 				181968461569FB0700DA31A3 /* NoteEditorViewController.m */,
@@ -785,6 +808,9 @@
 				18A05708157F4A26002A4A78 /* Photo.m in Sources */,
 				1818B54E15803C2500928BAF /* ResponsibilityTableViewController.m in Sources */,
 				1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */,
+				1818B55615807CDE00928BAF /* KeyWord.m in Sources */,
+				1818B55A15807F7B00928BAF /* KeyWordButton.m in Sources */,
+				1818B5611580865100928BAF /* EntryTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

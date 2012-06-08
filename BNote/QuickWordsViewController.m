@@ -68,6 +68,9 @@ static float speed = 0.1;
     [LayerFormater roundCornersForView:[self view]];
     
     [[self detailButton] setTitle:[BNoteStringUtils nameForEntry:[self entry]]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
+                                                 name:KeyWordsUpdated object:nil];
 }
 
 - (void)viewDidUnload
@@ -95,11 +98,6 @@ static float speed = 0.1;
     [self buildButtons:[self enumeratorForEntry:[self entry]]];
 }
 
-- (IBAction)people:(id)sender
-{
-    [self clearScrollView];
-}
-
 - (IBAction)dates:(id)sender
 {
     NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryCellView:[self entryViewCell]] objectEnumerator];
@@ -108,7 +106,8 @@ static float speed = 0.1;
 
 - (IBAction)keyWords:(id)sender
 {
-    [self clearScrollView];
+    NSEnumerator *items = [[QuickWordsFactory buildKeyWordButtionsForEntryCellView:[self entryViewCell]] objectEnumerator];
+    [self buildButtons:items];
 }
 
 - (void)buildButtons:(NSEnumerator *)items
@@ -127,6 +126,8 @@ static float speed = 0.1;
         
         next += width + spacing;
     }   
+    
+    [[self scrollView] setContentSize:CGSizeMake(next, [[self scrollView] bounds].size.height)];
 }
 
 - (void)clearScrollView
@@ -134,7 +135,7 @@ static float speed = 0.1;
     NSEnumerator *items = [[[self scrollView] subviews] objectEnumerator];
     UIView *view;
     while (view = [items nextObject]) {
-        [view removeFromSuperview];
+        [view setHidden:YES];
     }
 }
 

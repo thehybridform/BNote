@@ -15,6 +15,7 @@
 #import "Decision.h"
 #import "Attendant.h"
 #import "Photo.h"
+#import "KeyWord.h"
 #import "EntryTableViewCell.h"
 
 extern NSString *const ACTION_ITEM_ACTIVE;
@@ -56,6 +57,7 @@ typedef enum {
 + (Decision *)createDecision:(Note *)note;
 + (Attendant *)createAttendant:(Note *)note;
 + (Photo *)createPhoto:(KeyPoint *)keyPoint;
++ (KeyWord *)createKeyWord:(NSString *)word;
 
 + (UIView *)createHighlightSliver:(UIColor *)color;
 + (UIView *)createHighlight:(UIColor *)color;

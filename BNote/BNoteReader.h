@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KeyWord.h"
 
 @interface BNoteReader : NSObject
 
@@ -14,5 +15,7 @@
 
 + (BNoteReader *)instance;
 - (NSMutableArray *)allTopics;
+- (NSMutableSet *)allKeyWords;
+- (KeyWord *)keyWorkFor:(NSString *)word;
 
 @end

@@ -51,12 +51,45 @@
     NSError *error = nil;
     NSArray *topics = [[self context] executeFetchRequest:fetchRequest error:&error];
     
-    if (topics != nil) {
+    if (topics) {
         return [topics mutableCopy];
     } else {
         return [NSMutableArray array];
     }
 }
 
+- (NSMutableSet *)allKeyWords
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"KeyWord"];
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"word" ascending:YES]];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error = nil;
+    NSArray *keyWords = [[self context] executeFetchRequest:fetchRequest error:&error];
+    
+    if (keyWords) {
+        return [keyWords mutableCopy];
+    } else {
+        return [NSMutableArray array];
+    }    
+}
+
+- (KeyWord *)keyWorkFor:(NSString *)word
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"KeyWord"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@", word];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *keyWords = [[self context] executeFetchRequest:fetchRequest error:&error];
+    
+    if (keyWords && [keyWords count] > 0) {
+        return [keyWords objectAtIndex:0];
+    }    
+    
+    return nil;
+
+}
 
 @end

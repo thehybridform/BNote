@@ -32,7 +32,6 @@
 
 - (IBAction)done:(id)sender;
 - (IBAction)detail:(id)sender;
-- (IBAction)people:(id)sender;
 - (IBAction)dates:(id)sender;
 - (IBAction)keyWords:(id)sender;
 

@@ -106,16 +106,16 @@
 		18E9FF5B156DE6A200F22272 /* BNoteSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF5A156DE6A200F22272 /* BNoteSessionData.m */; };
 		18E9FF6A1571835600F22272 /* BNoteAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF691571835600F22272 /* BNoteAnimation.m */; };
 		18E9FF6D15729EFA00F22272 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF6C15729EF900F22272 /* NotesViewController.m */; };
-		18F3B73615851A98007463EB /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B73515851A97007463EB /* KeyPoint.m */; };
-		18F3B73A15851A98007463EB /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B73915851A98007463EB /* ActionItem.m */; };
-		18F3B73D15851A98007463EB /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B73C15851A98007463EB /* Decision.m */; };
-		18F3B74015851A98007463EB /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B73F15851A98007463EB /* KeyWord.m */; };
-		18F3B74315851A98007463EB /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B74215851A98007463EB /* Note.m */; };
-		18F3B74615851A98007463EB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B74515851A98007463EB /* Photo.m */; };
-		18F3B74915851A98007463EB /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B74815851A98007463EB /* Entry.m */; };
-		18F3B74C15851A98007463EB /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B74B15851A98007463EB /* Topic.m */; };
-		18F3B74F15851A98007463EB /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B74E15851A98007463EB /* Attendant.m */; };
-		18F3B75215851A98007463EB /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B75115851A98007463EB /* Question.m */; };
+		18F337B01585D1F0009D60D0 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337AF1585D1F0009D60D0 /* KeyPoint.m */; };
+		18F337B31585D1F0009D60D0 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337B21585D1F0009D60D0 /* Photo.m */; };
+		18F337B61585D1F0009D60D0 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337B51585D1F0009D60D0 /* Attendant.m */; };
+		18F337B91585D1F0009D60D0 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337B81585D1F0009D60D0 /* KeyWord.m */; };
+		18F337BC1585D1F1009D60D0 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337BB1585D1F1009D60D0 /* Entry.m */; };
+		18F337BF1585D1F1009D60D0 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337BE1585D1F1009D60D0 /* Question.m */; };
+		18F337C21585D1F1009D60D0 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337C11585D1F1009D60D0 /* Decision.m */; };
+		18F337C51585D1F1009D60D0 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337C41585D1F1009D60D0 /* Note.m */; };
+		18F337CB1585D1F1009D60D0 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337CA1585D1F1009D60D0 /* ActionItem.m */; };
+		18F337CE1585D317009D60D0 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F337CD1585D317009D60D0 /* Topic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -287,26 +287,27 @@
 		18E9FF691571835600F22272 /* BNoteAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteAnimation.m; sourceTree = "<group>"; };
 		18E9FF6B15729EF900F22272 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		18E9FF6C15729EF900F22272 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
-		18F3B73415851A97007463EB /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
-		18F3B73515851A97007463EB /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
-		18F3B73815851A98007463EB /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		18F3B73915851A98007463EB /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
-		18F3B73B15851A98007463EB /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
-		18F3B73C15851A98007463EB /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
-		18F3B73E15851A98007463EB /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
-		18F3B73F15851A98007463EB /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
-		18F3B74115851A98007463EB /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		18F3B74215851A98007463EB /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		18F3B74415851A98007463EB /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		18F3B74515851A98007463EB /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		18F3B74715851A98007463EB /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		18F3B74815851A98007463EB /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		18F3B74A15851A98007463EB /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		18F3B74B15851A98007463EB /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
-		18F3B74D15851A98007463EB /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
-		18F3B74E15851A98007463EB /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
-		18F3B75015851A98007463EB /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		18F3B75115851A98007463EB /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		18F337AC1585D1B7009D60D0 /* BNote 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BNote 2.xcdatamodel"; sourceTree = "<group>"; };
+		18F337AE1585D1F0009D60D0 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		18F337AF1585D1F0009D60D0 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
+		18F337B11585D1F0009D60D0 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		18F337B21585D1F0009D60D0 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		18F337B41585D1F0009D60D0 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
+		18F337B51585D1F0009D60D0 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
+		18F337B71585D1F0009D60D0 /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
+		18F337B81585D1F0009D60D0 /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
+		18F337BA1585D1F1009D60D0 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		18F337BB1585D1F1009D60D0 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		18F337BD1585D1F1009D60D0 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		18F337BE1585D1F1009D60D0 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		18F337C01585D1F1009D60D0 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
+		18F337C11585D1F1009D60D0 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
+		18F337C31585D1F1009D60D0 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		18F337C41585D1F1009D60D0 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		18F337C91585D1F1009D60D0 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		18F337CA1585D1F1009D60D0 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		18F337CC1585D317009D60D0 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		18F337CD1585D317009D60D0 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,26 +466,26 @@
 			isa = PBXGroup;
 			children = (
 				1834D395156372500065788F /* BNote.xcdatamodeld */,
-				18F3B75015851A98007463EB /* Question.h */,
-				18F3B75115851A98007463EB /* Question.m */,
-				18F3B74D15851A98007463EB /* Attendant.h */,
-				18F3B74E15851A98007463EB /* Attendant.m */,
-				18F3B74A15851A98007463EB /* Topic.h */,
-				18F3B74B15851A98007463EB /* Topic.m */,
-				18F3B74715851A98007463EB /* Entry.h */,
-				18F3B74815851A98007463EB /* Entry.m */,
-				18F3B74415851A98007463EB /* Photo.h */,
-				18F3B74515851A98007463EB /* Photo.m */,
-				18F3B74115851A98007463EB /* Note.h */,
-				18F3B74215851A98007463EB /* Note.m */,
-				18F3B73E15851A98007463EB /* KeyWord.h */,
-				18F3B73F15851A98007463EB /* KeyWord.m */,
-				18F3B73B15851A98007463EB /* Decision.h */,
-				18F3B73C15851A98007463EB /* Decision.m */,
-				18F3B73815851A98007463EB /* ActionItem.h */,
-				18F3B73915851A98007463EB /* ActionItem.m */,
-				18F3B73415851A97007463EB /* KeyPoint.h */,
-				18F3B73515851A97007463EB /* KeyPoint.m */,
+				18F337CC1585D317009D60D0 /* Topic.h */,
+				18F337CD1585D317009D60D0 /* Topic.m */,
+				18F337C91585D1F1009D60D0 /* ActionItem.h */,
+				18F337CA1585D1F1009D60D0 /* ActionItem.m */,
+				18F337C31585D1F1009D60D0 /* Note.h */,
+				18F337C41585D1F1009D60D0 /* Note.m */,
+				18F337C01585D1F1009D60D0 /* Decision.h */,
+				18F337C11585D1F1009D60D0 /* Decision.m */,
+				18F337BD1585D1F1009D60D0 /* Question.h */,
+				18F337BE1585D1F1009D60D0 /* Question.m */,
+				18F337BA1585D1F1009D60D0 /* Entry.h */,
+				18F337BB1585D1F1009D60D0 /* Entry.m */,
+				18F337B71585D1F0009D60D0 /* KeyWord.h */,
+				18F337B81585D1F0009D60D0 /* KeyWord.m */,
+				18F337B41585D1F0009D60D0 /* Attendant.h */,
+				18F337B51585D1F0009D60D0 /* Attendant.m */,
+				18F337B11585D1F0009D60D0 /* Photo.h */,
+				18F337B21585D1F0009D60D0 /* Photo.m */,
+				18F337AE1585D1F0009D60D0 /* KeyPoint.h */,
+				18F337AF1585D1F0009D60D0 /* KeyPoint.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -893,16 +894,6 @@
 				1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */,
 				1818B55A15807F7B00928BAF /* KeyWordButton.m in Sources */,
 				1818B5611580865100928BAF /* EntryTextView.m in Sources */,
-				18F3B73615851A98007463EB /* KeyPoint.m in Sources */,
-				18F3B73A15851A98007463EB /* ActionItem.m in Sources */,
-				18F3B73D15851A98007463EB /* Decision.m in Sources */,
-				18F3B74015851A98007463EB /* KeyWord.m in Sources */,
-				18F3B74315851A98007463EB /* Note.m in Sources */,
-				18F3B74615851A98007463EB /* Photo.m in Sources */,
-				18F3B74915851A98007463EB /* Entry.m in Sources */,
-				18F3B74C15851A98007463EB /* Topic.m in Sources */,
-				18F3B74F15851A98007463EB /* Attendant.m in Sources */,
-				18F3B75215851A98007463EB /* Question.m in Sources */,
 				18AF4ABE15852FA700A54205 /* EmailViewController.m in Sources */,
 				18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */,
 				18AF4ACD1585632F00A54205 /* BNoteFilterFactory.m in Sources */,
@@ -915,6 +906,16 @@
 				18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */,
 				18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */,
 				18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */,
+				18F337B01585D1F0009D60D0 /* KeyPoint.m in Sources */,
+				18F337B31585D1F0009D60D0 /* Photo.m in Sources */,
+				18F337B61585D1F0009D60D0 /* Attendant.m in Sources */,
+				18F337B91585D1F0009D60D0 /* KeyWord.m in Sources */,
+				18F337BC1585D1F1009D60D0 /* Entry.m in Sources */,
+				18F337BF1585D1F1009D60D0 /* Question.m in Sources */,
+				18F337C21585D1F1009D60D0 /* Decision.m in Sources */,
+				18F337C51585D1F1009D60D0 /* Note.m in Sources */,
+				18F337CB1585D1F1009D60D0 /* ActionItem.m in Sources */,
+				18F337CE1585D317009D60D0 /* Topic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,9 +1047,10 @@
 		1834D395156372500065788F /* BNote.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				18F337AC1585D1B7009D60D0 /* BNote 2.xcdatamodel */,
 				1834D396156372500065788F /* BNote.xcdatamodel */,
 			);
-			currentVersion = 1834D396156372500065788F /* BNote.xcdatamodel */;
+			currentVersion = 18F337AC1585D1B7009D60D0 /* BNote 2.xcdatamodel */;
 			path = BNote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

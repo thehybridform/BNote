@@ -120,11 +120,15 @@
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
 
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    
     if (![__persistentStoreCoordinator
           addPersistentStoreWithType:NSSQLiteStoreType
           configuration:nil
           URL:storeURL
-          options:nil
+          options:options
           error:&error]) {
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

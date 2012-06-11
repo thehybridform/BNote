@@ -11,18 +11,18 @@
 
 @implementation QuestionPlainRenderer
 
-- (BOOL)accept:(id)entry
+- (BOOL)accept:(Entry *)entry
 {
     return [entry isKindOfClass:[Question class]];
 }
 
-- (NSString *)render:(id)entry
+- (NSString *)render:(Entry *)entry
 {
     NSString *title = @" - Question: ";
     NSString *created = [BNoteStringUtils formatDate:[entry created]];
     NSString *text = [entry text];
         
-    Question *question = entry;
+    Question *question = (Question *) entry;
     NSString *answer = [question answer];
     NSString *answerTitle = answer ? @"Answer: " : nil;
     return [BNoteStringUtils append:title, @" - Created: ", created, NewLine, text, NewLine, NewLine, answerTitle, answer, NewLine, NewLine, nil];

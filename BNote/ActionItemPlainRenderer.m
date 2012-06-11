@@ -22,7 +22,7 @@
     NSString *created = [BNoteStringUtils formatDate:[entry created]];
     NSString *text = [entry text];
     
-    ActionItem *actionItem = entry;
+    ActionItem *actionItem = (ActionItem *) entry;
     
     NSTimeInterval dueDate = [actionItem dueDate];
     NSString *dueDateText;
@@ -48,7 +48,7 @@
     }
     
     
-    return [BNoteStringUtils append:title, @" - Created: ", created, NewLine, text, NewLine, dueDateText, NewLine, completedText, NewLine, NewLine, nil];
+    return [BNoteStringUtils append:title, @" - Created: ", created, NewLine, text, NewLine, responsibilityText, NewLine, dueDateText, NewLine, completedText, NewLine, NewLine, nil];
 }
 
 @end

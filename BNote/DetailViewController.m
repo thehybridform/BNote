@@ -24,6 +24,8 @@
 @property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *tableViewController;
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet UIToolbar *entriesToolbar;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+
 @end
 
 @implementation DetailViewController
@@ -34,6 +36,7 @@
 @synthesize tableViewController = _tableViewController;
 @synthesize notesViewController = notesViewController;
 @synthesize entriesToolbar = _entriesToolbar;
+@synthesize navBar = _navBar;
 
 - (void)viewDidUnload
 {
@@ -53,7 +56,7 @@
     
     [[self tableViewController] setTopic:[self topic]];
     [[self notesViewController] setTopic:[self topic]];
-
+    
     [self reload:nil];
 }
 

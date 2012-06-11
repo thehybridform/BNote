@@ -28,6 +28,12 @@ extern int const AnswerColor;
 
 extern NSString *const KeyPointPhotoUpdated;
 extern NSString *const KeyWordsUpdated;
+extern NSString *const TopicUpdated;
+extern NSString *const NoteUpdated;
+extern NSString *const FinishedEditingNote;
+extern NSString *const DeleteNote;
+
+extern NSString *const NewLine;
 
 @interface BNoteConstants : NSObject
 

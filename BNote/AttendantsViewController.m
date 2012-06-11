@@ -10,7 +10,6 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "LayerFormater.h"
-#import "AttendantFilter.h"
 
 @interface AttendantsViewController ()
 
@@ -70,7 +69,7 @@
 
 - (NSArray *)filterAttendants
 {
-    AttendantFilter *filter = [[AttendantFilter alloc] init];
+    id <BNoteFilter> filter = [BNoteFilterFactory create:AttendantType];
     NSMutableArray *array = [[NSMutableArray alloc] init];
     NSEnumerator *entries = [[[self note] entries] objectEnumerator];
     Entry *entry;

@@ -10,18 +10,10 @@
 #import "Note.h"
 #import "NoteEditorViewController.h"
 
-@protocol NoteViewDelegate;
-
 @interface NoteView : UIView <UIActionSheetDelegate>
 
 @property (strong, nonatomic) Note *note;
-@property (assign, nonatomic) id<NoteViewDelegate> delegate;
+@property (assign, nonatomic) UIViewController *controller;
 
 @end
 
-@protocol NoteViewDelegate <NSObject>
-
-@required
-- (void)deleteNote:(Note *)note;
-
-@end

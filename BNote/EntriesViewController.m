@@ -13,7 +13,6 @@
 #import "Entry.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
-#import "IdentityFillter.h"
 #import "BNoteFactory.h"
 #import "Attendant.h"
 
@@ -82,7 +81,7 @@
 - (void)setNote:(Note *)note
 {
     _note = note;
-    [self setFilter:[[IdentityFillter alloc] init]];
+    [self setFilter:[BNoteFilterFactory create:ItdentityType]];
     [self setDeletedEntries:[[NSMutableArray alloc] init]];
 }
 

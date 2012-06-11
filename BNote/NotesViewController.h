@@ -11,12 +11,9 @@
 #import "NoteView.h"
 #import "NoteEditorViewController.h"
 
-@class DetailViewController;
-
-@interface NotesViewController : UIViewController <NoteViewDelegate, NoteEditorViewControllerDelegate>
+@interface NotesViewController : UIViewController
 
 @property (strong, nonatomic) Topic *topic;
-@property (assign, nonatomic) DetailViewController *parentController;
 
 - (void)reload;
 

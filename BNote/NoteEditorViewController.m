@@ -18,11 +18,6 @@
 #import "BNoteSessionData.h"
 #import "BNoteWriter.h"
 #import "BNoteStringUtils.h"
-#import "KeyPointFilter.h"
-#import "ActionItemFilter.h"
-#import "QuestionFilter.h"
-#import "DecisionFilter.h"
-#import "IdentityFillter.h"
 #import "BNoteEntryUtils.h"
 
 @interface NoteEditorViewController ()
@@ -42,7 +37,6 @@
 @synthesize time = _time;
 @synthesize subject = _subject;
 @synthesize note = _note;
-@synthesize delegate = _delegate;
 @synthesize toolbar = _toolbar;
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
@@ -82,7 +76,6 @@
     [self setModeButton:nil];
     [self setTrashButton:nil];
     [self setEntriesViewController:nil];
-    [self setDelegate:nil];
     [self setAttendantsImageView:nil];
     [self setContactPicker:nil];
     [self setAttendantsViewController:nil];
@@ -144,7 +137,8 @@
     [[self note] setSubject:[[self subject] text]];
     [self dismissModalViewControllerAnimated:YES];
     [[self entriesViewController] cleanupEntries];    
-    [[self delegate] didFinishEditingNote:[self note]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NoteUpdated object:[self note]];
 }
 
 - (IBAction)editMode:(id)sender
@@ -166,7 +160,7 @@
     [[self subject] setHidden:NO];
     [[self subjectLable] setHidden:YES];
     [[self trashButton] setEnabled:YES];
-    [[self entriesViewController] setFilter:[[IdentityFillter alloc] init]];
+    [[self entriesViewController] setFilter:[BNoteFilterFactory create:ItdentityType]];
     
     [[BNoteSessionData instance] setPhase:Editing];
 }
@@ -195,7 +189,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[KeyPointFilter alloc] init]];
+        [[self entriesViewController] setFilter:[BNoteFilterFactory create:KeyPointType]];
     }
 }
 
@@ -204,7 +198,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createQuestion:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[QuestionFilter alloc] init]];
+        [[self entriesViewController] setFilter:[BNoteFilterFactory create:QuestionType]];
     }
 }
 
@@ -213,7 +207,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createDecision:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[DecisionFilter alloc] init]];
+        [[self entriesViewController] setFilter:[BNoteFilterFactory create:DecistionType]];
     }
 }
 
@@ -222,7 +216,7 @@
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createActionItem:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[ActionItemFilter alloc] init]];
+        [[self entriesViewController] setFilter:[BNoteFilterFactory create:ActionItemType]];
     }
 }
 

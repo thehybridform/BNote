@@ -44,7 +44,7 @@
 
 - (void)selectedAttendant:(Attendant *)attendant
 {
-    NSString *name = [BNoteStringUtils append:[NSArray arrayWithObjects:[attendant firstName], @" ", [attendant lastName], nil]];
+    NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
     [[self actionItem] setResponsibility:name];
 
     [[self popup] dismissPopoverAnimated:YES];

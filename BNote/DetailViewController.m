@@ -15,11 +15,15 @@
 #import "NoteEditorViewController.h"
 #import "BNoteSessionData.h"
 #import "LayerFormater.h"
-#import "HelpViewController.h"
+#import "EmailViewController.h"
 
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (strong, nonatomic) IBOutlet UIButton *addNewNoteButton;
+@property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *tableViewController;
+@property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
+@property (strong, nonatomic) IBOutlet UIToolbar *entriesToolbar;
 @end
 
 @implementation DetailViewController
@@ -29,7 +33,7 @@
 @synthesize addNewNoteButton = _addNewNoteButton;
 @synthesize tableViewController = _tableViewController;
 @synthesize notesViewController = notesViewController;
-@synthesize toolbar = _toolbar;
+@synthesize entriesToolbar = _entriesToolbar;
 
 - (void)viewDidUnload
 {
@@ -40,7 +44,7 @@
     [self setMasterPopoverController:nil];
     [self setAddNewNoteButton:nil];
     [self setNotesViewController:nil];
-    [self setToolbar:nil];
+    [self setEntriesToolbar:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -50,17 +54,17 @@
     [[self tableViewController] setTopic:[self topic]];
     [[self notesViewController] setTopic:[self topic]];
 
-    [self reload];
+    [self reload:nil];
 }
 
-- (void)reload
+- (void)reload:(id)sender
 {
     [[BNoteWriter instance] update];
 
     [[self addNewNoteButton] setHidden:NO];
     [[[self tableViewController] view] setHidden:NO];
     [[[self notesViewController] view] setHidden:NO];
-    [[self toolbar] setHidden:NO];
+    [[self entriesToolbar] setHidden:NO];
 
     [[self tableViewController] reload];
     [[self notesViewController] reload];
@@ -70,14 +74,18 @@
 {
     [super viewDidLoad];       
     
-    [[self notesViewController] setParentController:self];
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
     
     if (![self topic]) {
         [[self addNewNoteButton] setHidden:YES];
         [[[self tableViewController] view] setHidden:YES];
         [[[self notesViewController] view] setHidden:YES];
-        [[self toolbar] setHidden:YES];
+        [[self entriesToolbar] setHidden:YES];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
+                                                     name:TopicUpdated object:nil];
+        
+        
     }
 }
 
@@ -87,7 +95,6 @@
     [[self notesViewController] reload];
     
     NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:note];
-    [controller setDelegate:(id<NoteEditorViewControllerDelegate>) [self notesViewController]];
     [controller setModalPresentationStyle:UIModalPresentationPageSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     
@@ -113,9 +120,18 @@
     return YES;
 }
 
-- (void)dismissHelp:(id)sender
+- (IBAction)sendEmail:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[self topic]];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    
+    [self presentModalViewController:controller animated:YES];
+}
+
+- (IBAction)help:(id)sender
+{
+    
 }
 
 @end

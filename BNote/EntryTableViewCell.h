@@ -27,7 +27,3 @@
 
 @end
 
-@protocol EntryCellDelegate <NSObject>
-
-
-@end

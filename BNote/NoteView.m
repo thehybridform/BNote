@@ -25,7 +25,7 @@
 @synthesize time = _time;
 @synthesize actionSheet = _actionSheet;
 @synthesize note = _note;
-@synthesize delegate = _delegate;
+@synthesize controller = _controller;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -67,6 +67,9 @@
         [self addSubview:date];
         [self addSubview:time];
         [self addSubview:title];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
+                                                     name:NoteUpdated object:nil];
     }
     
     return self;
@@ -78,22 +81,36 @@
     
     [[self date] setBackgroundColor:UIColorFromRGB([[note topic] color])]; 
     [[self time] setBackgroundColor:UIColorFromRGB([[note topic] color])]; 
+
+    NSNotification *notification = [NSNotification notificationWithName:@"" object:note];
+    [self updateNote:notification];
+}
+
+-(void)updateNote:(id)sender
+{
+    NSNotification *notification = sender;
+    Note *note = [notification object];
     
-    if ([note subject]) {
-        [[self title] setText:[note subject]];
+    if (note == [self note]) {
+        NSString *title = [note subject];
+        if ([BNoteStringUtils nilOrEmpty:title]) {
+            [[self title] setText:nil];
+        } else {
+            [[self title] setText:title];
+        }
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
+        
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        
+        [format setDateFormat:@"MMMM dd, YYYY"];
+        NSString *dateString = [format stringFromDate:date];
+        [[self date] setText:dateString];
+        
+        [format setDateFormat:@"hh:mm aaa"];
+        NSString *timeString = [format stringFromDate:date];
+        [[self time] setText:timeString];
     }
-    
-    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
-    
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    
-    [format setDateFormat:@"MMMM dd, YYYY"];
-    NSString *dateString = [format stringFromDate:date];
-    [[self date] setText:dateString];
-    
-    [format setDateFormat:@"hh:mm aaa"];
-    NSString *timeString = [format stringFromDate:date];
-    [[self time] setText:timeString];
 }
 
 -(void)longPressTap:(id)sender
@@ -110,19 +127,17 @@
 -(void)normalPressTap:(id)sender
 {
     NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:[self note]];
-    [controller setDelegate:(id<NoteEditorViewControllerDelegate>) [self delegate]];
     [controller setModalPresentationStyle:UIModalPresentationPageSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
 
-    UIViewController *parent = (UIViewController *) [self delegate];
-    [parent presentModalViewController:controller animated:YES];
+    [[self controller] presentModalViewController:controller animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 0:
-            [[self delegate] deleteNote:[self note]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeleteNote object:[self note]];
             break;
             
         default:

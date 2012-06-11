@@ -27,6 +27,12 @@ const int ColorWhite = 0xffffff;
 
 const NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
 const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
+const NSString *const TopicUpdated = @"TopicUpdated";
+const NSString *const NoteUpdated = @"NoteUpdated";
+const NSString *const FinishedEditingNote = @"FinishedEditingNote";
+const NSString *const DeleteNote = @"DeleteNote";
+
+const NSString *const NewLine = @"\r\n";
 
 @implementation BNoteConstants
 

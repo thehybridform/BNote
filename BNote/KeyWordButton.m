@@ -25,7 +25,7 @@
     UITextView *textView = [[self entryCellView] targetTextView];
     NSRange cursorPosition = [textView selectedRange];
     
-    NSString *keyWord = [BNoteStringUtils append:[NSArray arrayWithObjects:@" ", [[self titleLabel] text], @" ", nil]];
+    NSString *keyWord = [BNoteStringUtils append:@" ", [[self titleLabel] text], @" ", nil];
     
     NSMutableString *text = [[NSMutableString alloc] initWithString:[textView text]];
     [text replaceCharactersInRange:cursorPosition withString:keyWord];

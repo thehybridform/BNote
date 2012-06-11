@@ -15,12 +15,9 @@
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) Topic *topic;
-@property (strong, nonatomic) IBOutlet UIButton *addNewNoteButton;
-@property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *tableViewController;
-@property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
-@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
 - (IBAction)createNewNote:(id)sender;
-- (void)reload;
+- (IBAction)sendEmail:(id)sender;
+- (IBAction)help:(id)sender;
 
 @end

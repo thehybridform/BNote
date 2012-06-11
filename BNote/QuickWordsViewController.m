@@ -153,7 +153,11 @@ static float speed = 0.1;
                          [view setAlpha:1.0];
                      }
                      completion:^(BOOL finished) {
-                         [self detail:nil]; 
+                         if ([[self entry] isKindOfClass:[Decision class]]) {
+                             [self dates:nil]; 
+                         } else {
+                             [self detail:nil]; 
+                         }
                      }
      ];
 }

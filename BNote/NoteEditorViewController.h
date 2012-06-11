@@ -14,8 +14,6 @@
 
 @class DetailViewController;
 
-@protocol NoteEditorViewControllerDelegate;
-
 @interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, ABPeoplePickerNavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *dateView;
@@ -38,7 +36,6 @@
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
-@property (assign, nonatomic) id<NoteEditorViewControllerDelegate> delegate;
 
 - (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;
@@ -52,10 +49,3 @@
 
 @end
 
-@protocol NoteEditorViewControllerDelegate <NSObject>
-
-@required
-- (void)didFinishEditingNote:(Note *)note;
-
-
-@end

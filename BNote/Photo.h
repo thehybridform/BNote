@@ -2,7 +2,7 @@
 //  Photo.h
 //  BNote
 //
-//  Created by Young Kristin on 6/6/12.
+//  Created by Young Kristin on 6/10/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @interface Photo : NSManagedObject
 
-@property (nonatomic, retain) NSData * thumbnail;
-@property (nonatomic, retain) NSData * original;
 @property (nonatomic) NSTimeInterval created;
+@property (nonatomic, retain) NSData * original;
 @property (nonatomic, retain) NSData * small;
+@property (nonatomic, retain) NSData * thumbnail;
 @property (nonatomic, retain) KeyPoint *keyPoint;
 
 @end

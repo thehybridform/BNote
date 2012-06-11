@@ -13,13 +13,6 @@
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
 #import "EntrySummaryTableViewCell.h"
-#import "QuestionAnsweredFilter.h"
-#import "QuestionUnansweredFilter.h"
-#import "ActionItemCompleteFilter.h"
-#import "ActionItemInCompleteFilter.h"
-#import "DecisionFilter.h"
-#import "KeyPointFilter.h"
-#import "IdentityFillter.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -57,6 +50,9 @@
     [self setClearsSelectionOnViewWillAppear:NO];
     [self setGroupEntries:YES];
     [[self sorting] setTitle:@"No Sorting"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
+                                                 name:NoteUpdated object:nil];
 }
 
 - (void)viewDidUnload
@@ -71,6 +67,11 @@
     [self setActionItemsUncomplete:nil];
     [self setGrouping:nil];
     [self setSorting:nil];
+}
+
+- (void)updateNote:(id)sender
+{
+    [self reload];
 }
 
 - (NSArray *)filterEntries:(id<BNoteFilter>)filter
@@ -119,13 +120,13 @@
 
 - (void)reload
 {
-    [self setQuestionsAnswered:[self filterEntries:[[QuestionAnsweredFilter alloc] init]]];
-    [self setQuestionsUnanswered:[self filterEntries:[[QuestionUnansweredFilter alloc] init]]];
-    [self setActionItemsComplete:[self filterEntries:[[ActionItemCompleteFilter alloc] init]]];
-    [self setActionItemsUncomplete:[self filterEntries:[[ActionItemInCompleteFilter alloc] init]]];
-    [self setDecisions:[self filterEntries:[[DecisionFilter alloc] init]]];
-    [self setKeyPoints:[self filterEntries:[[KeyPointFilter alloc] init]]];
-    [self setEntries:[self filterEntries:[[IdentityFillter alloc] init]]];
+    [self setQuestionsAnswered:[self filterEntries:[BNoteFilterFactory create:QuestionAnsweredType]]];
+    [self setQuestionsUnanswered:[self filterEntries:[BNoteFilterFactory create:QuestionUnansweredType]]];
+    [self setActionItemsComplete:[self filterEntries:[BNoteFilterFactory create:ActionItemCompleteType]]];
+    [self setActionItemsUncomplete:[self filterEntries:[BNoteFilterFactory create:ActionItemsIncompleteType]]];
+    [self setDecisions:[self filterEntries:[BNoteFilterFactory create:DecistionType]]];
+    [self setKeyPoints:[self filterEntries:[BNoteFilterFactory create:KeyPointType]]];
+    [self setEntries:[self filterEntries:[BNoteFilterFactory create:ItdentityType]]];
     
     [[self tableView] reloadData];
 }

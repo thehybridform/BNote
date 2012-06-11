@@ -7,7 +7,6 @@
 //
 
 #import "ResponsibilityTableViewController.h"
-#import "AttendantFilter.h"
 
 @interface ResponsibilityTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
@@ -24,7 +23,7 @@
         NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:[entries count]];
         [self setData:data];
         
-        AttendantFilter *filter = [[AttendantFilter alloc] init];
+        id<BNoteFilter> filter = [BNoteFilterFactory create:AttendantType];
         NSEnumerator *items = [entries objectEnumerator];
         Entry *entry;
         while (entry = [items nextObject]) {
@@ -71,7 +70,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
     Attendant *attendant = [[self data] objectAtIndex:[indexPath row]];
-    NSString *name = [BNoteStringUtils append:[NSArray arrayWithObjects:[attendant firstName], @" ", [attendant lastName], nil]];
+    NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
     [[cell textLabel] setText:name];
     
     return cell;

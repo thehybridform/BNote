@@ -63,6 +63,7 @@
 - (void)removePhoto:(Photo *)photo
 {
     [self deleteObject:photo];
+    [self update];
 }
 
 - (void)removeKeyWord:(KeyWord *)keyWord

@@ -71,17 +71,27 @@
     return [format stringFromDate:date];
 }
 
-+ (NSString *)append:(NSArray *)strings
++ (NSString *)formatDate:(NSTimeInterval)interval
 {
-    NSString *result = [[NSString alloc] init];
-    
-    NSEnumerator *items = [strings objectEnumerator];
-    NSString *s;
-    while (s = [items nextObject]) {
-        result = [result stringByAppendingString:s];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMMM dd, YYYY, hh:mm aaa"];
+    return [format stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:interval]];
+}
+
++ (NSString *)append:(NSString *)firstArg, ... NS_REQUIRES_NIL_TERMINATION
+{
+    NSMutableString *string = [NSMutableString string];
+
+    va_list args;
+    va_start(args, firstArg);
+
+    for (NSString *arg = firstArg; arg != nil; arg = va_arg(args, NSString*)) {
+        [string appendString:arg];
     }
-    
-    return result;
+
+    va_end(args);
+
+    return string;
 }
 
 

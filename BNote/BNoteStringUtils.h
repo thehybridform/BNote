@@ -17,9 +17,10 @@
 
 + (NSString *)dateToString:(NSDate *)date;
 + (NSString *)timeToString:(NSDate *)date;
++ (NSString *)formatDate:(NSTimeInterval)interval;
 
 + (NSString *)nameForEntry:(Entry *)entry;
 
-+ (NSString *)append:(NSArray *)strings;
++ (NSString *)append:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end

@@ -19,5 +19,6 @@
 - (IBAction)createNewNote:(id)sender;
 - (IBAction)sendEmail:(id)sender;
 - (IBAction)help:(id)sender;
+- (IBAction)configure:(id)sender;
 
 @end

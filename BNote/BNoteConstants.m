@@ -34,6 +34,8 @@ const NSString *const DeleteNote = @"DeleteNote";
 
 const NSString *const NewLine = @"\r\n";
 
+const NSString *const RefetchAllDatabaseData = @"RefetchAllDatabaseData";
+
 @implementation BNoteConstants
 
 + (UIColor *)appColor1

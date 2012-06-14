@@ -35,6 +35,8 @@ extern NSString *const DeleteNote;
 
 extern NSString *const NewLine;
 
+extern NSString *const RefetchAllDatabaseData;
+
 @interface BNoteConstants : NSObject
 
 + (UIColor *)appColor1;

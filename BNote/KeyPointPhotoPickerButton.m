@@ -37,6 +37,7 @@
 {
     UIImagePickerController *controller = [self imagePickerController];
     [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+
     
     EntryTableViewCell *cell = [self entryCellView];
     

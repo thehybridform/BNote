@@ -25,6 +25,11 @@
 @synthesize detailViewController = _detailViewController;
 @synthesize data = _data;
 
+- (void)dealloc 
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RefetchAllDatabaseData object:nil];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,7 +52,17 @@
 
     self.navigationItem.rightBarButtonItem = addButton;
     self.title = NSLocalizedString(@"Topics", @"Topics");
+    
+    [self loadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateReceived:)
+                                                 name:RefetchAllDatabaseData
+                                               object:[[UIApplication sharedApplication] delegate]];
+}
 
+- (void)loadData
+{
     [self setData:[[BNoteReader instance] allTopics]];
     
     if ([[self data] count] == 0) {
@@ -59,9 +74,16 @@
     }
 }
 
+- (void)updateReceived:(NSNotification *)note
+{
+    NSLog(@"Update received from iCloud...");
+    [self loadData];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RefetchAllDatabaseData object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -134,10 +156,12 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Topic *topic = [[self data] objectAtIndex:[indexPath row]];
         [[BNoteWriter instance] removeTopic:topic];
+        [[BNoteWriter instance] update];
 
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
+
     }
 }
 
@@ -146,7 +170,6 @@
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     [[self detailViewController] setTopic:topic];
 }
-
 
 #pragma mark TopicEditorViewControllerDelegate
 - (void)didFinish:(Topic *)topic

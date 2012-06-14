@@ -13,6 +13,10 @@
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 
+@interface AppDelegate()
+
+@end
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -75,16 +79,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (NSManagedObjectContext *)managedObjectContext
-{
+- (NSManagedObjectContext *)managedObjectContext {
+    
     if (__managedObjectContext != nil) {
         return __managedObjectContext;
     }
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    
     if (coordinator != nil) {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [__managedObjectContext setPersistentStoreCoordinator:coordinator];
+        NSManagedObjectContext* moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        
+        [moc performBlockAndWait:^{
+            [moc setPersistentStoreCoordinator: coordinator];
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(mergeChangesFrom_iCloud:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:coordinator];
+        }];
+        __managedObjectContext = moc;
     }
     
     return __managedObjectContext;
@@ -105,38 +115,125 @@
     return __managedObjectModel;
 }
 
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     if (__persistentStoreCoordinator != nil) {
         return __persistentStoreCoordinator;
     }
     
-    NSURL *applicationDocumentsDirectory = [[[NSFileManager defaultManager]
-                                             URLsForDirectory:NSDocumentDirectory
-                                             inDomains:NSUserDomainMask]
-                                            lastObject];
-    NSURL *storeURL = [applicationDocumentsDirectory URLByAppendingPathComponent:@"BNote.sqlite"];
-    
-    NSError *error = nil;
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+                                    initWithManagedObjectModel: [self managedObjectModel]];
+    NSPersistentStoreCoordinator *psc = __persistentStoreCoordinator;
 
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-    
-    if (![__persistentStoreCoordinator
-          addPersistentStoreWithType:NSSQLiteStoreType
-          configuration:nil
-          URL:storeURL
-          options:options
-          error:&error]) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
-    
+
+        NSString *iCloudEnabledAppID = @"com.kristinyoung.BNote";
+        NSString *dataFileName = @"BNote.sqlite";
+        NSString *iCloudDataDirectoryName = @"Data.nosync";
+        NSString *iCloudLogsDirectoryName = @"Logs";
+        NSFileManager *fileManager = [NSFileManager defaultManager];        
+        NSURL *localStore = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:dataFileName];
+        NSURL *iCloud = [fileManager URLForUbiquityContainerIdentifier:nil];
+        
+        if (iCloud != nil) {
+            
+            NSLog(@"iCloud is working");
+
+            NSURL *iCloudLogsPath = [NSURL fileURLWithPath:[[iCloud path] stringByAppendingPathComponent:iCloudLogsDirectoryName]];
+
+            NSLog(@"iCloudEnabledAppID = %@",iCloudEnabledAppID);
+            NSLog(@"dataFileName = %@", dataFileName); 
+            NSLog(@"iCloudDataDirectoryName = %@", iCloudDataDirectoryName);
+            NSLog(@"iCloudLogsDirectoryName = %@", iCloudLogsDirectoryName);  
+            NSLog(@"iCloud = %@", iCloud);
+            NSLog(@"iCloudLogsPath = %@", iCloudLogsPath);
+            
+            if([fileManager fileExistsAtPath:[[iCloud path] stringByAppendingPathComponent:iCloudDataDirectoryName]] == NO) {
+                NSError *fileSystemError;
+                [fileManager createDirectoryAtPath:[[iCloud path] stringByAppendingPathComponent:iCloudDataDirectoryName] 
+                       withIntermediateDirectories:YES 
+                                        attributes:nil 
+                                             error:&fileSystemError];
+                if(fileSystemError != nil) {
+                    NSLog(@"Error creating database directory %@", fileSystemError);
+                }
+            }
+            
+            NSString *iCloudData = [[[iCloud path] 
+                                    stringByAppendingPathComponent:iCloudDataDirectoryName] 
+                                    stringByAppendingPathComponent:dataFileName];
+            
+            
+            NSLog(@"iCloudData = %@", iCloudData);
+
+            NSMutableDictionary *options = [NSMutableDictionary dictionary];
+            [options setObject:[NSNumber numberWithBool:YES] forKey:NSMigratePersistentStoresAutomaticallyOption];
+            [options setObject:[NSNumber numberWithBool:YES] forKey:NSInferMappingModelAutomaticallyOption];
+            [options setObject:iCloudEnabledAppID            forKey:NSPersistentStoreUbiquitousContentNameKey];
+            [options setObject:iCloudLogsPath                forKey:NSPersistentStoreUbiquitousContentURLKey];
+            
+            [psc lock];
+            
+            [psc addPersistentStoreWithType:NSSQLiteStoreType 
+                              configuration:nil 
+                                        URL:[NSURL fileURLWithPath:iCloudData] 
+                                    options:options 
+                                      error:nil];
+            
+            [psc unlock];
+ 
+        } else {
+            NSLog(@"iCloud is NOT working - using a local store");
+            NSMutableDictionary *options = [NSMutableDictionary dictionary];
+            [options setObject:[NSNumber numberWithBool:YES] forKey:NSMigratePersistentStoresAutomaticallyOption];
+            [options setObject:[NSNumber numberWithBool:YES] forKey:NSInferMappingModelAutomaticallyOption];
+            
+            [psc lock];
+            
+            [psc addPersistentStoreWithType:NSSQLiteStoreType 
+                              configuration:nil 
+                                        URL:localStore 
+                                    options:options 
+                                      error:nil];
+            [psc unlock]; 
+        }
+        
+        
+        NSLog(@"connected to storage");
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:RefetchAllDatabaseData
+             object:self
+             userInfo:nil];
+        });
+    });
+
     return __persistentStoreCoordinator;
 }
 
+- (void)mergeChangesFrom_iCloud:(NSNotification *)notification {
+    
+	NSLog(@"Merging in changes from iCloud...");
+    
+    NSManagedObjectContext* moc = [self managedObjectContext];
+    
+    [moc performBlock:^{
+        
+        [moc mergeChangesFromContextDidSaveNotification:notification]; 
+        
+        NSNotification* refreshNotification = [NSNotification notificationWithName:RefetchAllDatabaseData
+                                                                            object:self
+                                                                          userInfo:[notification userInfo]];
+        
+        [[NSNotificationCenter defaultCenter] postNotification:refreshNotification];
+    }];
+}
 
 @end

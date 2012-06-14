@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18021C241587168C00C15F3A /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18021C221587168C00C15F3A /* ConfigurationViewController.m */; };
+		18021C251587168C00C15F3A /* ConfigurationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18021C231587168C00C15F3A /* ConfigurationViewController.xib */; };
+		18021C2D15871A9200C15F3A /* ConfigurationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18021C2C15871A9200C15F3A /* ConfigurationTableViewController.m */; };
 		18070DEC15785C42003486E3 /* EntrySummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */; };
 		18070DF015785FB2003486E3 /* IdentityFillter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DEF15785FB2003486E3 /* IdentityFillter.m */; };
 		18070DF41578613F003486E3 /* KeyPointFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF31578613F003486E3 /* KeyPointFilter.m */; };
@@ -119,6 +122,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18021C211587168C00C15F3A /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
+		18021C221587168C00C15F3A /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationViewController.m; sourceTree = "<group>"; };
+		18021C231587168C00C15F3A /* ConfigurationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigurationViewController.xib; sourceTree = "<group>"; };
+		18021C2B15871A9200C15F3A /* ConfigurationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationTableViewController.h; sourceTree = "<group>"; };
+		18021C2C15871A9200C15F3A /* ConfigurationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationTableViewController.m; sourceTree = "<group>"; };
 		18070DEA15785C42003486E3 /* EntrySummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummaryTableViewCell.h; sourceTree = "<group>"; };
 		18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummaryTableViewCell.m; sourceTree = "<group>"; };
 		18070DED15785F83003486E3 /* BNoteFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNoteFilter.h; sourceTree = "<group>"; };
@@ -181,6 +189,7 @@
 		1834D396156372500065788F /* BNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BNote.xcdatamodel; sourceTree = "<group>"; };
 		1834D3A5156375560065788F /* BNoteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFactory.h; sourceTree = "<group>"; };
 		1834D3A6156375560065788F /* BNoteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFactory.m; sourceTree = "<group>"; };
+		185A06501586E2AE00CC7ECA /* BNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		1879F05915746E9A003814C2 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -328,6 +337,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18021C1515870B7600C15F3A /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				18021C211587168C00C15F3A /* ConfigurationViewController.h */,
+				18021C221587168C00C15F3A /* ConfigurationViewController.m */,
+				18021C231587168C00C15F3A /* ConfigurationViewController.xib */,
+				18021C2B15871A9200C15F3A /* ConfigurationTableViewController.h */,
+				18021C2C15871A9200C15F3A /* ConfigurationTableViewController.m */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
 		18070DF115786123003486E3 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +446,8 @@
 		1834D34115634A650065788F /* BNote */ = {
 			isa = PBXGroup;
 			children = (
+				185A06501586E2AE00CC7ECA /* BNote.entitlements */,
+				18021C1515870B7600C15F3A /* Configuration */,
 				1819675615699AB200DA31A3 /* Images */,
 				18E9FF0D156A340900F22272 /* UI */,
 				18368F5415662D8000E511CB /* Detail View */,
@@ -831,6 +854,7 @@
 				18A056D9157D7E90002A4A78 /* Default-Landscape~ipad.png in Resources */,
 				18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */,
 				1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */,
+				18021C251587168C00C15F3A /* ConfigurationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -916,6 +940,8 @@
 				18F337C51585D1F1009D60D0 /* Note.m in Sources */,
 				18F337CB1585D1F1009D60D0 /* ActionItem.m in Sources */,
 				18F337CE1585D317009D60D0 /* Topic.m in Sources */,
+				18021C241587168C00C15F3A /* ConfigurationViewController.m in Sources */,
+				18021C2D15871A9200C15F3A /* ConfigurationTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -999,6 +1025,7 @@
 		1834D35C15634A650065788F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BNote/BNote.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BNote-Prefix.pch";
 				INFOPLIST_FILE = "BNote/BNote-Info.plist";
@@ -1011,6 +1038,7 @@
 		1834D35D15634A650065788F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BNote/BNote.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BNote-Prefix.pch";
 				INFOPLIST_FILE = "BNote/BNote-Info.plist";

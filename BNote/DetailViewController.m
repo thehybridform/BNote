@@ -16,6 +16,7 @@
 #import "BNoteSessionData.h"
 #import "LayerFormater.h"
 #import "EmailViewController.h"
+#import "ConfigurationViewController.h"
 
 
 @interface DetailViewController ()
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet UIToolbar *entriesToolbar;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (strong, nonatomic) ConfigurationViewController *configurationViewController;
 
 @end
 
@@ -37,6 +39,7 @@
 @synthesize notesViewController = notesViewController;
 @synthesize entriesToolbar = _entriesToolbar;
 @synthesize navBar = _navBar;
+@synthesize configurationViewController = _configurationViewController;
 
 - (void)viewDidUnload
 {
@@ -48,6 +51,7 @@
     [self setAddNewNoteButton:nil];
     [self setNotesViewController:nil];
     [self setEntriesToolbar:nil];
+    [self setConfigurationViewController:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -87,8 +91,6 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                      name:TopicUpdated object:nil];
-        
-        
     }
 }
 
@@ -136,5 +138,16 @@
 {
     
 }
+
+- (IBAction)configure:(id)sender
+{
+    ConfigurationViewController *controller = [[ConfigurationViewController alloc] initWithDefault];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    [self presentModalViewController:controller animated:YES];
+
+}
+
 
 @end

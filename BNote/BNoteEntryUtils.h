@@ -18,5 +18,8 @@
 
 + (NSString *)formatDetailTextForActionItem:(ActionItem *)actionItem;
 + (NSString *)formatDetailTextForQuestion:(Question *)question;
++ (BOOL)containsAttendants:(Note *)note;
+
++ (NSMutableArray *)attendants:(Note *)note;
 
 @end

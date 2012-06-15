@@ -7,6 +7,8 @@
 //
 
 #import "BNoteEntryUtils.h"
+#import "BNoteFilterFactory.h"
+#import "BNoteFilter.h"
 #import "Entry.h"
 
 @implementation BNoteEntryUtils
@@ -57,5 +59,38 @@
     return [BNoteStringUtils nilOrEmpty:detailText] ? nil : detailText;
 }
 
++ (BOOL)containsAttendants:(Note *)note
+{
+    NSEnumerator *entries = [[note entries] objectEnumerator];
+    Entry *entry;
+    
+    while (entry = [entries nextObject]) {
+        if ([entry isKindOfClass:[Attendant class]]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
++ (NSMutableArray *)attendants:(Note *)note
+{
+    return [BNoteEntryUtils filter:note with:[BNoteFilterFactory create:AttendantType]];
+}
+
++ (NSMutableArray *)filter:(Note *)note with:(id<BNoteFilter>)filter
+{
+    NSMutableArray *filtered = [[NSMutableArray alloc] init];
+    NSEnumerator *entries = [[note entries] objectEnumerator];
+    Entry *entry;
+    
+    while (entry = [entries nextObject]) {
+        if ([filter accept:entry]) {
+            [filtered addObject:entry];
+        }
+    }
+    
+    return filtered;
+}
 
 @end

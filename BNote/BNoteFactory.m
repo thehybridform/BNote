@@ -50,9 +50,17 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     return note;
 }
 
-+ (Attendant *)createAttendant:(Note *)note
++ (Attendant *)createAttendant:(Attendants *)attendants
 {
-    Attendant *entry = (Attendant *)[BNoteFactory createEntry:@"Attendant" forNote:note];
+    Attendant *attendant = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Attendant"];
+    [attendant setParent:attendants];
+
+    return attendant;
+}
+
++ (Attendants *)createAttendants:(Note *)note
+{
+    Attendants *entry = (Attendants *)[BNoteFactory createEntry:@"Attendants" forNote:note];
 
     [[BNoteWriter instance] update];
     
@@ -217,7 +225,7 @@ NSString *const ATTENDANT = @"attendant_icon.png";
 {
     if ([entry isKindOfClass:[ActionItem class]]) {
         return ActionItemIconActive;
-    } else if ([entry isKindOfClass:[Attendant class]]) {
+    } else if ([entry isKindOfClass:[Attendants class]]) {
         return AttentiesIconActive;
     } else if ([entry isKindOfClass:[Decision class]]) {
         return DecisionIconActive;
@@ -234,7 +242,7 @@ NSString *const ATTENDANT = @"attendant_icon.png";
 {
     if ([entry isKindOfClass:[ActionItem class]]) {
         return ActionItemIcon;
-    } else if ([entry isKindOfClass:[Attendant class]]) {
+    } else if ([entry isKindOfClass:[Attendants class]]) {
         return AttentiesIcon;
     } else if ([entry isKindOfClass:[Decision class]]) {
         return DecisionIcon;

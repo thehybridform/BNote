@@ -14,6 +14,7 @@
 #import "KeyPoint.h"
 #import "Decision.h"
 #import "Attendant.h"
+#import "Attendants.h"
 #import "Photo.h"
 #import "KeyWord.h"
 #import "EntryTableViewCell.h"
@@ -55,9 +56,10 @@ typedef enum {
 + (ActionItem *)createActionItem:(Note *)note;
 + (KeyPoint *)createKeyPoint:(Note *)note;
 + (Decision *)createDecision:(Note *)note;
-+ (Attendant *)createAttendant:(Note *)note;
++ (Attendants *)createAttendants:(Note *)note;
 + (Photo *)createPhoto:(KeyPoint *)keyPoint;
 + (KeyWord *)createKeyWord:(NSString *)word;
++ (Attendant *)createAttendant:(Attendants *)attendants;
 
 + (UIView *)createHighlightSliver:(UIColor *)color;
 + (UIView *)createHighlight:(UIColor *)color;

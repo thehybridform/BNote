@@ -14,7 +14,6 @@
 @interface AttendantsViewController : UIViewController <AttendantViewDelegate>
 
 @property (strong, nonatomic) Note *note;
-@property (strong, nonatomic) IBOutlet UILabel *attendantHelpLable;
 
 - (void)update;
 

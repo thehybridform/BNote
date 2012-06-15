@@ -44,14 +44,12 @@ const float y = 5;
     if (self) {
         [self setTextView:[[UITextView alloc] init]];
         [[self textView] setAutoresizingMask:[[self textLabel] autoresizingMask]];
-        [LayerFormater roundCornersForView:[self textView]];
         [[self contentView] addSubview:[self textView]];
         [[self textView] setFont:[UIFont systemFontOfSize:15]];
         [[self textView] setHidden:YES];
 
         [self setSubTextView:[[UITextView alloc] init]];
         [[self subTextView] setAutoresizingMask:[[self subTextView] autoresizingMask]];
-        [LayerFormater roundCornersForView:[self subTextView]];
         [LayerFormater setBorderWidth:5 forView:[self subTextView]];
         [LayerFormater setBorderColor:UIColorFromRGB(AnswerColor) forView:[self subTextView]];
         [[self contentView] addSubview:[self subTextView]];

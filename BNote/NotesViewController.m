@@ -73,13 +73,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:note];
 }
 
-/*- (void)didFinishEditingNote:(Note *)note
-{
-    [[BNoteWriter instance] update];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:FinishedEditingNote object:note];
-}
-*/
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;

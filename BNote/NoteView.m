@@ -54,7 +54,7 @@
         
         [LayerFormater setBorderWidth:1 forView:self];
         [LayerFormater setBorderColor:[UIColor blackColor] forView:self];
-        [LayerFormater roundCornersForView:self];
+//        [LayerFormater roundCornersForView:self];
         
         UILongPressGestureRecognizer *longPress =
         [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
@@ -127,7 +127,7 @@
 -(void)normalPressTap:(id)sender
 {
     NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:[self note]];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
 
     [[self controller] presentModalViewController:controller animated:YES];

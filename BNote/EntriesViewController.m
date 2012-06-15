@@ -108,7 +108,7 @@
     [cell setEntry:entry];
     [cell setParentController:self];
         
-    [LayerFormater roundCornersForView:cell];
+    [LayerFormater setBorderWidth:1 forView:cell];
     
     return cell;
 }
@@ -213,6 +213,12 @@
             }
         }
     }
+    
+    NSArray *attendants = [BNoteEntryUtils attendants:[self note]];
+    
+    NSRange range = NSMakeRange(0, [attendants count]);
+    NSIndexSet *indexes = [[NSIndexSet alloc] initWithIndexesInRange:range];
+    [[self filteredEntries] insertObjects:attendants atIndexes:indexes];
     
     [[self tableView] reloadData];
 }

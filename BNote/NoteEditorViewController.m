@@ -26,6 +26,21 @@
 @property (strong, nonatomic) ABPeoplePickerNavigationController *contactPicker; 
 @property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) IBOutlet UIView *dateView;
+@property (strong, nonatomic) IBOutlet UIView *subjectView;
+@property (strong, nonatomic) IBOutlet UILabel *date;
+@property (strong, nonatomic) IBOutlet UILabel *time;
+@property (strong, nonatomic) IBOutlet UITextField *subject;
+@property (strong, nonatomic) IBOutlet UILabel *subjectLable;
+@property (strong, nonatomic) IBOutlet UIToolbar *entityToolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *entityWithAttendantToolbar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *keyPointButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *questionButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *actionItemButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *modeButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
+@property (strong, nonatomic) IBOutlet UIImageView *attendantsImageView;
 
 @end
 
@@ -37,7 +52,6 @@
 @synthesize time = _time;
 @synthesize subject = _subject;
 @synthesize note = _note;
-@synthesize toolbar = _toolbar;
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
 @synthesize entityToolbar = _entityToolbar;
@@ -49,11 +63,10 @@
 @synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
 @synthesize attendantsImageView = _attendantsImageView;
-@synthesize attendantsScrollView = _attendantsScrollView;
 @synthesize contactPicker = _contactPicker;
-@synthesize attendantsViewController = _attendantsViewController;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
+@synthesize entityWithAttendantToolbar = _entityWithAttendantToolbar;
 
 - (void)viewDidUnload
 {
@@ -67,7 +80,6 @@
     [self setTime:nil];
     [self setSubject:nil];
     [self setSubjectLable:nil];
-    [self setToolbar:nil];
     [self setEntityToolbar:nil];
     [self setKeyPointButton:nil];
     [self setQuestionButton:nil];
@@ -78,9 +90,9 @@
     [self setEntriesViewController:nil];
     [self setAttendantsImageView:nil];
     [self setContactPicker:nil];
-    [self setAttendantsViewController:nil];
     [self setSelectedAttendant:nil];
     [self setPopup:nil];
+    [self setEntityWithAttendantToolbar:nil];
 }
 
 
@@ -110,11 +122,7 @@
                                     
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater roundCornersForView:[self subjectView]];
-    [LayerFormater roundCornersForView:[[self entriesViewController] view]];
-    [LayerFormater roundCornersForView:[self entityToolbar]];
-    [LayerFormater roundCornersForView:[self attendantsScrollView]];
     
-    [self setToolbarEditColor:[[self toolbar] tintColor]];
     [[self subjectLable] setHidden:YES];
     
     [[self modeButton] setTitle:@"Add"];
@@ -125,11 +133,12 @@
     UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
     [[self dateView] addGestureRecognizer:normalTap];
     
-    normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showContactPicker:)];
-    [[self attendantsImageView] addGestureRecognizer:normalTap];
-    
-    [[self attendantsViewController] setNote:note];
-    [[self attendantsViewController] update];
+    if ([BNoteEntryUtils containsAttendants:note]) {
+        [[self entityWithAttendantToolbar] setHidden:YES];
+        [[self attendantsImageView] setHidden:YES];
+    } else {
+        [[self entityToolbar] setHidden:YES];
+    }
 }
 
 - (IBAction)done:(id)sender
@@ -155,7 +164,6 @@
 
 - (void)editing
 {
-    [[self toolbar] setTintColor:[self toolbarEditColor]];
     [[self entityToolbar] setTintColor:[self toolbarEditColor]];
     [[self subject] setHidden:NO];
     [[self subjectLable] setHidden:YES];
@@ -167,7 +175,6 @@
 
 - (void)reviewing
 {
-    [[self toolbar] setTintColor:[UIColor lightGrayColor]];
     [[self entityToolbar] setTintColor:[UIColor lightGrayColor]];
     [[self subject] setHidden:YES];
     [[self subjectLable] setHidden:NO];
@@ -177,10 +184,10 @@
     [[BNoteSessionData instance] setPhase:Reviewing];
 }
 
-- (IBAction)addAttendee:(id)sender
+- (IBAction)addAttendies:(id)sender
 {
     if ([[BNoteSessionData instance] phase] == Editing) {
-        [self addEntry:[BNoteFactory createAttendant:[self note]]];
+        [self addEntry:[BNoteFactory createAttendants:[self note]]];
     }
 }
 
@@ -306,7 +313,7 @@
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
     if ([self selectedAttendant]) {
-        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
+//        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
     }
 
     [self finishedContactPicker];
@@ -315,7 +322,7 @@
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
     if ([self selectedAttendant]) {
-        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
+//        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
     }
     
     NSString *firstname = (__bridge NSString *) ABRecordCopyValue(person, kABPersonFirstNameProperty);
@@ -323,9 +330,9 @@
     
     Attendant *attendant = [BNoteEntryUtils findMatch:[self note] withFirstName:firstname andLastName:lastname];
     if (!attendant) {
-        attendant = [BNoteFactory createAttendant:[self note]];
-        [attendant setFirstName:firstname];
-        [attendant setLastName:lastname];
+//        attendant = [BNoteFactory createAttendant:[self note]];
+//        [attendant setFirstName:firstname];
+//        [attendant setLastName:lastname];
     }
     
     [self setSelectedAttendant:attendant];
@@ -353,7 +360,6 @@
     [[self attendantsImageView] setImage:[[BNoteFactory createIcon:AttentiesIcon] image]];
     [[self entriesViewController] dismissModalViewControllerAnimated:YES];
     [self setSelectedAttendant:nil];
-    [[self attendantsViewController] update];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -16,26 +16,8 @@
 
 @interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, ABPeoplePickerNavigationControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIView *dateView;
-@property (strong, nonatomic) IBOutlet UIView *subjectView;
-@property (strong, nonatomic) IBOutlet UILabel *date;
-@property (strong, nonatomic) IBOutlet UILabel *time;
-@property (strong, nonatomic) IBOutlet UITextField *subject;
-@property (strong, nonatomic) IBOutlet UILabel *subjectLable;
-@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (strong, nonatomic) IBOutlet UIToolbar *entityToolbar;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *keyPointButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *questionButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *actionItemButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *modeButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
-@property (strong, nonatomic) IBOutlet UIImageView *attendantsImageView;
-@property (strong, nonatomic) IBOutlet UIScrollView *attendantsScrollView;
-
-
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
-@property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
+//@property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
 
 - (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;
@@ -46,6 +28,7 @@
 - (IBAction)addDecision:(id)sender;
 - (IBAction)addActionItem:(id)sender;
 - (IBAction)editEntries:(id)sender;
+- (IBAction)addAttendies:(id)sender;
 
 @end
 

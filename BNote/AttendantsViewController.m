@@ -17,30 +17,12 @@
 
 @implementation AttendantsViewController
 @synthesize note = _note;
-@synthesize attendantHelpLable = _attendantHelpLable;
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setNote:nil];
-    [self setAttendantHelpLable:nil];
-}
 
 - (void)update
 {
     [[BNoteWriter instance] update];
 
     NSArray *attendants = [self filterAttendants];
-    if ([attendants count] > 0) {
-        [[self attendantHelpLable] setHidden:YES];
-    }
     
     NSEnumerator *items = [attendants objectEnumerator];
     Attendant *attendant;
@@ -84,7 +66,7 @@
 
 - (void)remove:(Attendant *)attendant
 {
-    [[BNoteWriter instance] removeEntry:attendant];
+//    [[BNoteWriter instance] removeEntry:attendant];
     
     NSEnumerator *views = [[[self view] subviews] objectEnumerator];
     UIView *view;

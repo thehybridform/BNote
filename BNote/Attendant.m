@@ -1,12 +1,13 @@
 //
 //  Attendant.m
-//  BNote
+//  BeNote
 //
-//  Created by Young Kristin on 6/11/12.
+//  Created by Young Kristin on 6/14/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "Attendant.h"
+#import "Attendants.h"
 
 
 @implementation Attendant
@@ -16,5 +17,6 @@
 @dynamic image;
 @dynamic lastName;
 @dynamic phone;
+@dynamic parent;
 
 @end

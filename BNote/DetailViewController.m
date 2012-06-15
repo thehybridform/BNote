@@ -100,7 +100,7 @@
     [[self notesViewController] reload];
     
     NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:note];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     
     [self presentModalViewController:controller animated:YES];
@@ -128,7 +128,7 @@
 - (IBAction)sendEmail:(id)sender
 {
     EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[self topic]];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     
     [self presentModalViewController:controller animated:YES];
@@ -142,7 +142,7 @@
 - (IBAction)configure:(id)sender
 {
     ConfigurationViewController *controller = [[ConfigurationViewController alloc] initWithDefault];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
     [self presentModalViewController:controller animated:YES];

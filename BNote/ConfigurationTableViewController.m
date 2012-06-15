@@ -23,7 +23,7 @@
     [super viewDidLoad];
 
     NSArray *aboutArray =
-        [NSArray arrayWithObjects:@"Version 1.0", @"Copyright", @"License", @"Contact", nil];
+        [NSArray arrayWithObjects:@"Version 1.0", @"A musing of Uobia, Copyright 2012", @"License", @"Contact", nil];
     [self setAboutArray:aboutArray];
     
     NSArray *storageArray =

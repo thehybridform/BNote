@@ -76,7 +76,7 @@
 
 - (void)updateReceived:(NSNotification *)note
 {
-    NSLog(@"Update received from iCloud...");
+//    NSLog(@"Update received data update...");
     [self loadData];
 }
 

@@ -44,6 +44,7 @@
 		1834D37E156351640065788F /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
 		1834D3A7156375560065788F /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
+		1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */; };
 		1864E0E9158AEDB200505522 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0E8158AEDB200505522 /* Topic.m */; };
 		1864E0EC158AEDB200505522 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0EB158AEDB200505522 /* Entry.m */; };
 		1864E0EF158AEDB200505522 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0EE158AEDB200505522 /* Note.m */; };
@@ -190,6 +191,8 @@
 		1834D382156364840065788F /* TopicEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditorViewController.xib; path = ../TopicEditorViewController.xib; sourceTree = "<group>"; };
 		1834D3A5156375560065788F /* BNoteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFactory.h; sourceTree = "<group>"; };
 		1834D3A6156375560065788F /* BNoteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFactory.m; sourceTree = "<group>"; };
+		1837667D158D24DA001EE5BF /* EditNoteViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewPresenter.h; sourceTree = "<group>"; };
+		1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewPresenter.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BeNote.entitlements; sourceTree = "<group>"; };
 		1864E0E7158AEDB200505522 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
 		1864E0E8158AEDB200505522 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 				18E9FF6F1572A44A00F22272 /* Entries Scroll View */,
 				18E9FF6E1572A43100F22272 /* Notes Scroll View */,
 				18E9FF29156C6FDA00F22272 /* Edit Notes */,
+				1837667D158D24DA001EE5BF /* EditNoteViewPresenter.h */,
+				1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */,
 			);
 			name = "Detail View";
 			sourceTree = "<group>";
@@ -961,6 +966,7 @@
 				1864E101158AEDB300505522 /* ActionItem.m in Sources */,
 				1864E104158AEDB300505522 /* Question.m in Sources */,
 				1864E107158AEDB300505522 /* KeyWord.m in Sources */,
+				1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

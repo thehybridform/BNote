@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Entry.h"
+#import "EntryCell.h"
 
 @class EntriesViewController;
 
-@interface EntryTableViewCell : UITableViewCell <UIActionSheetDelegate>
+@interface EntryTableViewCell : UITableViewCell <EntryCell, UIActionSheetDelegate>
 
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) UITextView *textView;
@@ -20,7 +21,6 @@
 @property (assign, nonatomic) EntriesViewController *parentController;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
-- (void)edit;
 - (void)finishedEdit;
 
 + (int)cellHieght:(Entry *)entry;

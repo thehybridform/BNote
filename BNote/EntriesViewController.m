@@ -9,7 +9,7 @@
 #import "EntriesViewController.h"
 #import "LayerFormater.h"
 #import "BNoteStringUtils.h"
-#import "EntryTableViewCell.h"
+#import "EntryCell.h"
 #import "Entry.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
@@ -17,7 +17,7 @@
 #import "Attendant.h"
 
 @interface EntriesViewController ()
-@property (strong, nonatomic) EntryTableViewCell *selectEntryTableViewCell;
+@property (assign, nonatomic) id<EntryCell> selectEntryCell;
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 @property (strong, nonatomic) NSMutableArray *filteredEntries;
 @property (strong, nonatomic) NSMutableArray *deletedEntries;
@@ -31,11 +31,11 @@
 @synthesize quickWordsViewController = _quickWordsViewController;
 @synthesize filter = _filter;
 @synthesize filteredEntries = _filteredEntries;
-@synthesize selectEntryTableViewCell = _selectEntryTableViewCell;
 @synthesize keepQuickViewAlive = _keepQuickViewAlive;
 @synthesize parentController = _parentController;
 @synthesize deletedEntries = _deletedEntries;
 @synthesize textView = _textView;
+@synthesize selectEntryCell = _selectEntryCell;
 
 - (void)viewDidLoad
 {
@@ -65,7 +65,6 @@
     [self setQuickWordsViewController:nil];
     [self setFilter:nil];
     [self setFilteredEntries:nil];
-    [self setSelectEntryTableViewCell:nil];
     [self setParentController:nil];
     [self setDeletedEntries:nil];
 }
@@ -103,14 +102,13 @@
     
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-    EntryTableViewCell *cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
-    [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
+    id<EntryCell> cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
     [cell setEntry:entry];
     [cell setParentController:self];
         
-    [LayerFormater setBorderWidth:1 forView:cell];
+    [LayerFormater setBorderWidth:1 forView:[cell view]];
     
-    return cell;
+    return (UITableViewCell *) cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,18 +138,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[BNoteSessionData instance] canEditEntry]) {
-        EntryTableViewCell *cell = (EntryTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+        id<EntryCell> cell = (id<EntryCell>) [tableView cellForRowAtIndexPath:indexPath];
     
-        EntryTableViewCell *selectedCell = [self selectEntryTableViewCell];
-        if (selectedCell) {
-            [selectedCell finishedEdit];
-        }
+        [self setSelectEntryCell:cell];
         
-        [self setSelectEntryTableViewCell:cell];
-        
-        [cell edit];
+        [cell focus];
     
-        [self showQuickView:cell];
+//        [self showQuickView:cell];
     }
 }
 

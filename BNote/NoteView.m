@@ -10,6 +10,7 @@
 #import "Topic.h"
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
+#import "EditNoteViewPresenter.h"
 
 @interface NoteView()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -126,11 +127,7 @@
 
 -(void)normalPressTap:(id)sender
 {
-    NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:[self note]];
-    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
-    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-
-    [[self controller] presentModalViewController:controller animated:YES];
+    [EditNoteViewPresenter present:[self note] in:[self controller]];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

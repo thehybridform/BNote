@@ -13,6 +13,7 @@
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
 #import "EntrySummaryTableViewCell.h"
+#import "EditNoteViewPresenter.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -246,10 +247,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
-    NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:[entry note]];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self presentModalViewController:controller animated:YES];
+
+    [EditNoteViewPresenter present:[entry note] in:self];
+
 
 }
 

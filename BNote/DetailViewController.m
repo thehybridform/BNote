@@ -17,6 +17,7 @@
 #import "LayerFormater.h"
 #import "EmailViewController.h"
 #import "ConfigurationViewController.h"
+#import "EditNoteViewPresenter.h"
 
 
 @interface DetailViewController ()
@@ -99,11 +100,7 @@
     Note *note = [BNoteFactory createNote:[self topic]];
     [[self notesViewController] reload];
     
-    NoteEditorViewController *controller = [[NoteEditorViewController alloc] initWithNote:note];
-    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
-    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    
-    [self presentModalViewController:controller animated:YES];
+    [EditNoteViewPresenter present:note in:self];
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController

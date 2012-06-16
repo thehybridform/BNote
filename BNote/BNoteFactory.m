@@ -9,6 +9,9 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "BNoteReader.h"
+#import "Attendants.h"
+#import "EntryTableViewCell.h"
+#import "AttendantTableViewCell.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -255,8 +258,12 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     return -1;
 }
 
-+ (EntryTableViewCell *)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier
++ (id<EntryCell>)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier
 {
-    return [[EntryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+    if ([entry isKindOfClass:[Attendants class]]) {
+        return [[AttendantTableViewCell alloc] initWithIdentifier:cellIdentifier];
+    } else {
+        return [[EntryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+    }
 }
 @end

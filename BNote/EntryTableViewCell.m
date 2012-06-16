@@ -47,6 +47,7 @@ const float y = 5;
         [[self contentView] addSubview:[self textView]];
         [[self textView] setFont:[UIFont systemFontOfSize:15]];
         [[self textView] setHidden:YES];
+        [LayerFormater roundCornersForView:[self textView]];
 
         [self setSubTextView:[[UITextView alloc] init]];
         [[self subTextView] setAutoresizingMask:[[self subTextView] autoresizingMask]];
@@ -55,6 +56,7 @@ const float y = 5;
         [[self contentView] addSubview:[self subTextView]];
         [[self subTextView] setFont:[UIFont systemFontOfSize:15]];
         [[self subTextView] setHidden:YES];
+        [LayerFormater roundCornersForView:[self subTextView]];
 
         [[self textLabel] setFont:[UIFont systemFontOfSize:15]];
         [[self textLabel] setLineBreakMode:UILineBreakModeWordWrap];
@@ -73,8 +75,14 @@ const float y = 5;
                                                      name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
         
         
+        [self setEditingAccessoryType:UITableViewCellAccessoryNone];
     }
     
+    return self;
+}
+
+- (UIView *)view
+{
     return self;
 }
 
@@ -98,7 +106,7 @@ const float y = 5;
     [self setNeedsDisplay];
 }
 
-- (void)edit
+- (void)focus
 {
     [self handleImageIcon:YES];
 

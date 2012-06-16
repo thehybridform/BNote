@@ -9,6 +9,8 @@
 #import "AttendantTableViewCell.h"
 
 @implementation AttendantTableViewCell
+@synthesize entry = _entry;
+@synthesize parentController = _parentController;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier
 {
@@ -21,8 +23,17 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setSelected:selected animated:animated];
+    //[super setSelected:selected animated:animated];
 
 }
 
+- (UIView *)view
+{
+    return self;
+}
+
+- (void)focus
+{
+    
+}
 @end

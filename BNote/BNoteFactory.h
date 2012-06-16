@@ -17,7 +17,7 @@
 #import "Attendants.h"
 #import "Photo.h"
 #import "KeyWord.h"
-#import "EntryTableViewCell.h"
+#import "EntryCell.h"
 
 extern NSString *const ACTION_ITEM_ACTIVE;
 extern NSString *const ACTION_ITEM_INACTIVE;
@@ -66,6 +66,6 @@ typedef enum {
 + (UIImageView *)createIcon:(BNoteIconType)type;
 + (UIImageView *)createIcon:(Entry *)entry active:(BOOL)active;
 
-+ (EntryTableViewCell *)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier;
++ (id<EntryCell>)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier;
 
 @end

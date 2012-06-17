@@ -19,8 +19,7 @@
 #import "Attendant.h"
 
 @interface QuickWordsViewController ()
-@property (strong, nonatomic) Entry *entry;
-@property (strong, nonatomic) UIViewController *parent;
+@property (strong, nonatomic) EntryTableViewCell *entryViewCell;
 
 @end
 
@@ -33,19 +32,16 @@
 @synthesize keyWordsButton = _keyWordsButton;
 @synthesize doneButton = _doneButton;
 @synthesize listener = _listener;
-@synthesize entry = _entry;
-@synthesize scrollView = _scrollView;
-@synthesize parent = _parent;
 @synthesize entryViewCell = _entryViewCell;
+@synthesize scrollView = _scrollView;
 
 static float spacing = 10;
-static float speed = 0.1;
 
-- (id)initWithEntry:(Entry *)entry;
+- (id)initWithCell:(EntryTableViewCell *)cell
 {
     self = [super initWithNibName:@"QuickWordsViewController" bundle:nil];
     if (self) {
-        [self setEntry:entry];
+        [self setEntryViewCell:cell];
     }
     return self;
 }
@@ -54,10 +50,7 @@ static float speed = 0.1;
 {
     [super viewDidLoad];
     
-    if ([[self entry] isKindOfClass:[Attendant class]]) {
-        [[self toolbar] setHidden:YES];
-        [[self decisionToolbar] setHidden:YES];
-    } else if ([[self entry] isKindOfClass:[Decision class]]) {
+    if ([[[self entryViewCell] entry] isKindOfClass:[Decision class]]) {
         [[self toolbar] setHidden:YES];
         [[self attendantToolbar] setHidden:YES];
     } else {
@@ -67,7 +60,7 @@ static float speed = 0.1;
 
     [LayerFormater roundCornersForView:[self view]];
     
-    [[self detailButton] setTitle:[BNoteStringUtils nameForEntry:[self entry]]];
+    [[self detailButton] setTitle:[BNoteStringUtils nameForEntry:[[self entryViewCell] entry]]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:KeyWordsUpdated object:nil];
@@ -80,22 +73,15 @@ static float speed = 0.1;
     [self setDetailButton:nil];
     [self setDatesButton:nil];
     [self setKeyWordsButton:nil];
-    [self setEntry:nil];
     [self setScrollView:nil];
     [self setAttendantToolbar:nil];
     [self setDecisionToolbar:nil];
-    [self setParent:nil];
     [self setEntryViewCell:nil];
-}
-
-- (IBAction)done:(id)sender
-{
-    [[self listener] didFinishFromQuickWords];
 }
 
 - (IBAction)detail:(id)sender
 {
-    [self buildButtons:[self enumeratorForEntry:[self entry]]];
+    [self buildButtons:[self enumeratorForEntry:[[self entryViewCell] entry]]];
 }
 
 - (IBAction)dates:(id)sender
@@ -139,43 +125,13 @@ static float speed = 0.1;
     }
 }
 
-- (void)presentView:(UIViewController *)parent
+- (void)selectFirstButton
 {
-    [self setParent:parent];
-    UIView *view = [self view];
-    [view setAlpha:0.0];
-    [[[parent view] superview] addSubview:view];
-    
-    [UIView animateWithDuration:speed
-                          delay:0
-                        options:(UIViewAnimationOptionCurveLinear)
-                     animations:^(void) {
-                         [view setAlpha:1.0];
-                     }
-                     completion:^(BOOL finished) {
-                         if ([[self entry] isKindOfClass:[Decision class]]) {
-                             [self dates:nil]; 
-                         } else {
-                             [self detail:nil]; 
-                         }
-                     }
-     ];
-}
-
-- (void)hideView
-{
-    UIView *view = [self view];
-
-    [UIView animateWithDuration:speed
-                          delay:0
-                        options:(UIViewAnimationOptionCurveLinear)
-                     animations:^(void) {
-                         [view setAlpha:0.0];
-                     }
-                     completion:^(BOOL finished) {
-                         [view removeFromSuperview];
-                     }
-     ];
+    if ([[[self entryViewCell] entry] isKindOfClass:[Decision class]]) {
+        [self dates:nil]; 
+    } else {
+        [self detail:nil]; 
+    }
 }
 
 - (NSEnumerator *)enumeratorForEntry:(Entry *)entry

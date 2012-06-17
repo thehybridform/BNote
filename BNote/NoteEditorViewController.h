@@ -14,14 +14,14 @@
 
 @class DetailViewController;
 
-@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, ABPeoplePickerNavigationControllerDelegate>
+@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener>
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
-//@property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
 
 - (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;
 - (IBAction)editMode:(id)sender;
+- (IBAction)emailNote:(id)sender;
 
 - (IBAction)addKeyPoint:(id)sender;
 - (IBAction)addQuestion:(id)sender;

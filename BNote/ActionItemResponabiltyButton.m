@@ -23,7 +23,6 @@
 {
     EntryTableViewCell *cell = [self entryCellView];
     EntriesViewController *controller = [cell parentController];
-    [controller setKeepQuickViewAlive:YES];
     
     [[cell textView] resignFirstResponder];
     [[cell subTextView] resignFirstResponder];

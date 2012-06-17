@@ -24,19 +24,16 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (strong, nonatomic) EntryTableViewCell *entryViewCell;
 
 @property (assign, nonatomic) id<QuickWordsViewControllerListener> listener;
 
-- (id)initWithEntry:(Entry *)entry;
+- (id)initWithCell:(EntryTableViewCell *)cell;
 
-- (IBAction)done:(id)sender;
 - (IBAction)detail:(id)sender;
 - (IBAction)dates:(id)sender;
 - (IBAction)keyWords:(id)sender;
 
-- (void)presentView:(UIViewController *)parent;
-- (void)hideView;
+- (void)selectFirstButton;
 
 @end
 
@@ -44,7 +41,6 @@
 
 @required
 
-- (void)didFinishFromQuickWords;
 - (UIViewController *)controller;
 
 @end

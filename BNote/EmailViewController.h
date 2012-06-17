@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Topic.h"
+#import "Note.h"
 
 @interface EmailViewController : MFMailComposeViewController <MFMailComposeViewControllerDelegate>
 
 - (id)initWithTopic:(Topic *)topic;
+- (id)initWithNote:(Note *)note;
 
 @end

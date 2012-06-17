@@ -12,6 +12,4 @@
 
 - (id)initWithImage:(UIImage *)image;
 
-- (IBAction)done:(id)sender;
-
 @end

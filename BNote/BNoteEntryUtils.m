@@ -10,6 +10,7 @@
 #import "BNoteFilterFactory.h"
 #import "BNoteFilter.h"
 #import "Entry.h"
+#import "Attendants.h"
 
 @implementation BNoteEntryUtils
 
@@ -65,7 +66,7 @@
     Entry *entry;
     
     while (entry = [entries nextObject]) {
-        if ([entry isKindOfClass:[Attendant class]]) {
+        if ([entry isKindOfClass:[Attendants class]]) {
             return YES;
         }
     }

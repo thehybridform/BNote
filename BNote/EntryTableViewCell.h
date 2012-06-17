@@ -21,7 +21,6 @@
 @property (assign, nonatomic) EntriesViewController *parentController;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
-- (void)finishedEdit;
 
 + (int)cellHieght:(Entry *)entry;
 

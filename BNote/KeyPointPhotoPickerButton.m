@@ -24,8 +24,6 @@
 - (void)execute:(id)sender
 {
     EntryTableViewCell *cell = [self entryCellView];
-    EntriesViewController *controller = [cell parentController];
-    [controller setKeepQuickViewAlive:YES];
     
     [[cell textView] resignFirstResponder];
     [[cell subTextView] resignFirstResponder];
@@ -41,7 +39,7 @@
     
     EntryTableViewCell *cell = [self entryCellView];
     
-    UIView *view = [[cell parentController] view];
+    UIView *view = cell;
     CGRect rect = [view bounds];
 
     UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:[self imagePickerController]];

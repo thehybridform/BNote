@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Attendant.h"
 #import "Note.h"
 #import "ActionItem.h"
 #import "Question.h"
+#import "Attendant.h"
 
 @interface BNoteEntryUtils : NSObject
 

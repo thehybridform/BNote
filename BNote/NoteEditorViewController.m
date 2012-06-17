@@ -19,6 +19,7 @@
 #import "BNoteWriter.h"
 #import "BNoteStringUtils.h"
 #import "BNoteEntryUtils.h"
+#import "EmailViewController.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -38,8 +39,9 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *questionButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *actionItemButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *modeButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *reviewButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *emailButton;
 @property (strong, nonatomic) IBOutlet UIImageView *attendantsImageView;
 
 @end
@@ -59,7 +61,7 @@
 @synthesize questionButton= _questionButton;
 @synthesize decisionButton = _decisionButton;
 @synthesize actionItemButton = _actionItemButton;
-@synthesize modeButton = _modeButton;
+@synthesize reviewButton = _reviewButton;
 @synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
 @synthesize attendantsImageView = _attendantsImageView;
@@ -67,6 +69,7 @@
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
 @synthesize entityWithAttendantToolbar = _entityWithAttendantToolbar;
+@synthesize emailButton = _emailButton;
 
 - (void)viewDidUnload
 {
@@ -85,7 +88,7 @@
     [self setQuestionButton:nil];
     [self setDecisionButton:nil];
     [self setActionItemButton:nil];
-    [self setModeButton:nil];
+    [self setReviewButton:nil];
     [self setTrashButton:nil];
     [self setEntriesViewController:nil];
     [self setAttendantsImageView:nil];
@@ -93,6 +96,7 @@
     [self setSelectedAttendant:nil];
     [self setPopup:nil];
     [self setEntityWithAttendantToolbar:nil];
+    [self setEmailButton:nil];
 }
 
 
@@ -125,7 +129,7 @@
     
     [[self subjectLable] setHidden:YES];
     
-    [[self modeButton] setTitle:@"Add"];
+    [[self reviewButton] setTitle:@"Review"];
     
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
@@ -146,19 +150,20 @@
     [[self note] setSubject:[[self subject] text]];
     [self dismissModalViewControllerAnimated:YES];
     [[self entriesViewController] cleanupEntries];    
+    [[BNoteWriter instance] update];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NoteUpdated object:[self note]];
 }
 
 - (IBAction)editMode:(id)sender
 {
-    UISegmentedControl *control = (UISegmentedControl *)sender;
-    
-    if ([control selectedSegmentIndex] == 0) {
+    if ([[BNoteSessionData instance] phase] == Reviewing) {
         [self editing];
+        [[self reviewButton] setTitle:@"Review"];
     } else {
         [self setupTableViewAddingEntries];
         [self reviewing];
+        [[self reviewButton] setTitle:@"Edit"];
     }
 }
 
@@ -249,7 +254,8 @@
     [[self questionButton] setEnabled:YES];
     [[self decisionButton] setEnabled:YES];
     [[self actionItemButton] setEnabled:YES];
-    [[self modeButton] setEnabled:YES];
+    [[self reviewButton] setEnabled:YES];
+    [[self emailButton] setEnabled:YES];
 }
 
 - (void)setupTableViewForDeletingRows
@@ -259,7 +265,8 @@
     [[self questionButton] setEnabled:NO];
     [[self decisionButton] setEnabled:NO];
     [[self actionItemButton] setEnabled:NO];
-    [[self modeButton] setEnabled:NO];
+    [[self reviewButton] setEnabled:NO];
+    [[self emailButton] setEnabled:NO];
 }
 
 - (void)showDatePicker:(id)sender
@@ -294,72 +301,14 @@
     [[self time] setText:[BNoteStringUtils timeToString:date]];
 }
 
-- (void)showContactPicker:(id)sender
+- (IBAction)emailNote:(id)sender
 {
-    if ([self contactPicker]) {
-        [self finishedContactPicker];
-    } else {
-        [[self attendantsImageView] setImage:[[BNoteFactory createIcon:AttentiesIconActive] image]];
-        ABPeoplePickerNavigationController *controller = [[ABPeoplePickerNavigationController alloc] init];
-        [self setContactPicker:controller];
-        
-        [controller setPeoplePickerDelegate:self];
-        [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
-        [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-        [[self entriesViewController] presentModalViewController:controller animated:YES];
-    }
-}
-
-- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
-{
-    if ([self selectedAttendant]) {
-//        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
-    }
-
-    [self finishedContactPicker];
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
-{
-    if ([self selectedAttendant]) {
-//        [[BNoteWriter instance] removeEntry:[self selectedAttendant]];
-    }
+    Note *note = [self note];
+    EmailViewController *controller = [[EmailViewController alloc] initWithNote:note];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
-    NSString *firstname = (__bridge NSString *) ABRecordCopyValue(person, kABPersonFirstNameProperty);
-    NSString *lastname = (__bridge NSString *) ABRecordCopyValue(person, kABPersonLastNameProperty);
-    
-    Attendant *attendant = [BNoteEntryUtils findMatch:[self note] withFirstName:firstname andLastName:lastname];
-    if (!attendant) {
-//        attendant = [BNoteFactory createAttendant:[self note]];
-//        [attendant setFirstName:firstname];
-//        [attendant setLastName:lastname];
-    }
-    
-    [self setSelectedAttendant:attendant];
-    
-    [peoplePicker setDisplayedProperties:[NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]]];
-
-    return YES;
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
-{
-    ABMultiValueRef emails = ABRecordCopyValue(person, property);
-    int idx = ABMultiValueGetIndexForIdentifier(emails, identifier);
-    
-    [[self selectedAttendant] setEmail:(__bridge NSString *)ABMultiValueCopyValueAtIndex(emails, idx)];
-    
-    [self finishedContactPicker];
-    
-    return NO;
-}
-
-- (void)finishedContactPicker
-{
-    [self setContactPicker:nil];
-    [[self attendantsImageView] setImage:[[BNoteFactory createIcon:AttentiesIcon] image]];
-    [[self entriesViewController] dismissModalViewControllerAnimated:YES];
-    [self setSelectedAttendant:nil];
+    [self presentModalViewController:controller animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

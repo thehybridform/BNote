@@ -125,8 +125,8 @@
 - (IBAction)sendEmail:(id)sender
 {
     EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[self topic]];
-    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
-    [controller setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
     [self presentModalViewController:controller animated:YES];
 }

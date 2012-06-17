@@ -10,6 +10,7 @@
 #import "Note.h"
 #import "Entry.h"
 #import "Attendant.h"
+#import "Attendants.h"
 #import "AttendantFilter.h"
 #import "KeyPoint.h"
 #import "KeyPointFilter.h"
@@ -19,35 +20,58 @@
 #import "BNoteRenderFactory.h"
 
 @interface EmailViewController ()
-@property (assign, nonatomic) Topic *topic;
 
 @end
 
 @implementation EmailViewController
-@synthesize topic = _topic;
 
 - (id)initWithTopic:(Topic *)topic
 {
+    NSOrderedSet *allNotes = [topic notes];
+    self = [self initCommon:topic and:allNotes];
+    
+    id<BNoteRenderer> renderer = [BNoteRenderFactory create:Plain];
+    [self setMessageBody:[renderer render:topic] isHTML:NO];
+
+    return self;
+}
+
+- (id)initWithNote:(Note *)note
+{
+    NSOrderedSet *allNotes = [[NSOrderedSet alloc] initWithObject:note];
+    self = [self initCommon:[note topic] and:allNotes];
+
+    id<BNoteRenderer> renderer = [BNoteRenderFactory create:Plain];
+    [self setMessageBody:[renderer render:[note topic] and:note] isHTML:NO];
+    
+    return self;
+}
+
+- (id)initCommon:(Topic *)topic and:(NSOrderedSet *)allNotes
+{
     self = [super init];
-
+    
     if (self) {
-        [self setTopic:topic];
-
+        
         [self setMailComposeDelegate:self];
         
-        NSString *subject = [BNoteStringUtils append:@"Topic: ", [[self topic] title], nil];
+        NSString *subject = [BNoteStringUtils append:@"Topic: ", [topic title], nil];
         [self setSubject:subject];
-        
+                
         NSMutableArray *emails = [[NSMutableArray alloc] init];
-        NSEnumerator *attendants = [[self filterEntries:[BNoteFilterFactory create:AttendantType]] objectEnumerator];
-        Attendant *attendant;
+        NSEnumerator *attendants = [[self filterEntries:[BNoteFilterFactory create:AttendantType] for:allNotes] objectEnumerator];
+        Attendants *attendant;
         while (attendant = [attendants nextObject]) {
-            [emails addObject:[attendant email]];
+            NSEnumerator *recipients = [[attendant children] objectEnumerator];
+            Attendant *recipient;
+            while (recipient = [recipients nextObject]) {
+                [emails addObject:[recipient email]];
+            }
         }
         
         [self setToRecipients:emails];
         
-        NSEnumerator *keyPoints = [[self filterEntries:[BNoteFilterFactory create:KeyPointType]] objectEnumerator];
+        NSEnumerator *keyPoints = [[self filterEntries:[BNoteFilterFactory create:KeyPointType] for:allNotes] objectEnumerator];
         KeyPoint *keyPoint;
         int i = 0;
         while (keyPoint = [keyPoints nextObject]) {
@@ -57,13 +81,11 @@
                 [self addAttachmentData:photo mimeType:@"image/jpeg" fileName:name];
             }
         }
-        
-        id<BNoteRenderer> renderer = [BNoteRenderFactory create:Plain];
-        [self setMessageBody:[renderer render:[self topic]] isHTML:NO];
     }
     
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -84,11 +106,11 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (NSArray *)filterEntries:(id <BNoteFilter>)filter
+- (NSArray *)filterEntries:(id <BNoteFilter>)filter for:(NSOrderedSet *)allNotes
 {
     NSMutableArray *filtered = [[NSMutableArray alloc] init];
     
-    NSEnumerator *notes = [[[self topic] notes] objectEnumerator];
+    NSEnumerator *notes = [allNotes objectEnumerator];
     Note *note;
     while (note = [notes nextObject]) {
         NSEnumerator *entries = [[note entries] objectEnumerator];

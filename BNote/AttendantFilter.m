@@ -7,13 +7,13 @@
 //
 
 #import "AttendantFilter.h"
-#import "Attendant.h"
+#import "Attendants.h"
 
 @implementation AttendantFilter
 
 - (BOOL)accept:(id)item
 {
-    return [item isKindOfClass:[Attendant class]];
+    return [item isKindOfClass:[Attendants class]];
 }
 
 @end

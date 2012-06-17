@@ -18,7 +18,6 @@
 
 @interface EntriesViewController ()
 @property (assign, nonatomic) id<EntryCell> selectEntryCell;
-@property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 @property (strong, nonatomic) NSMutableArray *filteredEntries;
 @property (strong, nonatomic) NSMutableArray *deletedEntries;
 @property (assign, nonatomic) UITextView *textView;
@@ -28,10 +27,8 @@
 @implementation EntriesViewController
 @synthesize note = _note;
 @synthesize entryCell = _entryCell;
-@synthesize quickWordsViewController = _quickWordsViewController;
 @synthesize filter = _filter;
 @synthesize filteredEntries = _filteredEntries;
-@synthesize keepQuickViewAlive = _keepQuickViewAlive;
 @synthesize parentController = _parentController;
 @synthesize deletedEntries = _deletedEntries;
 @synthesize textView = _textView;
@@ -43,9 +40,6 @@
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
      
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)
-                                                 name:UIKeyboardDidHideNotification object:[[self view] window]];
-
     UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Add Key Word" action:@selector(addQuickWord:)];
     [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObjects:menuItem, nil]];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
@@ -54,6 +48,8 @@
                                                  name:UITextViewTextDidBeginEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedEditing:)
                                                  name:UITextViewTextDidEndEditingNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -62,7 +58,6 @@
 
     [self setNote:nil];
     [self setEntryCell:nil];
-    [self setQuickWordsViewController:nil];
     [self setFilter:nil];
     [self setFilteredEntries:nil];
     [self setParentController:nil];
@@ -102,11 +97,14 @@
     
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-    id<EntryCell> cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
-    [cell setEntry:entry];
-    [cell setParentController:self];
+    id<EntryCell> cell;// = (id<EntryCell>) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    if (!cell) {
+        cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
+        [cell setEntry:entry];
+        [cell setParentController:self];
         
-    [LayerFormater setBorderWidth:1 forView:[cell view]];
+        [LayerFormater setBorderWidth:1 forView:[cell view]];
+//    }
     
     return (UITableViewCell *) cell;
 }
@@ -125,6 +123,9 @@
         [[self filteredEntries] removeObject:entry];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
+        
+        [[self filteredEntries] removeObject:entry];
+        [[self deletedEntries] addObject:entry];
     }
 }
 
@@ -140,56 +141,15 @@
     if ([[BNoteSessionData instance] canEditEntry]) {
         id<EntryCell> cell = (id<EntryCell>) [tableView cellForRowAtIndexPath:indexPath];
     
+        id<EntryCell> selectEntryCell = [self selectEntryCell];
+        if (selectEntryCell) {
+            [selectEntryCell unfocus];
+        }
+        
         [self setSelectEntryCell:cell];
         
         [cell focus];
-    
-//        [self showQuickView:cell];
     }
-}
-
-- (void)showQuickView:(EntryTableViewCell *)cell
-{
-    QuickWordsViewController *currentQuick = [self quickWordsViewController];
-    
-    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntry:[cell entry]];
-    [self setQuickWordsViewController:quick];
-    [quick setListener:self];
-    
-    [quick setEntryViewCell:cell];
-    
-    float x = 0;
-    float width = [[quick view] bounds].size.width;
-    float height = [[quick view] bounds].size.height;
-    float y = 205 - height + 50;
-    [[quick view] setFrame:CGRectMake(x, y, width, height)];
-    [[[self view] superview] addSubview:[quick view]];
-    
-    if (currentQuick) {
-        [[currentQuick view] removeFromSuperview];
-        [[[self view] superview] addSubview:[quick view]];
-    } else {
-        [quick presentView:self];
-    }
-}
-
-- (void)keyboardDidHide:(id)sender
-{
-    if (![self keepQuickViewAlive]) {
-        [self clearModalViews];
-    }
-}
-
-- (void)didFinishFromQuickWords
-{
-    [self clearModalViews];
-}
-
-- (void)clearModalViews
-{
-    [[self quickWordsViewController] hideView];
-    [self setQuickWordsViewController:nil];
-    [self reload];
 }
 
 - (void)reload
@@ -199,7 +159,7 @@
     Entry *entry;
     while (entry = [entries nextObject]) {
         if ([[self filter] accept:entry]) {
-            if (![entry isKindOfClass:[Attendant class]]) {
+            if (![entry isKindOfClass:[Attendants class]]) {
                 if (![[self deletedEntries] containsObject:entry]) {
                     [[self filteredEntries] addObject:entry];
                 }
@@ -258,6 +218,12 @@
     [self setTextView:nil];
 }
 
+- (void)keyboardWillHide:(id)sender
+{
+    if ([self selectEntryCell]) {
+        [[self selectEntryCell] unfocus];
+    }
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;

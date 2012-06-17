@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Topic.h"
+#import "Note.h"
 
 @protocol BNoteRenderer <NSObject>
 
 @required
 - (NSString *)render:(Topic *)topic;
+- (NSString *)render:(Topic *)topic and:(Note *)selectedNote;
 
 @end

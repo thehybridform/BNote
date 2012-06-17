@@ -20,6 +20,7 @@
 #import "KeyWordButton.h"
 #import "KeyWord.h"
 #import "BNoteReader.h"
+#import "BNoteEntryUtils.h"
 
 @implementation QuickWordsFactory
 
@@ -82,10 +83,12 @@
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
-    button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
-    [button setActionItem:actionItem];
-    [button setBackgroundColor:[QuickWordsFactory normal]];
-    [data addObject:button];
+    if ([BNoteEntryUtils containsAttendants:[actionItem note]]) {
+        button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
+        [button setActionItem:actionItem];
+        [button setBackgroundColor:[QuickWordsFactory normal]];
+        [data addObject:button];
+    }
     
     button = [[DueDateActionItemButton alloc] initWithName:@"due date" andEntryCellView:entryCellView];
     [button setActionItem:actionItem];

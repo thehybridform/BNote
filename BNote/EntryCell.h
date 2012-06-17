@@ -15,5 +15,6 @@
 - (UIView *)view;
 - (void)setParentController:(UIViewController *)parent;
 - (void)focus;
+- (void)unfocus;
 
 @end

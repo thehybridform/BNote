@@ -20,10 +20,13 @@
 #import "BNoteWriter.h"
 #import "PhotoViewController.h"
 #import "EntriesViewController.h"
+#import "QuickWordsViewController.h"
 
 @interface EntryTableViewCell()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
+@property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
+@property (assign, nonatomic) BOOL active;
 @end
 
 @implementation EntryTableViewCell
@@ -34,6 +37,8 @@
 @synthesize parentController = _parentController;
 @synthesize actionSheet = _actionSheet;
 @synthesize longPress = _longPress;
+@synthesize quickWordsViewController = _quickWordsViewController;
+@synthesize active =_active;
 
 const float x = 100;
 const float y = 5;
@@ -74,7 +79,6 @@ const float y = 5;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
                                                      name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
         
-        
         [self setEditingAccessoryType:UITableViewCellAccessoryNone];
     }
     
@@ -108,6 +112,12 @@ const float y = 5;
 
 - (void)focus
 {
+    [self setActive:YES];
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
+    [self setQuickWordsViewController:quick];
+    [[self textView] setInputAccessoryView:[quick view]];
+    [quick selectFirstButton];
+
     [self handleImageIcon:YES];
 
     [[self textLabel] setHidden:YES];
@@ -126,11 +136,14 @@ const float y = 5;
     [[self textView] becomeFirstResponder];
 }
 
-- (void)finishedEdit
+- (void)unfocus
 {
+    [self handleSubText];
+    [self handleText];
+    
     [[self textView] resignFirstResponder];
     [self handleImageIcon:NO];
-
+    
     [[self textView] setHidden:YES];
     [[self textLabel] setHidden:NO];
     [[self detailTextLabel] setHidden:NO];
@@ -143,7 +156,10 @@ const float y = 5;
     [[self textLabel] setFrame:CGRectMake(x, y, width, height)];
     
     [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:[[self entry] text]]];
-
+    
+    [self setQuickWordsViewController:nil];
+    [self setActive:NO];
+    
     [self setNeedsDisplay];
 }
 
@@ -151,32 +167,42 @@ const float y = 5;
 {
     NSNotification *notification = sender;
     if ([notification object] == [self textView]) {
-        NSString *text = [BNoteStringUtils trim:[[self textView] text]];
-    
-        if ([BNoteStringUtils nilOrEmpty:text]) {
-            text = nil;
-        }
-    
-        [[self entry] setText:text];
-        [[self textLabel] setText:text];    
+        [self handleText];
     }
 }
 
+- (void)handleText
+{
+    NSString *text = [BNoteStringUtils trim:[[self textView] text]];
+    
+    if ([BNoteStringUtils nilOrEmpty:text]) {
+        text = nil;
+    }
+    
+    [[self entry] setText:text];
+    [[self textLabel] setText:text];    
+    
+}
 - (void)updateSubText:(id)sender
 {
     NSNotification *notification = sender;
     if ([notification object] == [self subTextView]) {
-        if ([[self entry] isKindOfClass:[Question class]]) {
-            Question *question = (Question *) [self entry];
-            NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
-        
-            if ([BNoteStringUtils nilOrEmpty:text]) {
-                text = nil;
-            }
+        [self handleSubText];
+    }
+}
 
-            [question setAnswer:text];
-            [[self detailTextLabel] setText:text];
+- (void)handleSubText
+{
+    if ([[self entry] isKindOfClass:[Question class]]) {
+        Question *question = (Question *) [self entry];
+        NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
+        
+        if ([BNoteStringUtils nilOrEmpty:text]) {
+            text = nil;
         }
+        
+        [question setAnswer:text];
+        [[self detailTextLabel] setText:text];
     }
 }
 

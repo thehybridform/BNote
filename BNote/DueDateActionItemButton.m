@@ -19,8 +19,6 @@
 - (void)execute:(id)sender
 {
     EntryTableViewCell *cell = [self entryCellView];
-    EntriesViewController *controller = [cell parentController];
-    [controller setKeepQuickViewAlive:YES];
     
     [[cell textView] resignFirstResponder];
     [[cell subTextView] resignFirstResponder];
@@ -46,7 +44,7 @@
     
     [popup setPopoverContentSize:[[controller view] bounds].size];
     
-    UIView *view = self;
+    UIView *view = [[self entryCellView] view];
     CGRect rect = [view bounds];
     
     [popup presentPopoverFromRect:rect inView:view

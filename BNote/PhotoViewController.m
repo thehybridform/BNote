@@ -36,6 +36,10 @@
     [super viewDidLoad];
     
     [[self imageView] setImage:[self image]];
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(done:)];
+    [[self view] addGestureRecognizer:tap];
+
 }
 
 - (void)viewDidUnload
@@ -51,7 +55,7 @@
 	return YES;
 }
 
-- (IBAction)done:(id)sender
+- (void)done:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
 }

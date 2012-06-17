@@ -54,6 +54,34 @@
     return text;
 }
 
+- (NSString *)render:(Topic *)topic and:(Note *)selectedNote
+{
+    NSString *text = [[[TopicSummaryPlainRenderer alloc] init] render:topic];
+    
+    NotePlainRenderer *noteRenderer = [[NotePlainRenderer alloc] init];
+    
+    NSEnumerator *notes = [[topic notes] objectEnumerator];
+    Note *note;
+    while (note = [notes nextObject]) {
+        if (note == selectedNote) {
+            text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
+            NSEnumerator *entries = [[note entries] objectEnumerator];
+            Entry *entry;
+            while (entry = [entries nextObject]) {
+                NSEnumerator *renderers = [[self renderers] objectEnumerator];
+                id<EntityRenderHandler> renderer;
+                while (renderer = [renderers nextObject]) {
+                    if ([renderer accept:entry]) {
+                        text = [BNoteStringUtils append:text, [renderer render:entry], nil];
+                    }
+                }
+            }
+        }
+    }
+    
+    return text;
+}
+
 - (id)initSingleton
 {
     self = [super init];

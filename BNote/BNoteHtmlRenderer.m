@@ -12,7 +12,12 @@
 
 - (NSString*)render:(Topic *)topic
 {
-    return @"<html><body><h2>bla</h2><body><html>";
+    return nil;
+}
+
+- (NSString *)render:(Topic *)topic and:(Note *)note
+{
+    return nil;
 }
 
 @end

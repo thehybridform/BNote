@@ -27,7 +27,14 @@
 
 - (id)initWithTopic:(Topic *)topic
 {
-    NSOrderedSet *allNotes = [topic notes];
+    NSMutableArray *allNotes = [[topic notes] mutableCopy];
+
+    NSEnumerator *notes = [[topic associatedNotes] objectEnumerator];
+    Note *note;
+    while (note = [notes nextObject]) {
+        [allNotes addObject:note];
+    }
+    
     self = [self initCommon:topic and:allNotes];
     
     id<BNoteRenderer> renderer = [BNoteRenderFactory create:Plain];
@@ -38,7 +45,7 @@
 
 - (id)initWithNote:(Note *)note
 {
-    NSOrderedSet *allNotes = [[NSOrderedSet alloc] initWithObject:note];
+    NSArray *allNotes = [NSArray arrayWithObject:note];
     self = [self initCommon:[note topic] and:allNotes];
 
     id<BNoteRenderer> renderer = [BNoteRenderFactory create:Plain];
@@ -47,7 +54,7 @@
     return self;
 }
 
-- (id)initCommon:(Topic *)topic and:(NSOrderedSet *)allNotes
+- (id)initCommon:(Topic *)topic and:(NSArray *)allNotes
 {
     self = [super init];
     
@@ -72,6 +79,7 @@
         [self setToRecipients:emails];
         
         NSEnumerator *keyPoints = [[self filterEntries:[BNoteFilterFactory create:KeyPointType] for:allNotes] objectEnumerator];
+        
         KeyPoint *keyPoint;
         int i = 0;
         while (keyPoint = [keyPoints nextObject]) {
@@ -106,7 +114,7 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (NSArray *)filterEntries:(id <BNoteFilter>)filter for:(NSOrderedSet *)allNotes
+- (NSArray *)filterEntries:(id <BNoteFilter>)filter for:(NSArray *)allNotes
 {
     NSMutableArray *filtered = [[NSMutableArray alloc] init];
     

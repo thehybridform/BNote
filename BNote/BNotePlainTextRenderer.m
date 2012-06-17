@@ -51,6 +51,22 @@
         }
     }
     
+    notes = [[topic associatedNotes] objectEnumerator];
+    while (note = [notes nextObject]) {
+        text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
+        NSEnumerator *entries = [[note entries] objectEnumerator];
+        Entry *entry;
+        while (entry = [entries nextObject]) {
+            NSEnumerator *renderers = [[self renderers] objectEnumerator];
+            id<EntityRenderHandler> renderer;
+            while (renderer = [renderers nextObject]) {
+                if ([renderer accept:entry]) {
+                    text = [BNoteStringUtils append:text, [renderer render:entry], nil];
+                }
+            }
+        }
+    }
+    
     return text;
 }
 

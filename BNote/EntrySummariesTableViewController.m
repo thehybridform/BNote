@@ -94,6 +94,17 @@
         }
     }
     
+    notes = [[[self topic] associatedNotes] objectEnumerator];
+    while (note = [notes nextObject]) {
+        NSEnumerator *entries = [[note entries] objectEnumerator];
+        Entry *entry;
+        while (entry = [entries nextObject]) {
+            if ([filter accept:entry]) {
+                [array addObject:entry];
+            }
+        }
+    }
+    
     [array sortUsingComparator:^NSComparisonResult(id entry1, id entry2) {
         switch ([self sortType]) {
             case DateAcending:

@@ -93,6 +93,7 @@
 		18BA9618158D59D2004A4A38 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9617158D59D2004A4A38 /* ActionItem.m */; };
 		18BA961B158D5A42004A4A38 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA961A158D5A42004A4A38 /* Attendant.m */; };
 		18BA961E158D5A42004A4A38 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA961D158D5A42004A4A38 /* Attendants.m */; };
+		18BA962B158D828C004A4A38 /* TopicSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA962A158D828C004A4A38 /* TopicSelectTableViewController.m */; };
 		18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
@@ -282,6 +283,8 @@
 		18BA961A158D5A42004A4A38 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
 		18BA961C158D5A42004A4A38 /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
 		18BA961D158D5A42004A4A38 /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
+		18BA9629158D828C004A4A38 /* TopicSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSelectTableViewController.h; sourceTree = "<group>"; };
+		18BA962A158D828C004A4A38 /* TopicSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicSelectTableViewController.m; sourceTree = "<group>"; };
 		18BBD3501585BA9800B1709E /* KeyPointPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointPlainRenderer.h; sourceTree = "<group>"; };
 		18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPlainRenderer.m; sourceTree = "<group>"; };
 		18BBD3541585BB2800B1709E /* DecisionPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionPlainRenderer.h; sourceTree = "<group>"; };
@@ -716,6 +719,15 @@
 			name = Attendants;
 			sourceTree = "<group>";
 		};
+		18BA9623158D817E004A4A38 /* Topic Selctor */ = {
+			isa = PBXGroup;
+			children = (
+				18BA9629158D828C004A4A38 /* TopicSelectTableViewController.h */,
+				18BA962A158D828C004A4A38 /* TopicSelectTableViewController.m */,
+			);
+			name = "Topic Selctor";
+			sourceTree = "<group>";
+		};
 		18BF3F60157B456100B6E226 /* Entry View Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,6 +778,7 @@
 		18E9FF29156C6FDA00F22272 /* Edit Notes */ = {
 			isa = PBXGroup;
 			children = (
+				18BA9623158D817E004A4A38 /* Topic Selctor */,
 				18BF3F60157B456100B6E226 /* Entry View Cell */,
 				1879F05C15747AFB003814C2 /* Quick Buttons */,
 				1879F05615746E72003814C2 /* Date Picker */,
@@ -968,6 +981,7 @@
 				18BA9618158D59D2004A4A38 /* ActionItem.m in Sources */,
 				18BA961B158D5A42004A4A38 /* Attendant.m in Sources */,
 				18BA961E158D5A42004A4A38 /* Attendants.m in Sources */,
+				18BA962B158D828C004A4A38 /* TopicSelectTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

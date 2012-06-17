@@ -15,7 +15,7 @@
 
 @class DetailViewController;
 
-@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener>
+@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 

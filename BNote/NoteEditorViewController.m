@@ -20,6 +20,7 @@
 #import "BNoteStringUtils.h"
 #import "BNoteEntryUtils.h"
 #import "EmailViewController.h"
+#import "TopicSelectTableViewController.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -31,7 +32,7 @@
 @property (strong, nonatomic) IBOutlet UIView *subjectView;
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *time;
-@property (strong, nonatomic) IBOutlet UITextField *subject;
+@property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
 @property (strong, nonatomic) IBOutlet UILabel *subjectLable;
 @property (strong, nonatomic) IBOutlet UIToolbar *entityToolbar;
 @property (strong, nonatomic) IBOutlet UIToolbar *entityWithAttendantToolbar;
@@ -44,6 +45,11 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *emailButton;
 @property (strong, nonatomic) IBOutlet UIImageView *attendantsImageView;
 
+@property (strong, nonatomic) IBOutlet UIView *mainTopicView;
+@property (strong, nonatomic) IBOutlet UILabel *mainTopicLabel;
+
+@property (strong, nonatomic) UIActionSheet *actionSheet;
+
 @end
 
 @implementation NoteEditorViewController
@@ -52,7 +58,7 @@
 @synthesize subjectView = _subjectView;
 @synthesize date = _date;
 @synthesize time = _time;
-@synthesize subject = _subject;
+@synthesize subjectTextView = _subjectTextView;
 @synthesize note = _note;
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
@@ -70,6 +76,9 @@
 @synthesize popup = _popup;
 @synthesize entityWithAttendantToolbar = _entityWithAttendantToolbar;
 @synthesize emailButton = _emailButton;
+@synthesize mainTopicView = _mainTopicView;
+@synthesize mainTopicLabel = _mainTopicLabel;
+@synthesize actionSheet = _actionSheet;
 
 - (void)viewDidUnload
 {
@@ -81,7 +90,7 @@
     [self setSubjectView:nil];
     [self setDate:nil];
     [self setTime:nil];
-    [self setSubject:nil];
+    [self setSubjectTextView:nil];
     [self setSubjectLable:nil];
     [self setEntityToolbar:nil];
     [self setKeyPointButton:nil];
@@ -97,6 +106,9 @@
     [self setPopup:nil];
     [self setEntityWithAttendantToolbar:nil];
     [self setEmailButton:nil];
+    [self setMainTopicView:nil];
+    [self setMainTopicLabel:nil];
+    [self setActionSheet:nil];
 }
 
 
@@ -116,7 +128,7 @@
     
     Note *note = [self note];
     if ([note subject] && [[note subject] length] > 0) {
-        [[self subject] setText:[note subject]];
+        [[self subjectTextView] setText:[note subject]];
     }
 
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
@@ -126,6 +138,9 @@
                                     
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater roundCornersForView:[self subjectView]];
+    [LayerFormater roundCornersForView:[self mainTopicView]];
+    [LayerFormater roundCornersForView:[self mainTopicLabel]];
+    [LayerFormater roundCornersForView:[self subjectTextView]];
     
     [[self subjectLable] setHidden:YES];
     
@@ -143,11 +158,18 @@
     } else {
         [[self entityToolbar] setHidden:YES];
     }
+    
+    [[self mainTopicLabel] setText:[[note topic] title]];
+    normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainTopicPicker:)];
+    [[self mainTopicView] addGestureRecognizer:normalTap];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
+                                                 name:TopicUpdated object:nil];
 }
 
 - (IBAction)done:(id)sender
 {
-    [[self note] setSubject:[[self subject] text]];
+    [[self note] setSubject:[[self subjectTextView] text]];
     [self dismissModalViewControllerAnimated:YES];
     [[self entriesViewController] cleanupEntries];    
     [[BNoteWriter instance] update];
@@ -170,7 +192,7 @@
 - (void)editing
 {
     [[self entityToolbar] setTintColor:[self toolbarEditColor]];
-    [[self subject] setHidden:NO];
+    [[self subjectTextView] setHidden:NO];
     [[self subjectLable] setHidden:YES];
     [[self trashButton] setEnabled:YES];
     [[self entriesViewController] setFilter:[BNoteFilterFactory create:ItdentityType]];
@@ -181,9 +203,9 @@
 - (void)reviewing
 {
     [[self entityToolbar] setTintColor:[UIColor lightGrayColor]];
-    [[self subject] setHidden:YES];
+    [[self subjectTextView] setHidden:YES];
     [[self subjectLable] setHidden:NO];
-    [[self subjectLable] setText:[[self subject] text]];
+    [[self subjectLable] setText:[[self subjectTextView] text]];
     [[self trashButton] setEnabled:NO];
     
     [[BNoteSessionData instance] setPhase:Reviewing];
@@ -319,6 +341,51 @@
 
 }
 
+- (void)showMainTopicPicker:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main Topic" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Change", nil];
+    [self setActionSheet:actionSheet];
+    
+    CGRect rect = [[self mainTopicView] frame];
+    [actionSheet showFromRect:rect inView:[self view] animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [self showTopicSelector];
+            break;
+            
+        default:
+            break;
+    }
+    [self setActionSheet:nil];
+}
+
+- (void)showTopicSelector
+{
+    TopicSelectTableViewController *topicTable = 
+        [[TopicSelectTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [topicTable setNote:[self note]];
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:topicTable];
+    [self setPopup:popup];
+     
+    CGRect rect = [[self mainTopicView] frame];
+    [popup presentPopoverFromRect:rect inView:[self view] 
+                     permittedArrowDirections:UIPopoverArrowDirectionUp 
+                                     animated:YES];
+}
+
+- (void)reload:(id)sender
+{
+    if ([self popup]) {
+        [[self popup] dismissPopoverAnimated:YES];
+    }
+    
+    [[self mainTopicLabel] setText:[[[self note] topic] title]];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

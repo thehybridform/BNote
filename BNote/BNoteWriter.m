@@ -78,6 +78,12 @@
     }
 }
 
+- (void)moveNote:(Note *)note toTopic:(Topic *)topic
+{
+    [note setTopic:topic];
+    [self update];
+}
+
 - (void)update
 {
     NSError *error = nil;

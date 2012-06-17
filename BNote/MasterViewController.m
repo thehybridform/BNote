@@ -76,7 +76,6 @@
 
 - (void)updateReceived:(NSNotification *)note
 {
-//    NSLog(@"Update received data update...");
     [self loadData];
 }
 
@@ -156,7 +155,6 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Topic *topic = [[self data] objectAtIndex:[indexPath row]];
         [[BNoteWriter instance] removeTopic:topic];
-        [[BNoteWriter instance] update];
 
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 

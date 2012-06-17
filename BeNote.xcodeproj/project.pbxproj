@@ -45,17 +45,6 @@
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
 		1834D3A7156375560065788F /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
 		1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */; };
-		1864E0E9158AEDB200505522 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0E8158AEDB200505522 /* Topic.m */; };
-		1864E0EC158AEDB200505522 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0EB158AEDB200505522 /* Entry.m */; };
-		1864E0EF158AEDB200505522 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0EE158AEDB200505522 /* Note.m */; };
-		1864E0F2158AEDB200505522 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0F1158AEDB200505522 /* Attendant.m */; };
-		1864E0F5158AEDB200505522 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0F4158AEDB200505522 /* KeyPoint.m */; };
-		1864E0F8158AEDB300505522 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0F7158AEDB300505522 /* Decision.m */; };
-		1864E0FB158AEDB300505522 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0FA158AEDB300505522 /* Attendants.m */; };
-		1864E0FE158AEDB300505522 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E0FD158AEDB300505522 /* Photo.m */; };
-		1864E101158AEDB300505522 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E100158AEDB300505522 /* ActionItem.m */; };
-		1864E104158AEDB300505522 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E103158AEDB300505522 /* Question.m */; };
-		1864E107158AEDB300505522 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E106158AEDB300505522 /* KeyWord.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -93,6 +82,17 @@
 		18AF4ACD1585632F00A54205 /* BNoteFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */; };
 		18B235D8158ADF06009D17D2 /* AttendantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B235D7158ADF06009D17D2 /* AttendantTableViewCell.m */; };
 		18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */; };
+		18BA95FA158D59CF004A4A38 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA95F9158D59CF004A4A38 /* KeyWord.m */; };
+		18BA9600158D59D0004A4A38 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA95FF158D59D0004A4A38 /* Decision.m */; };
+		18BA9606158D59D0004A4A38 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9605158D59D0004A4A38 /* Entry.m */; };
+		18BA9609158D59D1004A4A38 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9608158D59D1004A4A38 /* KeyPoint.m */; };
+		18BA960C158D59D1004A4A38 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA960B158D59D1004A4A38 /* Photo.m */; };
+		18BA960F158D59D1004A4A38 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA960E158D59D1004A4A38 /* Note.m */; };
+		18BA9612158D59D1004A4A38 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9611158D59D1004A4A38 /* Question.m */; };
+		18BA9615158D59D1004A4A38 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9614158D59D1004A4A38 /* Topic.m */; };
+		18BA9618158D59D2004A4A38 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9617158D59D2004A4A38 /* ActionItem.m */; };
+		18BA961B158D5A42004A4A38 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA961A158D5A42004A4A38 /* Attendant.m */; };
+		18BA961E158D5A42004A4A38 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA961D158D5A42004A4A38 /* Attendants.m */; };
 		18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
@@ -194,28 +194,6 @@
 		1837667D158D24DA001EE5BF /* EditNoteViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewPresenter.h; sourceTree = "<group>"; };
 		1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewPresenter.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BeNote.entitlements; sourceTree = "<group>"; };
-		1864E0E7158AEDB200505522 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		1864E0E8158AEDB200505522 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
-		1864E0EA158AEDB200505522 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		1864E0EB158AEDB200505522 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		1864E0ED158AEDB200505522 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		1864E0EE158AEDB200505522 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		1864E0F0158AEDB200505522 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
-		1864E0F1158AEDB200505522 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
-		1864E0F3158AEDB200505522 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
-		1864E0F4158AEDB200505522 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
-		1864E0F6158AEDB300505522 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
-		1864E0F7158AEDB300505522 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
-		1864E0F9158AEDB300505522 /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
-		1864E0FA158AEDB300505522 /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
-		1864E0FC158AEDB300505522 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		1864E0FD158AEDB300505522 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		1864E0FF158AEDB300505522 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		1864E100158AEDB300505522 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
-		1864E102158AEDB300505522 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		1864E103158AEDB300505522 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		1864E105158AEDB300505522 /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
-		1864E106158AEDB300505522 /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		1879F05915746E9A003814C2 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -281,6 +259,29 @@
 		18B235D6158ADF06009D17D2 /* AttendantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantTableViewCell.h; sourceTree = "<group>"; };
 		18B235D7158ADF06009D17D2 /* AttendantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantTableViewCell.m; sourceTree = "<group>"; };
 		18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeNote.xcdatamodel; sourceTree = "<group>"; };
+		18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 2.xcdatamodel"; sourceTree = "<group>"; };
+		18BA95F8158D59CF004A4A38 /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
+		18BA95F9158D59CF004A4A38 /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
+		18BA95FE158D59D0004A4A38 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
+		18BA95FF158D59D0004A4A38 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
+		18BA9604158D59D0004A4A38 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		18BA9605158D59D0004A4A38 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		18BA9607158D59D1004A4A38 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		18BA9608158D59D1004A4A38 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
+		18BA960A158D59D1004A4A38 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		18BA960B158D59D1004A4A38 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		18BA960D158D59D1004A4A38 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		18BA960E158D59D1004A4A38 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		18BA9610158D59D1004A4A38 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		18BA9611158D59D1004A4A38 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		18BA9613158D59D1004A4A38 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		18BA9614158D59D1004A4A38 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		18BA9616158D59D2004A4A38 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		18BA9617158D59D2004A4A38 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		18BA9619158D5A42004A4A38 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
+		18BA961A158D5A42004A4A38 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
+		18BA961C158D5A42004A4A38 /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
+		18BA961D158D5A42004A4A38 /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
 		18BBD3501585BA9800B1709E /* KeyPointPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointPlainRenderer.h; sourceTree = "<group>"; };
 		18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPlainRenderer.m; sourceTree = "<group>"; };
 		18BBD3541585BB2800B1709E /* DecisionPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionPlainRenderer.h; sourceTree = "<group>"; };
@@ -496,29 +497,29 @@
 		18368F4A156610B800E511CB /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				1864E105158AEDB300505522 /* KeyWord.h */,
-				1864E106158AEDB300505522 /* KeyWord.m */,
-				1864E102158AEDB300505522 /* Question.h */,
-				1864E103158AEDB300505522 /* Question.m */,
-				1864E0FF158AEDB300505522 /* ActionItem.h */,
-				1864E100158AEDB300505522 /* ActionItem.m */,
-				1864E0FC158AEDB300505522 /* Photo.h */,
-				1864E0FD158AEDB300505522 /* Photo.m */,
-				1864E0F9158AEDB300505522 /* Attendants.h */,
-				1864E0FA158AEDB300505522 /* Attendants.m */,
-				1864E0F6158AEDB300505522 /* Decision.h */,
-				1864E0F7158AEDB300505522 /* Decision.m */,
-				1864E0F3158AEDB200505522 /* KeyPoint.h */,
-				1864E0F4158AEDB200505522 /* KeyPoint.m */,
-				1864E0F0158AEDB200505522 /* Attendant.h */,
-				1864E0F1158AEDB200505522 /* Attendant.m */,
-				1864E0ED158AEDB200505522 /* Note.h */,
-				1864E0EE158AEDB200505522 /* Note.m */,
-				1864E0EA158AEDB200505522 /* Entry.h */,
-				1864E0EB158AEDB200505522 /* Entry.m */,
-				1864E0E7158AEDB200505522 /* Topic.h */,
-				1864E0E8158AEDB200505522 /* Topic.m */,
 				18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */,
+				18BA961C158D5A42004A4A38 /* Attendants.h */,
+				18BA961D158D5A42004A4A38 /* Attendants.m */,
+				18BA9619158D5A42004A4A38 /* Attendant.h */,
+				18BA961A158D5A42004A4A38 /* Attendant.m */,
+				18BA9616158D59D2004A4A38 /* ActionItem.h */,
+				18BA9617158D59D2004A4A38 /* ActionItem.m */,
+				18BA9613158D59D1004A4A38 /* Topic.h */,
+				18BA9614158D59D1004A4A38 /* Topic.m */,
+				18BA9610158D59D1004A4A38 /* Question.h */,
+				18BA9611158D59D1004A4A38 /* Question.m */,
+				18BA960D158D59D1004A4A38 /* Note.h */,
+				18BA960E158D59D1004A4A38 /* Note.m */,
+				18BA960A158D59D1004A4A38 /* Photo.h */,
+				18BA960B158D59D1004A4A38 /* Photo.m */,
+				18BA9607158D59D1004A4A38 /* KeyPoint.h */,
+				18BA9608158D59D1004A4A38 /* KeyPoint.m */,
+				18BA9604158D59D0004A4A38 /* Entry.h */,
+				18BA9605158D59D0004A4A38 /* Entry.m */,
+				18BA95FE158D59D0004A4A38 /* Decision.h */,
+				18BA95FF158D59D0004A4A38 /* Decision.m */,
+				18BA95F8158D59CF004A4A38 /* KeyWord.h */,
+				18BA95F9158D59CF004A4A38 /* KeyWord.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -955,18 +956,18 @@
 				18021C2D15871A9200C15F3A /* ConfigurationTableViewController.m in Sources */,
 				18B235D8158ADF06009D17D2 /* AttendantTableViewCell.m in Sources */,
 				18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */,
-				1864E0E9158AEDB200505522 /* Topic.m in Sources */,
-				1864E0EC158AEDB200505522 /* Entry.m in Sources */,
-				1864E0EF158AEDB200505522 /* Note.m in Sources */,
-				1864E0F2158AEDB200505522 /* Attendant.m in Sources */,
-				1864E0F5158AEDB200505522 /* KeyPoint.m in Sources */,
-				1864E0F8158AEDB300505522 /* Decision.m in Sources */,
-				1864E0FB158AEDB300505522 /* Attendants.m in Sources */,
-				1864E0FE158AEDB300505522 /* Photo.m in Sources */,
-				1864E101158AEDB300505522 /* ActionItem.m in Sources */,
-				1864E104158AEDB300505522 /* Question.m in Sources */,
-				1864E107158AEDB300505522 /* KeyWord.m in Sources */,
 				1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */,
+				18BA95FA158D59CF004A4A38 /* KeyWord.m in Sources */,
+				18BA9600158D59D0004A4A38 /* Decision.m in Sources */,
+				18BA9606158D59D0004A4A38 /* Entry.m in Sources */,
+				18BA9609158D59D1004A4A38 /* KeyPoint.m in Sources */,
+				18BA960C158D59D1004A4A38 /* Photo.m in Sources */,
+				18BA960F158D59D1004A4A38 /* Note.m in Sources */,
+				18BA9612158D59D1004A4A38 /* Question.m in Sources */,
+				18BA9615158D59D1004A4A38 /* Topic.m in Sources */,
+				18BA9618158D59D2004A4A38 /* ActionItem.m in Sources */,
+				18BA961B158D5A42004A4A38 /* Attendant.m in Sources */,
+				18BA961E158D5A42004A4A38 /* Attendants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,6 +1101,7 @@
 		18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */,
 				18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */,
 			);
 			currentVersion = 18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */;

@@ -11,6 +11,7 @@
 #import "EntriesViewController.h"
 #import "AttendantsViewController.h"
 #import "DatePickerViewController.h"
+#import "Entry.h"
 
 @class DetailViewController;
 
@@ -30,6 +31,7 @@
 - (IBAction)editEntries:(id)sender;
 - (IBAction)addAttendies:(id)sender;
 
+- (void)selectEntry:(Entry *)entry;
 
 @end
 

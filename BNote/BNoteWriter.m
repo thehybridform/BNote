@@ -63,7 +63,6 @@
 - (void)removePhoto:(Photo *)photo
 {
     [self deleteObject:photo];
-    [self update];
 }
 
 - (void)removeKeyWord:(KeyWord *)keyWord
@@ -75,6 +74,7 @@
 {
     if (object) {
         [[self context] deleteObject:object];
+        [self update];
     }
 }
 

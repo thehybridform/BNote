@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray *entries;
 @property (assign, nonatomic) BOOL groupEntries;
 @property (assign, nonatomic) SortType sortType;
+@property (strong, nonatomic) NSString *searchText;
 
 @end
 
@@ -41,6 +42,8 @@
 @synthesize groupEntries = _groupEntries;
 @synthesize entries = _entries;
 @synthesize sortType = _sortType;
+@synthesize searchText = _searchText;
+@synthesize detailViewController = _detailViewController;
 
 - (void)viewDidLoad
 {
@@ -68,6 +71,7 @@
     [self setActionItemsUncomplete:nil];
     [self setGrouping:nil];
     [self setSorting:nil];
+    [self setSearchText:nil];
 }
 
 - (void)updateNote:(id)sender
@@ -116,7 +120,15 @@
         return (NSComparisonResult)NSOrderedSame;
     }];
     
-    return array;
+    NSArray *filtered;
+    if ([BNoteStringUtils nilOrEmpty:[self searchText]]) {
+        filtered = array;
+    } else {
+        NSPredicate *p = [NSPredicate predicateWithFormat:@"text CONTAINS[c] %@", [self searchText]];
+        filtered = [array filteredArrayUsingPredicate:p];
+    }
+    
+    return filtered;
 }
 
 - (void)reload
@@ -221,13 +233,12 @@
 {
     static NSString *cellIdentifier = @"EntrySummaryTableViewCell";
  
-    EntrySummaryTableViewCell *cell =
-        cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
-        [LayerFormater roundCornersForView:cell];
+    EntrySummaryTableViewCell *cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+    [LayerFormater roundCornersForView:cell];
         
-        Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
+    Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
         
-        [cell setEntry:entry];
+    [cell setEntry:entry];
 
     return cell;
 }
@@ -248,9 +259,7 @@
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
 
-    [EditNoteViewPresenter present:[entry note] in:self];
-
-
+    [EditNoteViewPresenter presentEntry:entry in:[self detailViewController]];
 }
 
 - (IBAction)group:(id)sender
@@ -286,6 +295,29 @@
     }
     
     [self reload];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [self setSearchText:[searchBar text]];
+    [self reload];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [self setSearchText:[searchBar text]];
+    [self reload];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [self setSearchText:[searchBar text]];
+    [self reload];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

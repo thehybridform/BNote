@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet UIToolbar *entriesToolbar;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) ConfigurationViewController *configurationViewController;
 
 @end
@@ -41,6 +42,7 @@
 @synthesize entriesToolbar = _entriesToolbar;
 @synthesize navBar = _navBar;
 @synthesize configurationViewController = _configurationViewController;
+@synthesize searchBar = _searchBar;
 
 - (void)viewDidUnload
 {
@@ -92,6 +94,9 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                      name:TopicUpdated object:nil];
+        
+        [[self tableViewController] setDetailViewController:self];
+        [[self notesViewController] setDetailViewController:self];
     }
 }
 
@@ -100,7 +105,7 @@
     Note *note = [BNoteFactory createNote:[self topic]];
     [[self notesViewController] reload];
     
-    [EditNoteViewPresenter present:note in:self];
+    [EditNoteViewPresenter presentNote:note in:self];
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -143,8 +148,6 @@
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
     [self presentModalViewController:controller animated:YES];
-
 }
-
 
 @end

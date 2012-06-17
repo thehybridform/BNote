@@ -13,7 +13,7 @@
 @interface NoteView : UIView <UIActionSheetDelegate>
 
 @property (strong, nonatomic) Note *note;
-@property (assign, nonatomic) UIViewController *controller;
+@property (assign, nonatomic) UIViewController *detailViewController;
 
 @end
 

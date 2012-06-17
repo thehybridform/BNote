@@ -11,6 +11,7 @@
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
 #import "EditNoteViewPresenter.h"
+#import "BNoteWriter.h"
 
 @interface NoteView()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -26,7 +27,7 @@
 @synthesize time = _time;
 @synthesize actionSheet = _actionSheet;
 @synthesize note = _note;
-@synthesize controller = _controller;
+@synthesize detailViewController = _detailViewController;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -127,14 +128,15 @@
 
 -(void)normalPressTap:(id)sender
 {
-    [EditNoteViewPresenter present:[self note] in:[self controller]];
+    [EditNoteViewPresenter presentNote:[self note] in:[self detailViewController]];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 0:
-            [[NSNotificationCenter defaultCenter] postNotificationName:DeleteNote object:[self note]];
+            [[BNoteWriter instance] removeNote:[self note]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
             break;
             
         default:

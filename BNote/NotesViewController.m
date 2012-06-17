@@ -16,6 +16,7 @@
 
 @implementation NotesViewController
 @synthesize topic = _topic;
+@synthesize detailViewController = _detailViewController;
 
 - (void)viewDidUnload
 {
@@ -29,9 +30,6 @@
     
     [LayerFormater roundCornersForView:[self view]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteNote:)
-                                                 name:DeleteNote object:nil];
-
     [self reload];
 }
 
@@ -56,21 +54,14 @@
         NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x, 11, 100, 100)];
         [noteView setNote:note];
         [scrollView addSubview:noteView];
-        [noteView setController:self];
+        [noteView setDetailViewController:[self detailViewController]];
     }
     
     width = x + 110;
 
     if (width > 0) {
-        [scrollView setContentSize:CGSizeMake(width, [view bounds].size.height)];
+        [scrollView setContentSize:CGSizeMake(width, [scrollView bounds].size.height)];
     }
-}
-
-- (void)deleteNote:(Note *)note
-{
-    [[BNoteWriter instance] removeNote:note];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:note];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

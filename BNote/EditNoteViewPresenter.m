@@ -11,13 +11,24 @@
 
 @implementation EditNoteViewPresenter
 
-+ (void)present:(Note *)note in:(UIViewController *)controller
++ (void)presentNote:(Note *)note in:(UIViewController *)controller
 {
     NoteEditorViewController *noteController = [[NoteEditorViewController alloc] initWithNote:note];
     [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
     [noteController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
 
-    [controller presentModalViewController:noteController animated:YES];
+    [[controller parentViewController] presentModalViewController:noteController animated:YES];
+}
+
++ (void)presentEntry:(Entry *)entry in:(UIViewController *)controller
+{
+    NoteEditorViewController *noteController = [[NoteEditorViewController alloc] initWithNote:[entry note]];
+    [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [noteController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+
+    [[controller parentViewController] presentModalViewController:noteController animated:YES];
+
+    [noteController selectEntry:entry]; 
 }
 
 @end

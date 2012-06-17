@@ -10,7 +10,7 @@
 #import "Topic.h"
 #import "NoteEditorViewController.h"
 
-@interface EntrySummariesTableViewController : UITableViewController
+@interface EntrySummariesTableViewController : UITableViewController <UISearchBarDelegate>
 
 typedef enum {
     None,
@@ -23,6 +23,7 @@ typedef enum {
 @property (strong, nonatomic) Topic *topic;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sorting;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *grouping;
+@property (assign, nonatomic) UIViewController *detailViewController;
 
 - (IBAction)group:(id)sender;
 - (IBAction)sort:(id)sender;

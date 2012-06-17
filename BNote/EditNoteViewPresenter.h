@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
+#import "Entry.h"
 
 @interface EditNoteViewPresenter : NSObject
 
-+ (void)present:(Note *)note in:(UIViewController *)controller;
++ (void)presentNote:(Note *)note in:(UIViewController *)controller;
++ (void)presentEntry:(Entry *)entry in:(UIViewController *)controller;
 
 @end

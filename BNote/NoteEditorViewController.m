@@ -193,6 +193,8 @@
 {
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
+    } else {
+        [[self entriesViewController] setFilter:[BNoteFilterFactory create:AttendantType]];
     }
 }
 
@@ -310,6 +312,13 @@
     
     [self presentModalViewController:controller animated:YES];
 }
+
+- (void)selectEntry:(Entry *)entry
+{
+    [[self entriesViewController] selectEntry:entry];
+
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

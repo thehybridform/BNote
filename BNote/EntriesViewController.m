@@ -183,6 +183,15 @@
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
 }
 
+- (void)selectEntry:(Entry *)entry
+{
+    int index = [[self filteredEntries] indexOfObject:entry];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+}
+
 - (UIViewController *)controller
 {
     return self;
@@ -224,6 +233,7 @@
         [[self selectEntryCell] unfocus];
     }
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;

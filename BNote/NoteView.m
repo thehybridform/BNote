@@ -12,6 +12,7 @@
 #import "NoteEditorViewController.h"
 #import "EditNoteViewPresenter.h"
 #import "BNoteWriter.h"
+#import "BNoteConstants.h"
 
 @interface NoteView()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -43,20 +44,21 @@
         UILabel *time = [[UILabel alloc] init];
         [time setFrame:CGRectMake(0, 75, 100, 25)];
         [time setTextAlignment:UITextAlignmentRight];
-        [time setFont:[UIFont systemFontOfSize:14]];
+        [time setFont:[UIFont systemFontOfSize:12]];
+        [time setBackgroundColor:[BNoteConstants appColor1]];
         [self setTime:time];
         
         UILabel *title = [[UILabel alloc] init];
         [title setFrame:CGRectMake(0, 33, 100, 30)];
         [title setTextAlignment:UITextAlignmentCenter];
-        [title setFont:[UIFont systemFontOfSize:16]];
-        [title setNumberOfLines:2];
-        [title setBackgroundColor:UIColorFromRGB(0xf5f3e6)];
+        [title setLineBreakMode:UILineBreakModeWordWrap];
+        [title setFont:[UIFont systemFontOfSize:12]];
+        [title setNumberOfLines:3];
+        [title setBackgroundColor:[BNoteConstants appColor1]];
         [self setTitle:title];
         
         [LayerFormater setBorderWidth:1 forView:self];
         [LayerFormater setBorderColor:[UIColor blackColor] forView:self];
-//        [LayerFormater roundCornersForView:self];
         
         UILongPressGestureRecognizer *longPress =
         [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
@@ -82,7 +84,6 @@
     _note = note;
     
     [[self date] setBackgroundColor:UIColorFromRGB([[note topic] color])]; 
-    [[self time] setBackgroundColor:UIColorFromRGB([[note topic] color])]; 
 
     NSNotification *notification = [NSNotification notificationWithName:@"" object:note];
     [self updateNote:notification];
@@ -109,7 +110,7 @@
         NSString *dateString = [format stringFromDate:date];
         [[self date] setText:dateString];
         
-        [format setDateFormat:@"hh:mm aaa"];
+        [format setDateFormat:@"hh:mm aaa  "];
         NSString *timeString = [format stringFromDate:date];
         [[self time] setText:timeString];
     }

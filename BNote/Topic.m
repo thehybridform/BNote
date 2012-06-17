@@ -18,6 +18,7 @@
 @dynamic index;
 @dynamic lastUpdated;
 @dynamic title;
+@dynamic associatedNotes;
 @dynamic notes;
 
 @end

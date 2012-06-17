@@ -57,6 +57,15 @@
         [noteView setDetailViewController:[self detailViewController]];
     }
     
+    items = [[[self topic] associatedNotes] objectEnumerator];
+    while (note = [items nextObject]) {
+        x += width + 10;
+        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x, 11, 100, 100)];
+        [noteView setNote:note];
+        [scrollView addSubview:noteView];
+        [noteView setDetailViewController:[self detailViewController]];
+    }
+    
     width = x + 110;
 
     if (width > 0) {

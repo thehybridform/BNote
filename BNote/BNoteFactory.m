@@ -46,6 +46,7 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     Note *note = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Note"];
     [note setCreated:[NSDate timeIntervalSinceReferenceDate]];
     [note setLastUpdated:[note created]];
+    [note setColor:[topic color]];
     [note setTopic:topic];
         
     [[BNoteWriter instance] update];

@@ -21,6 +21,7 @@
 #import "BNoteEntryUtils.h"
 #import "EmailViewController.h"
 #import "TopicSelectTableViewController.h"
+#import "AssociatedTopicsTableViewController.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -49,6 +50,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *mainTopicLabel;
 
 @property (strong, nonatomic) UIActionSheet *actionSheet;
+
+@property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
+@property (strong, nonatomic) IBOutlet AssociatedTopicsTableViewController *associatedTopicsTableViewController;
 
 @end
 
@@ -79,6 +83,7 @@
 @synthesize mainTopicView = _mainTopicView;
 @synthesize mainTopicLabel = _mainTopicLabel;
 @synthesize actionSheet = _actionSheet;
+@synthesize associatedTopicsTableViewController = _associatedTopicsTableViewController;
 
 - (void)viewDidUnload
 {
@@ -109,6 +114,7 @@
     [self setMainTopicView:nil];
     [self setMainTopicLabel:nil];
     [self setActionSheet:nil];
+    [self setAssociatedTopicsTableViewController:nil];
 }
 
 
@@ -134,7 +140,7 @@
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
     [self setupDateTime:date];
     
-    [[self view] setBackgroundColor:UIColorFromRGB([[note topic] color])];
+    [[self view] setBackgroundColor:UIColorFromRGB([note color])];
                                     
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater roundCornersForView:[self subjectView]];
@@ -165,6 +171,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                  name:TopicUpdated object:nil];
+    
+    [[self associatedTopicsTableViewController] setNote:note];
 }
 
 - (IBAction)done:(id)sender

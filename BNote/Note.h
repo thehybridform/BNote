@@ -13,11 +13,14 @@
 
 @interface Note : NSManagedObject
 
+@property (nonatomic) int32_t color;
 @property (nonatomic) NSTimeInterval created;
+@property (nonatomic) int32_t index;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * subject;
 @property (nonatomic, retain) NSOrderedSet *entries;
 @property (nonatomic, retain) Topic *topic;
+@property (nonatomic, retain) NSSet *associatedTopics;
 @end
 
 @interface Note (CoreDataGeneratedAccessors)
@@ -32,4 +35,9 @@
 - (void)removeEntriesObject:(Entry *)value;
 - (void)addEntries:(NSOrderedSet *)values;
 - (void)removeEntries:(NSOrderedSet *)values;
+- (void)addAssociatedTopicsObject:(Topic *)value;
+- (void)removeAssociatedTopicsObject:(Topic *)value;
+- (void)addAssociatedTopics:(NSSet *)values;
+- (void)removeAssociatedTopics:(NSSet *)values;
+
 @end

@@ -41,4 +41,10 @@
 {
     [[view layer] setBorderColor:[color CGColor]];
 }
+
++ (void)setBorderColorWithInt:(int)color forView:(UIView *)view
+{
+    [LayerFormater setBorderColor:UIColorFromRGB(color) forView:view];
+}
+
 @end

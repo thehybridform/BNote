@@ -19,10 +19,16 @@
 @property (nonatomic) int32_t index;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSSet *associatedNotes;
 @property (nonatomic, retain) NSOrderedSet *notes;
 @end
 
 @interface Topic (CoreDataGeneratedAccessors)
+
+- (void)addAssociatedNotesObject:(Note *)value;
+- (void)removeAssociatedNotesObject:(Note *)value;
+- (void)addAssociatedNotes:(NSSet *)values;
+- (void)removeAssociatedNotes:(NSSet *)values;
 
 - (void)insertObject:(Note *)value inNotesAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromNotesAtIndex:(NSUInteger)idx;

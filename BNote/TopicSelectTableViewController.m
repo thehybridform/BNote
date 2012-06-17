@@ -13,25 +13,19 @@
 
 @interface TopicSelectTableViewController ()
 @property (strong, nonatomic) NSArray *data;
+@property (assign, nonatomic) BOOL associateTopic;
 
 @end
 
 @implementation TopicSelectTableViewController
 @synthesize data = _data;
 @synthesize note = _note;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-    }
-    return self;
-}
+@synthesize associateTopic = _associateTopic;;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     NSMutableArray *data = [[BNoteReader instance] allTopics];
     NSPredicate *p = [NSPredicate predicateWithFormat:@"title != %@", [[[self note] topic] title]];
     NSArray *filtered = [data filteredArrayUsingPredicate:p];
@@ -49,6 +43,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void)associate
+{
+    [self setAssociateTopic:YES];
 }
 
 #pragma mark - Table view data source
@@ -75,7 +74,6 @@
         [[cell textLabel] setText:[topic title]];
     }
 
-    
     return cell;
 }
 
@@ -94,7 +92,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
+    
+    if ([self associateTopic]) {
+        [[BNoteWriter instance] associateNote:[self note] toTopic:topic];
+    } else {
+        [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];   
 }

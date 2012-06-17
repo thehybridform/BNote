@@ -84,6 +84,12 @@
     [self update];
 }
 
+- (void)associateNote:(Note *)note toTopic:(Topic *)topic
+{
+    [note addAssociatedTopicsObject:topic];
+    [self update];
+}
+
 - (void)update
 {
     NSError *error = nil;

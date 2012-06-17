@@ -1,5 +1,5 @@
 //
-//  TopicSelectTableViewController.h
+//  AssociatedTopicsTableViewController.h
 //  BeNote
 //
 //  Created by Young Kristin on 6/16/12.
@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 
-@interface TopicSelectTableViewController : UITableViewController
-@property (assign, nonatomic) Note *note;
+@interface AssociatedTopicsTableViewController : UITableViewController
 
-- (void)associate;
+@property (assign, nonatomic) Note *note;
 
 @end

@@ -17,7 +17,6 @@
 
 @interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, UIActionSheetDelegate>
 
-@property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 
 - (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;

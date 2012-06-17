@@ -13,10 +13,13 @@
 
 @implementation Note
 
+@dynamic color;
 @dynamic created;
+@dynamic index;
 @dynamic lastUpdated;
 @dynamic subject;
 @dynamic entries;
 @dynamic topic;
+@dynamic associatedTopics;
 
 @end

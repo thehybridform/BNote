@@ -246,8 +246,11 @@
 {
     static NSString *cellIdentifier = @"EntrySummaryTableViewCell";
  
-    EntrySummaryTableViewCell *cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
-    [LayerFormater roundCornersForView:cell];
+    EntrySummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+        [LayerFormater roundCornersForView:cell];
+    }
         
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
         

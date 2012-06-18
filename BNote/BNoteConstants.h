@@ -28,6 +28,7 @@ extern int const AnswerColor;
 
 extern NSString *const KeyPointPhotoUpdated;
 extern NSString *const KeyWordsUpdated;
+extern NSString *const AllDataUpdated;
 extern NSString *const TopicUpdated;
 extern NSString *const NoteUpdated;
 extern NSString *const FinishedEditingNote;

@@ -28,6 +28,8 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *entriesToolbar;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UIView *noteCountView;
+@property (strong, nonatomic) IBOutlet UILabel *noteCountLabel;
 @property (strong, nonatomic) ConfigurationViewController *configurationViewController;
 
 @end
@@ -43,6 +45,8 @@
 @synthesize navBar = _navBar;
 @synthesize configurationViewController = _configurationViewController;
 @synthesize searchBar = _searchBar;
+@synthesize noteCountView = _noteCountView;
+@synthesize noteCountLabel = _noteCountLabel;
 
 - (void)viewDidUnload
 {
@@ -55,6 +59,8 @@
     [self setNotesViewController:nil];
     [self setEntriesToolbar:nil];
     [self setConfigurationViewController:nil];
+    [self setNoteCountView:nil];
+    [self setNoteCountLabel:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -78,6 +84,10 @@
 
     [[self tableViewController] reload];
     [[self notesViewController] reload];
+    
+    int count = [[[self topic] notes] count] + [[[self topic] associatedNotes] count];
+    NSString *s = [NSString stringWithFormat:@"%d", count];
+    [[self noteCountLabel] setText:s];
 }
 
 - (void)viewDidLoad
@@ -92,15 +102,17 @@
         [[[self notesViewController] view] setHidden:YES];
         [[self entriesToolbar] setHidden:YES];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
-                                                     name:TopicUpdated object:nil];
-        
         [[self tableViewController] setDetailViewController:self];
         [[self notesViewController] setDetailViewController:self];
     }
     
-    [LayerFormater setBorderWidth:0 forView:[self view]];
+    [LayerFormater roundCornersForView:[self noteCountView]];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
+                                                 name:TopicUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
+                                                 name:NoteUpdated object:nil];
+    
 }
 
 - (IBAction)createNewNote:(id)sender

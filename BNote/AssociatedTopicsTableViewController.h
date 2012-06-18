@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 
-@interface AssociatedTopicsTableViewController : UITableViewController
+@interface AssociatedTopicsTableViewController : UITableViewController <UIActionSheetDelegate>
 
 @property (assign, nonatomic) Note *note;
 

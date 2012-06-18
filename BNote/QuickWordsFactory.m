@@ -21,6 +21,9 @@
 #import "KeyWord.h"
 #import "BNoteReader.h"
 #import "BNoteEntryUtils.h"
+#import "LayerFormater.h"
+#import "Attendants.h"
+#import "Attendant.h"
 
 @implementation QuickWordsFactory
 
@@ -84,10 +87,13 @@
     [data addObject:button];
 
     if ([BNoteEntryUtils containsAttendants:[actionItem note]]) {
-        button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
-        [button setActionItem:actionItem];
-        [button setBackgroundColor:[QuickWordsFactory normal]];
-        [data addObject:button];
+        Attendants *attendants = [[BNoteEntryUtils attendants:[actionItem note]] objectAtIndex:0];
+        if ([[attendants children] count] > 0) {
+            button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
+            [button setActionItem:actionItem];
+            [button setBackgroundColor:[QuickWordsFactory normal]];
+            [data addObject:button];
+        }
     }
     
     if ([actionItem dueDate]) {
@@ -105,10 +111,33 @@
 + (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andQuestion:(Question *)question
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
-    QuestionQuickButton *button = [[QuestionQuickButton alloc] initWithName:@"answer" andEntryCellView:entryCellView];
-    [button setQuestion:question];
+    
+    
+    int x = 10;
+    int y = 10;
+    int width = 500;
+    int height = 35;
+    UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(x, y, width, height)];
+    [text setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    [text setFont:[UIFont systemFontOfSize:14]];
+    [text setShowsHorizontalScrollIndicator:YES];
+    [text setShowsVerticalScrollIndicator:NO];
+    [text setAlwaysBounceHorizontal:YES];
+    [text setAlwaysBounceVertical:NO];
+    
+    [LayerFormater roundCornersForView:text];
+    
+    if ([question answer]) {
+        [text setText:[question answer]];
+    }
+
+    QuestionQuickButton *button = [[QuestionQuickButton alloc] initWithName:@"Clear Answer" andEntryCellView:entryCellView];
     [button setBackgroundColor:[QuickWordsFactory normal]];
+    [button setQuestion:question];
+    [button setTextView:text];
+    
     [data addObject:button];
+    [data addObject:text];
     
     return data;
 }

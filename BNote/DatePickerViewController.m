@@ -12,6 +12,7 @@
 @interface DatePickerViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSDate *date;
+@property (assign, nonatomic) UIDatePickerMode mode;
 @end
 
 @implementation DatePickerViewController
@@ -20,15 +21,23 @@
 @synthesize date = _date;
 @synthesize titleLabel = _titleLabel;
 @synthesize titleText = _titleText;
+@synthesize mode = _mode;
 
 - (id)initWithDate:(NSDate *)date
+{
+    return [self initWithDate:date andMode:UIDatePickerModeDateAndTime];
+}
+
+- (id)initWithDate:(NSDate *)date andMode:(UIDatePickerMode)mode
 {
     self = [super initWithNibName:@"DatePickerViewController" bundle:nil];
     if (self) {
         [self setDate:date];
+        [self setMode:mode];
     }
     return self;
 }
+
 
 - (IBAction)updateDateTime:(id)sender
 {
@@ -47,6 +56,7 @@
     
     [[self datePicker] setMinuteInterval:5];
     [[self datePicker] setDate:[self date]];
+    [[self datePicker] setDatePickerMode:[self mode]];
     [[self titleLabel] setText:[self titleText]];
 }
 

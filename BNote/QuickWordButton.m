@@ -65,7 +65,7 @@
 
 - (void)execute:(id)sender
 {
-    NSLog(@"Need to everi this method in subclass: %s", __PRETTY_FUNCTION__);
+    NSLog(@"Need to override this method in subclass: %s", __PRETTY_FUNCTION__);
 }
 
 @end

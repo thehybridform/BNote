@@ -17,6 +17,7 @@
 @property (assign, nonatomic) id<DatePickerViewControllerListener> listener;
 
 - (id)initWithDate:(NSDate *)date;
+- (id)initWithDate:(NSDate *)date andMode:(UIDatePickerMode)mode;
 
 - (IBAction)updateDateTime:(id)sender;
 - (IBAction)didFinish:(id)sender;

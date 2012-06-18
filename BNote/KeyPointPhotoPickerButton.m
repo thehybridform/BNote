@@ -26,7 +26,6 @@
     EntryTableViewCell *cell = [self entryCellView];
     
     [[cell textView] resignFirstResponder];
-    [[cell subTextView] resignFirstResponder];
     
     [self presentPhotoLibrary];
 }
@@ -35,7 +34,6 @@
 {
     UIImagePickerController *controller = [self imagePickerController];
     [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-
     
     EntryTableViewCell *cell = [self entryCellView];
     

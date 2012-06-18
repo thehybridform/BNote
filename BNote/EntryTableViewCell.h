@@ -22,12 +22,12 @@
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) UITextView *textView;
 @property (assign, nonatomic) UITextView *targetTextView;
-@property (strong, nonatomic) UITextView *subTextView;
 @property (assign, nonatomic) EntriesViewController *parentController;
 @property (strong, nonatomic) UIPopoverController *popup;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
 - (void)showDatePicker;
+- (void)handleActionItemType;
 
 
 + (int)cellHieght:(Entry *)entry;

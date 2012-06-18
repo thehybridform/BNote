@@ -25,7 +25,6 @@
     EntriesViewController *controller = [cell parentController];
     
     [[cell textView] resignFirstResponder];
-    [[cell subTextView] resignFirstResponder];
 
     ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithEntries:[[controller note] entries]];
     [tableController setDelegate:self];

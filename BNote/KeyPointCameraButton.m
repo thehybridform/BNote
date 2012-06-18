@@ -16,7 +16,6 @@
     EntryTableViewCell *cell = [self entryCellView];
     
     [[cell textView] resignFirstResponder];
-    [[cell subTextView] resignFirstResponder];
     
     [self presentCamera];
 }

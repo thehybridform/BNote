@@ -90,6 +90,12 @@
     [self update];
 }
 
+- (void)disassociateNote:(Note *)note toTopic:(Topic *)topic
+{
+    [note removeAssociatedTopicsObject:topic];
+    [self update];
+}
+
 - (void)update
 {
     NSError *error = nil;

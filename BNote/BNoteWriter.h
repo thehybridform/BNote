@@ -32,5 +32,6 @@
 
 - (void)moveNote:(Note *)note toTopic:(Topic *)topic;
 - (void)associateNote:(Note *)note toTopic:(Topic *)topic;
+- (void)disassociateNote:(Note *)note toTopic:(Topic *)topic;
 
 @end

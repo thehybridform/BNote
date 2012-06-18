@@ -28,12 +28,12 @@
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
+@property (strong, nonatomic) UILabel *detail;
 @end
 
 @implementation EntryTableViewCell
 @synthesize entry = _entry;
 @synthesize textView = _textView;
-@synthesize subTextView = _subTextView;
 @synthesize targetTextView = _targetTextView;
 @synthesize parentController = _parentController;
 @synthesize actionSheet = _actionSheet;
@@ -41,53 +41,26 @@
 @synthesize quickWordsViewController = _quickWordsViewController;
 @synthesize popup = _popup;
 @synthesize datePickerViewController = _datePickerViewController;
+@synthesize detail = _detail;
 
 const float x = 100;
-const float y = 5;
+const float y = 10;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setTextView:[[UITextView alloc] init]];
-        [[self textView] setAutoresizingMask:[[self textLabel] autoresizingMask]];
-        [[self contentView] addSubview:[self textView]];
-        [[self textView] setFont:[UIFont systemFontOfSize:15]];
-        [[self textView] setHidden:YES];
-        [LayerFormater roundCornersForView:[self textView]];
-
-        [self setSubTextView:[[UITextView alloc] init]];
-        [[self subTextView] setAutoresizingMask:[[self subTextView] autoresizingMask]];
-        [LayerFormater setBorderWidth:5 forView:[self subTextView]];
-        [LayerFormater setBorderColor:UIColorFromRGB(AnswerColor) forView:[self subTextView]];
-        [[self contentView] addSubview:[self subTextView]];
-        [[self subTextView] setFont:[UIFont systemFontOfSize:15]];
-        [[self subTextView] setHidden:YES];
-        [LayerFormater roundCornersForView:[self subTextView]];
-
-        [[self textLabel] setFont:[UIFont systemFontOfSize:15]];
-        [[self textLabel] setNumberOfLines:1];
-        [[self textLabel] setLineBreakMode:UILineBreakModeWordWrap];
-        [[self textLabel] setText:@"Tap to edit"];
-
-        [[self textLabel] setTextColor:[UIColor blackColor]];
-        [[self textLabel] setHighlightedTextColor:[UIColor blackColor]];
         
-        [LayerFormater roundCornersForView:[self textLabel]];
-        [LayerFormater roundCornersForView:[self detailTextLabel]];
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(updateText:)
+            name:UITextViewTextDidChangeNotification object:[[self textView] window]];
         
-        [[self detailTextLabel] setNumberOfLines:1];
-        [[self detailTextLabel] setTextColor:UIColorFromRGB(AnswerColor)];
-        [[self detailTextLabel] setHighlightedTextColor:UIColorFromRGB(AnswerColor)];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                     name:UITextViewTextDidChangeNotification object:[[self textView] window]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
-                                                     name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(keyboardWillHide:)
+            name:UIKeyboardWillHideNotification object:nil];
 
         [self setEditingAccessoryType:UITableViewCellAccessoryNone];
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
     return self;
@@ -109,18 +82,43 @@ const float y = 5;
 {
     _entry = entry;
     
-    [[self textView] setText:[entry text]];
-    [[self textLabel] setText:[entry text]];
+    UITextView *text = [[UITextView alloc] init];
+    [self setTextView:text];
+    [self addSubview:[self textView]];
+    [text setText:[entry text]];
+    [text setBackgroundColor:[BNoteConstants appColor1]];
+    [text setShowsVerticalScrollIndicator:YES];
+    [text setShowsHorizontalScrollIndicator:YES];
+    [text setAlwaysBounceHorizontal:YES];
+    [text setAlwaysBounceVertical:YES];
+
+    float width = [[self contentView] frame].size.width - x - 75;
+
+    CGRect rect = CGRectMake(x, y, width, 10);
+    UILabel *detail = [[UILabel alloc] initWithFrame:rect];
+    [detail setFont:[UIFont systemFontOfSize:12]];
+    [self addSubview:detail];
+    [detail setTextColor:UIColorFromRGB(0x336633)];
+    [self setDetail:detail];
+    [detail setBackgroundColor:[BNoteConstants appColor1]];
+    [detail setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     
+//    [LayerFormater roundCornersForView:text];
+
     [self handleQuestionType];
     [self handleActionItemType];
     [self handleImageIcon:NO];
     
+    float hieght = [BNoteStringUtils lineCount:[entry text]] * 15;
+    
+    [text setFrame:CGRectMake(x, y + 20, width, hieght)];
+    [text setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin)];
+
     UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
     [backgroundView setBackgroundColor:[BNoteConstants appColor1]];
     [self setSelectedBackgroundView:backgroundView];
-
-    [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:[entry text]]];
+    
+    [self bringSubviewToFront:[self contentView]];
 }
 
 - (void)focus
@@ -132,59 +130,22 @@ const float y = 5;
 
     [self handleImageIcon:YES];
     
-    [[self textLabel] setHidden:YES];
-    [[self detailTextLabel] setHidden:YES];
-
-    [[self textView] setText:[[self entry] text]];
-    
-    float width = [[self contentView] frame].size.width - x - 20;
-    float hieght = [[self contentView] frame].size.height - 10;
-    
-    [[self textView] setFrame:CGRectMake(x, y, width, hieght)];
-    
     [self setTargetTextView:[self textView]];
-    [[self textView] setHidden:NO];
     
+    [self bringSubviewToFront:[self textView]];
     [[self textView] becomeFirstResponder];
 }
 
 - (void)unfocus
 {
     [[BNoteWriter instance] update];
-    [self setQuickWordsViewController:nil];
-    [[self textView] setInputAccessoryView:nil];
-
     [self handleImageIcon:NO];
-
-    UILabel *label = [self textLabel];
-    [label setHidden:NO];
-    [[self detailTextLabel] setHidden:NO];
-
-    [label setText:[[self entry] text]];
-    [self handleQuestionType];
-    [self handleActionItemType];
-
-    
-    [[self textView] setHidden:YES];
-    
-    float x = [label frame].origin.x;
-    float y = [label frame].origin.y;
-    float height = [label frame].size.height;
-    float width = [label frame].size.width;
-    
-    [label setFrame:CGRectMake(x, y, width, height)];
-    [label setNumberOfLines:[BNoteStringUtils lineCount:[[self entry] text]]];
-    
-    [[self textView] resignFirstResponder];
-    
-    [self setNeedsDisplay];
+    [self bringSubviewToFront:[self contentView]];
 }
 
 - (void)updateText:(NSNotification *)notification
 {
-    if ([self textView] == [notification object]) {
-        [self handleText];
-    }
+    [self handleText];
 }
 
 - (void)handleText
@@ -196,23 +157,13 @@ const float y = 5;
     }
 
     [[self entry] setText:text];    
-    
-    [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:text]];
-    [[self textLabel] setText:text];
-}
-
-- (void)updateSubText:(NSNotification *)notification
-{
-    if ([self textView] == [notification object]) {
-        [self handleSubText];
-    }
 }
 
 - (void)handleSubText
 {
     if ([[self entry] isKindOfClass:[Question class]]) {
         Question *question = (Question *) [self entry];
-        NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
+/*        NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
         
         if ([BNoteStringUtils nilOrEmpty:text]) {
             text = nil;
@@ -221,6 +172,7 @@ const float y = 5;
         [question setAnswer:text];
         [[self detailTextLabel] setNumberOfLines:[BNoteStringUtils lineCount:text]];
         [[self detailTextLabel] setText:text];
+ */
     }
 }
 
@@ -228,14 +180,7 @@ const float y = 5;
 {
     if ([[self entry] isKindOfClass:[Question class]]) {
         Question *question = (Question *) [self entry];
-        
-        NSString *detail = [BNoteEntryUtils formatDetailTextForQuestion:question];
-        
-        if ([BNoteStringUtils nilOrEmpty:detail]) {
-            [[self detailTextLabel] setText:nil];
-        } else {
-            [[self detailTextLabel] setText:detail];
-        }
+        [[self detail] setText:[question answer]];
     }
 }
 
@@ -243,13 +188,12 @@ const float y = 5;
 {
     if ([[self entry] isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) [self entry];
-        
         NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
         
         if ([BNoteStringUtils nilOrEmpty:detail]) {
-            [[self detailTextLabel] setText:nil];
+            [[self detail] setText:nil];
         } else {
-            [[self detailTextLabel] setText:detail];
+            [[self detail] setText:detail];
         }
     }
 }
@@ -365,10 +309,11 @@ const float y = 5;
             date = [[NSDate alloc] init];
         }
     
-        DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
+        DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date andMode:UIDatePickerModeDate];
         [controller setListener:self];
-        [self setDatePickerViewController:controller];
         [controller setTitleText:@"Due Date"];
+        [[controller datePicker] setDatePickerMode:UIDatePickerModeDate];
+        [self setDatePickerViewController:controller];
 
         UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
         [self setPopup:popup];
@@ -390,6 +335,7 @@ const float y = 5;
     if ([[self entry] isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) [self entry];
         [actionItem setDueDate:[date timeIntervalSinceReferenceDate]];
+        [self handleActionItemType];
     }
 }
 
@@ -408,7 +354,7 @@ const float y = 5;
 
 + (int)cellHieght:(Entry *)entry
 {
-    return MAX(4, [BNoteStringUtils lineCount:[entry text]]) * 25;
+    return MAX(4, [BNoteStringUtils lineCount:[entry text]]) * 20;
 }
 
 

@@ -12,5 +12,6 @@
 @interface QuestionQuickButton : QuickWordButton
 
 @property (strong, nonatomic) Question *question;
+@property (strong, nonatomic) UITextView *textView;
 
 @end

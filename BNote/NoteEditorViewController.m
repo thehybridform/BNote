@@ -393,9 +393,11 @@
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:topicTable];
     [self setPopup:popup];
      
+    [popup setPopoverContentSize:CGSizeMake(225, 400)];
+
     CGRect rect = [[self mainTopicView] frame];
     [popup presentPopoverFromRect:rect inView:[self view] 
-                     permittedArrowDirections:UIPopoverArrowDirectionUp 
+                     permittedArrowDirections:UIPopoverArrowDirectionAny 
                                      animated:YES];
 }
 

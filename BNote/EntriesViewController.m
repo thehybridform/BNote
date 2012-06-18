@@ -179,7 +179,7 @@
 - (void)selectLastCell
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([[self filteredEntries] count] - 1) inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
 }
 
@@ -188,7 +188,7 @@
     int index = [[self filteredEntries] indexOfObject:entry];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
 }
 

@@ -90,7 +90,11 @@
         [data addObject:button];
     }
     
-    button = [[DueDateActionItemButton alloc] initWithName:@"due date" andEntryCellView:entryCellView];
+    if ([actionItem dueDate]) {
+        button = [[DueDateActionItemButton alloc] initWithName:@"clear due date" andEntryCellView:entryCellView];
+    } else {
+        button = [[DueDateActionItemButton alloc] initWithName:@"   due date   " andEntryCellView:entryCellView];
+    }
     [button setActionItem:actionItem];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];

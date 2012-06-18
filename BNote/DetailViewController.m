@@ -98,6 +98,9 @@
         [[self tableViewController] setDetailViewController:self];
         [[self notesViewController] setDetailViewController:self];
     }
+    
+    [LayerFormater setBorderWidth:0 forView:[self view]];
+
 }
 
 - (IBAction)createNewNote:(id)sender

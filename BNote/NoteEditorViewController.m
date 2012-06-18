@@ -307,9 +307,11 @@
     
     DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
     [controller setListener:self];
+    [controller setTitleText:@"Created Date"];
 
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [self setPopup:popup];
+    [popup setDelegate:self];
     
     [popup setPopoverContentSize:[[controller view] bounds].size];
     
@@ -325,6 +327,17 @@
 {
     [[self note] setCreated:[date timeIntervalSinceReferenceDate]];
     [self setupDateTime:date];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self setPopup:nil];
+}
+
+- (void)selectedDatePickerViewDone
+{
+    [[self popup] dismissPopoverAnimated:YES];
+    [self setPopup:nil];
 }
 
 - (void)setupDateTime:(NSDate *)date

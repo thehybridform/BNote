@@ -12,14 +12,14 @@
 
 @interface DatePickerViewController : UIViewController
 
+@property (strong, nonatomic) NSString *titleText;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (assign, nonatomic) id<DatePickerViewControllerListener> listener;
 
 - (id)initWithDate:(NSDate *)date;
 
 - (IBAction)updateDateTime:(id)sender;
-- (void)didFinish:(id)sender;
+- (IBAction)didFinish:(id)sender;
 
 @end
 
@@ -27,5 +27,6 @@
 
 @required
 - (void)dateTimeUpdated:(NSDate *)date;
+- (void)selectedDatePickerViewDone;
 
 @end

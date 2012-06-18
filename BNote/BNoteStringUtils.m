@@ -54,7 +54,7 @@
         index = NSMaxRange([string lineRangeForRange:NSMakeRange(index, 0)]);
     }
     
-    return numberOfLines;
+    return MAX(1, numberOfLines);
 }
 
 + (NSString *)dateToString:(NSDate *)date

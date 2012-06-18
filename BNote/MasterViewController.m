@@ -121,7 +121,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
         [cell setShowsReorderControl:NO];
-        [LayerFormater roundCornersForView:cell];
+        [LayerFormater setBorderWidth:1 forView:cell];
         
         [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
         [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];

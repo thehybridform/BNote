@@ -97,15 +97,15 @@
     
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-    id<EntryCell> cell;// = (id<EntryCell>) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    if (!cell) {
+    id<EntryCell> cell = (id<EntryCell>) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
         cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
-        [cell setEntry:entry];
-        [cell setParentController:self];
-        
         [LayerFormater setBorderWidth:1 forView:[cell view]];
-//    }
+     }
     
+    [cell setEntry:entry];
+    [cell setParentController:self];
+
     return (UITableViewCell *) cell;
 }
 
@@ -158,9 +158,9 @@
     NSEnumerator *entries = [[[self note] entries] objectEnumerator];
     Entry *entry;
     while (entry = [entries nextObject]) {
-        if ([[self filter] accept:entry]) {
-            if (![entry isKindOfClass:[Attendants class]]) {
-                if (![[self deletedEntries] containsObject:entry]) {
+        if (![[self deletedEntries] containsObject:entry]) {
+            if ([[self filter] accept:entry]) {
+                if (![entry isKindOfClass:[Attendants class]]) {
                     [[self filteredEntries] addObject:entry];
                 }
             }
@@ -229,9 +229,8 @@
 
 - (void)keyboardWillHide:(id)sender
 {
-    if ([self selectEntryCell]) {
-        [[self selectEntryCell] unfocus];
-    }
+    [self setSelectEntryCell:nil];
+    [self reload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

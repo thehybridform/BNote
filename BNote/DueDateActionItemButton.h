@@ -7,8 +7,7 @@
 //
 
 #import "ActionItemQuickButton.h"
-#import "DatePickerViewController.h"
 
-@interface DueDateActionItemButton : ActionItemQuickButton <DatePickerViewControllerListener>
+@interface DueDateActionItemButton : ActionItemQuickButton
 
 @end

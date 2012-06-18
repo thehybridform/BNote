@@ -10,14 +10,16 @@
 #import "LayerFormater.h"
 
 @interface DatePickerViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSDate *date;
 @end
 
 @implementation DatePickerViewController
-@synthesize doneButton = _doneButton;
 @synthesize listener = _listener;
 @synthesize datePicker = _datePicker;
 @synthesize date = _date;
+@synthesize titleLabel = _titleLabel;
+@synthesize titleText = _titleText;
 
 - (id)initWithDate:(NSDate *)date
 {
@@ -34,9 +36,9 @@
     [[self listener] dateTimeUpdated:[picker date]];
 }
 
-- (void)didFinish:(id)sender
+- (IBAction)didFinish:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [[self listener] selectedDatePickerViewDone];
 }
 
 - (void)viewDidLoad
@@ -45,19 +47,17 @@
     
     [[self datePicker] setMinuteInterval:5];
     [[self datePicker] setDate:[self date]];
-    
-    UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didFinish:)];
-    [[self view] addGestureRecognizer:normalTap];
-
+    [[self titleLabel] setText:[self titleText]];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     
-    [self setDoneButton:nil];
     [self setDatePicker:nil];
     [self setDate:nil];
+    [self setTitleLabel:nil];
+    [self setTitleText:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -21,12 +21,13 @@
 #import "PhotoViewController.h"
 #import "EntriesViewController.h"
 #import "QuickWordsViewController.h"
+#import "BNoteConstants.h"
 
 @interface EntryTableViewCell()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
-@property (assign, nonatomic) BOOL active;
+@property (strong, nonatomic) DatePickerViewController *datePickerViewController;
 @end
 
 @implementation EntryTableViewCell
@@ -38,7 +39,8 @@
 @synthesize actionSheet = _actionSheet;
 @synthesize longPress = _longPress;
 @synthesize quickWordsViewController = _quickWordsViewController;
-@synthesize active =_active;
+@synthesize popup = _popup;
+@synthesize datePickerViewController = _datePickerViewController;
 
 const float x = 100;
 const float y = 5;
@@ -64,25 +66,38 @@ const float y = 5;
         [LayerFormater roundCornersForView:[self subTextView]];
 
         [[self textLabel] setFont:[UIFont systemFontOfSize:15]];
+        [[self textLabel] setNumberOfLines:1];
         [[self textLabel] setLineBreakMode:UILineBreakModeWordWrap];
+        [[self textLabel] setText:@"Tap to edit"];
+
+        [[self textLabel] setTextColor:[UIColor blackColor]];
         [[self textLabel] setHighlightedTextColor:[UIColor blackColor]];
         
+        [LayerFormater roundCornersForView:[self textLabel]];
+        [LayerFormater roundCornersForView:[self detailTextLabel]];
+        
+        [[self detailTextLabel] setNumberOfLines:1];
         [[self detailTextLabel] setTextColor:UIColorFromRGB(AnswerColor)];
         [[self detailTextLabel] setHighlightedTextColor:UIColorFromRGB(AnswerColor)];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                     name:UITextViewTextDidEndEditingNotification object:[[self textView] window]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
                                                      name:UITextViewTextDidChangeNotification object:[[self textView] window]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
-                                                     name:UITextViewTextDidEndEditingNotification object:[[self subTextView] window]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubText:)
                                                      name:UITextViewTextDidChangeNotification object:[[self subTextView] window]];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
         [self setEditingAccessoryType:UITableViewCellAccessoryNone];
     }
     
     return self;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    if (![[self textView] isHidden]) {
+        [self unfocus];
+    }
 }
 
 - (UIView *)view
@@ -102,29 +117,25 @@ const float y = 5;
     [self handleImageIcon:NO];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
-    [backgroundView setBackgroundColor:[UIColor whiteColor]];
+    [backgroundView setBackgroundColor:[BNoteConstants appColor1]];
     [self setSelectedBackgroundView:backgroundView];
 
     [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:[entry text]]];
-
-    [self setNeedsDisplay];
 }
 
 - (void)focus
 {
-    [self setActive:YES];
     QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
     [self setQuickWordsViewController:quick];
     [[self textView] setInputAccessoryView:[quick view]];
     [quick selectFirstButton];
 
     [self handleImageIcon:YES];
-
+    
     [[self textLabel] setHidden:YES];
     [[self detailTextLabel] setHidden:YES];
 
     [[self textView] setText:[[self entry] text]];
-    [[self textView] setHidden:NO];
     
     float width = [[self contentView] frame].size.width - x - 20;
     float hieght = [[self contentView] frame].size.height - 10;
@@ -132,41 +143,46 @@ const float y = 5;
     [[self textView] setFrame:CGRectMake(x, y, width, hieght)];
     
     [self setTargetTextView:[self textView]];
+    [[self textView] setHidden:NO];
     
     [[self textView] becomeFirstResponder];
 }
 
 - (void)unfocus
 {
-    [self handleSubText];
-    [self handleText];
-    
-    [[self textView] resignFirstResponder];
+    [[BNoteWriter instance] update];
+    [self setQuickWordsViewController:nil];
+    [[self textView] setInputAccessoryView:nil];
+
     [self handleImageIcon:NO];
+
+    UILabel *label = [self textLabel];
+    [label setHidden:NO];
+    [[self detailTextLabel] setHidden:NO];
+
+    [label setText:[[self entry] text]];
+    [self handleQuestionType];
+    [self handleActionItemType];
+
     
     [[self textView] setHidden:YES];
-    [[self textLabel] setHidden:NO];
-    [[self detailTextLabel] setHidden:NO];
     
-    float x = [[self textLabel] frame].origin.x;
-    float y = [[self textLabel] frame].origin.y;
-    float height = [[self textLabel] frame].size.height;
-    float width = [[self textView] frame].size.width;
+    float x = [label frame].origin.x;
+    float y = [label frame].origin.y;
+    float height = [label frame].size.height;
+    float width = [label frame].size.width;
     
-    [[self textLabel] setFrame:CGRectMake(x, y, width, height)];
+    [label setFrame:CGRectMake(x, y, width, height)];
+    [label setNumberOfLines:[BNoteStringUtils lineCount:[[self entry] text]]];
     
-    [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:[[self entry] text]]];
-    
-    [self setQuickWordsViewController:nil];
-    [self setActive:NO];
+    [[self textView] resignFirstResponder];
     
     [self setNeedsDisplay];
 }
 
-- (void)updateText:(id)sender
+- (void)updateText:(NSNotification *)notification
 {
-    NSNotification *notification = sender;
-    if ([notification object] == [self textView]) {
+    if ([self textView] == [notification object]) {
         [self handleText];
     }
 }
@@ -178,15 +194,16 @@ const float y = 5;
     if ([BNoteStringUtils nilOrEmpty:text]) {
         text = nil;
     }
+
+    [[self entry] setText:text];    
     
-    [[self entry] setText:text];
-    [[self textLabel] setText:text];    
-    
+    [[self textLabel] setNumberOfLines:[BNoteStringUtils lineCount:text]];
+    [[self textLabel] setText:text];
 }
-- (void)updateSubText:(id)sender
+
+- (void)updateSubText:(NSNotification *)notification
 {
-    NSNotification *notification = sender;
-    if ([notification object] == [self subTextView]) {
+    if ([self textView] == [notification object]) {
         [self handleSubText];
     }
 }
@@ -202,6 +219,7 @@ const float y = 5;
         }
         
         [question setAnswer:text];
+        [[self detailTextLabel] setNumberOfLines:[BNoteStringUtils lineCount:text]];
         [[self detailTextLabel] setText:text];
     }
 }
@@ -213,10 +231,10 @@ const float y = 5;
         
         NSString *detail = [BNoteEntryUtils formatDetailTextForQuestion:question];
         
-        if (detail) {
-            [[self detailTextLabel] setText:detail];
-        } else {
+        if ([BNoteStringUtils nilOrEmpty:detail]) {
             [[self detailTextLabel] setText:nil];
+        } else {
+            [[self detailTextLabel] setText:detail];
         }
     }
 }
@@ -332,6 +350,60 @@ const float y = 5;
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     [[[self parentController] parentController] presentModalViewController:controller animated:YES];
+}
+
+- (void)showDatePicker
+{    
+    if ([[self entry] isKindOfClass:[ActionItem class]]) {
+        ActionItem *actionItem = (ActionItem *) [self entry];
+
+        NSTimeInterval interval = [actionItem dueDate];
+        NSDate *date;
+        if (interval) {
+            date = [NSDate dateWithTimeIntervalSinceReferenceDate:interval];
+        } else {
+            date = [[NSDate alloc] init];
+        }
+    
+        DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
+        [controller setListener:self];
+        [self setDatePickerViewController:controller];
+        [controller setTitleText:@"Due Date"];
+
+        UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+        [self setPopup:popup];
+        [popup setDelegate:self];
+    
+        [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+        UIView *view = self;
+        CGRect rect = [view bounds];
+    
+        [popup presentPopoverFromRect:rect inView:self
+             permittedArrowDirections:UIPopoverArrowDirectionAny 
+                             animated:YES];
+    }
+}
+
+- (void)dateTimeUpdated:(NSDate *)date
+{
+    if ([[self entry] isKindOfClass:[ActionItem class]]) {
+        ActionItem *actionItem = (ActionItem *) [self entry];
+        [actionItem setDueDate:[date timeIntervalSinceReferenceDate]];
+    }
+}
+
+- (void)selectedDatePickerViewDone
+{
+    [[self popup] dismissPopoverAnimated:YES];
+    [self setPopup:nil];
+    [self setDatePickerViewController:nil];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self setPopup:nil];
+    [self setDatePickerViewController:nil];
 }
 
 + (int)cellHieght:(Entry *)entry

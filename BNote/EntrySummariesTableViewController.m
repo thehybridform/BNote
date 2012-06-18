@@ -57,6 +57,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
                                                  name:NoteUpdated object:nil];
+    
+    [[self tableView] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
 - (void)viewDidUnload

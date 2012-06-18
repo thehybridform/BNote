@@ -15,7 +15,10 @@
 
 @class DetailViewController;
 
-@interface NoteEditorViewController : UIViewController <DatePickerViewControllerListener, UIActionSheetDelegate>
+@interface NoteEditorViewController : UIViewController
+    <DatePickerViewControllerListener,
+     UIActionSheetDelegate,
+    UIPopoverControllerDelegate>
 
 
 - (id)initWithNote:(Note *)note;

@@ -57,8 +57,6 @@ static float spacing = 10;
         [[self attendantToolbar] setHidden:YES];
         [[self decisionToolbar] setHidden:YES];
     }
-
-    [LayerFormater roundCornersForView:[self view]];
     
     [[self detailButton] setTitle:[BNoteStringUtils nameForEntry:[[self entryViewCell] entry]]];
     

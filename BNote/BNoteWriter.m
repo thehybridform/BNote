@@ -81,7 +81,25 @@
 - (void)moveNote:(Note *)note toTopic:(Topic *)topic
 {
     [note setTopic:topic];
+    [note setColor:[topic color]];
     [self update];
+}
+
+- (void)associateTopics:(NSArray *)topics toNote:(Note *)note
+{
+    NSSet *currentTopics = [note associatedTopics];
+    NSEnumerator *items = [currentTopics objectEnumerator];
+    Topic *topic;
+    while (topic = [items nextObject]) {
+        if (![topics containsObject:topic]) {
+            [self disassociateNote:note toTopic:topic];
+        }
+    }
+    
+    items = [topics objectEnumerator];
+    while (topic = [items nextObject]) {
+        [self associateNote:note toTopic:topic];
+    }
 }
 
 - (void)associateNote:(Note *)note toTopic:(Topic *)topic
@@ -103,7 +121,7 @@
     BOOL success = [[self context] save:&error];  
     
     if (success) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:AllDataUpdated object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:AllDataUpdated object:nil];
     } else {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }    

@@ -20,7 +20,6 @@
 #import "BNoteStringUtils.h"
 #import "BNoteEntryUtils.h"
 #import "EmailViewController.h"
-#import "TopicSelectTableViewController.h"
 #import "AssociatedTopicsTableViewController.h"
 
 @interface NoteEditorViewController ()
@@ -45,11 +44,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *emailButton;
 @property (strong, nonatomic) IBOutlet UIImageView *attendantsImageView;
-
-@property (strong, nonatomic) IBOutlet UIView *mainTopicView;
-@property (strong, nonatomic) IBOutlet UILabel *mainTopicLabel;
-
-@property (strong, nonatomic) UIActionSheet *actionSheet;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AssociatedTopicsTableViewController *associatedTopicsTableViewController;
@@ -80,9 +74,6 @@
 @synthesize popup = _popup;
 @synthesize entityWithAttendantToolbar = _entityWithAttendantToolbar;
 @synthesize emailButton = _emailButton;
-@synthesize mainTopicView = _mainTopicView;
-@synthesize mainTopicLabel = _mainTopicLabel;
-@synthesize actionSheet = _actionSheet;
 @synthesize associatedTopicsTableViewController = _associatedTopicsTableViewController;
 
 - (void)viewDidUnload
@@ -111,9 +102,6 @@
     [self setPopup:nil];
     [self setEntityWithAttendantToolbar:nil];
     [self setEmailButton:nil];
-    [self setMainTopicView:nil];
-    [self setMainTopicLabel:nil];
-    [self setActionSheet:nil];
     [self setAssociatedTopicsTableViewController:nil];
 }
 
@@ -144,8 +132,6 @@
                                     
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater roundCornersForView:[self subjectView]];
-    [LayerFormater roundCornersForView:[self mainTopicView]];
-    [LayerFormater roundCornersForView:[self mainTopicLabel]];
     [LayerFormater roundCornersForView:[self subjectTextView]];
     
     [[self subjectLable] setHidden:YES];
@@ -165,10 +151,6 @@
         [[self entityToolbar] setHidden:YES];
     }
     
-    [[self mainTopicLabel] setText:[[note topic] title]];
-    normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainTopicPicker:)];
-    [[self mainTopicView] addGestureRecognizer:normalTap];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                  name:TopicUpdated object:nil];
     
@@ -182,7 +164,7 @@
     [[self entriesViewController] cleanupEntries];    
     [[BNoteWriter instance] update];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NoteUpdated object:[self note]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[self note]];
 }
 
 - (IBAction)editMode:(id)sender
@@ -309,6 +291,10 @@
     [controller setListener:self];
     [controller setTitleText:@"Created Date"];
 
+    if ([self popup]) {
+        [[self popup] dismissPopoverAnimated:YES];
+    }
+
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [self setPopup:popup];
     [popup setDelegate:self];
@@ -359,55 +345,11 @@
 - (void)selectEntry:(Entry *)entry
 {
     [[self entriesViewController] selectEntry:entry];
-
-}
-
-- (void)showMainTopicPicker:(id)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main Topic" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Change", nil];
-    [self setActionSheet:actionSheet];
-    
-    CGRect rect = [[self mainTopicView] frame];
-    [actionSheet showFromRect:rect inView:[self view] animated:YES];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (buttonIndex) {
-        case 0:
-            [self showTopicSelector];
-            break;
-            
-        default:
-            break;
-    }
-    [self setActionSheet:nil];
-}
-
-- (void)showTopicSelector
-{
-    TopicSelectTableViewController *topicTable = 
-        [[TopicSelectTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [topicTable setNote:[self note]];
-    
-    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:topicTable];
-    [self setPopup:popup];
-     
-    [popup setPopoverContentSize:CGSizeMake(225, 400)];
-
-    CGRect rect = [[self mainTopicView] frame];
-    [popup presentPopoverFromRect:rect inView:[self view] 
-                     permittedArrowDirections:UIPopoverArrowDirectionAny 
-                                     animated:YES];
 }
 
 - (void)reload:(id)sender
 {
-    if ([self popup]) {
-        [[self popup] dismissPopoverAnimated:YES];
-    }
-    
-    [[self mainTopicLabel] setText:[[[self note] topic] title]];
+    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

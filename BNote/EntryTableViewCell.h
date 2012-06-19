@@ -28,7 +28,7 @@
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
 - (void)showDatePicker;
 - (void)handleActionItemType;
-
+- (void)handleQuestionType;
 
 + (int)cellHieght:(Entry *)entry;
 

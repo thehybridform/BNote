@@ -73,7 +73,7 @@
         [self addSubview:title];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                     name:NoteUpdated object:nil];
+                                                     name:TopicUpdated object:nil];
     }
     
     return self;

@@ -27,7 +27,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *keyWordsButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UITextField *textField;
 
 @property (strong, nonatomic) EntryTableViewCell *entryViewCell;
 
@@ -44,7 +43,6 @@
 @synthesize listener = _listener;
 @synthesize entryViewCell = _entryViewCell;
 @synthesize scrollView = _scrollView;
-@synthesize textField = _textField;
 
 static float spacing = 10;
 
@@ -74,13 +72,6 @@ static float spacing = 10;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:KeyWordsUpdated object:nil];
     
-    if ([[[self entryViewCell] entry] isKindOfClass:[Question class]]) {
-        [LayerFormater roundCornersForView:[self textField]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                 name:UITextViewTextDidChangeNotification object:[[self textField] window]];
-    } else {
-        [[self textField] setHidden:YES];
-    }
 }
 
 - (void)viewDidUnload
@@ -94,7 +85,6 @@ static float spacing = 10;
     [self setAttendantToolbar:nil];
     [self setDecisionToolbar:nil];
     [self setEntryViewCell:nil];
-    [self setTextField:nil];
 }
 
 - (IBAction)detail:(id)sender
@@ -167,13 +157,15 @@ static float spacing = 10;
 
 - (void)updateText:(NSNotification *)notification
 {
-    if ([self textField] == [notification object]) {
+    UITextField *text = [notification object];
+//    if ([self textField] == text) {
         EntryTableViewCell *cell = [self entryViewCell];
         if ([[cell entry] isKindOfClass:[Question class]]) {
             Question *question = (Question *) [cell entry];
-            [question setAnswer:[[self textField] text]];
+//            [question setAnswer:[text text]];
+//            [cell handleQuestionType];
         }
-    }
+//    }
 }
 
 

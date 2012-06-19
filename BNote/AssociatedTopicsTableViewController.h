@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
+#import "TopicManagementViewController.h"
 
-@interface AssociatedTopicsTableViewController : UITableViewController <UIActionSheetDelegate>
+@interface AssociatedTopicsTableViewController : UITableViewController <UIActionSheetDelegate, TopicManagementViewControllerListener>
 
 @property (assign, nonatomic) Note *note;
 

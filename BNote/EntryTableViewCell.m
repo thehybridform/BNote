@@ -159,23 +159,6 @@ const float y = 10;
     [[self entry] setText:text];    
 }
 
-- (void)handleSubText
-{
-    if ([[self entry] isKindOfClass:[Question class]]) {
-        Question *question = (Question *) [self entry];
-/*        NSString *text = [BNoteStringUtils trim:[[self subTextView] text]];
-        
-        if ([BNoteStringUtils nilOrEmpty:text]) {
-            text = nil;
-        }
-        
-        [question setAnswer:text];
-        [[self detailTextLabel] setNumberOfLines:[BNoteStringUtils lineCount:text]];
-        [[self detailTextLabel] setText:text];
- */
-    }
-}
-
 - (void)handleQuestionType
 {
     if ([[self entry] isKindOfClass:[Question class]]) {

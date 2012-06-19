@@ -56,7 +56,7 @@
     [[self sorting] setTitle:@"No Sorting"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                 name:NoteUpdated object:nil];
+                                                 name:TopicUpdated object:nil];
     
     [[self tableView] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }

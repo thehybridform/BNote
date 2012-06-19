@@ -17,6 +17,7 @@ typedef enum {
 } BNotePhase;
 
 @property (assign, nonatomic) BNotePhase phase;
+@property (strong, nonatomic) NSDictionary *settings;
 
 + (BNoteSessionData *)instance;
 

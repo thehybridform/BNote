@@ -1,5 +1,5 @@
 //
-//  EluaViewController.h
+//  InformationViewController.h
 //  BeNote
 //
 //  Created by Young Kristin on 6/18/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EluaViewController : UIViewController
+@interface InformationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 - (id)initWithDefault;
 

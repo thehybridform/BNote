@@ -16,7 +16,7 @@
 #import "BNoteSessionData.h"
 #import "LayerFormater.h"
 #import "EmailViewController.h"
-#import "ConfigurationViewController.h"
+#import "InformationViewController.h"
 #import "EditNoteViewPresenter.h"
 
 
@@ -30,7 +30,7 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIView *noteCountView;
 @property (strong, nonatomic) IBOutlet UILabel *noteCountLabel;
-@property (strong, nonatomic) ConfigurationViewController *configurationViewController;
+@property (strong, nonatomic) InformationViewController *informationViewController;
 
 @end
 
@@ -43,7 +43,7 @@
 @synthesize notesViewController = notesViewController;
 @synthesize entriesToolbar = _entriesToolbar;
 @synthesize navBar = _navBar;
-@synthesize configurationViewController = _configurationViewController;
+@synthesize informationViewController = _informationViewController;
 @synthesize searchBar = _searchBar;
 @synthesize noteCountView = _noteCountView;
 @synthesize noteCountLabel = _noteCountLabel;
@@ -58,7 +58,7 @@
     [self setAddNewNoteButton:nil];
     [self setNotesViewController:nil];
     [self setEntriesToolbar:nil];
-    [self setConfigurationViewController:nil];
+    [self setInformationViewController:nil];
     [self setNoteCountView:nil];
     [self setNoteCountLabel:nil];
 }
@@ -155,7 +155,7 @@
 
 - (IBAction)configure:(id)sender
 {
-    ConfigurationViewController *controller = [[ConfigurationViewController alloc] initWithDefault];
+    InformationViewController *controller = [[InformationViewController alloc] initWithDefault];
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     

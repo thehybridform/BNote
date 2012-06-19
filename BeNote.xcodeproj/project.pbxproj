@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18021C241587168C00C15F3A /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18021C221587168C00C15F3A /* ConfigurationViewController.m */; };
-		18021C251587168C00C15F3A /* ConfigurationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18021C231587168C00C15F3A /* ConfigurationViewController.xib */; };
-		18021C2D15871A9200C15F3A /* ConfigurationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18021C2C15871A9200C15F3A /* ConfigurationTableViewController.m */; };
 		18070DEC15785C42003486E3 /* EntrySummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */; };
 		18070DF015785FB2003486E3 /* IdentityFillter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DEF15785FB2003486E3 /* IdentityFillter.m */; };
 		18070DF41578613F003486E3 /* KeyPointFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF31578613F003486E3 /* KeyPointFilter.m */; };
@@ -45,10 +42,13 @@
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
 		1834D3A7156375560065788F /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
 		1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */; };
+		18497687159053DA00F49F5A /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
+		18497688159053DA00F49F5A /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
 		184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
 		184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
 		184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
+		184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -130,11 +130,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18021C211587168C00C15F3A /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
-		18021C221587168C00C15F3A /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationViewController.m; sourceTree = "<group>"; };
-		18021C231587168C00C15F3A /* ConfigurationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigurationViewController.xib; sourceTree = "<group>"; };
-		18021C2B15871A9200C15F3A /* ConfigurationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationTableViewController.h; sourceTree = "<group>"; };
-		18021C2C15871A9200C15F3A /* ConfigurationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationTableViewController.m; sourceTree = "<group>"; };
 		18070DEA15785C42003486E3 /* EntrySummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummaryTableViewCell.h; sourceTree = "<group>"; };
 		18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummaryTableViewCell.m; sourceTree = "<group>"; };
 		18070DED15785F83003486E3 /* BNoteFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNoteFilter.h; sourceTree = "<group>"; };
@@ -198,12 +193,16 @@
 		1834D3A6156375560065788F /* BNoteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFactory.m; sourceTree = "<group>"; };
 		1837667D158D24DA001EE5BF /* EditNoteViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewPresenter.h; sourceTree = "<group>"; };
 		1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewPresenter.m; sourceTree = "<group>"; };
+		18497684159053DA00F49F5A /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		18497685159053DA00F49F5A /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		18497686159053DA00F49F5A /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 		184CEAD2158F227A00C67CF5 /* EluaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EluaViewController.h; sourceTree = "<group>"; };
 		184CEAD3158F227A00C67CF5 /* EluaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EluaViewController.m; sourceTree = "<group>"; };
 		184CEAD4158F227A00C67CF5 /* EluaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EluaViewController.xib; sourceTree = "<group>"; };
 		184CEAD715901FFC00C67CF5 /* TopicManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicManagementViewController.h; sourceTree = "<group>"; };
 		184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicManagementViewController.m; sourceTree = "<group>"; };
 		184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicManagementViewController.xib; sourceTree = "<group>"; };
+		184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -367,11 +366,6 @@
 		18021C1515870B7600C15F3A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				18021C211587168C00C15F3A /* ConfigurationViewController.h */,
-				18021C221587168C00C15F3A /* ConfigurationViewController.m */,
-				18021C231587168C00C15F3A /* ConfigurationViewController.xib */,
-				18021C2B15871A9200C15F3A /* ConfigurationTableViewController.h */,
-				18021C2C15871A9200C15F3A /* ConfigurationTableViewController.m */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -442,6 +436,7 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
+				184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */,
 				18558C451589AE9100BCB45C /* BeNote.entitlements */,
 				1834D34115634A650065788F /* BNote */,
 				1834D33A15634A650065788F /* Frameworks */,
@@ -474,6 +469,7 @@
 		1834D34115634A650065788F /* BNote */ = {
 			isa = PBXGroup;
 			children = (
+				18497682159053B300F49F5A /* Information Details */,
 				184CEAD0158F225900C67CF5 /* EULA */,
 				18021C1515870B7600C15F3A /* Configuration */,
 				1819675615699AB200DA31A3 /* Images */,
@@ -599,6 +595,16 @@
 				1834D382156364840065788F /* TopicEditorViewController.xib */,
 			);
 			name = "Topic Editor";
+			sourceTree = "<group>";
+		};
+		18497682159053B300F49F5A /* Information Details */ = {
+			isa = PBXGroup;
+			children = (
+				18497684159053DA00F49F5A /* InformationViewController.h */,
+				18497685159053DA00F49F5A /* InformationViewController.m */,
+				18497686159053DA00F49F5A /* InformationViewController.xib */,
+			);
+			name = "Information Details";
 			sourceTree = "<group>";
 		};
 		184CEAD0158F225900C67CF5 /* EULA */ = {
@@ -919,9 +925,10 @@
 				18A056D9157D7E90002A4A78 /* Default-Landscape~ipad.png in Resources */,
 				18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */,
 				1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */,
-				18021C251587168C00C15F3A /* ConfigurationViewController.xib in Resources */,
 				184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */,
 				184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */,
+				184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */,
+				18497688159053DA00F49F5A /* InformationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,8 +1003,6 @@
 				18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */,
 				18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */,
 				18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */,
-				18021C241587168C00C15F3A /* ConfigurationViewController.m in Sources */,
-				18021C2D15871A9200C15F3A /* ConfigurationTableViewController.m in Sources */,
 				18B235D8158ADF06009D17D2 /* AttendantTableViewCell.m in Sources */,
 				18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */,
 				1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */,
@@ -1015,6 +1020,7 @@
 				18C03E74158DACC70035AFDA /* Attendants.m in Sources */,
 				184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */,
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
+				18497687159053DA00F49F5A /* InformationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

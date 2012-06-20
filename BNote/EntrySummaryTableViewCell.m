@@ -26,7 +26,10 @@
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
         [[self textLabel] setFont:[UIFont systemFontOfSize:14]];
+        [[self textLabel] setBackgroundColor:[UIColor clearColor]];
+
         [[self detailTextLabel] setTextColor:UIColorFromRGB(0x336633)];
+        [self setBackgroundColor:[UIColor clearColor]];
     }
     
     return self;

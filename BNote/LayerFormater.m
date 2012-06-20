@@ -32,7 +32,7 @@
     [layer setBorderWidth:1];
 }
 
-+ (void)setBorderWidth:(int)thickness forView:(UIView *)view
++ (void)setBorderWidth:(CGFloat)thickness forView:(UIView *)view
 {
     [[view layer] setBorderWidth:thickness];
 }

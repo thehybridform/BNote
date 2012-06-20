@@ -11,10 +11,12 @@
 
 @protocol EntryCell <NSObject>
 
+@required
 - (void)setEntry:(Entry *)entry;
 - (UIView *)view;
 - (void)setParentController:(UIViewController *)parent;
 - (void)focus;
 - (void)unfocus;
+- (void)setBackgroundView:(UIView *)view;
 
 @end

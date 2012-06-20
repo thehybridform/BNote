@@ -41,4 +41,10 @@
 {
     
 }
+
+- (void)setCustomBackgroundView:(UIView *)view
+{
+    
+}
+
 @end

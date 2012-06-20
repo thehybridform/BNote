@@ -15,7 +15,7 @@
 + (void)roundCornersForView:(UIView *)view to:(float)radius;
 + (void)roundCornersForLayer:(CALayer *)layer;
 + (void)roundCornersForLayer:(CALayer *)layer to:(float)radius;
-+ (void)setBorderWidth:(int)thickness forView:(UIView *)view;
++ (void)setBorderWidth:(CGFloat)thickness forView:(UIView *)view;
 + (void)setBorderColor:(UIColor *)color forView:(UIView *)view;
 + (void)setBorderColorWithInt:(int)color forView:(UIView *)view;
 

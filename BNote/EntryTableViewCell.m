@@ -22,6 +22,7 @@
 #import "EntriesViewController.h"
 #import "QuickWordsViewController.h"
 #import "BNoteConstants.h"
+#import "LinedPaperView.h"
 
 @interface EntryTableViewCell()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -61,6 +62,7 @@ const float y = 10;
 
         [self setEditingAccessoryType:UITableViewCellAccessoryNone];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
     }
     
     return self;
@@ -118,6 +120,9 @@ const float y = 10;
     [backgroundView setBackgroundColor:[BNoteConstants appColor1]];
     [self setSelectedBackgroundView:backgroundView];
     
+    [[self textLabel] setBackgroundColor:[UIColor clearColor]];
+    [[self textView] setBackgroundColor:[UIColor clearColor]];
+
     [self bringSubviewToFront:[self contentView]];
 }
 

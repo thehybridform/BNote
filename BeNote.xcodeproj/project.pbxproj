@@ -44,6 +44,7 @@
 		1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */; };
 		18497687159053DA00F49F5A /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
 		18497688159053DA00F49F5A /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
+		1849768F15917D4B00F49F5A /* LinedPaperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849768E15917D4B00F49F5A /* LinedPaperView.m */; };
 		184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
 		184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
@@ -196,6 +197,8 @@
 		18497684159053DA00F49F5A /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		18497685159053DA00F49F5A /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		18497686159053DA00F49F5A /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
+		1849768D15917D4B00F49F5A /* LinedPaperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinedPaperView.h; sourceTree = "<group>"; };
+		1849768E15917D4B00F49F5A /* LinedPaperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinedPaperView.m; sourceTree = "<group>"; };
 		184CEAD2158F227A00C67CF5 /* EluaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EluaViewController.h; sourceTree = "<group>"; };
 		184CEAD3158F227A00C67CF5 /* EluaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EluaViewController.m; sourceTree = "<group>"; };
 		184CEAD4158F227A00C67CF5 /* EluaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EluaViewController.xib; sourceTree = "<group>"; };
@@ -806,6 +809,8 @@
 				18E9FF691571835600F22272 /* BNoteAnimation.m */,
 				18E9FF0F156A343700F22272 /* LayerFormater.h */,
 				18E9FF10156A343700F22272 /* LayerFormater.m */,
+				1849768D15917D4B00F49F5A /* LinedPaperView.h */,
+				1849768E15917D4B00F49F5A /* LinedPaperView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1021,6 +1026,7 @@
 				184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */,
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
 				18497687159053DA00F49F5A /* InformationViewController.m in Sources */,
+				1849768F15917D4B00F49F5A /* LinedPaperView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

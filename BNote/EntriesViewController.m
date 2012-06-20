@@ -15,6 +15,7 @@
 #import "BNoteSessionData.h"
 #import "BNoteFactory.h"
 #import "Attendant.h"
+#import "LinedPaperView.h"
 
 @interface EntriesViewController ()
 @property (assign, nonatomic) id<EntryCell> selectEntryCell;
@@ -101,6 +102,10 @@
     if (!cell) {
         cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
         [LayerFormater setBorderWidth:1 forView:[cell view]];
+        CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
+        LinedPaperView *paper = [[LinedPaperView alloc] initWithLineAtX:80.0 withHeight:height];
+        [cell setBackgroundView:paper];
+
      }
     
     [cell setEntry:entry];

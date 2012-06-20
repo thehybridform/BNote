@@ -14,6 +14,7 @@
 #import "NoteEditorViewController.h"
 #import "EntrySummaryTableViewCell.h"
 #import "EditNoteViewPresenter.h"
+#import "LinedPaperView.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -249,7 +250,10 @@
     EntrySummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
-        [LayerFormater roundCornersForView:cell];
+
+        CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
+        LinedPaperView *paper = [[LinedPaperView alloc] initWithLineAtX:44.0 withHeight:height];
+        [cell setBackgroundView:paper];
     }
         
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];

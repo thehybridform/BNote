@@ -19,7 +19,7 @@
 @synthesize highlightColor = _highlightColor;
 @synthesize entryCellView = _entryCellView;
 
-- (id)initWithName:(NSString *)name andEntryCellView:(EntryTableViewCell *)entryCellView
+- (id)initWithName:(NSString *)name andEntryCellView:(EntryTableCellBasis *)entryCellView
 {
     self = [super init];
     if (self) {

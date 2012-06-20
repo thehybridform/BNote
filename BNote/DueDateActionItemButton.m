@@ -10,6 +10,7 @@
 #import "EntriesViewController.h"
 #import "DatePickerViewController.h"
 #import "BNoteWriter.h"
+#import "ActionItemEntryCell.h"
 
 @interface DueDateActionItemButton()
 @end
@@ -18,13 +19,13 @@
 
 - (void)execute:(id)sender
 {
-    EntryTableViewCell *cell = [self entryCellView];
+    ActionItemEntryCell *cell = (ActionItemEntryCell *) [self entryCellView];
  
     ActionItem *actionItem = (ActionItem *) [cell entry];
     if ([actionItem dueDate]) {
         [actionItem setDueDate:0];
         [[BNoteWriter instance] update];
-        [cell handleActionItemType];
+        [cell updateDetail];
         [self setTitle:@"   due date   " forState:UIControlStateNormal];
     } else {
         [[cell textView] resignFirstResponder];

@@ -23,7 +23,7 @@
 
 - (void)execute:(id)sender
 {
-    EntryTableViewCell *cell = [self entryCellView];
+    EntryTableCellBasis *cell = [self entryCellView];
     
     [[cell textView] resignFirstResponder];
     
@@ -35,7 +35,7 @@
     UIImagePickerController *controller = [self imagePickerController];
     [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     
-    EntryTableViewCell *cell = [self entryCellView];
+    EntryTableCellBasis *cell = [self entryCellView];
     
     UIView *view = cell;
     CGRect rect = [view bounds];

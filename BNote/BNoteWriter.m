@@ -80,6 +80,10 @@
 
 - (void)moveNote:(Note *)note toTopic:(Topic *)topic
 {
+    if ([[note associatedTopics] containsObject:topic]) {
+        [self disassociateNote:note toTopic:topic];
+    }
+    
     [note setTopic:topic];
     [note setColor:[topic color]];
     [self update];

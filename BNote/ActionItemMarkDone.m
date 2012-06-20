@@ -23,7 +23,7 @@
     
     [[BNoteWriter instance] update];
     
-    [[self entryCellView] handleActionItemType];
+    [[self entryCellView] updateDetail];
 }
 
 @end

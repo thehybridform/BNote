@@ -21,7 +21,7 @@
 
 - (void)execute:(id)sender
 {
-    EntryTableViewCell *cell = [self entryCellView];
+    EntryTableCellBasis *cell = [self entryCellView];
     EntriesViewController *controller = [cell parentController];
     
     [[cell textView] resignFirstResponder];

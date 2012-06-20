@@ -41,7 +41,7 @@
     NSData *thumbImageData = UIImageJPEGRepresentation(thumb, 0.8);
     [photo setThumbnail:thumbImageData];
 
-    CGSize smallSize = CGSizeMake(43.0, 43.0);
+    CGSize smallSize = CGSizeMake(42.0, 42.0);
     UIImage *small = [BNoteImageUtils image:image scaleAndCropToMaxSize:smallSize];
     NSData *smallImageData = UIImageJPEGRepresentation(small, 0.8);
     [photo setSmall:smallImageData];

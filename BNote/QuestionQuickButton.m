@@ -10,12 +10,15 @@
 #import "BNoteWriter.h"
 @implementation QuestionQuickButton
 @synthesize question = _question;
-@synthesize textView = _textView;
 
 - (void)execute:(id)sender
 {
-    [[self textView] setText:@""];
-    [[self question] setAnswer:nil];
+    if ([[self question] answer]) {
+        [[self question] setAnswer:nil];
+        [self setTitle:@"   Answer   " forState:UIControlStateNormal];
+    } else {
+        [self setTitle:@"Clear Answer" forState:UIControlStateNormal];
+    }
 }
 
 @end

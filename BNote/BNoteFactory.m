@@ -10,8 +10,11 @@
 #import "BNoteWriter.h"
 #import "BNoteReader.h"
 #import "Attendants.h"
-#import "EntryTableViewCell.h"
+#import "EntryTableCellBasis.h"
 #import "AttendantTableViewCell.h"
+#import "QuestionEntryCell.h"
+#import "ActionItemEntryCell.h"
+#import "KeyPointEntryCell.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -259,12 +262,18 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     return -1;
 }
 
-+ (id<EntryCell>)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier
++ (EntryTableCellBasis *)createEntryTableViewCellForEntry:(Entry *)entry andCellIdentifier:(NSString *)cellIdentifier
 {
     if ([entry isKindOfClass:[Attendants class]]) {
         return [[AttendantTableViewCell alloc] initWithIdentifier:cellIdentifier];
+    } else if ([entry isKindOfClass:[KeyPoint class]]) {
+        return [[KeyPointEntryCell alloc] initWithIdentifier:cellIdentifier];
+    } else if ([entry isKindOfClass:[ActionItem class]]) {
+        return [[ActionItemEntryCell alloc] initWithIdentifier:cellIdentifier];
+    } else if ([entry isKindOfClass:[Question class]]) {
+        return [[QuestionEntryCell alloc] initWithIdentifier:cellIdentifier];
     } else {
-        return [[EntryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+        return [[EntryTableCellBasis alloc] initWithIdentifier:cellIdentifier];
     }
 }
 @end

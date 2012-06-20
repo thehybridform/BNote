@@ -9,7 +9,7 @@
 #import "EntriesViewController.h"
 #import "LayerFormater.h"
 #import "BNoteStringUtils.h"
-#import "EntryCell.h"
+#import "EntryTableCellBasis.h"
 #import "Entry.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
@@ -18,7 +18,7 @@
 #import "LinedPaperView.h"
 
 @interface EntriesViewController ()
-@property (assign, nonatomic) id<EntryCell> selectEntryCell;
+@property (assign, nonatomic) EntryTableCellBasis *selectEntryCell;
 @property (strong, nonatomic) NSMutableArray *filteredEntries;
 @property (strong, nonatomic) NSMutableArray *deletedEntries;
 @property (assign, nonatomic) UITextView *textView;
@@ -98,10 +98,10 @@
     
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-    id<EntryCell> cell = (id<EntryCell>) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    EntryTableCellBasis * cell = (EntryTableCellBasis *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
-        [LayerFormater setBorderWidth:1 forView:[cell view]];
+        [LayerFormater setBorderWidth:1 forView:cell];
         CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
         LinedPaperView *paper = [[LinedPaperView alloc] initWithLineAtX:80.0 withHeight:height];
         [cell setBackgroundView:paper];
@@ -138,15 +138,15 @@
 {
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]];
     
-    return [EntryTableViewCell cellHieght:entry];
+    return [EntryTableCellBasis cellHieght:entry];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[BNoteSessionData instance] canEditEntry]) {
-        id<EntryCell> cell = (id<EntryCell>) [tableView cellForRowAtIndexPath:indexPath];
+        EntryTableCellBasis *cell = (EntryTableCellBasis *) [tableView cellForRowAtIndexPath:indexPath];
     
-        id<EntryCell> selectEntryCell = [self selectEntryCell];
+        EntryTableCellBasis *selectEntryCell = [self selectEntryCell];
         if (selectEntryCell) {
             [selectEntryCell unfocus];
         }

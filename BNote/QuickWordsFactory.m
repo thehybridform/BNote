@@ -27,7 +27,7 @@
 
 @implementation QuickWordsFactory
 
-+ (NSMutableArray *)buildDateButtonsForEntryCellView:(EntryTableViewCell *)entryCellView
++ (NSMutableArray *)buildDateButtonsForEntryCellView:(EntryTableCellBasis *)entryCellView
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     DateQuickButton *button;
@@ -55,7 +55,7 @@
     return data;
 }
 
-+ (NSMutableArray *)buildKeyWordButtionsForEntryCellView:(EntryTableViewCell *)entryCellView
++ (NSMutableArray *)buildKeyWordButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     
@@ -71,7 +71,7 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andActionItem:(ActionItem *)actionItem
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andActionItem:(ActionItem *)actionItem
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     ActionItemQuickButton *button;
@@ -108,41 +108,25 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andQuestion:(Question *)question
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andQuestion:(Question *)question
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     
-    
-    int x = 10;
-    int y = 10;
-    int width = 500;
-    int height = 35;
-    UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(x, y, width, height)];
-    [text setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    [text setFont:[UIFont systemFontOfSize:14]];
-    [text setShowsHorizontalScrollIndicator:YES];
-    [text setShowsVerticalScrollIndicator:NO];
-    [text setAlwaysBounceHorizontal:YES];
-    [text setAlwaysBounceVertical:NO];
-    
-    [LayerFormater roundCornersForView:text];
-    
+    QuestionQuickButton *button;
     if ([question answer]) {
-        [text setText:[question answer]];
+        button = [[QuestionQuickButton alloc] initWithName:@"Clear Answer" andEntryCellView:entryCellView];
+    } else {
+        button = [[QuestionQuickButton alloc] initWithName:@"   Answer   " andEntryCellView:entryCellView];
     }
-
-    QuestionQuickButton *button = [[QuestionQuickButton alloc] initWithName:@"Clear Answer" andEntryCellView:entryCellView];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [button setQuestion:question];
-    [button setTextView:text];
     
     [data addObject:button];
-    [data addObject:text];
     
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableViewCell *)entryCellView andKeyPoint:(KeyPoint *)keyPoint
++ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andKeyPoint:(KeyPoint *)keyPoint
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     KeyPointButton *button;

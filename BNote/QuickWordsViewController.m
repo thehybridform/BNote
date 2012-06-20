@@ -28,7 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (strong, nonatomic) EntryTableViewCell *entryViewCell;
+@property (strong, nonatomic) EntryTableCellBasis *entryViewCell;
 
 @end
 
@@ -46,7 +46,7 @@
 
 static float spacing = 10;
 
-- (id)initWithCell:(EntryTableViewCell *)cell
+- (id)initWithCell:(EntryTableCellBasis *)cell
 {
     self = [super initWithNibName:@"QuickWordsViewController" bundle:nil];
     if (self) {
@@ -154,20 +154,6 @@ static float spacing = 10;
     
     return nil;
 }
-
-- (void)updateText:(NSNotification *)notification
-{
-    UITextField *text = [notification object];
-//    if ([self textField] == text) {
-        EntryTableViewCell *cell = [self entryViewCell];
-        if ([[cell entry] isKindOfClass:[Question class]]) {
-            Question *question = (Question *) [cell entry];
-//            [question setAnswer:[text text]];
-//            [cell handleQuestionType];
-        }
-//    }
-}
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

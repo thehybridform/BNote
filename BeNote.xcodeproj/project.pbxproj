@@ -23,7 +23,6 @@
 		1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
 		1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5521580654100928BAF /* DueDateActionItemButton.m */; };
 		1818B55A15807F7B00928BAF /* KeyWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B55915807F7B00928BAF /* KeyWordButton.m */; };
-		1818B5611580865100928BAF /* EntryTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5601580865100928BAF /* EntryTextView.m */; };
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
@@ -45,6 +44,10 @@
 		18497687159053DA00F49F5A /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
 		18497688159053DA00F49F5A /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
 		1849768F15917D4B00F49F5A /* LinedPaperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849768E15917D4B00F49F5A /* LinedPaperView.m */; };
+		184976961591973700F49F5A /* EntryTableCellBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976951591973700F49F5A /* EntryTableCellBasis.m */; };
+		1849769A15919D6900F49F5A /* QuestionEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849769915919D6900F49F5A /* QuestionEntryCell.m */; };
+		1849769E15919DCE00F49F5A /* ActionItemEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849769D15919DCE00F49F5A /* ActionItemEntryCell.m */; };
+		184976A215919E3600F49F5A /* KeyPointEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976A115919E3600F49F5A /* KeyPointEntryCell.m */; };
 		184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
 		184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
@@ -61,7 +64,6 @@
 		1879F0A01575CA37003814C2 /* ActionItemMarkDone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */; };
 		1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F10A1575D802003814C2 /* QuestionQuickButton.m */; };
 		18810E5F15770159002B59DA /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
-		18810E6815770E5C002B59DA /* EntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E6715770E5C002B59DA /* EntryTableViewCell.m */; };
 		18A05685157B5BCC002A4A78 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A05684157B5BCC002A4A78 /* AddressBook.framework */; };
 		18A056AE157B71BA002A4A78 /* AttendantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056AD157B71BA002A4A78 /* AttendantsViewController.m */; };
 		18A056B6157BFD72002A4A78 /* AttendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056B5157BFD71002A4A78 /* AttendantView.m */; };
@@ -163,8 +165,6 @@
 		1818B5521580654100928BAF /* DueDateActionItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DueDateActionItemButton.m; sourceTree = "<group>"; };
 		1818B55815807F7B00928BAF /* KeyWordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordButton.h; sourceTree = "<group>"; };
 		1818B55915807F7B00928BAF /* KeyWordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordButton.m; sourceTree = "<group>"; };
-		1818B55F1580865100928BAF /* EntryTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTextView.h; sourceTree = "<group>"; };
-		1818B5601580865100928BAF /* EntryTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTextView.m; sourceTree = "<group>"; };
 		181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummariesTableViewController.h; sourceTree = "<group>"; };
 		181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummariesTableViewController.m; sourceTree = "<group>"; };
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
@@ -199,14 +199,22 @@
 		18497686159053DA00F49F5A /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 		1849768D15917D4B00F49F5A /* LinedPaperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinedPaperView.h; sourceTree = "<group>"; };
 		1849768E15917D4B00F49F5A /* LinedPaperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinedPaperView.m; sourceTree = "<group>"; };
+		184976941591973600F49F5A /* EntryTableCellBasis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTableCellBasis.h; sourceTree = "<group>"; };
+		184976951591973700F49F5A /* EntryTableCellBasis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTableCellBasis.m; sourceTree = "<group>"; };
+		1849769815919D6900F49F5A /* QuestionEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionEntryCell.h; sourceTree = "<group>"; };
+		1849769915919D6900F49F5A /* QuestionEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionEntryCell.m; sourceTree = "<group>"; };
+		1849769C15919DCE00F49F5A /* ActionItemEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemEntryCell.h; sourceTree = "<group>"; };
+		1849769D15919DCE00F49F5A /* ActionItemEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemEntryCell.m; sourceTree = "<group>"; };
+		184976A015919E3600F49F5A /* KeyPointEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointEntryCell.h; sourceTree = "<group>"; };
+		184976A115919E3600F49F5A /* KeyPointEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointEntryCell.m; sourceTree = "<group>"; };
 		184CEAD2158F227A00C67CF5 /* EluaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EluaViewController.h; sourceTree = "<group>"; };
 		184CEAD3158F227A00C67CF5 /* EluaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EluaViewController.m; sourceTree = "<group>"; };
 		184CEAD4158F227A00C67CF5 /* EluaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EluaViewController.xib; sourceTree = "<group>"; };
 		184CEAD715901FFC00C67CF5 /* TopicManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicManagementViewController.h; sourceTree = "<group>"; };
 		184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicManagementViewController.m; sourceTree = "<group>"; };
 		184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicManagementViewController.xib; sourceTree = "<group>"; };
-		184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BeNote.entitlements; sourceTree = "<group>"; };
+		184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "BeNote-EULA.rtf"; path = "../BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		1879F05915746E9A003814C2 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -227,8 +235,6 @@
 		1879F10A1575D802003814C2 /* QuestionQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionQuickButton.m; sourceTree = "<group>"; };
 		18810E5D15770159002B59DA /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
 		18810E5E15770159002B59DA /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
-		18810E6615770E5C002B59DA /* EntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTableViewCell.h; sourceTree = "<group>"; };
-		18810E6715770E5C002B59DA /* EntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTableViewCell.m; sourceTree = "<group>"; };
 		18A05684157B5BCC002A4A78 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		18A056AC157B71BA002A4A78 /* AttendantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsViewController.h; sourceTree = "<group>"; };
 		18A056AD157B71BA002A4A78 /* AttendantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsViewController.m; sourceTree = "<group>"; };
@@ -439,8 +445,6 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
-				184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */,
-				18558C451589AE9100BCB45C /* BeNote.entitlements */,
 				1834D34115634A650065788F /* BNote */,
 				1834D33A15634A650065788F /* Frameworks */,
 				1834D33815634A650065788F /* Products */,
@@ -492,6 +496,8 @@
 		1834D34215634A650065788F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18558C451589AE9100BCB45C /* BeNote.entitlements */,
+				184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */,
 				1834D34315634A650065788F /* BeNote-Info.plist */,
 				1834D34415634A650065788F /* InfoPlist.strings */,
 				1834D34715634A650065788F /* main.m */,
@@ -608,6 +614,36 @@
 				18497686159053DA00F49F5A /* InformationViewController.xib */,
 			);
 			name = "Information Details";
+			sourceTree = "<group>";
+		};
+		1849769715919D4A00F49F5A /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				1849769815919D6900F49F5A /* QuestionEntryCell.h */,
+				1849769915919D6900F49F5A /* QuestionEntryCell.m */,
+			);
+			name = Question;
+			sourceTree = "<group>";
+		};
+		1849769B15919D9400F49F5A /* Action Item */ = {
+			isa = PBXGroup;
+			children = (
+				1849769C15919DCE00F49F5A /* ActionItemEntryCell.h */,
+				1849769D15919DCE00F49F5A /* ActionItemEntryCell.m */,
+			);
+			name = "Action Item";
+			sourceTree = "<group>";
+		};
+		1849769F15919E1700F49F5A /* Key Point */ = {
+			isa = PBXGroup;
+			children = (
+				184976A015919E3600F49F5A /* KeyPointEntryCell.h */,
+				184976A115919E3600F49F5A /* KeyPointEntryCell.m */,
+				18A056F8157F3762002A4A78 /* PhotoViewController.h */,
+				18A056F9157F3762002A4A78 /* PhotoViewController.m */,
+				18A056FA157F3762002A4A78 /* PhotoViewController.xib */,
+			);
+			name = "Key Point";
 			sourceTree = "<group>";
 		};
 		184CEAD0158F225900C67CF5 /* EULA */ = {
@@ -769,14 +805,12 @@
 		18BF3F60157B456100B6E226 /* Entry View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1849769F15919E1700F49F5A /* Key Point */,
+				1849769B15919D9400F49F5A /* Action Item */,
+				1849769715919D4A00F49F5A /* Question */,
 				18B235D9158ADF6E009D17D2 /* Attendants */,
-				18810E6615770E5C002B59DA /* EntryTableViewCell.h */,
-				18810E6715770E5C002B59DA /* EntryTableViewCell.m */,
-				18A056F8157F3762002A4A78 /* PhotoViewController.h */,
-				18A056F9157F3762002A4A78 /* PhotoViewController.m */,
-				18A056FA157F3762002A4A78 /* PhotoViewController.xib */,
-				1818B55F1580865100928BAF /* EntryTextView.h */,
-				1818B5601580865100928BAF /* EntryTextView.m */,
+				184976941591973600F49F5A /* EntryTableCellBasis.h */,
+				184976951591973700F49F5A /* EntryTableCellBasis.m */,
 			);
 			name = "Entry View Cell";
 			sourceTree = "<group>";
@@ -969,7 +1003,6 @@
 				1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */,
 				18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */,
 				18810E5F15770159002B59DA /* EntriesViewController.m in Sources */,
-				18810E6815770E5C002B59DA /* EntryTableViewCell.m in Sources */,
 				18070DEC15785C42003486E3 /* EntrySummaryTableViewCell.m in Sources */,
 				18070DF015785FB2003486E3 /* IdentityFillter.m in Sources */,
 				18070DF41578613F003486E3 /* KeyPointFilter.m in Sources */,
@@ -995,7 +1028,6 @@
 				1818B54E15803C2500928BAF /* ResponsibilityTableViewController.m in Sources */,
 				1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */,
 				1818B55A15807F7B00928BAF /* KeyWordButton.m in Sources */,
-				1818B5611580865100928BAF /* EntryTextView.m in Sources */,
 				18AF4ABE15852FA700A54205 /* EmailViewController.m in Sources */,
 				18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */,
 				18AF4ACD1585632F00A54205 /* BNoteFilterFactory.m in Sources */,
@@ -1027,6 +1059,10 @@
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
 				18497687159053DA00F49F5A /* InformationViewController.m in Sources */,
 				1849768F15917D4B00F49F5A /* LinedPaperView.m in Sources */,
+				184976961591973700F49F5A /* EntryTableCellBasis.m in Sources */,
+				1849769A15919D6900F49F5A /* QuestionEntryCell.m in Sources */,
+				1849769E15919DCE00F49F5A /* ActionItemEntryCell.m in Sources */,
+				184976A215919E3600F49F5A /* KeyPointEntryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

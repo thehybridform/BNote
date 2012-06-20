@@ -1,36 +1,32 @@
 //
-//  EntryTableViewCell.h
-//  BNote
+//  EntryTableCellBasis.h
+//  BeNote
 //
-//  Created by Young Kristin on 5/30/12.
+//  Created by Young Kristin on 6/19/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Entry.h"
-#import "EntryCell.h"
 #import "DatePickerViewController.h"
 
 @class EntriesViewController;
 
-@interface EntryTableViewCell : UITableViewCell 
-   <EntryCell,
-    UIActionSheetDelegate,
-    DatePickerViewControllerListener,
-    UIPopoverControllerDelegate>
+@interface EntryTableCellBasis : UITableViewCell
 
 @property (strong, nonatomic) Entry *entry;
+@property (strong, nonatomic) UILabel *detail;
 @property (strong, nonatomic) UITextView *textView;
 @property (assign, nonatomic) UITextView *targetTextView;
 @property (assign, nonatomic) EntriesViewController *parentController;
-@property (strong, nonatomic) UIPopoverController *popup;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
-- (void)showDatePicker;
-- (void)handleActionItemType;
-- (void)handleQuestionType;
+- (void)setEntry:(Entry *)entry;
+- (void)focus;
+- (void)unfocus;
+- (void)handleImageIcon:(BOOL)active;
+- (void)updateDetail;
 
 + (int)cellHieght:(Entry *)entry;
 
 @end
-

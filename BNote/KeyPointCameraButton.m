@@ -13,7 +13,7 @@
 
 - (void)execute:(id)sender
 {
-    EntryTableViewCell *cell = [self entryCellView];
+    EntryTableCellBasis *cell = [self entryCellView];
     
     [[cell textView] resignFirstResponder];
     

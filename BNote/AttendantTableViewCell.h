@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EntryCell.h"
+#import "EntryTableCellBasis.h"
 #import "Entry.h"
 
-@interface AttendantTableViewCell : UITableViewCell <EntryCell>
-@property (assign, nonatomic) Entry *entry;
-@property (assign, nonatomic) UIViewController *parentController;
-
-- (id)initWithIdentifier:(NSString *)reuseIdentifier;
+@interface AttendantTableViewCell : EntryTableCellBasis
 
 
 @end

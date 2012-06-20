@@ -45,7 +45,7 @@
         [time setFrame:CGRectMake(0, 75, 100, 25)];
         [time setTextAlignment:UITextAlignmentRight];
         [time setFont:[UIFont systemFontOfSize:12]];
-        [time setBackgroundColor:[BNoteConstants appColor1]];
+        [time setBackgroundColor:[UIColor clearColor]];
         [self setTime:time];
         
         UILabel *title = [[UILabel alloc] init];
@@ -54,7 +54,7 @@
         [title setLineBreakMode:UILineBreakModeWordWrap];
         [title setFont:[UIFont systemFontOfSize:12]];
         [title setNumberOfLines:3];
-        [title setBackgroundColor:[BNoteConstants appColor1]];
+        [title setBackgroundColor:[UIColor clearColor]];
         [self setTitle:title];
         
         [LayerFormater setBorderWidth:1 forView:self];

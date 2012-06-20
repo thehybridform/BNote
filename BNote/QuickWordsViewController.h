@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Entry.h"
-#import "EntryTableViewCell.h"
+#import "EntryTableCellBasis.h"
 
 @protocol QuickWordsViewControllerListener;
 
@@ -17,7 +17,7 @@
 
 @property (assign, nonatomic) id<QuickWordsViewControllerListener> listener;
 
-- (id)initWithCell:(EntryTableViewCell *)cell;
+- (id)initWithCell:(EntryTableCellBasis *)cell;
 
 - (IBAction)detail:(id)sender;
 - (IBAction)dates:(id)sender;

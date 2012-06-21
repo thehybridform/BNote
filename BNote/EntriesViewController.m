@@ -16,6 +16,7 @@
 #import "BNoteFactory.h"
 #import "Attendant.h"
 #import "LinedPaperView.h"
+#import "BNoteEntryUtils.h"
 
 @interface EntriesViewController ()
 @property (assign, nonatomic) EntryTableCellBasis *selectEntryCell;
@@ -35,9 +36,12 @@
 @synthesize textView = _textView;
 @synthesize selectEntryCell = _selectEntryCell;
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setFilteredEntries:[[NSMutableArray alloc] init]];
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
      
@@ -49,8 +53,9 @@
                                                  name:UITextViewTextDidBeginEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedEditing:)
                                                  name:UITextViewTextDidEndEditingNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -67,10 +72,8 @@
 
 - (void)setFilter:(id<BNoteFilter>)filter
 {
-    if (filter != _filter) {
-        _filter = filter;
-        [self reload];
-    }
+    _filter = filter;
+    [self reload];
 }
 
 - (void)setNote:(Note *)note
@@ -94,24 +97,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"EntryTableViewCell";
+    static NSString *cellIdentifier = @"EntryTableCellBasis";
     
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-    EntryTableCellBasis * cell = (EntryTableCellBasis *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
+    EntryTableCellBasis * cell;// = (EntryTableCellBasis *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    if (!cell) {
         cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
         [LayerFormater setBorderWidth:1 forView:cell];
         CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-        LinedPaperView *paper = [[LinedPaperView alloc] initWithLineAtX:80.0 withHeight:height];
+        LinedPaperView *paper = [[LinedPaperView alloc] initWithLineAtX:90.0 withHeight:height];
         [cell setBackgroundView:paper];
-
-     }
+//     }
     
     [cell setEntry:entry];
     [cell setParentController:self];
 
-    return (UITableViewCell *) cell;
+    return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,7 +140,7 @@
 {
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]];
     
-    return [EntryTableCellBasis cellHieght:entry];
+    return MAX(100, [BNoteEntryUtils cellHeight:entry inView:tableView]);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,7 +161,7 @@
 
 - (void)reload
 {
-    [self setFilteredEntries:[[NSMutableArray alloc] init]];
+    [[self filteredEntries] removeAllObjects];
     NSEnumerator *entries = [[[self note] entries] objectEnumerator];
     Entry *entry;
     while (entry = [entries nextObject]) {
@@ -235,7 +237,7 @@
 - (void)keyboardWillHide:(id)sender
 {
     [self setSelectEntryCell:nil];
-    [self reload];
+    [[self tableView] reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

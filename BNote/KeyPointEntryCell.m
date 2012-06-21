@@ -38,6 +38,7 @@
         [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
         [self addGestureRecognizer:longPress];
         [self setLongPress:longPress];
+        
     } else {
         [super handleImageIcon:active];
     }

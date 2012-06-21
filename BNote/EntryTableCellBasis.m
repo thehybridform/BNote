@@ -59,13 +59,18 @@ const float y = 10;
     [text setShowsHorizontalScrollIndicator:YES];
     [text setAlwaysBounceHorizontal:YES];
     [text setAlwaysBounceVertical:YES];
+        
+    [text setAutoresizingMask:(UIViewAutoresizingFlexibleRightMargin |
+                               UIViewAutoresizingFlexibleBottomMargin |
+                               UIViewAutoresizingFlexibleHeight |
+                               UIViewAutoresizingFlexibleWidth)];
     
     float width = [[self contentView] frame].size.width - x - 75;
     
     CGRect rect = CGRectMake(x, y, width, 10);
     UILabel *detail = [[UILabel alloc] initWithFrame:rect];
     [detail setFont:[UIFont systemFontOfSize:12]];
-    [self addSubview:detail];
+//    [self addSubview:detail];
     [detail setTextColor:UIColorFromRGB(0x336633)];
     [self setDetail:detail];
     [detail setBackgroundColor:[BNoteConstants appColor1]];
@@ -73,10 +78,10 @@ const float y = 10;
     
     [self updateDetail];
     [self handleImageIcon:NO];
+
+    float hieght = [BNoteStringUtils textHieght:[entry text] inView:self];
     
-    float hieght = [BNoteStringUtils lineCount:[entry text]] * 15;
-    
-    [text setFrame:CGRectMake(x, y + 20, width, hieght)];
+    [text setFrame:CGRectMake(x, y, width, hieght)];
     [text setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin)];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
@@ -94,15 +99,34 @@ const float y = 10;
     [self unfocus];
 }
 
+// width 839
 - (void)updateText:(NSNotification *)notification
 {
-    NSString *text = [BNoteStringUtils trim:[[self textView] text]];
+    UITextView *textView = [self textView];
+    if ([notification object] == textView) {
+        NSString *text = [BNoteStringUtils trim:[textView text]];
     
-    if ([BNoteStringUtils nilOrEmpty:text]) {
-        text = nil;
+        if ([BNoteStringUtils nilOrEmpty:text]) {
+            text = nil;
+        }
+    
+        [[self entry] setText:text];
+    
+        UIView *cell = self;
+        float x = [cell frame].origin.x;
+        float y = [cell frame].origin.y;
+        float width = [cell frame].size.width;
+        float height = [textView contentSize].height + 10;
+    
+        CGRect rect = CGRectMake(x, y, width, height);
+        [cell setFrame:CGRectMake(x, y, width, height)];
+    
+        x = [textView frame].origin.x;
+        y = [textView frame].origin.y;
+        width = [textView frame].size.width;
+        rect = CGRectMake(x, y, width, height);
+        [textView setFrame:rect];
     }
-    
-    [[self entry] setText:text];    
 }
 
 - (void)focus
@@ -136,11 +160,6 @@ const float y = 10;
 - (void)updateDetail
 {
     // implemented by subclass
-}
-
-+ (int)cellHieght:(Entry *)entry
-{
-    return MAX(4, [BNoteStringUtils lineCount:[entry text]]) * 20;
 }
 
 @end

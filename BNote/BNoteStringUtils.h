@@ -13,7 +13,6 @@
 
 + (NSString *)trim:(NSString *)string;
 + (BOOL)nilOrEmpty:(NSString *)string;
-+ (int)lineCount:(NSString *)string;
 
 + (NSString *)dateToString:(NSDate *)date;
 + (NSString *)timeToString:(NSDate *)date;
@@ -22,5 +21,6 @@
 + (NSString *)nameForEntry:(Entry *)entry;
 
 + (NSString *)append:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
++ (int)textHieght:(NSString *)text inView:(UIView *)view;
 
 @end

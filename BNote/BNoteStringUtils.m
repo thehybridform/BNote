@@ -47,16 +47,6 @@
     return @"Details";
 }
 
-+ (int)lineCount:(NSString *)string
-{
-    unsigned numberOfLines, index, stringLength = [string length];
-    for (index = 0, numberOfLines = 0; index < stringLength; numberOfLines++) {
-        index = NSMaxRange([string lineRangeForRange:NSMakeRange(index, 0)]);
-    }
-    
-    return MAX(1, numberOfLines);
-}
-
 + (NSString *)dateToString:(NSDate *)date
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
@@ -85,7 +75,7 @@
     va_list args;
     va_start(args, firstArg);
 
-    for (NSString *arg = firstArg; arg != nil; arg = va_arg(args, NSString*)) {
+    for (NSString *arg = firstArg; arg != nil; arg = va_arg(args, NSString *)) {
         [string appendString:arg];
     }
 
@@ -94,5 +84,18 @@
     return string;
 }
 
++ (int)textHieght:(NSString *)text inView:(UIView *)view
+{
+    if (text) {
+        UITextView *textView = [[UITextView alloc] init];
+        [view addSubview:textView];
+        [textView setText:text];
+    
+        [textView removeFromSuperview];
+        return [textView contentSize].height + 50;
+    } else {
+        return 0;
+    }
+}
 
 @end

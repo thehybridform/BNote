@@ -11,6 +11,7 @@
 #import "ActionItem.h"
 #import "Question.h"
 #import "Attendant.h"
+#import "Entry.h"
 
 @interface BNoteEntryUtils : NSObject
 
@@ -21,5 +22,7 @@
 + (BOOL)containsAttendants:(Note *)note;
 
 + (NSMutableArray *)attendants:(Note *)note;
+
++ (CGFloat)cellHeight:(Entry *)entry inView:(UIView *)view;
 
 @end

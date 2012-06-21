@@ -27,6 +27,5 @@
 - (void)handleImageIcon:(BOOL)active;
 - (void)updateDetail;
 
-+ (int)cellHieght:(Entry *)entry;
 
 @end

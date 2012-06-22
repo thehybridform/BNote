@@ -9,6 +9,7 @@
 #import "BNoteSessionData.h"
 
 @interface BNoteSessionData()
+
 - (id)initSingleton;
 
 @end
@@ -16,6 +17,7 @@
 @implementation BNoteSessionData
 @synthesize phase = _phase;
 @synthesize settings = _settings;
+@synthesize scratchTextView = _scratchTextView;
 
 - (BOOL)canEditEntry
 {
@@ -25,6 +27,8 @@
 - (id)initSingleton
 {
     self = [super init];
+    
+    [self setScratchTextView:[[UITextView alloc] init]];
     
     return self;
 }

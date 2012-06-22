@@ -46,6 +46,20 @@ const float y = 10;
     return self;
 }
 
+- (void)drawRect:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+	CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+    CGContextSetLineWidth(context, 1.0);
+	CGContextMoveToPoint(context, 90, 0.0);
+	CGContextAddLineToPoint(context, 90, [self bounds].size.height);
+	CGContextMoveToPoint(context, 93, 0.0);
+	CGContextAddLineToPoint(context, 93, [self bounds].size.height);
+	CGContextStrokePath(context);
+    
+}
+
 - (void)setEntry:(Entry *)entry
 {
     _entry = entry;

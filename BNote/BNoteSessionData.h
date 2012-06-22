@@ -18,6 +18,7 @@ typedef enum {
 
 @property (assign, nonatomic) BNotePhase phase;
 @property (strong, nonatomic) NSDictionary *settings;
+@property (strong, nonatomic) UITextView *scratchTextView;
 
 + (BNoteSessionData *)instance;
 

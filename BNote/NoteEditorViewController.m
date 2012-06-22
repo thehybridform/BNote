@@ -357,5 +357,11 @@
 	return YES;
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [[self entriesViewController] didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
+
 @end
 

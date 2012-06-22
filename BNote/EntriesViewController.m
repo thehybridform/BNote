@@ -15,7 +15,6 @@
 #import "BNoteSessionData.h"
 #import "BNoteFactory.h"
 #import "Attendant.h"
-#import "LinedPaperView.h"
 #import "BNoteEntryUtils.h"
 
 @interface EntriesViewController ()
@@ -101,14 +100,8 @@
     
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-    EntryTableCellBasis * cell;// = (EntryTableCellBasis *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    if (!cell) {
-        cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
-        [LayerFormater setBorderWidth:1 forView:cell];
-        CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-        LinedPaperView *paper = [[LinedPaperView alloc] initWithLineAtX:90.0 withHeight:height];
-        [cell setBackgroundView:paper];
-//     }
+    EntryTableCellBasis * cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
+    [LayerFormater setBorderWidth:1 forView:cell];
     
     [cell setEntry:entry];
     [cell setParentController:self];
@@ -139,8 +132,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]];
-    
-    return MAX(100, [BNoteEntryUtils cellHeight:entry inView:tableView]);
+    return [self heightForEntry:entry];
+}
+
+- (CGFloat)heightForEntry:(Entry *)entry
+{
+    return MAX(100, [BNoteEntryUtils cellHeight:entry inView:[self tableView]]);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -243,6 +240,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+//    [[self tableView] reloadData];
 }
 
 @end

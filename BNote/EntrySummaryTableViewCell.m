@@ -35,6 +35,20 @@
     return self;
 }
 
+- (void)drawRect:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+	CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+    CGContextSetLineWidth(context, 1.0);
+	CGContextMoveToPoint(context, 44, 0.0);
+	CGContextAddLineToPoint(context, 44, [self bounds].size.height);
+	CGContextMoveToPoint(context, 47, 0.0);
+	CGContextAddLineToPoint(context, 47, [self bounds].size.height);
+	CGContextStrokePath(context);
+    
+}
+
 - (void)setEntry:(Entry *)entry
 {
     _entry = entry;

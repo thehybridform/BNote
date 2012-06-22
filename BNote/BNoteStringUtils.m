@@ -12,6 +12,7 @@
 #import "KeyPoint.h"
 #import "Decision.h"
 #import "Attendant.h"
+#import "BNoteSessionData.h"
 
 @implementation BNoteStringUtils
 
@@ -87,12 +88,12 @@
 + (int)textHieght:(NSString *)text inView:(UIView *)view
 {
     if (text) {
-        UITextView *textView = [[UITextView alloc] init];
+        UITextView *textView = [[BNoteSessionData instance] scratchTextView];
         [view addSubview:textView];
         [textView setText:text];
     
         [textView removeFromSuperview];
-        return [textView contentSize].height + 50;
+        return [textView contentSize].height + 65;
     } else {
         return 0;
     }

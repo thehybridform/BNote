@@ -153,6 +153,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                  name:TopicUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
+                                                 name:AttendantsEntryDeleted object:nil];
+
     
     [[self associatedTopicsTableViewController] setNote:note];
 }
@@ -161,7 +164,6 @@
 {
     [[self note] setSubject:[[self subjectTextView] text]];
     [self dismissModalViewControllerAnimated:YES];
-    [[self entriesViewController] cleanupEntries];    
     [[BNoteWriter instance] update];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[self note]];
@@ -205,6 +207,8 @@
 {
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
+        [[self entityWithAttendantToolbar] setHidden:YES];
+        [[self entityToolbar] setHidden:NO];
     } else {
         [[self entriesViewController] setFilter:[BNoteFilterFactory create:AttendantType]];
     }
@@ -249,7 +253,11 @@
 - (void)addEntry:(Entry *)entry
 {
     [[self entriesViewController] reload];
-    [[self entriesViewController] selectLastCell];
+    if ([entry isKindOfClass:[Attendants class]]) {
+        [[self entriesViewController] selectFirstCell];
+    } else {
+        [[self entriesViewController] selectLastCell];
+    }
 }
 
 - (IBAction)editEntries:(id)sender
@@ -350,6 +358,12 @@
 - (void)reload:(id)sender
 {
     [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
+}
+
+- (void)updateToolBar:(NSNotification *)notification
+{
+    [[self entityWithAttendantToolbar] setHidden:NO];
+    [[self entityToolbar] setHidden:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

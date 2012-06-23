@@ -20,7 +20,7 @@
 
 - (void)reload;
 - (void)selectLastCell;
+- (void)selectFirstCell;
 - (void)selectEntry:(Entry *)entry;
-- (void)cleanupEntries;
 
 @end

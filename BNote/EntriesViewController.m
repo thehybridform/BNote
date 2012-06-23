@@ -20,7 +20,6 @@
 @interface EntriesViewController ()
 @property (assign, nonatomic) EntryTableCellBasis *selectEntryCell;
 @property (strong, nonatomic) NSMutableArray *filteredEntries;
-@property (strong, nonatomic) NSMutableArray *deletedEntries;
 @property (assign, nonatomic) UITextView *textView;
 
 @end
@@ -31,7 +30,6 @@
 @synthesize filter = _filter;
 @synthesize filteredEntries = _filteredEntries;
 @synthesize parentController = _parentController;
-@synthesize deletedEntries = _deletedEntries;
 @synthesize textView = _textView;
 @synthesize selectEntryCell = _selectEntryCell;
 
@@ -66,7 +64,6 @@
     [self setFilter:nil];
     [self setFilteredEntries:nil];
     [self setParentController:nil];
-    [self setDeletedEntries:nil];
 }
 
 - (void)setFilter:(id<BNoteFilter>)filter
@@ -79,7 +76,6 @@
 {
     _note = note;
     [self setFilter:[BNoteFilterFactory create:ItdentityType]];
-    [self setDeletedEntries:[[NSMutableArray alloc] init]];
 }
 
 #pragma mark - Table view data source
@@ -117,15 +113,20 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+
         Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-        [[self deletedEntries] addObject:entry];
         [[self filteredEntries] removeObject:entry];
+        
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
+
         
-        [[self filteredEntries] removeObject:entry];
-        [[self deletedEntries] addObject:entry];
+        if ([entry isKindOfClass:[Attendants class]]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:AttendantsEntryDeleted object:entry];
+        }
+
+        [[BNoteWriter instance] removeEntry:entry];
     }
 }
 
@@ -162,11 +163,9 @@
     NSEnumerator *entries = [[[self note] entries] objectEnumerator];
     Entry *entry;
     while (entry = [entries nextObject]) {
-        if (![[self deletedEntries] containsObject:entry]) {
-            if ([[self filter] accept:entry]) {
-                if (![entry isKindOfClass:[Attendants class]]) {
-                    [[self filteredEntries] addObject:entry];
-                }
+        if ([[self filter] accept:entry]) {
+            if (![entry isKindOfClass:[Attendants class]]) {
+                [[self filteredEntries] addObject:entry];
             }
         }
     }
@@ -187,6 +186,12 @@
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
 }
 
+- (void)selectFirstCell
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
 - (void)selectEntry:(Entry *)entry
 {
     int index = [[self filteredEntries] indexOfObject:entry];
@@ -199,15 +204,6 @@
 - (UIViewController *)controller
 {
     return self;
-}
-
-- (void)cleanupEntries
-{
-    NSEnumerator *entries = [[self deletedEntries] objectEnumerator];
-    Entry *entry;
-    while (entry = [entries nextObject]) {
-        [[BNoteWriter instance] removeEntry:entry];
-    }
 }
 
 - (void)addQuickWord:(id)sender

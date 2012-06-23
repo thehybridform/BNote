@@ -30,7 +30,7 @@ extern NSString *const KeyPointPhotoUpdated;
 extern NSString *const KeyWordsUpdated;
 //extern NSString *const AllDataUpdated;
 extern NSString *const TopicUpdated;
-//extern NSString *const NoteUpdated;
+extern NSString *const AttendantsEntryDeleted;
 extern NSString *const FinishedEditingNote;
 extern NSString *const DeleteNote;
 

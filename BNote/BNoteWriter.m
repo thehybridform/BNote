@@ -57,6 +57,7 @@
 
 - (void)removeEntry:(Entry *)entry
 {
+    
     [self deleteObject:entry];
 }
 

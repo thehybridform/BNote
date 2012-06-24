@@ -24,7 +24,6 @@
 - (void)setup;
 - (void)unfocus;
 - (void)handleImageIcon:(BOOL)active;
-- (void)updateDetail;
-
+- (NSString *)detailText;
 
 @end

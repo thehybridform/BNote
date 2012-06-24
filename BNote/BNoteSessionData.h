@@ -23,5 +23,7 @@ typedef enum {
 + (BNoteSessionData *)instance;
 
 - (BOOL)canEditEntry;
+- (NSMutableDictionary *)imageIconViews;
+- (BOOL)keyboardVisible;
 
 @end

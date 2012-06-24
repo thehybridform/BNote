@@ -94,7 +94,7 @@
     
     Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
-    EntryTableCellBasis * cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
+    EntryTableCellBasis *cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
     [LayerFormater setBorderWidth:1 forView:cell];
     
     [cell setEntry:entry];
@@ -112,6 +112,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [[NSNotificationCenter defaultCenter] removeObserver:cell];
+        
         Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
 
         [[self filteredEntries] removeObject:entry];

@@ -8,6 +8,6 @@
 
 #import "EntryTableCellBasis.h"
 
-@interface QuestionEntryCell : EntryTableCellBasis
+@interface QuestionEntryCell : EntryTableCellBasis <UIActionSheetDelegate>
 
 @end

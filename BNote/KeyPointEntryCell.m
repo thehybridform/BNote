@@ -9,6 +9,7 @@
 #import "KeyPointEntryCell.h"
 #import "BNoteEntryUtils.h"
 #import "BNoteFactory.h"
+#import "BNoteSessionData.h"
 #import "BNoteWriter.h"
 #import "KeyPoint.h"
 #import "Photo.h"
@@ -50,19 +51,28 @@ static NSString *removePhoto = @"Remove Photo";
 {
     CGPoint location = [gesture locationInView:self];
     if (location.x < 120) {
+        [self handleTouch];
+    } else {
+        [[self textView] becomeFirstResponder];
+    }
+}
+
+- (void)handleTouch
+{
+    if (![[BNoteSessionData instance] keyboardVisible]) {
         [self handleImageIcon:YES];
         
         UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
         [actionSheet setDelegate:self];
         
         KeyPoint *keyPoint = [self keyPoint];
-
+        
         if ([keyPoint photo]) {
             [actionSheet addButtonWithTitle:viewFullScreen];
         }
         
         [actionSheet addButtonWithTitle:choosePhoto];
-
+        
         BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
         if (hasCamera) {
             [actionSheet addButtonWithTitle:takePhoto];
@@ -75,20 +85,11 @@ static NSString *removePhoto = @"Remove Photo";
         
         [actionSheet setTitle:@"Key Point Photo"];
         [self setActionSheet:actionSheet];
-    
+        
         CGRect rect = [[self imageView] bounds];
         [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-    } else {
-        [[self textView] becomeFirstResponder];
     }
 }
-
-- (void)unfocus
-{
-    [self handleImageIcon:NO];
-    [self setPopup:nil];
-}
-
 - (void)handleImageIcon:(BOOL)active
 {
     KeyPoint *keyPoint = [self keyPoint];
@@ -148,6 +149,7 @@ static NSString *removePhoto = @"Remove Photo";
         [[self imagePickerController] dismissModalViewControllerAnimated:YES];
         [self setImagePickerController:nil];
     }
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -164,11 +166,9 @@ static NSString *removePhoto = @"Remove Photo";
             [self removePhotos];
         }
     }
-}
 
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
     [self setActionSheet:nil];
+    [self handleImageIcon:NO];
 }
 
 - (void)removePhotos

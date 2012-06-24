@@ -37,10 +37,15 @@
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
         [self addGestureRecognizer:tap];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantView:)
                                                      name:UIKeyboardDidHideNotification object:nil];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
 - (void)normalPressTap:(id)sender
@@ -90,7 +95,6 @@
     switch (buttonIndex) {
         case 0:
             [[BNoteWriter instance] removeAttendant:[self attendant]];
-            [[NSNotificationCenter defaultCenter] removeObserver:self];
             [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeDeleted object:nil];
             break;
             
@@ -127,7 +131,7 @@
     [[BNoteWriter instance] updateAttendee:[self attendant]];
 }
 
-- (void)keyboardWillHide:(NSNotification *)notification
+- (void)keyboardDidHideAttendantView:(NSNotification *)notification
 {
     if ([self popup] && ![self isHidden]) {
         [[self popup] dismissPopoverAnimated:YES];

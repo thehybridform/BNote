@@ -138,7 +138,8 @@
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
     
-    UITapGestureRecognizer *normalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
+    UITapGestureRecognizer *normalTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
     [[self dateView] addGestureRecognizer:normalTap];
     
     if ([BNoteEntryUtils containsAttendants:note]) {
@@ -155,6 +156,11 @@
 
     
     [[self associatedTopicsTableViewController] setNote:note];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
 - (IBAction)done:(id)sender

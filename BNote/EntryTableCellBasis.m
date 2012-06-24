@@ -43,11 +43,20 @@ const float y = 10;
          name:UITextViewTextDidBeginEditingNotification object:[[self textView] window]];
         
         [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(keyboardWillHide:)
-         name:UIKeyboardWillHideNotification object:nil];
+         addObserver:self selector:@selector(stoppedEditingText:)
+         name:UITextViewTextDidEndEditingNotification object:[[self textView] window]];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(keyboardDidHideEntryTableCellBasis:)
+         name:UIKeyboardDidHideNotification object:nil];
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
 - (void)drawRect:(CGRect)rect
@@ -73,71 +82,63 @@ const float y = 10;
 
 - (void)setup
 {
+    [self handleImageIcon:NO];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
+    [backgroundView setBackgroundColor:[BNoteConstants appColor1]];
+    [self setSelectedBackgroundView:backgroundView];
+
+    float width = [[self contentView] frame].size.width - x - 75;
+
     UITextView *text = [[UITextView alloc] init];
     [self setTextView:text];
     [[self contentView] addSubview:[self textView]];
     [text setText:[[self entry] text]];
-    [text setBackgroundColor:[BNoteConstants appColor1]];
+    [text setBackgroundColor:[UIColor clearColor]];
     [text setShowsVerticalScrollIndicator:YES];
     [text setShowsHorizontalScrollIndicator:NO];
     [text setAlwaysBounceHorizontal:NO];
     [text setAlwaysBounceVertical:YES];
         
-    [text setAutoresizingMask:(UIViewAutoresizingFlexibleRightMargin |
-                               UIViewAutoresizingFlexibleBottomMargin |
-                               UIViewAutoresizingFlexibleHeight |
-                               UIViewAutoresizingFlexibleWidth)];
-    
-    float width = [[self contentView] frame].size.width - x - 75;
-    
-    CGRect rect = CGRectMake(x, y, width, 10);
-    UILabel *detail = [[UILabel alloc] initWithFrame:rect];
-    [detail setFont:[UIFont systemFontOfSize:12]];
-//    [self addSubview:detail];
-    [detail setTextColor:UIColorFromRGB(0x336633)];
-    [self setDetail:detail];
-    [detail setBackgroundColor:[BNoteConstants appColor1]];
-    [detail setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    float mainTextHeight = [BNoteStringUtils textHieght:[[self entry] text] inView:self];
+    [text setFrame:CGRectMake(x, y, width, mainTextHeight)];
+    [text setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin)];
+
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
+    [self setQuickWordsViewController:quick];
+    [text setInputAccessoryView:[quick view]];
     
     [self updateDetail];
-    [self handleImageIcon:NO];
 
-    float hieght = [BNoteStringUtils textHieght:[[self entry] text] inView:self];
     
-    [text setFrame:CGRectMake(x, y, width, hieght)];
-    [text setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin)];
     
-    UIView *backgroundView = [[UIView alloc] initWithFrame:[[self contentView] frame]];
-    [backgroundView setBackgroundColor:[BNoteConstants appColor1]];
-    [self setSelectedBackgroundView:backgroundView];
     
-    [[self textLabel] setBackgroundColor:[UIColor clearColor]];
-    [[self textView] setBackgroundColor:[UIColor clearColor]];
     
-    [self bringSubviewToFront:[self contentView]];
-    [self bringSubviewToFront:[self imageView]];
+    float detailTextHeight = [BNoteStringUtils textHieght:[self detailText] inView:self];
+
 }
 
-- (void)keyboardWillHide:(NSNotification *)notetification
+- (void)keyboardDidHideEntryTableCellBasis:(NSNotification *)notetification
 {
     [self unfocus];
 }
 
 - (void)startedEditingText:(NSNotification *)notification
 {
-    UITextView *textView = [self textView];
-    if ([notification object] == textView) {
-        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
-        [self setQuickWordsViewController:quick];
-        [[self textView] setInputAccessoryView:[quick view]];
-        [quick selectFirstButton];
-        
+    if ([notification object] == [self textView]) {
         [self handleImageIcon:YES];
-        
         [self setTargetTextView:[self textView]];
+
+        [[self quickWordsViewController] selectFirstButton];
         
         [self bringSubviewToFront:[self textView]];
-        [[self textView] becomeFirstResponder];
+    }
+}
+
+- (void)stoppedEditingText:(NSNotification *)notification
+{
+    if ([notification object] == [self textView]) {
+        [self unfocus];
     }
 }
 
@@ -158,6 +159,8 @@ const float y = 10;
         float y = [cell frame].origin.y;
         float width = [cell frame].size.width;
         float height = [textView contentSize].height + 10;
+        
+        height = MAX(100, height);
     
         CGRect rect = CGRectMake(x, y, width, height);
         [cell setFrame:CGRectMake(x, y, width, height)];
@@ -172,9 +175,9 @@ const float y = 10;
 
 - (void)unfocus
 {
+    [self setTargetTextView:nil];
     [[BNoteWriter instance] update];
     [self handleImageIcon:NO];
-    [self bringSubviewToFront:[self contentView]];
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -185,7 +188,24 @@ const float y = 10;
 
 - (void)updateDetail
 {
-    // implemented by subclass
+    NSString *detail = [self detailText];
+    if (detail) {
+        float width = [[self contentView] frame].size.width - x - 75;
+
+        CGRect rect = CGRectMake(x, y, width, 10);
+        UILabel *detail = [[UILabel alloc] initWithFrame:rect];
+        [detail setFont:[UIFont systemFontOfSize:12]];
+        //    [self addSubview:detail];
+        [detail setTextColor:UIColorFromRGB(0x336633)];
+        [self setDetail:detail];
+        [detail setBackgroundColor:[BNoteConstants appColor1]];
+        [detail setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    }
+}
+
+- (NSString *)detailText
+{
+    return nil;
 }
 
 @end

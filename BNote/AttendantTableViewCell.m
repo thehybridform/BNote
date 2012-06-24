@@ -54,7 +54,7 @@
     [controller setAttendants:[self attendants]];
     [self setAttendantsViewController:controller];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantTableViewCell:)
                                                  name:UIKeyboardDidHideNotification object:nil];
 
     [controller update];
@@ -81,11 +81,6 @@
     }
 }
 
-- (void)unfocus
-{
-    [self handleImageIcon:NO];
-}
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
@@ -102,6 +97,7 @@
     }
     
     [self setActionSheet:nil];
+    [self handleImageIcon:NO];
 }
 
 - (void)presentAttendeePicker
@@ -174,6 +170,7 @@
     [[self parentController] dismissModalViewControllerAnimated:YES];
     
     [[self attendantsViewController] update];
+    [self handleImageIcon:NO];
 }
 
 - (void)presentAttendeeAdder
@@ -197,12 +194,7 @@
     [controller focus];
 }
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [[BNoteWriter instance] updateAttendee:[self selectedAttendant]];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
+- (void)keyboardDidHideAttendantTableViewCell:(NSNotification *)notification
 {
     if ([self popup]) {
         [[self popup] dismissPopoverAnimated:YES];

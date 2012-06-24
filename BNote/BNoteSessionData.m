@@ -9,6 +9,8 @@
 #import "BNoteSessionData.h"
 
 @interface BNoteSessionData()
+@property (strong, nonatomic) NSMutableDictionary *imageIconViews;
+@property (assign, nonatomic) BOOL keyboardVisible;
 
 - (id)initSingleton;
 
@@ -18,6 +20,8 @@
 @synthesize phase = _phase;
 @synthesize settings = _settings;
 @synthesize scratchTextView = _scratchTextView;
+@synthesize imageIconViews = _imageIconViews;
+@synthesize keyboardVisible = _keyboardVisible;
 
 - (BOOL)canEditEntry
 {
@@ -29,8 +33,25 @@
     self = [super init];
     
     [self setScratchTextView:[[UITextView alloc] init]];
+    [self setImageIconViews:[[NSMutableDictionary alloc] init]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideBNoteSessionData:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShowBNoteSessionData:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+
     
     return self;
+}
+
+- (void)keyboardDidHideBNoteSessionData:(id)sender
+{
+    [self setKeyboardVisible:NO];
+}
+
+- (void)keyboardDidShowBNoteSessionData:(id)sender
+{
+    [self setKeyboardVisible:YES];
 }
 
 + (BNoteSessionData *)instance

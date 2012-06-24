@@ -49,6 +49,7 @@
 		184976A215919E3600F49F5A /* KeyPointEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976A115919E3600F49F5A /* KeyPointEntryCell.m */; };
 		184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
 		184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
+		184976BF1597A74400F49F5A /* DecisionEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976BE1597A74400F49F5A /* DecisionEntryCell.m */; };
 		184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
 		184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
@@ -209,6 +210,8 @@
 		184976B7159665DA00F49F5A /* AttendeeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeDetailViewController.h; sourceTree = "<group>"; };
 		184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeDetailViewController.m; sourceTree = "<group>"; };
 		184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendeeDetailViewController.xib; sourceTree = "<group>"; };
+		184976BD1597A74400F49F5A /* DecisionEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionEntryCell.h; sourceTree = "<group>"; };
+		184976BE1597A74400F49F5A /* DecisionEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionEntryCell.m; sourceTree = "<group>"; };
 		184CEAD2158F227A00C67CF5 /* EluaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EluaViewController.h; sourceTree = "<group>"; };
 		184CEAD3158F227A00C67CF5 /* EluaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EluaViewController.m; sourceTree = "<group>"; };
 		184CEAD4158F227A00C67CF5 /* EluaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EluaViewController.xib; sourceTree = "<group>"; };
@@ -648,6 +651,15 @@
 			name = "Key Point";
 			sourceTree = "<group>";
 		};
+		184976BC1597A72100F49F5A /* Decision */ = {
+			isa = PBXGroup;
+			children = (
+				184976BD1597A74400F49F5A /* DecisionEntryCell.h */,
+				184976BE1597A74400F49F5A /* DecisionEntryCell.m */,
+			);
+			name = Decision;
+			sourceTree = "<group>";
+		};
 		184CEAD0158F225900C67CF5 /* EULA */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,6 +822,7 @@
 		18BF3F60157B456100B6E226 /* Entry View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				184976BC1597A72100F49F5A /* Decision */,
 				1849769F15919E1700F49F5A /* Key Point */,
 				1849769B15919D9400F49F5A /* Action Item */,
 				1849769715919D4A00F49F5A /* Question */,
@@ -1067,6 +1080,7 @@
 				1849769E15919DCE00F49F5A /* ActionItemEntryCell.m in Sources */,
 				184976A215919E3600F49F5A /* KeyPointEntryCell.m in Sources */,
 				184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */,
+				184976BF1597A74400F49F5A /* DecisionEntryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

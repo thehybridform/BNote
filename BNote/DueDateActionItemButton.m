@@ -25,7 +25,7 @@
     if ([actionItem dueDate]) {
         [actionItem setDueDate:0];
         [[BNoteWriter instance] update];
-        [cell updateDetail];
+        //[cell updateDetail];
         [self setTitle:@"   due date   " forState:UIControlStateNormal];
     } else {
         [[cell textView] resignFirstResponder];

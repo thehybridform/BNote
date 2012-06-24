@@ -7,6 +7,7 @@
 //
 
 #import "ActionItemEntryCell.h"
+#import "BNoteSessionData.h"
 
 @interface ActionItemEntryCell()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -43,28 +44,36 @@ static NSString *markInComplete = @"Mark In Complete";
 
 
 - (void)showActionItemOptions:(UITapGestureRecognizer *)gesture
-{
+{    
     CGPoint location = [gesture locationInView:self];
     if (location.x < 120) {
+        [self handleTouch];
+    } else {
+        [[self textView] becomeFirstResponder];
+    }
+}
+
+- (void)handleTouch
+{
+    if (![[BNoteSessionData instance] keyboardVisible]) {
         [self handleImageIcon:YES];
         
         ActionItem *actionItem = [self actionItem];
-            
+        
         UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
         [actionSheet setDelegate:self];
-
+        
         if ([actionItem responsibility]) {
             [actionSheet addButtonWithTitle:clearResponsibility];
         } else {
             [actionSheet addButtonWithTitle:responsibility];
         }
-            
+        
+        [actionSheet addButtonWithTitle:dueDate];
         if ([actionItem dueDate]) {
             [actionSheet addButtonWithTitle:clearDueDate];
-        } else {
-            [actionSheet addButtonWithTitle:dueDate];
         }
-            
+        
         if ([actionItem completed]) {
             [actionSheet addButtonWithTitle:markInComplete];
         } else {
@@ -76,9 +85,6 @@ static NSString *markInComplete = @"Mark In Complete";
         
         CGRect rect = [[self imageView] bounds];
         [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-
-    } else {
-        [[self textView] becomeFirstResponder];
     }
 }
 
@@ -101,6 +107,9 @@ static NSString *markInComplete = @"Mark In Complete";
             [actionItem setCompleted:0]; 
         }
     }
+
+    [self setActionSheet:nil];
+    [self handleImageIcon:NO];
 }
 
 - (void)presentResponsibilityPicker
@@ -111,11 +120,10 @@ static NSString *markInComplete = @"Mark In Complete";
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:tableController];
     [self setPopup:popup];
     
-    UIView *view = self;
-    CGRect rect = [view bounds];
+    CGRect rect = [[self imageView] bounds];
     
-    [popup presentPopoverFromRect:rect inView:view
-         permittedArrowDirections:UIPopoverArrowDirectionUp 
+    [popup presentPopoverFromRect:rect inView:self
+         permittedArrowDirections:UIPopoverArrowDirectionAny
                          animated:YES];
 }
 
@@ -184,13 +192,7 @@ static NSString *markInComplete = @"Mark In Complete";
     [[self popup] dismissPopoverAnimated:YES];
     [self setPopup:nil];
     [self setDatePickerViewController:nil];
+    [self handleImageIcon:NO];
 }
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [self setPopup:nil];
-    [self setDatePickerViewController:nil];
-}
-
 
 @end

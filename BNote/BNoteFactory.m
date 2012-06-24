@@ -15,6 +15,8 @@
 #import "QuestionEntryCell.h"
 #import "ActionItemEntryCell.h"
 #import "KeyPointEntryCell.h"
+#import "DecisionEntryCell.h"
+#import "BNoteSessionData.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -207,9 +209,14 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     }
     
     if (icon) {
-        UIImage *image = [UIImage imageNamed:icon];
-        UIImageView *view = [[UIImageView alloc] initWithImage:image];
-        [view setFrame:CGRectMake(0, 0, 25, 25)];
+        UIImageView *view = [[[BNoteSessionData instance] imageIconViews] objectForKey:icon];
+        if (!view) {
+            UIImage *image = [UIImage imageNamed:icon];
+            view = [[UIImageView alloc] initWithImage:image];
+            [view setFrame:CGRectMake(0, 0, 25, 25)];
+            
+            [[[BNoteSessionData instance] imageIconViews] setObject:view forKey:icon];
+        }
         
         return view;
     }
@@ -273,7 +280,7 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     } else if ([entry isKindOfClass:[Question class]]) {
         return [[QuestionEntryCell alloc] initWithIdentifier:cellIdentifier];
     } else {
-        return [[EntryTableCellBasis alloc] initWithIdentifier:cellIdentifier];
+        return [[DecisionEntryCell alloc] initWithIdentifier:cellIdentifier];
     }
 }
 @end

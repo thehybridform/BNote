@@ -7,29 +7,38 @@
 //
 
 #import "AttendantView.h"
+#import "BNoteWriter.h"
 #import "BNoteFactory.h"
+#import "AttendeeDetailViewController.h"
 
 @interface AttendantView()
 @property (strong, nonatomic) UIActionSheet *sheet;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 @end
 
 @implementation AttendantView
 @synthesize attendant = _attendant;
 @synthesize sheet = _sheet;
-@synthesize delegate = _delegate;
+@synthesize imageView = _imageView;
+@synthesize popup = _popup;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         UIImageView *imageView = [BNoteFactory createIcon:AttendantIcon];
-        [imageView setFrame:CGRectMake(32, 1, 35, 35)];
+        [imageView setFrame:CGRectMake(32, 3, 35, 35)];
         [self addSubview:imageView];
+        [self setImageView:imageView];
         
         UITapGestureRecognizer *tap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
         [self addGestureRecognizer:tap];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
+                                                     name:UIKeyboardDidHideNotification object:nil];
     }
     return self;
 }
@@ -48,28 +57,82 @@
 {
     _attendant = attendant;
     
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 35, 90, 45)];
-    [nameLabel setLineBreakMode:UILineBreakModeWordWrap];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 90, 10)];
+    [nameLabel setLineBreakMode:UILineBreakModeTailTruncation];
     [nameLabel setTextAlignment:UITextAlignmentCenter];
-    [nameLabel setFont:[UIFont systemFontOfSize:12]];
+    [nameLabel setFont:[UIFont systemFontOfSize:10]];
     [nameLabel setNumberOfLines:1];
-    
-    
-    NSString *name = [[[attendant firstName] stringByAppendingString:@" "] stringByAppendingString:[attendant lastName]];
+    [nameLabel setBackgroundColor:[UIColor clearColor]];
+
+    NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
     [nameLabel setText:name];
+
+    UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 60, 90, 10)];
+    [emailLabel setLineBreakMode:UILineBreakModeTailTruncation];
+    [emailLabel setTextAlignment:UITextAlignmentCenter];
+    [emailLabel setFont:[UIFont systemFontOfSize:10]];
+    [emailLabel setNumberOfLines:1];
+    [emailLabel setText:[attendant email]];
+    [emailLabel setBackgroundColor:[UIColor clearColor]];
     
     [self addSubview:nameLabel];
+    [self addSubview:emailLabel];
+    
+    if ([attendant image]) {
+        NSData *data = [attendant image];
+        UIImage *image = [UIImage imageWithData:data];
+        [[self imageView] setImage:image];
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 0:
-            [[self delegate] remove:[self attendant]];
+            [[BNoteWriter instance] removeAttendant:[self attendant]];
+            [[NSNotificationCenter defaultCenter] removeObserver:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeDeleted object:nil];
+            break;
+            
+        case 1:
+            [self presentAttendeeDetail];
             break;
             
         default:
             break;
+    }
+}
+
+- (void)presentAttendeeDetail
+{
+    if ([self popup]) {
+        [self setPopup:nil];
+    }
+    
+    AttendeeDetailViewController *controller = [[AttendeeDetailViewController alloc] initWithAttendant:[self attendant]];
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    
+    [popup setDelegate:self];
+    
+    [popup presentPopoverFromRect:[self frame]
+                           inView:self permittedArrowDirections:
+                                            (UIPopoverArrowDirectionUp) animated:YES];
+
+    [popup setPopoverContentSize:CGSizeMake(367, 171)];
+    [self setPopup:popup];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [[BNoteWriter instance] updateAttendee:[self attendant]];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    if ([self popup] && ![self isHidden]) {
+        [[self popup] dismissPopoverAnimated:YES];
+        [[BNoteWriter instance] updateAttendee:[self attendant]];
+        [self setPopup:nil];
     }
 }
 

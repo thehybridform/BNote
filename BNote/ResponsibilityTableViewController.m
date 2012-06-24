@@ -7,6 +7,7 @@
 //
 
 #import "ResponsibilityTableViewController.h"
+#import "BNoteEntryUtils.h"
 
 @interface ResponsibilityTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
@@ -16,22 +17,13 @@
 @synthesize data = _data;
 @synthesize delegate = _delegate;
 
-- (id)initWithEntries:(NSOrderedSet *)entries
+- (id)initWithNote:(Note *)note
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:[entries count]];
-        [self setData:data];
         
-        id<BNoteFilter> filter = [BNoteFilterFactory create:AttendantType];
-        NSEnumerator *items = [entries objectEnumerator];
-        Entry *entry;
-        while (entry = [items nextObject]) {
-            if ([filter accept:entry]) {
-                [data addObject:entry];
-            }
-        }
-        
+        [self setData:[BNoteEntryUtils attendees:note]];
+
     }
     return self;
 }

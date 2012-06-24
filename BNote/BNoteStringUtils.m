@@ -27,6 +27,14 @@
 
 + (BOOL)nilOrEmpty:(NSString *)string
 {
+    if (!string) {
+        return YES;
+    }
+    
+    if ([string length] == 0) {
+        return YES;
+    }
+    
     NSString *s = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     return s == nil || [s length] == 0;
 }
@@ -77,7 +85,9 @@
     va_start(args, firstArg);
 
     for (NSString *arg = firstArg; arg != nil; arg = va_arg(args, NSString *)) {
-        [string appendString:arg];
+        if (arg) {
+            [string appendString:arg];
+        }
     }
 
     va_end(args);

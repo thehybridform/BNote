@@ -61,6 +61,11 @@
     [self deleteObject:entry];
 }
 
+- (void)removeAttendant:(Attendant *)attendant
+{
+    [self deleteObject:attendant];
+}
+
 - (void)removePhoto:(Photo *)photo
 {
     [self deleteObject:photo];
@@ -117,6 +122,21 @@
 {
     [note removeAssociatedTopicsObject:topic];
     [self update];
+}
+
+- (void)updateAttendee:(Attendant *)attendant
+{
+    NSString *firstName = [attendant firstName];
+    NSString *lastName = [attendant lastName];
+    NSString *email = [attendant email];
+    
+    if ([BNoteStringUtils nilOrEmpty:firstName] && [BNoteStringUtils nilOrEmpty:lastName] && [BNoteStringUtils nilOrEmpty:email]) {
+        [[BNoteWriter instance] removeAttendant:attendant];
+    } else {
+        [[BNoteWriter instance] update];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeUpdated object:nil];    
 }
 
 - (void)update

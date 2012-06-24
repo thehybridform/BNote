@@ -15,6 +15,7 @@
 #import "BNoteSessionData.h"
 #import "BNoteFactory.h"
 #import "Attendant.h"
+#import "KeyPoint.h"
 #import "BNoteEntryUtils.h"
 
 @interface EntriesViewController ()
@@ -50,9 +51,6 @@
                                                  name:UITextViewTextDidBeginEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedEditing:)
                                                  name:UITextViewTextDidEndEditingNotification object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -143,18 +141,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[BNoteSessionData instance] canEditEntry]) {
-        EntryTableCellBasis *cell = (EntryTableCellBasis *) [tableView cellForRowAtIndexPath:indexPath];
-    
-        EntryTableCellBasis *selectEntryCell = [self selectEntryCell];
-        if (selectEntryCell) {
-            [selectEntryCell unfocus];
-        }
-        
-        [self setSelectEntryCell:cell];
-        
-        [cell focus];
-    }
+
 }
 
 - (void)reload
@@ -216,21 +203,14 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:KeyWordsUpdated object:nil];
 }
 
-- (void)startedEditing:(id)sender
+- (void)startedEditing:(NSNotification *)notification
 {
-    NSNotification *notification = sender;
     [self setTextView:[notification object]];
 }
 
-- (void)finishedEditing:(id)sender
+- (void)finishedEditing:(NSNotification *)notification
 {
-    [self setTextView:nil];
-}
-
-- (void)keyboardWillHide:(id)sender
-{
-    [self setSelectEntryCell:nil];
-    [[self tableView] reloadData];
+//    [self setTextView:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

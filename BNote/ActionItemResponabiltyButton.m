@@ -26,7 +26,7 @@
     
     [[cell textView] resignFirstResponder];
 
-    ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithEntries:[[controller note] entries]];
+    ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithNote:[controller note]];
     [tableController setDelegate:self];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:tableController];

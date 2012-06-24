@@ -7,16 +7,20 @@
 //
 
 #import "BNoteEntryUtils.h"
+#import "BNoteImageUtils.h"
 #import "BNoteFilterFactory.h"
 #import "BNoteFilter.h"
+#import "BNoteWriter.h"
+#import "BNoteFactory.h"
 #import "Entry.h"
 #import "Attendants.h"
+#import "Photo.h"
 
 @implementation BNoteEntryUtils
 
-+ (Attendant *)findMatch:(Note *)note withFirstName:(NSString *)first andLastName:(NSString *)last
++ (Attendant *)findMatch:(Attendants *)attendants withFirstName:(NSString *)first andLastName:(NSString *)last
 {
-    NSEnumerator *entries = [[note entries] objectEnumerator];
+    NSEnumerator *entries = [[attendants children] objectEnumerator];
     Entry *entry;
     
     while (entry = [entries nextObject]) {
@@ -79,6 +83,24 @@
     return [BNoteEntryUtils filter:note with:[BNoteFilterFactory create:AttendantType]];
 }
 
++ (NSMutableArray *)attendees:(Note *)note
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    
+    NSEnumerator *attendants = [[BNoteEntryUtils attendants:note] objectEnumerator];
+    Attendants *parent;
+    while (parent = [attendants nextObject]) {
+        NSEnumerator *children = [[parent children] objectEnumerator];
+        Attendant *child;
+        while (child = [children nextObject]) {
+            [data addObject:child];
+        }
+    }
+    
+    return data;
+}
+
+
 + (NSMutableArray *)filter:(Note *)note with:(id<BNoteFilter>)filter
 {
     NSMutableArray *filtered = [[NSMutableArray alloc] init];
@@ -110,5 +132,31 @@
     return height;
 }
 
++ (UIImage *)handlePhoto:(NSDictionary *)info forKeyPoint:(KeyPoint *)keyPoint
+{
+    [[BNoteWriter instance] removePhoto:[keyPoint photo]];
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSData *originalImageData = UIImageJPEGRepresentation(image, 0.8);
+    
+    Photo *photo = [BNoteFactory createPhoto:keyPoint];
+    [photo setOriginal:originalImageData];
+    
+    CGSize thumbnailSize = CGSizeMake(75.0, 75.0);
+    UIImage *thumb = [BNoteImageUtils image:image scaleAndCropToMaxSize:thumbnailSize];
+    NSData *thumbImageData = UIImageJPEGRepresentation(thumb, 0.8);
+    [photo setThumbnail:thumbImageData];
+    
+    CGSize smallSize = CGSizeMake(42.0, 42.0);
+    UIImage *small = [BNoteImageUtils image:image scaleAndCropToMaxSize:smallSize];
+    NSData *smallImageData = UIImageJPEGRepresentation(small, 0.8);
+    [photo setSmall:smallImageData];
+    
+    [[BNoteWriter instance] update];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:KeyPointPhotoUpdated object:keyPoint];
+    
+    return image;
+}
 
 @end

@@ -14,15 +14,14 @@
 
 @interface EntryTableCellBasis : UITableViewCell
 
-@property (strong, nonatomic) Entry *entry;
+@property (assign, nonatomic) Entry *entry;
 @property (strong, nonatomic) UILabel *detail;
 @property (strong, nonatomic) UITextView *textView;
 @property (assign, nonatomic) UITextView *targetTextView;
 @property (assign, nonatomic) EntriesViewController *parentController;
 
 - (id)initWithIdentifier:(NSString *)reuseIdentifier;
-- (void)setEntry:(Entry *)entry;
-- (void)focus;
+- (void)setup;
 - (void)unfocus;
 - (void)handleImageIcon:(BOOL)active;
 - (void)updateDetail;

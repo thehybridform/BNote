@@ -10,31 +10,55 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "LayerFormater.h"
+#import "Attendant.h"
+#import "AttendantView.h"
 
 @interface AttendantsViewController ()
 
 @end
 
 @implementation AttendantsViewController
-@synthesize note = _note;
+@synthesize attendants = _attendants;
+
+- (id)init
+{
+    self = [super init];
+
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
+                                                     name:AttendeeDeleted object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
+                                                     name:AttendeeUpdated object:nil];
+    }
+    
+    return self;
+}
+
+- (void)attendeeUpdate:(NSNotification *)notification
+{
+    [self update];
+}
 
 - (void)update
 {
-    [[BNoteWriter instance] update];
-
-    NSArray *attendants = [self filterAttendants];
+    NSEnumerator *items = [[[self view] subviews] objectEnumerator];
+    UIView *subView;
+    while (subView = [items nextObject]) {
+        [subView setHidden:YES];
+    }
     
-    NSEnumerator *items = [attendants objectEnumerator];
+    NSOrderedSet *attendees = [[self attendants] children];
+    
+    items = [attendees objectEnumerator];
     Attendant *attendant;
     
-    float x = 3;
+    float x = 5;
     float width = 100;
     int index = 0;
     
     while (attendant = [items nextObject]) {
-        AttendantView *view = [[AttendantView alloc] initWithFrame:CGRectMake((width * index++) + x , 3, 100, 69)];
-        [view setDelegate:self];
-         
+        AttendantView *view = [[AttendantView alloc] initWithFrame:CGRectMake((width * index++) + x , 3, 100, 80)];
+        
         [LayerFormater roundCornersForView:view];
         [view setAttendant:attendant];
         [[self view] addSubview:view];
@@ -42,39 +66,11 @@
      
     UIScrollView *view = (UIScrollView *) [self view];
     float height = [view frame].size.height;
-    width = [attendants count] * 100;
+    width = [attendees count] * 100;
 
     if (width > 0) {
         [view setContentSize:CGSizeMake(width, height)];
     }
-}
-
-- (NSArray *)filterAttendants
-{
-    id <BNoteFilter> filter = [BNoteFilterFactory create:AttendantType];
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    NSEnumerator *entries = [[[self note] entries] objectEnumerator];
-    Entry *entry;
-    while (entry = [entries nextObject]) {
-        if ([filter accept:entry]) {
-            [array addObject:entry];
-        }
-    }
-    
-    return array;
-}
-
-- (void)remove:(Attendant *)attendant
-{
-//    [[BNoteWriter instance] removeEntry:attendant];
-    
-    NSEnumerator *views = [[[self view] subviews] objectEnumerator];
-    UIView *view;
-    while (view = [views nextObject]) {
-        [view setHidden:YES];
-    }
-    
-    [self update];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

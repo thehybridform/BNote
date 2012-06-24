@@ -59,7 +59,7 @@ NSString *const ATTENDANT = @"attendant_icon.png";
 
 + (Attendant *)createAttendant:(Attendants *)attendants
 {
-    Attendant *attendant = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Attendant"];
+    Attendant *attendant = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Attendees"];
     [attendant setParent:attendants];
 
     return attendant;

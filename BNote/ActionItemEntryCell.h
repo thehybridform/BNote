@@ -7,8 +7,9 @@
 //
 
 #import "EntryTableCellBasis.h"
+#import "ResponsibilityTableViewController.h"
 
-@interface ActionItemEntryCell : EntryTableCellBasis <DatePickerViewControllerListener, UIPopoverControllerDelegate>
+@interface ActionItemEntryCell : EntryTableCellBasis <UIActionSheetDelegate, DatePickerViewControllerListener, UIPopoverControllerDelegate, ResponsibilityTableViewControllerDelegate>
 
 
 - (void)showDatePicker;

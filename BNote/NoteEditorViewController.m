@@ -25,7 +25,6 @@
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
-@property (strong, nonatomic) ABPeoplePickerNavigationController *contactPicker; 
 @property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) IBOutlet UIView *dateView;
@@ -69,7 +68,6 @@
 @synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
 @synthesize attendantsImageView = _attendantsImageView;
-@synthesize contactPicker = _contactPicker;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
 @synthesize entityWithAttendantToolbar = _entityWithAttendantToolbar;
@@ -97,7 +95,6 @@
     [self setTrashButton:nil];
     [self setEntriesViewController:nil];
     [self setAttendantsImageView:nil];
-    [self setContactPicker:nil];
     [self setSelectedAttendant:nil];
     [self setPopup:nil];
     [self setEntityWithAttendantToolbar:nil];

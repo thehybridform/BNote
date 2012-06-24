@@ -9,19 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Attendant.h"
 
-@protocol AttendantViewDelegate;
+@interface AttendantView : UIView <UIActionSheetDelegate, UIPopoverControllerDelegate>
 
-@interface AttendantView : UIView <UIActionSheetDelegate>
-
-@property (strong, nonatomic) Attendant *attendant;
-@property (assign, nonatomic) id<AttendantViewDelegate> delegate;
+@property (assign, nonatomic) Attendant *attendant;
 
 @end
 
-@protocol AttendantViewDelegate <NSObject>
-
-@required
-
-- (void)remove:(Attendant *)attendant;
-
-@end

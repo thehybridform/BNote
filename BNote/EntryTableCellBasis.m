@@ -31,16 +31,20 @@ const float y = 10;
 {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(updateText:)
-            name:UITextViewTextDidChangeNotification object:[[self textView] window]];
-        
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(keyboardWillHide:)
-            name:UIKeyboardWillHideNotification object:nil];
-
         [self setEditingAccessoryType:UITableViewCellAccessoryNone];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(updateText:)
+         name:UITextViewTextDidChangeNotification object:[[self textView] window]];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(startedEditingText:)
+         name:UITextViewTextDidBeginEditingNotification object:[[self textView] window]];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(keyboardWillHide:)
+         name:UIKeyboardWillHideNotification object:nil];
     }
     
     return self;
@@ -64,14 +68,19 @@ const float y = 10;
 {
     _entry = entry;
     
+    [self setup];
+}
+
+- (void)setup
+{
     UITextView *text = [[UITextView alloc] init];
     [self setTextView:text];
-    [self addSubview:[self textView]];
-    [text setText:[entry text]];
+    [[self contentView] addSubview:[self textView]];
+    [text setText:[[self entry] text]];
     [text setBackgroundColor:[BNoteConstants appColor1]];
     [text setShowsVerticalScrollIndicator:YES];
-    [text setShowsHorizontalScrollIndicator:YES];
-    [text setAlwaysBounceHorizontal:YES];
+    [text setShowsHorizontalScrollIndicator:NO];
+    [text setAlwaysBounceHorizontal:NO];
     [text setAlwaysBounceVertical:YES];
         
     [text setAutoresizingMask:(UIViewAutoresizingFlexibleRightMargin |
@@ -93,7 +102,7 @@ const float y = 10;
     [self updateDetail];
     [self handleImageIcon:NO];
 
-    float hieght = [BNoteStringUtils textHieght:[entry text] inView:self];
+    float hieght = [BNoteStringUtils textHieght:[[self entry] text] inView:self];
     
     [text setFrame:CGRectMake(x, y, width, hieght)];
     [text setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin)];
@@ -106,6 +115,7 @@ const float y = 10;
     [[self textView] setBackgroundColor:[UIColor clearColor]];
     
     [self bringSubviewToFront:[self contentView]];
+    [self bringSubviewToFront:[self imageView]];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notetification
@@ -113,7 +123,24 @@ const float y = 10;
     [self unfocus];
 }
 
-// width 839
+- (void)startedEditingText:(NSNotification *)notification
+{
+    UITextView *textView = [self textView];
+    if ([notification object] == textView) {
+        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
+        [self setQuickWordsViewController:quick];
+        [[self textView] setInputAccessoryView:[quick view]];
+        [quick selectFirstButton];
+        
+        [self handleImageIcon:YES];
+        
+        [self setTargetTextView:[self textView]];
+        
+        [self bringSubviewToFront:[self textView]];
+        [[self textView] becomeFirstResponder];
+    }
+}
+
 - (void)updateText:(NSNotification *)notification
 {
     UITextView *textView = [self textView];
@@ -141,21 +168,6 @@ const float y = 10;
         rect = CGRectMake(x, y, width, height);
         [textView setFrame:rect];
     }
-}
-
-- (void)focus
-{
-    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
-    [self setQuickWordsViewController:quick];
-    [[self textView] setInputAccessoryView:[quick view]];
-    [quick selectFirstButton];
-    
-    [self handleImageIcon:YES];
-    
-    [self setTargetTextView:[self textView]];
-    
-    [self bringSubviewToFront:[self textView]];
-    [[self textView] becomeFirstResponder];
 }
 
 - (void)unfocus

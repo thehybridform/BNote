@@ -7,6 +7,7 @@
 //
 
 #import "KeyPointEntryCell.h"
+#import "BNoteEntryUtils.h"
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "KeyPoint.h"
@@ -16,56 +17,152 @@
 
 @interface KeyPointEntryCell()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
+@property (strong, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) UIImagePickerController *imagePickerController;
 
 @end
 
 @implementation KeyPointEntryCell
-@synthesize longPress = _longPress;
 @synthesize actionSheet = _actionSheet;
+@synthesize popup = _popup;
+@synthesize imagePickerController = _imagePickerController;
+
+static NSString *choosePhoto = @"Choose Photo";
+static NSString *takePhoto = @"Take Picture";
+static NSString *viewFullScreen = @"View Full Screen";
+static NSString *removePhoto = @"Remove Photo";
+
+- (KeyPoint *)keyPoint
+{
+    return (KeyPoint *) [self entry];
+}
+
+- (void)setup
+{
+    [super setup];
+
+    UITapGestureRecognizer *tap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showKeyPointOptions:)];
+    [self addGestureRecognizer:tap];
+}
+
+- (void)showKeyPointOptions:(UITapGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:self];
+    if (location.x < 120) {
+        [self handleImageIcon:YES];
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+        [actionSheet setDelegate:self];
+        
+        KeyPoint *keyPoint = [self keyPoint];
+
+        if ([keyPoint photo]) {
+            [actionSheet addButtonWithTitle:viewFullScreen];
+        }
+        
+        [actionSheet addButtonWithTitle:choosePhoto];
+
+        BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+        if (hasCamera) {
+            [actionSheet addButtonWithTitle:takePhoto];
+        }
+        
+        if ([keyPoint photo]) {
+            NSInteger index = [actionSheet addButtonWithTitle:removePhoto];
+            [actionSheet setDestructiveButtonIndex:index];
+        }
+        
+        [actionSheet setTitle:@"Key Point Photo"];
+        [self setActionSheet:actionSheet];
+    
+        CGRect rect = [[self imageView] bounds];
+        [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
+    } else {
+        [[self textView] becomeFirstResponder];
+    }
+}
+
+- (void)unfocus
+{
+    [self handleImageIcon:NO];
+    [self setPopup:nil];
+}
 
 - (void)handleImageIcon:(BOOL)active
 {
-    KeyPoint *keyPoint = (KeyPoint *) [self entry];
+    KeyPoint *keyPoint = [self keyPoint];
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:keyPoint];
         
     if ([keyPoint photo]) {
         UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
         [[self imageView] setImage:image];
-            
-        UILongPressGestureRecognizer *longPress =
-        [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
-        [self addGestureRecognizer:longPress];
-        [self setLongPress:longPress];
         
     } else {
         [super handleImageIcon:active];
     }
 }
 
-- (void)longPressTap:(id)sender
+- (void)presentPhotoPicker
 {
-    if (![self actionSheet]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Key Point" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove Photo" otherButtonTitles:@"View Photo Full Screen", nil];
-        [self setActionSheet:actionSheet];
-        
-        CGRect rect = [self bounds];
-        [actionSheet showFromRect:rect inView:self animated:YES];
+    
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    [controller setDelegate:self];
+    [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+
+    UIView *view = [self imageView];
+    CGRect rect = [view bounds];
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [self setPopup:popup];
+    
+    [popup presentPopoverFromRect:rect inView:self 
+                     permittedArrowDirections:UIPopoverArrowDirectionAny 
+                                     animated:YES];
+}
+
+- (void)presentCamera
+{
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    [controller setDelegate:self];
+    [controller setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    [self setImagePickerController:controller];
+
+    [[[self parentController] parentController] presentModalViewController:controller animated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [BNoteEntryUtils handlePhoto:info forKeyPoint:[self keyPoint]];
+  
+    if ([self popup]) {
+        [[self popup] dismissPopoverAnimated:YES];
+        [self setPopup:nil];
+    }
+    
+    if ([self imagePickerController]) {
+        [[self imagePickerController] dismissModalViewControllerAnimated:YES];
+        [self setImagePickerController:nil];
     }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex) {
-        case 0:
-            [self removePhotos];
-            break;
-        case 1:    
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == choosePhoto) {
+            [self presentPhotoPicker];
+        } else if (title == takePhoto) {
+            [self presentCamera];
+        } else if (title == viewFullScreen) {
             [self showPhoto];
-            break;
-        default:
-            break;
+        } else if (title == removePhoto) {
+            [self removePhotos];
+        }
     }
 }
 
@@ -76,14 +173,14 @@
 
 - (void)removePhotos
 {
-    KeyPoint *keyPoint = (KeyPoint *) [self entry];
+    KeyPoint *keyPoint = [self keyPoint];
     [[BNoteWriter instance] removePhoto:[keyPoint photo]];
     [self updateImageViewForKeyPoint:keyPoint];
 }
 
 - (void)showPhoto
 {
-    KeyPoint *keyPoint = (KeyPoint *) [self entry];
+    KeyPoint *keyPoint = [self keyPoint];
     Photo *photo = [keyPoint photo];
     
     UIImage *image = [UIImage imageWithData:[photo original]];
@@ -108,8 +205,6 @@
         UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
         [[self imageView] setImage:image];
     } else {
-        [self removeGestureRecognizer:[self longPress]];
-        [self setLongPress:nil];
         UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
         [[self imageView] setImage:[imageView image]];
     }

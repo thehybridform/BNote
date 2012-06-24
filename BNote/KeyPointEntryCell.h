@@ -8,6 +8,6 @@
 
 #import "EntryTableCellBasis.h"
 
-@interface KeyPointEntryCell : EntryTableCellBasis <UIActionSheetDelegate>
+@interface KeyPointEntryCell : EntryTableCellBasis <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @end

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "EntryTableCellBasis.h"
-#import "Entry.h"
 
-@interface AttendantTableViewCell : EntryTableCellBasis
+@interface AttendantTableViewCell : EntryTableCellBasis <UIActionSheetDelegate, ABPeoplePickerNavigationControllerDelegate, UIPopoverControllerDelegate>
 
 
 @end

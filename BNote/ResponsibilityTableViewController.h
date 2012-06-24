@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ActionItem.h"
 #import "Attendant.h"
+#import "Note.h"
 
 @protocol ResponsibilityTableViewControllerDelegate;
 
 @interface ResponsibilityTableViewController : UITableViewController
 @property (assign, nonatomic) id<ResponsibilityTableViewControllerDelegate> delegate;
 
-- (id)initWithEntries:(NSOrderedSet *)entries;
+- (id)initWithNote:(Note *)note;
 
 @end
 

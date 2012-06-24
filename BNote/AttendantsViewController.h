@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
-#import "AttendantView.h"
+#import "Attendants.h"
 
 
-@interface AttendantsViewController : UIViewController <AttendantViewDelegate>
+@interface AttendantsViewController : UIViewController
 
-@property (strong, nonatomic) Note *note;
+@property (assign, nonatomic) Attendants *attendants;
 
 - (void)update;
 

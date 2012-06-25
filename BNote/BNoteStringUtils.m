@@ -95,18 +95,4 @@
     return string;
 }
 
-+ (int)textHieght:(NSString *)text inView:(UIView *)view
-{
-    if (text) {
-        UITextView *textView = [[BNoteSessionData instance] scratchTextView];
-        [view addSubview:textView];
-        [textView setText:text];
-    
-        [textView removeFromSuperview];
-        return [textView contentSize].height + 65;
-    } else {
-        return 0;
-    }
-}
-
 @end

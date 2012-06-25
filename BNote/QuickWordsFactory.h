@@ -13,14 +13,14 @@
 #import "Decision.h"
 #import "Attendant.h"
 #import "QuickWordsViewController.h"
-#import "EntryTableCellBasis.h"
+#import "EntryContentViewController.h"
 
 @interface QuickWordsFactory : NSObject
 
-+ (NSMutableArray *)buildDateButtonsForEntryCellView:(EntryTableCellBasis *)entryCellView;
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andActionItem:(ActionItem *)actionItem;
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andQuestion:(Question *)question;
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andKeyPoint:(KeyPoint *)keyPoint;
-+ (NSMutableArray *)buildKeyWordButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView;
++ (NSMutableArray *)buildDateButtonsForEntryContentViewController:(EntryContentViewController *)controller;
++ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andActionItem:(ActionItem *)actionItem;
++ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andQuestion:(Question *)question;
++ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andKeyPoint:(KeyPoint *)keyPoint;
++ (NSMutableArray *)buildKeyWordButtionsForEntryContentViewController:(EntryContentViewController *)controller;
 
 @end

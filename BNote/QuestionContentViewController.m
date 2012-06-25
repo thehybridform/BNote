@@ -1,20 +1,20 @@
 //
-//  QuestionEntryCell.m
+//  QuestionContentViewController.m
 //  BeNote
 //
-//  Created by Young Kristin on 6/19/12.
+//  Created by Young Kristin on 6/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "QuestionEntryCell.h"
+#import "QuestionContentViewController.h"
 #import "BNoteSessionData.h"
 
-@interface QuestionEntryCell()
+@interface QuestionContentViewController()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 
 @end
 
-@implementation QuestionEntryCell
+@implementation QuestionContentViewController
 @synthesize actionSheet = _actionSheet;
 
 static NSString *answer = @"Answer";
@@ -26,22 +26,20 @@ static NSString *clearAnswer = @"Clear Answer";
     return (Question *) [self entry];
 }
 
-- (void)setup
+- (void)viewDidLoad
 {
-    [super setup];
+    [super viewDidLoad];
     
-    UITapGestureRecognizer *tap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showQuestionOptions:)];
-    [self addGestureRecognizer:tap];
+    [[self scrollView] removeFromSuperview];
 }
 
-- (void)showQuestionOptions:(UITapGestureRecognizer *)gesture
+- (void)handleTap:(UITapGestureRecognizer *)gesture
 {
-    CGPoint location = [gesture locationInView:self];
+    CGPoint location = [gesture locationInView:[self view]];
     if (location.x < 120) {
         [self handleTouch];
     } else {
-        [[self textView] becomeFirstResponder];
+        [[self mainTextView] becomeFirstResponder];
     }
 }
 
@@ -68,7 +66,7 @@ static NSString *clearAnswer = @"Clear Answer";
         
         CGRect rect = [[self imageView] bounds];
         [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-
+        
     }
 }
 
@@ -77,22 +75,22 @@ static NSString *clearAnswer = @"Clear Answer";
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == answer) {
-
+            
         } else if (title == clearAnswer) {
             [[self question] setAnswer:nil];
         } else if (title == updateAnswer) {
-
+            
         }
     }
-
+    
     [self setActionSheet:nil];
     [self handleImageIcon:NO];
 }
 
 - (void)updateDetail
 {
-    Question *question = (Question *) [self entry];
-    [[self detail] setText:[question answer]];
+//    Question *question = (Question *) [self entry];
+//    [[self detail] setText:[question answer]];
 }
 
 @end

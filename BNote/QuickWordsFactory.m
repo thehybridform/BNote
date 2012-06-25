@@ -27,27 +27,27 @@
 
 @implementation QuickWordsFactory
 
-+ (NSMutableArray *)buildDateButtonsForEntryCellView:(EntryTableCellBasis *)entryCellView
++ (NSMutableArray *)buildDateButtonsForEntryContentViewController:(EntryContentViewController *)controller
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     DateQuickButton *button;
     
-    button = [[DateQuickButton alloc] initWithName:@"yesterday" andEntryCellView:entryCellView];
+    button = [[DateQuickButton alloc] initWithName:@"yesterday" andEntryContentViewController:controller];
     [button setOffset:-1];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[DateQuickButton alloc] initWithName:@"tomorrow" andEntryCellView:entryCellView];
+    button = [[DateQuickButton alloc] initWithName:@"tomorrow" andEntryContentViewController:controller];
     [button setOffset:1];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
-    button = [[DateQuickButton alloc] initWithName:@"week ago" andEntryCellView:entryCellView];
+    button = [[DateQuickButton alloc] initWithName:@"week ago" andEntryContentViewController:controller];
     [button setOffset:-7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[DateQuickButton alloc] initWithName:@"week form now" andEntryCellView:entryCellView];
+    button = [[DateQuickButton alloc] initWithName:@"week form now" andEntryContentViewController:controller];
     [button setOffset:7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
@@ -55,14 +55,14 @@
     return data;
 }
 
-+ (NSMutableArray *)buildKeyWordButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView
++ (NSMutableArray *)buildKeyWordButtionsForEntryContentViewController:(EntryContentViewController *)controller
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     
     NSEnumerator *keyWords = [[[BNoteReader instance] allKeyWords] objectEnumerator];
     KeyWord *keyWord;
     while (keyWord = [keyWords nextObject]) {
-        KeyWordButton *button = [[KeyWordButton alloc] initWithName:[keyWord word] andEntryCellView:entryCellView];
+        KeyWordButton *button = [[KeyWordButton alloc] initWithName:[keyWord word] andEntryContentViewController:controller];
         [button setKeyWord:keyWord];
         [button setBackgroundColor:[QuickWordsFactory normal]];
         [data addObject:button];
@@ -71,15 +71,15 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andActionItem:(ActionItem *)actionItem
++ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andActionItem:(ActionItem *)actionItem
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     ActionItemQuickButton *button;
 
     if ([actionItem completed]) {
-        button = [[ActionItemMarkDone alloc] initWithName:@"mark incomplete" andEntryCellView:entryCellView];
+        button = [[ActionItemMarkDone alloc] initWithName:@"mark incomplete" andEntryContentViewController:controller];
     } else {
-        button = [[ActionItemMarkDone alloc] initWithName:@" mark complete " andEntryCellView:entryCellView];
+        button = [[ActionItemMarkDone alloc] initWithName:@" mark complete " andEntryContentViewController:controller];
     }
     
     [button setActionItem:actionItem];
@@ -89,7 +89,7 @@
     if ([BNoteEntryUtils containsAttendants:[actionItem note]]) {
         Attendants *attendants = [[BNoteEntryUtils attendants:[actionItem note]] objectAtIndex:0];
         if ([[attendants children] count] > 0) {
-            button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryCellView:entryCellView];
+            button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryContentViewController:controller];
             [button setActionItem:actionItem];
             [button setBackgroundColor:[QuickWordsFactory normal]];
             [data addObject:button];
@@ -97,9 +97,9 @@
     }
     
     if ([actionItem dueDate]) {
-        button = [[DueDateActionItemButton alloc] initWithName:@"clear due date" andEntryCellView:entryCellView];
+        button = [[DueDateActionItemButton alloc] initWithName:@"clear due date" andEntryContentViewController:controller];
     } else {
-        button = [[DueDateActionItemButton alloc] initWithName:@"   due date   " andEntryCellView:entryCellView];
+        button = [[DueDateActionItemButton alloc] initWithName:@"   due date   " andEntryContentViewController:controller];
     }
     [button setActionItem:actionItem];
     [button setBackgroundColor:[QuickWordsFactory normal]];
@@ -108,15 +108,15 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andQuestion:(Question *)question
++ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andQuestion:(Question *)question
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     
     QuestionQuickButton *button;
     if ([question answer]) {
-        button = [[QuestionQuickButton alloc] initWithName:@"Clear Answer" andEntryCellView:entryCellView];
+        button = [[QuestionQuickButton alloc] initWithName:@"Clear Answer" andEntryContentViewController:controller];
     } else {
-        button = [[QuestionQuickButton alloc] initWithName:@"   Answer   " andEntryCellView:entryCellView];
+        button = [[QuestionQuickButton alloc] initWithName:@"   Answer   " andEntryContentViewController:controller];
     }
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [button setQuestion:question];
@@ -126,15 +126,15 @@
     return data;
 }
 
-+ (NSMutableArray *)buildButtionsForEntryCellView:(EntryTableCellBasis *)entryCellView andKeyPoint:(KeyPoint *)keyPoint
++ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andKeyPoint:(KeyPoint *)keyPoint
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     KeyPointButton *button;
 
     if ([keyPoint photo]) {
-        button = [[KeyPointPhotoPickerButton alloc] initWithName:@"change photo" andEntryCellView:entryCellView];\
+        button = [[KeyPointPhotoPickerButton alloc] initWithName:@"change photo" andEntryContentViewController:controller];
     } else {
-        button = [[KeyPointPhotoPickerButton alloc] initWithName:@"photos" andEntryCellView:entryCellView];\
+        button = [[KeyPointPhotoPickerButton alloc] initWithName:@"photos" andEntryContentViewController:controller];
     }
     [button setKeyPoint:keyPoint];
     [button setBackgroundColor:[QuickWordsFactory normal]];
@@ -142,7 +142,7 @@
     
     BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     if (hasCamera) {
-        button = [[KeyPointCameraButton alloc] initWithName:@"take picture" andEntryCellView:entryCellView];
+        button = [[KeyPointCameraButton alloc] initWithName:@"take picture" andEntryContentViewController:controller];
         [button setKeyPoint:keyPoint];
         [button setBackgroundColor:[QuickWordsFactory normal]];
         [data addObject:button];

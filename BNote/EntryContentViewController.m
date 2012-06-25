@@ -1,0 +1,137 @@
+//
+//  EntryContentViewController.m
+//  BeNote
+//
+//  Created by Young Kristin on 6/24/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "EntryContentViewController.h"
+#import "LayerFormater.h"
+#import "QuickWordsViewController.h"
+#import "BNoteFactory.h"
+
+@interface EntryContentViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UITextView *mainTextView;
+@property (strong, nonatomic) IBOutlet UITextView *detailTextView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
+@property (assign, nonatomic) Entry *entry;
+
+@end
+
+@implementation EntryContentViewController
+@synthesize mainTextView = _mainTextView;
+@synthesize detailTextView = _detailTextView;
+@synthesize entry = _entry;
+@synthesize quickWordsViewController = _quickWordsViewController;
+@synthesize imageView = _imageView;
+@synthesize scrollView = _scrollView;
+@synthesize parentController = _parentController;
+
+- (id)initWithEntry:(Entry *)entry
+{
+    self = [super initWithNibName:@"EntryContentViewController" bundle:nil];
+    if (self) {
+        [self setEntry:entry];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(updateText:)
+         name:UITextViewTextDidChangeNotification object:[[self mainTextView] window]];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(startedEditingText:)
+         name:UITextViewTextDidBeginEditingNotification object:[[self mainTextView] window]];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(stoppedEditingText:)
+         name:UITextViewTextDidEndEditingNotification object:[[self mainTextView] window]];
+
+        UITapGestureRecognizer *tap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [[self view] addGestureRecognizer:tap];
+    }
+    return self;
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)gesture
+{
+    // handled by sub class
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];            
+}
+
+- (Entry *)entry
+{
+    return _entry;
+}
+
+- (CGFloat)height
+{
+    return [[self mainTextView] contentSize].height + [[self detailTextView] contentSize].height;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [[self view] setBackgroundColor:[UIColor clearColor]];
+    [[self mainTextView] setBackgroundColor:[UIColor clearColor]];
+    [[self detailTextView] setBackgroundColor:[UIColor clearColor]];
+
+    [self handleImageIcon:NO];
+    [[self mainTextView] setText:[[self entry] text]];
+    
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
+    [self setQuickWordsViewController:quick];
+    [[self mainTextView] setInputAccessoryView:[quick view]];
+    
+    [LayerFormater roundCornersForView:[self mainTextView]];
+    [LayerFormater roundCornersForView:[self detailTextView]];
+    [LayerFormater roundCornersForView:[self scrollView]];
+}
+
+- (void)handleImageIcon:(BOOL)active
+{
+    UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:active];
+    [[self imageView] setImage:[imageView image]];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+
+    [self setMainTextView:nil];
+    [self setDetailTextView:nil];
+    [self setImageView:nil];
+    [self setQuickWordsViewController:nil];
+}
+
+- (void)startedEditingText:(NSNotification *)notification
+{
+    if ([notification object] == [self mainTextView]) {
+    }
+}
+
+- (void)stoppedEditingText:(NSNotification *)notification
+{
+    if ([notification object] == [self mainTextView]) {
+    }
+}
+
+- (void)updateText:(NSNotification *)notification
+{
+    if ([notification object] == [self mainTextView]) {
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+@end

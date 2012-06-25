@@ -21,12 +21,10 @@
 
 - (void)execute:(id)sender
 {
-    EntryTableCellBasis *cell = [self entryCellView];
-    EntriesViewController *controller = [cell parentController];
-    
-    [[cell textView] resignFirstResponder];
+    EntryContentViewController *controller = [self entryContentViewController];
+    [[controller mainTextView] resignFirstResponder];
 
-    ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithNote:[controller note]];
+    ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithNote:[[controller entry] note]];
     [tableController setDelegate:self];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:tableController];

@@ -22,7 +22,7 @@
 
 - (void)execute:(id)sender
 {
-    UITextView *textView = [[self entryCellView] targetTextView];
+    UITextView *textView = [[self entryContentViewController] mainTextView];
     NSRange cursorPosition = [textView selectedRange];
     
     NSString *keyWord = [BNoteStringUtils append:@" ", [[self titleLabel] text], @" ", nil];

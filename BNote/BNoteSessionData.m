@@ -19,7 +19,6 @@
 @implementation BNoteSessionData
 @synthesize phase = _phase;
 @synthesize settings = _settings;
-@synthesize scratchTextView = _scratchTextView;
 @synthesize imageIconViews = _imageIconViews;
 @synthesize keyboardVisible = _keyboardVisible;
 
@@ -32,7 +31,6 @@
 {
     self = [super init];
     
-    [self setScratchTextView:[[UITextView alloc] init]];
     [self setImageIconViews:[[NSMutableDictionary alloc] init]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideBNoteSessionData:)

@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
-#import "QuickWordsViewController.h"
 #import "BNoteFilter.h"
 
-@interface EntriesViewController : UITableViewController <QuickWordsViewControllerListener>
+@interface EntriesViewController : UITableViewController
 
 @property (assign, nonatomic) IBOutlet UITableViewCell *entryCell;
 @property (strong, nonatomic) Note *note;

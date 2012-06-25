@@ -44,6 +44,11 @@
                                                  name:TopicUpdated object:nil];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

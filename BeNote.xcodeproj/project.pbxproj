@@ -43,13 +43,15 @@
 		1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */; };
 		18497687159053DA00F49F5A /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
 		18497688159053DA00F49F5A /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
-		184976961591973700F49F5A /* EntryTableCellBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976951591973700F49F5A /* EntryTableCellBasis.m */; };
-		1849769A15919D6900F49F5A /* QuestionEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849769915919D6900F49F5A /* QuestionEntryCell.m */; };
-		1849769E15919DCE00F49F5A /* ActionItemEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849769D15919DCE00F49F5A /* ActionItemEntryCell.m */; };
-		184976A215919E3600F49F5A /* KeyPointEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976A115919E3600F49F5A /* KeyPointEntryCell.m */; };
 		184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
 		184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
-		184976BF1597A74400F49F5A /* DecisionEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976BE1597A74400F49F5A /* DecisionEntryCell.m */; };
+		184976CD1597C20100F49F5A /* EntryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976CB1597C1FD00F49F5A /* EntryContentViewController.m */; };
+		184976CE1597C20100F49F5A /* EntryContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976CC1597C1FF00F49F5A /* EntryContentViewController.xib */; };
+		184976D4159836AD00F49F5A /* DecisionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D3159836AC00F49F5A /* DecisionContentViewController.m */; };
+		184976D7159843A400F49F5A /* KeyPointContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D6159843A400F49F5A /* KeyPointContentViewController.m */; };
+		184976DA159843B400F49F5A /* ActionItemContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D9159843B300F49F5A /* ActionItemContentViewController.m */; };
+		184976DD159843C900F49F5A /* QuestionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976DC159843C900F49F5A /* QuestionContentViewController.m */; };
+		184976E0159843E400F49F5A /* AttendantsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976DF159843E100F49F5A /* AttendantsContentViewController.m */; };
 		184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
 		184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
@@ -89,7 +91,6 @@
 		18AF4AC015852FFC00A54205 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AF4ABF15852FFC00A54205 /* MessageUI.framework */; };
 		18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4AC91585626600A54205 /* BNoteRenderFactory.m */; };
 		18AF4ACD1585632F00A54205 /* BNoteFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */; };
-		18B235D8158ADF06009D17D2 /* AttendantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B235D7158ADF06009D17D2 /* AttendantTableViewCell.m */; };
 		18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */; };
 		18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
@@ -199,19 +200,22 @@
 		18497684159053DA00F49F5A /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		18497685159053DA00F49F5A /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		18497686159053DA00F49F5A /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
-		184976941591973600F49F5A /* EntryTableCellBasis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTableCellBasis.h; sourceTree = "<group>"; };
-		184976951591973700F49F5A /* EntryTableCellBasis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTableCellBasis.m; sourceTree = "<group>"; };
-		1849769815919D6900F49F5A /* QuestionEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionEntryCell.h; sourceTree = "<group>"; };
-		1849769915919D6900F49F5A /* QuestionEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionEntryCell.m; sourceTree = "<group>"; };
-		1849769C15919DCE00F49F5A /* ActionItemEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemEntryCell.h; sourceTree = "<group>"; };
-		1849769D15919DCE00F49F5A /* ActionItemEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemEntryCell.m; sourceTree = "<group>"; };
-		184976A015919E3600F49F5A /* KeyPointEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointEntryCell.h; sourceTree = "<group>"; };
-		184976A115919E3600F49F5A /* KeyPointEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointEntryCell.m; sourceTree = "<group>"; };
 		184976B7159665DA00F49F5A /* AttendeeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeDetailViewController.h; sourceTree = "<group>"; };
 		184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeDetailViewController.m; sourceTree = "<group>"; };
 		184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendeeDetailViewController.xib; sourceTree = "<group>"; };
-		184976BD1597A74400F49F5A /* DecisionEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionEntryCell.h; sourceTree = "<group>"; };
-		184976BE1597A74400F49F5A /* DecisionEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionEntryCell.m; sourceTree = "<group>"; };
+		184976CA1597C1FA00F49F5A /* EntryContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryContentViewController.h; sourceTree = "<group>"; };
+		184976CB1597C1FD00F49F5A /* EntryContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryContentViewController.m; sourceTree = "<group>"; };
+		184976CC1597C1FF00F49F5A /* EntryContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryContentViewController.xib; sourceTree = "<group>"; };
+		184976D2159836AB00F49F5A /* DecisionContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionContentViewController.h; sourceTree = "<group>"; };
+		184976D3159836AC00F49F5A /* DecisionContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionContentViewController.m; sourceTree = "<group>"; };
+		184976D5159843A300F49F5A /* KeyPointContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointContentViewController.h; sourceTree = "<group>"; };
+		184976D6159843A400F49F5A /* KeyPointContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointContentViewController.m; sourceTree = "<group>"; };
+		184976D8159843B300F49F5A /* ActionItemContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemContentViewController.h; sourceTree = "<group>"; };
+		184976D9159843B300F49F5A /* ActionItemContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemContentViewController.m; sourceTree = "<group>"; };
+		184976DB159843C800F49F5A /* QuestionContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionContentViewController.h; sourceTree = "<group>"; };
+		184976DC159843C900F49F5A /* QuestionContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionContentViewController.m; sourceTree = "<group>"; };
+		184976DE159843E000F49F5A /* AttendantsContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsContentViewController.h; sourceTree = "<group>"; };
+		184976DF159843E100F49F5A /* AttendantsContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsContentViewController.m; sourceTree = "<group>"; };
 		184CEAD2158F227A00C67CF5 /* EluaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EluaViewController.h; sourceTree = "<group>"; };
 		184CEAD3158F227A00C67CF5 /* EluaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EluaViewController.m; sourceTree = "<group>"; };
 		184CEAD4158F227A00C67CF5 /* EluaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EluaViewController.xib; sourceTree = "<group>"; };
@@ -280,8 +284,6 @@
 		18AF4AC91585626600A54205 /* BNoteRenderFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteRenderFactory.m; sourceTree = "<group>"; };
 		18AF4ACB1585632E00A54205 /* BNoteFilterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFilterFactory.h; sourceTree = "<group>"; };
 		18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFilterFactory.m; sourceTree = "<group>"; };
-		18B235D6158ADF06009D17D2 /* AttendantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantTableViewCell.h; sourceTree = "<group>"; };
-		18B235D7158ADF06009D17D2 /* AttendantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantTableViewCell.m; sourceTree = "<group>"; };
 		18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeNote.xcdatamodel; sourceTree = "<group>"; };
 		18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 2.xcdatamodel"; sourceTree = "<group>"; };
 		18BA964D158D9B39004A4A38 /* BeNote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -624,8 +626,8 @@
 		1849769715919D4A00F49F5A /* Question */ = {
 			isa = PBXGroup;
 			children = (
-				1849769815919D6900F49F5A /* QuestionEntryCell.h */,
-				1849769915919D6900F49F5A /* QuestionEntryCell.m */,
+				184976DB159843C800F49F5A /* QuestionContentViewController.h */,
+				184976DC159843C900F49F5A /* QuestionContentViewController.m */,
 			);
 			name = Question;
 			sourceTree = "<group>";
@@ -633,8 +635,8 @@
 		1849769B15919D9400F49F5A /* Action Item */ = {
 			isa = PBXGroup;
 			children = (
-				1849769C15919DCE00F49F5A /* ActionItemEntryCell.h */,
-				1849769D15919DCE00F49F5A /* ActionItemEntryCell.m */,
+				184976D8159843B300F49F5A /* ActionItemContentViewController.h */,
+				184976D9159843B300F49F5A /* ActionItemContentViewController.m */,
 			);
 			name = "Action Item";
 			sourceTree = "<group>";
@@ -642,11 +644,11 @@
 		1849769F15919E1700F49F5A /* Key Point */ = {
 			isa = PBXGroup;
 			children = (
-				184976A015919E3600F49F5A /* KeyPointEntryCell.h */,
-				184976A115919E3600F49F5A /* KeyPointEntryCell.m */,
 				18A056F8157F3762002A4A78 /* PhotoViewController.h */,
 				18A056F9157F3762002A4A78 /* PhotoViewController.m */,
 				18A056FA157F3762002A4A78 /* PhotoViewController.xib */,
+				184976D5159843A300F49F5A /* KeyPointContentViewController.h */,
+				184976D6159843A400F49F5A /* KeyPointContentViewController.m */,
 			);
 			name = "Key Point";
 			sourceTree = "<group>";
@@ -654,8 +656,8 @@
 		184976BC1597A72100F49F5A /* Decision */ = {
 			isa = PBXGroup;
 			children = (
-				184976BD1597A74400F49F5A /* DecisionEntryCell.h */,
-				184976BE1597A74400F49F5A /* DecisionEntryCell.m */,
+				184976D2159836AB00F49F5A /* DecisionContentViewController.h */,
+				184976D3159836AC00F49F5A /* DecisionContentViewController.m */,
 			);
 			name = Decision;
 			sourceTree = "<group>";
@@ -798,11 +800,11 @@
 				18A056AD157B71BA002A4A78 /* AttendantsViewController.m */,
 				18A056B4157BFD71002A4A78 /* AttendantView.h */,
 				18A056B5157BFD71002A4A78 /* AttendantView.m */,
-				18B235D6158ADF06009D17D2 /* AttendantTableViewCell.h */,
-				18B235D7158ADF06009D17D2 /* AttendantTableViewCell.m */,
 				184976B7159665DA00F49F5A /* AttendeeDetailViewController.h */,
 				184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */,
 				184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */,
+				184976DE159843E000F49F5A /* AttendantsContentViewController.h */,
+				184976DF159843E100F49F5A /* AttendantsContentViewController.m */,
 			);
 			name = Attendants;
 			sourceTree = "<group>";
@@ -827,8 +829,9 @@
 				1849769B15919D9400F49F5A /* Action Item */,
 				1849769715919D4A00F49F5A /* Question */,
 				18B235D9158ADF6E009D17D2 /* Attendants */,
-				184976941591973600F49F5A /* EntryTableCellBasis.h */,
-				184976951591973700F49F5A /* EntryTableCellBasis.m */,
+				184976CA1597C1FA00F49F5A /* EntryContentViewController.h */,
+				184976CB1597C1FD00F49F5A /* EntryContentViewController.m */,
+				184976CC1597C1FF00F49F5A /* EntryContentViewController.xib */,
 			);
 			name = "Entry View Cell";
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */,
 				18497688159053DA00F49F5A /* InformationViewController.xib in Resources */,
 				184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */,
+				184976CE1597C20100F49F5A /* EntryContentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,7 +1061,6 @@
 				18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */,
 				18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */,
 				18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */,
-				18B235D8158ADF06009D17D2 /* AttendantTableViewCell.m in Sources */,
 				18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */,
 				1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */,
 				18C03E52158DA7E90035AFDA /* AssociatedTopicsTableViewController.m in Sources */,
@@ -1075,12 +1078,13 @@
 				184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */,
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
 				18497687159053DA00F49F5A /* InformationViewController.m in Sources */,
-				184976961591973700F49F5A /* EntryTableCellBasis.m in Sources */,
-				1849769A15919D6900F49F5A /* QuestionEntryCell.m in Sources */,
-				1849769E15919DCE00F49F5A /* ActionItemEntryCell.m in Sources */,
-				184976A215919E3600F49F5A /* KeyPointEntryCell.m in Sources */,
 				184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */,
-				184976BF1597A74400F49F5A /* DecisionEntryCell.m in Sources */,
+				184976CD1597C20100F49F5A /* EntryContentViewController.m in Sources */,
+				184976D4159836AD00F49F5A /* DecisionContentViewController.m in Sources */,
+				184976D7159843A400F49F5A /* KeyPointContentViewController.m in Sources */,
+				184976DA159843B400F49F5A /* ActionItemContentViewController.m in Sources */,
+				184976DD159843C900F49F5A /* QuestionContentViewController.m in Sources */,
+				184976E0159843E400F49F5A /* AttendantsContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,22 +1,22 @@
 //
-//  ActionItemEntryCell.m
+//  ActionItemContentViewController.m
 //  BeNote
 //
-//  Created by Young Kristin on 6/19/12.
+//  Created by Young Kristin on 6/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ActionItemEntryCell.h"
+#import "ActionItemContentViewController.h"
 #import "BNoteSessionData.h"
 
-@interface ActionItemEntryCell()
+@interface ActionItemContentViewController()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
 
 @end
 
-@implementation ActionItemEntryCell
+@implementation ActionItemContentViewController
 @synthesize actionSheet = _actionSheet;
 @synthesize popup = _popup;
 @synthesize datePickerViewController = _datePickerViewController;
@@ -33,23 +33,20 @@ static NSString *markInComplete = @"Mark In Complete";
     return (ActionItem *) [self entry];
 }
 
-- (void)setup
+- (void)viewDidLoad
 {
-    [super setup];
+    [super viewDidLoad];
     
-    UITapGestureRecognizer *tap =
-     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showActionItemOptions:)];
-    [self addGestureRecognizer:tap];
+    [[self scrollView] removeFromSuperview];
 }
 
-
-- (void)showActionItemOptions:(UITapGestureRecognizer *)gesture
+- (void)handleTap:(UITapGestureRecognizer *)gesture
 {    
-    CGPoint location = [gesture locationInView:self];
+    CGPoint location = [gesture locationInView:[self view]];
     if (location.x < 120) {
         [self handleTouch];
     } else {
-        [[self textView] becomeFirstResponder];
+        [[self mainTextView] becomeFirstResponder];
     }
 }
 
@@ -107,7 +104,7 @@ static NSString *markInComplete = @"Mark In Complete";
             [actionItem setCompleted:0]; 
         }
     }
-
+    
     [self setActionSheet:nil];
     [self handleImageIcon:NO];
 }
@@ -122,7 +119,7 @@ static NSString *markInComplete = @"Mark In Complete";
     
     CGRect rect = [[self imageView] bounds];
     
-    [popup presentPopoverFromRect:rect inView:self
+    [popup presentPopoverFromRect:rect inView:[self view]
          permittedArrowDirections:UIPopoverArrowDirectionAny
                          animated:YES];
 }
@@ -138,7 +135,7 @@ static NSString *markInComplete = @"Mark In Complete";
 - (void)showDatePicker
 {    
     ActionItem *actionItem = [self actionItem];
-        
+    
     NSTimeInterval interval = [actionItem dueDate];
     NSDate *date;
     if (interval) {
@@ -146,26 +143,25 @@ static NSString *markInComplete = @"Mark In Complete";
     } else {
         date = [[NSDate alloc] init];
     }
-        
+    
     DatePickerViewController *controller =
-        [[DatePickerViewController alloc] initWithDate:date andMode:UIDatePickerModeDate];
+    [[DatePickerViewController alloc] initWithDate:date andMode:UIDatePickerModeDate];
     [controller setListener:self];
     [controller setTitleText:@"Due Date"];
     [[controller datePicker] setDatePickerMode:UIDatePickerModeDate];
     [self setDatePickerViewController:controller];
-        
+    
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [self setPopup:popup];
     [popup setDelegate:self];
-        
+    
     [popup setPopoverContentSize:[[controller view] bounds].size];
-        
-    UIView *view = self;
-    CGRect rect = [view bounds];
-        
-    [popup presentPopoverFromRect:rect inView:self
-        permittedArrowDirections:UIPopoverArrowDirectionAny 
-        animated:YES];
+    
+    CGRect rect = [[self imageView] bounds];
+    
+    [popup presentPopoverFromRect:rect inView:[self view]
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
 }
 
 - (void)dateTimeUpdated:(NSDate *)date
@@ -177,14 +173,14 @@ static NSString *markInComplete = @"Mark In Complete";
 
 - (void)updateDetail
 {
-    ActionItem *actionItem = [self actionItem];
-    NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
-        
-    if ([BNoteStringUtils nilOrEmpty:detail]) {
-        [[self detail] setText:nil];
-    } else {
-        [[self detail] setText:detail];
-    }
+//    ActionItem *actionItem = [self actionItem];
+//    NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
+    
+//    if ([BNoteStringUtils nilOrEmpty:detail]) {
+//        [[self detail] setText:nil];
+//    } else {
+//        [[self detail] setText:detail];
+//    }
 }
 
 - (void)selectedDatePickerViewDone
@@ -194,5 +190,6 @@ static NSString *markInComplete = @"Mark In Complete";
     [self setDatePickerViewController:nil];
     [self handleImageIcon:NO];
 }
+
 
 @end

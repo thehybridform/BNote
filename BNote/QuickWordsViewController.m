@@ -28,7 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (strong, nonatomic) EntryTableCellBasis *entryViewCell;
+@property (assign, nonatomic) EntryContentViewController *entryContentController;
 
 @end
 
@@ -40,17 +40,16 @@
 @synthesize datesButton = _datesButton;
 @synthesize keyWordsButton = _keyWordsButton;
 @synthesize doneButton = _doneButton;
-@synthesize listener = _listener;
-@synthesize entryViewCell = _entryViewCell;
 @synthesize scrollView = _scrollView;
+@synthesize entryContentController = _entryContentController;
 
 static float spacing = 10;
 
-- (id)initWithCell:(EntryTableCellBasis *)cell
+- (id)initWithCell:(EntryContentViewController *)entryContentController
 {
     self = [super initWithNibName:@"QuickWordsViewController" bundle:nil];
     if (self) {
-        [self setEntryViewCell:cell];
+        [self setEntryContentController:entryContentController];
     }
     return self;
 }
@@ -59,7 +58,7 @@ static float spacing = 10;
 {
     [super viewDidLoad];
     
-    if ([[[self entryViewCell] entry] isKindOfClass:[Decision class]]) {
+    if ([[[self entryContentController] entry] isKindOfClass:[Decision class]]) {
         [[self toolbar] setHidden:YES];
         [[self attendantToolbar] setHidden:YES];
     } else {
@@ -67,7 +66,7 @@ static float spacing = 10;
         [[self decisionToolbar] setHidden:YES];
     }
     
-    [[self detailButton] setTitle:[BNoteStringUtils nameForEntry:[[self entryViewCell] entry]]];
+    [[self detailButton] setTitle:[BNoteStringUtils nameForEntry:[[self entryContentController] entry]]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:KeyWordsUpdated object:nil];
@@ -84,23 +83,22 @@ static float spacing = 10;
     [self setScrollView:nil];
     [self setAttendantToolbar:nil];
     [self setDecisionToolbar:nil];
-    [self setEntryViewCell:nil];
 }
 
 - (IBAction)detail:(id)sender
 {
-    [self buildButtons:[self enumeratorForEntry:[[self entryViewCell] entry]]];
+    [self buildButtons:[self enumeratorForEntry:[[self entryContentController] entry]]];
 }
 
 - (IBAction)dates:(id)sender
 {
-    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryCellView:[self entryViewCell]] objectEnumerator];
+    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryContentViewController:[self entryContentController]] objectEnumerator];
     [self buildButtons:items];
 }
 
 - (IBAction)keyWords:(id)sender
 {
-    NSEnumerator *items = [[QuickWordsFactory buildKeyWordButtionsForEntryCellView:[self entryViewCell]] objectEnumerator];
+    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryContentViewController:[self entryContentController]] objectEnumerator];
     [self buildButtons:items];
 }
 
@@ -135,7 +133,7 @@ static float spacing = 10;
 
 - (void)selectFirstButton
 {
-    if ([[[self entryViewCell] entry] isKindOfClass:[Decision class]]) {
+    if ([[[self entryContentController] entry] isKindOfClass:[Decision class]]) {
         [self dates:nil]; 
     } else {
         [self detail:nil]; 
@@ -145,11 +143,11 @@ static float spacing = 10;
 - (NSEnumerator *)enumeratorForEntry:(Entry *)entry
 {
     if ([entry isKindOfClass:[ActionItem class]]) {
-        return [[QuickWordsFactory buildButtionsForEntryCellView:[self entryViewCell] andActionItem:(ActionItem *)entry] objectEnumerator];
+        return [[QuickWordsFactory buildButtionsForEntryContentViewController:[self entryContentController] andActionItem:(ActionItem *)entry] objectEnumerator];
     } else if ([entry isKindOfClass:[KeyPoint class]]) {
-        return [[QuickWordsFactory buildButtionsForEntryCellView:[self entryViewCell] andKeyPoint:(KeyPoint *)entry] objectEnumerator];
+        return [[QuickWordsFactory buildButtionsForEntryContentViewController:[self entryContentController] andKeyPoint:(KeyPoint *)entry] objectEnumerator];
     } else if ([entry isKindOfClass:[Question class]]) {
-        return [[QuickWordsFactory buildButtionsForEntryCellView:[self entryViewCell] andQuestion:(Question *)entry] objectEnumerator];
+        return [[QuickWordsFactory buildButtionsForEntryContentViewController:[self entryContentController] andQuestion:(Question *)entry] objectEnumerator];
     }
     
     return nil;

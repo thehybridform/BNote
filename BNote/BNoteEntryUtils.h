@@ -26,8 +26,6 @@
 + (NSMutableArray *)attendants:(Note *)note;
 + (NSMutableArray *)attendees:(Note *)note;
 
-+ (CGFloat)cellHeight:(Entry *)entry inView:(UIView *)view;
-
 + (UIImage *)handlePhoto:(NSDictionary *)info forKeyPoint:(KeyPoint *)keyPoint;
 
 @end

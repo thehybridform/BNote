@@ -8,30 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Entry.h"
-#import "EntryTableCellBasis.h"
-
-@protocol QuickWordsViewControllerListener;
-
+#import "EntryContentViewController.h"
 
 @interface QuickWordsViewController : UIViewController
 
-@property (assign, nonatomic) id<QuickWordsViewControllerListener> listener;
-
-- (id)initWithCell:(EntryTableCellBasis *)cell;
+- (id)initWithCell:(EntryContentViewController *)entryContentController;
 
 - (IBAction)detail:(id)sender;
 - (IBAction)dates:(id)sender;
 - (IBAction)keyWords:(id)sender;
 
 - (void)selectFirstButton;
-
-@end
-
-@protocol QuickWordsViewControllerListener <NSObject>
-
-@required
-
-- (UIViewController *)controller;
 
 @end
 

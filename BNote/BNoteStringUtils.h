@@ -21,6 +21,5 @@
 + (NSString *)nameForEntry:(Entry *)entry;
 
 + (NSString *)append:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
-+ (int)textHieght:(NSString *)text inView:(UIView *)view;
 
 @end

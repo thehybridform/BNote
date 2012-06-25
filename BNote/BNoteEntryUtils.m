@@ -116,22 +116,6 @@
     return filtered;
 }
 
-+ (CGFloat)cellHeight:(Entry *)entry inView:(UIView *)view
-{
-    CGFloat height = [BNoteStringUtils textHieght:[entry text] inView:view];
-    if ([entry isKindOfClass:[Question class]]) {
-        Question *question = (Question *)entry;
-        height += [BNoteStringUtils textHieght:[question answer] inView:view];
-    } else if ([entry isKindOfClass:[ActionItem class]]) {
-        ActionItem *actionItem = (ActionItem *)entry;
-        if ([actionItem dueDate] || [actionItem completed] || [actionItem responsibility]) {
-            height += 25;
-        }
-    }    
-    
-    return height;
-}
-
 + (UIImage *)handlePhoto:(NSDictionary *)info forKeyPoint:(KeyPoint *)keyPoint
 {
     [[BNoteWriter instance] removePhoto:[keyPoint photo]];

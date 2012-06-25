@@ -12,24 +12,25 @@
 @interface QuickWordButton()
 @property (strong, nonatomic) UIColor *color;
 @property (strong, nonatomic) UIColor *highlightColor;
+@property (assign, nonatomic) EntryContentViewController *entryContentViewController;
 @end
 
 @implementation QuickWordButton
 @synthesize color = _color;
 @synthesize highlightColor = _highlightColor;
-@synthesize entryCellView = _entryCellView;
+@synthesize entryContentViewController = _entryContentViewController;
 
-- (id)initWithName:(NSString *)name andEntryCellView:(EntryTableCellBasis *)entryCellView
+- (id)initWithName:(NSString *)name andEntryContentViewController:(EntryContentViewController *)controller
 {
     self = [super init];
     if (self) {
         [self setTitle:name forState:UIControlStateNormal];
-        [self setFont:[UIFont systemFontOfSize:15]];
+//        [self setFont:[UIFont systemFontOfSize:15]];
         
         [LayerFormater roundCornersForView:self];
         
         [self setTitle:name forState:UIControlStateNormal];
-        [self setEntryCellView:entryCellView];
+        [self setEntryContentViewController:controller];
         
         [self addTarget:self action:@selector(execute:) forControlEvents:UIControlEventTouchUpInside];
         [self addTarget:self action:@selector(unhighlight:) forControlEvents:UIControlEventTouchUpInside];

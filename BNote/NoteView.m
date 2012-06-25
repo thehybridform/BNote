@@ -79,6 +79,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)setNote:(Note *)note
 {
     _note = note;

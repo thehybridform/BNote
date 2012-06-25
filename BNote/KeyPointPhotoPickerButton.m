@@ -23,9 +23,8 @@
 
 - (void)execute:(id)sender
 {
-    EntryTableCellBasis *cell = [self entryCellView];
-    
-    [[cell textView] resignFirstResponder];
+    EntryContentViewController *controller = [self entryContentViewController];
+    [[controller mainTextView] resignFirstResponder];
     
     [self presentPhotoLibrary];
 }
@@ -35,9 +34,9 @@
     UIImagePickerController *controller = [self imagePickerController];
     [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     
-    EntryTableCellBasis *cell = [self entryCellView];
+    EntryContentViewController *entryController = [self entryContentViewController];
     
-    UIView *view = cell;
+    UIView *view = [entryController view];
     CGRect rect = [view bounds];
 
     UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:[self imagePickerController]];

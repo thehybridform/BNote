@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EntryTableCellBasis.h"
+#import "EntryContentViewController.h"
 
 @protocol QuickWordsCallback;
 
 @interface QuickWordButton : UIButton
-@property (strong, nonatomic) EntryTableCellBasis *entryCellView;
 
-- (id)initWithName:(NSString *)name andEntryCellView:(EntryTableCellBasis *)entryCellView;
+- (id)initWithName:(NSString *)name andEntryContentViewController:(EntryContentViewController *)controller;
 - (void)execute:(id)sender;
+- (EntryContentViewController *)entryContentViewController;
 
 @end
 

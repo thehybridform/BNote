@@ -1,29 +1,27 @@
 //
-//  KeyPointEntryCell.m
+//  KeyPointContentViewController.m
 //  BeNote
 //
-//  Created by Young Kristin on 6/19/12.
+//  Created by Young Kristin on 6/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "KeyPointEntryCell.h"
-#import "BNoteEntryUtils.h"
-#import "BNoteFactory.h"
+#import "KeyPointContentViewController.h"
 #import "BNoteSessionData.h"
-#import "BNoteWriter.h"
 #import "KeyPoint.h"
 #import "Photo.h"
+#import "BNoteWriter.h"
+#import "BNoteFactory.h"
 #import "PhotoViewController.h"
-#import "EntriesViewController.h"
 
-@interface KeyPointEntryCell()
+@interface KeyPointContentViewController()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
 
 @end
 
-@implementation KeyPointEntryCell
+@implementation KeyPointContentViewController
 @synthesize actionSheet = _actionSheet;
 @synthesize popup = _popup;
 @synthesize imagePickerController = _imagePickerController;
@@ -38,22 +36,20 @@ static NSString *removePhoto = @"Remove Photo";
     return (KeyPoint *) [self entry];
 }
 
-- (void)setup
+- (void)viewDidLoad
 {
-    [super setup];
-
-    UITapGestureRecognizer *tap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showKeyPointOptions:)];
-    [self addGestureRecognizer:tap];
+    [super viewDidLoad];
+    
+    [[self scrollView] removeFromSuperview];
 }
 
-- (void)showKeyPointOptions:(UITapGestureRecognizer *)gesture
+- (void)handleTap:(UITapGestureRecognizer *)gesture
 {
-    CGPoint location = [gesture locationInView:self];
+    CGPoint location = [gesture locationInView:[self view]];
     if (location.x < 120) {
         [self handleTouch];
     } else {
-        [[self textView] becomeFirstResponder];
+        [[self mainTextView] becomeFirstResponder];
     }
 }
 
@@ -90,12 +86,13 @@ static NSString *removePhoto = @"Remove Photo";
         [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
     }
 }
+
 - (void)handleImageIcon:(BOOL)active
 {
     KeyPoint *keyPoint = [self keyPoint];
-        
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:keyPoint];
-        
+    
     if ([keyPoint photo]) {
         UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
         [[self imageView] setImage:image];
@@ -111,16 +108,16 @@ static NSString *removePhoto = @"Remove Photo";
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     [controller setDelegate:self];
     [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-
+    
     UIView *view = [self imageView];
     CGRect rect = [view bounds];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [self setPopup:popup];
     
-    [popup presentPopoverFromRect:rect inView:self 
-                     permittedArrowDirections:UIPopoverArrowDirectionAny 
-                                     animated:YES];
+    [popup presentPopoverFromRect:rect inView:[self view] 
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
 }
 
 - (void)presentCamera
@@ -133,13 +130,13 @@ static NSString *removePhoto = @"Remove Photo";
     
     [self setImagePickerController:controller];
 
-    [[[self parentController] parentController] presentModalViewController:controller animated:YES];
+    [[self parentController] presentModalViewController:controller animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [BNoteEntryUtils handlePhoto:info forKeyPoint:[self keyPoint]];
-  
+    
     if ([self popup]) {
         [[self popup] dismissPopoverAnimated:YES];
         [self setPopup:nil];
@@ -149,7 +146,6 @@ static NSString *removePhoto = @"Remove Photo";
         [[self imagePickerController] dismissModalViewControllerAnimated:YES];
         [self setImagePickerController:nil];
     }
-    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -166,7 +162,7 @@ static NSString *removePhoto = @"Remove Photo";
             [self removePhotos];
         }
     }
-
+    
     [self setActionSheet:nil];
     [self handleImageIcon:NO];
 }
@@ -187,7 +183,8 @@ static NSString *removePhoto = @"Remove Photo";
     PhotoViewController *controller = [[PhotoViewController alloc] initWithImage:image];
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    [[[self parentController] parentController] presentModalViewController:controller animated:YES];
+        
+    [[self parentController] presentModalViewController:controller animated:YES];
 }
 
 - (void)updateImageView:(id)object

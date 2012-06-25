@@ -9,7 +9,7 @@
 #import "EntriesViewController.h"
 #import "LayerFormater.h"
 #import "BNoteStringUtils.h"
-#import "EntryTableCellBasis.h"
+#import "EntryContentViewController.h"
 #import "Entry.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
@@ -17,10 +17,10 @@
 #import "Attendant.h"
 #import "KeyPoint.h"
 #import "BNoteEntryUtils.h"
+#import "QuickWordsViewController.h"
 
 @interface EntriesViewController ()
-@property (assign, nonatomic) EntryTableCellBasis *selectEntryCell;
-@property (strong, nonatomic) NSMutableArray *filteredEntries;
+@property (strong, nonatomic) NSMutableArray *filteredControllers;
 @property (assign, nonatomic) UITextView *textView;
 
 @end
@@ -29,17 +29,15 @@
 @synthesize note = _note;
 @synthesize entryCell = _entryCell;
 @synthesize filter = _filter;
-@synthesize filteredEntries = _filteredEntries;
+@synthesize filteredControllers = _filteredControllers;
 @synthesize parentController = _parentController;
 @synthesize textView = _textView;
-@synthesize selectEntryCell = _selectEntryCell;
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self setFilteredEntries:[[NSMutableArray alloc] init]];
+    [self setFilteredControllers:[[NSMutableArray alloc] init]];
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
      
@@ -60,7 +58,7 @@
     [self setNote:nil];
     [self setEntryCell:nil];
     [self setFilter:nil];
-    [self setFilteredEntries:nil];
+    [self setFilteredControllers:nil];
     [self setParentController:nil];
 }
 
@@ -85,20 +83,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self filteredEntries] count];
+    return [[self filteredControllers] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"EntryTableCellBasis";
+    static NSString *cellIdentifier = @"Cell";
     
-    Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
+    UITableViewCell *cell;// = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 
-    EntryTableCellBasis *cell = [BNoteFactory createEntryTableViewCellForEntry:entry andCellIdentifier:cellIdentifier];
+        EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+
+    [controller setParentController:[self parentController]];
+
+    [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+    [[cell contentView] addSubview:[controller view]];
     [LayerFormater setBorderWidth:1 forView:cell];
-    
-    [cell setEntry:entry];
-    [cell setParentController:self];
+//    }
 
     return cell;
 }
@@ -115,14 +120,14 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [[NSNotificationCenter defaultCenter] removeObserver:cell];
         
-        Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]]; 
+        EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
 
-        [[self filteredEntries] removeObject:entry];
+        [[self filteredControllers] removeObject:controller];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
-
         
+        Entry *entry = [controller entry];
         if ([entry isKindOfClass:[Attendants class]]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:AttendantsEntryDeleted object:entry];
         }
@@ -133,13 +138,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Entry *entry = [[self filteredEntries] objectAtIndex:[indexPath row]];
-    return [self heightForEntry:entry];
-}
-
-- (CGFloat)heightForEntry:(Entry *)entry
-{
-    return MAX(100, [BNoteEntryUtils cellHeight:entry inView:[self tableView]]);
+    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+    
+    return [controller height];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,29 +150,32 @@
 
 - (void)reload
 {
-    [[self filteredEntries] removeAllObjects];
+    [[self filteredControllers] removeAllObjects];
     NSEnumerator *entries = [[[self note] entries] objectEnumerator];
+    EntryContentViewController *controller;
     Entry *entry;
     while (entry = [entries nextObject]) {
         if ([[self filter] accept:entry]) {
             if (![entry isKindOfClass:[Attendants class]]) {
-                [[self filteredEntries] addObject:entry];
+                controller = [BNoteFactory createEntryContentViewControllerForEntry:entry];
+                [[self filteredControllers] addObject:controller];
             }
         }
     }
     
     NSArray *attendants = [BNoteEntryUtils attendants:[self note]];
-    
-    NSRange range = NSMakeRange(0, [attendants count]);
-    NSIndexSet *indexes = [[NSIndexSet alloc] initWithIndexesInRange:range];
-    [[self filteredEntries] insertObjects:attendants atIndexes:indexes];
+    if (attendants && [attendants count] > 0) {
+        // there will only be one
+        controller = [BNoteFactory createEntryContentViewControllerForEntry:[attendants objectAtIndex:0]];
+        [[self filteredControllers] insertObject:controller atIndex:0];
+    }
     
     [[self tableView] reloadData];
 }
 
 - (void)selectLastCell
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([[self filteredEntries] count] - 1) inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([[self filteredControllers] count] - 1) inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
 }
@@ -184,16 +188,19 @@
 
 - (void)selectEntry:(Entry *)entry
 {
-    int index = [[self filteredEntries] indexOfObject:entry];
+    int index;
+    
+    NSEnumerator *controllers = [[self filteredControllers] objectEnumerator];
+    EntryContentViewController *controller;
+    while (!index && controller == [controllers nextObject]) {
+        if ([controller entry] == entry) {
+            index = [[self filteredControllers] indexOfObject:controller];
+        }
+    }
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-}
-
-- (UIViewController *)controller
-{
-    return self;
 }
 
 - (void)addQuickWord:(id)sender

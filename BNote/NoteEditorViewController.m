@@ -156,6 +156,8 @@
 
     
     [[self associatedTopicsTableViewController] setNote:note];
+    
+    [[self entriesViewController] setParentController:self];
 }
 
 - (void)dealloc

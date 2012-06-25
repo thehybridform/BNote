@@ -1,82 +1,66 @@
 //
-//  AttendantTableViewCell.m
+//  AttendantsContentViewController.m
 //  BeNote
 //
-//  Created by Young Kristin on 6/14/12.
+//  Created by Young Kristin on 6/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "AttendantTableViewCell.h"
-#import "LayerFormater.h"
+#import "AttendantsContentViewController.h"
 #import "AttendantsViewController.h"
-#import "EntriesViewController.h"
+#import "AttendeeDetailViewController.h"
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
-#import "BNoteEntryUtils.h"
-#import "AttendeeDetailViewController.h"
 
-@interface AttendantTableViewCell()
+@interface AttendantsContentViewController()
 @property (strong, nonatomic) AttendantsViewController *attendantsViewController;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *peoplePicker; 
-@property (strong, nonatomic) Attendant *selectedAttendant;
+@property (assign, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) UIPopoverController *popup;
+
 @end
 
-@implementation AttendantTableViewCell
+@implementation AttendantsContentViewController
 @synthesize attendantsViewController = _attendantsViewController;
 @synthesize actionSheet = _actionSheet;
 @synthesize peoplePicker = _peoplePicker;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
 
-- (void)setup
-{
-    UITapGestureRecognizer *tap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showAttendatsOptions:)];
-    [self addGestureRecognizer:tap];
-
-    [[self textLabel] removeFromSuperview];
-    [[self detailTextLabel] removeFromSuperview];
-    
-    [self handleImageIcon:NO];
-
-    CGRect rect = CGRectMake(100, 5, 200, 90);
-    UIScrollView *view = [[UIScrollView alloc] initWithFrame:rect];
-    
-    [[self contentView] addSubview:view];
-    [view setAutoresizingMask:(UIViewAutoresizingFlexibleRightMargin |
-                               UIViewAutoresizingFlexibleBottomMargin |
-                               UIViewAutoresizingFlexibleWidth)];
-    
-    AttendantsViewController *controller = [[AttendantsViewController alloc] init];
-    [controller setView:view];
-    [controller setAttendants:[self attendants]];
-    [self setAttendantsViewController:controller];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantTableViewCell:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
-
-    [controller update];
-}
-
 - (Attendants *)attendants
 {
     return (Attendants *) [self entry];
 }
 
-- (void)showAttendatsOptions:(UITapGestureRecognizer *)gesture
+- (void)viewDidLoad
 {
-    CGPoint location = [gesture locationInView:self];
+    [super viewDidLoad];
+    
+    [[self mainTextView] removeFromSuperview];
+    [[self detailTextView] removeFromSuperview];
+    
+    AttendantsViewController *controller = [[AttendantsViewController alloc] init];
+    [controller setView:[self scrollView]];
+    [controller setAttendants:[self attendants]];
+    [self setAttendantsViewController:controller];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantsContentViewController:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:[self view]];
     if (location.x < 120) {
         [self handleImageIcon:YES];
-
+        
         if (![self actionSheet]) {
             UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Attendees" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Attendee", @"Create Attendee", nil];
             [self setActionSheet:actionSheet];
-        
+            
             CGRect rect = [[self imageView] bounds];
-            [actionSheet showFromRect:rect inView:self animated:YES];
+            [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
         }
     }
 }
@@ -111,7 +95,7 @@
         [controller setPeoplePickerDelegate:self];
         [controller setModalPresentationStyle:UIModalPresentationPageSheet];
         [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [[self parentController] presentModalViewController:controller animated:YES];
+        [self presentModalViewController:controller animated:YES];
     }
 }
 
@@ -163,11 +147,9 @@
 }
 - (void)finishedContactPicker
 {
-    [self unfocus];
-
     [self setSelectedAttendant:nil];
     [self setPeoplePicker:nil];
-    [[self parentController] dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
     
     [[self attendantsViewController] update];
     [self handleImageIcon:NO];
@@ -178,7 +160,7 @@
     if ([self popup]) {
         [self setPopup:nil];
     }
-
+    
     Attendant *attendant = [BNoteFactory createAttendant:[self attendants]];
     [self setSelectedAttendant:attendant];
     AttendeeDetailViewController *controller = [[AttendeeDetailViewController alloc] initWithAttendant:attendant];
@@ -186,7 +168,7 @@
     
     [popup setDelegate:self];
     [popup presentPopoverFromRect:[[self imageView] frame]
-                           inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                           inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
     [popup setPopoverContentSize:CGSizeMake(367, 171)];
     [self setPopup:popup];
@@ -194,7 +176,7 @@
     [controller focus];
 }
 
-- (void)keyboardDidHideAttendantTableViewCell:(NSNotification *)notification
+- (void)keyboardDidHideAttendantsContentViewController:(NSNotification *)notification
 {
     if ([self popup]) {
         [[self popup] dismissPopoverAnimated:YES];

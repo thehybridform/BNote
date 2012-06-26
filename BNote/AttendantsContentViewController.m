@@ -44,6 +44,8 @@
     [controller setView:[self scrollView]];
     [controller setAttendants:[self attendants]];
     [self setAttendantsViewController:controller];
+    
+    [controller update];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantsContentViewController:)
                                                  name:UIKeyboardDidHideNotification object:nil];

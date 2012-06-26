@@ -57,7 +57,6 @@
 							<int key="IBUIAutocapitalizationType">2</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
-						<int key="IBUIDataDetectorTypes">15</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
 							<double key="pointSize">12</double>
@@ -91,7 +90,6 @@
 							<int key="IBUIAutocapitalizationType">2</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
-						<int key="IBUIDataDetectorTypes">15</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<string key="name">HelveticaNeue-BoldItalic</string>
 							<string key="family">Helvetica Neue</string>

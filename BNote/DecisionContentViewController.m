@@ -26,6 +26,7 @@
     [super viewDidLoad];
     
     [[self scrollView] removeFromSuperview];
+    [[self detailTextView] removeFromSuperview];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture

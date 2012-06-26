@@ -104,6 +104,8 @@ static NSString *markInComplete = @"Mark In Complete";
         } else if (title == markInComplete) {
             [actionItem setCompleted:0]; 
         }
+        
+        [self updateDetail];
     }
     
     [self setActionSheet:nil];
@@ -131,6 +133,7 @@ static NSString *markInComplete = @"Mark In Complete";
     [[self actionItem] setResponsibility:name];
     
     [[self popup] dismissPopoverAnimated:YES];
+    [self updateDetail];
 }
 
 - (void)showDatePicker
@@ -174,14 +177,14 @@ static NSString *markInComplete = @"Mark In Complete";
 
 - (void)updateDetail
 {
-//    ActionItem *actionItem = [self actionItem];
-//    NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
+    ActionItem *actionItem = [self actionItem];
+    NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
     
-//    if ([BNoteStringUtils nilOrEmpty:detail]) {
-//        [[self detail] setText:nil];
-//    } else {
-//        [[self detail] setText:detail];
-//    }
+    if ([BNoteStringUtils nilOrEmpty:detail]) {
+        [[self detailTextView] setText:nil];
+    } else {
+        [[self detailTextView] setText:detail];
+    }
 }
 
 - (NSString *)detail

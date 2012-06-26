@@ -153,7 +153,6 @@
                                                  name:TopicUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
                                                  name:AttendantsEntryDeleted object:nil];
-
     
     [[self associatedTopicsTableViewController] setNote:note];
     

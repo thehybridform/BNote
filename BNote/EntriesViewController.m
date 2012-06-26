@@ -39,6 +39,7 @@
     [[self view] setAutoresizesSubviews:YES];
     
     [self setFilteredControllers:[[NSMutableArray alloc] init]];
+    [self setFilter:[BNoteFilterFactory create:ItdentityType]];
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
      
@@ -106,9 +107,9 @@
     [[cell contentView] setAutoresizesSubviews:YES];
     [[cell contentView] addSubview:[controller view]];
     
-    [LayerFormater setBorderWidth:5 forView:cell];
+    [LayerFormater setBorderWidth:1 forView:cell];
     
-    [LayerFormater roundCornersForView:cell];
+//    [LayerFormater roundCornersForView:cell];
 //    [LayerFormater setBorderColor:[UIColor blueColor] forView:cell];
 //    }
 
@@ -159,12 +160,11 @@
 {
     [[self filteredControllers] removeAllObjects];
     NSEnumerator *entries = [[[self note] entries] objectEnumerator];
-    EntryContentViewController *controller;
     Entry *entry;
     while (entry = [entries nextObject]) {
         if ([[self filter] accept:entry]) {
             if (![entry isKindOfClass:[Attendants class]]) {
-                controller = [BNoteFactory createEntryContentViewControllerForEntry:entry];
+                EntryContentViewController *controller = [BNoteFactory createEntryContentViewControllerForEntry:entry];
                 [[self filteredControllers] addObject:controller];
             }
         }
@@ -173,7 +173,7 @@
     NSArray *attendants = [BNoteEntryUtils attendants:[self note]];
     if (attendants && [attendants count] > 0) {
         // there will only be one
-        controller = [BNoteFactory createEntryContentViewControllerForEntry:[attendants objectAtIndex:0]];
+        EntryContentViewController *controller = [BNoteFactory createEntryContentViewControllerForEntry:[attendants objectAtIndex:0]];
         [[self filteredControllers] insertObject:controller atIndex:0];
     }
     
@@ -182,9 +182,12 @@
 
 - (void)selectLastCell
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([[self filteredControllers] count] - 1) inSection:0];
+    int index = [[self filteredControllers] count] - 1;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+    
+    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:index];
+    [[controller mainTextView] becomeFirstResponder];
 }
 
 - (void)selectFirstCell
@@ -195,19 +198,13 @@
 
 - (void)selectEntry:(Entry *)entry
 {
-    int index;
-    
     NSEnumerator *controllers = [[self filteredControllers] objectEnumerator];
     EntryContentViewController *controller;
-    while (!index && controller == [controllers nextObject]) {
+    while (controller = [controllers nextObject]) {
         if ([controller entry] == entry) {
-            index = [[self filteredControllers] indexOfObject:controller];
+            [[controller mainTextView] becomeFirstResponder];
         }
     }
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
 }
 
 - (void)addQuickWord:(id)sender

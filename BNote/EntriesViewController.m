@@ -36,6 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self view] setAutoresizesSubviews:YES];
     
     [self setFilteredControllers:[[NSMutableArray alloc] init]];
 
@@ -101,8 +102,14 @@
     [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
+    [cell setAutoresizesSubviews:YES];
+    [[cell contentView] setAutoresizesSubviews:YES];
     [[cell contentView] addSubview:[controller view]];
-    [LayerFormater setBorderWidth:1 forView:cell];
+    
+    [LayerFormater setBorderWidth:5 forView:cell];
+    
+    [LayerFormater roundCornersForView:cell];
+//    [LayerFormater setBorderColor:[UIColor blueColor] forView:cell];
 //    }
 
     return cell;
@@ -230,7 +237,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-//    [[self tableView] reloadData];
+    [[self tableView] reloadData];
 }
 
 @end

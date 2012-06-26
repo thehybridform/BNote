@@ -8,6 +8,7 @@
 
 #import "QuestionContentViewController.h"
 #import "BNoteSessionData.h"
+#import "BNoteEntryUtils.h"
 
 @interface QuestionContentViewController()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -85,6 +86,11 @@ static NSString *clearAnswer = @"Clear Answer";
     
     [self setActionSheet:nil];
     [self handleImageIcon:NO];
+}
+
+- (NSString *)detail
+{
+    return [BNoteEntryUtils formatDetailTextForQuestion:[self question]];
 }
 
 - (void)updateDetail

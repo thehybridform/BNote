@@ -20,7 +20,10 @@
 - (UIImageView *)imageView;
 - (UIScrollView *)scrollView;
 - (CGFloat)height;
+- (CGFloat)width;
 
 - (void)handleImageIcon:(BOOL)active;
+
+- (NSString *)detail;
 
 @end

@@ -57,6 +57,7 @@
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
 		184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
 		184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */; };
+		1851A619159984640089EECF /* EntryContectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A618159984640089EECF /* EntryContectView.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -223,6 +224,8 @@
 		184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicManagementViewController.m; sourceTree = "<group>"; };
 		184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicManagementViewController.xib; sourceTree = "<group>"; };
 		184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "BeNote-EULA.rtf"; path = "../BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		1851A617159984640089EECF /* EntryContectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryContectView.h; sourceTree = "<group>"; };
+		1851A618159984640089EECF /* EntryContectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryContectView.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -832,6 +835,8 @@
 				184976CA1597C1FA00F49F5A /* EntryContentViewController.h */,
 				184976CB1597C1FD00F49F5A /* EntryContentViewController.m */,
 				184976CC1597C1FF00F49F5A /* EntryContentViewController.xib */,
+				1851A617159984640089EECF /* EntryContectView.h */,
+				1851A618159984640089EECF /* EntryContectView.m */,
 			);
 			name = "Entry View Cell";
 			sourceTree = "<group>";
@@ -1085,6 +1090,7 @@
 				184976DA159843B400F49F5A /* ActionItemContentViewController.m in Sources */,
 				184976DD159843C900F49F5A /* QuestionContentViewController.m in Sources */,
 				184976E0159843E400F49F5A /* AttendantsContentViewController.m in Sources */,
+				1851A619159984640089EECF /* EntryContectView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

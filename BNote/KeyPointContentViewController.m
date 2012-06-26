@@ -41,6 +41,21 @@ static NSString *removePhoto = @"Remove Photo";
     [super viewDidLoad];
     
     [[self scrollView] removeFromSuperview];
+    [[self detailTextView] removeFromSuperview];
+
+    CGFloat x = 120;
+    CGFloat y = 5;
+    
+    CGFloat height = 100;
+    CGFloat width = [self width];
+    
+    CGRect rect = CGRectMake(x, y, width, height);
+    [[self mainTextView] setFrame:rect];
+    
+    height = [[self mainTextView] contentSize].height;
+    width = [[self mainTextView] contentSize].width;
+    rect = CGRectMake(x, y, width, height);
+    [[self mainTextView] setFrame:rect];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture

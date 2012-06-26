@@ -72,7 +72,27 @@
 
 - (CGFloat)height
 {
-    return [[self mainTextView] contentSize].height + [[self detailTextView] contentSize].height;
+    float height = 0;
+    if (![[self mainTextView] isHidden]) {
+        height += [[self mainTextView] contentSize].height;
+    }
+    
+    if (![[self detailTextView] isHidden]) {
+        height += [[self detailTextView] contentSize].height;
+    }
+    
+    return MAX(100, height);
+}
+
+- (CGFloat)width
+{
+    CGFloat width = 700;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (orientation & (UIDeviceOrientationPortrait | UIDeviceOrientationPortraitUpsideDown)) {
+        width = 470;
+    }
+    
+    return width;
 }
 
 - (void)viewDidLoad
@@ -82,23 +102,40 @@
     [[self view] setBackgroundColor:[UIColor clearColor]];
     [[self mainTextView] setBackgroundColor:[UIColor clearColor]];
     [[self detailTextView] setBackgroundColor:[UIColor clearColor]];
+    [[self scrollView] setBackgroundColor:[UIColor clearColor]];
 
     [self handleImageIcon:NO];
     [[self mainTextView] setText:[[self entry] text]];
+    [[self detailTextView] setText:[self detail]];
+    
+    CGFloat width = [[self view] frame].size.width;
+    CGFloat height = [self height];
+    CGRect rect = CGRectMake(0, 0, width, height);
+    [[self view] setFrame:rect];
     
     QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
     [self setQuickWordsViewController:quick];
     [[self mainTextView] setInputAccessoryView:[quick view]];
     
-    [LayerFormater roundCornersForView:[self mainTextView]];
-    [LayerFormater roundCornersForView:[self detailTextView]];
-    [LayerFormater roundCornersForView:[self scrollView]];
+//    [LayerFormater roundCornersForView:[self mainTextView]];
+//    [LayerFormater setBorderColor:[UIColor redColor] forView:[self mainTextView]];
+//    [LayerFormater roundCornersForView:[self detailTextView]];
+//    [LayerFormater setBorderColor:[UIColor greenColor] forView:[self detailTextView]];
+//    [LayerFormater roundCornersForView:[self scrollView]];
+//    [LayerFormater roundCornersForView:[self view]];
+//    [LayerFormater setBorderColor:[UIColor orangeColor] forView:[self view]];
+//    [LayerFormater setBorderWidth:10 forView:[self view]];
 }
 
 - (void)handleImageIcon:(BOOL)active
 {
     UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:active];
     [[self imageView] setImage:[imageView image]];
+}
+
+- (NSString *)detail
+{
+    return nil;
 }
 
 - (void)viewDidUnload

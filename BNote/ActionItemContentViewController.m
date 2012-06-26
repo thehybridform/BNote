@@ -8,6 +8,7 @@
 
 #import "ActionItemContentViewController.h"
 #import "BNoteSessionData.h"
+#import "BNoteEntryUtils.h"
 
 @interface ActionItemContentViewController()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -181,6 +182,11 @@ static NSString *markInComplete = @"Mark In Complete";
 //    } else {
 //        [[self detail] setText:detail];
 //    }
+}
+
+- (NSString *)detail
+{
+    return [BNoteEntryUtils formatDetailTextForActionItem:[self actionItem]];
 }
 
 - (void)selectedDatePickerViewDone

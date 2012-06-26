@@ -378,7 +378,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [[self entriesViewController] didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    [[self entriesViewController] reload];
 }
 
 

@@ -40,6 +40,8 @@ extern NSString *const NewLine;
 
 extern NSString *const RefetchAllDatabaseData;
 
+extern NSString *const EulaFlag;
+
 @interface BNoteConstants : NSObject
 
 + (UIColor *)appColor1;

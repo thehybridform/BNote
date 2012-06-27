@@ -12,6 +12,7 @@
 #import "BNoteWriter.h"
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
+#import "EluaViewController.h"
 
 @interface AppDelegate()
 
@@ -48,6 +49,19 @@
     self.window.rootViewController = self.splitViewController;
     
     [self.window makeKeyAndVisible];
+    
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *agreedToEula = [defaults objectForKey:EulaFlag];
+    if (!agreedToEula) {
+        EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
+        [controller setEula:YES];
+        [controller setModalInPopover:YES];
+        [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+        [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        
+        [[self splitViewController] presentModalViewController:controller animated:YES];
+    }
     
     return YES;
 }

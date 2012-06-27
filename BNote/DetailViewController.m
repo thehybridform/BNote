@@ -110,6 +110,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                  name:TopicUpdated object:nil];
+    
 }
 
 - (IBAction)createNewNote:(id)sender

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EluaViewController : UIViewController
+@interface EluaViewController : UIViewController <UIScrollViewDelegate>
+
+@property (assign, nonatomic) BOOL eula;
 
 - (id)initWithDefault;
 
 - (IBAction)done:(id)sender;
+- (IBAction)accept:(id)sender;
 
 @end

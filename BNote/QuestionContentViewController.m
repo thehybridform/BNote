@@ -100,7 +100,7 @@ static NSString *clearAnswer = @"Clear Answer";
         } else if (title == clearAnswer) {
             [[self question] setAnswer:nil];
         } else if (title == updateAnswer) {
-            
+            [[self detailTextView] becomeFirstResponder];
         }
     }
     
@@ -128,11 +128,10 @@ static NSString *clearAnswer = @"Clear Answer";
     NSString *answer = [question answer];
     
     if ([BNoteStringUtils nilOrEmpty:answer]) {
-        [view setText:nil];        
+        [view setText:@"Answer: "];        
         [question setAnswer:nil];
     } else {
         [view setText:answer];
-        [LayerFormater roundCornersForView:view to:3];
     }
 }
 

@@ -49,8 +49,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
                                                  name:UITextViewTextDidBeginEditingNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedEditing:)
-                                                 name:UITextViewTextDidEndEditingNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -215,11 +213,6 @@
 - (void)startedEditing:(NSNotification *)notification
 {
     [self setTextView:[notification object]];
-}
-
-- (void)finishedEditing:(NSNotification *)notification
-{
-//    [self setTextView:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

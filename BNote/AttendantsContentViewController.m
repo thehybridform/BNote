@@ -187,4 +187,9 @@
     }
 }
 
+- (void)showDetailText
+{
+    
+}
+
 @end

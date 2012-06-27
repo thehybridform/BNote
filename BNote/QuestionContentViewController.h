@@ -10,4 +10,6 @@
 
 @interface QuestionContentViewController : EntryContentViewController <UIActionSheetDelegate>
 
+- (void)updateDetail;
+
 @end

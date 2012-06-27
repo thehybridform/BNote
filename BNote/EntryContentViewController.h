@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Entry.h"
 
+@class QuickWordsViewController;
+
 @interface EntryContentViewController : UIViewController
 
 @property (assign, nonatomic) UIViewController *parentController;
+@property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
+@property (assign, nonatomic) UITextView *selectedTextView;
 
 - (id)initWithEntry:(Entry *)entry;
 - (Entry *)entry;
@@ -24,6 +28,10 @@
 
 - (void)handleImageIcon:(BOOL)active;
 
+- (void)showMainText;
+- (void)showDetailText;
 - (NSString *)detail;
+
+- (void)startedEditingText:(NSNotification *)notification;
 
 @end

@@ -7,8 +7,8 @@
 //
 
 #import "EntryContentViewController.h"
-#import "LayerFormater.h"
 #import "QuickWordsViewController.h"
+#import "LayerFormater.h"
 #import "BNoteFactory.h"
 
 @interface EntryContentViewController ()
@@ -16,7 +16,6 @@
 @property (strong, nonatomic) IBOutlet UITextView *mainTextView;
 @property (strong, nonatomic) IBOutlet UITextView *detailTextView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 @property (assign, nonatomic) Entry *entry;
 
 @end
@@ -29,6 +28,7 @@
 @synthesize imageView = _imageView;
 @synthesize scrollView = _scrollView;
 @synthesize parentController = _parentController;
+@synthesize selectedTextView = _selectedTextView;
 
 - (id)initWithEntry:(Entry *)entry
 {
@@ -105,17 +105,55 @@
     [[self scrollView] setBackgroundColor:[UIColor clearColor]];
 
     [self handleImageIcon:NO];
-    [[self mainTextView] setText:[[self entry] text]];
-    [[self detailTextView] setText:[self detail]];
-    
+    [self showMainText];
+    [self showDetailText];
+        
     CGFloat width = [[self view] frame].size.width;
     CGFloat height = [self height];
     CGRect rect = CGRectMake(0, 0, width, height);
     [[self view] setFrame:rect];
+
+    if (![[self entry] isKindOfClass:[Attendants class]]) {
+        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
+        [self setQuickWordsViewController:quick];
+        [[self mainTextView] setInputAccessoryView:[quick view]];
+    }
+}
+
+- (void)showMainText
+{
+    [[self mainTextView] setText:[[self entry] text]];
     
-    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
-    [self setQuickWordsViewController:quick];
-    [[self mainTextView] setInputAccessoryView:[quick view]];
+    CGFloat x = 120;
+    CGFloat y = 5;
+    
+    CGFloat height = 100;
+    CGFloat width = [self width];
+    
+    CGRect rect = CGRectMake(x, y, width, height);
+    [[self mainTextView] setFrame:rect];
+    
+    height = [[self mainTextView] contentSize].height;
+    rect = CGRectMake(x, y, width, height);
+    [[self mainTextView] setFrame:rect];
+}
+
+- (void)showDetailText
+{
+    [[self detailTextView] setText:[self detail]];
+    
+    CGFloat x = [[self mainTextView] frame].origin.x;
+    CGFloat y = [[self mainTextView] frame].origin.y + [[self mainTextView] frame].size.height;
+    
+    CGFloat height = 20;
+    CGFloat width = [self width];
+    
+    CGRect rect = CGRectMake(x, y, width, height);
+    [[self detailTextView] setFrame:rect];
+    
+    height = [[self detailTextView] contentSize].height;
+    rect = CGRectMake(x, y, width, height);
+    [[self detailTextView] setFrame:rect];
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -141,14 +179,17 @@
 
 - (void)startedEditingText:(NSNotification *)notification
 {
-    if ([notification object] == [self mainTextView]) {
+    if ([notification object] == [self mainTextView] || [notification object] == [self detailTextView]) {
+        [self handleImageIcon:YES];
+        [self setSelectedTextView:[self mainTextView]];
         [[self quickWordsViewController] selectFirstButton];
     }
 }
 
 - (void)stoppedEditingText:(NSNotification *)notification
 {
-    if ([notification object] == [self mainTextView]) {
+    if ([notification object] == [self mainTextView] || [notification object] == [self detailTextView]) {
+        [self handleImageIcon:NO];
     }
 }
 

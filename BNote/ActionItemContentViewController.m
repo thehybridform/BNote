@@ -27,7 +27,7 @@ static NSString *clearResponsibility = @"Clear Responsibility";
 static NSString *dueDate = @"Due Date";
 static NSString *clearDueDate = @"Clear Due Date";
 static NSString *markComplete = @"Mark Complete";
-static NSString *markInComplete = @"Mark In Complete";
+static NSString *markInComplete = @"Mark Not Complete";
 
 - (ActionItem *)actionItem
 {
@@ -39,6 +39,7 @@ static NSString *markInComplete = @"Mark In Complete";
     [super viewDidLoad];
     
     [[self scrollView] removeFromSuperview];
+    [[self detailTextView] setEditable:NO];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture

@@ -9,14 +9,18 @@
 #import "QuestionContentViewController.h"
 #import "BNoteSessionData.h"
 #import "BNoteEntryUtils.h"
+#import "QuickWordsViewController.h"
+#import "LayerFormater.h"
 
 @interface QuestionContentViewController()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) QuickWordsViewController *answerQuick;
 
 @end
 
 @implementation QuestionContentViewController
 @synthesize actionSheet = _actionSheet;
+@synthesize answerQuick = _answerQuick;
 
 static NSString *answer = @"Answer";
 static NSString *updateAnswer = @"Update Answer";
@@ -32,6 +36,23 @@ static NSString *clearAnswer = @"Clear Answer";
     [super viewDidLoad];
     
     [[self scrollView] removeFromSuperview];
+    
+    QuickWordsViewController *answerQuick = [[QuickWordsViewController alloc] initWithCell:self];
+    [self setAnswerQuick:answerQuick];
+    [[self detailTextView] setInputAccessoryView:[answerQuick view]];
+}
+
+- (void)startedEditingText:(NSNotification *)notification
+{
+    if ([notification object] == [self mainTextView]) {
+        [self handleImageIcon:YES];
+        [self setSelectedTextView:[self mainTextView]];
+        [[self quickWordsViewController] selectFirstButton];
+    } else if ([notification object] == [self detailTextView]) {
+        [self handleImageIcon:YES];
+        [self setSelectedTextView:[self detailTextView]];
+        [[self answerQuick] selectFirstButton];
+    }
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture
@@ -67,7 +88,6 @@ static NSString *clearAnswer = @"Clear Answer";
         
         CGRect rect = [[self imageView] bounds];
         [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-        
     }
 }
 
@@ -76,7 +96,7 @@ static NSString *clearAnswer = @"Clear Answer";
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == answer) {
-            
+            [[self detailTextView] becomeFirstResponder];
         } else if (title == clearAnswer) {
             [[self question] setAnswer:nil];
         } else if (title == updateAnswer) {
@@ -93,10 +113,43 @@ static NSString *clearAnswer = @"Clear Answer";
     return [BNoteEntryUtils formatDetailTextForQuestion:[self question]];
 }
 
+- (void)showDetailText
+{
+    [super showDetailText];
+    
+    [self updateDetail];
+}
+
 - (void)updateDetail
 {
-//    Question *question = (Question *) [self entry];
-//    [[self detail] setText:[question answer]];
+    UITextView *view = [self detailTextView];
+
+    Question *question = (Question *) [self entry];
+    NSString *answer = [question answer];
+    
+    if ([BNoteStringUtils nilOrEmpty:answer]) {
+        [view setText:nil];        
+        [question setAnswer:nil];
+    } else {
+        [view setText:answer];
+        [LayerFormater roundCornersForView:view to:3];
+    }
+}
+
+- (void)updateText:(NSNotification *)notification
+{
+    if ([notification object] == [self mainTextView]) {
+        NSString *text = [[self mainTextView] text];
+        if (![BNoteStringUtils nilOrEmpty:text]) {
+            [[self entry] setText:text];
+        }
+    } else if ([notification object] == [self detailTextView]) {
+        NSString *text = [[self detailTextView] text];
+        if (![BNoteStringUtils nilOrEmpty:text]) {
+            Question *question = [self question];
+            [question setAnswer:text];
+        }
+    }
 }
 
 @end

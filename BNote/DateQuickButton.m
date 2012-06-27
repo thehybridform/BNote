@@ -14,7 +14,7 @@
 
 - (void)execute:(id)sender
 {
-    UITextView *textView = [[self entryContentViewController] mainTextView];
+    UITextView *textView = [[self entryContentViewController] selectedTextView];
     NSRange cursorPosition = [textView selectedRange];
     
     NSMutableString *text = [[NSMutableString alloc] initWithString:[textView text]];

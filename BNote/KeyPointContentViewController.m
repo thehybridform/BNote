@@ -43,19 +43,6 @@ static NSString *removePhoto = @"Remove Photo";
     [[self scrollView] removeFromSuperview];
     [[self detailTextView] removeFromSuperview];
 
-    CGFloat x = 120;
-    CGFloat y = 5;
-    
-    CGFloat height = 100;
-    CGFloat width = [self width];
-    
-    CGRect rect = CGRectMake(x, y, width, height);
-    [[self mainTextView] setFrame:rect];
-    
-    height = [[self mainTextView] contentSize].height;
-    width = [[self mainTextView] contentSize].width;
-    rect = CGRectMake(x, y, width, height);
-    [[self mainTextView] setFrame:rect];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture
@@ -220,6 +207,11 @@ static NSString *removePhoto = @"Remove Photo";
         UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
         [[self imageView] setImage:[imageView image]];
     }
+}
+
+- (void)showDetailText
+{
+    
 }
 
 @end

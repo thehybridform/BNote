@@ -34,4 +34,9 @@
     [[self mainTextView] becomeFirstResponder];
 }
 
+- (void)showDetailText
+{
+    
+}
+
 @end

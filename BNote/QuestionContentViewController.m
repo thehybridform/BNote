@@ -106,6 +106,7 @@ static NSString *clearAnswer = @"Clear Answer";
     
     [self setActionSheet:nil];
     [self handleImageIcon:NO];
+    [self updateDetail];
 }
 
 - (NSString *)detail

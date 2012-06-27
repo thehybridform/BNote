@@ -72,7 +72,9 @@
             NSEnumerator *recipients = [[attendant children] objectEnumerator];
             Attendant *recipient;
             while (recipient = [recipients nextObject]) {
-                [emails addObject:[recipient email]];
+                if ([recipient email]) {
+                    [emails addObject:[recipient email]];
+                }
             }
         }
         

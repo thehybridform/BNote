@@ -58,6 +58,7 @@
 		184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
 		184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */; };
 		1851A619159984640089EECF /* EntryContectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A618159984640089EECF /* EntryContectView.m */; };
+		1851A621159AE7670089EECF /* ContactMailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A620159AE7670089EECF /* ContactMailController.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -226,6 +227,8 @@
 		184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "BeNote-EULA.rtf"; path = "../BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		1851A617159984640089EECF /* EntryContectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryContectView.h; sourceTree = "<group>"; };
 		1851A618159984640089EECF /* EntryContectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryContectView.m; sourceTree = "<group>"; };
+		1851A61F159AE7670089EECF /* ContactMailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactMailController.h; sourceTree = "<group>"; };
+		1851A620159AE7670089EECF /* ContactMailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactMailController.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -776,6 +779,8 @@
 			children = (
 				18AF4ABC15852FA700A54205 /* EmailViewController.h */,
 				18AF4ABD15852FA700A54205 /* EmailViewController.m */,
+				1851A61F159AE7670089EECF /* ContactMailController.h */,
+				1851A620159AE7670089EECF /* ContactMailController.m */,
 			);
 			name = "Email Controller";
 			sourceTree = "<group>";
@@ -1091,6 +1096,7 @@
 				184976DD159843C900F49F5A /* QuestionContentViewController.m in Sources */,
 				184976E0159843E400F49F5A /* AttendantsContentViewController.m in Sources */,
 				1851A619159984640089EECF /* EntryContectView.m in Sources */,
+				1851A621159AE7670089EECF /* ContactMailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

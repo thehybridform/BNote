@@ -8,6 +8,7 @@
 
 #import "InformationViewController.h"
 #import "EluaViewController.h"
+#import "ContactMailController.h"
 
 @interface InformationViewController ()
 @property (strong, nonatomic) NSArray *aboutArray;
@@ -34,7 +35,7 @@
 
 
     NSArray *aboutArray =
-    [NSArray arrayWithObjects:@"Version 1.0", @"A musing of Uobia, Copyright 2012", @"License", @"Contact", nil];
+    [NSArray arrayWithObjects:@"Version 1.0", @"A musing of Uobia, Copyright 2012", @"License", @"Contact Us", nil];
     [self setAboutArray:aboutArray];
     
     NSArray *storageArray =
@@ -121,6 +122,10 @@
             case 2:
                 [self showElua];
                 break;
+
+            case 3:
+                [self showEmail];
+                break;
                 
             default:
                 break;
@@ -131,6 +136,16 @@
 - (void)showElua
 {
     EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
+    [controller setModalInPopover:YES];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    [self presentModalViewController:controller animated:YES];
+}
+
+- (void)showEmail
+{
+    ContactMailController *controller = [[ContactMailController alloc] init];
     [controller setModalInPopover:YES];
     [controller setModalPresentationStyle:UIModalPresentationPageSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];

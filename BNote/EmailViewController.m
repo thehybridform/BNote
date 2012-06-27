@@ -113,6 +113,15 @@
         [alert show];
     }
     
+    if (result == MFMailComposeResultSent) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email Sent"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 

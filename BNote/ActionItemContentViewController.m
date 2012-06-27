@@ -63,7 +63,7 @@ static NSString *markInComplete = @"Mark In Complete";
         
         if ([actionItem responsibility]) {
             [actionSheet addButtonWithTitle:clearResponsibility];
-        } else {
+        } else if ([BNoteEntryUtils containsAttendants:[actionItem note]]) {
             [actionSheet addButtonWithTitle:responsibility];
         }
         

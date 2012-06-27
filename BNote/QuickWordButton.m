@@ -25,7 +25,7 @@
     self = [super init];
     if (self) {
         [self setTitle:name forState:UIControlStateNormal];
-//        [self setFont:[UIFont systemFontOfSize:15]];
+        [self setFont:[UIFont systemFontOfSize:15]];
         
         [LayerFormater roundCornersForView:self];
         

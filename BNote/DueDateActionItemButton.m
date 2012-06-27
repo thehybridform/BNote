@@ -7,7 +7,7 @@
 //
 
 #import "DueDateActionItemButton.h"
-#import "EntriesViewController.h"
+#import "ActionItemContentViewController.h"
 #import "DatePickerViewController.h"
 #import "BNoteWriter.h"
 
@@ -18,7 +18,7 @@
 
 - (void)execute:(id)sender
 {
-    EntryContentViewController *controller = [self entryContentViewController];
+    ActionItemContentViewController *controller = (ActionItemContentViewController *) [self entryContentViewController];
  
     ActionItem *actionItem = (ActionItem *) [controller entry];
     if ([actionItem dueDate]) {
@@ -28,7 +28,7 @@
         [self setTitle:@"   due date   " forState:UIControlStateNormal];
     } else {
         [[controller mainTextView] resignFirstResponder];
-//        [cell showDatePicker];
+        [controller showDatePicker];
     }
 }
 

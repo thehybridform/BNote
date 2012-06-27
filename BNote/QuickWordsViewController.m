@@ -19,8 +19,7 @@
 #import "Attendant.h"
 
 @interface QuickWordsViewController ()
-@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (strong, nonatomic) IBOutlet UIToolbar *attendantToolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *defaultToolbar;
 @property (strong, nonatomic) IBOutlet UIToolbar *decisionToolbar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *detailButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *datesButton;
@@ -33,8 +32,7 @@
 @end
 
 @implementation QuickWordsViewController
-@synthesize toolbar = _toolbar;
-@synthesize attendantToolbar = _attendantToolbar;
+@synthesize defaultToolbar = _defaultToolbar;
 @synthesize decisionToolbar = _decisionToolbar;
 @synthesize detailButton = _detailButton;
 @synthesize datesButton = _datesButton;
@@ -59,10 +57,8 @@ static float spacing = 10;
     [super viewDidLoad];
     
     if ([[[self entryContentController] entry] isKindOfClass:[Decision class]]) {
-        [[self toolbar] setHidden:YES];
-        [[self attendantToolbar] setHidden:YES];
+        [[self defaultToolbar] setHidden:YES];
     } else {
-        [[self attendantToolbar] setHidden:YES];
         [[self decisionToolbar] setHidden:YES];
     }
     
@@ -70,7 +66,6 @@ static float spacing = 10;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:KeyWordsUpdated object:nil];
-    
 }
 
 - (void)viewDidUnload
@@ -81,7 +76,7 @@ static float spacing = 10;
     [self setDatesButton:nil];
     [self setKeyWordsButton:nil];
     [self setScrollView:nil];
-    [self setAttendantToolbar:nil];
+    [self setDetailButton:nil];
     [self setDecisionToolbar:nil];
 }
 
@@ -98,7 +93,7 @@ static float spacing = 10;
 
 - (IBAction)keyWords:(id)sender
 {
-    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryContentViewController:[self entryContentController]] objectEnumerator];
+    NSEnumerator *items = [[QuickWordsFactory buildKeyWordButtionsForEntryContentViewController:[self entryContentController]] objectEnumerator];
     [self buildButtons:items];
 }
 

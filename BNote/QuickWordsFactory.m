@@ -62,7 +62,8 @@
     NSEnumerator *keyWords = [[[BNoteReader instance] allKeyWords] objectEnumerator];
     KeyWord *keyWord;
     while (keyWord = [keyWords nextObject]) {
-        KeyWordButton *button = [[KeyWordButton alloc] initWithName:[keyWord word] andEntryContentViewController:controller];
+        KeyWordButton *button =
+            [[KeyWordButton alloc] initWithName:[keyWord word] andEntryContentViewController:controller];
         [button setKeyWord:keyWord];
         [button setBackgroundColor:[QuickWordsFactory normal]];
         [data addObject:button];

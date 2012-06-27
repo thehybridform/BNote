@@ -12,4 +12,6 @@
 
 @interface ActionItemContentViewController : EntryContentViewController <UIActionSheetDelegate, DatePickerViewControllerListener, UIPopoverControllerDelegate, ResponsibilityTableViewControllerDelegate>
 
+- (void)showDatePicker;
+
 @end

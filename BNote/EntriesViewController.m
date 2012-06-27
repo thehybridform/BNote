@@ -92,11 +92,10 @@
 {
     static NSString *cellIdentifier = @"Cell";
     
-    UITableViewCell *cell;// = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    UITableViewCell *cell =
+        [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 
-        EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
 
     [controller setParentController:[self parentController]];
 
@@ -109,10 +108,6 @@
     
     [LayerFormater setBorderWidth:1 forView:cell];
     
-//    [LayerFormater roundCornersForView:cell];
-//    [LayerFormater setBorderColor:[UIColor blueColor] forView:cell];
-//    }
-
     return cell;
 }
 

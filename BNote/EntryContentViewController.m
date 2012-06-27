@@ -116,15 +116,6 @@
     QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
     [self setQuickWordsViewController:quick];
     [[self mainTextView] setInputAccessoryView:[quick view]];
-    
-//    [LayerFormater roundCornersForView:[self mainTextView]];
-//    [LayerFormater setBorderColor:[UIColor redColor] forView:[self mainTextView]];
-//    [LayerFormater roundCornersForView:[self detailTextView]];
-//    [LayerFormater setBorderColor:[UIColor greenColor] forView:[self detailTextView]];
-//    [LayerFormater roundCornersForView:[self scrollView]];
-//    [LayerFormater roundCornersForView:[self view]];
-//    [LayerFormater setBorderColor:[UIColor orangeColor] forView:[self view]];
-//    [LayerFormater setBorderWidth:10 forView:[self view]];
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -151,6 +142,7 @@
 - (void)startedEditingText:(NSNotification *)notification
 {
     if ([notification object] == [self mainTextView]) {
+        [[self quickWordsViewController] selectFirstButton];
     }
 }
 
@@ -163,6 +155,10 @@
 - (void)updateText:(NSNotification *)notification
 {
     if ([notification object] == [self mainTextView]) {
+        NSString *text = [[self mainTextView] text];
+        if (![BNoteStringUtils nilOrEmpty:text]) {
+            [[self entry] setText:text];
+        }
     }
 }
 

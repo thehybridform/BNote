@@ -39,17 +39,17 @@
     [self setAboutArray:aboutArray];
     
     NSArray *storageArray =
-    [NSArray arrayWithObjects:@"iCloud", nil];
+    [NSArray arrayWithObjects:@"BeNote Google+ Page", nil];
     [self setStorageArray:storageArray];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
 
+    [self setAboutArray:nil];
+    [self setAboutArray:nil];
+}
 
 - (IBAction)done:(id)sender
 {
@@ -75,7 +75,7 @@
     if (section == 0) {
         return @"About";
     } else {
-        return @"Storage";
+        return @"More Information";
     }
 }
 
@@ -91,11 +91,15 @@
     if ([indexPath section] == 0) {
         [[cell textLabel] setText:[[self aboutArray] objectAtIndex:[indexPath row]]];
     } else {
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [[cell textLabel] setText:[[self storageArray] objectAtIndex:[indexPath row]]];
     }
     
-    if ([indexPath row] == 0 || [indexPath row] == 1) {
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if ([indexPath section] == 0) {
+        if ([indexPath row] == 0 || [indexPath row] == 1) {
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        } else {
+            [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+        }
     } else {
         [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     }
@@ -130,6 +134,10 @@
             default:
                 break;
         }
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+        NSURL *url = [NSURL URLWithString:@"http://plus.google.com/113838676367829565073/"];
+        [[UIApplication sharedApplication] openURL:url];
     }
 }
 

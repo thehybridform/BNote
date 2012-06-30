@@ -17,5 +17,7 @@
 - (IBAction)done:(id)sender;
 - (IBAction)selectColor:(UIButton *)button;
 - (IBAction)selectPencil:(UIButton *)button;
+- (IBAction)selectedEraser:(id)sender;
+- (IBAction)reset:(id)sender;
 
 @end

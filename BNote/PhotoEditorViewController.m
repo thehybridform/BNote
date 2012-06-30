@@ -7,12 +7,13 @@
 //
 
 #import "PhotoEditorViewController.h"
+#import "DrawingView.h"
 #import "LayerFormater.h"
 #import "Photo.h"
 
 @interface PhotoEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UIView *drawView;
+@property (strong, nonatomic) IBOutlet DrawingView *drawView;
 @property (strong, nonatomic) IBOutlet UIButton *eraserButton;
 @property (strong, nonatomic) IBOutlet UIButton *smallPencileButton;
 @property (strong, nonatomic) IBOutlet UIButton *mediumPencileButton;
@@ -33,7 +34,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *color13Button;
 @property (assign, nonatomic) UIButton *selectedColorButton;
 @property (assign, nonatomic) UIButton *selectedPencilButton;
-@property (assign, nonatomic) CGFloat pencilWidth;
 
 @end
 
@@ -60,8 +60,11 @@
 @synthesize color13Button = _color13Button;
 @synthesize keyPoint = _keyPoint;
 @synthesize selectedColorButton = _selectedColorButton;
-@synthesize pencilWidth = _pencilWidth;
 @synthesize selectedPencilButton = _selectedPencilButton;
+
+static const CGFloat small = 5;
+static const CGFloat medium = 10;
+static const CGFloat large = 20;
 
 - (id)initDefault
 {
@@ -149,6 +152,8 @@
     if (button == [self color0Button]) {
         [[button layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
     }
+    
+    [[self drawView] setStrokeColor:[button backgroundColor]];
 }
 
 - (IBAction)selectPencil:(UIButton *)button
@@ -158,12 +163,22 @@
     [[[self selectedPencilButton] layer] setBorderWidth:5];
     
     if (button == [self smallPencileButton]) {
-        [self setPencilWidth:5];
+        [[self drawView] setStrokeWidth:small];
     } else if (button == [self mediumPencileButton]) {
-        [self setPencilWidth:10];
+        [[self drawView] setStrokeWidth:medium];
     } else if (button == [self largePencileButton]) {
-        [self setPencilWidth:20];
+        [[self drawView] setStrokeWidth:large];
     }
+}
+
+- (IBAction)selectedEraser:(id)sender
+{
+    [[self drawView] undoLast];
+}
+
+- (IBAction)reset:(id)sender
+{
+    [[self drawView] reset];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

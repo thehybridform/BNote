@@ -65,6 +65,8 @@
 		1851A633159EA5760089EECF /* small-penci.pngl.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A630159EA5760089EECF /* small-penci.pngl.png */; };
 		1851A634159EA5760089EECF /* medium-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A631159EA5760089EECF /* medium-pencil.png */; };
 		1851A635159EA5760089EECF /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
+		1851A638159ECBDE0089EECF /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A637159ECBDE0089EECF /* DrawingView.m */; };
+		1851A63F159EE6420089EECF /* ColorPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A63E159EE6420089EECF /* ColorPath.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -242,6 +244,10 @@
 		1851A630159EA5760089EECF /* small-penci.pngl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-penci.pngl.png"; sourceTree = "<group>"; };
 		1851A631159EA5760089EECF /* medium-pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "medium-pencil.png"; sourceTree = "<group>"; };
 		1851A632159EA5760089EECF /* large-pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "large-pencil.png"; sourceTree = "<group>"; };
+		1851A636159ECBDE0089EECF /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
+		1851A637159ECBDE0089EECF /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
+		1851A63D159EE6420089EECF /* ColorPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPath.h; sourceTree = "<group>"; };
+		1851A63E159EE6420089EECF /* ColorPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPath.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -702,6 +708,10 @@
 				1851A627159E964B0089EECF /* PhotoEditorViewController.h */,
 				1851A628159E964B0089EECF /* PhotoEditorViewController.m */,
 				1851A629159E964B0089EECF /* PhotoEditorViewController.xib */,
+				1851A636159ECBDE0089EECF /* DrawingView.h */,
+				1851A637159ECBDE0089EECF /* DrawingView.m */,
+				1851A63D159EE6420089EECF /* ColorPath.h */,
+				1851A63E159EE6420089EECF /* ColorPath.m */,
 			);
 			name = "Photo Editor";
 			sourceTree = "<group>";
@@ -1131,6 +1141,8 @@
 				1851A619159984640089EECF /* EntryContectView.m in Sources */,
 				1851A621159AE7670089EECF /* ContactMailController.m in Sources */,
 				1851A62A159E964B0089EECF /* PhotoEditorViewController.m in Sources */,
+				1851A638159ECBDE0089EECF /* DrawingView.m in Sources */,
+				1851A63F159EE6420089EECF /* ColorPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -134,7 +134,7 @@ static NSString *editPhoto = @"Edit Photo";
     [controller setDelegate:self];
     [controller setSourceType:UIImagePickerControllerSourceTypeCamera];
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
     [self setImagePickerController:controller];
 
@@ -192,7 +192,7 @@ static NSString *editPhoto = @"Edit Photo";
     UIImage *image = [UIImage imageWithData:[photo original]];
     PhotoViewController *controller = [[PhotoViewController alloc] initWithImage:image];
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         
     [[self parentController] presentModalViewController:controller animated:YES];
 }

@@ -67,6 +67,18 @@
 		1851A635159EA5760089EECF /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
 		1851A638159ECBDE0089EECF /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A637159ECBDE0089EECF /* DrawingView.m */; };
 		1851A63F159EE6420089EECF /* ColorPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A63E159EE6420089EECF /* ColorPath.m */; };
+		1851A668159EF1BD0089EECF /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A667159EF1BD0089EECF /* Decision.m */; };
+		1851A66B159EF1BD0089EECF /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A66A159EF1BD0089EECF /* Attendants.m */; };
+		1851A66E159EF1BD0089EECF /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A66D159EF1BD0089EECF /* Entry.m */; };
+		1851A674159EF1BE0089EECF /* SketchPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A673159EF1BE0089EECF /* SketchPaths.m */; };
+		1851A677159EF1BE0089EECF /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A676159EF1BE0089EECF /* KeyPoint.m */; };
+		1851A67A159EF1BE0089EECF /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A679159EF1BE0089EECF /* Topic.m */; };
+		1851A67D159EF1BE0089EECF /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A67C159EF1BE0089EECF /* Question.m */; };
+		1851A680159EF1BF0089EECF /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A67F159EF1BF0089EECF /* Note.m */; };
+		1851A683159EF1BF0089EECF /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A682159EF1BF0089EECF /* ActionItem.m */; };
+		1851A686159EF1BF0089EECF /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A685159EF1BF0089EECF /* KeyWord.m */; };
+		1851A689159EF1BF0089EECF /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A688159EF1BF0089EECF /* Attendant.m */; };
+		1851A68C159EF20A0089EECF /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A68B159EF20A0089EECF /* Photo.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -106,17 +118,6 @@
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C03E52158DA7E90035AFDA /* AssociatedTopicsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E51158DA7E90035AFDA /* AssociatedTopicsTableViewController.m */; };
-		18C03E56158DACC40035AFDA /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E55158DACC40035AFDA /* Decision.m */; };
-		18C03E59158DACC40035AFDA /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E58158DACC40035AFDA /* Note.m */; };
-		18C03E5C158DACC50035AFDA /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E5B158DACC50035AFDA /* Topic.m */; };
-		18C03E5F158DACC50035AFDA /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E5E158DACC50035AFDA /* Attendant.m */; };
-		18C03E62158DACC50035AFDA /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E61158DACC50035AFDA /* Entry.m */; };
-		18C03E65158DACC60035AFDA /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E64158DACC50035AFDA /* KeyWord.m */; };
-		18C03E68158DACC60035AFDA /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E67158DACC60035AFDA /* Photo.m */; };
-		18C03E6B158DACC60035AFDA /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E6A158DACC60035AFDA /* Question.m */; };
-		18C03E6E158DACC70035AFDA /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E6D158DACC70035AFDA /* ActionItem.m */; };
-		18C03E71158DACC70035AFDA /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E70158DACC70035AFDA /* KeyPoint.m */; };
-		18C03E74158DACC70035AFDA /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E73158DACC70035AFDA /* Attendants.m */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
 		18C2653B15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653A15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m */; };
@@ -248,6 +249,31 @@
 		1851A637159ECBDE0089EECF /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
 		1851A63D159EE6420089EECF /* ColorPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPath.h; sourceTree = "<group>"; };
 		1851A63E159EE6420089EECF /* ColorPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPath.m; sourceTree = "<group>"; };
+		1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 8.xcdatamodel"; sourceTree = "<group>"; };
+		1851A666159EF1BD0089EECF /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
+		1851A667159EF1BD0089EECF /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
+		1851A669159EF1BD0089EECF /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
+		1851A66A159EF1BD0089EECF /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
+		1851A66C159EF1BD0089EECF /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		1851A66D159EF1BD0089EECF /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		1851A672159EF1BE0089EECF /* SketchPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchPaths.h; sourceTree = "<group>"; };
+		1851A673159EF1BE0089EECF /* SketchPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SketchPaths.m; sourceTree = "<group>"; };
+		1851A675159EF1BE0089EECF /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		1851A676159EF1BE0089EECF /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
+		1851A678159EF1BE0089EECF /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		1851A679159EF1BE0089EECF /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		1851A67B159EF1BE0089EECF /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		1851A67C159EF1BE0089EECF /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		1851A67E159EF1BF0089EECF /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		1851A67F159EF1BF0089EECF /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		1851A681159EF1BF0089EECF /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		1851A682159EF1BF0089EECF /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		1851A684159EF1BF0089EECF /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
+		1851A685159EF1BF0089EECF /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
+		1851A687159EF1BF0089EECF /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
+		1851A688159EF1BF0089EECF /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
+		1851A68A159EF20A0089EECF /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		1851A68B159EF20A0089EECF /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -323,28 +349,6 @@
 		18C03E50158DA7E90035AFDA /* AssociatedTopicsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociatedTopicsTableViewController.h; sourceTree = "<group>"; };
 		18C03E51158DA7E90035AFDA /* AssociatedTopicsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedTopicsTableViewController.m; sourceTree = "<group>"; };
 		18C03E53158DAC2D0035AFDA /* BeNote 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 7.xcdatamodel"; sourceTree = "<group>"; };
-		18C03E54158DACC40035AFDA /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
-		18C03E55158DACC40035AFDA /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
-		18C03E57158DACC40035AFDA /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		18C03E58158DACC40035AFDA /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		18C03E5A158DACC50035AFDA /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		18C03E5B158DACC50035AFDA /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
-		18C03E5D158DACC50035AFDA /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
-		18C03E5E158DACC50035AFDA /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
-		18C03E60158DACC50035AFDA /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		18C03E61158DACC50035AFDA /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		18C03E63158DACC50035AFDA /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
-		18C03E64158DACC50035AFDA /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
-		18C03E66158DACC60035AFDA /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		18C03E67158DACC60035AFDA /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		18C03E69158DACC60035AFDA /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		18C03E6A158DACC60035AFDA /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		18C03E6C158DACC60035AFDA /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		18C03E6D158DACC70035AFDA /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
-		18C03E6F158DACC70035AFDA /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
-		18C03E70158DACC70035AFDA /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
-		18C03E72158DACC70035AFDA /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
-		18C03E73158DACC70035AFDA /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
 		18C2653015856907005FA6C5 /* BNoteHtmlRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteHtmlRenderer.h; sourceTree = "<group>"; };
 		18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteHtmlRenderer.m; sourceTree = "<group>"; };
 		18C265341585696E005FA6C5 /* BNotePlainTextRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNotePlainTextRenderer.h; sourceTree = "<group>"; };
@@ -559,28 +563,30 @@
 			isa = PBXGroup;
 			children = (
 				18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */,
-				18C03E54158DACC40035AFDA /* Decision.h */,
-				18C03E55158DACC40035AFDA /* Decision.m */,
-				18C03E57158DACC40035AFDA /* Note.h */,
-				18C03E58158DACC40035AFDA /* Note.m */,
-				18C03E5A158DACC50035AFDA /* Topic.h */,
-				18C03E5B158DACC50035AFDA /* Topic.m */,
-				18C03E5D158DACC50035AFDA /* Attendant.h */,
-				18C03E5E158DACC50035AFDA /* Attendant.m */,
-				18C03E60158DACC50035AFDA /* Entry.h */,
-				18C03E61158DACC50035AFDA /* Entry.m */,
-				18C03E63158DACC50035AFDA /* KeyWord.h */,
-				18C03E64158DACC50035AFDA /* KeyWord.m */,
-				18C03E66158DACC60035AFDA /* Photo.h */,
-				18C03E67158DACC60035AFDA /* Photo.m */,
-				18C03E69158DACC60035AFDA /* Question.h */,
-				18C03E6A158DACC60035AFDA /* Question.m */,
-				18C03E6C158DACC60035AFDA /* ActionItem.h */,
-				18C03E6D158DACC70035AFDA /* ActionItem.m */,
-				18C03E6F158DACC70035AFDA /* KeyPoint.h */,
-				18C03E70158DACC70035AFDA /* KeyPoint.m */,
-				18C03E72158DACC70035AFDA /* Attendants.h */,
-				18C03E73158DACC70035AFDA /* Attendants.m */,
+				1851A68A159EF20A0089EECF /* Photo.h */,
+				1851A68B159EF20A0089EECF /* Photo.m */,
+				1851A687159EF1BF0089EECF /* Attendant.h */,
+				1851A688159EF1BF0089EECF /* Attendant.m */,
+				1851A684159EF1BF0089EECF /* KeyWord.h */,
+				1851A685159EF1BF0089EECF /* KeyWord.m */,
+				1851A681159EF1BF0089EECF /* ActionItem.h */,
+				1851A682159EF1BF0089EECF /* ActionItem.m */,
+				1851A67E159EF1BF0089EECF /* Note.h */,
+				1851A67F159EF1BF0089EECF /* Note.m */,
+				1851A67B159EF1BE0089EECF /* Question.h */,
+				1851A67C159EF1BE0089EECF /* Question.m */,
+				1851A678159EF1BE0089EECF /* Topic.h */,
+				1851A679159EF1BE0089EECF /* Topic.m */,
+				1851A675159EF1BE0089EECF /* KeyPoint.h */,
+				1851A676159EF1BE0089EECF /* KeyPoint.m */,
+				1851A672159EF1BE0089EECF /* SketchPaths.h */,
+				1851A673159EF1BE0089EECF /* SketchPaths.m */,
+				1851A66C159EF1BD0089EECF /* Entry.h */,
+				1851A66D159EF1BD0089EECF /* Entry.m */,
+				1851A669159EF1BD0089EECF /* Attendants.h */,
+				1851A66A159EF1BD0089EECF /* Attendants.m */,
+				1851A666159EF1BD0089EECF /* Decision.h */,
+				1851A667159EF1BD0089EECF /* Decision.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -877,8 +883,8 @@
 				18B235D9158ADF6E009D17D2 /* Attendants */,
 				184976CA1597C1FA00F49F5A /* EntryContentViewController.h */,
 				184976CB1597C1FD00F49F5A /* EntryContentViewController.m */,
-				184976CC1597C1FF00F49F5A /* EntryContentViewController.xib */,
 				1851A617159984640089EECF /* EntryContectView.h */,
+				184976CC1597C1FF00F49F5A /* EntryContentViewController.xib */,
 				1851A618159984640089EECF /* EntryContectView.m */,
 			);
 			name = "Entry View Cell";
@@ -1117,17 +1123,6 @@
 				18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */,
 				1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */,
 				18C03E52158DA7E90035AFDA /* AssociatedTopicsTableViewController.m in Sources */,
-				18C03E56158DACC40035AFDA /* Decision.m in Sources */,
-				18C03E59158DACC40035AFDA /* Note.m in Sources */,
-				18C03E5C158DACC50035AFDA /* Topic.m in Sources */,
-				18C03E5F158DACC50035AFDA /* Attendant.m in Sources */,
-				18C03E62158DACC50035AFDA /* Entry.m in Sources */,
-				18C03E65158DACC60035AFDA /* KeyWord.m in Sources */,
-				18C03E68158DACC60035AFDA /* Photo.m in Sources */,
-				18C03E6B158DACC60035AFDA /* Question.m in Sources */,
-				18C03E6E158DACC70035AFDA /* ActionItem.m in Sources */,
-				18C03E71158DACC70035AFDA /* KeyPoint.m in Sources */,
-				18C03E74158DACC70035AFDA /* Attendants.m in Sources */,
 				184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */,
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
 				18497687159053DA00F49F5A /* InformationViewController.m in Sources */,
@@ -1143,6 +1138,18 @@
 				1851A62A159E964B0089EECF /* PhotoEditorViewController.m in Sources */,
 				1851A638159ECBDE0089EECF /* DrawingView.m in Sources */,
 				1851A63F159EE6420089EECF /* ColorPath.m in Sources */,
+				1851A668159EF1BD0089EECF /* Decision.m in Sources */,
+				1851A66B159EF1BD0089EECF /* Attendants.m in Sources */,
+				1851A66E159EF1BD0089EECF /* Entry.m in Sources */,
+				1851A674159EF1BE0089EECF /* SketchPaths.m in Sources */,
+				1851A677159EF1BE0089EECF /* KeyPoint.m in Sources */,
+				1851A67A159EF1BE0089EECF /* Topic.m in Sources */,
+				1851A67D159EF1BE0089EECF /* Question.m in Sources */,
+				1851A680159EF1BF0089EECF /* Note.m in Sources */,
+				1851A683159EF1BF0089EECF /* ActionItem.m in Sources */,
+				1851A686159EF1BF0089EECF /* KeyWord.m in Sources */,
+				1851A689159EF1BF0089EECF /* Attendant.m in Sources */,
+				1851A68C159EF20A0089EECF /* Photo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,6 +1283,7 @@
 		18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */,
 				18C03E53158DAC2D0035AFDA /* BeNote 7.xcdatamodel */,
 				18C03E2B158DA5910035AFDA /* BeNote 6.xcdatamodel */,
 				18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */,
@@ -1284,7 +1292,7 @@
 				18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */,
 				18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */,
 			);
-			currentVersion = 18C03E53158DAC2D0035AFDA /* BeNote 7.xcdatamodel */;
+			currentVersion = 1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */;
 			path = BeNote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

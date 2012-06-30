@@ -15,7 +15,7 @@
 {
     NoteEditorViewController *noteController = [[NoteEditorViewController alloc] initWithNote:note];
     [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [noteController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
 
     [[controller parentViewController] presentModalViewController:noteController animated:YES];
 }
@@ -24,7 +24,7 @@
 {
     NoteEditorViewController *noteController = [[NoteEditorViewController alloc] initWithNote:[entry note]];
     [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [noteController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
 
     [[controller parentViewController] presentModalViewController:noteController animated:YES];
 

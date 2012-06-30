@@ -2,7 +2,7 @@
 //  Note.h
 //  BeNote
 //
-//  Created by Young Kristin on 6/16/12.
+//  Created by Young Kristin on 6/30/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -18,12 +18,17 @@
 @property (nonatomic) int32_t index;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * subject;
+@property (nonatomic, retain) NSSet *associatedTopics;
 @property (nonatomic, retain) NSOrderedSet *entries;
 @property (nonatomic, retain) Topic *topic;
-@property (nonatomic, retain) NSSet *associatedTopics;
 @end
 
 @interface Note (CoreDataGeneratedAccessors)
+
+- (void)addAssociatedTopicsObject:(Topic *)value;
+- (void)removeAssociatedTopicsObject:(Topic *)value;
+- (void)addAssociatedTopics:(NSSet *)values;
+- (void)removeAssociatedTopics:(NSSet *)values;
 
 - (void)insertObject:(Entry *)value inEntriesAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromEntriesAtIndex:(NSUInteger)idx;
@@ -35,9 +40,4 @@
 - (void)removeEntriesObject:(Entry *)value;
 - (void)addEntries:(NSOrderedSet *)values;
 - (void)removeEntries:(NSOrderedSet *)values;
-- (void)addAssociatedTopicsObject:(Topic *)value;
-- (void)removeAssociatedTopicsObject:(Topic *)value;
-- (void)addAssociatedTopics:(NSSet *)values;
-- (void)removeAssociatedTopics:(NSSet *)values;
-
 @end

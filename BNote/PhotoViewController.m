@@ -39,7 +39,6 @@
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(done:)];
     [[self view] addGestureRecognizer:tap];
-
 }
 
 - (void)viewDidUnload

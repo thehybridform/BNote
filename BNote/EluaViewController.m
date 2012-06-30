@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *normalToobar;
 @property (strong, nonatomic) IBOutlet UIToolbar *eulaToobar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *acceptButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *declineButton;
 
 @end
 
@@ -22,12 +23,13 @@
 @synthesize eulaToobar = _eulaToobar;
 @synthesize eula = _eula;
 @synthesize acceptButton = _acceptButton;
+@synthesize declineButton = _declineButton;
 
 - (id)initWithDefault;
 {
     self = [super initWithNibName:@"EluaViewController" bundle:nil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -46,6 +48,7 @@
     if ([self eula]) {
         [[self normalToobar] setHidden:YES];
         [[self acceptButton] setEnabled:NO];
+        [[self declineButton] setEnabled:NO];
         [[self eulaToobar] setAlpha:0];
     } else {
         [[self eulaToobar] setHidden:YES];
@@ -57,26 +60,44 @@
     [super viewDidUnload];
 
     [self setWebView:nil];
+    [self setNormalToobar:nil];
+    [self setEulaToobar:nil];
+    [self setAcceptButton:nil];
+    [self setDeclineButton:nil];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // 968
 	CGPoint point = [scrollView contentOffset];
     
-    if (point.y > 900) {
+    
+    CGFloat height = 900;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (orientation & (UIDeviceOrientationPortrait | UIDeviceOrientationPortraitUpsideDown)) {
+        height = 650;
+    }
+
+    if (point.y > height) {
         [[self acceptButton] setEnabled:YES];
+        [[self declineButton] setEnabled:YES];
     } else {
         [[self acceptButton] setEnabled:NO];
+        [[self declineButton] setEnabled:NO];
     }
     
-    CGFloat alpha = 1 + (point.y - 980) / 980;
+    CGFloat alpha = 1 + (point.y - height) / height;
     [[self eulaToobar] setAlpha:alpha];
 }
 
 - (IBAction)done:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)decline:(id)sender
+{
+    UIAlertView *anAlert = [[UIAlertView alloc] initWithTitle:@"Action Required" message:@"Please accept the End User License Agreement, or press home to exit." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [anAlert show];
 }
 
 - (IBAction)accept:(id)sender

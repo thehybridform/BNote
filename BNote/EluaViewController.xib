@@ -43,7 +43,7 @@
 						<string key="NSFrame">{{0, 44}, {768, 921}}</string>
 						<reference key="NSSuperview" ref="752127217"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="544347870"/>
+						<reference key="NSNextKeyView" ref="1053061429"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -79,7 +79,7 @@
 							</object>
 						</array>
 					</object>
-					<object class="IBUIToolbar" id="544347870">
+					<object class="IBUIToolbar" id="1053061429">
 						<reference key="NSNextResponder" ref="752127217"/>
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{0, 965}, {768, 44}}</string>
@@ -91,20 +91,26 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIBarStyle">2</int>
 						<array class="NSMutableArray" key="IBUIItems">
-							<object class="IBUIBarButtonItem" id="448325216">
+							<object class="IBUIBarButtonItem" id="997655673">
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<reference key="IBUIToolbar" ref="544347870"/>
+								<reference key="IBUIToolbar" ref="1053061429"/>
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
-							<object class="IBUIBarButtonItem" id="737931465">
+							<object class="IBUIBarButtonItem" id="132635349">
 								<string key="IBUITitle">Accept</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
-								<reference key="IBUIToolbar" ref="544347870"/>
+								<reference key="IBUIToolbar" ref="1053061429"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="28005634">
+							<object class="IBUIBarButtonItem" id="909350140">
+								<string key="IBUITitle">Decline</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<reference key="IBUIToolbar" ref="544347870"/>
+								<int key="IBUIStyle">1</int>
+								<reference key="IBUIToolbar" ref="1053061429"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="234321868">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<reference key="IBUIToolbar" ref="1053061429"/>
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
 						</array>
@@ -155,7 +161,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">eulaToobar</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="544347870"/>
+						<reference key="destination" ref="1053061429"/>
 					</object>
 					<int key="connectionID">33</int>
 				</object>
@@ -163,9 +169,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">acceptButton</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="737931465"/>
+						<reference key="destination" ref="132635349"/>
 					</object>
 					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">declineButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="909350140"/>
+					</object>
+					<int key="connectionID">40</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -178,10 +192,18 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">accept:</string>
-						<reference key="source" ref="737931465"/>
+						<reference key="source" ref="132635349"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">34</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">decline:</string>
+						<reference key="source" ref="909350140"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">39</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -209,7 +231,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="304169316"/>
 							<reference ref="396566269"/>
-							<reference ref="544347870"/>
+							<reference ref="1053061429"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -239,28 +261,34 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="544347870"/>
+						<reference key="object" ref="1053061429"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="448325216"/>
-							<reference ref="737931465"/>
-							<reference ref="28005634"/>
+							<reference ref="997655673"/>
+							<reference ref="132635349"/>
+							<reference ref="234321868"/>
+							<reference ref="909350140"/>
 						</array>
 						<reference key="parent" ref="752127217"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
-						<reference key="object" ref="737931465"/>
-						<reference key="parent" ref="544347870"/>
+						<reference key="object" ref="132635349"/>
+						<reference key="parent" ref="1053061429"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">30</int>
-						<reference key="object" ref="448325216"/>
-						<reference key="parent" ref="544347870"/>
+						<reference key="object" ref="997655673"/>
+						<reference key="parent" ref="1053061429"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">31</int>
-						<reference key="object" ref="28005634"/>
-						<reference key="parent" ref="544347870"/>
+						<reference key="object" ref="234321868"/>
+						<reference key="parent" ref="1053061429"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">37</int>
+						<reference key="object" ref="909350140"/>
+						<reference key="parent" ref="1053061429"/>
 					</object>
 				</array>
 			</object>
@@ -278,12 +306,13 @@
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="37.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">40</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -292,11 +321,16 @@
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="accept:">id</string>
+						<string key="decline:">id</string>
 						<string key="done:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="accept:">
 							<string key="name">accept:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="decline:">
+							<string key="name">decline:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="done:">
@@ -306,6 +340,7 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="acceptButton">UIBarButtonItem</string>
+						<string key="declineButton">UIBarButtonItem</string>
 						<string key="eulaToobar">UIToolbar</string>
 						<string key="normalToobar">UIToolbar</string>
 						<string key="webView">UIWebView</string>
@@ -313,6 +348,10 @@
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="acceptButton">
 							<string key="name">acceptButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="declineButton">
+							<string key="name">declineButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="eulaToobar">

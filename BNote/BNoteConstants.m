@@ -29,6 +29,7 @@ const NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
 const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
 //const NSString *const AllDataUpdated = @"AllDataUpdated";
 const NSString *const TopicUpdated = @"TopicUpdated";
+const NSString *const TopicDeleted = @"TopicDeleted";
 const NSString *const AttendantsEntryDeleted = @"AttendantsEntryDeleted";
 const NSString *const AttendeeDeleted = @"AttendeeDeleted";
 const NSString *const AttendeeUpdated = @"AttendeeUpdated";

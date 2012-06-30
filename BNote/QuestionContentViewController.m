@@ -139,12 +139,12 @@ static NSString *clearAnswer = @"Clear Answer";
 - (void)updateText:(NSNotification *)notification
 {
     if ([notification object] == [self mainTextView]) {
-        NSString *text = [[self mainTextView] text];
+        NSString *text = [BNoteStringUtils trim:[[self mainTextView] text]];
         if (![BNoteStringUtils nilOrEmpty:text]) {
             [[self entry] setText:text];
         }
     } else if ([notification object] == [self detailTextView]) {
-        NSString *text = [[self detailTextView] text];
+        NSString *text = [BNoteStringUtils trim:[[self detailTextView] text]];
         if (![BNoteStringUtils nilOrEmpty:text]) {
             Question *question = [self question];
             [question setAnswer:text];

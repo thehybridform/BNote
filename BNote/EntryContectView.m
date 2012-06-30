@@ -16,12 +16,14 @@ static const float x = 100.0;
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
+    CGFloat height = [self bounds].size.height;
+    
 	CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
     CGContextSetLineWidth(context, 1.0);
 	CGContextMoveToPoint(context, x, 0.0);
-	CGContextAddLineToPoint(context, x, [[self superview] bounds].size.height);
+	CGContextAddLineToPoint(context, x, height);
 	CGContextMoveToPoint(context, x + 2, 0.0);
-	CGContextAddLineToPoint(context, x + 2, [[self superview] bounds].size.height);
+	CGContextAddLineToPoint(context, x + 2, height);
 	CGContextStrokePath(context);
     
 }

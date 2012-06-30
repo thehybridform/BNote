@@ -13,6 +13,7 @@
 #import "BNoteWriter.h"
 #import "BNoteFactory.h"
 #import "PhotoViewController.h"
+#import "PhotoEditorViewController.h"
 
 @interface KeyPointContentViewController()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
@@ -30,6 +31,7 @@ static NSString *choosePhoto = @"Choose Photo";
 static NSString *takePhoto = @"Take Picture";
 static NSString *viewFullScreen = @"View Full Screen";
 static NSString *removePhoto = @"Remove Photo";
+static NSString *editPhoto = @"Edit Photo";
 
 - (KeyPoint *)keyPoint
 {
@@ -66,6 +68,10 @@ static NSString *removePhoto = @"Remove Photo";
         KeyPoint *keyPoint = [self keyPoint];
         
         if ([keyPoint photo]) {
+            [actionSheet addButtonWithTitle:editPhoto];
+        }
+
+        if ([keyPoint photo]) {
             [actionSheet addButtonWithTitle:viewFullScreen];
         }
         
@@ -77,6 +83,7 @@ static NSString *removePhoto = @"Remove Photo";
         }
         
         if ([keyPoint photo]) {
+            [actionSheet addButtonWithTitle:editPhoto];
             NSInteger index = [actionSheet addButtonWithTitle:removePhoto];
             [actionSheet setDestructiveButtonIndex:index];
         }
@@ -98,7 +105,6 @@ static NSString *removePhoto = @"Remove Photo";
     if ([keyPoint photo]) {
         UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
         [[self imageView] setImage:image];
-        
     } else {
         [super handleImageIcon:active];
     }
@@ -162,6 +168,8 @@ static NSString *removePhoto = @"Remove Photo";
             [self showPhoto];
         } else if (title == removePhoto) {
             [self removePhotos];
+        } else if (title == editPhoto) {
+            [self presentPhotoEditor];
         }
     }
     
@@ -207,6 +215,19 @@ static NSString *removePhoto = @"Remove Photo";
         UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
         [[self imageView] setImage:[imageView image]];
     }
+}
+
+- (void)presentPhotoEditor
+{
+    PhotoEditorViewController *controller = [[PhotoEditorViewController alloc] initDefault];
+    [controller setModalInPopover:YES];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    
+    [controller setKeyPoint:[self keyPoint]];
+    
+    [[self parentController] presentModalViewController:controller animated:YES];
+    
 }
 
 - (void)showDetailText

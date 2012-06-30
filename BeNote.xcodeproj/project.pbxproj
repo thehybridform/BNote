@@ -59,6 +59,12 @@
 		184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */; };
 		1851A619159984640089EECF /* EntryContectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A618159984640089EECF /* EntryContectView.m */; };
 		1851A621159AE7670089EECF /* ContactMailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A620159AE7670089EECF /* ContactMailController.m */; };
+		1851A62A159E964B0089EECF /* PhotoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A628159E964B0089EECF /* PhotoEditorViewController.m */; };
+		1851A62B159E964B0089EECF /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1851A629159E964B0089EECF /* PhotoEditorViewController.xib */; };
+		1851A62F159EA40F0089EECF /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A62E159EA40F0089EECF /* eraser.png */; };
+		1851A633159EA5760089EECF /* small-penci.pngl.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A630159EA5760089EECF /* small-penci.pngl.png */; };
+		1851A634159EA5760089EECF /* medium-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A631159EA5760089EECF /* medium-pencil.png */; };
+		1851A635159EA5760089EECF /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -229,6 +235,13 @@
 		1851A618159984640089EECF /* EntryContectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryContectView.m; sourceTree = "<group>"; };
 		1851A61F159AE7670089EECF /* ContactMailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactMailController.h; sourceTree = "<group>"; };
 		1851A620159AE7670089EECF /* ContactMailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactMailController.m; sourceTree = "<group>"; };
+		1851A627159E964B0089EECF /* PhotoEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoEditorViewController.h; sourceTree = "<group>"; };
+		1851A628159E964B0089EECF /* PhotoEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoEditorViewController.m; sourceTree = "<group>"; };
+		1851A629159E964B0089EECF /* PhotoEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoEditorViewController.xib; sourceTree = "<group>"; };
+		1851A62E159EA40F0089EECF /* eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser.png; sourceTree = "<group>"; };
+		1851A630159EA5760089EECF /* small-penci.pngl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-penci.pngl.png"; sourceTree = "<group>"; };
+		1851A631159EA5760089EECF /* medium-pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "medium-pencil.png"; sourceTree = "<group>"; };
+		1851A632159EA5760089EECF /* large-pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "large-pencil.png"; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -434,6 +447,10 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1851A62E159EA40F0089EECF /* eraser.png */,
+				1851A630159EA5760089EECF /* small-penci.pngl.png */,
+				1851A631159EA5760089EECF /* medium-pencil.png */,
+				1851A632159EA5760089EECF /* large-pencil.png */,
 				18A056D8157D7E8F002A4A78 /* Default-Landscape~ipad.png */,
 				18A056D6157D7E7D002A4A78 /* Default-Portrait~ipad.png */,
 				18A056C9157C905D002A4A78 /* bnote-big.png */,
@@ -489,6 +506,7 @@
 		1834D34115634A650065788F /* BNote */ = {
 			isa = PBXGroup;
 			children = (
+				1851A626159E96270089EECF /* Photo Editor */,
 				18497682159053B300F49F5A /* Information Details */,
 				184CEAD0158F225900C67CF5 /* EULA */,
 				18021C1515870B7600C15F3A /* Configuration */,
@@ -676,6 +694,16 @@
 				184CEAD4158F227A00C67CF5 /* EluaViewController.xib */,
 			);
 			name = EULA;
+			sourceTree = "<group>";
+		};
+		1851A626159E96270089EECF /* Photo Editor */ = {
+			isa = PBXGroup;
+			children = (
+				1851A627159E964B0089EECF /* PhotoEditorViewController.h */,
+				1851A628159E964B0089EECF /* PhotoEditorViewController.m */,
+				1851A629159E964B0089EECF /* PhotoEditorViewController.xib */,
+			);
+			name = "Photo Editor";
 			sourceTree = "<group>";
 		};
 		1879F05615746E72003814C2 /* Date Picker */ = {
@@ -999,6 +1027,11 @@
 				18497688159053DA00F49F5A /* InformationViewController.xib in Resources */,
 				184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */,
 				184976CE1597C20100F49F5A /* EntryContentViewController.xib in Resources */,
+				1851A62B159E964B0089EECF /* PhotoEditorViewController.xib in Resources */,
+				1851A62F159EA40F0089EECF /* eraser.png in Resources */,
+				1851A633159EA5760089EECF /* small-penci.pngl.png in Resources */,
+				1851A634159EA5760089EECF /* medium-pencil.png in Resources */,
+				1851A635159EA5760089EECF /* large-pencil.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1130,7 @@
 				184976E0159843E400F49F5A /* AttendantsContentViewController.m in Sources */,
 				1851A619159984640089EECF /* EntryContectView.m in Sources */,
 				1851A621159AE7670089EECF /* ContactMailController.m in Sources */,
+				1851A62A159E964B0089EECF /* PhotoEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,5 +16,6 @@
 
 - (IBAction)done:(id)sender;
 - (IBAction)accept:(id)sender;
+- (IBAction)decline:(id)sender;
 
 @end

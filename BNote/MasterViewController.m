@@ -99,8 +99,6 @@
     [self presentModalViewController:topicEditor animated:YES];
 }
 
-#pragma mark - Table View
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -119,13 +117,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-        [cell setShowsReorderControl:NO];
-        [LayerFormater setBorderWidth:1 forView:cell];
-        
-        [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
-        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     }
+
+    [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+    [cell setShowsReorderControl:NO];
+    [LayerFormater setBorderWidth:1 forView:cell];
+    
+    [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
+    [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
 
     NSString *text = @"   ";
     [[cell textLabel] setText:[text stringByAppendingString:[currentTopic title]]];
@@ -159,7 +158,18 @@
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
+        
+        /*
+        int nextIndex = [indexPath row];
+        if (nextIndex == 0) {
+            nextIndex++;
+        } else {
+            nextIndex--;
+        }
 
+        NSIndexPath *path = [NSIndexPath indexPathForRow:nextIndex-1 inSection:0];
+        [[self tableView] selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+         */
     }
 }
 
@@ -169,7 +179,6 @@
     [[self detailViewController] setTopic:topic];
 }
 
-#pragma mark TopicEditorViewControllerDelegate
 - (void)didFinish:(Topic *)topic
 {
     if (![[self data] containsObject:topic]) {
@@ -181,7 +190,7 @@
     int index = ([[self data] count] - 1);
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-    [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 - (void)didCancel

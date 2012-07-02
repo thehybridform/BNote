@@ -60,6 +60,7 @@ typedef enum {
 + (Photo *)createPhoto:(KeyPoint *)keyPoint;
 + (KeyWord *)createKeyWord:(NSString *)word;
 + (Attendant *)createAttendant:(Attendants *)attendants;
++ (void)addUIBezierPath:(UIBezierPath *)path withColor:(UIColor *)color toPhoto:(Photo *)photo;
 
 + (UIView *)createHighlightSliver:(UIColor *)color;
 + (UIView *)createHighlight:(UIColor *)color;

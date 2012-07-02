@@ -32,11 +32,6 @@
     CGFloat largestSize = (newSize.width > newSize.height) ? newSize.width : newSize.height;
     CGSize imageSize = [image size];
     
-    // Scale the image while mainting the aspect and making sure the 
-    // the scaled image is not smaller then the given new size. In
-    // other words we calculate the aspect ratio using the largest
-    // dimension from the new size and the small dimension from the
-    // actual size.
     CGFloat ratio;
     if (imageSize.width > imageSize.height) {
         ratio = largestSize / imageSize.height;
@@ -49,8 +44,6 @@
     [image drawInRect:rect];
     UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    // Crop the image to the requested new size maintaining
-    // the inner most parts of the image.
     CGFloat offsetX = 0;
     CGFloat offsetY = 0;
     imageSize = [scaledImage size];

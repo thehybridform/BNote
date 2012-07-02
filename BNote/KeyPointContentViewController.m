@@ -83,7 +83,6 @@ static NSString *editPhoto = @"Edit Photo";
         }
         
         if ([keyPoint photo]) {
-            [actionSheet addButtonWithTitle:editPhoto];
             NSInteger index = [actionSheet addButtonWithTitle:removePhoto];
             [actionSheet setDestructiveButtonIndex:index];
         }

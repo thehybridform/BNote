@@ -66,19 +66,6 @@
 		1851A634159EA5760089EECF /* medium-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A631159EA5760089EECF /* medium-pencil.png */; };
 		1851A635159EA5760089EECF /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
 		1851A638159ECBDE0089EECF /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A637159ECBDE0089EECF /* DrawingView.m */; };
-		1851A63F159EE6420089EECF /* ColorPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A63E159EE6420089EECF /* ColorPath.m */; };
-		1851A668159EF1BD0089EECF /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A667159EF1BD0089EECF /* Decision.m */; };
-		1851A66B159EF1BD0089EECF /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A66A159EF1BD0089EECF /* Attendants.m */; };
-		1851A66E159EF1BD0089EECF /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A66D159EF1BD0089EECF /* Entry.m */; };
-		1851A674159EF1BE0089EECF /* SketchPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A673159EF1BE0089EECF /* SketchPaths.m */; };
-		1851A677159EF1BE0089EECF /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A676159EF1BE0089EECF /* KeyPoint.m */; };
-		1851A67A159EF1BE0089EECF /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A679159EF1BE0089EECF /* Topic.m */; };
-		1851A67D159EF1BE0089EECF /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A67C159EF1BE0089EECF /* Question.m */; };
-		1851A680159EF1BF0089EECF /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A67F159EF1BF0089EECF /* Note.m */; };
-		1851A683159EF1BF0089EECF /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A682159EF1BF0089EECF /* ActionItem.m */; };
-		1851A686159EF1BF0089EECF /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A685159EF1BF0089EECF /* KeyWord.m */; };
-		1851A689159EF1BF0089EECF /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A688159EF1BF0089EECF /* Attendant.m */; };
-		1851A68C159EF20A0089EECF /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A68B159EF20A0089EECF /* Photo.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -144,6 +131,18 @@
 		18E9FF5B156DE6A200F22272 /* BNoteSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF5A156DE6A200F22272 /* BNoteSessionData.m */; };
 		18E9FF6A1571835600F22272 /* BNoteAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF691571835600F22272 /* BNoteAnimation.m */; };
 		18E9FF6D15729EFA00F22272 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF6C15729EF900F22272 /* NotesViewController.m */; };
+		18ECE90C15A172AE009E5D0B /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE90B15A172AE009E5D0B /* Topic.m */; };
+		18ECE90F15A172AF009E5D0B /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE90E15A172AF009E5D0B /* KeyWord.m */; };
+		18ECE91215A172AF009E5D0B /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE91115A172AF009E5D0B /* Question.m */; };
+		18ECE91515A172AF009E5D0B /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE91415A172AF009E5D0B /* ActionItem.m */; };
+		18ECE91815A172B0009E5D0B /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE91715A172B0009E5D0B /* Attendants.m */; };
+		18ECE91B15A172B0009E5D0B /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE91A15A172B0009E5D0B /* Decision.m */; };
+		18ECE91E15A172B0009E5D0B /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE91D15A172B0009E5D0B /* KeyPoint.m */; };
+		18ECE92115A172B0009E5D0B /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92015A172B0009E5D0B /* Attendant.m */; };
+		18ECE92415A172B1009E5D0B /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92315A172B1009E5D0B /* Note.m */; };
+		18ECE92715A172B1009E5D0B /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92615A172B1009E5D0B /* SketchPath.m */; };
+		18ECE92A15A172B1009E5D0B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92915A172B1009E5D0B /* Entry.m */; };
+		18ECE92D15A172B1009E5D0B /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92C15A172B1009E5D0B /* Photo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,33 +246,7 @@
 		1851A632159EA5760089EECF /* large-pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "large-pencil.png"; sourceTree = "<group>"; };
 		1851A636159ECBDE0089EECF /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		1851A637159ECBDE0089EECF /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
-		1851A63D159EE6420089EECF /* ColorPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPath.h; sourceTree = "<group>"; };
-		1851A63E159EE6420089EECF /* ColorPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPath.m; sourceTree = "<group>"; };
 		1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 8.xcdatamodel"; sourceTree = "<group>"; };
-		1851A666159EF1BD0089EECF /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
-		1851A667159EF1BD0089EECF /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
-		1851A669159EF1BD0089EECF /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
-		1851A66A159EF1BD0089EECF /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
-		1851A66C159EF1BD0089EECF /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		1851A66D159EF1BD0089EECF /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		1851A672159EF1BE0089EECF /* SketchPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchPaths.h; sourceTree = "<group>"; };
-		1851A673159EF1BE0089EECF /* SketchPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SketchPaths.m; sourceTree = "<group>"; };
-		1851A675159EF1BE0089EECF /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
-		1851A676159EF1BE0089EECF /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
-		1851A678159EF1BE0089EECF /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		1851A679159EF1BE0089EECF /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
-		1851A67B159EF1BE0089EECF /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		1851A67C159EF1BE0089EECF /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		1851A67E159EF1BF0089EECF /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		1851A67F159EF1BF0089EECF /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		1851A681159EF1BF0089EECF /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		1851A682159EF1BF0089EECF /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
-		1851A684159EF1BF0089EECF /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
-		1851A685159EF1BF0089EECF /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
-		1851A687159EF1BF0089EECF /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
-		1851A688159EF1BF0089EECF /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
-		1851A68A159EF20A0089EECF /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		1851A68B159EF20A0089EECF /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -388,6 +361,34 @@
 		18E9FF691571835600F22272 /* BNoteAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteAnimation.m; sourceTree = "<group>"; };
 		18E9FF6B15729EF900F22272 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		18E9FF6C15729EF900F22272 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		18ECE80915A154E4009E5D0B /* BeNote 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 9.xcdatamodel"; sourceTree = "<group>"; };
+		18ECE87D15A15AD4009E5D0B /* BeNote 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 10.xcdatamodel"; sourceTree = "<group>"; };
+		18ECE8E415A15BC3009E5D0B /* BeNote 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 11.xcdatamodel"; sourceTree = "<group>"; };
+		18ECE90915A1726E009E5D0B /* BeNote 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 12.xcdatamodel"; sourceTree = "<group>"; };
+		18ECE90A15A172AE009E5D0B /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		18ECE90B15A172AE009E5D0B /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		18ECE90D15A172AF009E5D0B /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
+		18ECE90E15A172AF009E5D0B /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
+		18ECE91015A172AF009E5D0B /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		18ECE91115A172AF009E5D0B /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		18ECE91315A172AF009E5D0B /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		18ECE91415A172AF009E5D0B /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		18ECE91615A172AF009E5D0B /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
+		18ECE91715A172B0009E5D0B /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
+		18ECE91915A172B0009E5D0B /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
+		18ECE91A15A172B0009E5D0B /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
+		18ECE91C15A172B0009E5D0B /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		18ECE91D15A172B0009E5D0B /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
+		18ECE91F15A172B0009E5D0B /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
+		18ECE92015A172B0009E5D0B /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
+		18ECE92215A172B0009E5D0B /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		18ECE92315A172B1009E5D0B /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		18ECE92515A172B1009E5D0B /* SketchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchPath.h; sourceTree = "<group>"; };
+		18ECE92615A172B1009E5D0B /* SketchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SketchPath.m; sourceTree = "<group>"; };
+		18ECE92815A172B1009E5D0B /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		18ECE92915A172B1009E5D0B /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		18ECE92B15A172B1009E5D0B /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		18ECE92C15A172B1009E5D0B /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -563,30 +564,30 @@
 			isa = PBXGroup;
 			children = (
 				18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */,
-				1851A68A159EF20A0089EECF /* Photo.h */,
-				1851A68B159EF20A0089EECF /* Photo.m */,
-				1851A687159EF1BF0089EECF /* Attendant.h */,
-				1851A688159EF1BF0089EECF /* Attendant.m */,
-				1851A684159EF1BF0089EECF /* KeyWord.h */,
-				1851A685159EF1BF0089EECF /* KeyWord.m */,
-				1851A681159EF1BF0089EECF /* ActionItem.h */,
-				1851A682159EF1BF0089EECF /* ActionItem.m */,
-				1851A67E159EF1BF0089EECF /* Note.h */,
-				1851A67F159EF1BF0089EECF /* Note.m */,
-				1851A67B159EF1BE0089EECF /* Question.h */,
-				1851A67C159EF1BE0089EECF /* Question.m */,
-				1851A678159EF1BE0089EECF /* Topic.h */,
-				1851A679159EF1BE0089EECF /* Topic.m */,
-				1851A675159EF1BE0089EECF /* KeyPoint.h */,
-				1851A676159EF1BE0089EECF /* KeyPoint.m */,
-				1851A672159EF1BE0089EECF /* SketchPaths.h */,
-				1851A673159EF1BE0089EECF /* SketchPaths.m */,
-				1851A66C159EF1BD0089EECF /* Entry.h */,
-				1851A66D159EF1BD0089EECF /* Entry.m */,
-				1851A669159EF1BD0089EECF /* Attendants.h */,
-				1851A66A159EF1BD0089EECF /* Attendants.m */,
-				1851A666159EF1BD0089EECF /* Decision.h */,
-				1851A667159EF1BD0089EECF /* Decision.m */,
+				18ECE92B15A172B1009E5D0B /* Photo.h */,
+				18ECE92C15A172B1009E5D0B /* Photo.m */,
+				18ECE92815A172B1009E5D0B /* Entry.h */,
+				18ECE92915A172B1009E5D0B /* Entry.m */,
+				18ECE92515A172B1009E5D0B /* SketchPath.h */,
+				18ECE92615A172B1009E5D0B /* SketchPath.m */,
+				18ECE92215A172B0009E5D0B /* Note.h */,
+				18ECE92315A172B1009E5D0B /* Note.m */,
+				18ECE91F15A172B0009E5D0B /* Attendant.h */,
+				18ECE92015A172B0009E5D0B /* Attendant.m */,
+				18ECE91C15A172B0009E5D0B /* KeyPoint.h */,
+				18ECE91D15A172B0009E5D0B /* KeyPoint.m */,
+				18ECE91915A172B0009E5D0B /* Decision.h */,
+				18ECE91A15A172B0009E5D0B /* Decision.m */,
+				18ECE91615A172AF009E5D0B /* Attendants.h */,
+				18ECE91715A172B0009E5D0B /* Attendants.m */,
+				18ECE91315A172AF009E5D0B /* ActionItem.h */,
+				18ECE91415A172AF009E5D0B /* ActionItem.m */,
+				18ECE91015A172AF009E5D0B /* Question.h */,
+				18ECE91115A172AF009E5D0B /* Question.m */,
+				18ECE90D15A172AF009E5D0B /* KeyWord.h */,
+				18ECE90E15A172AF009E5D0B /* KeyWord.m */,
+				18ECE90A15A172AE009E5D0B /* Topic.h */,
+				18ECE90B15A172AE009E5D0B /* Topic.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -716,8 +717,6 @@
 				1851A629159E964B0089EECF /* PhotoEditorViewController.xib */,
 				1851A636159ECBDE0089EECF /* DrawingView.h */,
 				1851A637159ECBDE0089EECF /* DrawingView.m */,
-				1851A63D159EE6420089EECF /* ColorPath.h */,
-				1851A63E159EE6420089EECF /* ColorPath.m */,
 			);
 			name = "Photo Editor";
 			sourceTree = "<group>";
@@ -1137,19 +1136,18 @@
 				1851A621159AE7670089EECF /* ContactMailController.m in Sources */,
 				1851A62A159E964B0089EECF /* PhotoEditorViewController.m in Sources */,
 				1851A638159ECBDE0089EECF /* DrawingView.m in Sources */,
-				1851A63F159EE6420089EECF /* ColorPath.m in Sources */,
-				1851A668159EF1BD0089EECF /* Decision.m in Sources */,
-				1851A66B159EF1BD0089EECF /* Attendants.m in Sources */,
-				1851A66E159EF1BD0089EECF /* Entry.m in Sources */,
-				1851A674159EF1BE0089EECF /* SketchPaths.m in Sources */,
-				1851A677159EF1BE0089EECF /* KeyPoint.m in Sources */,
-				1851A67A159EF1BE0089EECF /* Topic.m in Sources */,
-				1851A67D159EF1BE0089EECF /* Question.m in Sources */,
-				1851A680159EF1BF0089EECF /* Note.m in Sources */,
-				1851A683159EF1BF0089EECF /* ActionItem.m in Sources */,
-				1851A686159EF1BF0089EECF /* KeyWord.m in Sources */,
-				1851A689159EF1BF0089EECF /* Attendant.m in Sources */,
-				1851A68C159EF20A0089EECF /* Photo.m in Sources */,
+				18ECE90C15A172AE009E5D0B /* Topic.m in Sources */,
+				18ECE90F15A172AF009E5D0B /* KeyWord.m in Sources */,
+				18ECE91215A172AF009E5D0B /* Question.m in Sources */,
+				18ECE91515A172AF009E5D0B /* ActionItem.m in Sources */,
+				18ECE91815A172B0009E5D0B /* Attendants.m in Sources */,
+				18ECE91B15A172B0009E5D0B /* Decision.m in Sources */,
+				18ECE91E15A172B0009E5D0B /* KeyPoint.m in Sources */,
+				18ECE92115A172B0009E5D0B /* Attendant.m in Sources */,
+				18ECE92415A172B1009E5D0B /* Note.m in Sources */,
+				18ECE92715A172B1009E5D0B /* SketchPath.m in Sources */,
+				18ECE92A15A172B1009E5D0B /* Entry.m in Sources */,
+				18ECE92D15A172B1009E5D0B /* Photo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,6 +1282,10 @@
 			isa = XCVersionGroup;
 			children = (
 				1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */,
+				18ECE8E415A15BC3009E5D0B /* BeNote 11.xcdatamodel */,
+				18ECE90915A1726E009E5D0B /* BeNote 12.xcdatamodel */,
+				18ECE87D15A15AD4009E5D0B /* BeNote 10.xcdatamodel */,
+				18ECE80915A154E4009E5D0B /* BeNote 9.xcdatamodel */,
 				18C03E53158DAC2D0035AFDA /* BeNote 7.xcdatamodel */,
 				18C03E2B158DA5910035AFDA /* BeNote 6.xcdatamodel */,
 				18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */,
@@ -1292,7 +1294,7 @@
 				18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */,
 				18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */,
 			);
-			currentVersion = 1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */;
+			currentVersion = 18ECE90915A1726E009E5D0B /* BeNote 12.xcdatamodel */;
 			path = BeNote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -2,14 +2,14 @@
 //  Photo.h
 //  BeNote
 //
-//  Created by Young Kristin on 6/30/12.
+//  Created by Young Kristin on 7/1/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class KeyPoint, SketchPaths;
+@class KeyPoint, SketchPath;
 
 @interface Photo : NSManagedObject
 
@@ -17,20 +17,21 @@
 @property (nonatomic, retain) NSData * original;
 @property (nonatomic, retain) NSData * small;
 @property (nonatomic, retain) NSData * thumbnail;
+@property (nonatomic, retain) NSData * sketch;
 @property (nonatomic, retain) KeyPoint *keyPoint;
 @property (nonatomic, retain) NSOrderedSet *sketchPaths;
 @end
 
 @interface Photo (CoreDataGeneratedAccessors)
 
-- (void)insertObject:(SketchPaths *)value inSketchPathsAtIndex:(NSUInteger)idx;
+- (void)insertObject:(SketchPath *)value inSketchPathsAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromSketchPathsAtIndex:(NSUInteger)idx;
 - (void)insertSketchPaths:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
 - (void)removeSketchPathsAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInSketchPathsAtIndex:(NSUInteger)idx withObject:(SketchPaths *)value;
+- (void)replaceObjectInSketchPathsAtIndex:(NSUInteger)idx withObject:(SketchPath *)value;
 - (void)replaceSketchPathsAtIndexes:(NSIndexSet *)indexes withSketchPaths:(NSArray *)values;
-- (void)addSketchPathsObject:(SketchPaths *)value;
-- (void)removeSketchPathsObject:(SketchPaths *)value;
+- (void)addSketchPathsObject:(SketchPath *)value;
+- (void)removeSketchPathsObject:(SketchPath *)value;
 - (void)addSketchPaths:(NSOrderedSet *)values;
 - (void)removeSketchPaths:(NSOrderedSet *)values;
 @end

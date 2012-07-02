@@ -124,6 +124,20 @@
     [self update];
 }
 
+- (void)removeSketchPath:(SketchPath *)path
+{
+    [self deleteObject:path];
+}
+
+- (void)removeAllSketchPathFromPhoto:(Photo *)photo
+{
+    for (SketchPath *path in [photo sketchPaths]) {
+        [[self context] deleteObject:path];
+    }
+    
+    [self update];
+}
+
 - (void)updateAttendee:(Attendant *)attendant
 {
     NSString *firstName = [attendant firstName];

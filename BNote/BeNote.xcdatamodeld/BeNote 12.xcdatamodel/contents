@@ -42,15 +42,16 @@
     <entity name="Photo" representedClassName="Photo" syncable="YES">
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="original" optional="YES" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
+        <attribute name="sketch" optional="YES" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
         <attribute name="small" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="keyPoint" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="KeyPoint" inverseName="photo" inverseEntity="KeyPoint" syncable="YES"/>
-        <relationship name="sketchPaths" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SketchPaths" inverseName="photo" inverseEntity="SketchPaths" syncable="YES"/>
+        <relationship name="sketchPaths" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SketchPath" inverseName="photo" inverseEntity="SketchPath" syncable="YES"/>
     </entity>
     <entity name="Question" representedClassName="Question" parentEntity="Entry" syncable="YES">
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="SketchPaths" representedClassName="SketchPaths" syncable="YES">
+    <entity name="SketchPath" representedClassName="SketchPath" syncable="YES">
         <attribute name="bezierPath" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="pathColor" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="photo" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="sketchPaths" inverseEntity="Photo" syncable="YES"/>
@@ -74,9 +75,9 @@
         <element name="KeyPoint" positionX="-135" positionY="102" width="128" height="60"/>
         <element name="KeyWord" positionX="63" positionY="426" width="128" height="60"/>
         <element name="Note" positionX="-119" positionY="270" width="128" height="165"/>
-        <element name="Photo" positionX="-362" positionY="-0" width="128" height="135"/>
+        <element name="Photo" positionX="-362" positionY="-0" width="128" height="150"/>
         <element name="Question" positionX="-81" positionY="-9" width="128" height="60"/>
-        <element name="SketchPaths" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="SketchPath" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Topic" positionX="-344" positionY="210" width="128" height="165"/>
     </elements>
 </model>

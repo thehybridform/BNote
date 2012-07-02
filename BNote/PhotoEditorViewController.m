@@ -79,6 +79,8 @@ static const CGFloat large = 20;
 {
     [super viewDidLoad];
     
+    [[self drawView] setPhoto:[[self keyPoint] photo]];
+    
     UIImage *image = [UIImage imageWithData:[[[self keyPoint] photo] original]];
     [[self imageView] setImage:image];
 
@@ -139,6 +141,16 @@ static const CGFloat large = 20;
 
 - (IBAction)done:(id)sender
 {
+    CGRect rect = [[self drawView] bounds];
+
+    UIGraphicsBeginImageContext(rect.size);
+    [[[self imageView] layer] renderInContext:UIGraphicsGetCurrentContext()];
+    [[[self drawView] layer] renderInContext:UIGraphicsGetCurrentContext()];
+
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+
+    [BNoteEntryUtils updateThumbnailPhotos:image forKeyPoint:[self keyPoint]];
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 

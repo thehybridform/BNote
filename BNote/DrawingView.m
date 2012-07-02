@@ -7,11 +7,12 @@
 //
 
 #import "DrawingView.h"
-#import "ColorPath.h"
+#import "BNoteFactory.h"
+#import "BNoteWriter.h"
+#import "SketchPath.h"
 
 @interface DrawingView()
 @property (strong, nonatomic) UIBezierPath *path;
-@property (strong, nonatomic) NSMutableArray *paths;
 
 @end
 
@@ -19,14 +20,13 @@
 @synthesize path = _path;
 @synthesize strokeColor = _strokeColor;
 @synthesize strokeWidth = _strokeWidth;
-@synthesize paths = _paths;
+@synthesize photo = _photo;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        [self setPaths:[[NSMutableArray alloc] init]];
     }
     
     return self;
@@ -42,11 +42,7 @@
         [[self path] setLineWidth:[self strokeWidth]];
         [[self path] moveToPoint:[touch locationInView:self]];
 
-        ColorPath *path = [[ColorPath alloc] init];
-        [path setColor:[self strokeColor]];
-        [path setPath:[self path]];
-        
-        [[self paths] addObject:path];
+        [BNoteFactory addUIBezierPath:[self path] withColor:[self strokeColor] toPhoto:[self photo]];
     }
 }
 
@@ -62,21 +58,22 @@
 
 - (void)undoLast
 {
-    [[self paths] removeLastObject];
+    SketchPath *path = [[[self photo] sketchPaths] lastObject];
+    [[BNoteWriter instance] removeSketchPath:path];
     [self setNeedsDisplay];
 }
 
 - (void)reset
 {
-    [[self paths] removeAllObjects];
+    [[BNoteWriter instance] removeAllSketchPathFromPhoto:[self photo]];
     [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect
 {
-    for (ColorPath *path in [self paths]) {
-        [[path color] set];
-        [[path path] stroke];
+    for (SketchPath *path in [[self photo] sketchPaths]) {
+        [(UIColor *) [path pathColor] set];
+        [(UIBezierPath *) [path bezierPath] stroke];
     }
 }
 
@@ -86,7 +83,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
+    [[BNoteWriter instance] update];
 }
 
 @end

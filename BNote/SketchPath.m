@@ -1,17 +1,19 @@
 //
-//  KeyPoint.m
+//  SketchPath.m
 //  BeNote
 //
 //  Created by Young Kristin on 7/1/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "KeyPoint.h"
+#import "SketchPath.h"
 #import "Photo.h"
 
 
-@implementation KeyPoint
+@implementation SketchPath
 
+@dynamic bezierPath;
+@dynamic pathColor;
 @dynamic photo;
 
 @end

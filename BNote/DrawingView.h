@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Photo.h"
 
 @interface DrawingView : UIView
 @property (assign, nonatomic) UIColor *strokeColor;
 @property (assign, nonatomic) CGFloat strokeWidth;
+@property (assign, nonatomic) Photo *photo;
 
 - (void)undoLast;
 - (void)reset;

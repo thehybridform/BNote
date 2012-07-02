@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "EmailViewController.h"
 #import "Note.h"
 #import "Entry.h"
@@ -18,6 +19,7 @@
 #import "Photo.h"
 #import "BNoteRenderer.h"
 #import "BNoteRenderFactory.h"
+#import "DrawingView.h"
 
 @interface EmailViewController ()
 
@@ -86,16 +88,22 @@
         int i = 0;
         while (keyPoint = [keyPoints nextObject]) {
             if ([keyPoint photo]) {
-                NSData *photo = [[keyPoint photo] original];
+                Photo *photo = [keyPoint photo];
+                NSData *data;
+                if ([[photo sketchPaths] count]) {
+                    data = [photo sketch];
+                } else {
+                    data = [photo original];
+                }
+                
                 NSString *name = [BNoteStringUtils append:@"KeyPoint-Image-", [NSString stringWithFormat:@"%d", i], @"jpeg", nil];
-                [self addAttachmentData:photo mimeType:@"image/jpeg" fileName:name];
+                [self addAttachmentData:data mimeType:@"image/jpeg" fileName:name];
             }
         }
     }
     
     return self;
 }
-
 
 - (void)viewDidLoad
 {

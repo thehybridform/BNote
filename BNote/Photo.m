@@ -2,13 +2,13 @@
 //  Photo.m
 //  BeNote
 //
-//  Created by Young Kristin on 6/30/12.
+//  Created by Young Kristin on 7/1/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "Photo.h"
 #import "KeyPoint.h"
-#import "SketchPaths.h"
+#import "SketchPath.h"
 
 
 @implementation Photo
@@ -17,6 +17,7 @@
 @dynamic original;
 @dynamic small;
 @dynamic thumbnail;
+@dynamic sketch;
 @dynamic keyPoint;
 @dynamic sketchPaths;
 

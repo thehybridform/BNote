@@ -16,6 +16,7 @@
 #import "KeyPointContentViewController.h"
 #import "DecisionContentViewController.h"
 #import "BNoteSessionData.h"
+#import "SketchPath.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -111,6 +112,7 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     return entry;
 }
 
+
 + (Entry *)createEntry:(NSString *)name forNote:(Note *)note
 {
     Entry *entry = [[BNoteWriter instance] insertNewObjectForEntityForName:name];
@@ -130,6 +132,15 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     [[BNoteWriter instance] update];
 
     return photo;
+}
+
++ (void)addUIBezierPath:(UIBezierPath *)path withColor:(UIColor *)color toPhoto:(Photo *)photo
+{
+    SketchPath *sketch = [[BNoteWriter instance] insertNewObjectForEntityForName:@"SketchPath"];
+    [sketch setPathColor:color];
+    [sketch setBezierPath:path];
+    [sketch setPhoto:photo];
+    
 }
 
 + (KeyWord *)createKeyWord:(NSString *)word

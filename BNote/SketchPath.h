@@ -1,5 +1,5 @@
 //
-//  KeyPoint.h
+//  SketchPath.h
 //  BeNote
 //
 //  Created by Young Kristin on 7/1/12.
@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Entry.h"
 
 @class Photo;
 
-@interface KeyPoint : Entry
+@interface SketchPath : NSManagedObject
 
+@property (nonatomic, retain) id bezierPath;
+@property (nonatomic, retain) id pathColor;
 @property (nonatomic, retain) Photo *photo;
 
 @end

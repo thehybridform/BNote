@@ -14,6 +14,7 @@
 #import "KeyPoint.h"
 #import "KeyWord.h"
 #import "Attendant.h"
+#import "SketchPath.h"
 
 @interface BNoteWriter : NSObject
 
@@ -27,6 +28,8 @@
 - (void)removeEntry:(Entry *)entry;
 
 - (void)removePhoto:(Photo *)photo;
+- (void)removeSketchPath:(SketchPath *)path;
+- (void)removeAllSketchPathFromPhoto:(Photo *)photo;
 - (void)removeKeyWord:(KeyWord *)keyWord;
 
 - (void)removeAttendant:(Attendant *)attendant;

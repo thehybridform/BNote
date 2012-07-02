@@ -84,9 +84,13 @@
     [self addSubview:emailLabel];
     
     if ([attendant image]) {
+        [[self imageView] removeFromSuperview];
+        
         NSData *data = [attendant image];
         UIImage *image = [UIImage imageWithData:data];
-        [[self imageView] setImage:image];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        [imageView setFrame:CGRectMake(32, 3, 35, 35)];
+        [self addSubview:imageView];
     }
 }
 

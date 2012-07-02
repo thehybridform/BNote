@@ -97,6 +97,11 @@ static float spacing = 10;
     [self buildButtons:items];
 }
 
+- (IBAction)done:(id)sender
+{
+    [[[self entryContentController] selectedTextView] resignFirstResponder];
+}
+
 - (void)buildButtons:(NSEnumerator *)items
 {
     [self clearScrollView];

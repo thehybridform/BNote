@@ -15,6 +15,7 @@
 #import "KeyPoint.h"
 #import "Decision.h"
 #import "Attendant.h"
+#import "Attendants.h"
 #import "BNoteFactory.h"
 #import "BNoteStringUtils.h"
 
@@ -56,7 +57,8 @@
     [[self textLabel] setText:[entry text]];
 
     [self handleQuestionType:entry];
-    [self handleActionItemType:entry];    
+    [self handleActionItemType:entry];  
+    [self handleAttendantsType:entry];
     [self handleIcon:entry];
     
     UIColor *color = UIColorFromRGB([[[entry note] topic] color]);
@@ -96,6 +98,29 @@
             [[self detailTextLabel] setText:nil];
         }
     }
+}
+
+- (void)handleAttendantsType:(Entry *)entry
+{
+    if ([entry isKindOfClass:[Attendants class]]) {
+        Attendants *attendants = (Attendants *) entry;
+        
+        NSString * text = @"";
+        
+        Attendant *firstAttendant;
+        if ([[attendants children] count]) {
+            firstAttendant = [[attendants children] firstObject];
+            text = [BNoteStringUtils append:text, [firstAttendant firstName], @" ", [firstAttendant lastName], nil];
+        }
+        
+        for (Attendant *attendant in [attendants children]) {
+            if (attendant != firstAttendant) {
+                text = [BNoteStringUtils append:text, @", ", [attendant firstName], @" ", [attendant lastName], nil];
+            }
+        }
+        
+        [[self textLabel] setText:text];
+    }    
 }
 
 - (void)handleActionItemType:(Entry *)entry

@@ -31,7 +31,7 @@ static NSString *choosePhoto = @"Choose Photo";
 static NSString *takePhoto = @"Take Picture";
 static NSString *viewFullScreen = @"View Full Screen";
 static NSString *removePhoto = @"Remove Photo";
-static NSString *editPhoto = @"Edit Photo";
+static NSString *editPhoto = @"Edit";
 static NSString *makeSketch = @"Sketch";
 
 - (KeyPoint *)keyPoint

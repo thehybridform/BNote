@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSArray *actionItemsUncomplete;
 @property (strong, nonatomic) NSArray *actionItemsComplete;
 @property (strong, nonatomic) NSArray *keyPoints;
+@property (strong, nonatomic) NSArray *attendants;
 @property (strong, nonatomic) NSArray *decisions;
 @property (strong, nonatomic) NSArray *entries;
 @property (assign, nonatomic) BOOL groupEntries;
@@ -44,6 +45,7 @@
 @synthesize sortType = _sortType;
 @synthesize searchText = _searchText;
 @synthesize detailViewController = _detailViewController;
+@synthesize attendants = _attendants;
 
 - (void)viewDidLoad
 {
@@ -89,23 +91,15 @@
 - (NSArray *)filterEntries:(id<BNoteFilter>)filter
 {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    NSEnumerator *notes = [[[self topic] notes] objectEnumerator];
-    Note *note;
-    while (note = [notes nextObject]) {
-        NSEnumerator *entries = [[note entries] objectEnumerator];
-        Entry *entry;
-        while (entry = [entries nextObject]) {
+    for (Note *note in [[self topic] notes]) {
+        for (Entry *entry in [note entries]) {
             if ([filter accept:entry]) {
                 [array addObject:entry];
             }
         }
     }
-    
-    notes = [[[self topic] associatedNotes] objectEnumerator];
-    while (note = [notes nextObject]) {
-        NSEnumerator *entries = [[note entries] objectEnumerator];
-        Entry *entry;
-        while (entry = [entries nextObject]) {
+    for (Note *note in [[self topic] associatedNotes]) {
+        for (Entry *entry in [note entries]) {
             if ([filter accept:entry]) {
                 [array addObject:entry];
             }
@@ -157,6 +151,7 @@
     [self setActionItemsUncomplete:[self filterEntries:[BNoteFilterFactory create:ActionItemsIncompleteType]]];
     [self setDecisions:[self filterEntries:[BNoteFilterFactory create:DecistionType]]];
     [self setKeyPoints:[self filterEntries:[BNoteFilterFactory create:KeyPointType]]];
+    [self setAttendants:[self filterEntries:[BNoteFilterFactory create:AttendantType]]];
     [self setEntries:[self filterEntries:[BNoteFilterFactory create:ItdentityType]]];
     
     [[self tableView] reloadData];
@@ -167,7 +162,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self groupEntries]) {
-        return 6;
+        return 7;
     } else {
         return 1;
     }
@@ -189,22 +184,25 @@
     }
     
     switch (section) {
-        case 0:
-            return [self actionItemsComplete];
+            case 0:
+            return [self attendants];
             break;
         case 1:
-            return [self actionItemsUncomplete];
+            return [self actionItemsComplete];
             break;
         case 2:
-            return [self decisions];
+            return [self actionItemsUncomplete];
             break;
         case 3:
-            return [self keyPoints];
+            return [self decisions];
             break;
         case 4:
-            return [self questionsAnswered];
+            return [self keyPoints];
             break;
         case 5:
+            return [self questionsAnswered];
+            break;
+        case 6:
             return [self questionsUnanswered];
             break;
         default:
@@ -222,21 +220,24 @@
 
     switch (section) {
         case 0:
-            return @"Action Items - Complete";
+            return @"Attendants";
             break;
         case 1:
-            return @"Action Items - Incomplete";
+            return @"Action Items - Complete";
             break;
         case 2:
-            return @"Decisions";
+            return @"Action Items - Incomplete";
             break;
         case 3:
-            return @"Key Points";
+            return @"Decisions";
             break;
         case 4:
-            return @"Questions - Answered";
+            return @"Key Points";
             break;
         case 5:
+            return @"Questions - Answered";
+            break;
+        case 6:
             return @"Questions - Unswered";
             break;
         default:
@@ -250,11 +251,7 @@
 {
     static NSString *cellIdentifier = @"EntrySummaryTableViewCell";
  
-    EntrySummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
-    }
-        
+    EntrySummaryTableViewCell *cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
         
     [cell setEntry:entry];

@@ -22,16 +22,6 @@
 @synthesize strokeWidth = _strokeWidth;
 @synthesize photo = _photo;
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    
-    if (self) {
-    }
-    
-    return self;
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSEnumerator *items = [touches objectEnumerator];
@@ -83,7 +73,6 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [[BNoteWriter instance] update];
 }
 
 @end

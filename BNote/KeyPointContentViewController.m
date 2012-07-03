@@ -188,7 +188,12 @@ static NSString *editPhoto = @"Edit Photo";
     KeyPoint *keyPoint = [self keyPoint];
     Photo *photo = [keyPoint photo];
     
-    UIImage *image = [UIImage imageWithData:[photo original]];
+    UIImage *image;
+    if ([[photo sketchPaths] count]) {
+        image = [UIImage imageWithData:[photo sketch]];
+    } else {
+        image = [UIImage imageWithData:[photo original]];
+    }
     PhotoViewController *controller = [[PhotoViewController alloc] initWithImage:image];
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];

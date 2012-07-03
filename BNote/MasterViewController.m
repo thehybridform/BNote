@@ -17,6 +17,7 @@
 
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 @end
 
@@ -24,6 +25,7 @@
 
 @synthesize detailViewController = _detailViewController;
 @synthesize data = _data;
+@synthesize popup = _popup;
 
 - (void)dealloc 
 {
@@ -92,11 +94,10 @@
 
 - (void)add:(id)sender
 {
-    TopicEditorViewController *topicEditor = [[TopicEditorViewController alloc] initWithDefaultNib];
-    [topicEditor setListener:self];
-    [topicEditor setModalPresentationStyle:UIModalPresentationFormSheet];
-    [topicEditor setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self presentModalViewController:topicEditor animated:YES];
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
+    [controller setListener:self];
+
+    [self showTopicEditor:controller];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -139,14 +140,39 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    TopicEditorViewController *topicEditor = [[TopicEditorViewController alloc] initWithDefaultNib];
-    [topicEditor setListener:self];
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
+    [controller setListener:self];
     
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [topicEditor setTopic:topic];
-    [topicEditor setModalPresentationStyle:UIModalPresentationFormSheet];
-    [topicEditor setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self presentModalViewController:topicEditor animated:YES];
+    [controller setTopic:topic];
+    
+    [self showTopicEditor:controller];
+}
+
+- (void)showTopicEditor:(UIViewController *)controller
+{
+    if ([self popup]) {
+        [[self popup] dismissPopoverAnimated:YES];
+    }
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [self setPopup:popup];
+    [popup setDelegate:self];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = [self view];
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
+
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self setPopup:nil];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -158,18 +184,13 @@
         [[self data] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
-        
-        /*
-        int nextIndex = [indexPath row];
-        if (nextIndex == 0) {
-            nextIndex++;
-        } else {
-            nextIndex--;
-        }
 
-        NSIndexPath *path = [NSIndexPath indexPathForRow:nextIndex-1 inSection:0];
-        [[self tableView] selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-         */
+        int index = [indexPath row] - 1;
+        if (index < 0) {
+            index = 0;
+        }
+        
+        [self selectCell:index];
     }
 }
 
@@ -181,6 +202,8 @@
 
 - (void)didFinish:(Topic *)topic
 {
+    [[self popup] dismissPopoverAnimated:YES];
+
     if (![[self data] containsObject:topic]) {
         [[self data] addObject:topic];
     }
@@ -188,13 +211,19 @@
     [[self tableView] reloadData];
 
     int index = ([[self data] count] - 1);
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    [self selectCell:index];
 }
 
 - (void)didCancel
 {
+    [[self popup] dismissPopoverAnimated:YES];
+}
+
+- (void)selectCell:(int)index
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];    
 }
 
 @end

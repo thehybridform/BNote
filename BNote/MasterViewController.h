@@ -11,7 +11,7 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController <TopicEditorViewControllerListener>
+@interface MasterViewController : UITableViewController <TopicEditorViewControllerListener, UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 

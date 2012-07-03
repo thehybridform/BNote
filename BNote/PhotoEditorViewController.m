@@ -10,10 +10,12 @@
 #import "DrawingView.h"
 #import "LayerFormater.h"
 #import "Photo.h"
+#import "BNoteWriter.h"
 
 @interface PhotoEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet DrawingView *drawView;
+@property (strong, nonatomic) IBOutlet UIView *buttonsView;
 @property (strong, nonatomic) IBOutlet UIButton *eraserButton;
 @property (strong, nonatomic) IBOutlet UIButton *smallPencileButton;
 @property (strong, nonatomic) IBOutlet UIButton *mediumPencileButton;
@@ -61,6 +63,7 @@
 @synthesize keyPoint = _keyPoint;
 @synthesize selectedColorButton = _selectedColorButton;
 @synthesize selectedPencilButton = _selectedPencilButton;
+@synthesize buttonsView = _buttonsView;
 
 static const CGFloat small = 5;
 static const CGFloat medium = 10;
@@ -102,6 +105,7 @@ static const CGFloat large = 20;
     [LayerFormater setBorderWidth:2 forView:[self drawView]];
     
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
+    [[self buttonsView] setBackgroundColor:[BNoteConstants appColor1]];
 }
 
 - (void)setupButton:(UIButton *)button withColor:(UIColor *)color
@@ -137,10 +141,13 @@ static const CGFloat large = 20;
     [self setColor12Button:nil];
     [self setColor13Button:nil];
     [self setSelectedColorButton:nil];
+    [self setButtonsView:nil];
 }
 
 - (IBAction)done:(id)sender
 {
+    [[BNoteWriter instance] update];
+
     CGRect rect = [[self drawView] bounds];
 
     UIGraphicsBeginImageContext(rect.size);
@@ -196,6 +203,52 @@ static const CGFloat large = 20;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        //self.view = portraitView;
+        [self changeTheViewToPortrait:YES andDuration:duration];
+        
+    } else if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        //self.view = landscapeView;
+        [self changeTheViewToPortrait:NO andDuration:duration];
+    }
+}
+
+- (void) changeTheViewToPortrait:(BOOL)portrait andDuration:(NSTimeInterval)duration {
+    
+    if (portrait) {
+        [UIView animateWithDuration:0.2
+                         animations:^{
+                             CGAffineTransform rotate = CGAffineTransformMakeRotation(90.0 * M_PI / 180.0);
+                             CGAffineTransform translate = CGAffineTransformMakeTranslation(300, 400);
+                             CGAffineTransform transform = CGAffineTransformConcat(rotate, translate);
+                             
+                             [[self buttonsView] setTransform:transform];
+                             
+                             rotate = CGAffineTransformMakeRotation(-90.0 * M_PI / 180.0);
+                             [[self smallPencileButton] setTransform:rotate];
+                             [[self mediumPencileButton] setTransform:rotate];
+                             [[self largePencileButton] setTransform:rotate];
+                             [[self eraserButton] setTransform:rotate];
+                         }
+                         completion:^(BOOL finished){ }];
+    } else {   
+        [UIView animateWithDuration:0.2
+                         animations:^{
+                             [[self buttonsView] setTransform:CGAffineTransformIdentity];
+                             [[self smallPencileButton] setTransform:CGAffineTransformIdentity];
+                             [[self mediumPencileButton] setTransform:CGAffineTransformIdentity];
+                             [[self largePencileButton] setTransform:CGAffineTransformIdentity];
+                             [[self eraserButton] setTransform:CGAffineTransformIdentity];
+                         }
+                         completion:^(BOOL finished){ }];
+    }
+    
 }
 
 @end

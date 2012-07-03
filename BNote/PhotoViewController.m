@@ -11,6 +11,7 @@
 @interface PhotoViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (assign, nonatomic) UIImage *image;
 
 @end
@@ -19,6 +20,7 @@
 @synthesize doneButton = _doneButton;
 @synthesize imageView = _imageView;
 @synthesize image = _image;
+@synthesize scrollView = _scrollView;
 
 - (id)initWithImage:(UIImage *)image
 {
@@ -35,10 +37,25 @@
 {
     [super viewDidLoad];
     
-    [[self imageView] setImage:[self image]];
+    UIScrollView *scrollView = [self scrollView];
+    [scrollView setDelegate:self];
+    
+    UIImageView *imageView = [self imageView];
+    [imageView setImage:[self image]];
+
+    CGSize size = CGSizeMake([[self imageView] bounds].size.width, [[self imageView] bounds].size.height);
+    [[self scrollView] setContentSize:size];
+
+    [scrollView setMinimumZoomScale:[scrollView frame].size.width / [imageView frame].size.width];
+    [scrollView setMaximumZoomScale:3.0]; 
+    
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(done:)];
     [[self view] addGestureRecognizer:tap];
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return [self imageView];
 }
 
 - (void)viewDidUnload
@@ -47,6 +64,7 @@
     
     [self setDoneButton:nil];
     [self setImageView:nil];
+    [self setScrollView:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

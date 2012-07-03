@@ -84,7 +84,7 @@
     [self initButton:[self selectedColorButton] withColor:ColorWhite];
 
     if ([self topic]) {
-        [[self selectedColorButton] setBackgroundColor:UIColorFromRGB([[self topic] color])];
+        [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
         [[self nameTextField] setText:[[self topic] title]];
         [[self titleTextLabel] setText:@"Edit Topic"];
         [[self buttonAction] setTitle:@"Update"];        
@@ -130,7 +130,6 @@
     [[BNoteWriter instance] update];
     
     [[self listener] didFinish:topic];
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)cancel:(id)sender
@@ -151,7 +150,7 @@
 {
     UIColor *color = [button backgroundColor];
 
-    [[self selectedColorButton] setBackgroundColor:color];
+    [[self view] setBackgroundColor:color];
 }
 
 - (IBAction)color1Selected:(id)sender

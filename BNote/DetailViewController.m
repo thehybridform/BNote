@@ -69,6 +69,7 @@
     
     [[self tableViewController] setTopic:[self topic]];
     [[self notesViewController] setTopic:[self topic]];
+    [self setTitle:[topic title]];
     
     [self reload:nil];
 }

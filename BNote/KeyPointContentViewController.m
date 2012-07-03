@@ -32,6 +32,7 @@ static NSString *takePhoto = @"Take Picture";
 static NSString *viewFullScreen = @"View Full Screen";
 static NSString *removePhoto = @"Remove Photo";
 static NSString *editPhoto = @"Edit Photo";
+static NSString *makeSketch = @"Sketch";
 
 - (KeyPoint *)keyPoint
 {
@@ -69,6 +70,8 @@ static NSString *editPhoto = @"Edit Photo";
         
         if ([keyPoint photo]) {
             [actionSheet addButtonWithTitle:editPhoto];
+        } else {
+            [actionSheet addButtonWithTitle:makeSketch];
         }
 
         if ([keyPoint photo]) {
@@ -168,6 +171,10 @@ static NSString *editPhoto = @"Edit Photo";
         } else if (title == removePhoto) {
             [self removePhotos];
         } else if (title == editPhoto) {
+            [self presentPhotoEditor];
+        } else if (title == makeSketch) {
+            Photo *photo = [BNoteFactory createPhoto:[self keyPoint]];
+            [photo setOriginal:UIImageJPEGRepresentation([BNoteFactory paper], 0.8)];
             [self presentPhotoEditor];
         }
     }

@@ -29,6 +29,7 @@ NSString *const KEY_POINT_INACTIVE = @"key_point_icon.png";
 NSString *const QUESTION_ACTIVE = @"question_active_icon.png";
 NSString *const QUESTION_INACTIVE = @"question_icon.png";
 NSString *const ATTENDANT = @"attendant_icon.png";
+NSString *const PAPER = @"Squared_paper.jpg";
 
 @implementation BNoteFactory
 
@@ -111,7 +112,6 @@ NSString *const ATTENDANT = @"attendant_icon.png";
     
     return entry;
 }
-
 
 + (Entry *)createEntry:(NSString *)name forNote:(Note *)note
 {
@@ -293,5 +293,11 @@ NSString *const ATTENDANT = @"attendant_icon.png";
         return [[DecisionContentViewController alloc] initWithEntry:entry];
     }
 }
+
++ (UIImage *)paper
+{
+    return [UIImage imageNamed:PAPER];
+}
+
 
 @end

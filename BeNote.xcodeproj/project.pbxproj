@@ -143,6 +143,7 @@
 		18ECE92715A172B1009E5D0B /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92615A172B1009E5D0B /* SketchPath.m */; };
 		18ECE92A15A172B1009E5D0B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92915A172B1009E5D0B /* Entry.m */; };
 		18ECE92D15A172B1009E5D0B /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECE92C15A172B1009E5D0B /* Photo.m */; };
+		18ECE92F15A2A9A6009E5D0B /* Squared_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -389,6 +390,7 @@
 		18ECE92915A172B1009E5D0B /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		18ECE92B15A172B1009E5D0B /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		18ECE92C15A172B1009E5D0B /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Squared_paper.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -458,6 +460,7 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */,
 				1851A62E159EA40F0089EECF /* eraser.png */,
 				1851A630159EA5760089EECF /* small-penci.pngl.png */,
 				1851A631159EA5760089EECF /* medium-pencil.png */,
@@ -1047,6 +1050,7 @@
 				1851A633159EA5760089EECF /* small-penci.pngl.png in Resources */,
 				1851A634159EA5760089EECF /* medium-pencil.png in Resources */,
 				1851A635159EA5760089EECF /* large-pencil.png in Resources */,
+				18ECE92F15A2A9A6009E5D0B /* Squared_paper.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

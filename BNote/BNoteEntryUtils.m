@@ -127,22 +127,7 @@
     [photo setOriginal:originalImageData];
 
     [BNoteEntryUtils updateThumbnailPhotos:image forKeyPoint:keyPoint];
-    
-    /*
-    CGSize thumbnailSize = CGSizeMake(75.0, 75.0);
-    UIImage *thumb = [BNoteImageUtils image:image scaleAndCropToMaxSize:thumbnailSize];
-    NSData *thumbImageData = UIImageJPEGRepresentation(thumb, 0.8);
-    [photo setThumbnail:thumbImageData];
-    
-    CGSize smallSize = CGSizeMake(42.0, 42.0);
-    UIImage *small = [BNoteImageUtils image:image scaleAndCropToMaxSize:smallSize];
-    NSData *smallImageData = UIImageJPEGRepresentation(small, 0.8);
-    [photo setSmall:smallImageData];
-    
-    [[BNoteWriter instance] update];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:KeyPointPhotoUpdated object:keyPoint];
-    */
+
     return image;
 }
 

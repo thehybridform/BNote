@@ -30,6 +30,7 @@ extern NSString *const KEY_POINT_INACTIVE;
 extern NSString *const QUESTION_ACTIVE;
 extern NSString *const QUESTION_INACTIVE;
 extern NSString *const ATTENDANT;
+extern NSString *const PAPER;
 
 typedef enum {
     ActionItemIcon,
@@ -66,6 +67,7 @@ typedef enum {
 + (UIView *)createHighlight:(UIColor *)color;
 + (UIImageView *)createIcon:(BNoteIconType)type;
 + (UIImageView *)createIcon:(Entry *)entry active:(BOOL)active;
++ (UIImage *)paper;
 
 + (EntryContentViewController *)createEntryContentViewControllerForEntry:(Entry *)entry;
 

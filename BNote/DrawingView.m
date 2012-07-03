@@ -24,23 +24,19 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSEnumerator *items = [touches objectEnumerator];
-    UITouch *touch;
-    if (touch = [items nextObject]) {
+    for (UITouch *touch in touches) {
         [self setPath:[UIBezierPath bezierPath]];
         [[self path] setLineCapStyle:kCGLineJoinRound];
         [[self path] setLineWidth:[self strokeWidth]];
         [[self path] moveToPoint:[touch locationInView:self]];
-
+        
         [BNoteFactory addUIBezierPath:[self path] withColor:[self strokeColor] toPhoto:[self photo]];
     }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSEnumerator *items = [touches objectEnumerator];
-    UITouch *touch;
-    if (touch = [items nextObject]) {
+    for (UITouch *touch in touches) {
         [[self path] addLineToPoint:[touch locationInView:self]];
         [self setNeedsDisplay];
     }

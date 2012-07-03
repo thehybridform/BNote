@@ -34,9 +34,7 @@
     
     NotePlainRenderer *noteRenderer = [[NotePlainRenderer alloc] init];
     
-    NSEnumerator *notes = [[topic notes] objectEnumerator];
-    Note *note;
-    while (note = [notes nextObject]) {
+    for (Note *note in [topic notes]) {
         text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
         NSEnumerator *entries = [[note entries] objectEnumerator];
         Entry *entry;
@@ -51,8 +49,7 @@
         }
     }
     
-    notes = [[topic associatedNotes] objectEnumerator];
-    while (note = [notes nextObject]) {
+    for (Note *note in [topic associatedNotes]) {
         text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
         NSEnumerator *entries = [[note entries] objectEnumerator];
         Entry *entry;
@@ -76,9 +73,7 @@
     
     NotePlainRenderer *noteRenderer = [[NotePlainRenderer alloc] init];
     
-    NSEnumerator *notes = [[topic notes] objectEnumerator];
-    Note *note;
-    while (note = [notes nextObject]) {
+    for (Note *note in [topic notes]) {
         if (note == selectedNote) {
             text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
             NSEnumerator *entries = [[note entries] objectEnumerator];

@@ -98,16 +98,13 @@
 - (void)associateTopics:(NSArray *)topics toNote:(Note *)note
 {
     NSSet *currentTopics = [note associatedTopics];
-    NSEnumerator *items = [currentTopics objectEnumerator];
-    Topic *topic;
-    while (topic = [items nextObject]) {
+    for (Topic *topic in currentTopics) {
         if (![topics containsObject:topic]) {
             [self disassociateNote:note toTopic:topic];
         }
     }
     
-    items = [topics objectEnumerator];
-    while (topic = [items nextObject]) {
+    for (Topic *topic in topics) {
         [self associateNote:note toTopic:topic];
     }
 }

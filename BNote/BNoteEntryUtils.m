@@ -20,15 +20,9 @@
 
 + (Attendant *)findMatch:(Attendants *)attendants withFirstName:(NSString *)first andLastName:(NSString *)last
 {
-    NSEnumerator *entries = [[attendants children] objectEnumerator];
-    Entry *entry;
-    
-    while (entry = [entries nextObject]) {
-        if ([entry isKindOfClass:[Attendant class]]) {
-            Attendant *attendant = (Attendant *) entry;
-            if ([[attendant firstName] isEqualToString:first] && [[attendant lastName] isEqualToString:last]) {
-                return attendant;
-            }
+    for (Attendant *attendant in [attendants children]) {
+        if ([[attendant firstName] isEqualToString:first] && [[attendant lastName] isEqualToString:last]) {
+            return attendant;
         }
     }
     
@@ -66,10 +60,7 @@
 
 + (BOOL)containsAttendants:(Note *)note
 {
-    NSEnumerator *entries = [[note entries] objectEnumerator];
-    Entry *entry;
-    
-    while (entry = [entries nextObject]) {
+    for (Entry *entry in [note entries]) {
         if ([entry isKindOfClass:[Attendants class]]) {
             return YES;
         }
@@ -87,12 +78,8 @@
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     
-    NSEnumerator *attendants = [[BNoteEntryUtils attendants:note] objectEnumerator];
-    Attendants *parent;
-    while (parent = [attendants nextObject]) {
-        NSEnumerator *children = [[parent children] objectEnumerator];
-        Attendant *child;
-        while (child = [children nextObject]) {
+    for (Attendants *parent in [BNoteEntryUtils attendants:note]) {
+        for (Attendant *child in [parent children]) {
             [data addObject:child];
         }
     }
@@ -104,10 +91,7 @@
 + (NSMutableArray *)filter:(Note *)note with:(id<BNoteFilter>)filter
 {
     NSMutableArray *filtered = [[NSMutableArray alloc] init];
-    NSEnumerator *entries = [[note entries] objectEnumerator];
-    Entry *entry;
-    
-    while (entry = [entries nextObject]) {
+    for (Entry *entry in [note entries]) {
         if ([filter accept:entry]) {
             [filtered addObject:entry];
         }

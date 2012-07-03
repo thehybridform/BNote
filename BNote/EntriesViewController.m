@@ -152,9 +152,7 @@
 - (void)reload
 {
     [[self filteredControllers] removeAllObjects];
-    NSEnumerator *entries = [[[self note] entries] objectEnumerator];
-    Entry *entry;
-    while (entry = [entries nextObject]) {
+    for (Entry *entry in [[self note] entries]) {
         if ([[self filter] accept:entry]) {
             if (![entry isKindOfClass:[Attendants class]]) {
                 EntryContentViewController *controller = [BNoteFactory createEntryContentViewControllerForEntry:entry];
@@ -191,9 +189,7 @@
 
 - (void)selectEntry:(Entry *)entry
 {
-    NSEnumerator *controllers = [[self filteredControllers] objectEnumerator];
-    EntryContentViewController *controller;
-    while (controller = [controllers nextObject]) {
+    for (EntryContentViewController *controller in [self filteredControllers]) {
         if ([controller entry] == entry) {
             [[controller mainTextView] becomeFirstResponder];
         }

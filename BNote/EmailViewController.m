@@ -31,9 +31,7 @@
 {
     NSMutableArray *allNotes = [[topic notes] mutableCopy];
 
-    NSEnumerator *notes = [[topic associatedNotes] objectEnumerator];
-    Note *note;
-    while (note = [notes nextObject]) {
+    for (Note *note in [topic associatedNotes]) {
         [allNotes addObject:note];
     }
     
@@ -68,12 +66,8 @@
         [self setSubject:subject];
                 
         NSMutableArray *emails = [[NSMutableArray alloc] init];
-        NSEnumerator *attendants = [[self filterEntries:[BNoteFilterFactory create:AttendantType] for:allNotes] objectEnumerator];
-        Attendants *attendant;
-        while (attendant = [attendants nextObject]) {
-            NSEnumerator *recipients = [[attendant children] objectEnumerator];
-            Attendant *recipient;
-            while (recipient = [recipients nextObject]) {
+        for (Attendants *attendant in [self filterEntries:[BNoteFilterFactory create:AttendantType] for:allNotes]) {
+            for (Attendant *recipient in [attendant children]) {
                 if ([recipient email]) {
                     [emails addObject:[recipient email]];
                 }
@@ -82,11 +76,8 @@
         
         [self setToRecipients:emails];
         
-        NSEnumerator *keyPoints = [[self filterEntries:[BNoteFilterFactory create:KeyPointType] for:allNotes] objectEnumerator];
-        
-        KeyPoint *keyPoint;
         int i = 0;
-        while (keyPoint = [keyPoints nextObject]) {
+        for (KeyPoint *keyPoint in [self filterEntries:[BNoteFilterFactory create:KeyPointType] for:allNotes]) {
             if ([keyPoint photo]) {
                 Photo *photo = [keyPoint photo];
                 NSData *data;
@@ -96,7 +87,7 @@
                     data = [photo original];
                 }
                 
-                NSString *name = [BNoteStringUtils append:@"KeyPoint-Image-", [NSString stringWithFormat:@"%d", i], @"jpeg", nil];
+                NSString *name = [BNoteStringUtils append:@"KeyPoint-Image-", [NSString stringWithFormat:@"%d", i++], @"jpeg", nil];
                 [self addAttachmentData:data mimeType:@"image/jpeg" fileName:name];
             }
         }
@@ -136,9 +127,7 @@
 {
     NSMutableArray *filtered = [[NSMutableArray alloc] init];
     
-    NSEnumerator *notes = [allNotes objectEnumerator];
-    Note *note;
-    while (note = [notes nextObject]) {
+    for (Note *note in allNotes) {
         NSEnumerator *entries = [[note entries] objectEnumerator];
         Entry *entry;
         while (entry = [entries nextObject]) {

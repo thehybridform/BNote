@@ -46,22 +46,17 @@
 
 - (void)update
 {
-    NSEnumerator *items = [[[self view] subviews] objectEnumerator];
-    UIView *subView;
-    while (subView = [items nextObject]) {
+    for (UIView *subView in [[self view] subviews]) {
         [subView setHidden:YES];
     }
     
     NSOrderedSet *attendees = [[self attendants] children];
     
-    items = [attendees objectEnumerator];
-    Attendant *attendant;
-    
     float x = 5;
     float width = 100;
     int index = 0;
     
-    while (attendant = [items nextObject]) {
+    for (Attendant *attendant in attendees) {
         AttendantView *view = [[AttendantView alloc] initWithFrame:CGRectMake((width * index++) + x , 3, 100, 80)];
         
         [LayerFormater roundCornersForView:view];

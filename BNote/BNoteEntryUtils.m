@@ -106,7 +106,9 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSData *originalImageData = UIImageJPEGRepresentation(image, 0.8);
-    
+
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil , nil);
+
     Photo *photo = [BNoteFactory createPhoto:keyPoint];
     [photo setOriginal:originalImageData];
 

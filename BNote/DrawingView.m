@@ -10,9 +10,12 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "SketchPath.h"
+#import "PhotoSketchPath.h"
 
 @interface DrawingView()
 @property (strong, nonatomic) UIBezierPath *path;
+@property (strong, nonatomic) NSMutableArray *redoArray;
+@property (strong, nonatomic) NSMutableArray *resetArray;
 
 @end
 
@@ -21,6 +24,19 @@
 @synthesize strokeColor = _strokeColor;
 @synthesize strokeWidth = _strokeWidth;
 @synthesize photo = _photo;
+@synthesize redoArray = _redoArray;
+@synthesize resetArray = _resetArray;
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [self setRedoArray:[[NSMutableArray alloc] init]];
+    }
+    
+    return self;
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -44,13 +60,49 @@
 
 - (void)undoLast
 {
-    SketchPath *path = [[[self photo] sketchPaths] lastObject];
-    [[BNoteWriter instance] removeSketchPath:path];
+    if ([self resetArray]) {
+        for (PhotoSketchPath *path in [self resetArray]) {
+            [BNoteFactory addUIBezierPath:[path bezierPath] withColor:[path pathColor] toPhoto:[self photo]];
+        }
+        [self setResetArray:nil];
+    } else {
+        SketchPath *path = [[[self photo] sketchPaths] lastObject];
+    
+        PhotoSketchPath *p = [[PhotoSketchPath alloc] init];
+        [p setBezierPath:[path bezierPath]];
+        [p setPathColor:[path pathColor]];
+    
+        [[self redoArray] addObject:p];
+    
+        [[BNoteWriter instance] removeSketchPath:path];
+    }
+    
     [self setNeedsDisplay];
+}
+
+- (void)redoLast
+{
+    if ([[self redoArray] count]) {
+        PhotoSketchPath *path = [[self redoArray] lastObject];
+        [[self redoArray] removeLastObject];
+        
+        [BNoteFactory addUIBezierPath:[path bezierPath] withColor:[path pathColor] toPhoto:[self photo]];
+        [self setNeedsDisplay];
+    }
 }
 
 - (void)reset
 {
+    [self setResetArray:[[NSMutableArray alloc] init]];
+
+    for (SketchPath *path in [[self photo] sketchPaths]) {
+        PhotoSketchPath *p = [[PhotoSketchPath alloc] init];
+        [p setBezierPath:[path bezierPath]];
+        [p setPathColor:[path pathColor]];
+        
+        [[self resetArray] addObject:p];
+    }
+    
     [[BNoteWriter instance] removeAllSketchPathFromPhoto:[self photo]];
     [self setNeedsDisplay];
 }
@@ -69,6 +121,8 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self setRedoArray:[[NSMutableArray alloc] init]];
 }
 
 @end
+

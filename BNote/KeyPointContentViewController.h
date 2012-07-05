@@ -11,3 +11,4 @@
 @interface KeyPointContentViewController : EntryContentViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @end
+

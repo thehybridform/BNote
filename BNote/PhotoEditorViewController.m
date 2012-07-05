@@ -16,7 +16,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet DrawingView *drawView;
 @property (strong, nonatomic) IBOutlet UIView *buttonsView;
-@property (strong, nonatomic) IBOutlet UIButton *eraserButton;
+@property (strong, nonatomic) IBOutlet UIView *actionView;
+@property (strong, nonatomic) IBOutlet UIButton *undoButton;
+@property (strong, nonatomic) IBOutlet UIButton *redoButton;
 @property (strong, nonatomic) IBOutlet UIButton *smallPencileButton;
 @property (strong, nonatomic) IBOutlet UIButton *mediumPencileButton;
 @property (strong, nonatomic) IBOutlet UIButton *largePencileButton;
@@ -42,7 +44,8 @@
 @implementation PhotoEditorViewController
 @synthesize imageView = _imageView;
 @synthesize drawView = _drawView;
-@synthesize eraserButton = _eraserButton;
+@synthesize undoButton = _undoButton;
+@synthesize redoButton = _redoButton;
 @synthesize smallPencileButton = _smallPencileButton;
 @synthesize mediumPencileButton = _mediumPencileButton;
 @synthesize largePencileButton = _largePencileButton;
@@ -64,6 +67,7 @@
 @synthesize selectedColorButton = _selectedColorButton;
 @synthesize selectedPencilButton = _selectedPencilButton;
 @synthesize buttonsView = _buttonsView;
+@synthesize actionView = _actionView;
 
 static const CGFloat small = 5;
 static const CGFloat medium = 10;
@@ -106,6 +110,10 @@ static const CGFloat large = 20;
     
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
     [[self buttonsView] setBackgroundColor:[BNoteConstants appColor1]];
+    [[self actionView] setBackgroundColor:[BNoteConstants appColor1]];
+ 
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    [self changeTheViewToPortrait:UIInterfaceOrientationIsPortrait(orientation) andDuration:0.3];
 }
 
 - (void)setupButton:(UIButton *)button withColor:(UIColor *)color
@@ -122,7 +130,8 @@ static const CGFloat large = 20;
 
     [self setImageView:nil];
     [self setDrawView:nil];
-    [self setEraserButton:nil];
+    [self setUndoButton:nil];
+    [self setRedoButton:nil];
     [self setSmallPencileButton:nil];
     [self setMediumPencileButton:nil];
     [self setLargePencileButton:nil];
@@ -142,6 +151,7 @@ static const CGFloat large = 20;
     [self setColor13Button:nil];
     [self setSelectedColorButton:nil];
     [self setButtonsView:nil];
+    [self setActionView:nil];
 }
 
 - (IBAction)done:(id)sender
@@ -190,9 +200,14 @@ static const CGFloat large = 20;
     }
 }
 
-- (IBAction)selectedEraser:(id)sender
+- (IBAction)undo:(id)sender
 {
     [[self drawView] undoLast];
+}
+
+- (IBAction)redo:(id)sender
+{
+    [[self drawView] redoLast];
 }
 
 - (IBAction)reset:(id)sender
@@ -219,10 +234,10 @@ static const CGFloat large = 20;
     }
 }
 
-- (void) changeTheViewToPortrait:(BOOL)portrait andDuration:(NSTimeInterval)duration {
-    
+- (void)changeTheViewToPortrait:(BOOL)portrait andDuration:(NSTimeInterval)duration
+{
     if (portrait) {
-        [UIView animateWithDuration:0.2
+        [UIView animateWithDuration:duration
                          animations:^{
                              CGAffineTransform rotate = CGAffineTransformMakeRotation(90.0 * M_PI / 180.0);
                              CGAffineTransform translate = CGAffineTransformMakeTranslation(300, 400);
@@ -230,25 +245,21 @@ static const CGFloat large = 20;
                              
                              [[self buttonsView] setTransform:transform];
                              
+                             translate = CGAffineTransformMakeTranslation(0, 25);
                              rotate = CGAffineTransformMakeRotation(-90.0 * M_PI / 180.0);
-                             [[self smallPencileButton] setTransform:rotate];
-                             [[self mediumPencileButton] setTransform:rotate];
-                             [[self largePencileButton] setTransform:rotate];
-                             [[self eraserButton] setTransform:rotate];
+                             transform = CGAffineTransformConcat(rotate, translate);
+                             [[self actionView] setTransform:transform];
+                             
                          }
                          completion:^(BOOL finished){ }];
     } else {   
-        [UIView animateWithDuration:0.2
+        [UIView animateWithDuration:duration
                          animations:^{
                              [[self buttonsView] setTransform:CGAffineTransformIdentity];
-                             [[self smallPencileButton] setTransform:CGAffineTransformIdentity];
-                             [[self mediumPencileButton] setTransform:CGAffineTransformIdentity];
-                             [[self largePencileButton] setTransform:CGAffineTransformIdentity];
-                             [[self eraserButton] setTransform:CGAffineTransformIdentity];
+                             [[self actionView] setTransform:CGAffineTransformIdentity];
                          }
                          completion:^(BOOL finished){ }];
     }
-    
 }
 
 @end

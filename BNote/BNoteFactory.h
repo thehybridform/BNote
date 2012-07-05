@@ -25,6 +25,7 @@ extern NSString *const ATTENDIES_ACTIVE;
 extern NSString *const ATTENDIES_INACTIVE;
 extern NSString *const DECISION_ACTIVE;
 extern NSString *const DECISION_INACTIVE;
+extern NSString *const KEY_POINT_MASK;
 extern NSString *const KEY_POINT_ACTIVE;
 extern NSString *const KEY_POINT_INACTIVE;
 extern NSString *const QUESTION_ACTIVE;
@@ -44,7 +45,9 @@ typedef enum {
     DecisionIconActive,
     KeyPointIconActive,
     QuestionIconActive,
-    
+
+    KeyPointIconMask,
+
     AttendantIcon
     
 } BNoteIconType;

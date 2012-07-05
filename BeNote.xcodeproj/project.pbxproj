@@ -96,6 +96,8 @@
 		18A056FB157F3762002A4A78 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F9157F3762002A4A78 /* PhotoViewController.m */; };
 		18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056FA157F3762002A4A78 /* PhotoViewController.xib */; };
 		18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE611576027E004A2022 /* KeyPointButton.m */; };
+		18AE9C0915A557970058B4EE /* PhotoSketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE9C0815A557970058B4EE /* PhotoSketchPath.m */; };
+		18AE9C1215A576F30058B4EE /* key_point_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE9C1115A576F30058B4EE /* key_point_mask.png */; };
 		18AF4ABE15852FA700A54205 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ABD15852FA700A54205 /* EmailViewController.m */; };
 		18AF4AC015852FFC00A54205 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AF4ABF15852FFC00A54205 /* MessageUI.framework */; };
 		18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4AC91585626600A54205 /* BNoteRenderFactory.m */; };
@@ -301,6 +303,9 @@
 		18A056FA157F3762002A4A78 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		18A1DE601576027E004A2022 /* KeyPointButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointButton.h; sourceTree = "<group>"; };
 		18A1DE611576027E004A2022 /* KeyPointButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointButton.m; sourceTree = "<group>"; };
+		18AE9C0715A557970058B4EE /* PhotoSketchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSketchPath.h; sourceTree = "<group>"; };
+		18AE9C0815A557970058B4EE /* PhotoSketchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSketchPath.m; sourceTree = "<group>"; };
+		18AE9C1115A576F30058B4EE /* key_point_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_point_mask.png; sourceTree = "<group>"; };
 		18AF4ABC15852FA700A54205 /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
 		18AF4ABD15852FA700A54205 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		18AF4ABF15852FFC00A54205 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -460,6 +465,7 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18AE9C1115A576F30058B4EE /* key_point_mask.png */,
 				18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */,
 				1851A62E159EA40F0089EECF /* eraser.png */,
 				1851A630159EA5760089EECF /* small-penci.pngl.png */,
@@ -720,6 +726,8 @@
 				1851A629159E964B0089EECF /* PhotoEditorViewController.xib */,
 				1851A636159ECBDE0089EECF /* DrawingView.h */,
 				1851A637159ECBDE0089EECF /* DrawingView.m */,
+				18AE9C0715A557970058B4EE /* PhotoSketchPath.h */,
+				18AE9C0815A557970058B4EE /* PhotoSketchPath.m */,
 			);
 			name = "Photo Editor";
 			sourceTree = "<group>";
@@ -1051,6 +1059,7 @@
 				1851A634159EA5760089EECF /* medium-pencil.png in Resources */,
 				1851A635159EA5760089EECF /* large-pencil.png in Resources */,
 				18ECE92F15A2A9A6009E5D0B /* Squared_paper.jpg in Resources */,
+				18AE9C1215A576F30058B4EE /* key_point_mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,6 +1161,7 @@
 				18ECE92715A172B1009E5D0B /* SketchPath.m in Sources */,
 				18ECE92A15A172B1009E5D0B /* Entry.m in Sources */,
 				18ECE92D15A172B1009E5D0B /* Photo.m in Sources */,
+				18AE9C0915A557970058B4EE /* PhotoSketchPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

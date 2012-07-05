@@ -24,6 +24,7 @@ NSString *const ATTENDIES_ACTIVE = @"attendees_active_icon.png";
 NSString *const ATTENDIES_INACTIVE = @"attendees_icon.png";
 NSString *const DECISION_ACTIVE = @"decision_active_icon.png";
 NSString *const DECISION_INACTIVE = @"decision_icon.png";
+NSString *const KEY_POINT_MASK = @"key_point_mask.png";
 NSString *const KEY_POINT_ACTIVE = @"key_point_active_icon.png";
 NSString *const KEY_POINT_INACTIVE = @"key_point_icon.png";
 NSString *const QUESTION_ACTIVE = @"question_active_icon.png";
@@ -214,6 +215,9 @@ NSString *const PAPER = @"Squared_paper.jpg";
         case AttendantIcon:
             icon = ATTENDANT;
             break; 
+        case KeyPointIconMask:
+            icon = KEY_POINT_MASK;
+            break;
         default:
             break;
     }

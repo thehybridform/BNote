@@ -15,6 +15,8 @@
 @property (assign, nonatomic) Photo *photo;
 
 - (void)undoLast;
+- (void)redoLast;
 - (void)reset;
 
 @end
+

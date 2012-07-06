@@ -114,6 +114,24 @@
     return YES;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([BNoteEntryUtils containsAttendants:[self note]]) {
+        return [indexPath row] > 0;
+    }
+    
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    EntryContentViewController *sourceController = [[self filteredControllers] objectAtIndex:[sourceIndexPath row]]; 
+   
+    Entry *entry = [sourceController entry];
+    [[self note] removeEntriesObject:entry];
+    [[self note] insertObject:entry inEntriesAtIndex:[destinationIndexPath row]];
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {

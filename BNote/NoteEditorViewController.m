@@ -282,6 +282,7 @@
     [[self actionItemButton] setEnabled:YES];
     [[self reviewButton] setEnabled:YES];
     [[self emailButton] setEnabled:YES];
+    [[self trashButton] setTitle:@"Re-Order"];
 }
 
 - (void)setupTableViewForDeletingRows
@@ -293,6 +294,7 @@
     [[self actionItemButton] setEnabled:NO];
     [[self reviewButton] setEnabled:NO];
     [[self emailButton] setEnabled:NO];
+    [[self trashButton] setTitle:@"Done"];
 }
 
 - (void)showDatePicker:(id)sender

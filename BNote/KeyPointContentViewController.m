@@ -108,38 +108,9 @@ static NSString *makeSketch = @"Sketch";
     if ([keyPoint photo]) {
         UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
         [[self imageView] setImage:image];
-
-//        [self showImageMask];
     } else {
         [super handleImageIcon:active];
     }
-}
-
-- (void)showImageMask
-{
-    KeyPoint *keyPoint = [self keyPoint];
-    
-    UIImage *icon = [[BNoteFactory createIcon:KeyPointIconMask] image];
-    UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
-    UIImage *mask = [self maskImage:icon withMask:image];
-    [[self imageView] setImage:mask];
-
-}
-
-- (UIImage*) maskImage:(UIImage *)image withMask:(UIImage *)maskImage {
-        
-	CGImageRef maskRef = maskImage.CGImage; 
-    
-	CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
-                                        CGImageGetHeight(maskRef),
-                                        CGImageGetBitsPerComponent(maskRef),
-                                        CGImageGetBitsPerPixel(maskRef),
-                                        CGImageGetBytesPerRow(maskRef),
-                                        CGImageGetDataProvider(maskRef), NULL, NO);
-    
-	CGImageRef masked = CGImageCreateWithMask([image CGImage], mask);
-    
-	return [UIImage imageWithCGImage:masked];
 }
 
 - (void)presentPhotoPicker

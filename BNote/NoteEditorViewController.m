@@ -33,8 +33,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
 @property (strong, nonatomic) IBOutlet UILabel *subjectLable;
-@property (strong, nonatomic) IBOutlet UIToolbar *entityToolbar;
-@property (strong, nonatomic) IBOutlet UIToolbar *entityWithAttendantToolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *blankAttendantToolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *attendantToolbar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *keyPointButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *questionButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
@@ -59,7 +59,7 @@
 @synthesize note = _note;
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
-@synthesize entityToolbar = _entityToolbar;
+@synthesize attendantToolbar = _attendantToolbar;
 @synthesize keyPointButton = _keyPointButton;
 @synthesize questionButton= _questionButton;
 @synthesize decisionButton = _decisionButton;
@@ -70,7 +70,7 @@
 @synthesize attendantsImageView = _attendantsImageView;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
-@synthesize entityWithAttendantToolbar = _entityWithAttendantToolbar;
+@synthesize blankAttendantToolbar = _blankAttendantToolbar;
 @synthesize emailButton = _emailButton;
 @synthesize associatedTopicsTableViewController = _associatedTopicsTableViewController;
 
@@ -86,7 +86,7 @@
     [self setTime:nil];
     [self setSubjectTextView:nil];
     [self setSubjectLable:nil];
-    [self setEntityToolbar:nil];
+    [self setAttendantToolbar:nil];
     [self setKeyPointButton:nil];
     [self setQuestionButton:nil];
     [self setDecisionButton:nil];
@@ -97,7 +97,7 @@
     [self setAttendantsImageView:nil];
     [self setSelectedAttendant:nil];
     [self setPopup:nil];
-    [self setEntityWithAttendantToolbar:nil];
+    [self setBlankAttendantToolbar:nil];
     [self setEmailButton:nil];
     [self setAssociatedTopicsTableViewController:nil];
 }
@@ -141,13 +141,8 @@
     UITapGestureRecognizer *normalTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
     [[self dateView] addGestureRecognizer:normalTap];
-    
-    if ([BNoteEntryUtils containsAttendants:note]) {
-        [[self entityWithAttendantToolbar] setHidden:YES];
-        [[self attendantsImageView] setHidden:YES];
-    } else {
-        [[self entityToolbar] setHidden:YES];
-    }
+
+    [self updateAttendantToolBar];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                  name:TopicUpdated object:nil];
@@ -187,7 +182,6 @@
 
 - (void)editing
 {
-    [[self entityToolbar] setTintColor:[self toolbarEditColor]];
     [[self subjectTextView] setHidden:NO];
     [[self subjectLable] setHidden:YES];
     [[self trashButton] setEnabled:YES];
@@ -198,7 +192,6 @@
 
 - (void)reviewing
 {
-    [[self entityToolbar] setTintColor:[UIColor lightGrayColor]];
     [[self subjectTextView] setHidden:YES];
     [[self subjectLable] setHidden:NO];
     [[self subjectLable] setText:[[self subjectTextView] text]];
@@ -211,8 +204,9 @@
 {
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
-        [[self entityWithAttendantToolbar] setHidden:YES];
-        [[self entityToolbar] setHidden:NO];
+        [[self attendantToolbar] setHidden:YES];
+        [[self blankAttendantToolbar] setHidden:NO];
+        [[self attendantsImageView] setHidden:YES];
     } else {
         [[self entriesViewController] setFilter:[BNoteFilterFactory create:AttendantType]];
     }
@@ -368,8 +362,20 @@
 
 - (void)updateToolBar:(NSNotification *)notification
 {
-    [[self entityWithAttendantToolbar] setHidden:NO];
-    [[self entityToolbar] setHidden:YES];
+    [self updateAttendantToolBar];
+}
+
+- (void)updateAttendantToolBar
+{
+    if ([BNoteEntryUtils containsAttendants:[self note]]) {
+        [[self attendantToolbar] setHidden:YES];
+        [[self attendantsImageView] setHidden:YES];
+        [[self blankAttendantToolbar] setHidden:NO];
+    } else {
+        [[self attendantToolbar] setHidden:NO];
+        [[self attendantsImageView] setHidden:NO];
+        [[self blankAttendantToolbar] setHidden:YES];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -147,11 +147,12 @@
                          withRowAnimation:UITableViewRowAnimationFade];
         
         Entry *entry = [controller entry];
-        if ([entry isKindOfClass:[Attendants class]]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:AttendantsEntryDeleted object:entry];
-        }
+        BOOL isAttendants = [entry isKindOfClass:[Attendants class]];
 
         [[BNoteWriter instance] removeEntry:entry];
+        if (isAttendants) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:AttendantsEntryDeleted object:nil];
+        }
     }
 }
 

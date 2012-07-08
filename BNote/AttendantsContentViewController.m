@@ -167,12 +167,13 @@
     [self setSelectedAttendant:attendant];
     AttendeeDetailViewController *controller = [[AttendeeDetailViewController alloc] initWithAttendant:attendant];
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    
+    [controller setPopup:popup];
+
     [popup setDelegate:self];
     [popup presentPopoverFromRect:[[self imageView] frame]
                            inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
-    [popup setPopoverContentSize:CGSizeMake(367, 171)];
+    [popup setPopoverContentSize:CGSizeMake(367, 224)];
     [self setPopup:popup];
     
     [controller focus];

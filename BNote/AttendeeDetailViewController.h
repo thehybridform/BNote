@@ -10,9 +10,11 @@
 #import "Attendant.h"
 
 @interface AttendeeDetailViewController : UIViewController
+@property (assign, nonatomic) UIPopoverController *popup;
 
 - (id)initWithAttendant:(Attendant *)attendant;
 
 - (void)focus;
+- (IBAction)done:(id)sender;
 
 @end

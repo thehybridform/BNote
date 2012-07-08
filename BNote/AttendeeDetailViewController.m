@@ -10,6 +10,7 @@
 #import "LayerFormater.h"
 #import "Attendant.h"
 #import "BNoteWriter.h"
+#import "BNoteFactory.h"
 
 @interface AttendeeDetailViewController ()
 @property (assign, nonatomic) Attendant *attendant;
@@ -34,6 +35,7 @@
 @synthesize firstNameLable = _firstNameLable;
 @synthesize lastNameLable = _lastNameLable;
 @synthesize emailLable = _emailLable;
+@synthesize popup = _popup;
 
 - (id)initWithAttendant:(Attendant *)attendant;
 {
@@ -51,6 +53,10 @@
     Attendant *attendant = [self attendant];
     
     UIImage *image = [UIImage imageWithData:[attendant image]];
+    if (!image) {
+        image = [[BNoteFactory createIcon:AttendantIcon] image];
+    }
+    
     [[self image] setImage:image];
     
     [[self firstNameField] setText:[attendant firstName]];
@@ -96,6 +102,11 @@
     if ([self emailField] == [notification object]) {
         [[self attendant] setEmail:[[self emailField] text]];
     }
+}
+
+- (IBAction)done:(id)sender
+{
+    [[self popup] dismissPopoverAnimated:YES];
 }
 
 - (void)viewDidUnload

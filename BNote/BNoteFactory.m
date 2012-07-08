@@ -34,6 +34,16 @@ NSString *const PAPER = @"Squared_paper.jpg";
 
 @implementation BNoteFactory
 
++ (TopicGroup *)createTopicGroup:(NSString *)name
+{
+    TopicGroup *group = [[BNoteWriter instance] insertNewObjectForEntityForName:@"TopicGroup"];
+    [group setCreated:[NSDate timeIntervalSinceReferenceDate]];
+    [group setLastUpdated:[group created]];
+    [group setName:name];
+
+    return group;
+}
+
 + (Topic *)createTopic:(NSString *)name
 {
     Topic *topic = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Topic"];
@@ -42,7 +52,10 @@ NSString *const PAPER = @"Squared_paper.jpg";
     [topic setLastUpdated:[topic created]];
     [topic setTitle:name];
     [topic setColor:0xFFFFFF];
-    
+
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:@"All"];
+    [group addTopicsObject:topic];
+
     [[BNoteWriter instance] update];
     
     return topic;
@@ -150,7 +163,7 @@ NSString *const PAPER = @"Squared_paper.jpg";
         return nil;
     }
     
-    KeyWord *keyWord = [[BNoteReader instance] keyWorkFor:word];
+    KeyWord *keyWord = [[BNoteReader instance] keyWordFor:word];
     if (!keyWord) {
         keyWord = [[BNoteWriter instance] insertNewObjectForEntityForName:@"KeyWord"];
         [keyWord setWord:word];

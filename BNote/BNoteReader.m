@@ -7,6 +7,8 @@
 //
 
 #import "BNoteReader.h"
+#import "BNoteFactory.h"
+#import "TopicGroup.h"
 
 @interface BNoteReader()
 
@@ -40,22 +42,64 @@
     return _default;
 }
 
+- (TopicGroup *)getTopicGroup:(NSString *)name
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TopicGroup"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@", name];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *topicGroups = [[self context] executeFetchRequest:fetchRequest error:&error];
+    
+    if ([topicGroups count]) {
+        return [topicGroups objectAtIndex:0];
+    } else {
+        return nil;
+    }
+}
 
 - (NSMutableArray *)allTopics
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
+    [self checkTopicGroup];
     
-    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES]];
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    TopicGroup *group = [self getTopicGroup:@"All"];
     
-    NSError *error = nil;
-    NSArray *topics = [[self context] executeFetchRequest:fetchRequest error:&error];
-    
-    if (topics) {
-        return [topics mutableCopy];
+    if (group) {
+        return [[group topics] mutableCopy];
     } else {
         return [NSMutableArray array];
     }
+}
+
+// temporaty method.
+- (void)checkTopicGroup
+{
+    TopicGroup *group = [self getTopicGroup:@"All"];
+    if (!group) {
+        group = [BNoteFactory createTopicGroup:@"All"];
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
+    NSError *error = nil;
+    NSArray *topics = [[self context] executeFetchRequest:fetchRequest error:&error];
+
+    for (Topic *topic in topics) {
+        if (![self topic:topic contains:group]) {
+            [group addTopicsObject:topic];
+        }
+    }
+}
+
+// temporaty method.
+- (BOOL)topic:(Topic *)topic contains:(TopicGroup *)group
+{
+    for (TopicGroup *g in [topic groups]) {
+        if (g == group) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 - (NSMutableSet *)allKeyWords
@@ -75,7 +119,7 @@
     }    
 }
 
-- (KeyWord *)keyWorkFor:(NSString *)word
+- (KeyWord *)keyWordFor:(NSString *)word
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"KeyWord"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@", word];
@@ -89,7 +133,6 @@
     }    
     
     return nil;
-
 }
 
 @end

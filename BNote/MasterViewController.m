@@ -149,6 +149,12 @@
     [self showTopicEditor:controller];
 }
 
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    Topic *topic = [[self data] objectAtIndex:[sourceIndexPath row]];
+    [[BNoteWriter instance] moveTopic:topic toIndex:[destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
+}
+
 - (void)showTopicEditor:(UIViewController *)controller
 {
     if ([self popup]) {

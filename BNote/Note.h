@@ -2,7 +2,7 @@
 //  Note.h
 //  BeNote
 //
-//  Created by Young Kristin on 7/1/12.
+//  Created by Young Kristin on 7/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,7 +15,6 @@
 
 @property (nonatomic) int32_t color;
 @property (nonatomic) NSTimeInterval created;
-@property (nonatomic) int32_t index;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * subject;
 @property (nonatomic, retain) NSSet *associatedTopics;

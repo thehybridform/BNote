@@ -2,7 +2,7 @@
 //  Photo.h
 //  BeNote
 //
-//  Created by Young Kristin on 7/1/12.
+//  Created by Young Kristin on 7/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 
 @property (nonatomic) NSTimeInterval created;
 @property (nonatomic, retain) NSData * original;
+@property (nonatomic, retain) NSData * sketch;
 @property (nonatomic, retain) NSData * small;
 @property (nonatomic, retain) NSData * thumbnail;
-@property (nonatomic, retain) NSData * sketch;
 @property (nonatomic, retain) KeyPoint *keyPoint;
 @property (nonatomic, retain) NSOrderedSet *sketchPaths;
 @end

@@ -15,6 +15,7 @@
 #import "KeyWord.h"
 #import "Attendant.h"
 #import "SketchPath.h"
+#import "TopicGroup.h"
 
 @interface BNoteWriter : NSObject
 
@@ -41,4 +42,8 @@
 
 - (void)updateAttendee:(Attendant *)attendant;
 
+- (void) addTopic:(Topic *)topic toGroup:(TopicGroup *)group;
+
+- (void)moveEntry:(Entry *)entry toIndex:(NSUInteger)index;
+- (void)moveTopic:(Topic *)topic toIndex:(NSUInteger)index inGroup:(TopicGroup *)group;
 @end

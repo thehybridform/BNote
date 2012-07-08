@@ -1,29 +1,36 @@
 //
-//  Note.m
+//  TopicGroup.m
 //  BeNote
 //
 //  Created by Young Kristin on 7/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Note.h"
-#import "Entry.h"
+#import "TopicGroup.h"
 #import "Topic.h"
 
 
-@implementation Note
+@implementation TopicGroup
 
-@dynamic color;
+@dynamic name;
 @dynamic created;
 @dynamic lastUpdated;
-@dynamic subject;
-@dynamic associatedTopics;
-@dynamic entries;
-@dynamic topic;
+@dynamic topics;
 
-static NSString *const kItemsKey = @"entries";
+static NSString *const kItemsKey = @"topics";
 
-- (void)removeEntriesObject:(Entry *)value
+- (void)addTopicsObject:(Topic *)value;
+{
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self mutableOrderedSetValueForKey:kItemsKey]];
+    NSUInteger idx = [tmpOrderedSet count];
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:kItemsKey];
+    [tmpOrderedSet addObject:value];
+    [self setPrimitiveValue:tmpOrderedSet forKey:kItemsKey];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:kItemsKey];
+}
+
+- (void)removeTopicsObject:(Topic *)value
 {
     NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self mutableOrderedSetValueForKey:kItemsKey]];
     NSUInteger idx = [tmpOrderedSet indexOfObject:value];
@@ -36,7 +43,7 @@ static NSString *const kItemsKey = @"entries";
     }
 }
 
-- (void)insertObject:(Entry *)value inEntriesAtIndex:(NSUInteger)idx
+- (void)insertObject:(Topic *)value inTopicsAtIndex:(NSUInteger)idx
 {
     NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
     [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:kItemsKey];
@@ -45,6 +52,5 @@ static NSString *const kItemsKey = @"entries";
     [self setPrimitiveValue:tmpOrderedSet forKey:kItemsKey];
     [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:kItemsKey];
 }
-
 
 @end

@@ -128,8 +128,7 @@
     EntryContentViewController *sourceController = [[self filteredControllers] objectAtIndex:[sourceIndexPath row]]; 
    
     Entry *entry = [sourceController entry];
-    [[self note] removeEntriesObject:entry];
-    [[self note] insertObject:entry inEntriesAtIndex:[destinationIndexPath row]];
+    [[BNoteWriter instance] moveEntry:entry toIndex:[destinationIndexPath row]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

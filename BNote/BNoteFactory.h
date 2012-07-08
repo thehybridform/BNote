@@ -18,6 +18,7 @@
 #import "Photo.h"
 #import "KeyWord.h"
 #import "EntryContentViewController.h"
+#import "TopicGroup.h"
 
 extern NSString *const ACTION_ITEM_ACTIVE;
 extern NSString *const ACTION_ITEM_INACTIVE;
@@ -54,6 +55,7 @@ typedef enum {
 
 @interface BNoteFactory : NSObject
 
++ (TopicGroup *)createTopicGroup:(NSString *)name;
 + (Topic *)createTopic:(NSString *)name;
 + (Note *)createNote:(Topic *)topic;
 + (Question *)createQuestion:(Note *)note;

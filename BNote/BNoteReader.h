@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KeyWord.h"
+#import "TopicGroup.h"
 
 @interface BNoteReader : NSObject
 
@@ -16,6 +17,8 @@
 + (BNoteReader *)instance;
 - (NSMutableArray *)allTopics;
 - (NSMutableSet *)allKeyWords;
-- (KeyWord *)keyWorkFor:(NSString *)word;
+- (KeyWord *)keyWordFor:(NSString *)word;
+
+- (TopicGroup *)getTopicGroup:(NSString *)name;
 
 @end

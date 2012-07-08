@@ -14,7 +14,6 @@
 @interface TopicEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *selectedColorButton;
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
-@property (strong, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonAction;
 
 @property (strong, nonatomic) IBOutlet UIButton *button_1;
@@ -33,7 +32,6 @@
 @implementation TopicEditorViewController
 
 @synthesize nameTextField = _nameTextField;
-@synthesize titleTextLabel= _titleTextLabel;
 @synthesize listener = _listener;
 @synthesize topic = _topic;
 @synthesize buttonAction = _buttonAction;
@@ -57,7 +55,6 @@
     [self setNameTextField:nil];
     [self setListener:nil];
     [self setTopic:nil];
-    [self setTitleTextLabel:nil];
     [self setSelectedColorButton:nil];
     
     [self setButton_1:nil];
@@ -86,10 +83,8 @@
     if ([self topic]) {
         [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
         [[self nameTextField] setText:[[self topic] title]];
-        [[self titleTextLabel] setText:@"Edit Topic"];
         [[self buttonAction] setTitle:@"Update"];        
     } else {
-        [[self titleTextLabel] setText:@"New Topic"];
         [[self buttonAction] setTitle:@"Create"];
     }
     

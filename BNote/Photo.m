@@ -2,7 +2,7 @@
 //  Photo.m
 //  BeNote
 //
-//  Created by Young Kristin on 7/1/12.
+//  Created by Young Kristin on 7/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 
 @dynamic created;
 @dynamic original;
+@dynamic sketch;
 @dynamic small;
 @dynamic thumbnail;
-@dynamic sketch;
 @dynamic keyPoint;
 @dynamic sketchPaths;
 

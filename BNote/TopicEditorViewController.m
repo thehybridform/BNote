@@ -108,23 +108,23 @@
 {
     NSString *title = [[self nameTextField] text];
     
-    Topic *topic = [self topic];
-    if ([self topic]) {
-        topic = [self topic];
-    } else {
-        topic = [BNoteFactory createTopic:title]; 
-    }
+    if (![BNoteStringUtils nilOrEmpty:title]) {
+        Topic *topic = [self topic];
+        if ([self topic]) {
+            topic = [self topic];
+        } else {
+            topic = [BNoteFactory createTopic:title]; 
+        }
     
-    if (title && [title length] > 0) {
         [topic setTitle:title];
-    } else {
-        [topic setTitle:@"Topic Title"];
-    }
 
-    [topic setColor:[self selectedColor]];
-    [[BNoteWriter instance] update];
+        [topic setColor:[self selectedColor]];
+        [[BNoteWriter instance] update];
     
-    [[self listener] didFinish:topic];
+        [[self listener] didFinish:topic];
+    } else {
+        [self cancel:sender];
+    }
 }
 
 - (IBAction)cancel:(id)sender

@@ -34,7 +34,6 @@
 		1834D34C15634A650065788F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34B15634A650065788F /* AppDelegate.m */; };
 		1834D34F15634A650065788F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34E15634A650065788F /* MasterViewController.m */; };
 		1834D35215634A650065788F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D35115634A650065788F /* DetailViewController.m */; };
-		1834D35515634A650065788F /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D35315634A650065788F /* MasterViewController.xib */; };
 		1834D35815634A650065788F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D35615634A650065788F /* DetailViewController.xib */; };
 		1834D35F15634AA60065788F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D35E15634AA60065788F /* CoreData.framework */; };
 		1834D37E156351640065788F /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
@@ -77,6 +76,10 @@
 		1879F0A01575CA37003814C2 /* ActionItemMarkDone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */; };
 		1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F10A1575D802003814C2 /* QuestionQuickButton.m */; };
 		18810E5F15770159002B59DA /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
+		189B445B15AE809D008F11D2 /* RobotoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445715AE809D008F11D2 /* RobotoBold.ttf */; };
+		189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445815AE809D008F11D2 /* RobotoItalic.ttf */; };
+		189B445D15AE809D008F11D2 /* RobotoLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445915AE809D008F11D2 /* RobotoLight.ttf */; };
+		189B445E15AE809D008F11D2 /* RobotoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445A15AE809D008F11D2 /* RobotoRegular.ttf */; };
 		18A05685157B5BCC002A4A78 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A05684157B5BCC002A4A78 /* AddressBook.framework */; };
 		18A056AE157B71BA002A4A78 /* AttendantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056AD157B71BA002A4A78 /* AttendantsViewController.m */; };
 		18A056B6157BFD72002A4A78 /* AttendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056B5157BFD71002A4A78 /* AttendantView.m */; };
@@ -103,6 +106,11 @@
 		18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4AC91585626600A54205 /* BNoteRenderFactory.m */; };
 		18AF4ACD1585632F00A54205 /* BNoteFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */; };
 		18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */; };
+		18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */; };
+		18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */; };
+		18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */; };
+		18BAC1B415AD566200EEBE1E /* table-cell-shadow-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1B215AD566200EEBE1E /* table-cell-shadow-blank.png */; };
+		18BAC1B515AD566200EEBE1E /* table-cell-shadow-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1B315AD566200EEBE1E /* table-cell-shadow-selected.png */; };
 		18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
@@ -147,6 +155,9 @@
 		18F7996615AA15FC00DEAB1F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996515AA15FC00DEAB1F /* Note.m */; };
 		18F7996915AA15FC00DEAB1F /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996815AA15FC00DEAB1F /* TopicGroup.m */; };
 		18F7996C15AA15FC00DEAB1F /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996B15AA15FC00DEAB1F /* Decision.m */; };
+		18F7996F15AA969200DEAB1F /* ClearResposibilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */; };
+		18F7997115AAA91400DEAB1F /* x-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997015AAA91400DEAB1F /* x-image.png */; };
+		18F7997315AAAA6500DEAB1F /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997215AAAA6500DEAB1F /* NoteView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,7 +212,6 @@
 		1834D34E15634A650065788F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		1834D35015634A650065788F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1834D35115634A650065788F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		1834D35415634A650065788F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
 		1834D35715634A650065788F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
 		1834D35E15634AA60065788F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1834D37B156351640065788F /* TopicEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicEditorViewController.h; sourceTree = "<group>"; };
@@ -272,6 +282,10 @@
 		1879F10A1575D802003814C2 /* QuestionQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionQuickButton.m; sourceTree = "<group>"; };
 		18810E5D15770159002B59DA /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
 		18810E5E15770159002B59DA /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
+		189B445715AE809D008F11D2 /* RobotoBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoBold.ttf; sourceTree = "<group>"; };
+		189B445815AE809D008F11D2 /* RobotoItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoItalic.ttf; sourceTree = "<group>"; };
+		189B445915AE809D008F11D2 /* RobotoLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoLight.ttf; sourceTree = "<group>"; };
+		189B445A15AE809D008F11D2 /* RobotoRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoRegular.ttf; sourceTree = "<group>"; };
 		18A05684157B5BCC002A4A78 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		18A056AC157B71BA002A4A78 /* AttendantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsViewController.h; sourceTree = "<group>"; };
 		18A056AD157B71BA002A4A78 /* AttendantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsViewController.m; sourceTree = "<group>"; };
@@ -318,6 +332,13 @@
 		18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeNote.xcdatamodel; sourceTree = "<group>"; };
 		18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 2.xcdatamodel"; sourceTree = "<group>"; };
 		18BA964D158D9B39004A4A38 /* BeNote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 3.xcdatamodel"; sourceTree = "<group>"; };
+		18BAC1A415AD2DED00EEBE1E /* BNoteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteButton.h; sourceTree = "<group>"; };
+		18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteButton.m; sourceTree = "<group>"; };
+		18BAC1AA15AD453700EEBE1E /* MainViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewViewController.h; sourceTree = "<group>"; };
+		18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewViewController.m; sourceTree = "<group>"; };
+		18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewViewController.xib; sourceTree = "<group>"; };
+		18BAC1B215AD566200EEBE1E /* table-cell-shadow-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-cell-shadow-blank.png"; sourceTree = "<group>"; };
+		18BAC1B315AD566200EEBE1E /* table-cell-shadow-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-cell-shadow-selected.png"; sourceTree = "<group>"; };
 		18BBD3501585BA9800B1709E /* KeyPointPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointPlainRenderer.h; sourceTree = "<group>"; };
 		18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPlainRenderer.m; sourceTree = "<group>"; };
 		18BBD3541585BB2800B1709E /* DecisionPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionPlainRenderer.h; sourceTree = "<group>"; };
@@ -400,6 +421,10 @@
 		18F7996815AA15FC00DEAB1F /* TopicGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroup.m; sourceTree = "<group>"; };
 		18F7996A15AA15FC00DEAB1F /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
 		18F7996B15AA15FC00DEAB1F /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
+		18F7996D15AA969000DEAB1F /* ClearResposibilityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearResposibilityButton.h; sourceTree = "<group>"; };
+		18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearResposibilityButton.m; sourceTree = "<group>"; };
+		18F7997015AAA91400DEAB1F /* x-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-image.png"; sourceTree = "<group>"; };
+		18F7997215AAAA6500DEAB1F /* NoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +494,9 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18BAC1B215AD566200EEBE1E /* table-cell-shadow-blank.png */,
+				18BAC1B315AD566200EEBE1E /* table-cell-shadow-selected.png */,
+				18F7997015AAA91400DEAB1F /* x-image.png */,
 				18AE9C1115A576F30058B4EE /* key_point_mask.png */,
 				18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */,
 				1851A62E159EA40F0089EECF /* eraser.png */,
@@ -499,6 +527,10 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
+				189B445715AE809D008F11D2 /* RobotoBold.ttf */,
+				189B445815AE809D008F11D2 /* RobotoItalic.ttf */,
+				189B445915AE809D008F11D2 /* RobotoLight.ttf */,
+				189B445A15AE809D008F11D2 /* RobotoRegular.ttf */,
 				1834D34115634A650065788F /* BNote */,
 				1834D33A15634A650065788F /* Frameworks */,
 				1834D33815634A650065788F /* Products */,
@@ -530,6 +562,7 @@
 		1834D34115634A650065788F /* BNote */ = {
 			isa = PBXGroup;
 			children = (
+				18BAC1A915AD450500EEBE1E /* Main View */,
 				1851A626159E96270089EECF /* Photo Editor */,
 				18497682159053B300F49F5A /* Information Details */,
 				184CEAD0158F225900C67CF5 /* EULA */,
@@ -539,8 +572,6 @@
 				18368F5415662D8000E511CB /* Detail View */,
 				18368F4B156610D200E511CB /* Service Core */,
 				1834D36015634AC60065788F /* Model */,
-				1834D34A15634A650065788F /* AppDelegate.h */,
-				1834D34B15634A650065788F /* AppDelegate.m */,
 				18368F5515662DAF00E511CB /* Master View */,
 				18368F5615662DC200E511CB /* Topic Editor */,
 				1834D34215634A650065788F /* Supporting Files */,
@@ -650,7 +681,6 @@
 			children = (
 				1834D34D15634A650065788F /* MasterViewController.h */,
 				1834D34E15634A650065788F /* MasterViewController.m */,
-				1834D35315634A650065788F /* MasterViewController.xib */,
 			);
 			name = "Master View";
 			sourceTree = "<group>";
@@ -808,6 +838,8 @@
 				1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */,
 				1818B5511580654000928BAF /* DueDateActionItemButton.h */,
 				1818B5521580654100928BAF /* DueDateActionItemButton.m */,
+				18F7996D15AA969000DEAB1F /* ClearResposibilityButton.h */,
+				18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */,
 			);
 			name = "Action Item";
 			sourceTree = "<group>";
@@ -889,6 +921,18 @@
 			name = "Topic Selctor";
 			sourceTree = "<group>";
 		};
+		18BAC1A915AD450500EEBE1E /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				1834D34A15634A650065788F /* AppDelegate.h */,
+				1834D34B15634A650065788F /* AppDelegate.m */,
+				18BAC1AA15AD453700EEBE1E /* MainViewViewController.h */,
+				18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */,
+				18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */,
+			);
+			name = "Main View";
+			sourceTree = "<group>";
+		};
 		18BF3F60157B456100B6E226 /* Entry View Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +978,8 @@
 				18E9FF691571835600F22272 /* BNoteAnimation.m */,
 				18E9FF0F156A343700F22272 /* LayerFormater.h */,
 				18E9FF10156A343700F22272 /* LayerFormater.m */,
+				18BAC1A415AD2DED00EEBE1E /* BNoteButton.h */,
+				18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -961,6 +1007,7 @@
 				18E9FF6C15729EF900F22272 /* NotesViewController.m */,
 				18A056E4157D9BD9002A4A78 /* NoteView.h */,
 				18A056E5157D9BDA002A4A78 /* NoteView.m */,
+				18F7997215AAAA6500DEAB1F /* NoteView.xib */,
 			);
 			name = "Notes Scroll View";
 			sourceTree = "<group>";
@@ -1027,7 +1074,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1834D34615634A650065788F /* InfoPlist.strings in Resources */,
-				1834D35515634A650065788F /* MasterViewController.xib in Resources */,
+				189B445B15AE809D008F11D2 /* RobotoBold.ttf in Resources */,
+				189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */,
+				189B445D15AE809D008F11D2 /* RobotoLight.ttf in Resources */,
+				189B445E15AE809D008F11D2 /* RobotoRegular.ttf in Resources */,
 				1834D35815634A650065788F /* DetailViewController.xib in Resources */,
 				1834D383156364840065788F /* TopicEditorViewController.xib in Resources */,
 				181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */,
@@ -1066,6 +1116,11 @@
 				1851A635159EA5760089EECF /* large-pencil.png in Resources */,
 				18ECE92F15A2A9A6009E5D0B /* Squared_paper.jpg in Resources */,
 				18AE9C1215A576F30058B4EE /* key_point_mask.png in Resources */,
+				18F7997115AAA91400DEAB1F /* x-image.png in Resources */,
+				18F7997315AAAA6500DEAB1F /* NoteView.xib in Resources */,
+				18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */,
+				18BAC1B415AD566200EEBE1E /* table-cell-shadow-blank.png in Resources */,
+				18BAC1B515AD566200EEBE1E /* table-cell-shadow-selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1169,6 +1224,9 @@
 				18F7996615AA15FC00DEAB1F /* Note.m in Sources */,
 				18F7996915AA15FC00DEAB1F /* TopicGroup.m in Sources */,
 				18F7996C15AA15FC00DEAB1F /* Decision.m in Sources */,
+				18F7996F15AA969200DEAB1F /* ClearResposibilityButton.m in Sources */,
+				18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */,
+				18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1181,14 +1239,6 @@
 				1834D34515634A650065788F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1834D35315634A650065788F /* MasterViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1834D35415634A650065788F /* en */,
-			);
-			name = MasterViewController.xib;
 			sourceTree = "<group>";
 		};
 		1834D35615634A650065788F /* DetailViewController.xib */ = {

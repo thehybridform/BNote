@@ -34,4 +34,6 @@
 
 - (void)startedEditingText:(NSNotification *)notification;
 
+- (void)updateDetail;
+
 @end

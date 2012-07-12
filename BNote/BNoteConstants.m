@@ -21,13 +21,16 @@ const int Color9 = 0xd7cd79;
 
 const int AnswerColor = 0x336633;
 
-const int AppColor1 = 0xf5f3e6;
 
 const int ColorWhite = 0xffffff;
+const int AppColor1 = ColorWhite;
+const int AppHighlightColor1 = 0x365ab0;
+
 
 const NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
 const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
 //const NSString *const AllDataUpdated = @"AllDataUpdated";
+const NSString *const TopicSelected = @"TopicSelected";
 const NSString *const TopicUpdated = @"TopicUpdated";
 const NSString *const TopicDeleted = @"TopicDeleted";
 const NSString *const AttendantsEntryDeleted = @"AttendantsEntryDeleted";
@@ -43,9 +46,55 @@ const NSString *const EulaFlag = @"EulaFlag";
 
 @implementation BNoteConstants
 
++ (UIColor *)colorFor:(BNoteColor)color
+{
+    switch (color) {
+        case BNoteColorHighlight:
+            return UIColorFromRGB(AppHighlightColor1);
+            break;
+            
+        case BNoteColorMain:
+            return UIColorFromRGB(AppColor1);
+            break;
+            
+        case BNoteColorGray:
+            return UIColorFromRGB(AppColor1);
+            break;
+            
+        default:
+            break;
+    }
+    return [UIColor blackColor];
+}
+
+
 + (UIColor *)appColor1
 {
     return UIColorFromRGB(AppColor1);
+}
+
++ (UIFont *)font:(BNoteFont)font andSize:(int)size
+{
+//    NSArray* check = [UIFont familyNames];
+    
+    NSString *name;
+    switch (font) {
+        case RobotoRegular:
+            name = @"Roboto-Regular";
+            break;
+        case RobotoLight:
+            name = @"Roboto-Light";
+            break;
+        case RobotoItalic:
+            name = @"Roboto-Italic";
+            break;
+        case RobotoBold:
+            name = @"Roboto-Bold";
+            break;
+        default:
+            break;
+    }
+    return [UIFont fontWithName:name size:size];
 }
 
 @end

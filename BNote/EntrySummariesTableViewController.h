@@ -20,13 +20,12 @@ typedef enum {
     Unknown
 } SortType;
 
-@property (strong, nonatomic) Topic *topic;
+@property (assign, nonatomic) Topic *topic;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sorting;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *grouping;
 @property (assign, nonatomic) UIViewController *detailViewController;
 
 - (IBAction)group:(id)sender;
 - (IBAction)sort:(id)sender;
-- (void)reload;
 
 @end

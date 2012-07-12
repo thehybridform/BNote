@@ -59,6 +59,7 @@
         
         [LayerFormater setBorderWidth:1 forView:self];
         [LayerFormater setBorderColor:[UIColor blackColor] forView:self];
+        [LayerFormater addShadowToView:self];
         
         UILongPressGestureRecognizer *longPress =
         [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];

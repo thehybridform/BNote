@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UIView *noteCountView;
 @property (strong, nonatomic) IBOutlet UILabel *noteCountLabel;
 @property (strong, nonatomic) InformationViewController *informationViewController;
+@property (strong, nonatomic) IBOutlet UILabel *topicTitle;
 
 @end
 
@@ -47,6 +48,7 @@
 @synthesize searchBar = _searchBar;
 @synthesize noteCountView = _noteCountView;
 @synthesize noteCountLabel = _noteCountLabel;
+@synthesize topicTitle = _topicTitle;
 
 - (void)viewDidUnload
 {
@@ -61,6 +63,7 @@
     [self setInformationViewController:nil];
     [self setNoteCountView:nil];
     [self setNoteCountLabel:nil];
+    [self setTopicTitle:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -69,7 +72,7 @@
     
     [[self tableViewController] setTopic:[self topic]];
     [[self notesViewController] setTopic:[self topic]];
-    [self setTitle:[topic title]];
+    [[self topicTitle] setText:[topic title]];
     
     [self reload:nil];
 }
@@ -82,8 +85,9 @@
     [[[self tableViewController] view] setHidden:NO];
     [[[self notesViewController] view] setHidden:NO];
     [[self entriesToolbar] setHidden:NO];
+    [[self noteCountView] setHidden:NO];
 
-    [[self tableViewController] reload];
+//    [[self tableViewController] reload];
     [[self notesViewController] reload];
     
     int count = [[[self topic] notes] count] + [[[self topic] associatedNotes] count];
@@ -102,6 +106,7 @@
         [[[self tableViewController] view] setHidden:YES];
         [[[self notesViewController] view] setHidden:YES];
         [[self entriesToolbar] setHidden:YES];
+        [[self noteCountView] setHidden:YES];
         
         [[self tableViewController] setDetailViewController:self];
         [[self notesViewController] setDetailViewController:self];

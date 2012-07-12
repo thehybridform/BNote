@@ -55,11 +55,6 @@
     return self;
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)gesture
-{
-    // handled by sub class
-}
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];            
@@ -206,6 +201,16 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void)updateDetail
+{
+    // handled by sub class
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)gesture
+{
+    // handled by sub class
 }
 
 @end

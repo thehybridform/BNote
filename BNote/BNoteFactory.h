@@ -33,6 +33,8 @@ extern NSString *const QUESTION_ACTIVE;
 extern NSString *const QUESTION_INACTIVE;
 extern NSString *const ATTENDANT;
 extern NSString *const PAPER;
+extern NSString *const TABLE_CELL_PLAIN;
+extern NSString *const TABLE_CELL_SELECTED;
 
 typedef enum {
     ActionItemIcon,
@@ -49,7 +51,10 @@ typedef enum {
 
     KeyPointIconMask,
 
-    AttendantIcon
+    AttendantIcon,
+    
+    TableCellPlain,
+    TableCellSelected
     
 } BNoteIconType;
 

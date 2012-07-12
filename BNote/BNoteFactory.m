@@ -31,6 +31,8 @@ NSString *const QUESTION_ACTIVE = @"question_active_icon.png";
 NSString *const QUESTION_INACTIVE = @"question_icon.png";
 NSString *const ATTENDANT = @"attendant_icon.png";
 NSString *const PAPER = @"Squared_paper.jpg";
+NSString *const TABLE_CELL_PLAIN = @"table-cell-shadow-blank.png";
+NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
 
 @implementation BNoteFactory
 
@@ -230,6 +232,12 @@ NSString *const PAPER = @"Squared_paper.jpg";
             break; 
         case KeyPointIconMask:
             icon = KEY_POINT_MASK;
+            break;
+        case TableCellPlain:
+            icon = TABLE_CELL_PLAIN;
+            break;
+        case TableCellSelected:
+            icon = TABLE_CELL_SELECTED;
             break;
         default:
             break;

@@ -21,6 +21,7 @@
 #import "BNoteEntryUtils.h"
 #import "EmailViewController.h"
 #import "AssociatedTopicsTableViewController.h"
+#import "BNoteButton.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -33,16 +34,15 @@
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
 @property (strong, nonatomic) IBOutlet UILabel *subjectLable;
-@property (strong, nonatomic) IBOutlet UIToolbar *blankAttendantToolbar;
-@property (strong, nonatomic) IBOutlet UIToolbar *attendantToolbar;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *keyPointButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *questionButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *decisionButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *actionItemButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *reviewButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *emailButton;
-@property (strong, nonatomic) IBOutlet UIImageView *attendantsImageView;
+@property (strong, nonatomic) IBOutlet BNoteButton *attendantsButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *keyPointButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *questionButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *decisionButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *actionItemButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *reviewButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *trashButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *emailButton;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AssociatedTopicsTableViewController *associatedTopicsTableViewController;
@@ -59,7 +59,6 @@
 @synthesize note = _note;
 @synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize subjectLable = _subjectLable;
-@synthesize attendantToolbar = _attendantToolbar;
 @synthesize keyPointButton = _keyPointButton;
 @synthesize questionButton= _questionButton;
 @synthesize decisionButton = _decisionButton;
@@ -67,12 +66,12 @@
 @synthesize reviewButton = _reviewButton;
 @synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
-@synthesize attendantsImageView = _attendantsImageView;
+@synthesize attendantsButton = _attendantsButton;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
-@synthesize blankAttendantToolbar = _blankAttendantToolbar;
 @synthesize emailButton = _emailButton;
 @synthesize associatedTopicsTableViewController = _associatedTopicsTableViewController;
+@synthesize menuView = _menuView;
 
 - (void)viewDidUnload
 {
@@ -86,7 +85,6 @@
     [self setTime:nil];
     [self setSubjectTextView:nil];
     [self setSubjectLable:nil];
-    [self setAttendantToolbar:nil];
     [self setKeyPointButton:nil];
     [self setQuestionButton:nil];
     [self setDecisionButton:nil];
@@ -94,12 +92,12 @@
     [self setReviewButton:nil];
     [self setTrashButton:nil];
     [self setEntriesViewController:nil];
-    [self setAttendantsImageView:nil];
+    [self setAttendantsButton:nil];
     [self setSelectedAttendant:nil];
     [self setPopup:nil];
-    [self setBlankAttendantToolbar:nil];
     [self setEmailButton:nil];
     [self setAssociatedTopicsTableViewController:nil];
+    [self setMenuView:nil];
 }
 
 
@@ -130,10 +128,12 @@
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater roundCornersForView:[self subjectView]];
     [LayerFormater roundCornersForView:[self subjectTextView]];
+    [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
+    [LayerFormater setBorderWidth:1 forView:[self menuView]];
     
     [[self subjectLable] setHidden:YES];
     
-    [[self reviewButton] setTitle:@"Review"];
+//    [[self reviewButton] setTitle:@"Review"];
     
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
@@ -141,8 +141,6 @@
     UITapGestureRecognizer *normalTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
     [[self dateView] addGestureRecognizer:normalTap];
-
-    [self updateAttendantToolBar];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                  name:TopicUpdated object:nil];
@@ -152,6 +150,14 @@
     [[self associatedTopicsTableViewController] setNote:note];
     
     [[self entriesViewController] setParentController:self];
+    
+    [[self keyPointButton] setIcon:[BNoteFactory createIcon:KeyPointIcon]];
+    [[self actionItemButton] setIcon:[BNoteFactory createIcon:ActionItemIcon]];
+    [[self decisionButton] setIcon:[BNoteFactory createIcon:DecisionIcon]];
+    [[self questionButton] setIcon:[BNoteFactory createIcon:QuestionIcon]];
+    [[self attendantsButton] setIcon:[BNoteFactory createIcon:AttentiesIcon]];
+    
+    [LayerFormater addShadowToView:[self menuView]];
 }
 
 - (void)dealloc
@@ -172,11 +178,11 @@
 {
     if ([[BNoteSessionData instance] phase] == Reviewing) {
         [self editing];
-        [[self reviewButton] setTitle:@"Review"];
+//        [[self reviewButton] setTitle:@"Review"];
     } else {
         [self setupTableViewAddingEntries];
         [self reviewing];
-        [[self reviewButton] setTitle:@"Edit"];
+//        [[self reviewButton] setTitle:@"Edit"];
     }
 }
 
@@ -204,9 +210,7 @@
 {
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
-        [[self attendantToolbar] setHidden:YES];
-        [[self blankAttendantToolbar] setHidden:NO];
-        [[self attendantsImageView] setHidden:YES];
+//        [[self attendantsImageView] setHidden:YES];
     } else {
         [[self entriesViewController] setFilter:[BNoteFilterFactory create:AttendantType]];
     }
@@ -276,7 +280,7 @@
     [[self actionItemButton] setEnabled:YES];
     [[self reviewButton] setEnabled:YES];
     [[self emailButton] setEnabled:YES];
-    [[self trashButton] setTitle:@"Re-Order"];
+//    [[self trashButton] setTitle:@"Re-Order"];
 }
 
 - (void)setupTableViewForDeletingRows
@@ -288,7 +292,7 @@
     [[self actionItemButton] setEnabled:NO];
     [[self reviewButton] setEnabled:NO];
     [[self emailButton] setEnabled:NO];
-    [[self trashButton] setTitle:@"Done"];
+//    [[self trashButton] setTitle:@"Done"];
 }
 
 - (void)showDatePicker:(id)sender
@@ -362,20 +366,7 @@
 
 - (void)updateToolBar:(NSNotification *)notification
 {
-    [self updateAttendantToolBar];
-}
-
-- (void)updateAttendantToolBar
-{
-    if ([BNoteEntryUtils containsAttendants:[self note]]) {
-        [[self attendantToolbar] setHidden:YES];
-        [[self attendantsImageView] setHidden:YES];
-        [[self blankAttendantToolbar] setHidden:NO];
-    } else {
-        [[self attendantToolbar] setHidden:NO];
-        [[self attendantsImageView] setHidden:NO];
-        [[self blankAttendantToolbar] setHidden:YES];
-    }
+//    [self updateAttendantToolBar];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -22,6 +22,7 @@ extern int const Color8;
 extern int const Color9;
 
 extern int const AppColor1;
+extern int const AppHighlightColor1;
 
 extern int const ColorWhite;
 extern int const AnswerColor;
@@ -29,6 +30,7 @@ extern int const AnswerColor;
 extern NSString *const KeyPointPhotoUpdated;
 extern NSString *const KeyWordsUpdated;
 //extern NSString *const AllDataUpdated;
+extern NSString *const TopicSelected;
 extern NSString *const TopicUpdated;
 extern NSString *const TopicDeleted;
 extern NSString *const AttendantsEntryDeleted;
@@ -43,8 +45,25 @@ extern NSString *const RefetchAllDatabaseData;
 
 extern NSString *const EulaFlag;
 
+typedef enum {
+    RobotoItalic,
+    RobotoLight,
+    RobotoBold,
+    RobotoRegular
+} BNoteFont;
+
+typedef enum {
+    BNoteColorHighlight,
+    BNoteColorMain,
+    
+    BNoteColorGray
+} BNoteColor;
+
 @interface BNoteConstants : NSObject
 
 + (UIColor *)appColor1;
++ (UIFont *)font:(BNoteFont)font andSize:(int)size;
+
++ (UIColor *)colorFor:(BNoteColor)color;
 
 @end

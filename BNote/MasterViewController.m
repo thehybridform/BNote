@@ -18,30 +18,21 @@
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) UIPopoverController *popup;
+@property (assign, nonatomic) NSInteger selectedIndex;
 
 @end
 
 @implementation MasterViewController
 
-@synthesize detailViewController = _detailViewController;
 @synthesize data = _data;
 @synthesize popup = _popup;
+@synthesize selectedIndex = _selectedIndex;
 
 - (void)dealloc 
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:RefetchAllDatabaseData object:nil];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.clearsSelectionOnViewWillAppear = NO;
-        self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
-    }
-    return self;
-}
-							
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -55,36 +46,30 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.title = NSLocalizedString(@"Topics", @"Topics");
     
-    [self loadData];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateReceived:)
                                                  name:RefetchAllDatabaseData
                                                object:[[UIApplication sharedApplication] delegate]];
 }
 
-- (void)loadData
+- (void)updateReceived:(NSNotification *)note
 {
     [self setData:[[BNoteReader instance] allTopics]];
     
     if ([[self data] count] == 0) {
         [self setData:[[NSMutableArray alloc] init]];
     } else {
+        [[self tableView] reloadData];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
-}
-
-- (void)updateReceived:(NSNotification *)note
-{
-    [self loadData];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:RefetchAllDatabaseData object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -117,6 +102,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
+        UIFont *font = [BNoteConstants font:RobotoRegular andSize:20.0];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
@@ -126,6 +112,7 @@
     
     [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
     [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
+    
 
     NSString *text = @"   ";
     [[cell textLabel] setText:[text stringByAppendingString:[currentTopic title]]];
@@ -192,18 +179,37 @@
                          withRowAnimation:UITableViewRowAnimationFade];
 
         int index = [indexPath row] - 1;
-        if (index < 0) {
-            index = 0;
+        if (index >= 0) {
+            [self selectCell:index];
         }
         
-        [self selectCell:index];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self setSelectedIndex:[indexPath row]];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [LayerFormater addShadowToView:cell];
+    
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [[self detailViewController] setTopic:topic];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:topic];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self selectedIndex] == [indexPath row]) {
+        [LayerFormater addShadowToView:cell];
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [LayerFormater removeShadowFromView:cell];
 }
 
 - (void)didFinish:(Topic *)topic

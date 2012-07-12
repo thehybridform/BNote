@@ -24,6 +24,7 @@
 #import "LayerFormater.h"
 #import "Attendants.h"
 #import "Attendant.h"
+#import "ClearResposibilityButton.h"
 
 @implementation QuickWordsFactory
 
@@ -95,6 +96,13 @@
             [button setBackgroundColor:[QuickWordsFactory normal]];
             [data addObject:button];
         }
+    }
+    
+    if ([actionItem responsibility]) {
+        button = [[ClearResposibilityButton alloc] initWithName:@"Clear Responisibility" andEntryContentViewController:controller];
+        [button setActionItem:actionItem];
+        [button setBackgroundColor:[QuickWordsFactory normal]];
+        [data addObject:button];
     }
     
     if ([actionItem dueDate]) {

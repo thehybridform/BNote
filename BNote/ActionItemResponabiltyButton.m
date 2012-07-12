@@ -44,5 +44,7 @@
     [[self actionItem] setResponsibility:name];
 
     [[self popup] dismissPopoverAnimated:YES];
+    
+    [[self entryContentViewController] updateDetail];
 }
 @end

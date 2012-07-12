@@ -12,6 +12,7 @@
 #import "BNoteWriter.h"
 
 @interface TopicEditorViewController ()
+@property (strong, nonatomic) IBOutlet UIView *buttonControlView;
 @property (strong, nonatomic) IBOutlet UIButton *selectedColorButton;
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonAction;
@@ -46,10 +47,13 @@
 @synthesize button_9 = _button_9;
 @synthesize selectedColorButton = _selectedColorButton;
 @synthesize selectedColor = _selectedColor;
+@synthesize buttonControlView = _buttonControlView;
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    [self setButtonControlView:nil];
     
     [self setButtonAction:nil];
     [self setNameTextField:nil];
@@ -82,6 +86,7 @@
 
     if ([self topic]) {
         [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
+        [self setSelectedColor:[[self topic] color]];
         [[self nameTextField] setText:[[self topic] title]];
         [[self buttonAction] setTitle:@"Update"];        
     } else {

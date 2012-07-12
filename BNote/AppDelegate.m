@@ -21,34 +21,41 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize splitViewController = _splitViewController;
+//@synthesize splitViewController = _splitViewController;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-
+@synthesize mainViewViewController = _mainViewViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
-    UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+//    MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+//    UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+    
+//    [[masterNavigationController navigationBar] setTranslucent:YES];
+//    [[masterNavigationController navigationBar] setTintColor:[UIColor blackColor]];
 
-    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+//    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
 //    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
 
-    masterViewController.detailViewController = detailViewController;
+//    masterViewController.detailViewController = detailViewController;
     
     [[BNoteWriter instance] setContext:[self managedObjectContext]];
     [[BNoteReader instance] setContext:[self managedObjectContext]];
         
-    self.splitViewController = [[UISplitViewController alloc] init];
-    self.splitViewController.delegate = detailViewController;
-    self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
-    self.window.rootViewController = self.splitViewController;
+//    self.splitViewController = [[UISplitViewController alloc] init];
+//    self.splitViewController.delegate = detailViewController;
+//    self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
+//    self.window.rootViewController = self.splitViewController;
     
-    [self.window makeKeyAndVisible];
+    MainViewViewController *mainViewViewController = [[MainViewViewController alloc] initWithDefault];
+    [self setMainViewViewController:mainViewViewController];
+    
+    [[self window] setRootViewController:mainViewViewController];
+    [[self window] makeKeyAndVisible];
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -60,7 +67,7 @@
         [controller setModalPresentationStyle:UIModalPresentationPageSheet];
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         
-        [[self splitViewController] presentModalViewController:controller animated:YES];
+        [mainViewViewController presentModalViewController:controller animated:YES];
     }
     
     return YES;
@@ -70,6 +77,8 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    [[BNoteWriter instance] update];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -91,6 +100,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[BNoteWriter instance] update];
 }
 
 - (NSManagedObjectContext *)managedObjectContext {

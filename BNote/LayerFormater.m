@@ -22,7 +22,7 @@
 
 + (void)roundCornersForLayer:(CALayer *)layer
 {
-    [LayerFormater roundCornersForLayer:layer to:7.0];
+    [LayerFormater roundCornersForLayer:layer to:5.0];
 }
 
 + (void)roundCornersForLayer:(CALayer *)layer to:(float)radius
@@ -45,6 +45,24 @@
 + (void)setBorderColorWithInt:(int)color forView:(UIView *)view
 {
     [LayerFormater setBorderColor:UIColorFromRGB(color) forView:view];
+}
+
++ (void)addShadowToView:(UIView *)view
+{
+    [view.layer setMasksToBounds:NO];
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:7.0];
+    [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
+}
+
++ (void)removeShadowFromView:(UIView *)view
+{
+    [view.layer setMasksToBounds:YES];
+    [view.layer setShadowColor:[UIColor clearColor].CGColor];
+    [view.layer setShadowRadius:0];
+    [view.layer setShadowOpacity:0];
+    [view.layer setShadowOffset:CGSizeMake(0, 0)];
 }
 
 @end

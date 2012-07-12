@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TopicEditorViewController.h"
 
-@class DetailViewController;
-
 @interface MasterViewController : UITableViewController <TopicEditorViewControllerListener, UIPopoverControllerDelegate>
-
-@property (strong, nonatomic) DetailViewController *detailViewController;
 
 @end

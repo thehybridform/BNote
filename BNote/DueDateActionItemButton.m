@@ -24,12 +24,13 @@
     if ([actionItem dueDate]) {
         [actionItem setDueDate:0];
         [[BNoteWriter instance] update];
-        //[cell updateDetail];
         [self setTitle:@"   due date   " forState:UIControlStateNormal];
     } else {
         [[controller mainTextView] resignFirstResponder];
         [controller showDatePicker];
     }
+    
+    [[self entryContentViewController] updateDetail];
 }
 
 

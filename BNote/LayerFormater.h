@@ -18,6 +18,8 @@
 + (void)setBorderWidth:(CGFloat)thickness forView:(UIView *)view;
 + (void)setBorderColor:(UIColor *)color forView:(UIView *)view;
 + (void)setBorderColorWithInt:(int)color forView:(UIView *)view;
++ (void)addShadowToView:(UIView *)view;
++ (void)removeShadowFromView:(UIView *)view;
 
 
 @end

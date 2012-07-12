@@ -54,5 +54,12 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>RobotoBold.ttf</string>
+		<string>RobotoItalic.ttf</string>
+		<string>RobotoLight.ttf</string>
+		<string>RobotoRegular.ttf</string>
+	</array>
 </dict>
 </plist>

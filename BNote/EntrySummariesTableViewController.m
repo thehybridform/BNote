@@ -71,7 +71,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self setTopic:nil];
     [self setQuestionsAnswered:nil];
     [self setQuestionsUnanswered:nil];
     [self setKeyPoints:nil];
@@ -81,6 +80,12 @@
     [self setGrouping:nil];
     [self setSorting:nil];
     [self setSearchText:nil];
+}
+
+- (void)setTopic:(Topic *)topic
+{
+    _topic = topic;
+    [self reload];
 }
 
 - (void)updateNote:(id)sender

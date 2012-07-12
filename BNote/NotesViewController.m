@@ -28,8 +28,6 @@
 {
     [super viewDidLoad];
     
-    [LayerFormater roundCornersForView:[self view]];
-    
     [self reload];
 }
 

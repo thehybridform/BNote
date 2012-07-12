@@ -108,8 +108,8 @@
         [[self entriesToolbar] setHidden:YES];
         [[self noteCountView] setHidden:YES];
         
-        [[self tableViewController] setDetailViewController:self];
-        [[self notesViewController] setDetailViewController:self];
+//        [[self tableViewController] setDetailViewController:self];
+//        [[self notesViewController] setDetailViewController:self];
     }
     
     [LayerFormater roundCornersForView:[self noteCountView]];

@@ -23,7 +23,7 @@ typedef enum {
 @property (assign, nonatomic) Topic *topic;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sorting;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *grouping;
-@property (assign, nonatomic) UIViewController *detailViewController;
+@property (assign, nonatomic) UIViewController *parentController;
 
 - (IBAction)group:(id)sender;
 - (IBAction)sort:(id)sender;

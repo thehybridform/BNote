@@ -13,7 +13,6 @@
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
 #import "EntrySummaryTableViewCell.h"
-#import "EditNoteViewPresenter.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -44,8 +43,8 @@
 @synthesize entries = _entries;
 @synthesize sortType = _sortType;
 @synthesize searchText = _searchText;
-@synthesize detailViewController = _detailViewController;
 @synthesize attendants = _attendants;
+@synthesize parentController = _parentController;
 
 - (void)viewDidLoad
 {
@@ -279,8 +278,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
-
-    [EditNoteViewPresenter presentEntry:entry in:[self detailViewController]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:entry];
 }
 
 - (IBAction)group:(id)sender

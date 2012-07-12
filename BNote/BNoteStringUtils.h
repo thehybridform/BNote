@@ -21,5 +21,7 @@
 + (NSString *)nameForEntry:(Entry *)entry;
 
 + (NSString *)append:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
++ (NSString *)ordinalNumberFormat:(NSInteger)num;
++ (NSString *)monthFor:(NSInteger)month;
 
 @end

@@ -16,110 +16,76 @@
 
 @interface NoteView()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) UILabel *title;
-@property (strong, nonatomic) UILabel *date;
-@property (strong, nonatomic) UILabel *time;
 
 @end
 
 @implementation NoteView
-@synthesize title = _title;
-@synthesize date = _date;
-@synthesize time = _time;
 @synthesize actionSheet = _actionSheet;
 @synthesize note = _note;
-@synthesize detailViewController = _detailViewController;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    
     if (self) {
-        UILabel *date = [[UILabel alloc] init];
-        [date setFrame:CGRectMake(0, 0, 100, 25)];
-        [date setTextAlignment:UITextAlignmentCenter];
-        [date setFont:[UIFont systemFontOfSize:14]];
-        [self setDate:date];
+        [self commonInit];
+        [self setBackgroundColor:[BNoteConstants appColor1]];
         
-        UILabel *time = [[UILabel alloc] init];
-        [time setFrame:CGRectMake(0, 75, 100, 25)];
-        [time setTextAlignment:UITextAlignmentRight];
-        [time setFont:[UIFont systemFontOfSize:12]];
-        [time setBackgroundColor:[UIColor clearColor]];
-        [self setTime:time];
+        UILabel *text = [[UILabel alloc] init];
+        [text setText:@"Add New Note"];
+        [text setFont:[BNoteConstants font:RobotoRegular andSize:14]];
+        [text setFrame:CGRectMake(13, 40, 100, 30)];
+        [text setTextColor:[BNoteConstants appHighlightColor1]];
         
-        UILabel *title = [[UILabel alloc] init];
-        [title setFrame:CGRectMake(0, 33, 100, 30)];
-        [title setTextAlignment:UITextAlignmentCenter];
-        [title setLineBreakMode:UILineBreakModeWordWrap];
-        [title setFont:[UIFont systemFontOfSize:12]];
-        [title setNumberOfLines:3];
-        [title setBackgroundColor:[UIColor clearColor]];
-        [self setTitle:title];
-        
-        [LayerFormater setBorderWidth:1 forView:self];
-        [LayerFormater setBorderColor:[UIColor blackColor] forView:self];
-        [LayerFormater addShadowToView:self];
-        
-        UILongPressGestureRecognizer *longPress =
-        [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressTap:)];
-        [self addGestureRecognizer:longPress];
-        
-        UITapGestureRecognizer *tap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
-        [self addGestureRecognizer:tap];
-        
-        [self addSubview:date];
-        [self addSubview:time];
-        [self addSubview:title];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                     name:TopicUpdated object:nil];
+        [self addSubview:text];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+
+    if (self) {
+        [self commonInit];
     }
     
     return self;
 }
 
+- (void)commonInit
+{
+    //[LayerFormater roundCornersForView:self];
+    [LayerFormater setBorderWidth:1 forView:self];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
+    [LayerFormater addShadowToView:self ofSize:1.0];
+    
+//    UILongPressGestureRecognizer *longPress =
+//    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
+//    [self addGestureRecognizer:longPress];
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    UIColor *color = UIColorFromRGB([[self note] color]);
+    
+    CGContextSetStrokeColorWithColor(context, color.CGColor);
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextSetLineWidth(context, 1.0);
+	CGContextMoveToPoint(context, 10, 0.0);
+	CGContextAddLineToPoint(context, 10, 40);
+	CGContextAddLineToPoint(context, 20, 32);
+	CGContextAddLineToPoint(context, 30, 40);
+	CGContextAddLineToPoint(context, 30, 0);
+    CGContextClosePath(context);
+    CGContextFillPath(context);
+	CGContextStrokePath(context);
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)setNote:(Note *)note
-{
-    _note = note;
-    
-    [[self date] setBackgroundColor:UIColorFromRGB([[note topic] color])]; 
-
-    NSNotification *notification = [NSNotification notificationWithName:@"" object:note];
-    [self updateNote:notification];
-}
-
--(void)updateNote:(id)sender
-{
-    NSNotification *notification = sender;
-    Note *note = [notification object];
-    
-    if (note == [self note]) {
-        NSString *title = [note subject];
-        if ([BNoteStringUtils nilOrEmpty:title]) {
-            [[self title] setText:nil];
-        } else {
-            [[self title] setText:title];
-        }
-        
-        NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
-        
-        NSDateFormatter *format = [[NSDateFormatter alloc] init];
-        
-        [format setDateFormat:@"MMMM dd, YYYY"];
-        NSString *dateString = [format stringFromDate:date];
-        [[self date] setText:dateString];
-        
-        [format setDateFormat:@"hh:mm aaa  "];
-        NSString *timeString = [format stringFromDate:date];
-        [[self time] setText:timeString];
-    }
 }
 
 -(void)longPressTap:(id)sender
@@ -131,11 +97,6 @@
         CGRect rect = [self bounds];
         [actionSheet showFromRect:rect inView:self animated:YES];
     }
-}
-
--(void)normalPressTap:(id)sender
-{
-    [EditNoteViewPresenter presentNote:[self note] in:[self detailViewController]];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

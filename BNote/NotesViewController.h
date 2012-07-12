@@ -13,8 +13,7 @@
 
 @interface NotesViewController : UIViewController
 
-@property (strong, nonatomic) Topic *topic;
-@property (assign, nonatomic) UIViewController *detailViewController;
+@property (assign, nonatomic) Topic *topic;
 
 - (void)reload;
 

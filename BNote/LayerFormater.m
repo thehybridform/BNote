@@ -47,6 +47,15 @@
     [LayerFormater setBorderColor:UIColorFromRGB(color) forView:view];
 }
 
++ (void)addShadowToView:(UIView *)view ofSize:(float)size
+{
+    [view.layer setMasksToBounds:NO];
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:size];
+    [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];    
+}
+
 + (void)addShadowToView:(UIView *)view
 {
     [view.layer setMasksToBounds:NO];

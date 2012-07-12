@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
-#import "NoteEditorViewController.h"
 
 @interface NoteView : UIView <UIActionSheetDelegate>
-
-@property (strong, nonatomic) Note *note;
-@property (assign, nonatomic) UIViewController *detailViewController;
+@property (assign, nonatomic) Note *note;
 
 @end
 

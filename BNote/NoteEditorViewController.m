@@ -171,7 +171,7 @@
     [self dismissModalViewControllerAnimated:YES];
     [[BNoteWriter instance] update];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[self note]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NoteUpdated object:[self note]];
 }
 
 - (IBAction)editMode:(id)sender

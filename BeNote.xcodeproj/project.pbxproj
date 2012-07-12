@@ -65,6 +65,7 @@
 		1851A634159EA5760089EECF /* medium-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A631159EA5760089EECF /* medium-pencil.png */; };
 		1851A635159EA5760089EECF /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
 		1851A638159ECBDE0089EECF /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A637159ECBDE0089EECF /* DrawingView.m */; };
+		18539D5715AEBD8500D7DC55 /* BNoteLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5615AEBD8500D7DC55 /* BNoteLabel.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -80,6 +81,8 @@
 		189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445815AE809D008F11D2 /* RobotoItalic.ttf */; };
 		189B445D15AE809D008F11D2 /* RobotoLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445915AE809D008F11D2 /* RobotoLight.ttf */; };
 		189B445E15AE809D008F11D2 /* RobotoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445A15AE809D008F11D2 /* RobotoRegular.ttf */; };
+		189B446515AE8BF0008F11D2 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B446315AE8BF0008F11D2 /* NoteViewController.m */; };
+		189B446615AE8BF0008F11D2 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189B446415AE8BF0008F11D2 /* NoteViewController.xib */; };
 		18A05685157B5BCC002A4A78 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A05684157B5BCC002A4A78 /* AddressBook.framework */; };
 		18A056AE157B71BA002A4A78 /* AttendantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056AD157B71BA002A4A78 /* AttendantsViewController.m */; };
 		18A056B6157BFD72002A4A78 /* AttendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056B5157BFD71002A4A78 /* AttendantView.m */; };
@@ -157,7 +160,6 @@
 		18F7996C15AA15FC00DEAB1F /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996B15AA15FC00DEAB1F /* Decision.m */; };
 		18F7996F15AA969200DEAB1F /* ClearResposibilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */; };
 		18F7997115AAA91400DEAB1F /* x-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997015AAA91400DEAB1F /* x-image.png */; };
-		18F7997315AAAA6500DEAB1F /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997215AAAA6500DEAB1F /* NoteView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,6 +263,8 @@
 		1851A636159ECBDE0089EECF /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		1851A637159ECBDE0089EECF /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
 		1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 8.xcdatamodel"; sourceTree = "<group>"; };
+		18539D5515AEBD8500D7DC55 /* BNoteLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteLabel.h; sourceTree = "<group>"; };
+		18539D5615AEBD8500D7DC55 /* BNoteLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteLabel.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -286,6 +290,9 @@
 		189B445815AE809D008F11D2 /* RobotoItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoItalic.ttf; sourceTree = "<group>"; };
 		189B445915AE809D008F11D2 /* RobotoLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoLight.ttf; sourceTree = "<group>"; };
 		189B445A15AE809D008F11D2 /* RobotoRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoRegular.ttf; sourceTree = "<group>"; };
+		189B446215AE8BF0008F11D2 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
+		189B446315AE8BF0008F11D2 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
+		189B446415AE8BF0008F11D2 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		18A05684157B5BCC002A4A78 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		18A056AC157B71BA002A4A78 /* AttendantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsViewController.h; sourceTree = "<group>"; };
 		18A056AD157B71BA002A4A78 /* AttendantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsViewController.m; sourceTree = "<group>"; };
@@ -424,7 +431,6 @@
 		18F7996D15AA969000DEAB1F /* ClearResposibilityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearResposibilityButton.h; sourceTree = "<group>"; };
 		18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearResposibilityButton.m; sourceTree = "<group>"; };
 		18F7997015AAA91400DEAB1F /* x-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-image.png"; sourceTree = "<group>"; };
-		18F7997215AAAA6500DEAB1F /* NoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -980,6 +986,8 @@
 				18E9FF10156A343700F22272 /* LayerFormater.m */,
 				18BAC1A415AD2DED00EEBE1E /* BNoteButton.h */,
 				18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */,
+				18539D5515AEBD8500D7DC55 /* BNoteLabel.h */,
+				18539D5615AEBD8500D7DC55 /* BNoteLabel.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1007,7 +1015,9 @@
 				18E9FF6C15729EF900F22272 /* NotesViewController.m */,
 				18A056E4157D9BD9002A4A78 /* NoteView.h */,
 				18A056E5157D9BDA002A4A78 /* NoteView.m */,
-				18F7997215AAAA6500DEAB1F /* NoteView.xib */,
+				189B446215AE8BF0008F11D2 /* NoteViewController.h */,
+				189B446315AE8BF0008F11D2 /* NoteViewController.m */,
+				189B446415AE8BF0008F11D2 /* NoteViewController.xib */,
 			);
 			name = "Notes Scroll View";
 			sourceTree = "<group>";
@@ -1117,10 +1127,10 @@
 				18ECE92F15A2A9A6009E5D0B /* Squared_paper.jpg in Resources */,
 				18AE9C1215A576F30058B4EE /* key_point_mask.png in Resources */,
 				18F7997115AAA91400DEAB1F /* x-image.png in Resources */,
-				18F7997315AAAA6500DEAB1F /* NoteView.xib in Resources */,
 				18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */,
 				18BAC1B415AD566200EEBE1E /* table-cell-shadow-blank.png in Resources */,
 				18BAC1B515AD566200EEBE1E /* table-cell-shadow-selected.png in Resources */,
+				189B446615AE8BF0008F11D2 /* NoteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,6 +1237,8 @@
 				18F7996F15AA969200DEAB1F /* ClearResposibilityButton.m in Sources */,
 				18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */,
 				18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */,
+				189B446515AE8BF0008F11D2 /* NoteViewController.m in Sources */,
+				18539D5715AEBD8500D7DC55 /* BNoteLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

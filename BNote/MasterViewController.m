@@ -102,8 +102,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        UIFont *font = [BNoteConstants font:RobotoRegular andSize:20.0];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        
+        UIFont *font = [BNoteConstants font:RobotoRegular andSize:20.0];
+        [[cell textLabel] setFont:font];
+        [[cell textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     }
 
     [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];

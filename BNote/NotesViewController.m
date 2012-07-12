@@ -13,15 +13,33 @@
 #import "NoteView.h"
 #import "Note.h"
 #import "DetailViewController.h"
+#import "NoteViewController.h"
+#import "BNoteFactory.h"
+
+@interface NotesViewController()
+@property (strong, nonatomic) NSMutableArray *noteControllers;
+
+@end
 
 @implementation NotesViewController
 @synthesize topic = _topic;
-@synthesize detailViewController = _detailViewController;
+@synthesize noteControllers = _noteControllers;
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:)
+                                                     name:NoteUpdated object:nil];
+    }
+    
+    return self;
+}
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self setTopic:nil];
 }
 
 - (void)viewDidLoad
@@ -31,40 +49,77 @@
     [self reload];
 }
 
+- (void)setTopic:(Topic *)topic
+{
+    _topic = topic;
+    
+    [self reload];
+}
+
+- (void)updateView:(NSNotification *)notification
+{
+    [self reload];
+}
+
 - (void)reload
-{    
-    NSEnumerator *views = [[[self view] subviews] objectEnumerator];
-    UIView *view;
-    while (view = [views nextObject]) {
-        [view setHidden:YES];
-    }
+{   
+    float space = 130;
     
     UIScrollView *scrollView = (UIScrollView *) [self view];
+    for (UIView *view in [scrollView subviews]) {
+        [view removeFromSuperview];
+    }
     
-    float x = -100;
-    float width = 100;
+    NSMutableArray *noteControllers = [[NSMutableArray alloc] init];
+    [self setNoteControllers:noteControllers];
+    
+    float x = 10;
     
     for (Note *note in [[self topic] notes]) {
-        x += width + 10;
-        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x, 11, 100, 100)];
-        [noteView setNote:note];
-        [scrollView addSubview:noteView];
-        [noteView setDetailViewController:[self detailViewController]];
+        [self addNote:note atX:x];
+        x += space;
     }
     
     for (Note *note in [[self topic] associatedNotes]) {
-        x += width + 10;
-        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x, 11, 100, 100)];
-        [noteView setNote:note];
-        [scrollView addSubview:noteView];
-        [noteView setDetailViewController:[self detailViewController]];
+        [self addNote:note atX:x];
+        x += space;
     }
     
-    width = x + 110;
+    NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x, 10, 120, 96)];
+    UITapGestureRecognizer *tap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
+    [noteView addGestureRecognizer:tap];
 
+    [scrollView addSubview:noteView];
+    
+    float width = x + space;
     if (width > 0) {
         [scrollView setContentSize:CGSizeMake(width, [scrollView bounds].size.height)];
     }
+}
+
+- (void)addNote:(Note *)note atX:(float)x
+{
+    float y = 10;
+
+    NoteViewController *controller = [[NoteViewController alloc] initWithNote:note];
+    [[self noteControllers] addObject:controller];
+    
+    UIView *view = [controller view];
+    float width = [view bounds].size.width;
+    float height = [view bounds].size.height;
+    
+    CGRect frame = CGRectMake(x, y, width, height);
+    [view setFrame:frame];
+    
+    UIScrollView *scrollView = (UIScrollView *) [self view];
+    [scrollView addSubview:view];
+}
+
+-(void)normalPressTap:(id)sender
+{
+    Note *note = [BNoteFactory createNote:[self topic]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:note];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

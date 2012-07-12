@@ -30,6 +30,8 @@ extern int const AnswerColor;
 extern NSString *const KeyPointPhotoUpdated;
 extern NSString *const KeyWordsUpdated;
 //extern NSString *const AllDataUpdated;
+extern NSString *const NoteUpdated;
+extern NSString *const NoteSelected;
 extern NSString *const TopicSelected;
 extern NSString *const TopicUpdated;
 extern NSString *const TopicDeleted;
@@ -62,6 +64,7 @@ typedef enum {
 @interface BNoteConstants : NSObject
 
 + (UIColor *)appColor1;
++ (UIColor *)appHighlightColor1;
 + (UIFont *)font:(BNoteFont)font andSize:(int)size;
 
 + (UIColor *)colorFor:(BNoteColor)color;

@@ -30,6 +30,8 @@ const int AppHighlightColor1 = 0x365ab0;
 const NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
 const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
 //const NSString *const AllDataUpdated = @"AllDataUpdated";
+const NSString *const NoteUpdated = @"NoteUpdated";
+const NSString *const NoteSelected = @"NoteSelected";
 const NSString *const TopicSelected = @"TopicSelected";
 const NSString *const TopicUpdated = @"TopicUpdated";
 const NSString *const TopicDeleted = @"TopicDeleted";
@@ -67,6 +69,10 @@ const NSString *const EulaFlag = @"EulaFlag";
     return [UIColor blackColor];
 }
 
++ (UIColor *)appHighlightColor1
+{
+    return UIColorFromRGB(AppHighlightColor1);
+}
 
 + (UIColor *)appColor1
 {

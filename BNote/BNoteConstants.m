@@ -80,7 +80,7 @@ const NSString *const EulaFlag = @"EulaFlag";
     return UIColorFromRGB(AppColor1);
 }
 
-+ (UIFont *)font:(BNoteFont)font andSize:(int)size
++ (UIFont *)font:(BNoteFont)font andSize:(float)size
 {
 //    NSArray* check = [UIFont familyNames];
     

@@ -24,4 +24,6 @@
 + (NSString *)ordinalNumberFormat:(NSInteger)num;
 + (NSString *)monthFor:(NSInteger)month;
 
++ (BOOL)string:(NSString *)a isEqualsTo:(NSString *)b;
+
 @end

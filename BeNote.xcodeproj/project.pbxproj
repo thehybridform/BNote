@@ -132,6 +132,10 @@
 		18C2654415859E7F005FA6C5 /* ActionItemPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */; };
 		18C2654715859EB4005FA6C5 /* AttendantPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */; };
 		18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
+		18DE683C15B0D41E00311F16 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683B15B0D41E00311F16 /* PeopleViewController.m */; };
+		18DE683F15B0D49700311F16 /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683E15B0D49700311F16 /* PersonView.m */; };
+		18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE684115B0D4C600311F16 /* PersonViewController.m */; };
+		18DE684415B0D4C600311F16 /* PersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DE684215B0D4C600311F16 /* PersonViewController.xib */; };
 		18E9FF11156A343700F22272 /* LayerFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF10156A343700F22272 /* LayerFormater.m */; };
 		18E9FF1D156B772D00F22272 /* action_item_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF15156B772D00F22272 /* action_item_active_icon.png */; };
 		18E9FF1E156B772D00F22272 /* action_item_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF16156B772D00F22272 /* action_item_icon.png */; };
@@ -394,6 +398,13 @@
 		18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantPlainRenderer.m; sourceTree = "<group>"; };
 		18C2654B15859FE3005FA6C5 /* NotePlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePlainRenderer.h; sourceTree = "<group>"; };
 		18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePlainRenderer.m; sourceTree = "<group>"; };
+		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
+		18DE683B15B0D41E00311F16 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
+		18DE683D15B0D49700311F16 /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
+		18DE683E15B0D49700311F16 /* PersonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonView.m; sourceTree = "<group>"; };
+		18DE684015B0D4C600311F16 /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
+		18DE684115B0D4C600311F16 /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
+		18DE684215B0D4C600311F16 /* PersonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonViewController.xib; sourceTree = "<group>"; };
 		18E9FF0F156A343700F22272 /* LayerFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerFormater.h; sourceTree = "<group>"; };
 		18E9FF10156A343700F22272 /* LayerFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerFormater.m; sourceTree = "<group>"; };
 		18E9FF15156B772D00F22272 /* action_item_active_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_item_active_icon.png; sourceTree = "<group>"; };
@@ -691,6 +702,7 @@
 		18368F5415662D8000E511CB /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				18DE683515B0D39A00311F16 /* People Scroll View */,
 				18AF4ABA15852F8B00A54205 /* Email Controller */,
 				18A056CB157C9090002A4A78 /* Help Pages */,
 				1834D35015634A650065788F /* DetailViewController.h */,
@@ -1022,6 +1034,20 @@
 			name = "Plain Text";
 			sourceTree = "<group>";
 		};
+		18DE683515B0D39A00311F16 /* People Scroll View */ = {
+			isa = PBXGroup;
+			children = (
+				18DE683A15B0D41E00311F16 /* PeopleViewController.h */,
+				18DE683B15B0D41E00311F16 /* PeopleViewController.m */,
+				18DE683D15B0D49700311F16 /* PersonView.h */,
+				18DE683E15B0D49700311F16 /* PersonView.m */,
+				18DE684015B0D4C600311F16 /* PersonViewController.h */,
+				18DE684115B0D4C600311F16 /* PersonViewController.m */,
+				18DE684215B0D4C600311F16 /* PersonViewController.xib */,
+			);
+			name = "People Scroll View";
+			sourceTree = "<group>";
+		};
 		18E9FF0D156A340900F22272 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1176,6 +1202,7 @@
 				18BAC1B415AD566200EEBE1E /* table-cell-shadow-blank.png in Resources */,
 				18BAC1B515AD566200EEBE1E /* table-cell-shadow-selected.png in Resources */,
 				189B446615AE8BF0008F11D2 /* NoteViewController.xib in Resources */,
+				18DE684415B0D4C600311F16 /* PersonViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1318,9 @@
 				18539D6915AFF6D900D7DC55 /* KeyPointCloner.m in Sources */,
 				18539D6C15AFF73F00D7DC55 /* PhotoCloner.m in Sources */,
 				18539D7215AFFF6900D7DC55 /* AttendantsCloner.m in Sources */,
+				18DE683C15B0D41E00311F16 /* PeopleViewController.m in Sources */,
+				18DE683F15B0D49700311F16 /* PersonView.m in Sources */,
+				18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

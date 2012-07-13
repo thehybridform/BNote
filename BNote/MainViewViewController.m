@@ -11,6 +11,7 @@
 #import "InformationViewController.h"
 #import "EntrySummariesTableViewController.h"
 #import "MasterViewController.h"
+#import "PeopleViewController.h"
 #import "Topic.h"
 #import "NotesViewController.h"
 #import "Entry.h"
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) IBOutlet MasterViewController *topicsTable;
 @property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *entriesTable;
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
+@property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 
 @end
 
@@ -42,6 +44,7 @@
 @synthesize entriesTable = _entriesTable;
 @synthesize detailView = _detailView;
 @synthesize notesViewController = _notesViewController;
+@synthesize peopleViewController = _peopleViewController;
 @synthesize countLabel = _countLabel;
 @synthesize notesLabel = _notesLabel;
 @synthesize peopleLabel = _peopleLabel;
@@ -60,14 +63,12 @@ static NSString *email = @"E-mail";
     if (self) {
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedTopic:) name:TopicSelected object:nil];
-
+        
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(selectedTopic:) name:TopicUpdated object:nil];
+        
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
-        
-        UITapGestureRecognizer *tap =
-            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showNoteOptions:)];
-        [[self notesLabel] addGestureRecognizer:tap];
-
     }
     return self;
 }
@@ -84,6 +85,7 @@ static NSString *email = @"E-mail";
     [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15.0]];
     [[self titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:20.0]];
     
+    [[self detailView] setHidden:YES];
 }
 
 - (void)viewDidUnload
@@ -95,6 +97,7 @@ static NSString *email = @"E-mail";
     [self setEntriesTable:nil];
     [self setDetailView:nil];
     [self setNotesViewController:nil];
+    [self setPeopleViewController:nil];
     [self setCountLabel:nil];
     [self setNotesLabel:nil];
     [self setPeopleLabel:nil];
@@ -110,10 +113,20 @@ static NSString *email = @"E-mail";
 
 - (void)selectedTopic:(NSNotification *)notification
 {
+    [[self detailView] setHidden:NO];
+
     Topic *topic = [notification object];
     [[self entriesTable] setTopic:topic];
     [[self notesViewController] setTopic:topic];
     [[self titleLabel] setText:[topic title]];
+    
+    [[self peopleViewController] reset];
+    
+    for (Note *note in [topic notes]) {
+        for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
+            [[self peopleViewController] addAttendants:attendants];
+        }
+    }
 
     NSString *s = [NSString stringWithFormat:@"%d", [[topic notes] count]];
     [[self countLabel] setText:s];
@@ -138,11 +151,6 @@ static NSString *email = @"E-mail";
     [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
     [self presentModalViewController:noteController animated:YES];
-}
-
-- (void)showNoteOptions:(NSNotification *)notification
-{
-    
 }
 
 - (void)updateNoteCount:(NSNotification *)notification
@@ -190,9 +198,6 @@ static NSString *email = @"E-mail";
     [actionSheet setDelegate:self];
     
     [actionSheet addButtonWithTitle:email];
-
-    NSInteger index = [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setDestructiveButtonIndex:index];
 
     [actionSheet setTitle:@"Share Topic"];
     [self setActionSheet:actionSheet];

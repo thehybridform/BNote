@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Topic.h"
 
-@interface BNoteSessionData : NSObject
+@interface BNoteSessionData : NSObject <UIActionSheetDelegate>
+@property (strong, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (assign, nonatomic) id<UIActionSheetDelegate> actionSheetDelegate;
 
 typedef enum {
     Reviewing,

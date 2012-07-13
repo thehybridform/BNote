@@ -13,17 +13,13 @@
 #import "EditNoteViewPresenter.h"
 #import "BNoteWriter.h"
 #import "TopicManagementViewController.h"
+#import "BNoteSessionData.h"
 
 @interface NoteView()
-@property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) UIPopoverController *popup;
-
 @end
 
 @implementation NoteView
-@synthesize actionSheet = _actionSheet;
 @synthesize note = _note;
-@synthesize popup = _popup;
 
 static NSString *copyNote = @"Copy";
 static NSString *removeNote = @"Remove";
@@ -96,9 +92,10 @@ static NSString *associateNote = @"Associate";
 
 -(void)longPressTap:(id)sender
 {
-    if (![self actionSheet]) {
+    if (![[BNoteSessionData instance] actionSheet]) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-        [actionSheet setDelegate:self];
+        [actionSheet setDelegate:[BNoteSessionData instance]];
+        [[BNoteSessionData instance] setActionSheetDelegate:self];
         
         [actionSheet addButtonWithTitle:copyNote];
         
@@ -111,7 +108,7 @@ static NSString *associateNote = @"Associate";
         [actionSheet setDestructiveButtonIndex:index];
         
         [actionSheet setTitle:@"Note Options"];
-        [self setActionSheet:actionSheet];
+        [[BNoteSessionData instance] setActionSheet:actionSheet];
         
         CGRect rect = [self bounds];
         [actionSheet showFromRect:rect inView:self animated:YES];
@@ -132,8 +129,6 @@ static NSString *associateNote = @"Associate";
             [self presentTopicSelectionForType:CopyToTopic];
         }
     }
-    
-    [self setActionSheet:nil];
 }
 
 - (void)presentTopicSelectionForType:(TopicSelectType)type
@@ -141,7 +136,7 @@ static NSString *associateNote = @"Associate";
     TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:type];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [self setPopup:popup];
+    [[BNoteSessionData instance] setPopup:popup];
     [popup setDelegate:self];
     [controller setPopup:popup];
     
@@ -157,12 +152,7 @@ static NSString *associateNote = @"Associate";
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    [self setPopup:nil];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    [self setActionSheet:nil];
+    [[BNoteSessionData instance] setPopup:nil];
 }
 
 @end

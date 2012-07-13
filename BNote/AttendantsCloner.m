@@ -10,6 +10,7 @@
 #import "Attendants.h"
 #import "Attendant.h"
 #import "BNoteFactory.h"
+#import "BNoteImageUtils.h"
 
 @implementation AttendantsCloner
 
@@ -22,9 +23,21 @@
         [att setEmail:[child email]];
         [att setFirstName:[child firstName]];
         [att setLastName:[child lastName]];
+        
+        if ([child image]) {
+            [att setImage:[self copyImage:[child image]]];
+        }
     }
     
     return copy;
+}
+
+- (NSData *)copyImage:(NSData *)data
+{
+    UIImage *image = [UIImage imageWithData:data];
+    UIImage *copy = [BNoteImageUtils copyImage:image];
+    
+    return UIImageJPEGRepresentation(copy, 0.8);
 }
 
 @end

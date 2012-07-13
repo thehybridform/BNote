@@ -16,6 +16,19 @@
 
 @implementation BNoteStringUtils
 
++ (BOOL)string:(NSString *)a isEqualsTo:(NSString *)b
+{
+    if (a == nil & b == nil) {
+        return YES;
+    } else if (a != nil & b == nil) {
+        return NO;
+    } else if (a == nil & b != nil) {
+        return NO;
+    }
+    
+    return [a isEqualToString:b];
+}
+
 + (NSString *)trim:(NSString *)string
 {
     if (string) {

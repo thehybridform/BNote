@@ -161,11 +161,15 @@
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
+        {
             [[self popup] dismissPopoverAnimated:YES];
+            
+            Topic *currentTopic = [[self note] topic];
+            
             [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:currentTopic];
             break;
-        
+        }
         case AssociateTopic:
         {
             UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];

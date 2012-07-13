@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSArray *actionItemsUncomplete;
 @property (strong, nonatomic) NSArray *actionItemsComplete;
 @property (strong, nonatomic) NSArray *keyPoints;
-@property (strong, nonatomic) NSArray *attendants;
 @property (strong, nonatomic) NSArray *decisions;
 @property (strong, nonatomic) NSArray *entries;
 @property (assign, nonatomic) BOOL groupEntries;
@@ -43,7 +42,6 @@
 @synthesize entries = _entries;
 @synthesize sortType = _sortType;
 @synthesize searchText = _searchText;
-@synthesize attendants = _attendants;
 @synthesize parentController = _parentController;
 
 - (void)viewDidLoad
@@ -155,7 +153,6 @@
     [self setActionItemsUncomplete:[self filterEntries:[BNoteFilterFactory create:ActionItemsIncompleteType]]];
     [self setDecisions:[self filterEntries:[BNoteFilterFactory create:DecistionType]]];
     [self setKeyPoints:[self filterEntries:[BNoteFilterFactory create:KeyPointType]]];
-    [self setAttendants:[self filterEntries:[BNoteFilterFactory create:AttendantType]]];
     [self setEntries:[self filterEntries:[BNoteFilterFactory create:ItdentityType]]];
     
     [[self tableView] reloadData];
@@ -166,7 +163,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self groupEntries]) {
-        return 7;
+        return 6;
     } else {
         return 1;
     }
@@ -188,25 +185,22 @@
     }
     
     switch (section) {
-            case 0:
-            return [self attendants];
-            break;
-        case 1:
+        case 0:
             return [self actionItemsComplete];
             break;
-        case 2:
+        case 1:
             return [self actionItemsUncomplete];
             break;
-        case 3:
+        case 2:
             return [self decisions];
             break;
-        case 4:
+        case 3:
             return [self keyPoints];
             break;
-        case 5:
+        case 4:
             return [self questionsAnswered];
             break;
-        case 6:
+        case 5:
             return [self questionsUnanswered];
             break;
         default:
@@ -224,24 +218,21 @@
 
     switch (section) {
         case 0:
-            return @"Attendants";
-            break;
-        case 1:
             return @"Action Items - Complete";
             break;
-        case 2:
+        case 1:
             return @"Action Items - Incomplete";
             break;
-        case 3:
+        case 2:
             return @"Decisions";
             break;
-        case 4:
+        case 3:
             return @"Key Points";
             break;
-        case 5:
+        case 4:
             return @"Questions - Answered";
             break;
-        case 6:
+        case 5:
             return @"Questions - Unswered";
             break;
         default:
@@ -273,12 +264,23 @@
     return NO;
 }
 
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
     [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:entry];
+}
+/*
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [super tableView:tableView viewForFooterInSection:section];
+    return view;
+}
+ */
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [super tableView:tableView viewForHeaderInSection:section];
+    return view;
+
 }
 
 - (IBAction)group:(id)sender

@@ -21,6 +21,9 @@
 @synthesize settings = _settings;
 @synthesize imageIconViews = _imageIconViews;
 @synthesize keyboardVisible = _keyboardVisible;
+@synthesize popup = _popup;
+@synthesize actionSheet = _actionSheet;
+@synthesize actionSheetDelegate = _actionSheetDelegate;
 
 - (BOOL)canEditEntry
 {
@@ -50,6 +53,18 @@
 - (void)keyboardDidShowBNoteSessionData:(id)sender
 {
     [self setKeyboardVisible:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ([self actionSheetDelegate]) {
+        [[self actionSheetDelegate] actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self setActionSheet:nil];
 }
 
 + (BNoteSessionData *)instance

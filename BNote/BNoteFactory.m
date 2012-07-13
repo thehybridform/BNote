@@ -68,6 +68,7 @@ NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
 + (Note *)copyNote:(Note *)note toTopic:(Topic *)topic
 {
     Note *copy = [BNoteFactory createNote:topic];
+    [copy setSubject:[BNoteStringUtils append:@"Copy of ", [note subject], nil]];
     
     for (Entry *entry in [note entries]) {
         [[ClonerFactory clonerFor:entry] clone:entry into:copy];

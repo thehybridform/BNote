@@ -12,15 +12,6 @@
 @implementation BNoteButton
 @synthesize icon = _icon;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -30,6 +21,9 @@
         [self setBackgroundColor:[BNoteConstants colorFor:BNoteColorMain]];
         [self setShowsTouchWhenHighlighted:YES];
         [LayerFormater roundCornersForView:self];
+        
+        [self setBackgroundColor:[UIColor clearColor]];
+        [LayerFormater setBorderWidth:0 forView:self];
     }
     
     return self;
@@ -48,14 +42,5 @@
     CGRect frame = CGRectMake(x, y, width, height);
     [icon setFrame:frame];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

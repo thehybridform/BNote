@@ -30,14 +30,7 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        NSMutableArray *noteControllers = [[NSMutableArray alloc] init];
-        [self setNoteControllers:noteControllers];
-        
-
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:)
-                                                     name:NoteUpdated object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:)
-                                                     name:TopicUpdated object:nil];
+        [self setNoteControllers:[[NSMutableArray alloc] init]];
     }
     
     return self;
@@ -58,11 +51,7 @@
 {
     _topic = topic;
     
-    [self reload];
-}
-
-- (void)updateView:(NSNotification *)notification
-{
+    [self setNoteControllers:[[NSMutableArray alloc] init]];
     [self reload];
 }
 

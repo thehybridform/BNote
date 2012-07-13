@@ -30,7 +30,6 @@
     return nil;
 }
 
-
 + (NSString *)formatDetailTextForActionItem:(ActionItem *)actionItem
 {
     NSString *detailText = @"";

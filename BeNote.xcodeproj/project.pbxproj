@@ -66,6 +66,13 @@
 		1851A635159EA5760089EECF /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
 		1851A638159ECBDE0089EECF /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A637159ECBDE0089EECF /* DrawingView.m */; };
 		18539D5715AEBD8500D7DC55 /* BNoteLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5615AEBD8500D7DC55 /* BNoteLabel.m */; };
+		18539D5D15AFEBF200D7DC55 /* ClonerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5C15AFEBF200D7DC55 /* ClonerFactory.m */; };
+		18539D6015AFEF2100D7DC55 /* DecisionCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5F15AFEF2100D7DC55 /* DecisionCloner.m */; };
+		18539D6315AFF56D00D7DC55 /* ActionItemCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6215AFF56D00D7DC55 /* ActionItemCloner.m */; };
+		18539D6615AFF65800D7DC55 /* QuestionCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6515AFF65800D7DC55 /* QuestionCloner.m */; };
+		18539D6915AFF6D900D7DC55 /* KeyPointCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6815AFF6D900D7DC55 /* KeyPointCloner.m */; };
+		18539D6C15AFF73F00D7DC55 /* PhotoCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6B15AFF73E00D7DC55 /* PhotoCloner.m */; };
+		18539D7215AFFF6900D7DC55 /* AttendantsCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -265,6 +272,21 @@
 		1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 8.xcdatamodel"; sourceTree = "<group>"; };
 		18539D5515AEBD8500D7DC55 /* BNoteLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteLabel.h; sourceTree = "<group>"; };
 		18539D5615AEBD8500D7DC55 /* BNoteLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteLabel.m; sourceTree = "<group>"; };
+		18539D5A15AFEB6400D7DC55 /* Cloner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cloner.h; sourceTree = "<group>"; };
+		18539D5B15AFEBF200D7DC55 /* ClonerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClonerFactory.h; sourceTree = "<group>"; };
+		18539D5C15AFEBF200D7DC55 /* ClonerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClonerFactory.m; sourceTree = "<group>"; };
+		18539D5E15AFEF2100D7DC55 /* DecisionCloner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionCloner.h; sourceTree = "<group>"; };
+		18539D5F15AFEF2100D7DC55 /* DecisionCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionCloner.m; sourceTree = "<group>"; };
+		18539D6115AFF56D00D7DC55 /* ActionItemCloner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemCloner.h; sourceTree = "<group>"; };
+		18539D6215AFF56D00D7DC55 /* ActionItemCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemCloner.m; sourceTree = "<group>"; };
+		18539D6415AFF65800D7DC55 /* QuestionCloner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionCloner.h; sourceTree = "<group>"; };
+		18539D6515AFF65800D7DC55 /* QuestionCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionCloner.m; sourceTree = "<group>"; };
+		18539D6715AFF6D900D7DC55 /* KeyPointCloner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointCloner.h; sourceTree = "<group>"; };
+		18539D6815AFF6D900D7DC55 /* KeyPointCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointCloner.m; sourceTree = "<group>"; };
+		18539D6A15AFF73E00D7DC55 /* PhotoCloner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCloner.h; sourceTree = "<group>"; };
+		18539D6B15AFF73E00D7DC55 /* PhotoCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCloner.m; sourceTree = "<group>"; };
+		18539D7015AFFF6800D7DC55 /* AttendantsCloner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsCloner.h; sourceTree = "<group>"; };
+		18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsCloner.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -647,6 +669,7 @@
 		18368F4B156610D200E511CB /* Service Core */ = {
 			isa = PBXGroup;
 			children = (
+				18539D5915AFEB2200D7DC55 /* Cloners */,
 				18AF4AC51585620000A54205 /* Renderer */,
 				18070DF115786123003486E3 /* Filters */,
 				1834D3A5156375560065788F /* BNoteFactory.h */,
@@ -772,6 +795,28 @@
 				18AE9C0815A557970058B4EE /* PhotoSketchPath.m */,
 			);
 			name = "Photo Editor";
+			sourceTree = "<group>";
+		};
+		18539D5915AFEB2200D7DC55 /* Cloners */ = {
+			isa = PBXGroup;
+			children = (
+				18539D5A15AFEB6400D7DC55 /* Cloner.h */,
+				18539D5B15AFEBF200D7DC55 /* ClonerFactory.h */,
+				18539D5C15AFEBF200D7DC55 /* ClonerFactory.m */,
+				18539D5E15AFEF2100D7DC55 /* DecisionCloner.h */,
+				18539D5F15AFEF2100D7DC55 /* DecisionCloner.m */,
+				18539D6115AFF56D00D7DC55 /* ActionItemCloner.h */,
+				18539D6215AFF56D00D7DC55 /* ActionItemCloner.m */,
+				18539D6415AFF65800D7DC55 /* QuestionCloner.h */,
+				18539D6515AFF65800D7DC55 /* QuestionCloner.m */,
+				18539D6715AFF6D900D7DC55 /* KeyPointCloner.h */,
+				18539D6815AFF6D900D7DC55 /* KeyPointCloner.m */,
+				18539D6A15AFF73E00D7DC55 /* PhotoCloner.h */,
+				18539D6B15AFF73E00D7DC55 /* PhotoCloner.m */,
+				18539D7015AFFF6800D7DC55 /* AttendantsCloner.h */,
+				18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */,
+			);
+			name = Cloners;
 			sourceTree = "<group>";
 		};
 		1879F05615746E72003814C2 /* Date Picker */ = {
@@ -1239,6 +1284,13 @@
 				18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */,
 				189B446515AE8BF0008F11D2 /* NoteViewController.m in Sources */,
 				18539D5715AEBD8500D7DC55 /* BNoteLabel.m in Sources */,
+				18539D5D15AFEBF200D7DC55 /* ClonerFactory.m in Sources */,
+				18539D6015AFEF2100D7DC55 /* DecisionCloner.m in Sources */,
+				18539D6315AFF56D00D7DC55 /* ActionItemCloner.m in Sources */,
+				18539D6615AFF65800D7DC55 /* QuestionCloner.m in Sources */,
+				18539D6915AFF6D900D7DC55 /* KeyPointCloner.m in Sources */,
+				18539D6C15AFF73F00D7DC55 /* PhotoCloner.m in Sources */,
+				18539D7215AFFF6900D7DC55 /* AttendantsCloner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

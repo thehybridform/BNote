@@ -63,6 +63,7 @@ typedef enum {
 + (TopicGroup *)createTopicGroup:(NSString *)name;
 + (Topic *)createTopic:(NSString *)name;
 + (Note *)createNote:(Topic *)topic;
++ (Note *)copyNote:(Note *)note toTopic:(Topic *)topic;
 + (Question *)createQuestion:(Note *)note;
 + (ActionItem *)createActionItem:(Note *)note;
 + (KeyPoint *)createKeyPoint:(Note *)note;
@@ -71,6 +72,7 @@ typedef enum {
 + (Photo *)createPhoto:(KeyPoint *)keyPoint;
 + (KeyWord *)createKeyWord:(NSString *)word;
 + (Attendant *)createAttendant:(Attendants *)attendants;
++ (SketchPath *)createSketchPath:(Photo *)photo;
 + (void)addUIBezierPath:(UIBezierPath *)path withColor:(UIColor *)color toPhoto:(Photo *)photo;
 
 + (UIView *)createHighlightSliver:(UIColor *)color;

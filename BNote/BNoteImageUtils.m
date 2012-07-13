@@ -10,6 +10,11 @@
 
 @implementation BNoteImageUtils
 
++ (UIImage *)copyImage:(UIImage *)image
+{
+    return [UIImage imageWithCGImage:image.CGImage];
+}
+
 + (UIImage *)image:(UIImage *)image scaleAspectToMaxSize:(CGFloat)newSize
 {
     CGSize size = [image size];

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewViewController : UIViewController
+@interface MainViewViewController : UIViewController <UIActionSheetDelegate, UIPopoverControllerDelegate>
 
 - (id)initWithDefault;
 
 - (IBAction)about:(id)sender;
+- (IBAction)presentShareOptions:(id)sender;
+- (IBAction)addTopic:(id)sender;
 
 @end

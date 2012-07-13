@@ -12,5 +12,6 @@
 
 + (UIImage *)image:(UIImage *)image scaleAspectToMaxSize:(CGFloat)newSize;
 + (UIImage *)image:(UIImage *)image scaleAndCropToMaxSize:(CGSize)newSize;
++ (UIImage *)copyImage:(UIImage *)image;
 
 @end

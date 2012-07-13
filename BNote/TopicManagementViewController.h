@@ -9,25 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 
-@protocol TopicManagementViewControllerListener;
-
 typedef enum {
     ChangeMainTopic,
-    AssociateTopic
+    AssociateTopic,
+    CopyToTopic
 } TopicSelectType;
 
 @interface TopicManagementViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (assign, nonatomic) id<TopicManagementViewControllerListener> listener;
+
+@property (assign, nonatomic) UIPopoverController *popup;
 
 - (id)initWithNote:(Note *)note forType:(TopicSelectType)type;
 - (IBAction)done:(id)sender;
-- (IBAction)cancel:(id)sender;
 
 @end
 
-@protocol TopicManagementViewControllerListener <NSObject>
-
-- (void)selectedTopics:(NSArray *)topics;
-- (void)changeTopic:(Topic *)topic;
-
-@end

@@ -17,6 +17,8 @@
 #import "DecisionContentViewController.h"
 #import "BNoteSessionData.h"
 #import "SketchPath.h"
+#import "Cloner.h"
+#import "ClonerFactory.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -61,6 +63,17 @@ NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
     [[BNoteWriter instance] update];
     
     return topic;
+}
+
++ (Note *)copyNote:(Note *)note toTopic:(Topic *)topic
+{
+    Note *copy = [BNoteFactory createNote:topic];
+    
+    for (Entry *entry in [note entries]) {
+        [[ClonerFactory clonerFor:entry] clone:entry into:copy];
+    }
+    
+    return copy;
 }
 
 + (Note *)createNote:(Topic *)topic
@@ -111,6 +124,14 @@ NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
     return entry;
 }
 
++ (ActionItem *)copyActionItem:(ActionItem *)actionItem
+{
+    ActionItem *copy = [BNoteFactory createActionItem:[actionItem note]];
+    [copy setText:[actionItem text]];
+    
+    return copy;
+}
+
 + (KeyPoint *)createKeyPoint:(Note *)note
 {
     KeyPoint *entry = (KeyPoint *)[BNoteFactory createEntry:@"KeyPoint" forNote:note];
@@ -150,13 +171,19 @@ NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
     return photo;
 }
 
-+ (void)addUIBezierPath:(UIBezierPath *)path withColor:(UIColor *)color toPhoto:(Photo *)photo
++ (SketchPath *)createSketchPath:(Photo *)photo
 {
     SketchPath *sketch = [[BNoteWriter instance] insertNewObjectForEntityForName:@"SketchPath"];
+    [sketch setPhoto:photo];
+
+    return sketch;
+}
+
++ (void)addUIBezierPath:(UIBezierPath *)path withColor:(UIColor *)color toPhoto:(Photo *)photo
+{
+    SketchPath *sketch = [BNoteFactory createSketchPath:photo];
     [sketch setPathColor:color];
     [sketch setBezierPath:path];
-    [sketch setPhoto:photo];
-    
 }
 
 + (KeyWord *)createKeyWord:(NSString *)word
@@ -178,7 +205,7 @@ NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
 
 +(UIView *)createHighlightSliver:(UIColor *)color
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 24, 44)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 44)];
     [view setBackgroundColor:color];
 
     return view;

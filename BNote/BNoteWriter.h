@@ -24,6 +24,7 @@
 + (BNoteWriter *)instance;
 
 - (void)update;
+
 - (void)removeTopic:(Topic *)topic;
 - (void)removeNote:(Note *)note;
 - (void)removeEntry:(Entry *)entry;

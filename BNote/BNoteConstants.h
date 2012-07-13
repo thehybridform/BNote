@@ -32,6 +32,7 @@ extern NSString *const KeyWordsUpdated;
 //extern NSString *const AllDataUpdated;
 extern NSString *const NoteUpdated;
 extern NSString *const NoteSelected;
+extern NSString *const TopicCreated;
 extern NSString *const TopicSelected;
 extern NSString *const TopicUpdated;
 extern NSString *const TopicDeleted;

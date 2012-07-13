@@ -15,8 +15,15 @@
 #import "NotesViewController.h"
 #import "Entry.h"
 #import "Note.h"
+#import "EmailViewController.h"
+#import "TopicEditorViewController.h"
 
 @interface MainViewViewController ()
+@property (strong, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
+@property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *notesLabel;
 @property (strong, nonatomic) IBOutlet UILabel *peopleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *countLabel;
@@ -39,6 +46,13 @@
 @synthesize notesLabel = _notesLabel;
 @synthesize peopleLabel = _peopleLabel;
 @synthesize topicsView = _topicsView;
+@synthesize actionSheet = _actionSheet;
+@synthesize shareButton = _shareButton;
+@synthesize addTopicButton = _addTopicButton;
+@synthesize popup = _popup;
+@synthesize titleLabel = _titleLabel;
+
+static NSString *email = @"E-mail";
 
 - (id)initWithDefault
 {
@@ -50,9 +64,6 @@
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
-                                                     name:NoteUpdated object:nil];
-
         UITapGestureRecognizer *tap =
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showNoteOptions:)];
         [[self notesLabel] addGestureRecognizer:tap];
@@ -71,6 +82,7 @@
     [[self notesLabel] setFont:[BNoteConstants font:RobotoBold andSize:20.0]];
     [[self peopleLabel] setFont:[BNoteConstants font:RobotoBold andSize:20.0]];
     [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15.0]];
+    [[self titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:20.0]];
     
 }
 
@@ -87,6 +99,11 @@
     [self setNotesLabel:nil];
     [self setPeopleLabel:nil];
     [self setTopicsView:nil];
+    [self setActionSheet:nil];
+    [self setShareButton:nil];
+    [self setAddTopicButton:nil];
+    [self setPopup:nil];
+    [self setTitleLabel:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -96,9 +113,13 @@
     Topic *topic = [notification object];
     [[self entriesTable] setTopic:topic];
     [[self notesViewController] setTopic:topic];
+    [[self titleLabel] setText:[topic title]];
 
     NSString *s = [NSString stringWithFormat:@"%d", [[topic notes] count]];
     [[self countLabel] setText:s];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
+                                                 name:TopicUpdated object:topic];
 }
 
 - (void)selectedNote:(NSNotification *)notification
@@ -126,9 +147,32 @@
 
 - (void)updateNoteCount:(NSNotification *)notification
 {
-    Note *note = [notification object];
-    NSString *s = [NSString stringWithFormat:@"%d", [[[note topic] notes] count]];
+    Topic *topic = [notification object];
+    NSString *s = [NSString stringWithFormat:@"%d", [[topic notes] count]];
     [[self countLabel] setText:s];
+}
+
+- (IBAction)addTopic:(id)sender
+{
+    if ([self popup]) {
+        [[self popup] dismissPopoverAnimated:YES];
+    }
+    
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [self setPopup:popup];
+    [popup setDelegate:self];
+    [controller setPopup:popup];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = [self addTopicButton];
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
 }
 
 - (IBAction)about:(id)sender
@@ -138,6 +182,54 @@
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
     [self presentModalViewController:controller animated:YES];
+}
+
+- (IBAction)presentShareOptions:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+    [actionSheet setDelegate:self];
+    
+    [actionSheet addButtonWithTitle:email];
+
+    NSInteger index = [actionSheet addButtonWithTitle:@"Cancel"];
+    [actionSheet setDestructiveButtonIndex:index];
+
+    [actionSheet setTitle:@"Share Topic"];
+    [self setActionSheet:actionSheet];
+
+    CGRect rect = [[self shareButton] bounds];
+    [actionSheet showFromRect:rect inView:[self shareButton] animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == email) {
+            [self presentEmailer];
+        }
+    }
+    
+    [self setActionSheet:nil];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self setActionSheet:nil];
+}
+
+- (void)presentEmailer
+{
+    EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[[self entriesTable] topic]];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    [self presentModalViewController:controller animated:YES];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self setPopup:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

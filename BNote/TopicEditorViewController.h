@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Topic.h"
 
-@protocol TopicEditorViewControllerListener;
-
 @interface TopicEditorViewController : UIViewController
 
-@property (strong, nonatomic) id<TopicEditorViewControllerListener> listener;
 @property (strong, nonatomic) Topic *topic;
+@property (assign, nonatomic) UIPopoverController *popup;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
@@ -29,14 +27,5 @@
 - (IBAction)color9Selected:(id)sender;
 
 - (id)initWithDefaultNib;
-
-@end
-
-@protocol TopicEditorViewControllerListener <NSObject>
-
-@required
-- (void)didFinish:(Topic *)topic;
-- (void)didCancel;
-
 
 @end

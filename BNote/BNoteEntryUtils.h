@@ -22,6 +22,7 @@
 + (NSString *)formatDetailTextForActionItem:(ActionItem *)actionItem;
 + (NSString *)formatDetailTextForQuestion:(Question *)question;
 + (BOOL)containsAttendants:(Note *)note;
++ (BOOL)multipleTopics:(Note *)note;
 
 + (NSMutableArray *)attendants:(Note *)note;
 + (NSMutableArray *)attendees:(Note *)note;

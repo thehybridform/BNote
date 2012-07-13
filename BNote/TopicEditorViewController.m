@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
+#import "LayerFormater.h"
 
 @interface TopicEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIView *buttonControlView;
@@ -33,7 +34,6 @@
 @implementation TopicEditorViewController
 
 @synthesize nameTextField = _nameTextField;
-@synthesize listener = _listener;
 @synthesize topic = _topic;
 @synthesize buttonAction = _buttonAction;
 @synthesize button_1 = _button_1;
@@ -48,6 +48,7 @@
 @synthesize selectedColorButton = _selectedColorButton;
 @synthesize selectedColor = _selectedColor;
 @synthesize buttonControlView = _buttonControlView;
+@synthesize popup = _popup;
 
 - (void)viewDidUnload
 {
@@ -57,7 +58,6 @@
     
     [self setButtonAction:nil];
     [self setNameTextField:nil];
-    [self setListener:nil];
     [self setTopic:nil];
     [self setSelectedColorButton:nil];
     
@@ -102,6 +102,8 @@
     [self initButton:[self button_7] withColor:Color7];
     [self initButton:[self button_8] withColor:Color8];
     [self initButton:[self button_9] withColor:Color9];
+    
+    [LayerFormater addShadowToView:[self buttonControlView]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -125,17 +127,16 @@
 
         [topic setColor:[self selectedColor]];
         [[BNoteWriter instance] update];
-    
-        [[self listener] didFinish:topic];
-    } else {
-        [self cancel:sender];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
     }
+
+    [[self popup] dismissPopoverAnimated:YES];
 }
 
 - (IBAction)cancel:(id)sender
 {
-    [[self listener] didCancel];
-    [self dismissModalViewControllerAnimated:YES];
+    [[self popup] dismissPopoverAnimated:YES];
 }
 
 - (void)initButton:(UIButton *)button withColor:(int)color

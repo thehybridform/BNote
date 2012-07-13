@@ -30,8 +30,14 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
+        NSMutableArray *noteControllers = [[NSMutableArray alloc] init];
+        [self setNoteControllers:noteControllers];
+        
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:)
                                                      name:NoteUpdated object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:)
+                                                     name:TopicUpdated object:nil];
     }
     
     return self;
@@ -45,7 +51,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self reload];
 }
 
@@ -70,22 +75,18 @@
         [view removeFromSuperview];
     }
     
-    NSMutableArray *noteControllers = [[NSMutableArray alloc] init];
-    [self setNoteControllers:noteControllers];
-    
-    float x = 10;
+    float x = 10 - space;
     
     for (Note *note in [[self topic] notes]) {
-        [self addNote:note atX:x];
-        x += space;
+        [self addNote:note atX:x += space];
     }
     
     for (Note *note in [[self topic] associatedNotes]) {
-        [self addNote:note atX:x];
-        x += space;
+        [self addNote:note atX:x += space];
     }
     
-    NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x, 10, 120, 96)];
+    x += space;
+    NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 10, 120, 96)];
     UITapGestureRecognizer *tap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
     [noteView addGestureRecognizer:tap];
@@ -116,7 +117,7 @@
     [scrollView addSubview:view];
 }
 
--(void)normalPressTap:(id)sender
+- (void)normalPressTap:(id)sender
 {
     Note *note = [BNoteFactory createNote:[self topic]];
     [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:note];

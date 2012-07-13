@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopicEditorViewController.h"
+#import "Topic.h"
 
-@interface MasterViewController : UITableViewController <TopicEditorViewControllerListener, UIPopoverControllerDelegate>
+@interface MasterViewController : UITableViewController
+
+- (IBAction)editTopicCell:(id)sender;
 
 @end

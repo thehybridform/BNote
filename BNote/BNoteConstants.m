@@ -32,6 +32,7 @@ const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
 //const NSString *const AllDataUpdated = @"AllDataUpdated";
 const NSString *const NoteUpdated = @"NoteUpdated";
 const NSString *const NoteSelected = @"NoteSelected";
+const NSString *const TopicCreated = @"TopicCreated";
 const NSString *const TopicSelected = @"TopicSelected";
 const NSString *const TopicUpdated = @"TopicUpdated";
 const NSString *const TopicDeleted = @"TopicDeleted";

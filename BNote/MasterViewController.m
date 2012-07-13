@@ -17,20 +17,20 @@
 
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
-@property (strong, nonatomic) UIPopoverController *popup;
 @property (assign, nonatomic) NSInteger selectedIndex;
+@property (strong, nonatomic) IBOutlet UIButton *editTopicsButton;
 
 @end
 
 @implementation MasterViewController
 
 @synthesize data = _data;
-@synthesize popup = _popup;
 @synthesize selectedIndex = _selectedIndex;
+@synthesize editTopicsButton = _editTopicsButton;
 
 - (void)dealloc 
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:RefetchAllDatabaseData object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -50,9 +50,14 @@
                                              selector:@selector(updateReceived:)
                                                  name:RefetchAllDatabaseData
                                                object:[[UIApplication sharedApplication] delegate]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(createdTopic:)
+                                                 name:TopicCreated
+                                               object:nil];
 }
 
-- (void)updateReceived:(NSNotification *)note
+- (void)updateReceived:(NSNotification *)notification
 {
     [self setData:[[BNoteReader instance] allTopics]];
     
@@ -69,6 +74,9 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    [self setEditTopicsButton:nil];
+
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -79,10 +87,6 @@
 
 - (void)add:(id)sender
 {
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
-    [controller setListener:self];
-
-    [self showTopicEditor:controller];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -109,7 +113,6 @@
         [[cell textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     }
 
-    [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     [cell setShowsReorderControl:NO];
     [LayerFormater setBorderWidth:1 forView:cell];
     
@@ -128,47 +131,10 @@
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
-    [controller setListener:self];
-    
-    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [controller setTopic:topic];
-    
-    [self showTopicEditor:controller];
-}
-
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     Topic *topic = [[self data] objectAtIndex:[sourceIndexPath row]];
     [[BNoteWriter instance] moveTopic:topic toIndex:[destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
-}
-
-- (void)showTopicEditor:(UIViewController *)controller
-{
-    if ([self popup]) {
-        [[self popup] dismissPopoverAnimated:YES];
-    }
-    
-    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [self setPopup:popup];
-    [popup setDelegate:self];
-    
-    [popup setPopoverContentSize:[[controller view] bounds].size];
-    
-    UIView *view = [self view];
-    CGRect rect = [view bounds];
-    
-    [popup presentPopoverFromRect:rect inView:view
-         permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
-
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [self setPopup:nil];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -185,7 +151,6 @@
         if (index >= 0) {
             [self selectCell:index];
         }
-        
     }
 }
 
@@ -195,7 +160,8 @@
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [LayerFormater addShadowToView:cell];
-    
+    [tableView bringSubviewToFront:cell];
+
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:topic];
@@ -205,8 +171,8 @@
 {
     if ([self selectedIndex] == [indexPath row]) {
         [LayerFormater addShadowToView:cell];
+        [tableView bringSubviewToFront:cell];
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,30 +181,34 @@
     [LayerFormater removeShadowFromView:cell];
 }
 
-- (void)didFinish:(Topic *)topic
-{
-    [[self popup] dismissPopoverAnimated:YES];
-
-    if (![[self data] containsObject:topic]) {
-        [[self data] addObject:topic];
-    }
-    
-    [[self tableView] reloadData];
-
-    int index = ([[self data] count] - 1);
-    [self selectCell:index];
-}
-
-- (void)didCancel
-{
-    [[self popup] dismissPopoverAnimated:YES];
-}
-
 - (void)selectCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
     [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];    
+}
+
+- (void)createdTopic:(NSNotification *)notification
+{
+    [self updateReceived:notification];
+    
+    Topic *topic = [notification object];
+    [self selectCell:[[self data] indexOfObject:topic]];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
+    [LayerFormater removeShadowFromView:cell];
+}
+
+- (IBAction)editTopicCell:(id)sender
+{
+    if ([[self tableView] isEditing]) {
+        [[self tableView] setEditing:NO animated:YES];
+        [[self editTopicsButton] setTitle:@"Edit" forState:UIControlStateNormal];
+    } else {
+        [[self tableView] setEditing:YES animated:YES];
+        [[self editTopicsButton] setTitle:@"Done" forState:UIControlStateNormal];
+    }
 }
 
 @end

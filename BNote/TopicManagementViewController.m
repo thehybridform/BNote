@@ -9,7 +9,9 @@
 #import "TopicManagementViewController.h"
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
+#import "BNoteFactory.h"
 #import "Topic.h"
+#import "LayerFormater.h"
 
 @interface TopicManagementViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *titleLable;
@@ -17,10 +19,10 @@
 @property (strong, nonatomic) NSArray *data;
 @property (assign, nonatomic) Note *note;
 @property (assign, nonatomic) TopicSelectType topicSelectType;
-@property (strong, nonatomic) IBOutlet UIToolbar *associationToolbar;
-@property (strong, nonatomic) IBOutlet UIToolbar *selectToolbar;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *selected;
+@property (strong, nonatomic) IBOutlet UIButton *actionButton;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
 
 @end
 
@@ -29,12 +31,12 @@
 @synthesize helpLable = _helpLable;
 @synthesize data = _data;
 @synthesize note = _note;
-@synthesize listener = _listener;
 @synthesize topicSelectType = _topicSelectType;
-@synthesize associationToolbar = _associationToolbar;
-@synthesize selectToolbar = _selectToolbar;
 @synthesize tableView = _tableView;
 @synthesize selected = _selected;
+@synthesize popup = _popup;
+@synthesize actionButton = _actionButton;
+@synthesize menuView = _menuView;
 
 - (id)initWithNote:(Note *)note forType:(TopicSelectType)type
 {
@@ -53,28 +55,39 @@
 {
     [super viewDidLoad];
 
+    NSPredicate *p = [NSPredicate predicateWithFormat:@"title != %@", [[[self note] topic] title]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
             [[self titleLable] setText:@"Change Topic"];
-            [[self helpLable] setText:@"Select new topic for note."];
-            [[self associationToolbar] setHidden:YES];
+            [[self helpLable] setText:@"Select topic for note."];
+            [[self actionButton] setTitle:@"Cancel" forState:UIControlStateNormal];
             [[self tableView] setAllowsMultipleSelection:NO];
             break;
             
         case AssociateTopic:
             [[self titleLable] setText:@"Associated Topics"];
             [[self helpLable] setText:@"Highlight topics to add."];
-            [[self selectToolbar] setHidden:YES];
             [[self tableView] setAllowsMultipleSelection:YES];
+            [[self actionButton] setTitle:@"Done" forState:UIControlStateNormal];
+            break;
+            
+        case CopyToTopic:
+            [[self titleLable] setText:@"Copy to Topic"];
+            [[self helpLable] setText:@"Select topic for note."];
+            [[self tableView] setAllowsMultipleSelection:NO];
+            [[self actionButton] setTitle:@"Cancel" forState:UIControlStateNormal];
+            p = [NSPredicate predicateWithValue:YES];
             break;
             
         default:
             break;
     }
     
-    NSPredicate *p = [NSPredicate predicateWithFormat:@"title != %@", [[[self note] topic] title]];
-    NSArray *data = [[[BNoteReader instance] allTopics] filteredArrayUsingPredicate:p];
+    NSMutableArray *data = [[BNoteReader instance] allTopics];
+    [data filterUsingPredicate:p];
     [self setData:data];
+    
+    [LayerFormater addShadowToView:[self menuView]];
 }
 
 - (void)viewDidUnload
@@ -85,19 +98,19 @@
     [self setData:nil];
     [self setNote:nil];
     [self setHelpLable:nil];
-    [self setAssociationToolbar:nil];
-    [self setSelectToolbar:nil];
     [self setSelected:nil];
+    [self setMenuView:nil];
+    [self setActionButton:nil];
 }
 
-- (IBAction)done:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
-    [[self listener] selectedTopics:[self selected]];
-}
-
-- (IBAction)cancel:(id)sender
+- (IBAction)done:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [[self popup] dismissPopoverAnimated:YES];
+    
+    if ([self topicSelectType] == AssociateTopic) {
+        [[BNoteWriter instance] associateTopics:[self selected] toNote:[self note]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -148,9 +161,11 @@
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
-            [[self listener] changeTopic:topic];
-            [self dismissModalViewControllerAnimated:YES];
+            [[self popup] dismissPopoverAnimated:YES];
+            [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
             break;
+        
         case AssociateTopic:
         {
             UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -162,6 +177,14 @@
                 [[self selected] removeObject:topic];
             }
         }
+            break;
+        
+        case CopyToTopic:
+            [[self popup] dismissPopoverAnimated:YES];
+            [BNoteFactory copyNote:[self note] toTopic:topic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
+            break;
+
         default:
             break;
     }

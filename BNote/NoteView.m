@@ -12,16 +12,23 @@
 #import "NoteEditorViewController.h"
 #import "EditNoteViewPresenter.h"
 #import "BNoteWriter.h"
-#import "BNoteConstants.h"
+#import "TopicManagementViewController.h"
 
 @interface NoteView()
 @property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 @end
 
 @implementation NoteView
 @synthesize actionSheet = _actionSheet;
 @synthesize note = _note;
+@synthesize popup = _popup;
+
+static NSString *copyNote = @"Copy";
+static NSString *removeNote = @"Remove";
+static NSString *moveNote = @"Move";
+static NSString *associateNote = @"Associate";
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -33,7 +40,7 @@
         UILabel *text = [[UILabel alloc] init];
         [text setText:@"Add New Note"];
         [text setFont:[BNoteConstants font:RobotoRegular andSize:14]];
-        [text setFrame:CGRectMake(13, 40, 100, 30)];
+        [text setFrame:CGRectMake(13, 43, 100, 30)];
         [text setTextColor:[BNoteConstants appHighlightColor1]];
         
         [self addSubview:text];
@@ -54,14 +61,13 @@
 
 - (void)commonInit
 {
-    //[LayerFormater roundCornersForView:self];
     [LayerFormater setBorderWidth:1 forView:self];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
     [LayerFormater addShadowToView:self ofSize:1.0];
     
-//    UILongPressGestureRecognizer *longPress =
-//    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
-//    [self addGestureRecognizer:longPress];
+    UILongPressGestureRecognizer *longPress =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
+    [self addGestureRecognizer:longPress];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -91,9 +97,22 @@
 -(void)longPressTap:(id)sender
 {
     if (![self actionSheet]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Note" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove" otherButtonTitles:nil];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+        [actionSheet setDelegate:self];
+        
+        [actionSheet addButtonWithTitle:copyNote];
+        
+        if ([BNoteEntryUtils multipleTopics:[self note]]) {
+            [actionSheet addButtonWithTitle:moveNote];
+            [actionSheet addButtonWithTitle:associateNote];
+        }
+        
+        NSInteger index = [actionSheet addButtonWithTitle:removeNote];
+        [actionSheet setDestructiveButtonIndex:index];
+        
+        [actionSheet setTitle:@"Note Options"];
         [self setActionSheet:actionSheet];
-    
+        
         CGRect rect = [self bounds];
         [actionSheet showFromRect:rect inView:self animated:YES];
     }
@@ -101,15 +120,44 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex) {
-        case 0:
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == removeNote) {
+            Topic *topic = [[self note] topic];
             [[BNoteWriter instance] removeNote:[self note]];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
-            break;
-            
-        default:
-            break;
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
+        } else if (title == moveNote) {
+            [self presentTopicSelectionForType:ChangeMainTopic];
+        } else if (title == copyNote) {
+            [self presentTopicSelectionForType:CopyToTopic];
+        }
     }
+    
+    [self setActionSheet:nil];
+}
+
+- (void)presentTopicSelectionForType:(TopicSelectType)type
+{
+    TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:type];
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [self setPopup:popup];
+    [popup setDelegate:self];
+    [controller setPopup:popup];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = self;
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self setPopup:nil];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex

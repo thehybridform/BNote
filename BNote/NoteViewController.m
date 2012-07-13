@@ -50,7 +50,7 @@
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                     name:NoteUpdated object:nil];
+                                                     name:NoteUpdated object:note];
     }
     
     return self;
@@ -115,12 +115,7 @@
 
 - (void)updateNote:(id)sender
 {
-    NSNotification *notification = sender;
-    Note *note = [notification object];
-    
-    if (note == [self note]) {
-        [self setup];
-    }
+    [self setup];
 }
 
 -(void)normalPressTap:(id)sender

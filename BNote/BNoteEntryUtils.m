@@ -15,6 +15,7 @@
 #import "Entry.h"
 #import "Attendants.h"
 #import "Photo.h"
+#import "TopicGroup.h"
 
 @implementation BNoteEntryUtils
 
@@ -139,5 +140,15 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:KeyPointPhotoUpdated object:keyPoint];
 }
 
++ (BOOL)multipleTopics:(Note *)note
+{
+    for (TopicGroup *group in [[note topic] groups]) {
+        if ([[group name] compare:@"All"] == NSOrderedSame) {
+            return [[group topics] count] > 1;
+        }
+    }
+    
+    return NO;
+}
 
 @end

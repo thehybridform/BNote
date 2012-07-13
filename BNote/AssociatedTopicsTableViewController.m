@@ -16,7 +16,7 @@
 @interface AssociatedTopicsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) TopicManagementViewController *topicManagementViewController;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 @end
 
@@ -24,7 +24,7 @@
 @synthesize data = _data;
 @synthesize note = _note;
 @synthesize actionSheet = _actionSheet;
-@synthesize topicManagementViewController = _topicManagementViewController;
+@synthesize popup = _popup;
 
 - (void)viewDidLoad
 {
@@ -32,8 +32,6 @@
 
     [self setData:[[NSMutableArray alloc] init]];
 
-//    [[self tableView] setBackgroundColor:[UIColor whiteColor]];
-//    [[self tableView] setAlpha:0.8];
     [LayerFormater roundCornersForView:[self view]];
     
     UITapGestureRecognizer *tap =
@@ -55,7 +53,7 @@
 
     [self setData:nil];
     [self setActionSheet:nil];
-    [self setTopicManagementViewController:nil];
+    [self setPopup:nil];
 }
 
 - (void)setNote:(Note *)note
@@ -166,25 +164,38 @@
 
 - (void)showActionSheet:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Manage Topics" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Change Main Topic", @"Manage Associated Topics", nil];
+    if ([BNoteEntryUtils multipleTopics:[self note]]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Manage Topics" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Change Main Topic", @"Manage Associated Topics", nil];
     
-    [self setActionSheet:actionSheet];
+        [self setActionSheet:actionSheet];
     
-    CGRect rect = [[self view] frame];
-    [actionSheet showFromRect:rect inView:[[self view] superview] animated:YES];
+        CGRect rect = [[self view] frame];
+        [actionSheet showFromRect:rect inView:[[self view] superview] animated:YES];
+    }
 }
 
 - (void)showTopicSelectorForType:(TopicSelectType)type
 {
     TopicManagementViewController *controller =
         [[TopicManagementViewController alloc] initWithNote:[self note] forType:type];
-    [controller setListener:self];
-    [controller setModalInPopover:YES];
-    [controller setModalPresentationStyle:UIModalPresentationFormSheet];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self setTopicManagementViewController:controller];
     
-    [self presentModalViewController:controller animated:YES];
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [self setPopup:popup];
+    [popup setDelegate:self];
+    [controller setPopup:popup];
+
+    UIView *view = [self view];
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
+
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self setPopup:nil];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -203,18 +214,6 @@
     }
     
     [self setActionSheet:nil];    
-}
-
-- (void)selectedTopics:(NSArray *)topics
-{
-    [[BNoteWriter instance] associateTopics:topics toNote:[self note]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
-}
-
-- (void)changeTopic:(Topic *)topic
-{
-    [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex

@@ -24,7 +24,6 @@
 - (id)initWithNote:(Note *)note;
 - (IBAction)done:(id)sender;
 - (IBAction)editMode:(id)sender;
-- (IBAction)emailNote:(id)sender;
 
 - (IBAction)addKeyPoint:(id)sender;
 - (IBAction)addQuestion:(id)sender;

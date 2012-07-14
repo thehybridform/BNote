@@ -29,11 +29,11 @@
 @property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) IBOutlet UIView *dateView;
-@property (strong, nonatomic) IBOutlet UIView *subjectView;
-@property (strong, nonatomic) IBOutlet UILabel *date;
+@property (strong, nonatomic) IBOutlet UILabel *year;
+@property (strong, nonatomic) IBOutlet UILabel *day;
+@property (strong, nonatomic) IBOutlet UILabel *month;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
-@property (strong, nonatomic) IBOutlet UILabel *subjectLable;
 @property (strong, nonatomic) IBOutlet BNoteButton *attendantsButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *keyPointButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *questionButton;
@@ -43,6 +43,8 @@
 @property (strong, nonatomic) IBOutlet BNoteButton *trashButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *emailButton;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
+@property (strong, nonatomic) IBOutlet UIView *infoView;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AssociatedTopicsTableViewController *associatedTopicsTableViewController;
@@ -52,13 +54,12 @@
 @implementation NoteEditorViewController
 
 @synthesize dateView = _dateView;
-@synthesize subjectView = _subjectView;
-@synthesize date = _date;
+@synthesize day = _day;
+@synthesize year = _year;
 @synthesize time = _time;
 @synthesize subjectTextView = _subjectTextView;
 @synthesize note = _note;
 @synthesize toolbarEditColor = _toolbarEditColor;
-@synthesize subjectLable = _subjectLable;
 @synthesize keyPointButton = _keyPointButton;
 @synthesize questionButton= _questionButton;
 @synthesize decisionButton = _decisionButton;
@@ -72,6 +73,11 @@
 @synthesize emailButton = _emailButton;
 @synthesize associatedTopicsTableViewController = _associatedTopicsTableViewController;
 @synthesize menuView = _menuView;
+@synthesize infoView = _infoView;
+@synthesize month = _month;
+@synthesize shareButton = _shareButton;
+
+static NSString *email = @"E-mail";
 
 - (void)viewDidUnload
 {
@@ -80,11 +86,10 @@
     [self setNote:nil];
     [self setToolbarEditColor:nil];
     [self setDateView:nil];
-    [self setSubjectView:nil];
-    [self setDate:nil];
     [self setTime:nil];
+    [self setYear:nil];
+    [self setDay:nil];
     [self setSubjectTextView:nil];
-    [self setSubjectLable:nil];
     [self setKeyPointButton:nil];
     [self setQuestionButton:nil];
     [self setDecisionButton:nil];
@@ -98,6 +103,9 @@
     [self setEmailButton:nil];
     [self setAssociatedTopicsTableViewController:nil];
     [self setMenuView:nil];
+    [self setInfoView:nil];
+    [self setMonth:nil];
+    [self setShareButton:nil];
 }
 
 
@@ -119,21 +127,13 @@
     if ([note subject] && [[note subject] length] > 0) {
         [[self subjectTextView] setText:[note subject]];
     }
-
-    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[note created]];
-    [self setupDateTime:date];
-    
-    [[self view] setBackgroundColor:UIColorFromRGB([note color])];
+   
+    [[self infoView] setBackgroundColor:UIColorFromRGB([note color])];
                                     
     [LayerFormater roundCornersForView:[self dateView]];
-    [LayerFormater roundCornersForView:[self subjectView]];
     [LayerFormater roundCornersForView:[self subjectTextView]];
     [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
-    
-    [[self subjectLable] setHidden:YES];
-    
-//    [[self reviewButton] setTitle:@"Review"];
     
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
@@ -158,7 +158,48 @@
     [[self attendantsButton] setIcon:[BNoteFactory createIcon:AttentiesIcon]];
     
     [LayerFormater addShadowToView:[self menuView]];
+    [LayerFormater addShadowToView:[self infoView]];
+
+    [self setupDate];
 }
+
+- (void)setupDate
+{
+    NSString *title = [[self note] subject];
+    if ([BNoteStringUtils nilOrEmpty:title]) {
+        [[self subjectTextView] setText:nil];
+    } else {
+        [[self subjectTextView] setText:title];
+    }
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterBehaviorDefault];
+    
+    [format setDateFormat:@"MM"];
+    NSString *str = [format stringFromDate:date];
+    NSNumber *num = [numberFormatter numberFromString:str];
+    str = [BNoteStringUtils monthFor:[num intValue]];
+    [[self month] setText:str];
+    
+    [format setDateFormat:@"dd"];
+    str = [format stringFromDate:date];
+    
+    num = [numberFormatter numberFromString:str];
+    str = [BNoteStringUtils ordinalNumberFormat:[num intValue]];
+    [[self day] setText:str];
+    
+    [format setDateFormat:@"h:mm aaa"];
+    str = [format stringFromDate:date];
+    [[self time] setText:str];
+    
+    [format setDateFormat:@"yyyy"];
+    str = [format stringFromDate:date];
+    [[self year] setText:str];
+}
+
 
 - (void)dealloc
 {
@@ -178,19 +219,16 @@
 {
     if ([[BNoteSessionData instance] phase] == Reviewing) {
         [self editing];
-//        [[self reviewButton] setTitle:@"Review"];
     } else {
         [self setupTableViewAddingEntries];
         [self reviewing];
-//        [[self reviewButton] setTitle:@"Edit"];
     }
 }
 
 - (void)editing
 {
-    [[self subjectTextView] setHidden:NO];
-    [[self subjectLable] setHidden:YES];
     [[self trashButton] setEnabled:YES];
+    [[self reviewButton] setTitle:@"Review" forState:UIControlStateNormal];
     [[self entriesViewController] setFilter:[BNoteFilterFactory create:ItdentityType]];
     
     [[BNoteSessionData instance] setPhase:Editing];
@@ -198,10 +236,8 @@
 
 - (void)reviewing
 {
-    [[self subjectTextView] setHidden:YES];
-    [[self subjectLable] setHidden:NO];
-    [[self subjectLable] setText:[[self subjectTextView] text]];
     [[self trashButton] setEnabled:NO];
+    [[self reviewButton] setTitle:@"Done" forState:UIControlStateNormal];
     
     [[BNoteSessionData instance] setPhase:Reviewing];
 }
@@ -210,7 +246,6 @@
 {
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
-//        [[self attendantsImageView] setHidden:YES];
     } else {
         [[self entriesViewController] setFilter:[BNoteFilterFactory create:AttendantType]];
     }
@@ -280,7 +315,7 @@
     [[self actionItemButton] setEnabled:YES];
     [[self reviewButton] setEnabled:YES];
     [[self emailButton] setEnabled:YES];
-//    [[self trashButton] setTitle:@"Re-Order"];
+    [[self trashButton] setTitle:@"Organize" forState:UIControlStateNormal];
 }
 
 - (void)setupTableViewForDeletingRows
@@ -292,7 +327,7 @@
     [[self actionItemButton] setEnabled:NO];
     [[self reviewButton] setEnabled:NO];
     [[self emailButton] setEnabled:NO];
-//    [[self trashButton] setTitle:@"Done"];
+    [[self trashButton] setTitle:@"Done" forState:UIControlStateNormal];
 }
 
 - (void)showDatePicker:(id)sender
@@ -324,7 +359,7 @@
 - (void)dateTimeUpdated:(NSDate *)date
 {
     [[self note] setCreated:[date timeIntervalSinceReferenceDate]];
-    [self setupDateTime:date];
+    [self setupDate];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
@@ -338,13 +373,7 @@
     [self setPopup:nil];
 }
 
-- (void)setupDateTime:(NSDate *)date
-{
-    [[self date] setText:[BNoteStringUtils dateToString:date]];
-    [[self time] setText:[BNoteStringUtils timeToString:date]];
-}
-
-- (IBAction)emailNote:(id)sender
+- (void)emailNote
 {
     Note *note = [self note];
     EmailViewController *controller = [[EmailViewController alloc] initWithNote:note];
@@ -364,9 +393,30 @@
     [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
 }
 
-- (void)updateToolBar:(NSNotification *)notification
+- (IBAction)presentShareOptions:(id)sender
 {
-//    [self updateAttendantToolBar];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+    [[BNoteSessionData instance] setActionSheet:actionSheet];
+    [[BNoteSessionData instance] setActionSheetDelegate:self];
+    [actionSheet setDelegate:[BNoteSessionData instance]];
+    
+    [actionSheet addButtonWithTitle:email];
+    
+    [actionSheet setTitle:@"Share Note"];
+    
+    UIView *view = [self shareButton];
+    CGRect rect = [view bounds];
+    [actionSheet showFromRect:rect inView:view animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == email) {
+            [self emailNote];
+        }
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

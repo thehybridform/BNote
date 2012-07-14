@@ -205,7 +205,7 @@
 {
     if ([[self tableView] isEditing]) {
         [[self tableView] setEditing:NO animated:YES];
-        [[self editTopicsButton] setTitle:@"Edit" forState:UIControlStateNormal];
+        [[self editTopicsButton] setTitle:@"Organize" forState:UIControlStateNormal];
     } else {
         [[self tableView] setEditing:YES animated:YES];
         [[self editTopicsButton] setTitle:@"Done" forState:UIControlStateNormal];

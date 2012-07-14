@@ -127,6 +127,8 @@ static NSString *associateNote = @"Associate";
             [self presentTopicSelectionForType:ChangeMainTopic];
         } else if (title == copyNote) {
             [self presentTopicSelectionForType:CopyToTopic];
+        } else if (title == associateNote) {
+            [self presentTopicSelectionForType:AssociateTopic];
         }
     }
 }

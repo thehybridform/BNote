@@ -90,9 +90,15 @@
 {
     static NSString *cellIdentifier = @"Cell";
     
-    UITableViewCell *cell =
-        [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    for (UIView *view in [[cell contentView] subviews]) {
+        [view removeFromSuperview];
+    }
+    
     EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
 
     [controller setParentController:[self parentController]];

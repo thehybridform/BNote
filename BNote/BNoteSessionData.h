@@ -27,5 +27,6 @@ typedef enum {
 - (BOOL)canEditEntry;
 - (NSMutableDictionary *)imageIconViews;
 - (BOOL)keyboardVisible;
+- (NSMutableDictionary *)entrySummaryHeaderImageViews;
 
 @end

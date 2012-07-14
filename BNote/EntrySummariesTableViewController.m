@@ -13,6 +13,7 @@
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
 #import "EntrySummaryTableViewCell.h"
+#import "TableCellHeaderViewController.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -85,7 +86,7 @@
     [self reload];
 }
 
-- (void)updateNote:(id)sender
+- (void)updateNote:(NSNotification *)notification
 {
     [self reload];
 }
@@ -210,43 +211,14 @@
     return nil;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (![self groupEntries]) {
-        return @"All";
-    }
-
-    switch (section) {
-        case 0:
-            return @"Action Items - Complete";
-            break;
-        case 1:
-            return @"Action Items - Incomplete";
-            break;
-        case 2:
-            return @"Decisions";
-            break;
-        case 3:
-            return @"Key Points";
-            break;
-        case 4:
-            return @"Questions - Answered";
-            break;
-        case 5:
-            return @"Questions - Unswered";
-            break;
-        default:
-            break;
-    }
-    
-    return nil;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"EntrySummaryTableViewCell";
  
-    EntrySummaryTableViewCell *cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+    EntrySummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
+    }
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
         
     [cell setEntry:entry];
@@ -269,18 +241,38 @@
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
     [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:entry];
 }
-/*
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView *view = [super tableView:tableView viewForFooterInSection:section];
-    return view;
-}
- */
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [super tableView:tableView viewForHeaderInSection:section];
-    return view;
-
+    EntrySummaryHeaderType type;
+    if (![self groupEntries]) {
+        type = AllHeader;
+    }
+    
+    switch (section) {
+        case 0:
+            type = ActionItemCompleteHeader;
+            break;
+        case 1:
+            type = ActionItemIncompleteHeader;
+            break;
+        case 2:
+            type = DecisionHeader;
+            break;
+        case 3:
+            type = KeyPointHeader;
+            break;
+        case 4:
+            type = QuestionAnsweredHeader;
+            break;
+        case 5:
+            type = QuestionUnansweredHeader;
+            break;
+        default:
+            break;
+    }
+    
+    return [BNoteFactory createEntrySummaryHeaderView:type];
 }
 
 - (IBAction)group:(id)sender

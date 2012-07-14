@@ -109,7 +109,7 @@
     
     if ([self topicSelectType] == AssociateTopic) {
         [[BNoteWriter instance] associateTopics:[self selected] toNote:[self note]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[[self note] topic]];
     }
 }
 
@@ -168,8 +168,8 @@
             
             [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
             [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:currentTopic];
-            break;
         }
+            break;
         case AssociateTopic:
         {
             UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -184,9 +184,15 @@
             break;
         
         case CopyToTopic:
+        {
             [[self popup] dismissPopoverAnimated:YES];
+            
+            Topic *currentTopic = [[self note] topic];
+
             [BNoteFactory copyNote:[self note] toTopic:topic];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:currentTopic];
+        }
             break;
 
         default:

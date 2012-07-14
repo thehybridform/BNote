@@ -10,6 +10,7 @@
 
 @interface BNoteSessionData()
 @property (strong, nonatomic) NSMutableDictionary *imageIconViews;
+@property (strong, nonatomic) NSMutableDictionary *entrySummaryHeaderImageViews;
 @property (assign, nonatomic) BOOL keyboardVisible;
 
 - (id)initSingleton;
@@ -24,6 +25,7 @@
 @synthesize popup = _popup;
 @synthesize actionSheet = _actionSheet;
 @synthesize actionSheetDelegate = _actionSheetDelegate;
+@synthesize entrySummaryHeaderImageViews = _entrySummaryHeaderImageViews;
 
 - (BOOL)canEditEntry
 {
@@ -35,6 +37,7 @@
     self = [super init];
     
     [self setImageIconViews:[[NSMutableDictionary alloc] init]];
+    [self setEntrySummaryHeaderImageViews:[[NSMutableDictionary alloc] init]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideBNoteSessionData:)
                                                  name:UIKeyboardDidHideNotification object:nil];

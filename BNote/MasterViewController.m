@@ -158,15 +158,16 @@
 {
     [self setSelectedIndex:[indexPath row]];
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [LayerFormater addShadowToView:cell];
-    [tableView bringSubviewToFront:cell];
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //[LayerFormater addShadowToView:cell];
+    //[tableView bringSubviewToFront:cell];
 
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:topic];
 }
 
+/*
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self selectedIndex] == [indexPath row]) {
@@ -180,7 +181,7 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [LayerFormater removeShadowFromView:cell];
 }
-
+*/
 - (void)selectCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
@@ -195,9 +196,9 @@
     Topic *topic = [notification object];
     [self selectCell:[[self data] indexOfObject:topic]];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
-    [LayerFormater removeShadowFromView:cell];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
+//    [LayerFormater removeShadowFromView:cell];
 }
 
 - (IBAction)editTopicCell:(id)sender

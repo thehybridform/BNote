@@ -58,6 +58,17 @@ typedef enum {
     
 } BNoteIconType;
 
+typedef enum {
+    QuestionAnsweredHeader,
+    QuestionUnansweredHeader,
+    ActionItemCompleteHeader,
+    ActionItemIncompleteHeader,
+    DecisionHeader,
+    KeyPointHeader,
+    AllHeader
+    
+} EntrySummaryHeaderType;
+
 @interface BNoteFactory : NSObject
 
 + (TopicGroup *)createTopicGroup:(NSString *)name;
@@ -80,6 +91,8 @@ typedef enum {
 + (UIImageView *)createIcon:(BNoteIconType)type;
 + (UIImageView *)createIcon:(Entry *)entry active:(BOOL)active;
 + (UIImage *)paper;
+
++ (UIView *)createEntrySummaryHeaderView:(EntrySummaryHeaderType)type;
 
 + (EntryContentViewController *)createEntryContentViewControllerForEntry:(Entry *)entry;
 

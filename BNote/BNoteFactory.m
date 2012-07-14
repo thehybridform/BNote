@@ -19,6 +19,7 @@
 #import "SketchPath.h"
 #import "Cloner.h"
 #import "ClonerFactory.h"
+#import "TableCellHeaderViewController.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -35,6 +36,14 @@ NSString *const ATTENDANT = @"attendant_icon.png";
 NSString *const PAPER = @"Squared_paper.jpg";
 NSString *const TABLE_CELL_PLAIN = @"table-cell-shadow-blank.png";
 NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
+
+NSString *const questionAnswered = @"Qeustions Answered";
+NSString *const questionUnanswered = @"Qeustions Unanswered";
+NSString *const actionItemsCompleted = @"Action Items Completed";
+NSString *const actionItemsIncomplete = @"Action Items Incomplete";
+NSString *const decisions = @"Decisions";
+NSString *const keyPoints = @"Key Points";
+NSString *const all = @"All";
 
 @implementation BNoteFactory
 
@@ -352,5 +361,51 @@ NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
     return [UIImage imageNamed:PAPER];
 }
 
++ (UIView *)createEntrySummaryHeaderView:(EntrySummaryHeaderType)type
+{
+    NSString *text;
+    switch (type) {
+        case QuestionAnsweredHeader:
+            text = questionAnswered;
+            break;
+            
+        case QuestionUnansweredHeader:
+            text = questionUnanswered;
+            break;
+            
+        case DecisionHeader:
+            text = decisions;
+            break;
+            
+        case KeyPointHeader:
+            text = keyPoints;
+            break;
+            
+        case ActionItemCompleteHeader:
+            text = actionItemsCompleted;
+            break;
+            
+        case ActionItemIncompleteHeader:
+            text = actionItemsIncomplete;
+            break;
+            
+        case AllHeader:
+            text = all;
+            break;
+            
+        default:
+            break;
+    }
+
+    TableCellHeaderViewController *controller = 
+        [[[BNoteSessionData instance] entrySummaryHeaderImageViews] objectForKey:text];
+    
+    if (!controller) {
+        controller = [[TableCellHeaderViewController alloc] initWithTitle:text];
+        [[[BNoteSessionData instance] entrySummaryHeaderImageViews] setObject:controller forKey:text];
+    }
+
+    return [controller view];
+}
 
 @end

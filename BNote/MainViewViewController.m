@@ -22,6 +22,7 @@
 @interface MainViewViewController ()
 @property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) IBOutlet UIButton *topicsButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *peopleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *countLabel;
 @property (strong, nonatomic) IBOutlet UIView *menu;
+@property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) IBOutlet UIView *topicsView;
 @property (strong, nonatomic) IBOutlet UIView *detailView;
 @property (strong, nonatomic) IBOutlet MasterViewController *topicsTable;
@@ -54,6 +56,8 @@
 @synthesize addTopicButton = _addTopicButton;
 @synthesize popup = _popup;
 @synthesize titleLabel = _titleLabel;
+@synthesize footer = _footer;
+@synthesize topicsButton = _topicsButton;
 
 static NSString *email = @"E-mail";
 
@@ -78,7 +82,8 @@ static NSString *email = @"E-mail";
     [super viewDidLoad];
 
     [LayerFormater addShadowToView:[self menu]];
-    [LayerFormater addShadowToView:[self detailView]];
+    [LayerFormater addShadowToView:[self topicsView]];
+    [LayerFormater addShadowToView:[self footer]];
     
     [[self notesLabel] setFont:[BNoteConstants font:RobotoBold andSize:20.0]];
     [[self peopleLabel] setFont:[BNoteConstants font:RobotoBold andSize:20.0]];
@@ -107,13 +112,17 @@ static NSString *email = @"E-mail";
     [self setAddTopicButton:nil];
     [self setPopup:nil];
     [self setTitleLabel:nil];
+    [self setFooter:nil];
+    [self setTopicsButton:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)selectedTopic:(NSNotification *)notification
 {
-    [[self detailView] setHidden:NO];
+    if ([[self detailView] isHidden]) {
+        [[self detailView] setHidden:NO];
+    }
 
     Topic *topic = [notification object];
     [[self entriesTable] setTopic:topic];
@@ -123,6 +132,11 @@ static NSString *email = @"E-mail";
     [[self peopleViewController] reset];
     
     for (Note *note in [topic notes]) {
+        for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
+            [[self peopleViewController] addAttendants:attendants];
+        }
+    }
+    for (Note *note in [topic associatedNotes]) {
         for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
             [[self peopleViewController] addAttendants:attendants];
         }

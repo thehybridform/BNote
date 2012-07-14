@@ -9,16 +9,20 @@
 #import "InformationViewController.h"
 #import "EluaViewController.h"
 #import "ContactMailController.h"
+#import "LayerFormater.h"
 
 @interface InformationViewController ()
 @property (strong, nonatomic) NSArray *aboutArray;
 @property (strong, nonatomic) NSArray *storageArray;
-
+@property (strong, nonatomic) IBOutlet UIView *menu;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @end
 
 @implementation InformationViewController
 @synthesize aboutArray = _aboutArray;
 @synthesize storageArray = _storageArray;
+@synthesize menu = _menu;
+@synthesize doneButton = _doneButton;
 
 - (id)initWithDefault
 {
@@ -41,14 +45,18 @@
     NSArray *storageArray =
     [NSArray arrayWithObjects:@"BeNote Google+ Page", nil];
     [self setStorageArray:storageArray];
+    
+    [LayerFormater addShadowToView:[self menu]];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
 
+    [self setStorageArray:nil];
     [self setAboutArray:nil];
-    [self setAboutArray:nil];
+    [self setMenu:nil];
+    [self setDoneButton:nil];
 }
 
 - (IBAction)done:(id)sender

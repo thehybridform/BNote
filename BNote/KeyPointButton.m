@@ -29,7 +29,7 @@
 - (UIImage *)handlePhoto:(NSDictionary *)info
 {
     KeyPoint *keyPoint = (KeyPoint *) [[self entryContentViewController] entry];
-    return [BNoteEntryUtils handlePhoto:info forKeyPoint:keyPoint];
+    return [BNoteEntryUtils handlePhoto:info forKeyPoint:keyPoint saveToLibrary:NO];
 }
 
 @end

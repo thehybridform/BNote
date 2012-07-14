@@ -1011,8 +1011,8 @@
 				18B235D9158ADF6E009D17D2 /* Attendants */,
 				184976CA1597C1FA00F49F5A /* EntryContentViewController.h */,
 				184976CB1597C1FD00F49F5A /* EntryContentViewController.m */,
-				1851A617159984640089EECF /* EntryContectView.h */,
 				184976CC1597C1FF00F49F5A /* EntryContentViewController.xib */,
+				1851A617159984640089EECF /* EntryContectView.h */,
 				1851A618159984640089EECF /* EntryContectView.m */,
 			);
 			name = "Entry View Cell";

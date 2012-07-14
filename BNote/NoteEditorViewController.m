@@ -41,8 +41,9 @@
 @property (strong, nonatomic) IBOutlet BNoteButton *actionItemButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *reviewButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *trashButton;
-@property (strong, nonatomic) IBOutlet BNoteButton *emailButton;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
+@property (strong, nonatomic) IBOutlet UIView *filterView;
+@property (strong, nonatomic) IBOutlet UIButton *filterButton;
 @property (strong, nonatomic) IBOutlet UIView *infoView;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
@@ -70,12 +71,13 @@
 @synthesize attendantsButton = _attendantsButton;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
-@synthesize emailButton = _emailButton;
 @synthesize associatedTopicsTableViewController = _associatedTopicsTableViewController;
 @synthesize menuView = _menuView;
 @synthesize infoView = _infoView;
 @synthesize month = _month;
 @synthesize shareButton = _shareButton;
+@synthesize filterView = _filterView;
+@synthesize filterButton = _filterButton;
 
 static NSString *email = @"E-mail";
 
@@ -100,12 +102,13 @@ static NSString *email = @"E-mail";
     [self setAttendantsButton:nil];
     [self setSelectedAttendant:nil];
     [self setPopup:nil];
-    [self setEmailButton:nil];
     [self setAssociatedTopicsTableViewController:nil];
     [self setMenuView:nil];
     [self setInfoView:nil];
     [self setMonth:nil];
     [self setShareButton:nil];
+    [self setFilterView:nil];
+    [self setFilterButton:nil];
 }
 
 
@@ -159,6 +162,12 @@ static NSString *email = @"E-mail";
     
     [LayerFormater addShadowToView:[self menuView]];
     [LayerFormater addShadowToView:[self infoView]];
+    
+    [[self filterView] setHidden:YES];
+    [LayerFormater roundCornersForView:[self filterView]];
+    [LayerFormater setBorderWidth:2 forView:[self filterView]];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[self filterView]];
+    [[self filterView] setBackgroundColor:[UIColor clearColor]];
 
     [self setupDate];
 }
@@ -215,6 +224,11 @@ static NSString *email = @"E-mail";
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[[self note] topic]];
 }
 
+- (IBAction)resetFilter:(id)sender
+{
+    [[self entriesViewController] setFilter:[BNoteFilterFactory create:ItdentityType]];
+}
+
 - (IBAction)editMode:(id)sender
 {
     if ([[BNoteSessionData instance] phase] == Reviewing) {
@@ -227,7 +241,8 @@ static NSString *email = @"E-mail";
 
 - (void)editing
 {
-    [[self trashButton] setEnabled:YES];
+    [[self filterView] setHidden:YES];
+    [[self trashButton] setHidden:NO];
     [[self reviewButton] setTitle:@"Review" forState:UIControlStateNormal];
     [[self entriesViewController] setFilter:[BNoteFilterFactory create:ItdentityType]];
     
@@ -236,7 +251,8 @@ static NSString *email = @"E-mail";
 
 - (void)reviewing
 {
-    [[self trashButton] setEnabled:NO];
+    [[self filterView] setHidden:NO];
+    [[self trashButton] setHidden:YES];
     [[self reviewButton] setTitle:@"Done" forState:UIControlStateNormal];
     
     [[BNoteSessionData instance] setPhase:Reviewing];
@@ -245,6 +261,7 @@ static NSString *email = @"E-mail";
 - (IBAction)addAttendies:(id)sender
 {
     if ([[BNoteSessionData instance] phase] == Editing) {
+        [[self attendantsButton] setHidden:YES];
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
     } else {
         [[self entriesViewController] setFilter:[BNoteFilterFactory create:AttendantType]];
@@ -312,9 +329,10 @@ static NSString *email = @"E-mail";
     [[self keyPointButton] setEnabled:YES];
     [[self questionButton] setEnabled:YES];
     [[self decisionButton] setEnabled:YES];
+    [[self attendantsButton] setEnabled:YES];
     [[self actionItemButton] setEnabled:YES];
     [[self reviewButton] setEnabled:YES];
-    [[self emailButton] setEnabled:YES];
+    [[self shareButton] setEnabled:YES];
     [[self trashButton] setTitle:@"Organize" forState:UIControlStateNormal];
 }
 
@@ -325,8 +343,9 @@ static NSString *email = @"E-mail";
     [[self questionButton] setEnabled:NO];
     [[self decisionButton] setEnabled:NO];
     [[self actionItemButton] setEnabled:NO];
+    [[self attendantsButton] setEnabled:NO];
     [[self reviewButton] setEnabled:NO];
-    [[self emailButton] setEnabled:NO];
+    [[self shareButton] setEnabled:NO];
     [[self trashButton] setTitle:@"Done" forState:UIControlStateNormal];
 }
 
@@ -417,6 +436,11 @@ static NSString *email = @"E-mail";
             [self emailNote];
         }
     }
+}
+
+- (void)updateToolBar:(NSNotification *)notification
+{
+    [[self attendantsButton] setHidden:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

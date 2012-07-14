@@ -142,9 +142,8 @@ static NSString *email = @"E-mail";
         }
     }
 
-    NSString *s = [NSString stringWithFormat:@"%d", [[topic notes] count]];
-    [[self countLabel] setText:s];
-    
+    [self setNotCountForTopic:topic];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
                                                  name:TopicUpdated object:topic];
 }
@@ -170,7 +169,14 @@ static NSString *email = @"E-mail";
 - (void)updateNoteCount:(NSNotification *)notification
 {
     Topic *topic = [notification object];
-    NSString *s = [NSString stringWithFormat:@"%d", [[topic notes] count]];
+    [self setNotCountForTopic:topic];
+}
+
+- (void)setNotCountForTopic:(Topic *)topic
+{
+    int count = [[topic notes] count] + [[topic associatedNotes] count];
+    
+    NSString *s = [NSString stringWithFormat:@"%d", count];
     [[self countLabel] setText:s];
 }
 

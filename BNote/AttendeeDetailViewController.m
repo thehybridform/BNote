@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lastNameLable;
 @property (strong, nonatomic) IBOutlet UILabel *emailLable;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
 
 @end
 
@@ -36,6 +37,7 @@
 @synthesize lastNameLable = _lastNameLable;
 @synthesize emailLable = _emailLable;
 @synthesize popup = _popup;
+@synthesize menuView = _menuView;
 
 - (id)initWithAttendant:(Attendant *)attendant;
 {
@@ -64,6 +66,8 @@
     [[self emailField] setText:[attendant email]];
     
     [LayerFormater roundCornersForView:[self view]];
+    
+    [LayerFormater addShadowToView:[self menuView]];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(updateFirstName:)
@@ -121,6 +125,7 @@
     [self setFirstNameLable:nil];
     [self setLastNameLable:nil];
     [self setEmailLable:nil];
+    [self setMenuView:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

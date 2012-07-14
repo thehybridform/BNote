@@ -26,10 +26,13 @@
 {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-        [[self textLabel] setFont:[UIFont systemFontOfSize:14]];
-        [[self textLabel] setBackgroundColor:[UIColor clearColor]];
+        [[self textLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
+        [[self textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+        [self setBackgroundColor:[BNoteConstants appColor1]];
 
-        [[self detailTextLabel] setTextColor:UIColorFromRGB(0x336633)];
+        [[self detailTextLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+        [[self detailTextLabel] setFont:[BNoteConstants font:RobotoRegular andSize:10]];
+
         [self setBackgroundColor:[UIColor clearColor]];
     }
     
@@ -55,6 +58,7 @@
     _entry = entry;
     
     [[self textLabel] setText:[entry text]];
+    [[self detailTextLabel] setText:nil];
 
     [self handleQuestionType:entry];
     [self handleActionItemType:entry];  

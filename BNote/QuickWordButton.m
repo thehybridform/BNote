@@ -25,7 +25,7 @@
     self = [super init];
     if (self) {
         [self setTitle:name forState:UIControlStateNormal];
-        [[self titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:20]];
+        [[self titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
         
         [LayerFormater roundCornersForView:self];
         

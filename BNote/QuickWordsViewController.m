@@ -19,12 +19,12 @@
 #import "Attendant.h"
 
 @interface QuickWordsViewController ()
-@property (strong, nonatomic) IBOutlet UIToolbar *defaultToolbar;
-@property (strong, nonatomic) IBOutlet UIToolbar *decisionToolbar;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *detailButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *datesButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *keyWordsButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
+@property (strong, nonatomic) IBOutlet UIButton *attendantsButton;
+@property (strong, nonatomic) IBOutlet UIButton *detailButton;
+@property (strong, nonatomic) IBOutlet UIButton *datesButton;
+@property (strong, nonatomic) IBOutlet UIButton *keyWordsButton;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (assign, nonatomic) EntryContentViewController *entryContentController;
@@ -32,14 +32,14 @@
 @end
 
 @implementation QuickWordsViewController
-@synthesize defaultToolbar = _defaultToolbar;
-@synthesize decisionToolbar = _decisionToolbar;
+@synthesize menuView = _menuView;
 @synthesize detailButton = _detailButton;
 @synthesize datesButton = _datesButton;
 @synthesize keyWordsButton = _keyWordsButton;
 @synthesize doneButton = _doneButton;
 @synthesize scrollView = _scrollView;
 @synthesize entryContentController = _entryContentController;
+@synthesize attendantsButton = _attendantsButton;
 
 static float spacing = 10;
 
@@ -57,12 +57,11 @@ static float spacing = 10;
     [super viewDidLoad];
     
     if ([[[self entryContentController] entry] isKindOfClass:[Decision class]]) {
-        [[self defaultToolbar] setHidden:YES];
-    } else {
-        [[self decisionToolbar] setHidden:YES];
+        [[self detailButton] setHidden:YES];
     }
     
-    [[self detailButton] setTitle:[BNoteStringUtils nameForEntry:[[self entryContentController] entry]]];
+    NSString *title = [BNoteStringUtils nameForEntry:[[self entryContentController] entry]];
+    [[self detailButton] setTitle:title forState:UIControlStateNormal];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:KeyWordsUpdated object:nil];
@@ -77,7 +76,7 @@ static float spacing = 10;
     [self setKeyWordsButton:nil];
     [self setScrollView:nil];
     [self setDetailButton:nil];
-    [self setDecisionToolbar:nil];
+    [self setMenuView:nil];
 }
 
 - (IBAction)detail:(id)sender

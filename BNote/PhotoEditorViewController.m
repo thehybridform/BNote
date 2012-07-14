@@ -15,8 +15,11 @@
 @interface PhotoEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet DrawingView *drawView;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) IBOutlet UIView *buttonsView;
 @property (strong, nonatomic) IBOutlet UIView *actionView;
+@property (strong, nonatomic) IBOutlet UIButton *resetButton;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIButton *undoButton;
 @property (strong, nonatomic) IBOutlet UIButton *redoButton;
 @property (strong, nonatomic) IBOutlet UIButton *smallPencileButton;
@@ -68,6 +71,9 @@
 @synthesize selectedPencilButton = _selectedPencilButton;
 @synthesize buttonsView = _buttonsView;
 @synthesize actionView = _actionView;
+@synthesize menuView = _menuView;
+@synthesize doneButton = _doneButton;
+@synthesize resetButton = _resetButton;
 
 static const CGFloat small = 5;
 static const CGFloat medium = 10;
@@ -85,7 +91,9 @@ static const CGFloat large = 20;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    [[self view] setBackgroundColor:[UIColor lightGrayColor]];
+
     [[self drawView] setPhoto:[[self keyPoint] photo]];
     
     UIImage *image = [UIImage imageWithData:[[[self keyPoint] photo] original]];
@@ -107,6 +115,7 @@ static const CGFloat large = 20;
     [self setupButton:[self color13Button] withColor:[UIColor brownColor]];
     
     [LayerFormater setBorderWidth:2 forView:[self drawView]];
+    [LayerFormater addShadowToView:[self menuView]];
     
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
     [[self buttonsView] setBackgroundColor:[BNoteConstants appColor1]];
@@ -152,21 +161,24 @@ static const CGFloat large = 20;
     [self setSelectedColorButton:nil];
     [self setButtonsView:nil];
     [self setActionView:nil];
+    [self setMenuView:nil];
+    [self setActionView:nil];
+    [self setDoneButton:nil];
+    [self setResetButton:nil];
 }
 
 - (IBAction)done:(id)sender
-{
-    [[BNoteWriter instance] update];
+{        
+        CGRect rect = [[self drawView] bounds];
+        
+        UIGraphicsBeginImageContext(rect.size);
+        [[[self imageView] layer] renderInContext:UIGraphicsGetCurrentContext()];
+        [[[self drawView] layer] renderInContext:UIGraphicsGetCurrentContext()];
+        
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        [BNoteEntryUtils updateThumbnailPhotos:image forKeyPoint:[self keyPoint]];
 
-    CGRect rect = [[self drawView] bounds];
-
-    UIGraphicsBeginImageContext(rect.size);
-    [[[self imageView] layer] renderInContext:UIGraphicsGetCurrentContext()];
-    [[[self drawView] layer] renderInContext:UIGraphicsGetCurrentContext()];
-
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-
-    [BNoteEntryUtils updateThumbnailPhotos:image forKeyPoint:[self keyPoint]];
     
     [self dismissModalViewControllerAnimated:YES];
 }

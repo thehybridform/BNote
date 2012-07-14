@@ -18,9 +18,11 @@
     if (self) {
         [self setTitleColor:[BNoteConstants colorFor:BNoteColorHighlight]
                    forState:(UIControlStateNormal|UIControlStateHighlighted)];
+        [self setTitleColor:[UIColor whiteColor]
+                   forState:(UIControlStateNormal|UIControlStateDisabled)];
         [self setBackgroundColor:[BNoteConstants colorFor:BNoteColorMain]];
         [self setShowsTouchWhenHighlighted:YES];
-        [LayerFormater roundCornersForView:self];
+        [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
         
         [self setBackgroundColor:[UIColor clearColor]];
         [LayerFormater setBorderWidth:0 forView:self];
@@ -35,7 +37,7 @@
     [self addSubview:icon];
     
     float x = [self frame].size.width - 5 - [icon frame].size.width;
-    float y = [self frame].size.height / 2.0 - [icon frame].size.height / 2.0;
+    float y = [self frame].size.height / 2.0 - [icon frame].size.height / 2.0 - 3;
     float width = [icon frame].size.width;
     float height = [icon frame].size.height;
     

@@ -60,31 +60,19 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
-- (Entry *)entry
-{
-    return _entry;
-}
-
 - (CGFloat)height
 {
-    float height = 0;
-    if (![[self mainTextView] isHidden]) {
-        height += [[self mainTextView] contentSize].height;
-    }
-    
-    if (![[self detailTextView] isHidden]) {
-        height += [[self detailTextView] contentSize].height;
-    }
-    
+    float height = [[self mainTextView] contentSize].height;
+
     return MAX(100, height);
 }
 
 - (CGFloat)width
 {
-    CGFloat width = 700;
+    CGFloat width = 1000;
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (orientation & (UIDeviceOrientationPortrait | UIDeviceOrientationPortraitUpsideDown)) {
-        width = 470;
+    if (UIDeviceOrientationIsPortrait(orientation)) {
+        width = 600;
     }
     
     return width;
@@ -99,56 +87,47 @@
     [[self detailTextView] setBackgroundColor:[UIColor clearColor]];
     [[self scrollView] setBackgroundColor:[UIColor clearColor]];
 
+    [[self mainTextView] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [[self detailTextView] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+
     [self handleImageIcon:NO];
     [self showMainText];
     [self showDetailText];
         
-    CGFloat width = [[self view] frame].size.width;
-    CGFloat height = [self height];
-    CGRect rect = CGRectMake(0, 0, width, height);
-    [[self view] setFrame:rect];
-
     if (![[self entry] isKindOfClass:[Attendants class]]) {
         QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
         [self setQuickWordsViewController:quick];
         [[self mainTextView] setInputAccessoryView:[quick view]];
     }
+
+    [self updateCellFrame];
+}
+
+- (void)updateCellFrame
+{
+    float height = [self height];
+    float width = [self width];
+    float x = 0;
+    float y = 0;
+    
+    CGRect frame = CGRectMake(x, y, width, height);
+    [[self view] setFrame:frame];
+    
+    frame = CGRectMake(x + 110, y, width - 110, height);
+    [[self mainTextView] setFrame:frame];
+    [[self mainTextView] setContentSize:CGSizeMake(width, height)];
+    
+    [[self view] setNeedsDisplay];
 }
 
 - (void)showMainText
 {
     [[self mainTextView] setText:[[self entry] text]];
-    
-    CGFloat x = 120;
-    CGFloat y = 5;
-    
-    CGFloat height = 100;
-    CGFloat width = [self width];
-    
-    CGRect rect = CGRectMake(x, y, width, height);
-    [[self mainTextView] setFrame:rect];
-    
-    height = [[self mainTextView] contentSize].height;
-    rect = CGRectMake(x, y, width, height);
-    [[self mainTextView] setFrame:rect];
 }
 
 - (void)showDetailText
 {
     [[self detailTextView] setText:[self detail]];
-    
-    CGFloat x = [[self mainTextView] frame].origin.x;
-    CGFloat y = [[self mainTextView] frame].origin.y + [[self mainTextView] frame].size.height;
-    
-    CGFloat height = 20;
-    CGFloat width = [self width];
-    
-    CGRect rect = CGRectMake(x, y, width, height);
-    [[self detailTextView] setFrame:rect];
-    
-    height = [[self detailTextView] contentSize].height;
-    rect = CGRectMake(x, y, width, height);
-    [[self detailTextView] setFrame:rect];
 }
 
 - (void)handleImageIcon:(BOOL)active

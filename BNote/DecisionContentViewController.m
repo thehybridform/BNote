@@ -25,7 +25,6 @@
 {
     [super viewDidLoad];
     
-    [[self scrollView] removeFromSuperview];
     [[self detailTextView] removeFromSuperview];
 }
 

@@ -46,7 +46,19 @@ static NSString *makeSketch = @"Sketch";
     
     [[self scrollView] removeFromSuperview];
     [[self detailTextView] removeFromSuperview];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:[self keyPoint]];
+}
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setPopup:nil];
+    [self setActionSheet:nil];
+    [self setImagePickerController:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture
@@ -103,8 +115,6 @@ static NSString *makeSketch = @"Sketch";
 {
     KeyPoint *keyPoint = [self keyPoint];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:keyPoint];
-    
     if ([keyPoint photo]) {
         UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
         [[self imageView] setImage:image];
@@ -146,8 +156,9 @@ static NSString *makeSketch = @"Sketch";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [BNoteEntryUtils handlePhoto:info forKeyPoint:[self keyPoint]];
-    
+        BOOL save = ![info objectForKey:UIImagePickerControllerReferenceURL];
+        [BNoteEntryUtils handlePhoto:info forKeyPoint:[self keyPoint] saveToLibrary:save];
+                   
     if ([self popup]) {
         [[self popup] dismissPopoverAnimated:YES];
         [self setPopup:nil];
@@ -181,14 +192,13 @@ static NSString *makeSketch = @"Sketch";
     }
     
     [self setActionSheet:nil];
-    [self handleImageIcon:NO];
 }
 
 - (void)removePhotos
 {
     KeyPoint *keyPoint = [self keyPoint];
     [[BNoteWriter instance] removePhoto:[keyPoint photo]];
-    [self updateImageViewForKeyPoint:keyPoint];
+    [self handleImageIcon:NO];
 }
 
 - (void)showPhoto
@@ -209,24 +219,9 @@ static NSString *makeSketch = @"Sketch";
     [[self parentController] presentModalViewController:controller animated:YES];
 }
 
-- (void)updateImageView:(id)object
+- (void)updateImageView:(NSNotification *)notification
 {
-    NSNotification *notification = object;
-    if ([notification object] == [self entry]) {
-        KeyPoint *keyPoint = (KeyPoint *) [notification object];
-        [self updateImageViewForKeyPoint:keyPoint];
-    }
-}
-
-- (void)updateImageViewForKeyPoint:(KeyPoint *)keyPoint
-{
-    if ([keyPoint photo]) {
-        UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
-        [[self imageView] setImage:image];
-    } else {
-        UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
-        [[self imageView] setImage:[imageView image]];
-    }
+    [self handleImageIcon:NO];
 }
 
 - (void)presentPhotoEditor
@@ -239,11 +234,6 @@ static NSString *makeSketch = @"Sketch";
     [controller setKeyPoint:[self keyPoint]];
     
     [[self parentController] presentModalViewController:controller animated:YES];
-    
-}
-
-- (void)showDetailText
-{
     
 }
 

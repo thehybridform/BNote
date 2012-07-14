@@ -49,6 +49,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
                                                  name:UITextViewTextDidBeginEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self selector:@selector(stoppedEditingText:)
+        name:UITextViewTextDidEndEditingNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -102,15 +105,14 @@
     EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
 
     [controller setParentController:[self parentController]];
-
+    
     [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
-    [cell setAutoresizesSubviews:YES];
-    [[cell contentView] setAutoresizesSubviews:YES];
     [[cell contentView] addSubview:[controller view]];
     
-    [LayerFormater setBorderWidth:1 forView:cell];
+    [LayerFormater setBorderWidth:0.5 forView:cell];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[cell contentView]];
     
     return cell;
 }
@@ -166,11 +168,6 @@
     EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
     
     return [controller height];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
 }
 
 - (void)reload
@@ -233,6 +230,11 @@
 - (void)startedEditing:(NSNotification *)notification
 {
     [self setTextView:[notification object]];
+}
+
+- (void)stoppedEditingText:(NSNotification *)notification
+{
+    [self reload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

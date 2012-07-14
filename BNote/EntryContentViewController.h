@@ -12,7 +12,6 @@
 @class QuickWordsViewController;
 
 @interface EntryContentViewController : UIViewController
-
 @property (assign, nonatomic) UIViewController *parentController;
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 @property (assign, nonatomic) UITextView *selectedTextView;
@@ -24,7 +23,6 @@
 - (UIImageView *)imageView;
 - (UIScrollView *)scrollView;
 - (CGFloat)height;
-- (CGFloat)width;
 
 - (void)handleImageIcon:(BOOL)active;
 

@@ -7,13 +7,14 @@
 //
 
 #import "EluaViewController.h"
+#import "LayerFormater.h"
 
 @interface EluaViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) IBOutlet UIToolbar *normalToobar;
-@property (strong, nonatomic) IBOutlet UIToolbar *eulaToobar;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *acceptButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *declineButton;
+@property (strong, nonatomic) IBOutlet UIView *normalToobar;
+@property (strong, nonatomic) IBOutlet UIView *eulaToobar;
+@property (strong, nonatomic) IBOutlet UIButton *acceptButton;
+@property (strong, nonatomic) IBOutlet UIButton *declineButton;
 
 @end
 
@@ -38,6 +39,9 @@
 {
     [super viewDidLoad];
     
+    [LayerFormater addShadowToView:[self normalToobar]];
+    [LayerFormater addShadowToView:[self eulaToobar]];
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"BeNote-EULA.rtf" ofType:nil];
     NSURL *url = [NSURL fileURLWithPath:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -53,6 +57,7 @@
     } else {
         [[self eulaToobar] setHidden:YES];
     }
+    
 }
 
 - (void)viewDidUnload

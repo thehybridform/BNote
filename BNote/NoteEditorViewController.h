@@ -32,6 +32,8 @@
 - (IBAction)editEntries:(id)sender;
 - (IBAction)addAttendies:(id)sender;
 
+- (IBAction)resetFilter:(id)sender;
+
 - (void)selectEntry:(Entry *)entry;
 
 @end

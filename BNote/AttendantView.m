@@ -65,9 +65,8 @@
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 90, 10)];
     [nameLabel setLineBreakMode:UILineBreakModeTailTruncation];
     [nameLabel setTextAlignment:UITextAlignmentCenter];
-    [nameLabel setFont:[UIFont systemFontOfSize:10]];
+    [nameLabel setFont:[BNoteConstants font:RobotoLight andSize:10]];
     [nameLabel setNumberOfLines:1];
-    [nameLabel setBackgroundColor:[UIColor clearColor]];
 
     NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
     [nameLabel setText:name];
@@ -75,10 +74,9 @@
     UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 60, 90, 10)];
     [emailLabel setLineBreakMode:UILineBreakModeTailTruncation];
     [emailLabel setTextAlignment:UITextAlignmentCenter];
-    [emailLabel setFont:[UIFont systemFontOfSize:10]];
+    [emailLabel setFont:[BNoteConstants font:RobotoLight andSize:10]];
     [emailLabel setNumberOfLines:1];
     [emailLabel setText:[attendant email]];
-    [emailLabel setBackgroundColor:[UIColor clearColor]];
     
     [self addSubview:nameLabel];
     [self addSubview:emailLabel];

@@ -27,7 +27,7 @@
 + (NSMutableArray *)attendants:(Note *)note;
 + (NSMutableArray *)attendees:(Note *)note;
 
-+ (UIImage *)handlePhoto:(NSDictionary *)info forKeyPoint:(KeyPoint *)keyPoint;
++ (UIImage *)handlePhoto:(NSDictionary *)info forKeyPoint:(KeyPoint *)keyPoint saveToLibrary:(BOOL)save;
 + (void)updateThumbnailPhotos:(UIImage *)image forKeyPoint:(KeyPoint *)keyPoint;
 
 

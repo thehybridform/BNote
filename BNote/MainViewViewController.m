@@ -66,8 +66,8 @@ static NSString *email = @"E-mail";
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedTopic:) name:TopicSelected object:nil];
         
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(selectedTopic:) name:TopicUpdated object:nil];
+        //[[NSNotificationCenter defaultCenter]
+          //  addObserver:self selector:@selector(selectedTopic:) name:TopicUpdated object:nil];
         
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
@@ -136,6 +136,7 @@ static NSString *email = @"E-mail";
             [[self peopleViewController] addAttendants:attendants];
         }
     }
+    
     for (Note *note in [topic associatedNotes]) {
         for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
             [[self peopleViewController] addAttendants:attendants];

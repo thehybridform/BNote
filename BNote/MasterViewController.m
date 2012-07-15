@@ -37,14 +37,6 @@
     [super viewDidLoad];
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
 
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
-
-    self.navigationItem.rightBarButtonItem = addButton;
-    self.title = NSLocalizedString(@"Topics", @"Topics");
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateReceived:)
                                                  name:RefetchAllDatabaseData
@@ -53,6 +45,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(createdTopic:)
                                                  name:TopicCreated
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectTopic:)
+                                                 name:TopicUpdated
                                                object:nil];
 }
 
@@ -161,6 +158,11 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
     [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];    
+}
+
+- (void)selectTopic:(NSNotification *)notification
+{
+    [self selectCell:[self selectedIndex]];
 }
 
 - (void)createdTopic:(NSNotification *)notification

@@ -127,7 +127,7 @@
 
 -(void)normalPressTap:(id)sender
 {
-    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
+    [LayerFormater setBorderColorWithInt:[[self note] color] forView:[self view]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:[self note]];
 }

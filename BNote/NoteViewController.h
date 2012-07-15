@@ -17,6 +17,4 @@
 
 - (id)initWithNote:(Note *)note isAssociated:(BOOL)associated;
 
-- (IBAction)pressed:(id)sender;
-
 @end

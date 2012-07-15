@@ -132,6 +132,8 @@ const static float h2 = h1 - 10;
         
         CGRect rect = [self bounds];
         [actionSheet showFromRect:rect inView:self animated:YES];
+        
+        [LayerFormater setBorderColor:[UIColor blackColor] forView:self];
     }
 }
 
@@ -155,6 +157,8 @@ const static float h2 = h1 - 10;
             [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
         }
     }
+    
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
 }
 
 - (void)presentTopicSelectionForType:(TopicSelectType)type

@@ -125,21 +125,10 @@
     [self setup];
 }
 
-- (IBAction)pressed:(id)sender
-{
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:(UIViewAnimationOptionCurveEaseIn)
-                     animations:^(void) {
-                         [LayerFormater setBorderColorWithInt:[[self note] color] forView:[self view]];
-                     }
-                     completion:^(BOOL finished) {
-                     }
-     ];
-}
-
 -(void)normalPressTap:(id)sender
 {
+    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:[self note]];
 }
 

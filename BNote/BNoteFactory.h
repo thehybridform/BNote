@@ -36,6 +36,14 @@ extern NSString *const PAPER;
 extern NSString *const TABLE_CELL_PLAIN;
 extern NSString *const TABLE_CELL_SELECTED;
 
+extern NSString *const questionAnsweredEntryHeader;
+extern NSString *const questionUnansweredEntryHeader;
+extern NSString *const actionItemsCompletedEntryHeader;
+extern NSString *const actionItemsIncompleteEntryHeader;
+extern NSString *const decisionsEntryHeader;
+extern NSString *const keyPointsEntryHeader;
+extern NSString *const allEntryHeader;
+
 typedef enum {
     ActionItemIcon,
     AttentiesIcon,

@@ -15,6 +15,8 @@
 @property (assign, nonatomic) Note *note;
 @property (assign, nonatomic) UIViewController *detailViewController;
 
-- (id)initWithNote:(Note *)note;
+- (id)initWithNote:(Note *)note isAssociated:(BOOL)associated;
+
+- (IBAction)pressed:(id)sender;
 
 @end

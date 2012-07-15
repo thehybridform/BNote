@@ -24,6 +24,7 @@ typedef enum {
 
 @interface BNoteFilterFactory : NSObject
 
-+ (id<BNoteFilter>)create:(BNoteFilterType)type;
++ (BNoteFilterFactory *)instance;
+- (id<BNoteFilter>)create:(BNoteFilterType)type;
 
 @end

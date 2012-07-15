@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (assign, nonatomic) id<UIActionSheetDelegate> actionSheetDelegate;
+@property (assign, nonatomic) Topic *selectedTopic;
 
 typedef enum {
     Reviewing,
@@ -25,8 +26,8 @@ typedef enum {
 + (BNoteSessionData *)instance;
 
 - (BOOL)canEditEntry;
-- (NSMutableDictionary *)imageIconViews;
 - (BOOL)keyboardVisible;
+- (NSMutableDictionary *)imageIconViews;
 - (NSMutableDictionary *)entrySummaryHeaderImageViews;
 
 @end

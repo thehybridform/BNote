@@ -26,31 +26,16 @@
 {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-        [[self textLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
+        [[self textLabel] setFont:[BNoteConstants font:RobotoLight andSize:12]];
         [[self textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-        [self setBackgroundColor:[BNoteConstants appColor1]];
 
         [[self detailTextLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-        [[self detailTextLabel] setFont:[BNoteConstants font:RobotoRegular andSize:10]];
+        [[self detailTextLabel] setFont:[BNoteConstants font:RobotoLight andSize:10]];
 
         [self setBackgroundColor:[UIColor clearColor]];
     }
     
     return self;
-}
-
-- (void)drawRect:(CGRect)rect
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-	CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
-    CGContextSetLineWidth(context, 1.0);
-	CGContextMoveToPoint(context, 44, 0.0);
-	CGContextAddLineToPoint(context, 44, [self bounds].size.height);
-	CGContextMoveToPoint(context, 47, 0.0);
-	CGContextAddLineToPoint(context, 47, [self bounds].size.height);
-	CGContextStrokePath(context);
-    
 }
 
 - (void)setEntry:(Entry *)entry
@@ -67,7 +52,7 @@
     UIColor *color = UIColorFromRGB([[[entry note] topic] color]);
     [self setSelectedBackgroundView:[BNoteFactory createHighlight:color]];
 
-    [[self imageView] setBackgroundColor:color];
+//    [[self imageView] setBackgroundColor:color];
     
     [self setNeedsDisplay];
 }
@@ -86,6 +71,7 @@
 
     UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:NO];
     [[self imageView] setImage:[imageView image]];
+    
 }
 
 - (void)handleQuestionType:(Entry *)entry

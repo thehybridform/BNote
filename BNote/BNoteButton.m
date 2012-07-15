@@ -36,7 +36,7 @@
     _icon = icon;
     [self addSubview:icon];
     
-    float x = [self frame].size.width - 5 - [icon frame].size.width;
+    float x = 0;
     float y = [self frame].size.height / 2.0 - [icon frame].size.height / 2.0 - 3;
     float width = [icon frame].size.width;
     float height = [icon frame].size.height;

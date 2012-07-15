@@ -66,7 +66,7 @@
         [self setSubject:subject];
                 
         NSMutableArray *emails = [[NSMutableArray alloc] init];
-        for (Attendants *attendant in [self filterEntries:[BNoteFilterFactory create:AttendantType] for:allNotes]) {
+        for (Attendants *attendant in [self filterEntries:[[BNoteFilterFactory instance] create:AttendantType] for:allNotes]) {
             for (Attendant *recipient in [attendant children]) {
                 if ([recipient email]) {
                     [emails addObject:[recipient email]];
@@ -77,7 +77,7 @@
         [self setToRecipients:emails];
         
         int i = 0;
-        for (KeyPoint *keyPoint in [self filterEntries:[BNoteFilterFactory create:KeyPointType] for:allNotes]) {
+        for (KeyPoint *keyPoint in [self filterEntries:[[BNoteFilterFactory instance] create:KeyPointType] for:allNotes]) {
             if ([keyPoint photo]) {
                 Photo *photo = [keyPoint photo];
                 NSData *data;

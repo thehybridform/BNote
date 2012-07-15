@@ -12,6 +12,7 @@
 @interface NoteView : UIView <UIActionSheetDelegate, UIPopoverControllerDelegate>
 
 @property (assign, nonatomic) Note *note;
+@property (assign, nonatomic) BOOL associated;
 
 @end
 

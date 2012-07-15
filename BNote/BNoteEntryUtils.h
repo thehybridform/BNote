@@ -21,14 +21,19 @@
 
 + (NSString *)formatDetailTextForActionItem:(ActionItem *)actionItem;
 + (NSString *)formatDetailTextForQuestion:(Question *)question;
-+ (BOOL)containsAttendants:(Note *)note;
++ (BOOL)topicContainsAttendants:(Topic *)topic;
++ (BOOL)noteContainsAttendants:(Note *)note;
 + (BOOL)multipleTopics:(Note *)note;
 
 + (NSMutableArray *)attendants:(Note *)note;
 + (NSMutableArray *)attendees:(Note *)note;
++ (NSMutableArray *)actionItems:(Note *)note;
++ (NSMutableArray *)decisions:(Note *)note;
++ (NSMutableArray *)keyPoints:(Note *)note;
++ (NSMutableArray *)questions:(Note *)note;
 
 + (UIImage *)handlePhoto:(NSDictionary *)info forKeyPoint:(KeyPoint *)keyPoint saveToLibrary:(BOOL)save;
 + (void)updateThumbnailPhotos:(UIImage *)image forKeyPoint:(KeyPoint *)keyPoint;
 
-
++ (void)cleanUpEntriesForNote:(Note *)note;
 @end

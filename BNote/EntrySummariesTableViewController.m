@@ -14,6 +14,7 @@
 #import "NoteEditorViewController.h"
 #import "EntrySummaryTableViewCell.h"
 #import "TableCellHeaderViewController.h"
+#import "OrderedDictionary.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -26,6 +27,8 @@
 @property (assign, nonatomic) BOOL groupEntries;
 @property (assign, nonatomic) SortType sortType;
 @property (strong, nonatomic) NSString *searchText;
+@property (strong, nonatomic) OrderedDictionary *data;
+@property (strong, nonatomic) OrderedDictionary *dataHeaderView;
 
 @end
 
@@ -44,6 +47,8 @@
 @synthesize sortType = _sortType;
 @synthesize searchText = _searchText;
 @synthesize parentController = _parentController;
+@synthesize data = _data;
+@synthesize dataHeaderView = _dataHeaderView;
 
 - (void)viewDidLoad
 {
@@ -78,6 +83,8 @@
     [self setGrouping:nil];
     [self setSorting:nil];
     [self setSearchText:nil];
+    [self setData:nil];
+    [self setDataHeaderView:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -148,14 +155,50 @@
 
 - (void)reload
 {
-    [self setQuestionsAnswered:[self filterEntries:[BNoteFilterFactory create:QuestionAnsweredType]]];
-    [self setQuestionsUnanswered:[self filterEntries:[BNoteFilterFactory create:QuestionUnansweredType]]];
-    [self setActionItemsComplete:[self filterEntries:[BNoteFilterFactory create:ActionItemCompleteType]]];
-    [self setActionItemsUncomplete:[self filterEntries:[BNoteFilterFactory create:ActionItemsIncompleteType]]];
-    [self setDecisions:[self filterEntries:[BNoteFilterFactory create:DecistionType]]];
-    [self setKeyPoints:[self filterEntries:[BNoteFilterFactory create:KeyPointType]]];
-    [self setEntries:[self filterEntries:[BNoteFilterFactory create:ItdentityType]]];
+    OrderedDictionary *data = [[OrderedDictionary alloc] init];
+    [self setData:data];
     
+    OrderedDictionary *dataHeaderView = [[OrderedDictionary alloc] init];
+    [self setDataHeaderView:dataHeaderView];
+    
+    [self setQuestionsAnswered:[self filterEntries:[[BNoteFilterFactory instance] create:QuestionAnsweredType]]];
+    if ([[self questionsAnswered] count]) {
+        [data setObject:[self questionsAnswered] forKey:questionAnsweredEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionAnsweredHeader] forKey:questionAnsweredEntryHeader];
+    }
+    
+    [self setQuestionsUnanswered:[self filterEntries:[[BNoteFilterFactory instance] create:QuestionUnansweredType]]];
+    if ([[self questionsUnanswered] count]) {
+        [data setObject:[self questionsUnanswered] forKey:questionAnsweredEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionUnansweredHeader] forKey:questionAnsweredEntryHeader];
+    }
+    
+    [self setActionItemsComplete:[self filterEntries:[[BNoteFilterFactory instance] create:ActionItemCompleteType]]];
+    if ([[self actionItemsComplete] count]) {
+        [data setObject:[self actionItemsComplete] forKey:actionItemsCompletedEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:ActionItemCompleteHeader] forKey:actionItemsCompletedEntryHeader];
+    }
+    
+    [self setActionItemsUncomplete:[self filterEntries:[[BNoteFilterFactory instance] create:ActionItemsIncompleteType]]];
+    if ([[self actionItemsUncomplete] count]) {
+        [data setObject:[self actionItemsUncomplete] forKey:actionItemsIncompleteEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:ActionItemIncompleteHeader] forKey:actionItemsIncompleteEntryHeader];
+    }
+    
+    [self setDecisions:[self filterEntries:[[BNoteFilterFactory instance] create:DecistionType]]];
+    if ([[self decisions] count]) {
+        [data setObject:[self decisions] forKey:decisionsEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:DecisionHeader] forKey:decisionsEntryHeader];
+    }
+    
+    [self setKeyPoints:[self filterEntries:[[BNoteFilterFactory instance] create:KeyPointType]]];
+    if ([[self keyPoints] count]) {
+        [data setObject:[self keyPoints] forKey:keyPointsEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:KeyPointHeader] forKey:keyPointsEntryHeader];
+    }
+    
+    [self setEntries:[self filterEntries:[[BNoteFilterFactory instance] create:ItdentityType]]];
+        
     [[self tableView] reloadData];
 }
 
@@ -164,7 +207,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self groupEntries]) {
-        return 6;
+        return [[self data] count];
     } else {
         return 1;
     }
@@ -185,30 +228,8 @@
         return [self entries];
     }
     
-    switch (section) {
-        case 0:
-            return [self actionItemsComplete];
-            break;
-        case 1:
-            return [self actionItemsUncomplete];
-            break;
-        case 2:
-            return [self decisions];
-            break;
-        case 3:
-            return [self keyPoints];
-            break;
-        case 4:
-            return [self questionsAnswered];
-            break;
-        case 5:
-            return [self questionsUnanswered];
-            break;
-        default:
-            break;
-    }
-    
-    return nil;
+    NSString *key = [[self data] keyAtIndex:section];
+    return [[self data] objectForKey:key];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -226,16 +247,6 @@
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
@@ -244,35 +255,12 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    EntrySummaryHeaderType type;
     if (![self groupEntries]) {
-        type = AllHeader;
+        return [BNoteFactory createEntrySummaryHeaderView:AllHeader];
     }
     
-    switch (section) {
-        case 0:
-            type = ActionItemCompleteHeader;
-            break;
-        case 1:
-            type = ActionItemIncompleteHeader;
-            break;
-        case 2:
-            type = DecisionHeader;
-            break;
-        case 3:
-            type = KeyPointHeader;
-            break;
-        case 4:
-            type = QuestionAnsweredHeader;
-            break;
-        case 5:
-            type = QuestionUnansweredHeader;
-            break;
-        default:
-            break;
-    }
-    
-    return [BNoteFactory createEntrySummaryHeaderView:type];
+    NSString *key = [[self dataHeaderView] keyAtIndex:section];
+    return [[self dataHeaderView] objectForKey:key];
 }
 
 - (IBAction)group:(id)sender

@@ -58,7 +58,23 @@
     return [BNoteStringUtils nilOrEmpty:detailText] ? nil : detailText;
 }
 
-+ (BOOL)containsAttendants:(Note *)note
++ (BOOL)topicContainsAttendants:(Topic *)topic
+{
+    for (Note *note in [topic notes]) {
+        if ([BNoteEntryUtils noteContainsAttendants:note]) {
+            return YES;
+        }
+    }
+    for (Note *note in [topic associatedNotes]) {
+        if ([BNoteEntryUtils noteContainsAttendants:note]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
++ (BOOL)noteContainsAttendants:(Note *)note
 {
     for (Entry *entry in [note entries]) {
         if ([entry isKindOfClass:[Attendants class]]) {
@@ -71,7 +87,27 @@
 
 + (NSMutableArray *)attendants:(Note *)note
 {
-    return [BNoteEntryUtils filter:note with:[BNoteFilterFactory create:AttendantType]];
+    return [BNoteEntryUtils filter:note with:[[BNoteFilterFactory instance] create:AttendantType]];
+}
+
++ (NSMutableArray *)actionItems:(Note *)note
+{
+    return [BNoteEntryUtils filter:note with:[[BNoteFilterFactory instance] create:ActionItemType]];
+}
+
++ (NSMutableArray *)decisions:(Note *)note
+{
+    return [BNoteEntryUtils filter:note with:[[BNoteFilterFactory instance] create:DecistionType]];
+}
+
++ (NSMutableArray *)keyPoints:(Note *)note
+{
+    return [BNoteEntryUtils filter:note with:[[BNoteFilterFactory instance] create:KeyPointType]];
+}
+
++ (NSMutableArray *)questions:(Note *)note
+{
+    return [BNoteEntryUtils filter:note with:[[BNoteFilterFactory instance] create:QuestionType]];
 }
 
 + (NSMutableArray *)attendees:(Note *)note
@@ -151,5 +187,16 @@
     
     return NO;
 }
+
++ (void)cleanUpEntriesForNote:(Note *)note
+{
+    for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
+        if (![[attendants children] count]) {
+            [[BNoteWriter instance] removeEntry:attendants];
+        }
+    }
+
+}
+
 
 @end

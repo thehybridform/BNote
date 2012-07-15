@@ -8,6 +8,7 @@
 
 #import "NoteViewController.h"
 #import "NoteView.h"
+#import "LayerFormater.h"
 
 @interface NoteViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *subject;
@@ -15,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *day;
 @property (strong, nonatomic) IBOutlet UILabel *year;
 @property (strong, nonatomic) IBOutlet UILabel *time;
+@property (strong, nonatomic) IBOutlet UIView *dateView;
 
 @end
 
@@ -26,29 +28,23 @@
 @synthesize time = _time;
 @synthesize note = _note;
 @synthesize detailViewController = _detailViewController;
+@synthesize dateView = _dateView;
 
-- (id)initWithNote:(Note *)note
+- (id)initWithNote:(Note *)note isAssociated:(BOOL)associated
 {
     self = [super initWithNibName:@"NoteViewController" bundle:nil];
-    if (self) {
 
+    if (self) {
         [self setNote:note];
         
         NoteView *view = (NoteView *)[self view];
         [view setNote:note];
+        [view setAssociated:associated];
         
-        [[self month] setFont:[BNoteConstants font:RobotoBold andSize:10]];
-        [[self day] setFont:[BNoteConstants font:RobotoRegular andSize:23]];
-        [[self year] setFont:[BNoteConstants font:RobotoLight andSize:13]];
-        [[self time] setFont:[BNoteConstants font:RobotoRegular andSize:13]];
-        [[self subject] setFont:[BNoteConstants font:RobotoRegular andSize:13]];
-    
-    
         UITapGestureRecognizer *tap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
         [[self view] addGestureRecognizer:tap];
 
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
                                                      name:NoteUpdated object:note];
     }
@@ -72,12 +68,23 @@
     [self setDay:nil];
     [self setYear:nil];
     [self setTime:nil];
+    [self setDateView:nil];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setup
 {
+    [[self month] setFont:[BNoteConstants font:RobotoBold andSize:10]];
+    [[self day] setFont:[BNoteConstants font:RobotoLight andSize:21]];
+    [[self year] setFont:[BNoteConstants font:RobotoLight andSize:10]];
+    [[self time] setFont:[BNoteConstants font:RobotoLight andSize:12]];
+    [[self subject] setFont:[BNoteConstants font:RobotoLight andSize:13]];
+    
+    [LayerFormater roundCornersForView:[self dateView]];
+    [LayerFormater setBorderColor:[UIColor clearColor] forView:[self dateView]];
+    [[self dateView] setBackgroundColor:[BNoteConstants appHighlightColor1]];
+    
     NSString *title = [[self note] subject];
     if ([BNoteStringUtils nilOrEmpty:title]) {
         [[self subject] setText:nil];
@@ -105,7 +112,7 @@
     [[self day] setText:str];
     
     [format setDateFormat:@"h:mm aaa"];
-    str = [format stringFromDate:date];
+    str = [[format stringFromDate:date] lowercaseString];
     [[self time] setText:str];
     
     [format setDateFormat:@"yyyy"];
@@ -116,6 +123,19 @@
 - (void)updateNote:(id)sender
 {
     [self setup];
+}
+
+- (IBAction)pressed:(id)sender
+{
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:(UIViewAnimationOptionCurveEaseIn)
+                     animations:^(void) {
+                         [LayerFormater setBorderColorWithInt:[[self note] color] forView:[self view]];
+                     }
+                     completion:^(BOOL finished) {
+                     }
+     ];
 }
 
 -(void)normalPressTap:(id)sender

@@ -37,13 +37,13 @@ NSString *const PAPER = @"Squared_paper.jpg";
 NSString *const TABLE_CELL_PLAIN = @"table-cell-shadow-blank.png";
 NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
 
-NSString *const questionAnswered = @"Qeustions Answered";
-NSString *const questionUnanswered = @"Qeustions Unanswered";
-NSString *const actionItemsCompleted = @"Action Items Completed";
-NSString *const actionItemsIncomplete = @"Action Items Incomplete";
-NSString *const decisions = @"Decisions";
-NSString *const keyPoints = @"Key Points";
-NSString *const all = @"All";
+NSString *const questionAnsweredEntryHeader = @"Questions Answered";
+NSString *const questionUnansweredEntryHeader = @"Questions Unanswered";
+NSString *const actionItemsCompletedEntryHeader = @"Action Items Completed";
+NSString *const actionItemsIncompleteEntryHeader = @"Action Items Incomplete";
+NSString *const decisionsEntryHeader = @"Decisions";
+NSString *const keyPointsEntryHeader = @"Key Points";
+NSString *const allEntryHeader = @"All";
 
 @implementation BNoteFactory
 
@@ -215,7 +215,7 @@ NSString *const all = @"All";
 
 +(UIView *)createHighlightSliver:(UIColor *)color
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 44)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 44)];
     [view setBackgroundColor:color];
 
     return view;
@@ -366,31 +366,31 @@ NSString *const all = @"All";
     NSString *text;
     switch (type) {
         case QuestionAnsweredHeader:
-            text = questionAnswered;
+            text = questionAnsweredEntryHeader;
             break;
             
         case QuestionUnansweredHeader:
-            text = questionUnanswered;
+            text = questionUnansweredEntryHeader;
             break;
             
         case DecisionHeader:
-            text = decisions;
+            text = decisionsEntryHeader;
             break;
             
         case KeyPointHeader:
-            text = keyPoints;
+            text = keyPointsEntryHeader;
             break;
             
         case ActionItemCompleteHeader:
-            text = actionItemsCompleted;
+            text = actionItemsCompletedEntryHeader;
             break;
             
         case ActionItemIncompleteHeader:
-            text = actionItemsIncomplete;
+            text = actionItemsIncompleteEntryHeader;
             break;
             
         case AllHeader:
-            text = all;
+            text = allEntryHeader;
             break;
             
         default:

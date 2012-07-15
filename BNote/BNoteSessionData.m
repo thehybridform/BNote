@@ -26,6 +26,7 @@
 @synthesize actionSheet = _actionSheet;
 @synthesize actionSheetDelegate = _actionSheetDelegate;
 @synthesize entrySummaryHeaderImageViews = _entrySummaryHeaderImageViews;
+@synthesize selectedTopic = _selectedTopic;
 
 - (BOOL)canEditEntry
 {
@@ -35,7 +36,7 @@
 - (id)initSingleton
 {
     self = [super init];
-    
+
     [self setImageIconViews:[[NSMutableDictionary alloc] init]];
     [self setEntrySummaryHeaderImageViews:[[NSMutableDictionary alloc] init]];
     
@@ -44,7 +45,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShowBNoteSessionData:)
                                                  name:UIKeyboardDidShowNotification object:nil];
 
-    
     return self;
 }
 

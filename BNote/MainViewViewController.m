@@ -25,7 +25,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *topicsButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *notesLabel;
 @property (strong, nonatomic) IBOutlet UILabel *peopleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *countLabel;
@@ -55,7 +54,6 @@
 @synthesize shareButton = _shareButton;
 @synthesize addTopicButton = _addTopicButton;
 @synthesize popup = _popup;
-@synthesize titleLabel = _titleLabel;
 @synthesize footer = _footer;
 @synthesize topicsButton = _topicsButton;
 
@@ -82,13 +80,15 @@ static NSString *email = @"E-mail";
     [super viewDidLoad];
 
     [LayerFormater addShadowToView:[self menu]];
-    [LayerFormater addShadowToView:[self topicsView]];
+    [LayerFormater addShadowToView:[self detailView]];
     [LayerFormater addShadowToView:[self footer]];
     
-    [[self notesLabel] setFont:[BNoteConstants font:RobotoBold andSize:20.0]];
-    [[self peopleLabel] setFont:[BNoteConstants font:RobotoBold andSize:20.0]];
-    [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15.0]];
-    [[self titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:20.0]];
+    [[self notesLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+    [[self peopleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+    
+    [[self notesLabel] setFont:[BNoteConstants font:RobotoRegular andSize:18.0]];
+    [[self peopleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:18.0]];
+    [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:28.0]];
     
     [[self detailView] setHidden:YES];
 }
@@ -111,7 +111,6 @@ static NSString *email = @"E-mail";
     [self setShareButton:nil];
     [self setAddTopicButton:nil];
     [self setPopup:nil];
-    [self setTitleLabel:nil];
     [self setFooter:nil];
     [self setTopicsButton:nil];
     
@@ -123,13 +122,14 @@ static NSString *email = @"E-mail";
     if ([[self detailView] isHidden]) {
         [[self detailView] setHidden:NO];
     }
-
+    
     Topic *topic = [notification object];
     [[self entriesTable] setTopic:topic];
     [[self notesViewController] setTopic:topic];
-    [[self titleLabel] setText:[topic title]];
     
     [[self peopleViewController] reset];
+    
+    [[self peopleLabel] setHidden:![BNoteEntryUtils topicContainsAttendants:topic]];
     
     for (Note *note in [topic notes]) {
         for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
@@ -142,7 +142,7 @@ static NSString *email = @"E-mail";
         }
     }
 
-    [self setNotCountForTopic:topic];
+    [self setNoteCountForTopic:topic];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
                                                  name:TopicUpdated object:topic];
@@ -169,10 +169,10 @@ static NSString *email = @"E-mail";
 - (void)updateNoteCount:(NSNotification *)notification
 {
     Topic *topic = [notification object];
-    [self setNotCountForTopic:topic];
+    [self setNoteCountForTopic:topic];
 }
 
-- (void)setNotCountForTopic:(Topic *)topic
+- (void)setNoteCountForTopic:(Topic *)topic
 {
     int count = [[topic notes] count] + [[topic associatedNotes] count];
     

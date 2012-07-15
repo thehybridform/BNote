@@ -7,7 +7,6 @@
 //
 
 #import "MasterViewController.h"
-#import "DetailViewController.h"
 #import "BNoteFactory.h"
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
@@ -80,15 +79,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
-- (void)add:(id)sender
-{
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -108,7 +98,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
-        UIFont *font = [BNoteConstants font:RobotoRegular andSize:20.0];
+        [LayerFormater setBorderColor:[UIColor clearColor] forView:cell];
+        
+        UIFont *font = [BNoteConstants font:RobotoLight andSize:15.0];
         [[cell textLabel] setFont:font];
         [[cell textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     }
@@ -158,30 +150,12 @@
 {
     [self setSelectedIndex:[indexPath row]];
     
-    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    //[LayerFormater addShadowToView:cell];
-    //[tableView bringSubviewToFront:cell];
-
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+    [[BNoteSessionData instance] setSelectedTopic:topic];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:topic];
 }
 
-/*
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([self selectedIndex] == [indexPath row]) {
-        [LayerFormater addShadowToView:cell];
-        [tableView bringSubviewToFront:cell];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [LayerFormater removeShadowFromView:cell];
-}
-*/
 - (void)selectCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
@@ -195,10 +169,6 @@
     
     Topic *topic = [notification object];
     [self selectCell:[[self data] indexOfObject:topic]];
-    
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
-//    [LayerFormater removeShadowFromView:cell];
 }
 
 - (IBAction)editTopicCell:(id)sender
@@ -210,6 +180,11 @@
         [[self tableView] setEditing:YES animated:YES];
         [[self editTopicsButton] setTitle:@"Done" forState:UIControlStateNormal];
     }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 @end

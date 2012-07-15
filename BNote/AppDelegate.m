@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
-#import "DetailViewController.h"
 #import "BNoteWriter.h"
 #import "BNoteReader.h"
 #import "BNoteFactory.h"

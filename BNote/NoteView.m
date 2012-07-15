@@ -16,29 +16,42 @@
 #import "BNoteSessionData.h"
 
 @interface NoteView()
+@property (assign, nonatomic) BOOL drawRibbon;
 @end
 
 @implementation NoteView
 @synthesize note = _note;
+@synthesize drawRibbon = _drawRibbon;
+@synthesize associated = _associated;
 
 static NSString *copyNote = @"Copy";
 static NSString *removeNote = @"Remove";
 static NSString *moveNote = @"Move";
 static NSString *associateNote = @"Associate";
+static NSString *disassociateNote = @"Disassociate";
+
+const static float x1 = 6;
+const static float x2 = x1 + 10;
+const static float x3 = x2 + 10;
+const static float h1 = 44;
+const static float h2 = h1 - 10;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self setDrawRibbon:NO];
         [self commonInit];
         [self setBackgroundColor:[BNoteConstants appColor1]];
         
         UILabel *text = [[UILabel alloc] init];
-        [text setText:@"Add New Note"];
-        [text setFont:[BNoteConstants font:RobotoRegular andSize:14]];
-        [text setFrame:CGRectMake(13, 43, 100, 30)];
+        [text setText:@"Add Note"];
+        [text setFont:[BNoteConstants font:RobotoLight andSize:13]];
+        [text setFrame:CGRectMake(5, 43, 90, 30)];
         [text setTextColor:[BNoteConstants appHighlightColor1]];
-        
+        [text setCenter:CGPointMake(50, 50)];
+        [text setTextAlignment:UITextAlignmentCenter];
+ 
         [self addSubview:text];
     }
     return self;
@@ -49,6 +62,7 @@ static NSString *associateNote = @"Associate";
     self = [super initWithCoder:aDecoder];
 
     if (self) {
+        [self setDrawRibbon:YES];
         [self commonInit];
     }
     
@@ -57,9 +71,9 @@ static NSString *associateNote = @"Associate";
 
 - (void)commonInit
 {
-    [LayerFormater setBorderWidth:1 forView:self];
+    [LayerFormater roundCornersForView:self to:5];
+    [LayerFormater setBorderWidth:2 forView:self];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
-    [LayerFormater addShadowToView:self ofSize:1.0];
     
     UILongPressGestureRecognizer *longPress =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
@@ -68,21 +82,23 @@ static NSString *associateNote = @"Associate";
 
 - (void)drawRect:(CGRect)rect
 {
-    CGContextRef context = UIGraphicsGetCurrentContext();
+    if ([self drawRibbon]) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
     
-    UIColor *color = UIColorFromRGB([[self note] color]);
+        UIColor *color = UIColorFromRGB([[self note] color]);
     
-    CGContextSetStrokeColorWithColor(context, color.CGColor);
-    CGContextSetFillColorWithColor(context, color.CGColor);
-    CGContextSetLineWidth(context, 1.0);
-	CGContextMoveToPoint(context, 10, 0.0);
-	CGContextAddLineToPoint(context, 10, 40);
-	CGContextAddLineToPoint(context, 20, 32);
-	CGContextAddLineToPoint(context, 30, 40);
-	CGContextAddLineToPoint(context, 30, 0);
-    CGContextClosePath(context);
-    CGContextFillPath(context);
-	CGContextStrokePath(context);
+        CGContextSetStrokeColorWithColor(context, color.CGColor);
+        CGContextSetFillColorWithColor(context, color.CGColor);
+        CGContextSetLineWidth(context, 1.0);
+        CGContextMoveToPoint(context, x1, 0.0);
+        CGContextAddLineToPoint(context, x1, h1);
+        CGContextAddLineToPoint(context, x2, h2);
+        CGContextAddLineToPoint(context, x3, h1);
+        CGContextAddLineToPoint(context, x3, 0);
+        CGContextClosePath(context);
+        CGContextFillPath(context);
+        CGContextStrokePath(context);
+    }
 }
 
 - (void)dealloc
@@ -99,14 +115,18 @@ static NSString *associateNote = @"Associate";
         
         [actionSheet addButtonWithTitle:copyNote];
         
-        if ([BNoteEntryUtils multipleTopics:[self note]]) {
+        if ([BNoteEntryUtils multipleTopics:[self note]] &&![self associated]) {
             [actionSheet addButtonWithTitle:moveNote];
             [actionSheet addButtonWithTitle:associateNote];
         }
         
-        NSInteger index = [actionSheet addButtonWithTitle:removeNote];
-        [actionSheet setDestructiveButtonIndex:index];
-        
+        if ([self associated]) {
+            [actionSheet addButtonWithTitle:disassociateNote];
+        } else {
+            NSInteger index = [actionSheet addButtonWithTitle:removeNote];
+            [actionSheet setDestructiveButtonIndex:index];
+        }
+                
         [actionSheet setTitle:@"Note Options"];
         [[BNoteSessionData instance] setActionSheet:actionSheet];
         
@@ -129,6 +149,10 @@ static NSString *associateNote = @"Associate";
             [self presentTopicSelectionForType:CopyToTopic];
         } else if (title == associateNote) {
             [self presentTopicSelectionForType:AssociateTopic];
+        } else if (title == disassociateNote) {
+            Topic *topic = [[BNoteSessionData instance] selectedTopic];
+            [[BNoteWriter instance] disassociateNote:[self note] toTopic:topic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
         }
     }
 }

@@ -33,8 +33,6 @@
 		1834D34815634A650065788F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34715634A650065788F /* main.m */; };
 		1834D34C15634A650065788F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34B15634A650065788F /* AppDelegate.m */; };
 		1834D34F15634A650065788F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34E15634A650065788F /* MasterViewController.m */; };
-		1834D35215634A650065788F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D35115634A650065788F /* DetailViewController.m */; };
-		1834D35815634A650065788F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D35615634A650065788F /* DetailViewController.xib */; };
 		1834D35F15634AA60065788F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D35E15634AA60065788F /* CoreData.framework */; };
 		1834D37E156351640065788F /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
@@ -111,6 +109,7 @@
 		18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE611576027E004A2022 /* KeyPointButton.m */; };
 		18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */; };
 		18A721B115B0EF8F00653382 /* TableCellHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */; };
+		18A721B515B2934400653382 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B415B2934400653382 /* OrderedDictionary.m */; };
 		18AE9C0915A557970058B4EE /* PhotoSketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE9C0815A557970058B4EE /* PhotoSketchPath.m */; };
 		18AE9C1215A576F30058B4EE /* key_point_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE9C1115A576F30058B4EE /* key_point_mask.png */; };
 		18AF4ABE15852FA700A54205 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ABD15852FA700A54205 /* EmailViewController.m */; };
@@ -225,9 +224,6 @@
 		1834D34B15634A650065788F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1834D34D15634A650065788F /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		1834D34E15634A650065788F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		1834D35015634A650065788F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		1834D35115634A650065788F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		1834D35715634A650065788F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
 		1834D35E15634AA60065788F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1834D37B156351640065788F /* TopicEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicEditorViewController.h; sourceTree = "<group>"; };
 		1834D37C156351640065788F /* TopicEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicEditorViewController.m; sourceTree = "<group>"; };
@@ -356,6 +352,8 @@
 		18A721AD15B0EF8F00653382 /* TableCellHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHeaderViewController.h; sourceTree = "<group>"; };
 		18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHeaderViewController.m; sourceTree = "<group>"; };
 		18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCellHeaderViewController.xib; sourceTree = "<group>"; };
+		18A721B315B2934400653382 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		18A721B415B2934400653382 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		18AE9C0715A557970058B4EE /* PhotoSketchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSketchPath.h; sourceTree = "<group>"; };
 		18AE9C0815A557970058B4EE /* PhotoSketchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSketchPath.m; sourceTree = "<group>"; };
 		18AE9C1115A576F30058B4EE /* key_point_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_point_mask.png; sourceTree = "<group>"; };
@@ -644,6 +642,8 @@
 				18E9FF5A156DE6A200F22272 /* BNoteSessionData.m */,
 				18A056F2157EFA05002A4A78 /* BNoteConstants.h */,
 				18A056F3157EFA05002A4A78 /* BNoteConstants.m */,
+				18A721B315B2934400653382 /* OrderedDictionary.h */,
+				18A721B415B2934400653382 /* OrderedDictionary.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -710,9 +710,6 @@
 				18DE683515B0D39A00311F16 /* People Scroll View */,
 				18AF4ABA15852F8B00A54205 /* Email Controller */,
 				18A056CB157C9090002A4A78 /* Help Pages */,
-				1834D35015634A650065788F /* DetailViewController.h */,
-				1834D35115634A650065788F /* DetailViewController.m */,
-				1834D35615634A650065788F /* DetailViewController.xib */,
 				18E9FF6F1572A44A00F22272 /* Entries Scroll View */,
 				18E9FF6E1572A43100F22272 /* Notes Scroll View */,
 				18E9FF29156C6FDA00F22272 /* Edit Notes */,
@@ -1167,7 +1164,6 @@
 				189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */,
 				189B445D15AE809D008F11D2 /* RobotoLight.ttf in Resources */,
 				189B445E15AE809D008F11D2 /* RobotoRegular.ttf in Resources */,
-				1834D35815634A650065788F /* DetailViewController.xib in Resources */,
 				1834D383156364840065788F /* TopicEditorViewController.xib in Resources */,
 				181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */,
 				18E9FF1D156B772D00F22272 /* action_item_active_icon.png in Resources */,
@@ -1225,7 +1221,6 @@
 				1834D34815634A650065788F /* main.m in Sources */,
 				1834D34C15634A650065788F /* AppDelegate.m in Sources */,
 				1834D34F15634A650065788F /* MasterViewController.m in Sources */,
-				1834D35215634A650065788F /* DetailViewController.m in Sources */,
 				1834D37E156351640065788F /* TopicEditorViewController.m in Sources */,
 				1834D3A7156375560065788F /* BNoteFactory.m in Sources */,
 				1810692E15637A6A0018B03B /* BNoteReader.m in Sources */,
@@ -1331,6 +1326,7 @@
 				18DE683F15B0D49700311F16 /* PersonView.m in Sources */,
 				18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */,
 				18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */,
+				18A721B515B2934400653382 /* OrderedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1343,14 +1339,6 @@
 				1834D34515634A650065788F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1834D35615634A650065788F /* DetailViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1834D35715634A650065788F /* en */,
-			);
-			name = DetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

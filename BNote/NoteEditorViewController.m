@@ -170,6 +170,8 @@ static NSString *email = @"E-mail";
     [[self filterView] setBackgroundColor:[UIColor clearColor]];
 
     [self setupDate];
+    
+    [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
 }
 
 - (void)setupDate
@@ -209,7 +211,6 @@ static NSString *email = @"E-mail";
     [[self year] setText:str];
 }
 
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];            
@@ -219,6 +220,9 @@ static NSString *email = @"E-mail";
 {
     [[self note] setSubject:[[self subjectTextView] text]];
     [self dismissModalViewControllerAnimated:YES];
+
+    [BNoteEntryUtils cleanUpEntriesForNote:[self note]];
+    
     [[BNoteWriter instance] update];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[[self note] topic]];
@@ -226,7 +230,7 @@ static NSString *email = @"E-mail";
 
 - (IBAction)resetFilter:(id)sender
 {
-    [[self entriesViewController] setFilter:[BNoteFilterFactory create:ItdentityType]];
+    [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
 }
 
 - (IBAction)editMode:(id)sender
@@ -244,8 +248,8 @@ static NSString *email = @"E-mail";
     [[self filterView] setHidden:YES];
     [[self trashButton] setHidden:NO];
     [[self reviewButton] setTitle:@"Review" forState:UIControlStateNormal];
-    [[self entriesViewController] setFilter:[BNoteFilterFactory create:ItdentityType]];
-    
+    [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
+
     [[BNoteSessionData instance] setPhase:Editing];
 }
 
@@ -254,7 +258,7 @@ static NSString *email = @"E-mail";
     [[self filterView] setHidden:NO];
     [[self trashButton] setHidden:YES];
     [[self reviewButton] setTitle:@"Done" forState:UIControlStateNormal];
-    
+
     [[BNoteSessionData instance] setPhase:Reviewing];
 }
 
@@ -264,7 +268,7 @@ static NSString *email = @"E-mail";
         [[self attendantsButton] setHidden:YES];
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[BNoteFilterFactory create:AttendantType]];
+        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:AttendantType]];
     }
 }
 
@@ -273,7 +277,7 @@ static NSString *email = @"E-mail";
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[BNoteFilterFactory create:KeyPointType]];
+        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:KeyPointType]];
     }
 }
 
@@ -282,7 +286,7 @@ static NSString *email = @"E-mail";
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createQuestion:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[BNoteFilterFactory create:QuestionType]];
+        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:QuestionType]];
     }
 }
 
@@ -291,7 +295,7 @@ static NSString *email = @"E-mail";
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createDecision:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[BNoteFilterFactory create:DecistionType]];
+        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:DecistionType]];
     }
 }
 
@@ -300,7 +304,7 @@ static NSString *email = @"E-mail";
     if ([[BNoteSessionData instance] phase] == Editing) {
         [self addEntry:[BNoteFactory createActionItem:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[BNoteFilterFactory create:ActionItemType]];
+        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ActionItemType]];
     }
 }
 

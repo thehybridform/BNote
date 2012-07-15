@@ -88,7 +88,7 @@
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
-    if ([BNoteEntryUtils containsAttendants:[actionItem note]]) {
+    if ([BNoteEntryUtils noteContainsAttendants:[actionItem note]]) {
         Attendants *attendants = [[BNoteEntryUtils attendants:[actionItem note]] objectAtIndex:0];
         if ([[attendants children] count] > 0) {
             button = [[ActionItemResponabiltyButton alloc] initWithName:@"responsibility" andEntryContentViewController:controller];

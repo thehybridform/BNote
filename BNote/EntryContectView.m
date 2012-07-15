@@ -18,12 +18,13 @@ static const float x = 100.0;
     
     CGFloat height = [self bounds].size.height;
     
-	CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+//    0x365ab0
+	CGContextSetRGBStrokeColor(context, 0.8, 0.8, 0.8, 1.0);
     CGContextSetLineWidth(context, 1.0);
 	CGContextMoveToPoint(context, x, 0.0);
 	CGContextAddLineToPoint(context, x, height);
-	CGContextMoveToPoint(context, x + 2, 0.0);
-	CGContextAddLineToPoint(context, x + 2, height);
+	CGContextMoveToPoint(context, x + 1.5, 0.0);
+	CGContextAddLineToPoint(context, x + 1.5, height);
 	CGContextStrokePath(context);
     
 }

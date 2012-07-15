@@ -56,6 +56,15 @@
     [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];    
 }
 
++ (void)addShadowToView:(UIView *)view withColor:(UIColor *)color
+{
+    [view.layer setMasksToBounds:NO];
+    [view.layer setShadowColor:color.CGColor];
+    [view.layer setShadowOpacity:0.9];
+    [view.layer setShadowRadius:7.0];
+    [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];    
+}
+
 + (void)addShadowToView:(UIView *)view
 {
     [view.layer setMasksToBounds:NO];

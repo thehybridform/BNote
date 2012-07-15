@@ -39,7 +39,7 @@
     [[self view] setAutoresizesSubviews:YES];
     
     [self setFilteredControllers:[[NSMutableArray alloc] init]];
-    [self setFilter:[BNoteFilterFactory create:ItdentityType]];
+    [self setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
      
@@ -74,7 +74,7 @@
 - (void)setNote:(Note *)note
 {
     _note = note;
-    [self setFilter:[BNoteFilterFactory create:ItdentityType]];
+    [self setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
 }
 
 #pragma mark - Table view data source
@@ -96,6 +96,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+        [LayerFormater setBorderWidth:0 forView:cell];
+        [LayerFormater setBorderWidth:0 forView:[cell contentView]];
     }
     
     for (UIView *view in [[cell contentView] subviews]) {
@@ -105,14 +110,10 @@
     EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
 
     [controller setParentController:[self parentController]];
-    
-    [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
     [[cell contentView] addSubview:[controller view]];
     
-    [LayerFormater setBorderWidth:0.5 forView:cell];
-    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[cell contentView]];
+//    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[cell contentView]];
     
     return cell;
 }
@@ -124,7 +125,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([BNoteEntryUtils containsAttendants:[self note]]) {
+    if ([BNoteEntryUtils noteContainsAttendants:[self note]]) {
         return [indexPath row] > 0;
     }
     

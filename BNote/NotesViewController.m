@@ -12,7 +12,6 @@
 #import "BNoteWriter.h"
 #import "NoteView.h"
 #import "Note.h"
-#import "DetailViewController.h"
 #import "NoteViewController.h"
 #import "BNoteFactory.h"
 
@@ -57,7 +56,7 @@
 
 - (void)reload
 {   
-    float space = 130;
+    float space = 110;
     
     UIScrollView *scrollView = (UIScrollView *) [self view];
     for (UIView *view in [scrollView subviews]) {
@@ -67,15 +66,15 @@
     float x = 10 - space;
     
     for (Note *note in [[self topic] notes]) {
-        [self addNote:note atX:x += space];
+        [self addNote:note atX:x += space isAssociated:NO];
     }
     
     for (Note *note in [[self topic] associatedNotes]) {
-        [self addNote:note atX:x += space];
+        [self addNote:note atX:x += space isAssociated:YES];
     }
     
     x += space;
-    NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 10, 120, 96)];
+    NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 10, 100, 100)];
     UITapGestureRecognizer *tap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
     [noteView addGestureRecognizer:tap];
@@ -88,13 +87,13 @@
     }
 }
 
-- (void)addNote:(Note *)note atX:(float)x
+- (void)addNote:(Note *)note atX:(float)x isAssociated:(BOOL)associated
 {
     float y = 10;
 
-    NoteViewController *controller = [[NoteViewController alloc] initWithNote:note];
+    NoteViewController *controller = [[NoteViewController alloc] initWithNote:note isAssociated:associated];
     [[self noteControllers] addObject:controller];
-    
+        
     UIView *view = [controller view];
     float width = [view bounds].size.width;
     float height = [view bounds].size.height;

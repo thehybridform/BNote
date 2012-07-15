@@ -8,6 +8,7 @@
 
 #import "PersonViewController.h"
 #import "BNoteFactory.h"
+#import "LayerFormater.h"
 
 @interface PersonViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *icon;
@@ -27,8 +28,6 @@
     if (self) {
         [self setAttendant:attendant];
         
-        [[self nameLabel] setFont:[BNoteConstants font:RobotoLight andSize:8.0]];
-
     }
     return self;
 }
@@ -49,6 +48,14 @@
     } else {
         [[self icon] setImage:[[BNoteFactory createIcon:AttendantIcon] image]];
     }
+    
+    [LayerFormater roundCornersForView:[self icon]];
+//    [LayerFormater setBorderWidth:1 forView:[self icon]];
+    [LayerFormater setBorderColor:[UIColor clearColor] forView:[self icon]];
+
+    [[self nameLabel] setFont:[BNoteConstants font:RobotoLight andSize:12.0]];
+    [[self nameLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+    
 }
 
 - (void)viewDidUnload

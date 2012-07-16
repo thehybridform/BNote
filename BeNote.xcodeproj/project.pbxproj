@@ -110,6 +110,8 @@
 		18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */; };
 		18A721B115B0EF8F00653382 /* TableCellHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */; };
 		18A721B515B2934400653382 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B415B2934400653382 /* OrderedDictionary.m */; };
+		18A721B715B3DEC100653382 /* EntrySummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721B615B3DEC100653382 /* EntrySummaryTableViewCell.xib */; };
+		18A721BA15B3E1DB00653382 /* EntrySummaryTableViewCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B915B3E1DA00653382 /* EntrySummaryTableViewCellController.m */; };
 		18AE9C0915A557970058B4EE /* PhotoSketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE9C0815A557970058B4EE /* PhotoSketchPath.m */; };
 		18AE9C1215A576F30058B4EE /* key_point_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE9C1115A576F30058B4EE /* key_point_mask.png */; };
 		18AF4ABE15852FA700A54205 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ABD15852FA700A54205 /* EmailViewController.m */; };
@@ -354,6 +356,9 @@
 		18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCellHeaderViewController.xib; sourceTree = "<group>"; };
 		18A721B315B2934400653382 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
 		18A721B415B2934400653382 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
+		18A721B615B3DEC100653382 /* EntrySummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntrySummaryTableViewCell.xib; sourceTree = "<group>"; };
+		18A721B815B3E1DA00653382 /* EntrySummaryTableViewCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummaryTableViewCellController.h; sourceTree = "<group>"; };
+		18A721B915B3E1DA00653382 /* EntrySummaryTableViewCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySummaryTableViewCellController.m; sourceTree = "<group>"; };
 		18AE9C0715A557970058B4EE /* PhotoSketchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSketchPath.h; sourceTree = "<group>"; };
 		18AE9C0815A557970058B4EE /* PhotoSketchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSketchPath.m; sourceTree = "<group>"; };
 		18AE9C1115A576F30058B4EE /* key_point_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_point_mask.png; sourceTree = "<group>"; };
@@ -1105,6 +1110,9 @@
 				181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */,
 				18070DEA15785C42003486E3 /* EntrySummaryTableViewCell.h */,
 				18070DEB15785C42003486E3 /* EntrySummaryTableViewCell.m */,
+				18A721B615B3DEC100653382 /* EntrySummaryTableViewCell.xib */,
+				18A721B815B3E1DA00653382 /* EntrySummaryTableViewCellController.h */,
+				18A721B915B3E1DA00653382 /* EntrySummaryTableViewCellController.m */,
 			);
 			name = "Entries Scroll View";
 			sourceTree = "<group>";
@@ -1208,6 +1216,7 @@
 				189B446615AE8BF0008F11D2 /* NoteViewController.xib in Resources */,
 				18DE684415B0D4C600311F16 /* PersonViewController.xib in Resources */,
 				18A721B115B0EF8F00653382 /* TableCellHeaderViewController.xib in Resources */,
+				18A721B715B3DEC100653382 /* EntrySummaryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1327,6 +1336,7 @@
 				18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */,
 				18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */,
 				18A721B515B2934400653382 /* OrderedDictionary.m in Sources */,
+				18A721BA15B3E1DB00653382 /* EntrySummaryTableViewCellController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

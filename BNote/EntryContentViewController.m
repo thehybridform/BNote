@@ -60,6 +60,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
+- (UITableViewCell *)cell 
+{
+    return (UITableViewCell *)[self view];
+
+}
+
 - (CGFloat)height
 {
     float height = [[self mainTextView] contentSize].height;

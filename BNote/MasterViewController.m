@@ -13,6 +13,7 @@
 #import "Topic.h"
 #import "LayerFormater.h"
 #import "BNoteSessionData.h"
+#import "TopicEditorViewController.h"
 
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
@@ -95,6 +96,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
+        [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+        
         [LayerFormater setBorderColor:[UIColor clearColor] forView:cell];
         
         UIFont *font = [BNoteConstants font:RobotoLight andSize:15.0];
@@ -153,6 +156,28 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:topic];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{    
+    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
+    [controller setTopic:topic];
+
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [[BNoteSessionData instance] setPopup:popup];
+    [popup setDelegate:self];
+    [controller setPopup:popup];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = [[self tableView] cellForRowAtIndexPath:indexPath];
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
+}
+
 - (void)selectCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
@@ -182,6 +207,11 @@
         [[self tableView] setEditing:YES animated:YES];
         [[self editTopicsButton] setTitle:@"Done" forState:UIControlStateNormal];
     }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

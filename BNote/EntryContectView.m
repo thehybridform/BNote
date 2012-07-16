@@ -10,7 +10,7 @@
 
 @implementation EntryContectView
 
-static const float x = 100.0;
+static const float x = 97.0;
 
 - (void)drawRect:(CGRect)rect
 {

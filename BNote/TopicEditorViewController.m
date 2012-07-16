@@ -16,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIView *buttonControlView;
 @property (strong, nonatomic) IBOutlet UIButton *selectedColorButton;
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonAction;
+@property (strong, nonatomic) IBOutlet UIButton *buttonAction;
 
 @property (strong, nonatomic) IBOutlet UIButton *button_1;
 @property (strong, nonatomic) IBOutlet UIButton *button_2;
@@ -88,9 +88,7 @@
         [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
         [self setSelectedColor:[[self topic] color]];
         [[self nameTextField] setText:[[self topic] title]];
-        [[self buttonAction] setTitle:@"Update"];        
-    } else {
-        [[self buttonAction] setTitle:@"Create"];
+        [[self buttonAction] setTitle:@"Update" forState:UIControlStateNormal];        
     }
     
     [self initButton:[self button_1] withColor:Color1];
@@ -126,6 +124,11 @@
         [topic setTitle:title];
 
         [topic setColor:[self selectedColor]];
+        
+        for (Note *note in [topic notes]) {
+            [note setColor:[self selectedColor]];
+        }
+        
         [[BNoteWriter instance] update];
 
         [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];

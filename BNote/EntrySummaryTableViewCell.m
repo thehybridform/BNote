@@ -19,6 +19,10 @@
 #import "BNoteFactory.h"
 #import "BNoteStringUtils.h"
 
+@interface EntrySummaryTableViewCell()
+
+@end
+
 @implementation EntrySummaryTableViewCell
 @synthesize entry = _entry;
 
@@ -52,8 +56,6 @@
     UIColor *color = UIColorFromRGB([[[entry note] topic] color]);
     [self setSelectedBackgroundView:[BNoteFactory createHighlight:color]];
 
-//    [[self imageView] setBackgroundColor:color];
-    
     [self setNeedsDisplay];
 }
 

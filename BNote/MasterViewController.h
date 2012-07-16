@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Topic.h"
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <UIPopoverControllerDelegate>
 
 - (IBAction)editTopicCell:(id)sender;
 

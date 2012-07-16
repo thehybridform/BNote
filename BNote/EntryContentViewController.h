@@ -34,4 +34,6 @@
 
 - (void)updateDetail;
 
+- (UITableViewCell *)cell;
+
 @end

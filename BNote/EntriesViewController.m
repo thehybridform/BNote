@@ -91,30 +91,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-
-        [LayerFormater setBorderWidth:0 forView:cell];
-        [LayerFormater setBorderWidth:0 forView:[cell contentView]];
-    }
-    
-    for (UIView *view in [[cell contentView] subviews]) {
-        [view removeFromSuperview];
-    }
-    
     EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
-
+    UITableViewCell *cell = [controller cell];
     [controller setParentController:[self parentController]];
 
-    [[cell contentView] addSubview:[controller view]];
-    
-//    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[cell contentView]];
-    
     return cell;
 }
 

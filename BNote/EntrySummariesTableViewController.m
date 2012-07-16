@@ -12,9 +12,9 @@
 #import "BNoteFactory.h"
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
-#import "EntrySummaryTableViewCell.h"
 #import "TableCellHeaderViewController.h"
 #import "OrderedDictionary.h"
+#import "EntrySummaryTableViewCellController.h"
 
 @interface EntrySummariesTableViewController ()
 @property (strong, nonatomic) NSArray *questionsAnswered;
@@ -232,19 +232,20 @@
     return [[self data] objectForKey:key];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"EntrySummaryTableViewCell";
- 
-    EntrySummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[EntrySummaryTableViewCell alloc] initWithIdentifier:cellIdentifier];
-    }
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
-        
-    [cell setEntry:entry];
 
-    return cell;
+    EntrySummaryTableViewCellController *controller =
+            [[EntrySummaryTableViewCellController alloc] initWithEntry:entry];
+
+    
+    return [controller cell];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

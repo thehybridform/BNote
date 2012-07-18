@@ -20,7 +20,6 @@
 		1810693815638E9E0018B03B /* BNoteWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810693715638E9E0018B03B /* BNoteWriter.m */; };
 		1818B54E15803C2500928BAF /* ResponsibilityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */; };
 		1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
-		1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5521580654100928BAF /* DueDateActionItemButton.m */; };
 		1818B55A15807F7B00928BAF /* KeyWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B55915807F7B00928BAF /* KeyWordButton.m */; };
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
@@ -76,9 +75,6 @@
 		1879F06C1574B1BD003814C2 /* QuickWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F06B1574B1BD003814C2 /* QuickWordButton.m */; };
 		1879F0721574BEE9003814C2 /* QuickWordsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0711574BEE9003814C2 /* QuickWordsFactory.m */; };
 		1879F0781574CA12003814C2 /* DateQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0771574CA12003814C2 /* DateQuickButton.m */; };
-		1879F09C1575C85A003814C2 /* ActionItemQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */; };
-		1879F0A01575CA37003814C2 /* ActionItemMarkDone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */; };
-		1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F10A1575D802003814C2 /* QuestionQuickButton.m */; };
 		18810E5F15770159002B59DA /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
 		189B445B15AE809D008F11D2 /* RobotoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445715AE809D008F11D2 /* RobotoBold.ttf */; };
 		189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445815AE809D008F11D2 /* RobotoItalic.ttf */; };
@@ -96,15 +92,11 @@
 		18A056D5157C9671002A4A78 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D3157C9671002A4A78 /* HelpViewController.xib */; };
 		18A056D7157D7E7D002A4A78 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D6157D7E7D002A4A78 /* Default-Portrait~ipad.png */; };
 		18A056D9157D7E90002A4A78 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D8157D7E8F002A4A78 /* Default-Landscape~ipad.png */; };
-		18A056DF157D81AC002A4A78 /* KeyPointPhotoPickerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056DE157D81AC002A4A78 /* KeyPointPhotoPickerButton.m */; };
-		18A056E2157D8214002A4A78 /* KeyPointCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056E1157D8213002A4A78 /* KeyPointCameraButton.m */; };
 		18A056E6157D9BDA002A4A78 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056E5157D9BDA002A4A78 /* NoteView.m */; };
-		18A056EF157DEE8D002A4A78 /* ActionItemResponabiltyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056EE157DEE8D002A4A78 /* ActionItemResponabiltyButton.m */; };
 		18A056F4157EFA06002A4A78 /* BNoteConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F3157EFA05002A4A78 /* BNoteConstants.m */; };
 		18A056F7157F0961002A4A78 /* BNoteImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F6157F0960002A4A78 /* BNoteImageUtils.m */; };
 		18A056FB157F3762002A4A78 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F9157F3762002A4A78 /* PhotoViewController.m */; };
 		18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056FA157F3762002A4A78 /* PhotoViewController.xib */; };
-		18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1DE611576027E004A2022 /* KeyPointButton.m */; };
 		18A7028115B6777100C119F2 /* KeyPointContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028015B6777100C119F2 /* KeyPointContentView.xib */; };
 		18A7028415B68B5B00C119F2 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028315B68B5B00C119F2 /* 86-camera@2x.png */; };
 		18A7028615B68CE000C119F2 /* 98-palette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028515B68CE000C119F2 /* 98-palette@2x.png */; };
@@ -118,6 +110,7 @@
 		18A7029615B6DB6300C119F2 /* 218-trash2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029515B6DB6300C119F2 /* 218-trash2@2x.png */; };
 		18A7029815B6DDCA00C119F2 /* 259-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029715B6DDCA00C119F2 /* 259-list@2x.png */; };
 		18A7029A15B6F2CA00C119F2 /* 02-redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */; };
+		18A7029E15B6F6E100C119F2 /* AttendantQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */; };
 		18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */; };
 		18A721B115B0EF8F00653382 /* TableCellHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */; };
 		18A721B515B2934400653382 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B415B2934400653382 /* OrderedDictionary.m */; };
@@ -186,7 +179,6 @@
 		18F7996615AA15FC00DEAB1F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996515AA15FC00DEAB1F /* Note.m */; };
 		18F7996915AA15FC00DEAB1F /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996815AA15FC00DEAB1F /* TopicGroup.m */; };
 		18F7996C15AA15FC00DEAB1F /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996B15AA15FC00DEAB1F /* Decision.m */; };
-		18F7996F15AA969200DEAB1F /* ClearResposibilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */; };
 		18F7997115AAA91400DEAB1F /* x-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997015AAA91400DEAB1F /* x-image.png */; };
 /* End PBXBuildFile section */
 
@@ -217,8 +209,6 @@
 		1818B54B15803C2500928BAF /* ResponsibilityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsibilityTableViewController.h; sourceTree = "<group>"; };
 		1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsibilityTableViewController.m; sourceTree = "<group>"; };
 		1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResponsibilityTableViewController.xib; sourceTree = "<group>"; };
-		1818B5511580654000928BAF /* DueDateActionItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DueDateActionItemButton.h; sourceTree = "<group>"; };
-		1818B5521580654100928BAF /* DueDateActionItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DueDateActionItemButton.m; sourceTree = "<group>"; };
 		1818B55815807F7B00928BAF /* KeyWordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordButton.h; sourceTree = "<group>"; };
 		1818B55915807F7B00928BAF /* KeyWordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordButton.m; sourceTree = "<group>"; };
 		181967BF1569E50100DA31A3 /* EntrySummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySummariesTableViewController.h; sourceTree = "<group>"; };
@@ -315,12 +305,6 @@
 		1879F0711574BEE9003814C2 /* QuickWordsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickWordsFactory.m; sourceTree = "<group>"; };
 		1879F0761574CA12003814C2 /* DateQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateQuickButton.h; sourceTree = "<group>"; };
 		1879F0771574CA12003814C2 /* DateQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateQuickButton.m; sourceTree = "<group>"; };
-		1879F09A1575C85A003814C2 /* ActionItemQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemQuickButton.h; sourceTree = "<group>"; };
-		1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemQuickButton.m; sourceTree = "<group>"; };
-		1879F09E1575CA36003814C2 /* ActionItemMarkDone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemMarkDone.h; sourceTree = "<group>"; };
-		1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemMarkDone.m; sourceTree = "<group>"; };
-		1879F1091575D802003814C2 /* QuestionQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionQuickButton.h; sourceTree = "<group>"; };
-		1879F10A1575D802003814C2 /* QuestionQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionQuickButton.m; sourceTree = "<group>"; };
 		18810E5D15770159002B59DA /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
 		18810E5E15770159002B59DA /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
 		189B445715AE809D008F11D2 /* RobotoBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoBold.ttf; sourceTree = "<group>"; };
@@ -345,14 +329,8 @@
 		18A056D3157C9671002A4A78 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		18A056D6157D7E7D002A4A78 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		18A056D8157D7E8F002A4A78 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		18A056DD157D81AC002A4A78 /* KeyPointPhotoPickerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointPhotoPickerButton.h; sourceTree = "<group>"; };
-		18A056DE157D81AC002A4A78 /* KeyPointPhotoPickerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPhotoPickerButton.m; sourceTree = "<group>"; };
-		18A056E0157D8213002A4A78 /* KeyPointCameraButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointCameraButton.h; sourceTree = "<group>"; };
-		18A056E1157D8213002A4A78 /* KeyPointCameraButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointCameraButton.m; sourceTree = "<group>"; };
 		18A056E4157D9BD9002A4A78 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		18A056E5157D9BDA002A4A78 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
-		18A056ED157DEE8D002A4A78 /* ActionItemResponabiltyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemResponabiltyButton.h; sourceTree = "<group>"; };
-		18A056EE157DEE8D002A4A78 /* ActionItemResponabiltyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemResponabiltyButton.m; sourceTree = "<group>"; };
 		18A056F2157EFA05002A4A78 /* BNoteConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteConstants.h; sourceTree = "<group>"; };
 		18A056F3157EFA05002A4A78 /* BNoteConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteConstants.m; sourceTree = "<group>"; };
 		18A056F5157F0960002A4A78 /* BNoteImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteImageUtils.h; sourceTree = "<group>"; };
@@ -360,8 +338,6 @@
 		18A056F8157F3762002A4A78 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		18A056F9157F3762002A4A78 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		18A056FA157F3762002A4A78 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
-		18A1DE601576027E004A2022 /* KeyPointButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointButton.h; sourceTree = "<group>"; };
-		18A1DE611576027E004A2022 /* KeyPointButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointButton.m; sourceTree = "<group>"; };
 		18A7028015B6777100C119F2 /* KeyPointContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyPointContentView.xib; sourceTree = "<group>"; };
 		18A7028315B68B5B00C119F2 /* 86-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera@2x.png"; sourceTree = "<group>"; };
 		18A7028515B68CE000C119F2 /* 98-palette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "98-palette@2x.png"; sourceTree = "<group>"; };
@@ -375,6 +351,8 @@
 		18A7029515B6DB6300C119F2 /* 218-trash2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "218-trash2@2x.png"; sourceTree = "<group>"; };
 		18A7029715B6DDCA00C119F2 /* 259-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "259-list@2x.png"; sourceTree = "<group>"; };
 		18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-redo@2x.png"; sourceTree = "<group>"; };
+		18A7029C15B6F6E100C119F2 /* AttendantQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantQuickButton.h; sourceTree = "<group>"; };
+		18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantQuickButton.m; sourceTree = "<group>"; };
 		18A721AD15B0EF8F00653382 /* TableCellHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHeaderViewController.h; sourceTree = "<group>"; };
 		18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHeaderViewController.m; sourceTree = "<group>"; };
 		18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCellHeaderViewController.xib; sourceTree = "<group>"; };
@@ -497,8 +475,6 @@
 		18F7996815AA15FC00DEAB1F /* TopicGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroup.m; sourceTree = "<group>"; };
 		18F7996A15AA15FC00DEAB1F /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
 		18F7996B15AA15FC00DEAB1F /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
-		18F7996D15AA969000DEAB1F /* ClearResposibilityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearResposibilityButton.h; sourceTree = "<group>"; };
-		18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearResposibilityButton.m; sourceTree = "<group>"; };
 		18F7997015AAA91400DEAB1F /* x-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -805,6 +781,9 @@
 		1849769B15919D9400F49F5A /* Action Item */ = {
 			isa = PBXGroup;
 			children = (
+				1818B54B15803C2500928BAF /* ResponsibilityTableViewController.h */,
+				1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */,
+				1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */,
 				184976D8159843B300F49F5A /* ActionItemContentViewController.h */,
 				184976D9159843B300F49F5A /* ActionItemContentViewController.m */,
 				18A721BF15B5139500653382 /* ActionItemContentView.xib */,
@@ -907,11 +886,9 @@
 		1879F0791574CA50003814C2 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				18A7029B15B6F6AA00C119F2 /* Attendants */,
 				1818B55715807F5F00928BAF /* Key Words */,
 				18A056E3157D890F002A4A78 /* Dates */,
-				18A1DE66157609DB004A2022 /* Key Point */,
-				18A1DE65157609D1004A2022 /* Question */,
-				18A1DE64157609C6004A2022 /* Action Item */,
 				1879F06A1574B1BD003814C2 /* QuickWordButton.h */,
 				1879F06B1574B1BD003814C2 /* QuickWordButton.m */,
 			);
@@ -937,46 +914,13 @@
 			name = Dates;
 			sourceTree = "<group>";
 		};
-		18A1DE64157609C6004A2022 /* Action Item */ = {
+		18A7029B15B6F6AA00C119F2 /* Attendants */ = {
 			isa = PBXGroup;
 			children = (
-				1879F09A1575C85A003814C2 /* ActionItemQuickButton.h */,
-				1879F09B1575C85A003814C2 /* ActionItemQuickButton.m */,
-				1879F09E1575CA36003814C2 /* ActionItemMarkDone.h */,
-				1879F09F1575CA37003814C2 /* ActionItemMarkDone.m */,
-				18A056ED157DEE8D002A4A78 /* ActionItemResponabiltyButton.h */,
-				18A056EE157DEE8D002A4A78 /* ActionItemResponabiltyButton.m */,
-				1818B54B15803C2500928BAF /* ResponsibilityTableViewController.h */,
-				1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */,
-				1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */,
-				1818B5511580654000928BAF /* DueDateActionItemButton.h */,
-				1818B5521580654100928BAF /* DueDateActionItemButton.m */,
-				18F7996D15AA969000DEAB1F /* ClearResposibilityButton.h */,
-				18F7996E15AA969100DEAB1F /* ClearResposibilityButton.m */,
+				18A7029C15B6F6E100C119F2 /* AttendantQuickButton.h */,
+				18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */,
 			);
-			name = "Action Item";
-			sourceTree = "<group>";
-		};
-		18A1DE65157609D1004A2022 /* Question */ = {
-			isa = PBXGroup;
-			children = (
-				1879F1091575D802003814C2 /* QuestionQuickButton.h */,
-				1879F10A1575D802003814C2 /* QuestionQuickButton.m */,
-			);
-			name = Question;
-			sourceTree = "<group>";
-		};
-		18A1DE66157609DB004A2022 /* Key Point */ = {
-			isa = PBXGroup;
-			children = (
-				18A1DE601576027E004A2022 /* KeyPointButton.h */,
-				18A1DE611576027E004A2022 /* KeyPointButton.m */,
-				18A056DD157D81AC002A4A78 /* KeyPointPhotoPickerButton.h */,
-				18A056DE157D81AC002A4A78 /* KeyPointPhotoPickerButton.m */,
-				18A056E0157D8213002A4A78 /* KeyPointCameraButton.h */,
-				18A056E1157D8213002A4A78 /* KeyPointCameraButton.m */,
-			);
-			name = "Key Point";
+			name = Attendants;
 			sourceTree = "<group>";
 		};
 		18AF4ABA15852F8B00A54205 /* Email Controller */ = {
@@ -1303,10 +1247,6 @@
 				1879F06C1574B1BD003814C2 /* QuickWordButton.m in Sources */,
 				1879F0721574BEE9003814C2 /* QuickWordsFactory.m in Sources */,
 				1879F0781574CA12003814C2 /* DateQuickButton.m in Sources */,
-				1879F09C1575C85A003814C2 /* ActionItemQuickButton.m in Sources */,
-				1879F0A01575CA37003814C2 /* ActionItemMarkDone.m in Sources */,
-				1879F10B1575D803003814C2 /* QuestionQuickButton.m in Sources */,
-				18A1DE621576027F004A2022 /* KeyPointButton.m in Sources */,
 				18810E5F15770159002B59DA /* EntriesViewController.m in Sources */,
 				18070DF015785FB2003486E3 /* IdentityFillter.m in Sources */,
 				18070DF41578613F003486E3 /* KeyPointFilter.m in Sources */,
@@ -1322,15 +1262,11 @@
 				18A056BC157C6944002A4A78 /* AttendantFilter.m in Sources */,
 				18A056C4157C7B26002A4A78 /* BNoteEntryUtils.m in Sources */,
 				18A056D4157C9671002A4A78 /* HelpViewController.m in Sources */,
-				18A056DF157D81AC002A4A78 /* KeyPointPhotoPickerButton.m in Sources */,
-				18A056E2157D8214002A4A78 /* KeyPointCameraButton.m in Sources */,
 				18A056E6157D9BDA002A4A78 /* NoteView.m in Sources */,
-				18A056EF157DEE8D002A4A78 /* ActionItemResponabiltyButton.m in Sources */,
 				18A056F4157EFA06002A4A78 /* BNoteConstants.m in Sources */,
 				18A056F7157F0961002A4A78 /* BNoteImageUtils.m in Sources */,
 				18A056FB157F3762002A4A78 /* PhotoViewController.m in Sources */,
 				1818B54E15803C2500928BAF /* ResponsibilityTableViewController.m in Sources */,
-				1818B5531580654100928BAF /* DueDateActionItemButton.m in Sources */,
 				1818B55A15807F7B00928BAF /* KeyWordButton.m in Sources */,
 				18AF4ABE15852FA700A54205 /* EmailViewController.m in Sources */,
 				18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */,
@@ -1375,7 +1311,6 @@
 				18F7996615AA15FC00DEAB1F /* Note.m in Sources */,
 				18F7996915AA15FC00DEAB1F /* TopicGroup.m in Sources */,
 				18F7996C15AA15FC00DEAB1F /* Decision.m in Sources */,
-				18F7996F15AA969200DEAB1F /* ClearResposibilityButton.m in Sources */,
 				18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */,
 				18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */,
 				189B446515AE8BF0008F11D2 /* NoteViewController.m in Sources */,
@@ -1393,6 +1328,7 @@
 				18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */,
 				18A721B515B2934400653382 /* OrderedDictionary.m in Sources */,
 				18A721BA15B3E1DB00653382 /* EntrySummaryTableViewCellController.m in Sources */,
+				18A7029E15B6F6E100C119F2 /* AttendantQuickButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

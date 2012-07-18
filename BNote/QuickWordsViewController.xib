@@ -271,6 +271,15 @@
 					</object>
 					<int key="connectionID">77</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">attendants:</string>
+						<reference key="source" ref="135732701"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">86</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -312,8 +321,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="1029150841"/>
 							<reference ref="651689557"/>
-							<reference ref="135732701"/>
 							<reference ref="208497003"/>
+							<reference ref="135732701"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -360,7 +369,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">85</int>
+			<int key="maxID">86</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

@@ -80,6 +80,12 @@ static float spacing = 10;
     [self buildButtons:items];
 }
 
+- (IBAction)attendants:(id)sender
+{
+    NSEnumerator *items = [[QuickWordsFactory buildAttendantButtionsForEntryContent:[self entryContent]] objectEnumerator];
+    [self buildButtons:items];
+}
+
 - (IBAction)done:(id)sender
 {
     [[[self entryContent] selectedTextView] resignFirstResponder];

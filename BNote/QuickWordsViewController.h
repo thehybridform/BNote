@@ -18,6 +18,7 @@
 - (IBAction)dates:(id)sender;
 - (IBAction)keyWords:(id)sender;
 - (IBAction)done:(id)sender;
+- (IBAction)attendants:(id)sender;
 
 - (void)selectFirstButton;
 

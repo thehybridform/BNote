@@ -19,5 +19,6 @@
 
 + (NSMutableArray *)buildDateButtonsForEntryContent:(id<EntryContent>)controller;
 + (NSMutableArray *)buildKeyWordButtionsForEntryContent:(id<EntryContent>)controller;
++ (NSMutableArray *)buildAttendantButtionsForEntryContent:(id<EntryContent>)controller;
 
 @end

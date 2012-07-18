@@ -9,22 +9,15 @@
 #import "QuickWordsFactory.h"
 #import "QuickWordButton.h"
 #import "DateQuickButton.h"
-#import "ActionItemQuickButton.h"
-#import "ActionItemMarkDone.h"
-#import "QuestionQuickButton.h"
-#import "KeyPointButton.h"
-#import "KeyPointCameraButton.h"
-#import "KeyPointPhotoPickerButton.h"
-#import "ActionItemResponabiltyButton.h"
-#import "DueDateActionItemButton.h"
 #import "KeyWordButton.h"
+#import "AttendantQuickButton.h"
 #import "KeyWord.h"
 #import "BNoteReader.h"
 #import "BNoteEntryUtils.h"
 #import "LayerFormater.h"
 #import "Attendants.h"
 #import "Attendant.h"
-#import "ClearResposibilityButton.h"
+#import "KeyPointContentViewController.h"
 
 @implementation QuickWordsFactory
 
@@ -60,9 +53,7 @@
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     
-    NSEnumerator *keyWords = [[[BNoteReader instance] allKeyWords] objectEnumerator];
-    KeyWord *keyWord;
-    while (keyWord = [keyWords nextObject]) {
+    for (KeyWord *keyWord in [[BNoteReader instance] allKeyWords]) {
         KeyWordButton *button =
             [[KeyWordButton alloc] initWithName:[keyWord word] andEntryContentViewController:controller];
         [button setKeyWord:keyWord];
@@ -72,6 +63,22 @@
     
     return data;
 }
+
++ (NSMutableArray *)buildAttendantButtionsForEntryContent:(id<EntryContent>)controller
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+        
+    for (Attendant *attendant in [BNoteEntryUtils attendees:[[controller entry] note]]) {
+        NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
+        AttendantQuickButton *button =
+        [[AttendantQuickButton alloc] initWithName:name andEntryContentViewController:controller];
+        [button setBackgroundColor:[QuickWordsFactory normal]];
+        [data addObject:button];
+    }
+
+    return data;
+}
+
 + (UIColor *)normal
 {
     return [UIColor orangeColor];

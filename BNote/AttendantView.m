@@ -123,7 +123,7 @@
     
     [popup presentPopoverFromRect:[self frame]
                            inView:self permittedArrowDirections:
-                                            (UIPopoverArrowDirectionUp) animated:YES];
+                                            (UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight) animated:YES];
 
     [popup setPopoverContentSize:CGSizeMake(367, 224)];
     [self setPopup:popup];

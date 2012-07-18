@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewViewController : UIViewController <UIActionSheetDelegate, UIPopoverControllerDelegate>
+@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate>
 
 - (id)initWithDefault;
 

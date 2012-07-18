@@ -15,19 +15,19 @@
 
 - (void)execute:(id)sender
 {
-    QuestionContentViewController *controller = (QuestionContentViewController *) [self entryContentViewController];
+//    QuestionContentViewController *controller = (QuestionContentViewController *) [self entryContentViewController];
     if ([[self question] answer]) {
         [[self question] setAnswer:nil];
         [self setTitle:@"   Answer   " forState:UIControlStateNormal];
-        [[controller mainTextView] becomeFirstResponder];
-        [controller setSelectedTextView:[controller mainTextView]];
+//        [[controller mainTextView] becomeFirstResponder];
+//        [controller setSelectedTextView:[controller mainTextView]];
     } else {
         [self setTitle:@"Clear Answer" forState:UIControlStateNormal];
-        [[controller detailTextView] becomeFirstResponder];
-        [controller setSelectedTextView:[controller detailTextView]];
+//        [[controller detailTextView] becomeFirstResponder];
+//        [controller setSelectedTextView:[controller detailTextView]];
     }
     
-    [controller updateDetail];
+//    [controller updateDetail];
 }
 
 @end

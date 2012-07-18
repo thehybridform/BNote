@@ -13,7 +13,7 @@
 - (void)execute:(id)sender
 {
     [[self actionItem] setResponsibility:nil];    
-    [[self entryContentViewController] updateDetail];
+//    [[self entryContentViewController] updateDetail];
 }
 
 

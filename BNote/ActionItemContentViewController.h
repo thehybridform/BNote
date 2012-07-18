@@ -10,8 +10,12 @@
 #import "ResponsibilityTableViewController.h"
 #import "DatePickerViewController.h"
 
-@interface ActionItemContentViewController : EntryContentViewController <UIActionSheetDelegate, DatePickerViewControllerListener, UIPopoverControllerDelegate, ResponsibilityTableViewControllerDelegate>
+@interface ActionItemContentViewController : EntryContentViewController <DatePickerViewControllerListener, UIPopoverControllerDelegate, ResponsibilityTableViewControllerDelegate>
 
-- (void)showDatePicker;
+- (IBAction)showDatePicker:(id)sender;
+- (IBAction)clearDueDate:(id)sender;
+
+- (IBAction)showResponsibilityPicker:(id)sender;
+- (IBAction)clearResponsibilityDate:(id)sender;
 
 @end

@@ -13,14 +13,11 @@
 #import "Decision.h"
 #import "Attendant.h"
 #import "QuickWordsViewController.h"
-#import "EntryContentViewController.h"
+#import "EntryContent.h"
 
 @interface QuickWordsFactory : NSObject
 
-+ (NSMutableArray *)buildDateButtonsForEntryContentViewController:(EntryContentViewController *)controller;
-+ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andActionItem:(ActionItem *)actionItem;
-+ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andQuestion:(Question *)question;
-+ (NSMutableArray *)buildButtionsForEntryContentViewController:(EntryContentViewController *)controller andKeyPoint:(KeyPoint *)keyPoint;
-+ (NSMutableArray *)buildKeyWordButtionsForEntryContentViewController:(EntryContentViewController *)controller;
++ (NSMutableArray *)buildDateButtonsForEntryContent:(id<EntryContent>)controller;
++ (NSMutableArray *)buildKeyWordButtionsForEntryContent:(id<EntryContent>)controller;
 
 @end

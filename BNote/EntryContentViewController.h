@@ -8,32 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Entry.h"
+#import "EntryContent.h"
 
 @class QuickWordsViewController;
 
-@interface EntryContentViewController : UIViewController
-@property (assign, nonatomic) UIViewController *parentController;
+@interface EntryContentViewController : UIViewController <EntryContent>
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
+@property (assign, nonatomic) UIViewController *parentController;
 @property (assign, nonatomic) UITextView *selectedTextView;
+@property (assign, nonatomic) Entry *entry;
 
 - (id)initWithEntry:(Entry *)entry;
-- (Entry *)entry;
-- (UITextView *)mainTextView;
-- (UITextView *)detailTextView;
-- (UIImageView *)imageView;
-- (UIScrollView *)scrollView;
-- (CGFloat)height;
-
 - (void)handleImageIcon:(BOOL)active;
-
-- (void)showMainText;
-- (void)showDetailText;
-- (NSString *)detail;
-
-- (void)startedEditingText:(NSNotification *)notification;
-
-- (void)updateDetail;
-
-- (UITableViewCell *)cell;
 
 @end

@@ -18,7 +18,7 @@
 
 - (void)execute:(id)sender
 {
-    ActionItemContentViewController *controller = (ActionItemContentViewController *) [self entryContentViewController];
+/*    ActionItemContentViewController *controller = (ActionItemContentViewController *) [self entryContentViewController];
  
     ActionItem *actionItem = (ActionItem *) [controller entry];
     if ([actionItem dueDate]) {
@@ -26,11 +26,12 @@
         [[BNoteWriter instance] update];
         [self setTitle:@"   due date   " forState:UIControlStateNormal];
     } else {
-        [[controller mainTextView] resignFirstResponder];
+//        [[controller mainTextView] resignFirstResponder];
         [controller showDatePicker];
     }
     
-    [[self entryContentViewController] updateDetail];
+//    [[self entryContentViewController] updateDetail];
+ */
 }
 
 

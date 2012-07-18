@@ -16,24 +16,41 @@
 #import "PhotoEditorViewController.h"
 
 @interface KeyPointContentViewController()
-@property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
+@property (strong, nonatomic) IBOutlet UIButton *photoAlbumButton;
+@property (strong, nonatomic) IBOutlet UIButton *cameraButton;
+@property (assign, nonatomic) BOOL hasCamera;
+@property (strong, nonatomic) UITapGestureRecognizer *normalTap;
+@property (strong, nonatomic) IBOutlet UIView *touchView;
 
 @end
 
 @implementation KeyPointContentViewController
-@synthesize actionSheet = _actionSheet;
-@synthesize popup = _popup;
 @synthesize imagePickerController = _imagePickerController;
+@synthesize cameraButton = _cameraButton;
+@synthesize photoAlbumButton = _photoAlbumButton;
+@synthesize hasCamera = _hasCamera;
+@synthesize normalTap = _normalTap;
+@synthesize touchView = _touchView;
 
-static NSString *choosePhoto = @"Choose Photo";
-static NSString *takePhoto = @"Take Picture";
-static NSString *viewFullScreen = @"View Full Screen";
-static NSString *removePhoto = @"Remove Photo";
-static NSString *editPhoto = @"Edit";
-static NSString *makeSketch = @"Sketch";
+- (id)initWithEntry:(Entry *)entry
+{
+    self = [super initWithNibName:@"KeyPointContentView" bundle:nil];
+    
+    if (self) {
+        [self setEntry:entry];
 
+        UITapGestureRecognizer *normalTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto:)];
+        [self setNormalTap:normalTap];
+
+        UITableViewCell *cell = (UITableViewCell *) [self view];
+        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    
+    return self;
+}
 
 - (KeyPoint *)keyPoint
 {
@@ -44,9 +61,12 @@ static NSString *makeSketch = @"Sketch";
 {
     [super viewDidLoad];
     
-    [[self scrollView] removeFromSuperview];
-    [[self detailTextView] removeFromSuperview];
-    
+    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    [self setHasCamera:hasCamera];
+    if (!hasCamera) {
+        [[self cameraButton] setHidden:YES];
+    }
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:[self keyPoint]];
 }
 
@@ -54,61 +74,23 @@ static NSString *makeSketch = @"Sketch";
 {
     [super viewDidUnload];
     
-    [self setPopup:nil];
-    [self setActionSheet:nil];
     [self setImagePickerController:nil];
+    [self setCameraButton:nil];
+    [self setPhotoAlbumButton:nil];
+    [self setNormalTap:nil];
+    [self setTouchView:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)gesture
+- (float)height
 {
-    CGPoint location = [gesture locationInView:[self view]];
-    if (location.x < 120) {
-        [self handleTouch];
-    } else {
-        [[self mainTextView] becomeFirstResponder];
+    float height = 45;
+    if ([self hasCamera]) {
+        height += 45;
     }
-}
-
-- (void)handleTouch
-{
-    if (![[BNoteSessionData instance] keyboardVisible]) {
-        [self handleImageIcon:YES];
-        
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-        [actionSheet setDelegate:self];
-        
-        KeyPoint *keyPoint = [self keyPoint];
-        
-        if ([keyPoint photo]) {
-            [actionSheet addButtonWithTitle:editPhoto];
-        } else {
-            [actionSheet addButtonWithTitle:makeSketch];
-        }
-
-        if ([keyPoint photo]) {
-            [actionSheet addButtonWithTitle:viewFullScreen];
-        }
-        
-        [actionSheet addButtonWithTitle:choosePhoto];
-        
-        BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-        if (hasCamera) {
-            [actionSheet addButtonWithTitle:takePhoto];
-        }
-        
-        if ([keyPoint photo]) {
-            NSInteger index = [actionSheet addButtonWithTitle:removePhoto];
-            [actionSheet setDestructiveButtonIndex:index];
-        }
-        
-        [actionSheet setTitle:@"Key Point Photo"];
-        [self setActionSheet:actionSheet];
-        
-        CGRect rect = [[self imageView] bounds];
-        [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-    }
+    
+    return MAX(height, [super height]);
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -117,31 +99,32 @@ static NSString *makeSketch = @"Sketch";
     
     if ([keyPoint photo]) {
         UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
-        [[self imageView] setImage:image];
+        [[self iconView] setImage:image];
+        [[self touchView] addGestureRecognizer:[self normalTap]];
     } else {
         [super handleImageIcon:active];
+        [[self touchView] removeGestureRecognizer:[self normalTap]];
     }
 }
 
-- (void)presentPhotoPicker
+- (IBAction)presentPhotoAlbum:(id)sender
 {
-    
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     [controller setDelegate:self];
     [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     
-    UIView *view = [self imageView];
+    UIView *view = [self photoAlbumButton];
     CGRect rect = [view bounds];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [self setPopup:popup];
+    [[BNoteSessionData instance] setPopup:popup];
     
-    [popup presentPopoverFromRect:rect inView:[self view] 
+    [popup presentPopoverFromRect:rect inView:view 
          permittedArrowDirections:UIPopoverArrowDirectionAny 
                          animated:YES];
 }
 
-- (void)presentCamera
+- (IBAction)presentCamera:(id)sender
 {
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     [controller setDelegate:self];
@@ -156,42 +139,18 @@ static NSString *makeSketch = @"Sketch";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-        BOOL save = ![info objectForKey:UIImagePickerControllerReferenceURL];
-        [BNoteEntryUtils handlePhoto:info forKeyPoint:[self keyPoint] saveToLibrary:save];
+    BOOL save = ![info objectForKey:UIImagePickerControllerReferenceURL];
+    [BNoteEntryUtils handlePhoto:info forKeyPoint:[self keyPoint] saveToLibrary:save];
                    
-    if ([self popup]) {
-        [[self popup] dismissPopoverAnimated:YES];
-        [self setPopup:nil];
+    if ([[BNoteSessionData instance] popup]) {
+        [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
+        [[BNoteSessionData instance] setPopup:nil];
     }
     
     if ([self imagePickerController]) {
         [[self imagePickerController] dismissModalViewControllerAnimated:YES];
         [self setImagePickerController:nil];
     }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex >= 0) {
-        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == choosePhoto) {
-            [self presentPhotoPicker];
-        } else if (title == takePhoto) {
-            [self presentCamera];
-        } else if (title == viewFullScreen) {
-            [self showPhoto];
-        } else if (title == removePhoto) {
-            [self removePhotos];
-        } else if (title == editPhoto) {
-            [self presentPhotoEditor];
-        } else if (title == makeSketch) {
-            Photo *photo = [BNoteFactory createPhoto:[self keyPoint]];
-            [photo setOriginal:UIImageJPEGRepresentation([BNoteFactory paper], 0.8)];
-            [self presentPhotoEditor];
-        }
-    }
-    
-    [self setActionSheet:nil];
 }
 
 - (void)removePhotos
@@ -201,7 +160,7 @@ static NSString *makeSketch = @"Sketch";
     [self handleImageIcon:NO];
 }
 
-- (void)showPhoto
+- (void)showPhoto:(id)sender
 {
     KeyPoint *keyPoint = [self keyPoint];
     Photo *photo = [keyPoint photo];
@@ -224,8 +183,13 @@ static NSString *makeSketch = @"Sketch";
     [self handleImageIcon:NO];
 }
 
-- (void)presentPhotoEditor
+- (IBAction)presentPhotoEditor:(id)sender
 {
+    if (![[self keyPoint] photo]) {
+        Photo *photo = [BNoteFactory createPhoto:[self keyPoint]];
+        [photo setOriginal:UIImageJPEGRepresentation([BNoteFactory paper], 0.8)];
+    }
+    
     PhotoEditorViewController *controller = [[PhotoEditorViewController alloc] initDefault];
     [controller setModalInPopover:YES];
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];

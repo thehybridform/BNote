@@ -21,33 +21,31 @@
 @interface QuickWordsViewController ()
 @property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) IBOutlet UIButton *attendantsButton;
-@property (strong, nonatomic) IBOutlet UIButton *detailButton;
 @property (strong, nonatomic) IBOutlet UIButton *datesButton;
 @property (strong, nonatomic) IBOutlet UIButton *keyWordsButton;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (assign, nonatomic) EntryContentViewController *entryContentController;
+@property (assign, nonatomic) id<EntryContent> entryContent;
 
 @end
 
 @implementation QuickWordsViewController
 @synthesize menuView = _menuView;
-@synthesize detailButton = _detailButton;
 @synthesize datesButton = _datesButton;
 @synthesize keyWordsButton = _keyWordsButton;
 @synthesize doneButton = _doneButton;
 @synthesize scrollView = _scrollView;
-@synthesize entryContentController = _entryContentController;
+@synthesize entryContent = _entryContent;
 @synthesize attendantsButton = _attendantsButton;
 
 static float spacing = 10;
 
-- (id)initWithCell:(EntryContentViewController *)entryContentController
+- (id)initWithEntryContent:(id<EntryContent>)entryContent
 {
     self = [super initWithNibName:@"QuickWordsViewController" bundle:nil];
     if (self) {
-        [self setEntryContentController:entryContentController];
+        [self setEntryContent:entryContent];
     }
     return self;
 }
@@ -55,13 +53,6 @@ static float spacing = 10;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if ([[[self entryContentController] entry] isKindOfClass:[Decision class]]) {
-        [[self detailButton] setHidden:YES];
-    }
-    
-    NSString *title = [BNoteStringUtils nameForEntry:[[self entryContentController] entry]];
-    [[self detailButton] setTitle:title forState:UIControlStateNormal];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:KeyWordsUpdated object:nil];
@@ -71,34 +62,27 @@ static float spacing = 10;
 {
     [super viewDidUnload];
 
-    [self setDetailButton:nil];
     [self setDatesButton:nil];
     [self setKeyWordsButton:nil];
     [self setScrollView:nil];
-    [self setDetailButton:nil];
     [self setMenuView:nil];
-}
-
-- (IBAction)detail:(id)sender
-{
-    [self buildButtons:[self enumeratorForEntry:[[self entryContentController] entry]]];
 }
 
 - (IBAction)dates:(id)sender
 {
-    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryContentViewController:[self entryContentController]] objectEnumerator];
+    NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryContent:[self entryContent]] objectEnumerator];
     [self buildButtons:items];
 }
 
 - (IBAction)keyWords:(id)sender
 {
-    NSEnumerator *items = [[QuickWordsFactory buildKeyWordButtionsForEntryContentViewController:[self entryContentController]] objectEnumerator];
+    NSEnumerator *items = [[QuickWordsFactory buildKeyWordButtionsForEntryContent:[self entryContent]] objectEnumerator];
     [self buildButtons:items];
 }
 
 - (IBAction)done:(id)sender
 {
-    [[[self entryContentController] selectedTextView] resignFirstResponder];
+    [[[self entryContent] selectedTextView] resignFirstResponder];
 }
 
 - (void)buildButtons:(NSEnumerator *)items
@@ -132,24 +116,7 @@ static float spacing = 10;
 
 - (void)selectFirstButton
 {
-    if ([[[self entryContentController] entry] isKindOfClass:[Decision class]]) {
-        [self dates:nil]; 
-    } else {
-        [self detail:nil]; 
-    }
-}
-
-- (NSEnumerator *)enumeratorForEntry:(Entry *)entry
-{
-    if ([entry isKindOfClass:[ActionItem class]]) {
-        return [[QuickWordsFactory buildButtionsForEntryContentViewController:[self entryContentController] andActionItem:(ActionItem *)entry] objectEnumerator];
-    } else if ([entry isKindOfClass:[KeyPoint class]]) {
-        return [[QuickWordsFactory buildButtionsForEntryContentViewController:[self entryContentController] andKeyPoint:(KeyPoint *)entry] objectEnumerator];
-    } else if ([entry isKindOfClass:[Question class]]) {
-        return [[QuickWordsFactory buildButtionsForEntryContentViewController:[self entryContentController] andQuestion:(Question *)entry] objectEnumerator];
-    }
-    
-    return nil;
+    [self dates:nil]; 
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

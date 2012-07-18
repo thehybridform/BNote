@@ -13,8 +13,8 @@
 
 - (void)execute:(id)sender
 {
-    EntryContentViewController *controller = [self entryContentViewController];
-    [[controller mainTextView] resignFirstResponder];
+//    EntryContentViewController *controller = [self entryContentViewController];
+//    [[controller mainTextView] resignFirstResponder];
     
     [self presentCamera];
 }
@@ -25,14 +25,14 @@
     [[self imagePickerController] setModalPresentationStyle:UIModalPresentationFullScreen];
     [[self imagePickerController] setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
-    EntryContentViewController *controller = [self entryContentViewController];
-    [controller presentModalViewController:[self imagePickerController] animated:YES];
+//    EntryContentViewController *controller = [self entryContentViewController];
+//    [controller presentModalViewController:[self imagePickerController] animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    EntryContentViewController *controller = [self entryContentViewController];
-    [controller dismissModalViewControllerAnimated:YES];
+//    EntryContentViewController *controller = [self entryContentViewController];
+//    [controller dismissModalViewControllerAnimated:YES];
     UIImage *image = [self handlePhoto:info];
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 }

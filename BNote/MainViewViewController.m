@@ -21,7 +21,6 @@
 
 @interface MainViewViewController ()
 @property (strong, nonatomic) UIPopoverController *popup;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) IBOutlet UIButton *topicsButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
@@ -50,7 +49,6 @@
 @synthesize notesLabel = _notesLabel;
 @synthesize peopleLabel = _peopleLabel;
 @synthesize topicsView = _topicsView;
-@synthesize actionSheet = _actionSheet;
 @synthesize shareButton = _shareButton;
 @synthesize addTopicButton = _addTopicButton;
 @synthesize popup = _popup;
@@ -104,7 +102,6 @@ static NSString *email = @"E-mail";
     [self setNotesLabel:nil];
     [self setPeopleLabel:nil];
     [self setTopicsView:nil];
-    [self setActionSheet:nil];
     [self setShareButton:nil];
     [self setAddTopicButton:nil];
     [self setPopup:nil];
@@ -212,33 +209,7 @@ static NSString *email = @"E-mail";
 
 - (IBAction)presentShareOptions:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    [actionSheet setDelegate:self];
-    
-    [actionSheet addButtonWithTitle:email];
-
-    [actionSheet setTitle:@"Share Topic"];
-    [self setActionSheet:actionSheet];
-
-    CGRect rect = [[self shareButton] bounds];
-    [actionSheet showFromRect:rect inView:[self shareButton] animated:YES];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex >= 0) {
-        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == email) {
-            [self presentEmailer];
-        }
-    }
-    
-    [self setActionSheet:nil];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    [self setActionSheet:nil];
+    [self presentEmailer];
 }
 
 - (void)presentEmailer

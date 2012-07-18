@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EntryContent.h"
 #import "Entry.h"
 #import "EntryContentViewController.h"
 
 @interface QuickWordsViewController : UIViewController
 
-- (id)initWithCell:(EntryContentViewController *)entryContentController;
+- (id)initWithEntryContent:(id<EntryContent>)entryContentController;
 
-- (IBAction)detail:(id)sender;
 - (IBAction)dates:(id)sender;
 - (IBAction)keyWords:(id)sender;
 - (IBAction)done:(id)sender;

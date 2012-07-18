@@ -23,8 +23,8 @@
 
 - (void)execute:(id)sender
 {
-    EntryContentViewController *controller = [self entryContentViewController];
-    [[controller mainTextView] resignFirstResponder];
+//    EntryContentViewController *controller = [self entryContentViewController];
+//    [[controller mainTextView] resignFirstResponder];
     
     [self presentPhotoLibrary];
 }
@@ -34,7 +34,7 @@
     UIImagePickerController *controller = [self imagePickerController];
     [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     
-    EntryContentViewController *entryController = [self entryContentViewController];
+    id<EntryContent> entryController = [self entryContent];
     
     UIView *view = [entryController view];
     CGRect rect = [view bounds];

@@ -11,22 +11,29 @@
 #import "AttendeeDetailViewController.h"
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
+#import "LayerFormater.h"
+#import "BNoteSessionData.h"
 
 @interface AttendantsContentViewController()
-@property (strong, nonatomic) AttendantsViewController *attendantsViewController;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *peoplePicker; 
 @property (assign, nonatomic) Attendant *selectedAttendant;
-@property (strong, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) IBOutlet UIButton *addAttendantButton;
+@property (strong, nonatomic) IBOutlet UIButton *createAttendantButton;
 
 @end
 
 @implementation AttendantsContentViewController
 @synthesize attendantsViewController = _attendantsViewController;
-@synthesize actionSheet = _actionSheet;
 @synthesize peoplePicker = _peoplePicker;
 @synthesize selectedAttendant = _selectedAttendant;
-@synthesize popup = _popup;
+@synthesize addAttendantButton = _addAttendantButton;
+@synthesize createAttendantButton = _createAttendantButton;
+
+- (NSString *)localNibName
+{
+    return @"AttendantsContentView";
+}
 
 - (Attendants *)attendants
 {
@@ -37,13 +44,18 @@
 {
     [super viewDidLoad];
     
-    [[self mainTextView] removeFromSuperview];
-    [[self detailTextView] removeFromSuperview];
-    
-    AttendantsViewController *controller = [[AttendantsViewController alloc] init];
-    [controller setView:[self scrollView]];
+    AttendantsViewController *controller = [self attendantsViewController];
     [controller setAttendants:[self attendants]];
-    [self setAttendantsViewController:controller];
+    
+    [[self addAttendantButton] setBackgroundColor:[BNoteConstants appHighlightColor1]];
+    [[[self addAttendantButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [LayerFormater roundCornersForView:[self addAttendantButton]];
+    [LayerFormater setBorderWidth:0 forView:[self addAttendantButton]];
+    
+    [[self createAttendantButton] setBackgroundColor:[BNoteConstants appHighlightColor1]];
+    [[[self createAttendantButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [LayerFormater roundCornersForView:[self createAttendantButton]];
+    [LayerFormater setBorderWidth:0 forView:[self createAttendantButton]];
     
     [controller update];
 
@@ -51,54 +63,30 @@
                                                  name:UIKeyboardDidHideNotification object:nil];
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)gesture
+- (void)viewDidUnload
 {
-    CGPoint location = [gesture locationInView:[self view]];
-    if (location.x < 120) {
-        [self handleImageIcon:YES];
-        
-        if (![self actionSheet]) {
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Attendees" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Attendee", @"Create Attendee", nil];
-            [self setActionSheet:actionSheet];
-            
-            CGRect rect = [[self imageView] bounds];
-            [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-        }
-    }
+    [super viewDidUnload];
+
+    [self setAttendantsViewController:nil];
+    [self setPeoplePicker:nil];
+    [self setAddAttendantButton:nil];
+    [self setCreateAttendantButton:nil];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (float)height
 {
-    switch (buttonIndex) {
-        case 0:
-            [self presentAttendeePicker];
-            break;
-            
-        case 1:
-            [self presentAttendeeAdder];
-            break;
-            
-        default:
-            break;
-    }
-    
-    [self setActionSheet:nil];
-    [self handleImageIcon:NO];
+    return 100;
 }
 
-- (void)presentAttendeePicker
+- (IBAction)presentAttendeePicker:(id)sender
 {
-    if ([self peoplePicker]) {
-        [self finishedContactPicker];
-    } else {
-        ABPeoplePickerNavigationController *controller = [[ABPeoplePickerNavigationController alloc] init];
-        [self setPeoplePicker:controller];
+    ABPeoplePickerNavigationController *controller = [[ABPeoplePickerNavigationController alloc] init];
+    [self setPeoplePicker:controller];
         
-        [controller setPeoplePickerDelegate:self];
-        [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-        [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [self presentModalViewController:controller animated:YES];
-    }
+    [controller setPeoplePickerDelegate:self];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentModalViewController:controller animated:YES];
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
@@ -157,40 +145,34 @@
     [self handleImageIcon:NO];
 }
 
-- (void)presentAttendeeAdder
+- (IBAction)presentAttendeeAdder:(id)sender
 {
-    if ([self popup]) {
-        [self setPopup:nil];
-    }
-    
     Attendant *attendant = [BNoteFactory createAttendant:[self attendants]];
     [self setSelectedAttendant:attendant];
     AttendeeDetailViewController *controller = [[AttendeeDetailViewController alloc] initWithAttendant:attendant];
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [controller setPopup:popup];
+    [[BNoteSessionData instance] setPopup:popup];
 
     [popup setDelegate:self];
-    [popup presentPopoverFromRect:[[self imageView] frame]
+    
+    UIView *view = [self createAttendantButton];
+    [popup presentPopoverFromRect:[view frame]
                            inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
     [popup setPopoverContentSize:CGSizeMake(367, 224)];
-    [self setPopup:popup];
     
     [controller focus];
 }
 
 - (void)keyboardDidHideAttendantsContentViewController:(NSNotification *)notification
 {
-    if ([self popup]) {
-        [[self popup] dismissPopoverAnimated:YES];
-        [[BNoteWriter instance] updateAttendee:[self selectedAttendant]];
-        [self setPopup:nil];
-    }
-}
+    [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
+    [[BNoteSessionData instance] setPopup:nil];
 
-- (void)showDetailText
-{
-    
+    [[BNoteWriter instance] updateAttendee:[self selectedAttendant]];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeUpdated object:nil];    
 }
 
 @end

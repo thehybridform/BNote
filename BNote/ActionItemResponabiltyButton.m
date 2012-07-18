@@ -21,8 +21,9 @@
 
 - (void)execute:(id)sender
 {
+    /*
     EntryContentViewController *controller = [self entryContentViewController];
-    [[controller mainTextView] resignFirstResponder];
+//    [[controller mainTextView] resignFirstResponder];
 
     ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithNote:[[controller entry] note]];
     [tableController setDelegate:self];
@@ -36,6 +37,7 @@
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionUp 
                          animated:YES];
+     */
 }
 
 - (void)selectedAttendant:(Attendant *)attendant
@@ -45,6 +47,6 @@
 
     [[self popup] dismissPopoverAnimated:YES];
     
-    [[self entryContentViewController] updateDetail];
+//    [[self entryContentViewController] updateDetail];
 }
 @end

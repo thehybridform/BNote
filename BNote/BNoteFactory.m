@@ -20,6 +20,7 @@
 #import "Cloner.h"
 #import "ClonerFactory.h"
 #import "TableCellHeaderViewController.h"
+#import "DecisionContentViewController.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -32,10 +33,16 @@ NSString *const KEY_POINT_ACTIVE = @"key_point_active_icon.png";
 NSString *const KEY_POINT_INACTIVE = @"key_point_icon.png";
 NSString *const QUESTION_ACTIVE = @"question_active_icon.png";
 NSString *const QUESTION_INACTIVE = @"question_icon.png";
-NSString *const ATTENDANT = @"attendant_icon.png";
+NSString *const ATTENDANT = @"111-user@2x.png";
 NSString *const PAPER = @"Squared_paper.jpg";
 NSString *const TABLE_CELL_PLAIN = @"table-cell-shadow-blank.png";
 NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
+NSString *const CAMERA_ICON = @"86-camera@2x.png";
+NSString *const FILM_ICON = @"film-roll@2x.png";
+NSString *const GEAR_ICON = @"20-gear-2@2x.png";
+NSString *const ENVELOPE_ICON = @"18-envelope@2x.png";
+NSString *const PALETTE_ICON = @"86-palette@2x.png";
+NSString *const X_ICON = @"298-circlex@2x.png";
 
 NSString *const questionAnsweredEntryHeader = @"Questions Answered";
 NSString *const questionUnansweredEntryHeader = @"Questions Unanswered";
@@ -341,7 +348,7 @@ NSString *const allEntryHeader = @"All";
     return -1;
 }
 
-+ (EntryContentViewController *)createEntryContentViewControllerForEntry:(Entry *)entry
++ (id<EntryContent>)createEntryContent:(Entry *)entry
 {
     if ([entry isKindOfClass:[Attendants class]]) {
         return [[AttendantsContentViewController alloc] initWithEntry:entry];
@@ -351,9 +358,8 @@ NSString *const allEntryHeader = @"All";
         return [[ActionItemContentViewController alloc] initWithEntry:entry];
     } else if ([entry isKindOfClass:[Question class]]) {
         return [[QuestionContentViewController alloc] initWithEntry:entry];
-    } else {
-        return [[DecisionContentViewController alloc] initWithEntry:entry];
     }
+    return [[DecisionContentViewController alloc] initWithEntry:entry];
 }
 
 + (UIImage *)paper

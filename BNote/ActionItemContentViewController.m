@@ -9,18 +9,24 @@
 #import "ActionItemContentViewController.h"
 #import "BNoteSessionData.h"
 #import "BNoteEntryUtils.h"
+#import "LayerFormater.h"
+#import "BNoteStringUtils.h"
 
 @interface ActionItemContentViewController()
-@property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
+@property (strong, nonatomic) IBOutlet UIButton *dueDateButton;
+@property (strong, nonatomic) IBOutlet UIButton *clearDueDateButton;
+@property (strong, nonatomic) IBOutlet UIButton *responsibilityButton;
+@property (strong, nonatomic) IBOutlet UIButton *clearResponsibilityButton;
 
 @end
 
 @implementation ActionItemContentViewController
-@synthesize actionSheet = _actionSheet;
-@synthesize popup = _popup;
 @synthesize datePickerViewController = _datePickerViewController;
+@synthesize dueDateButton = _dueDateButton;
+@synthesize clearDueDateButton = _clearDueDateButton;
+@synthesize responsibilityButton = _responsibilityButton;
+@synthesize clearResponsibilityButton = _clearResponsibilityButton;
 
 static NSString *responsibility = @"Responsibility";
 static NSString *clearResponsibility = @"Clear Responsibility";
@@ -28,6 +34,11 @@ static NSString *dueDate = @"Due Date";
 static NSString *clearDueDate = @"Clear Due Date";
 static NSString *markComplete = @"Mark Complete";
 static NSString *markInComplete = @"Mark Not Complete";
+
+- (NSString *)localNibName
+{
+    return @"ActionItemContentView";
+}
 
 - (ActionItem *)actionItem
 {
@@ -38,94 +49,53 @@ static NSString *markInComplete = @"Mark Not Complete";
 {
     [super viewDidLoad];
     
-    [[self scrollView] removeFromSuperview];
-    [[self detailTextView] setEditable:NO];
+    [[self dueDateButton] setBackgroundColor:[BNoteConstants appHighlightColor1]];
+    [[[self dueDateButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [LayerFormater roundCornersForView:[self dueDateButton]];
+    [LayerFormater setBorderWidth:0 forView:[self dueDateButton]];
+
+    [[self responsibilityButton] setBackgroundColor:[BNoteConstants appHighlightColor1]];
+    [[[self responsibilityButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [LayerFormater roundCornersForView:[self responsibilityButton]];
+    [LayerFormater setBorderWidth:0 forView:[self responsibilityButton]];
+
+    [self updateDueDate];
+    [self updateResponsibility];
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)gesture
-{    
-    CGPoint location = [gesture locationInView:[self view]];
-    if (location.x < 120) {
-        [self handleTouch];
-    } else {
-        [[self mainTextView] becomeFirstResponder];
-    }
-}
-
-- (void)handleTouch
+- (void)viewDidUnload
 {
-    if (![[BNoteSessionData instance] keyboardVisible]) {
-        [self handleImageIcon:YES];
-        
-        ActionItem *actionItem = [self actionItem];
-        
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-        [actionSheet setDelegate:self];
-        
-        if ([actionItem responsibility]) {
-            [actionSheet addButtonWithTitle:clearResponsibility];
-        } else if ([BNoteEntryUtils noteContainsAttendants:[actionItem note]]) {
-            [actionSheet addButtonWithTitle:responsibility];
-        }
-        
-        [actionSheet addButtonWithTitle:dueDate];
-        if ([actionItem dueDate]) {
-            [actionSheet addButtonWithTitle:clearDueDate];
-        }
-        
-        if ([actionItem completed]) {
-            [actionSheet addButtonWithTitle:markInComplete];
-        } else {
-            [actionSheet addButtonWithTitle:markComplete];
-        }            
-        
-        [actionSheet setTitle:@"Action Item"];
-        [self setActionSheet:actionSheet];
-        
-        CGRect rect = [[self imageView] bounds];
-        [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex >= 0) {
-        ActionItem *actionItem = [self actionItem];
-        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == clearResponsibility) {
-            [actionItem setResponsibility:nil];
-        } else if (title == responsibility) {
-            [self presentResponsibilityPicker];
-        } else if (title == dueDate) {
-            [self showDatePicker];
-        } else if (title == clearDueDate) {
-            [actionItem setDueDate:0];
-        } else if (title == markComplete) {
-            [actionItem setCompleted:[NSDate timeIntervalSinceReferenceDate]]; 
-        } else if (title == markInComplete) {
-            [actionItem setCompleted:0]; 
-        }
-        
-        [self updateDetail];
-    }
+    [super viewDidUnload];
     
-    [self setActionSheet:nil];
-    [self handleImageIcon:NO];
+    [self setDueDateButton:nil];
+    [self setClearDueDateButton:nil];
 }
 
-- (void)presentResponsibilityPicker
+- (float)height
+{
+    return MAX(90, [super height]);
+}
+
+- (IBAction)showResponsibilityPicker:(id)sender
 {
     ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithNote:[[self actionItem] note]];
     [tableController setDelegate:self];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:tableController];
-    [self setPopup:popup];
+    [[BNoteSessionData instance] setPopup:popup];
     
-    CGRect rect = [[self imageView] bounds];
+    UIView *view = [self responsibilityButton];
+    CGRect rect = [view bounds];
     
-    [popup presentPopoverFromRect:rect inView:[self view]
+    [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny
                          animated:YES];
+}
+
+- (IBAction)clearResponsibilityDate:(id)sender
+{
+    [[self actionItem] setResponsibility:nil];
+    [self updateResponsibility];
 }
 
 - (void)selectedAttendant:(Attendant *)attendant
@@ -133,11 +103,19 @@ static NSString *markInComplete = @"Mark Not Complete";
     NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
     [[self actionItem] setResponsibility:name];
     
-    [[self popup] dismissPopoverAnimated:YES];
-    [self updateDetail];
+    [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
+    [[BNoteSessionData instance] setPopup:nil];
+
+    [self updateResponsibility];
 }
 
-- (void)showDatePicker
+- (IBAction)clearDueDate:(id)sender
+{
+    [[self actionItem] setDueDate:0];
+    [self updateDueDate];
+}
+
+- (IBAction)showDatePicker:(id)sender
 {    
     ActionItem *actionItem = [self actionItem];
     
@@ -149,6 +127,9 @@ static NSString *markInComplete = @"Mark Not Complete";
         date = [[NSDate alloc] init];
     }
     
+    [actionItem setDueDate:[NSDate timeIntervalSinceReferenceDate]];
+    [self updateDueDate];
+
     DatePickerViewController *controller =
     [[DatePickerViewController alloc] initWithDate:date andMode:UIDatePickerModeDate];
     [controller setListener:self];
@@ -157,14 +138,15 @@ static NSString *markInComplete = @"Mark Not Complete";
     [self setDatePickerViewController:controller];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [self setPopup:popup];
+    [[BNoteSessionData instance] setPopup:popup];
     [popup setDelegate:self];
     
-    [popup setPopoverContentSize:[[controller view] bounds].size];
+    [[[BNoteSessionData instance] popup] setPopoverContentSize:[[controller view] bounds].size];
     
-    CGRect rect = [[self imageView] bounds];
+    UIView *view = [self dueDateButton];
+    CGRect rect = [view bounds];
     
-    [popup presentPopoverFromRect:rect inView:[self view]
+    [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
                          animated:YES];
 }
@@ -173,33 +155,40 @@ static NSString *markInComplete = @"Mark Not Complete";
 {
     ActionItem *actionItem = [self actionItem];
     [actionItem setDueDate:[date timeIntervalSinceReferenceDate]];
-    [self updateDetail];
+    
+    [self updateDueDate];
 }
 
-- (void)updateDetail
+- (void)updateDueDate
 {
-    ActionItem *actionItem = [self actionItem];
-    NSString *detail = [BNoteEntryUtils formatDetailTextForActionItem:actionItem];
-    
-    if ([BNoteStringUtils nilOrEmpty:detail]) {
-        [[self detailTextView] setText:nil];
+    if ([[self actionItem] dueDate]) {
+        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]]; 
+        NSString *date = [BNoteStringUtils dateToString:dueDate];
+        [[self dueDateButton] setTitle:date forState:UIControlStateNormal];
+        [[self clearDueDateButton] setHidden:NO];
     } else {
-        [[self detailTextView] setText:detail];
+        [[self dueDateButton] setTitle:@"Due Date" forState:UIControlStateNormal];
+        [[self clearDueDateButton] setHidden:YES];
     }
 }
 
-- (NSString *)detail
+- (void)updateResponsibility
 {
-    return [BNoteEntryUtils formatDetailTextForActionItem:[self actionItem]];
+    if ([[self actionItem] responsibility]) {
+        [[self responsibilityButton] setTitle:[[self actionItem] responsibility] forState:UIControlStateNormal];
+        [[self clearResponsibilityButton] setHidden:NO];
+    } else {
+        [[self responsibilityButton] setTitle:@"Responsibility" forState:UIControlStateNormal];
+        [[self clearResponsibilityButton] setHidden:YES];
+    }
 }
 
 - (void)selectedDatePickerViewDone
 {
-    [[self popup] dismissPopoverAnimated:YES];
-    [self setPopup:nil];
+    [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
+    [[BNoteSessionData instance] setPopup:nil];
     [self setDatePickerViewController:nil];
     [self handleImageIcon:NO];
 }
-
 
 @end

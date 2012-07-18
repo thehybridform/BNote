@@ -20,9 +20,9 @@
 @implementation AttendantsViewController
 @synthesize attendants = _attendants;
 
-- (id)init
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super init];
+    self = [super initWithCoder:aDecoder];
 
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)

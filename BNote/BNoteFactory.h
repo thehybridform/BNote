@@ -19,6 +19,7 @@
 #import "KeyWord.h"
 #import "EntryContentViewController.h"
 #import "TopicGroup.h"
+#import "EntryContent.h"
 
 extern NSString *const ACTION_ITEM_ACTIVE;
 extern NSString *const ACTION_ITEM_INACTIVE;
@@ -35,6 +36,12 @@ extern NSString *const ATTENDANT;
 extern NSString *const PAPER;
 extern NSString *const TABLE_CELL_PLAIN;
 extern NSString *const TABLE_CELL_SELECTED;
+extern NSString *const CAMERA_ICON;
+extern NSString *const FILM_ICON;
+extern NSString *const GEAR_ICON;
+extern NSString *const ENVELOPE_ICON;
+extern NSString *const PALETTE_ICON;
+extern NSString *const X_ICON;
 
 extern NSString *const questionAnsweredEntryHeader;
 extern NSString *const questionUnansweredEntryHeader;
@@ -102,6 +109,6 @@ typedef enum {
 
 + (UIView *)createEntrySummaryHeaderView:(EntrySummaryHeaderType)type;
 
-+ (EntryContentViewController *)createEntryContentViewControllerForEntry:(Entry *)entry;
++ (id<EntryContent>)createEntryContent:(Entry *)entry;
 
 @end

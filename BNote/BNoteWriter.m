@@ -146,8 +146,6 @@
     } else {
         [[BNoteWriter instance] update];
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeUpdated object:nil];    
 }
 
 - (void)addTopic:(Topic *)topic toGroup:(TopicGroup *)group

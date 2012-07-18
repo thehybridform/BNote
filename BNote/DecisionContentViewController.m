@@ -7,35 +7,16 @@
 //
 
 #import "DecisionContentViewController.h"
-#import "Decision.h"
 
 @interface DecisionContentViewController()
-@property (assign, nonatomic) Decision *decision;
+
 @end
 
 @implementation DecisionContentViewController
-@synthesize decision = _decision;
 
-- (Decision *)decision
+- (NSString *)localNibName
 {
-    return (Decision *) [self entry];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [[self detailTextView] removeFromSuperview];
-}
-
-- (void)handleTap:(UITapGestureRecognizer *)gesture
-{
-    [[self mainTextView] becomeFirstResponder];
-}
-
-- (void)showDetailText
-{
-    
+    return @"DecisionContentView";
 }
 
 @end

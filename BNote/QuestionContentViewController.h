@@ -7,9 +7,8 @@
 //
 
 #import "EntryContentViewController.h"
+#import "EntryContent.h"
 
-@interface QuestionContentViewController : EntryContentViewController <UIActionSheetDelegate>
-
-- (void)updateDetail;
+@interface QuestionContentViewController : EntryContentViewController
 
 @end

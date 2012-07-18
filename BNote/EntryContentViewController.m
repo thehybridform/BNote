@@ -14,68 +14,58 @@
 @interface EntryContentViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UITextView *mainTextView;
-@property (strong, nonatomic) IBOutlet UITextView *detailTextView;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (assign, nonatomic) Entry *entry;
 
 @end
 
 @implementation EntryContentViewController
-@synthesize mainTextView = _mainTextView;
-@synthesize detailTextView = _detailTextView;
 @synthesize entry = _entry;
-@synthesize quickWordsViewController = _quickWordsViewController;
+@synthesize mainTextView = _mainTextView;
 @synthesize imageView = _imageView;
-@synthesize scrollView = _scrollView;
+@synthesize quickWordsViewController = _quickWordsViewController;
 @synthesize parentController = _parentController;
 @synthesize selectedTextView = _selectedTextView;
 
 - (id)initWithEntry:(Entry *)entry
 {
-    self = [super initWithNibName:@"EntryContentViewController" bundle:nil];
+    self = [super initWithNibName:[self localNibName] bundle:nil];
+    
     if (self) {
         [self setEntry:entry];
-        
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(updateText:)
-         name:UITextViewTextDidChangeNotification object:[[self mainTextView] window]];
-        
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(startedEditingText:)
-         name:UITextViewTextDidBeginEditingNotification object:[[self mainTextView] window]];
-        
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(stoppedEditingText:)
-         name:UITextViewTextDidEndEditingNotification object:[[self mainTextView] window]];
-
-        UITapGestureRecognizer *tap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        [[self view] addGestureRecognizer:tap];
+        UITableViewCell *cell = (UITableViewCell *) [self view];
+        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+    
     return self;
 }
 
-- (void)dealloc
+- (NSString *)localNibName
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];            
+    return nil;
 }
 
-- (UITableViewCell *)cell 
+- (void)viewDidUnload
 {
-    return (UITableViewCell *)[self view];
-
+    [super viewDidUnload];
+    
+    [self setQuickWordsViewController:nil];
+    [self setMainTextView:nil];
+    [self setImageView:nil];
 }
 
-- (CGFloat)height
+- (float)height
 {
-    float height = [[self mainTextView] contentSize].height;
-
-    return MAX(100, height);
+    NSString *text = [[self entry] text];
+    UITextView *view = [[UITextView alloc] init];
+    [view setText:text];
+    [view setFrame:CGRectMake(0, 0, [self width] - 110, 200)];
+    
+    return MAX(45, [view contentSize].height) + 10;
 }
 
-- (CGFloat)width
+- (float)width
 {
-    CGFloat width = 1000;
+    float width = 1000;
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsPortrait(orientation)) {
         width = 600;
@@ -88,52 +78,29 @@
 {
     [super viewDidLoad];
     
-    [[self view] setBackgroundColor:[UIColor clearColor]];
-    [[self mainTextView] setBackgroundColor:[UIColor clearColor]];
-    [[self detailTextView] setBackgroundColor:[UIColor clearColor]];
-    [[self scrollView] setBackgroundColor:[UIColor clearColor]];
-
-    [[self mainTextView] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
-    [[self detailTextView] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
-
     [self handleImageIcon:NO];
-    [self showMainText];
-    [self showDetailText];
-        
-    if (![[self entry] isKindOfClass:[Attendants class]]) {
-        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithCell:self];
-        [self setQuickWordsViewController:quick];
-        [[self mainTextView] setInputAccessoryView:[quick view]];
-    }
-
-    [self updateCellFrame];
-}
-
-- (void)updateCellFrame
-{
-    float height = [self height];
-    float width = [self width];
-    float x = 0;
-    float y = 0;
     
-    CGRect frame = CGRectMake(x, y, width, height);
-    [[self view] setFrame:frame];
+    UITextView *view = [self mainTextView];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     
-    frame = CGRectMake(x + 110, y, width - 110, height);
-    [[self mainTextView] setFrame:frame];
-    [[self mainTextView] setContentSize:CGSizeMake(width, height)];
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+    [self setQuickWordsViewController:quick];
+    [view setInputAccessoryView:[quick view]];
     
-    [[self view] setNeedsDisplay];
-}
-
-- (void)showMainText
-{
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(updateText:)
+     name:UITextViewTextDidChangeNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(startedEditingText:)
+     name:UITextViewTextDidBeginEditingNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(stoppedEditingText:)
+     name:UITextViewTextDidEndEditingNotification object:view];
+    
+    [self setSelectedTextView:view];
     [[self mainTextView] setText:[[self entry] text]];
-}
-
-- (void)showDetailText
-{
-    [[self detailTextView] setText:[self detail]];
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -142,24 +109,9 @@
     [[self imageView] setImage:[imageView image]];
 }
 
-- (NSString *)detail
-{
-    return nil;
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setMainTextView:nil];
-    [self setDetailTextView:nil];
-    [self setImageView:nil];
-    [self setQuickWordsViewController:nil];
-}
-
 - (void)startedEditingText:(NSNotification *)notification
 {
-    if ([notification object] == [self mainTextView] || [notification object] == [self detailTextView]) {
+    if ([notification object] == [self mainTextView]) {
         [self handleImageIcon:YES];
         [self setSelectedTextView:[self mainTextView]];
         [[self quickWordsViewController] selectFirstButton];
@@ -168,7 +120,7 @@
 
 - (void)stoppedEditingText:(NSNotification *)notification
 {
-    if ([notification object] == [self mainTextView] || [notification object] == [self detailTextView]) {
+    if ([notification object] == [self mainTextView]) {
         [self handleImageIcon:NO];
     }
 }
@@ -183,19 +135,19 @@
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UITableViewCell *)cell
 {
-    return YES;
+    return (UITableViewCell *) [self view];
 }
 
-- (void)updateDetail
+- (UIImageView *)iconView
 {
-    // handled by sub class
+    return [self imageView];
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)gesture
+- (void)dealloc
 {
-    // handled by sub class
+    [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
 @end

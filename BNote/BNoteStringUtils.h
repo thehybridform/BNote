@@ -17,6 +17,7 @@
 + (NSString *)dateToString:(NSDate *)date;
 + (NSString *)timeToString:(NSDate *)date;
 + (NSString *)formatDate:(NSTimeInterval)interval;
++ (NSString *)intervalToString:(NSTimeInterval)interval;
 
 + (NSString *)nameForEntry:(Entry *)entry;
 

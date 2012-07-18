@@ -42,7 +42,6 @@
 @property (strong, nonatomic) IBOutlet BNoteButton *reviewButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *trashButton;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
-@property (strong, nonatomic) IBOutlet UIView *filterView;
 @property (strong, nonatomic) IBOutlet UIButton *filterButton;
 @property (strong, nonatomic) IBOutlet UIView *infoView;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
@@ -76,7 +75,6 @@
 @synthesize infoView = _infoView;
 @synthesize month = _month;
 @synthesize shareButton = _shareButton;
-@synthesize filterView = _filterView;
 @synthesize filterButton = _filterButton;
 
 static NSString *email = @"E-mail";
@@ -107,7 +105,6 @@ static NSString *email = @"E-mail";
     [self setInfoView:nil];
     [self setMonth:nil];
     [self setShareButton:nil];
-    [self setFilterView:nil];
     [self setFilterButton:nil];
 }
 
@@ -132,6 +129,7 @@ static NSString *email = @"E-mail";
     }
    
     [[self infoView] setBackgroundColor:UIColorFromRGB([note color])];
+    [[self filterButton] setHidden:YES];
                                     
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater roundCornersForView:[self subjectTextView]];
@@ -163,12 +161,6 @@ static NSString *email = @"E-mail";
     [LayerFormater addShadowToView:[self menuView]];
     [LayerFormater addShadowToView:[self infoView]];
     
-    [[self filterView] setHidden:YES];
-    [LayerFormater roundCornersForView:[self filterView]];
-    [LayerFormater setBorderWidth:2 forView:[self filterView]];
-    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[self filterView]];
-    [[self filterView] setBackgroundColor:[UIColor clearColor]];
-
     [self setupDate];
     
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
@@ -245,8 +237,8 @@ static NSString *email = @"E-mail";
 
 - (void)editing
 {
-    [[self filterView] setHidden:YES];
     [[self trashButton] setHidden:NO];
+    [[self filterButton] setHidden:YES];
     [[self reviewButton] setTitle:@"Review" forState:UIControlStateNormal];
     [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
 
@@ -255,9 +247,9 @@ static NSString *email = @"E-mail";
 
 - (void)reviewing
 {
-    [[self filterView] setHidden:NO];
     [[self trashButton] setHidden:YES];
     [[self reviewButton] setTitle:@"Done" forState:UIControlStateNormal];
+    [[self filterButton] setHidden:NO];
 
     [[BNoteSessionData instance] setPhase:Reviewing];
 }
@@ -396,7 +388,7 @@ static NSString *email = @"E-mail";
     [self setPopup:nil];
 }
 
-- (void)emailNote
+- (IBAction)presentShareOptions:(id)sender
 {
     Note *note = [self note];
     EmailViewController *controller = [[EmailViewController alloc] initWithNote:note];
@@ -414,32 +406,6 @@ static NSString *email = @"E-mail";
 - (void)reload:(id)sender
 {
     [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
-}
-
-- (IBAction)presentShareOptions:(id)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    [[BNoteSessionData instance] setActionSheet:actionSheet];
-    [[BNoteSessionData instance] setActionSheetDelegate:self];
-    [actionSheet setDelegate:[BNoteSessionData instance]];
-    
-    [actionSheet addButtonWithTitle:email];
-    
-    [actionSheet setTitle:@"Share Note"];
-    
-    UIView *view = [self shareButton];
-    CGRect rect = [view bounds];
-    [actionSheet showFromRect:rect inView:view animated:YES];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex >= 0) {
-        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == email) {
-            [self emailNote];
-        }
-    }
 }
 
 - (void)updateToolBar:(NSNotification *)notification

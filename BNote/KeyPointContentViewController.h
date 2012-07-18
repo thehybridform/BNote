@@ -8,7 +8,11 @@
 
 #import "EntryContentViewController.h"
 
-@interface KeyPointContentViewController : EntryContentViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface KeyPointContentViewController : EntryContentViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+- (IBAction)presentPhotoEditor:(id)sender;
+- (IBAction)presentCamera:(id)sender;
+- (IBAction)presentPhotoAlbum:(id)sender;
 
 @end
 

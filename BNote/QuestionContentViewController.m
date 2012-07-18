@@ -13,142 +13,99 @@
 #import "LayerFormater.h"
 
 @interface QuestionContentViewController()
-@property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) QuickWordsViewController *answerQuick;
+@property (strong, nonatomic) IBOutlet UITextView *answerTextView;
+@property (strong, nonatomic) IBOutlet UILabel *answerLabel;
+@property (strong, nonatomic) QuickWordsViewController *answerQuickWordsViewController;
 
 @end
 
 @implementation QuestionContentViewController
-@synthesize actionSheet = _actionSheet;
-@synthesize answerQuick = _answerQuick;
-
-static NSString *answer = @"Answer";
-static NSString *updateAnswer = @"Update Answer";
-static NSString *clearAnswer = @"Clear Answer";
+@synthesize answerLabel = _answerLabel;
+@synthesize answerTextView = _answerTextView;
+@synthesize answerQuickWordsViewController = _answerQuickWordsViewController;
 
 - (Question *)question
 {
     return (Question *) [self entry];
 }
 
+- (NSString *)localNibName
+{
+    return @"QuestionContentView";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[self scrollView] removeFromSuperview];
+    [[self answerLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     
-    QuickWordsViewController *answerQuick = [[QuickWordsViewController alloc] initWithCell:self];
-    [self setAnswerQuick:answerQuick];
-    [[self detailTextView] setInputAccessoryView:[answerQuick view]];
-}
-
-- (void)startedEditingText:(NSNotification *)notification
-{
-    if ([notification object] == [self mainTextView]) {
-        [self handleImageIcon:YES];
-        [self setSelectedTextView:[self mainTextView]];
-        [[self quickWordsViewController] selectFirstButton];
-    } else if ([notification object] == [self detailTextView]) {
-        [self handleImageIcon:YES];
-        [self setSelectedTextView:[self detailTextView]];
-        [[self answerQuick] selectFirstButton];
-    }
-}
-
-- (void)handleTap:(UITapGestureRecognizer *)gesture
-{
-    CGPoint location = [gesture locationInView:[self view]];
-    if (location.x < 120) {
-        [self handleTouch];
-    } else {
-        [[self mainTextView] becomeFirstResponder];
-    }
-}
-
-- (void)handleTouch
-{
-    if (![[BNoteSessionData instance] keyboardVisible]) {
-        [self handleImageIcon:YES];
-        
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-        [actionSheet setDelegate:self];
-        
-        Question *question = [self question];
-        
-        if ([question answer]) {
-            [actionSheet addButtonWithTitle:updateAnswer];
-            NSInteger index = [actionSheet addButtonWithTitle:clearAnswer];
-            [actionSheet setDestructiveButtonIndex:index];
-        } else {
-            [actionSheet addButtonWithTitle:answer];
-        }
-        
-        [actionSheet setTitle:@"Question"];
-        [self setActionSheet:actionSheet];
-        
-        CGRect rect = [[self imageView] bounds];
-        [actionSheet showFromRect:rect inView:[self imageView] animated:YES];
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex >= 0) {
-        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == answer) {
-            [[self detailTextView] becomeFirstResponder];
-        } else if (title == clearAnswer) {
-            [[self question] setAnswer:nil];
-        } else if (title == updateAnswer) {
-            [[self detailTextView] becomeFirstResponder];
-        }
-    }
+    UITextView *view = [self answerTextView];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     
-    [self setActionSheet:nil];
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+    [self setAnswerQuickWordsViewController:quick];
+    [view setInputAccessoryView:[quick view]];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(updateAnswerText:)
+     name:UITextViewTextDidChangeNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(startedEditingAnswerText:)
+     name:UITextViewTextDidBeginEditingNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(stoppedEditingAnswerText:)
+     name:UITextViewTextDidEndEditingNotification object:view];
+
+    [[self answerTextView] setText:[[self question] answer]];
+    
+    [LayerFormater roundCornersForView:[self answerTextView]];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setAnswerLabel:nil];
+    [self setAnswerTextView:nil];
+    [self setAnswerQuickWordsViewController:nil];
+}
+
+- (float)heights
+{
+    float questionHeight = [super height];
+
+    NSString *text = [[self question] answer];
+    UITextView *view = [[UITextView alloc] init];
+    [view setText:text];
+    [view setFrame:CGRectMake(0, 0, [self width] - 110, 200)];
+    float answerHeight = [view contentSize].height + 10;
+
+    return MAX(MAX(45, questionHeight), answerHeight);
+}
+
+- (void)startedEditingAnswerText:(NSNotification *)notification
+{
+    if ([notification object] == [self answerTextView]) {
+        [self handleImageIcon:YES];
+        [self setSelectedTextView:[self answerTextView]];
+        [[self answerQuickWordsViewController] selectFirstButton];
+    }
+}
+
+- (void)stoppedEditingAnswerText:(NSNotification *)notification
+{
     [self handleImageIcon:NO];
-    [self updateDetail];
 }
 
-- (NSString *)detail
+- (void)updateAnswerText:(NSNotification *)notification
 {
-    return [BNoteEntryUtils formatDetailTextForQuestion:[self question]];
-}
-
-- (void)showDetailText
-{
-    [super showDetailText];
-    
-    [self updateDetail];
-}
-
-- (void)updateDetail
-{
-    UITextView *view = [self detailTextView];
-
-    Question *question = (Question *) [self entry];
-    NSString *answer = [question answer];
-    
-    if ([BNoteStringUtils nilOrEmpty:answer]) {
-        [view setText:@"Answer: "];        
-        [question setAnswer:nil];
-    } else {
-        [view setText:answer];
-    }
-}
-
-- (void)updateText:(NSNotification *)notification
-{
-    if ([notification object] == [self mainTextView]) {
-        NSString *text = [BNoteStringUtils trim:[[self mainTextView] text]];
-        if (![BNoteStringUtils nilOrEmpty:text]) {
-            [[self entry] setText:text];
-        }
-    } else if ([notification object] == [self detailTextView]) {
-        NSString *text = [BNoteStringUtils trim:[[self detailTextView] text]];
-        if (![BNoteStringUtils nilOrEmpty:text]) {
-            Question *question = [self question];
-            [question setAnswer:text];
-        }
+    NSString *text = [BNoteStringUtils trim:[[self answerTextView] text]];
+    if (![BNoteStringUtils nilOrEmpty:text]) {
+        Question *question = [self question];
+        [question setAnswer:text];
     }
 }
 

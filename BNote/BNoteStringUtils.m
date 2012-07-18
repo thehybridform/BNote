@@ -72,7 +72,7 @@
 + (NSString *)dateToString:(NSDate *)date
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMMM dd, YYYY"];
+    [format setDateFormat:@"MMM dd, YYYY"];
     return [format stringFromDate:date];
 }
 
@@ -83,10 +83,17 @@
     return [format stringFromDate:date];
 }
 
++ (NSString *)intervalToString:(NSTimeInterval)interval
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMM dd, YYYY"];
+    return [format stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:interval]];
+}
+
 + (NSString *)formatDate:(NSTimeInterval)interval
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMMM dd, YYYY, hh:mm aaa"];
+    [format setDateFormat:@"MMM dd, YYYY, hh:mm aaa"];
     return [format stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:interval]];
 }
 

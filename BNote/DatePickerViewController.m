@@ -10,7 +10,6 @@
 #import "LayerFormater.h"
 
 @interface DatePickerViewController ()
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSDate *date;
 @property (assign, nonatomic) UIDatePickerMode mode;
 @end
@@ -19,7 +18,6 @@
 @synthesize listener = _listener;
 @synthesize datePicker = _datePicker;
 @synthesize date = _date;
-@synthesize titleLabel = _titleLabel;
 @synthesize titleText = _titleText;
 @synthesize mode = _mode;
 
@@ -57,7 +55,6 @@
     [[self datePicker] setMinuteInterval:5];
     [[self datePicker] setDate:[self date]];
     [[self datePicker] setDatePickerMode:[self mode]];
-    [[self titleLabel] setText:[self titleText]];
 }
 
 - (void)viewDidUnload
@@ -66,7 +63,6 @@
     
     [self setDatePicker:nil];
     [self setDate:nil];
-    [self setTitleLabel:nil];
     [self setTitleText:nil];
 }
 

@@ -9,7 +9,7 @@
 #import "EntriesViewController.h"
 #import "LayerFormater.h"
 #import "BNoteStringUtils.h"
-#import "EntryContentViewController.h"
+#import "EntryContent.h"
 #import "Entry.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
@@ -91,11 +91,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
-    UITableViewCell *cell = [controller cell];
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
     [controller setParentController:[self parentController]];
 
-    return cell;
+    return [controller cell];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,7 +113,7 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    EntryContentViewController *sourceController = [[self filteredControllers] objectAtIndex:[sourceIndexPath row]]; 
+    id<EntryContent> sourceController = [[self filteredControllers] objectAtIndex:[sourceIndexPath row]]; 
    
     Entry *entry = [sourceController entry];
     [[BNoteWriter instance] moveEntry:entry toIndex:[destinationIndexPath row]];
@@ -127,7 +126,7 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [[NSNotificationCenter defaultCenter] removeObserver:cell];
         
-        EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+        id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
 
         [[self filteredControllers] removeObject:controller];
         
@@ -146,7 +145,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
     
     return [controller height];
 }
@@ -157,7 +156,7 @@
     for (Entry *entry in [[self note] entries]) {
         if ([[self filter] accept:entry]) {
             if (![entry isKindOfClass:[Attendants class]]) {
-                EntryContentViewController *controller = [BNoteFactory createEntryContentViewControllerForEntry:entry];
+                id<EntryContent> controller = [BNoteFactory createEntryContent:entry];
                 [[self filteredControllers] addObject:controller];
             }
         }
@@ -166,7 +165,7 @@
     NSArray *attendants = [BNoteEntryUtils attendants:[self note]];
     if (attendants && [attendants count] > 0) {
         // there will only be one
-        EntryContentViewController *controller = [BNoteFactory createEntryContentViewControllerForEntry:[attendants objectAtIndex:0]];
+        id<EntryContent> controller = [BNoteFactory createEntryContent:[attendants objectAtIndex:0]];
         [[self filteredControllers] insertObject:controller atIndex:0];
     }
     
@@ -179,7 +178,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
-    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:index];
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
     [[controller mainTextView] becomeFirstResponder];
 }
 
@@ -191,7 +190,7 @@
 
 - (void)selectEntry:(Entry *)entry
 {
-    for (EntryContentViewController *controller in [self filteredControllers]) {
+    for (id<EntryContent> controller in [self filteredControllers]) {
         if ([controller entry] == entry) {
             [[controller mainTextView] becomeFirstResponder];
         }

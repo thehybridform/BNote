@@ -161,18 +161,6 @@
     OrderedDictionary *dataHeaderView = [[OrderedDictionary alloc] init];
     [self setDataHeaderView:dataHeaderView];
     
-    [self setQuestionsAnswered:[self filterEntries:[[BNoteFilterFactory instance] create:QuestionAnsweredType]]];
-    if ([[self questionsAnswered] count]) {
-        [data setObject:[self questionsAnswered] forKey:questionAnsweredEntryHeader];
-        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionAnsweredHeader] forKey:questionAnsweredEntryHeader];
-    }
-    
-    [self setQuestionsUnanswered:[self filterEntries:[[BNoteFilterFactory instance] create:QuestionUnansweredType]]];
-    if ([[self questionsUnanswered] count]) {
-        [data setObject:[self questionsUnanswered] forKey:questionAnsweredEntryHeader];
-        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionUnansweredHeader] forKey:questionAnsweredEntryHeader];
-    }
-    
     [self setActionItemsComplete:[self filterEntries:[[BNoteFilterFactory instance] create:ActionItemCompleteType]]];
     if ([[self actionItemsComplete] count]) {
         [data setObject:[self actionItemsComplete] forKey:actionItemsCompletedEntryHeader];
@@ -195,6 +183,18 @@
     if ([[self keyPoints] count]) {
         [data setObject:[self keyPoints] forKey:keyPointsEntryHeader];
         [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:KeyPointHeader] forKey:keyPointsEntryHeader];
+    }
+    
+    [self setQuestionsAnswered:[self filterEntries:[[BNoteFilterFactory instance] create:QuestionAnsweredType]]];
+    if ([[self questionsAnswered] count]) {
+        [data setObject:[self questionsAnswered] forKey:questionAnsweredEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionAnsweredHeader] forKey:questionAnsweredEntryHeader];
+    }
+    
+    [self setQuestionsUnanswered:[self filterEntries:[[BNoteFilterFactory instance] create:QuestionUnansweredType]]];
+    if ([[self questionsUnanswered] count]) {
+        [data setObject:[self questionsUnanswered] forKey:questionAnsweredEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionUnansweredHeader] forKey:questionAnsweredEntryHeader];
     }
     
     [self setEntries:[self filterEntries:[[BNoteFilterFactory instance] create:ItdentityType]]];

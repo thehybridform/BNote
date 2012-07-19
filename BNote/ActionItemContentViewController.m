@@ -11,6 +11,7 @@
 #import "BNoteEntryUtils.h"
 #import "LayerFormater.h"
 #import "BNoteStringUtils.h"
+#import "BNoteEntryUtils.h"
 
 @interface ActionItemContentViewController()
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
@@ -78,7 +79,8 @@ static NSString *markInComplete = @"Mark Not Complete";
 
 - (IBAction)showResponsibilityPicker:(id)sender
 {
-    ResponsibilityTableViewController *tableController = [[ResponsibilityTableViewController alloc] initWithNote:[[self actionItem] note]];
+    ResponsibilityTableViewController *tableController =
+        [[ResponsibilityTableViewController alloc] initWithNote:[[self actionItem] note]];
     [tableController setDelegate:self];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:tableController];
@@ -90,6 +92,8 @@ static NSString *markInComplete = @"Mark Not Complete";
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny
                          animated:YES];
+
+    [popup setPopoverContentSize:CGSizeMake(367, 300)];
 }
 
 - (IBAction)clearResponsibilityDate:(id)sender

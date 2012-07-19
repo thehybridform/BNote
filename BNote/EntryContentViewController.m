@@ -58,14 +58,14 @@
     NSString *text = [[self entry] text];
     UITextView *view = [[UITextView alloc] init];
     [view setText:text];
-    [view setFrame:CGRectMake(0, 0, [self width] - 110, 200)];
+    [view setFrame:CGRectMake(0, 0, [self width] - 100, 200)];
     
     return MAX(45, [view contentSize].height) + 10;
 }
 
 - (float)width
 {
-    float width = 1000;
+    float width = 900;
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsPortrait(orientation)) {
         width = 600;

@@ -75,6 +75,10 @@
 - (id)initWithDefaultNib
 {
     self = [super initWithNibName:@"TopicEditorViewController" bundle:nil];
+    
+    if (self) {
+    }
+    
     return self;
 }
 
@@ -102,6 +106,8 @@
     [self initButton:[self button_9] withColor:Color9];
     
     [LayerFormater addShadowToView:[self buttonControlView]];
+
+    [[self nameTextField] setDelegate:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -209,6 +215,12 @@
 {
     [self updateHighlightColor:(UIButton *) sender];
     [self setSelectedColor:Color9];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self done:nil];
+    return NO;
 }
 
 @end

@@ -33,6 +33,8 @@
 
 - (void)setIcon:(UIImageView *)icon
 {
+    [[self icon] removeFromSuperview];
+    
     _icon = icon;
     [self addSubview:icon];
     

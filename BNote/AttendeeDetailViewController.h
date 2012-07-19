@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Attendant.h"
 
-@interface AttendeeDetailViewController : UIViewController
+@interface AttendeeDetailViewController : UIViewController <UITextFieldDelegate>
 @property (assign, nonatomic) UIPopoverController *popup;
 
 - (id)initWithAttendant:(Attendant *)attendant;

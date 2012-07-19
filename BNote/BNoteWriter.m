@@ -76,6 +76,16 @@
     [self deleteObject:keyWord];
 }
 
+- (void)removeObjects:(NSArray *)objects
+{
+    for (id object in objects) {
+        if (object) {
+            [[self context] deleteObject:object];
+        }
+        [self update];
+    }
+}
+
 - (void)deleteObject:(id)object
 {
     if (object) {

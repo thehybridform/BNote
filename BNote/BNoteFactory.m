@@ -35,14 +35,13 @@ NSString *const QUESTION_ACTIVE = @"question_active_icon.png";
 NSString *const QUESTION_INACTIVE = @"question_icon.png";
 NSString *const ATTENDANT = @"111-user@2x.png";
 NSString *const PAPER = @"Squared_paper.jpg";
-NSString *const TABLE_CELL_PLAIN = @"table-cell-shadow-blank.png";
-NSString *const TABLE_CELL_SELECTED = @"table-cell-shadow-selected.png";
 NSString *const CAMERA_ICON = @"86-camera@2x.png";
 NSString *const FILM_ICON = @"film-roll@2x.png";
 NSString *const GEAR_ICON = @"20-gear-2@2x.png";
 NSString *const ENVELOPE_ICON = @"18-envelope@2x.png";
 NSString *const PALETTE_ICON = @"86-palette@2x.png";
 NSString *const X_ICON = @"298-circlex@2x.png";
+NSString *const FUNNEL_ICON = @"funnel.png";
 
 NSString *const questionAnsweredEntryHeader = @"Questions Answered";
 NSString *const questionUnansweredEntryHeader = @"Questions Unanswered";
@@ -277,17 +276,15 @@ NSString *const allEntryHeader = @"All";
         case KeyPointIconMask:
             icon = KEY_POINT_MASK;
             break;
-        case TableCellPlain:
-            icon = TABLE_CELL_PLAIN;
-            break;
-        case TableCellSelected:
-            icon = TABLE_CELL_SELECTED;
+        case FilterIcon:
+            icon = FUNNEL_ICON;
             break;
         default:
             break;
     }
-    
+
     if (icon) {
+        /*
         UIImageView *view = [[[BNoteSessionData instance] imageIconViews] objectForKey:icon];
         if (!view) {
             UIImage *image = [UIImage imageNamed:icon];
@@ -296,6 +293,11 @@ NSString *const allEntryHeader = @"All";
             
             [[[BNoteSessionData instance] imageIconViews] setObject:view forKey:icon];
         }
+        */
+        
+        UIImage *image = [UIImage imageNamed:icon];
+        UIImageView *view = [[UIImageView alloc] initWithImage:image];
+        [view setFrame:CGRectMake(0, 0, 25, 25)];
         
         return view;
     }

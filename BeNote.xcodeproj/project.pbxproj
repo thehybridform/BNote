@@ -111,6 +111,7 @@
 		18A7029815B6DDCA00C119F2 /* 259-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029715B6DDCA00C119F2 /* 259-list@2x.png */; };
 		18A7029A15B6F2CA00C119F2 /* 02-redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */; };
 		18A7029E15B6F6E100C119F2 /* AttendantQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */; };
+		18A702A015B7CBE000C119F2 /* funnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029F15B7CBDF00C119F2 /* funnel.png */; };
 		18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */; };
 		18A721B115B0EF8F00653382 /* TableCellHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */; };
 		18A721B515B2934400653382 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B415B2934400653382 /* OrderedDictionary.m */; };
@@ -129,8 +130,6 @@
 		18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */; };
 		18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */; };
 		18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */; };
-		18BAC1B415AD566200EEBE1E /* table-cell-shadow-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1B215AD566200EEBE1E /* table-cell-shadow-blank.png */; };
-		18BAC1B515AD566200EEBE1E /* table-cell-shadow-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1B315AD566200EEBE1E /* table-cell-shadow-selected.png */; };
 		18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
@@ -353,6 +352,7 @@
 		18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-redo@2x.png"; sourceTree = "<group>"; };
 		18A7029C15B6F6E100C119F2 /* AttendantQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantQuickButton.h; sourceTree = "<group>"; };
 		18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantQuickButton.m; sourceTree = "<group>"; };
+		18A7029F15B7CBDF00C119F2 /* funnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = funnel.png; sourceTree = "<group>"; };
 		18A721AD15B0EF8F00653382 /* TableCellHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHeaderViewController.h; sourceTree = "<group>"; };
 		18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHeaderViewController.m; sourceTree = "<group>"; };
 		18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCellHeaderViewController.xib; sourceTree = "<group>"; };
@@ -384,8 +384,6 @@
 		18BAC1AA15AD453700EEBE1E /* MainViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewViewController.h; sourceTree = "<group>"; };
 		18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewViewController.m; sourceTree = "<group>"; };
 		18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewViewController.xib; sourceTree = "<group>"; };
-		18BAC1B215AD566200EEBE1E /* table-cell-shadow-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-cell-shadow-blank.png"; sourceTree = "<group>"; };
-		18BAC1B315AD566200EEBE1E /* table-cell-shadow-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-cell-shadow-selected.png"; sourceTree = "<group>"; };
 		18BBD3501585BA9800B1709E /* KeyPointPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointPlainRenderer.h; sourceTree = "<group>"; };
 		18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPlainRenderer.m; sourceTree = "<group>"; };
 		18BBD3541585BB2800B1709E /* DecisionPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionPlainRenderer.h; sourceTree = "<group>"; };
@@ -545,6 +543,7 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18A7029F15B7CBDF00C119F2 /* funnel.png */,
 				18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */,
 				18A7029715B6DDCA00C119F2 /* 259-list@2x.png */,
 				18A7029515B6DB6300C119F2 /* 218-trash2@2x.png */,
@@ -556,8 +555,6 @@
 				18A7028815B68D0600C119F2 /* 112-group@2x.png */,
 				18A7028515B68CE000C119F2 /* 98-palette@2x.png */,
 				18A7028315B68B5B00C119F2 /* 86-camera@2x.png */,
-				18BAC1B215AD566200EEBE1E /* table-cell-shadow-blank.png */,
-				18BAC1B315AD566200EEBE1E /* table-cell-shadow-selected.png */,
 				18F7997015AAA91400DEAB1F /* x-image.png */,
 				18AE9C1115A576F30058B4EE /* key_point_mask.png */,
 				18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */,
@@ -1196,8 +1193,6 @@
 				18AE9C1215A576F30058B4EE /* key_point_mask.png in Resources */,
 				18F7997115AAA91400DEAB1F /* x-image.png in Resources */,
 				18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */,
-				18BAC1B415AD566200EEBE1E /* table-cell-shadow-blank.png in Resources */,
-				18BAC1B515AD566200EEBE1E /* table-cell-shadow-selected.png in Resources */,
 				189B446615AE8BF0008F11D2 /* NoteViewController.xib in Resources */,
 				18DE684415B0D4C600311F16 /* PersonViewController.xib in Resources */,
 				18A721B115B0EF8F00653382 /* TableCellHeaderViewController.xib in Resources */,
@@ -1218,6 +1213,7 @@
 				18A7029615B6DB6300C119F2 /* 218-trash2@2x.png in Resources */,
 				18A7029815B6DDCA00C119F2 /* 259-list@2x.png in Resources */,
 				18A7029A15B6F2CA00C119F2 /* 02-redo@2x.png in Resources */,
+				18A702A015B7CBE000C119F2 /* funnel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

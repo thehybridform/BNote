@@ -28,6 +28,8 @@
 - (void)removeTopic:(Topic *)topic;
 - (void)removeNote:(Note *)note;
 - (void)removeEntry:(Entry *)entry;
+- (void)deleteObject:(id)object;
+- (void)removeObjects:(NSArray *)objects;
 
 - (void)removePhoto:(Photo *)photo;
 - (void)removeSketchPath:(SketchPath *)path;

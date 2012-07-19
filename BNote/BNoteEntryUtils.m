@@ -190,13 +190,43 @@
 
 + (void)cleanUpEntriesForNote:(Note *)note
 {
+    NSMutableSet *emptyEntries = [[NSMutableSet alloc] init];
+    
     for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
         if (![[attendants children] count]) {
-            [[BNoteWriter instance] removeEntry:attendants];
+            [emptyEntries addObject:attendants];
         }
     }
 
+    for (KeyPoint *keyPoint in [BNoteEntryUtils keyPoints:note]) {
+        BOOL emptyText = [BNoteStringUtils nilOrEmpty:[keyPoint text]];
+        BOOL noPhoto = ![keyPoint photo];
+        if (emptyText && noPhoto) {
+            [emptyEntries addObject:keyPoint];
+        }
+    }
+
+    for (Question *question in [BNoteEntryUtils questions:note]) {
+        BOOL emptyQuestion = [BNoteStringUtils nilOrEmpty:[question text]];
+        BOOL emptyAnswer = [BNoteStringUtils nilOrEmpty:[question answer]];
+        
+        if (emptyQuestion && emptyAnswer) {
+            [emptyEntries addObject:question];
+        }
+    }
+
+    [self collectEmptyEntries:[BNoteEntryUtils decisions:note] into:emptyEntries];
+    [self collectEmptyEntries:[BNoteEntryUtils actionItems:note] into:emptyEntries];
+
+    [[BNoteWriter instance] removeObjects:[emptyEntries allObjects]];
 }
 
-
++ (void)collectEmptyEntries:(NSMutableArray *)entries into:(NSMutableSet *)emptyEntries
+{
+    for (Entry *entry in entries) {
+        if ([BNoteStringUtils nilOrEmpty:[entry text]]) {
+            [emptyEntries addObject:entry];
+        }
+    }
+}
 @end

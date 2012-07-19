@@ -80,6 +80,10 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(updateEmail:)
      name:UITextFieldTextDidChangeNotification object:[self emailField]];
+    
+    [[self firstNameField] setDelegate:self];
+    [[self lastNameField] setDelegate:self];
+    [[self emailField] setDelegate:self];
 }
 
 - (void)focus
@@ -126,6 +130,12 @@
     [self setLastNameLable:nil];
     [self setEmailLable:nil];
     [self setMenuView:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self done:nil];
+    return NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

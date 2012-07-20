@@ -39,8 +39,8 @@
 {
     [super viewDidLoad];
     
-    [LayerFormater addShadowToView:[self normalToobar]];
-    [LayerFormater addShadowToView:[self eulaToobar]];
+    [LayerFormater setBorderWidth:1 forView:[self normalToobar]];
+    [LayerFormater setBorderWidth:1 forView:[self eulaToobar]];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"BeNote-EULA.rtf" ofType:nil];
     NSURL *url = [NSURL fileURLWithPath:path];

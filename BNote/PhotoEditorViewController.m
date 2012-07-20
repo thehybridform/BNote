@@ -115,8 +115,9 @@ static const CGFloat large = 20;
     [self setupButton:[self color13Button] withColor:[UIColor brownColor]];
     
     [LayerFormater setBorderWidth:2 forView:[self drawView]];
-    [LayerFormater addShadowToView:[self menuView]];
-    
+//    [LayerFormater addShadowToView:[self menuView]];
+    [LayerFormater setBorderWidth:1 forView:[self menuView]];
+
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
     [[self buttonsView] setBackgroundColor:[BNoteConstants appColor1]];
     [[self actionView] setBackgroundColor:[BNoteConstants appColor1]];

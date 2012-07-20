@@ -18,8 +18,7 @@
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *peoplePicker; 
 @property (assign, nonatomic) Attendant *selectedAttendant;
-@property (strong, nonatomic) IBOutlet UIButton *addAttendantButton;
-@property (strong, nonatomic) IBOutlet UIButton *createAttendantButton;
+@property (strong, nonatomic) IBOutlet UIView *addAttendantView;
 
 @end
 
@@ -27,8 +26,10 @@
 @synthesize attendantsViewController = _attendantsViewController;
 @synthesize peoplePicker = _peoplePicker;
 @synthesize selectedAttendant = _selectedAttendant;
-@synthesize addAttendantButton = _addAttendantButton;
-@synthesize createAttendantButton = _createAttendantButton;
+@synthesize addAttendantView = _addAttendantView;
+
+static NSString *addressBook = @"Address Book";
+static NSString *createNew = @"Create";
 
 - (NSString *)localNibName
 {
@@ -46,18 +47,11 @@
     
     AttendantsViewController *controller = [self attendantsViewController];
     [controller setAttendants:[self attendants]];
-    
-    [[self addAttendantButton] setBackgroundColor:[BNoteConstants appHighlightColor1]];
-    [[[self addAttendantButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
-    [LayerFormater roundCornersForView:[self addAttendantButton]];
-    [LayerFormater setBorderWidth:0 forView:[self addAttendantButton]];
-    
-    [[self createAttendantButton] setBackgroundColor:[BNoteConstants appHighlightColor1]];
-    [[[self createAttendantButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
-    [LayerFormater roundCornersForView:[self createAttendantButton]];
-    [LayerFormater setBorderWidth:0 forView:[self createAttendantButton]];
-    
+        
     [controller update];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
+    [[self addAttendantView] addGestureRecognizer:tap];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantsContentViewController:)
                                                  name:UIKeyboardDidHideNotification object:nil];
@@ -69,8 +63,7 @@
 
     [self setAttendantsViewController:nil];
     [self setPeoplePicker:nil];
-    [self setAddAttendantButton:nil];
-    [self setCreateAttendantButton:nil];
+    [self setAddAttendantView:nil];
 }
 
 - (float)height
@@ -78,7 +71,7 @@
     return 100;
 }
 
-- (IBAction)presentAttendeePicker:(id)sender
+- (void)presentAttendeePicker
 {
     ABPeoplePickerNavigationController *controller = [[ABPeoplePickerNavigationController alloc] init];
     [self setPeoplePicker:controller];
@@ -145,7 +138,7 @@
     [self handleImageIcon:NO];
 }
 
-- (IBAction)presentAttendeeAdder:(id)sender
+- (void)presentAttendeeAdder
 {
     Attendant *attendant = [BNoteFactory createAttendant:[self attendants]];
     [self setSelectedAttendant:attendant];
@@ -156,7 +149,7 @@
 
     [popup setDelegate:self];
     
-    UIView *view = [self createAttendantButton];
+    UIView *view = [self addAttendantView];
     [popup presentPopoverFromRect:[view frame]
                            inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
@@ -173,6 +166,45 @@
     [[BNoteWriter instance] updateAttendee:[self selectedAttendant]];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeUpdated object:nil];    
+}
+
+- (void)showOptions:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+    [[BNoteSessionData instance] setActionSheet:actionSheet];
+    [actionSheet setDelegate:[BNoteSessionData instance]];
+    [[BNoteSessionData instance] setActionSheetDelegate:self];
+    
+    [actionSheet setTitle:@"Attendants"];
+    [actionSheet addButtonWithTitle:addressBook];
+    [actionSheet addButtonWithTitle:createNew];
+    
+    CGRect rect = [[self addAttendantView] frame];
+    [actionSheet showFromRect:rect inView:[self view] animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == addressBook) {
+            [self presentAttendeePicker];
+        } else if (title == createNew) {
+            [self presentAttendeeAdder];
+        }
+    }
+
+    [[BNoteSessionData instance] setActionSheet:nil];
+}
+
+- (void)reviewMode:(NSNotification *)notification
+{
+    [[self addAttendantView] setHidden:YES];
+}
+
+- (void)editingNote:(NSNotification *)notification
+{
+    [[self addAttendantView] setHidden:NO];
 }
 
 @end

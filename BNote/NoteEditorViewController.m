@@ -157,10 +157,14 @@ static NSString *email = @"E-mail";
     
     [self normalIcons];
     
-    [LayerFormater addShadowToView:[self menuView]];
-    [LayerFormater addShadowToView:[self infoView]];
-    [LayerFormater addShadowToView:[self footerView]];
-    
+//    [LayerFormater addShadowToView:[self menuView]];
+//    [LayerFormater addShadowToView:[self infoView]];
+//    [LayerFormater addShadowToView:[self footerView]];
+
+    [LayerFormater setBorderWidth:1 forView:[self footerView]];
+    [LayerFormater setBorderWidth:1 forView:[self menuView]];
+    [LayerFormater setBorderWidth:1 forView:[self infoView]];
+
     [self setupDate];
     
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
@@ -237,6 +241,8 @@ static NSString *email = @"E-mail";
 
 - (void)editing
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:EditingNote object:nil];
+
     [[self trashButton] setHidden:NO];
     [[self filterButton] setHidden:YES];
     [self normalIcons];
@@ -245,10 +251,13 @@ static NSString *email = @"E-mail";
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
 
     [[BNoteSessionData instance] setPhase:Editing];
+    
 }
 
 - (void)reviewing
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:ReviewingNote object:nil];
+
     [[self trashButton] setHidden:YES];
     [self funnelIcons];
     [[self reviewButton] setTitle:@"Done" forState:UIControlStateNormal];

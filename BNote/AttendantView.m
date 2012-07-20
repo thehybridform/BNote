@@ -9,10 +9,10 @@
 #import "AttendantView.h"
 #import "BNoteWriter.h"
 #import "BNoteFactory.h"
+#import "BNoteSessionData.h"
 #import "AttendeeDetailViewController.h"
 
 @interface AttendantView()
-@property (strong, nonatomic) UIActionSheet *sheet;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIPopoverController *popup;
 
@@ -20,9 +20,11 @@
 
 @implementation AttendantView
 @synthesize attendant = _attendant;
-@synthesize sheet = _sheet;
 @synthesize imageView = _imageView;
 @synthesize popup = _popup;
+
+static NSString *details = @"Details";
+static NSString *removeAttendant = @"Remove";
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -50,12 +52,17 @@
 
 - (void)normalPressTap:(id)sender
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Attendant" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove" otherButtonTitles:@"Details", nil];
-
+    UIActionSheet *sheet = [[UIActionSheet alloc] init];
+    [sheet setDelegate:[BNoteSessionData instance]];
+    [[BNoteSessionData instance] setActionSheet:sheet];
+    [[BNoteSessionData instance] setActionSheetDelegate:self];
+    
+    [sheet addButtonWithTitle:details];
+    int index = [sheet addButtonWithTitle:removeAttendant];
+    [sheet setDestructiveButtonIndex:index];
+    
     CGRect rect = [self bounds];
     [sheet showFromRect:rect inView:self animated:YES];
-    
-    [self setSheet:sheet];
 }
 
 - (void)setAttendant:(Attendant *)attendant
@@ -94,19 +101,17 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex) {
-        case 0:
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == details) {
+            [self presentAttendeeDetail];
+        } else if (title == removeAttendant) {
             [[BNoteWriter instance] removeAttendant:[self attendant]];
             [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeDeleted object:nil];
-            break;
-            
-        case 1:
-            [self presentAttendeeDetail];
-            break;
-            
-        default:
-            break;
+        }
     }
+    
+    [[BNoteSessionData instance] setActionSheet:nil];
 }
 
 - (void)presentAttendeeDetail
@@ -141,11 +146,6 @@
         [[BNoteWriter instance] updateAttendee:[self attendant]];
         [self setPopup:nil];
     }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    [self setSheet:nil];
 }
 
 @end

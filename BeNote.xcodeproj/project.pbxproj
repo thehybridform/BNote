@@ -112,6 +112,9 @@
 		18A7029A15B6F2CA00C119F2 /* 02-redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */; };
 		18A7029E15B6F6E100C119F2 /* AttendantQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */; };
 		18A702A015B7CBE000C119F2 /* funnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029F15B7CBDF00C119F2 /* funnel.png */; };
+		18A702A315B7F5E700C119F2 /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A702A215B7F5E600C119F2 /* DetailView.m */; };
+		18A702A515B8FF1800C119F2 /* 50-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A702A415B8FF1800C119F2 /* 50-plus@2x.png */; };
+		18A702A715B9149900C119F2 /* 83-calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A702A615B9149900C119F2 /* 83-calendar@2x.png */; };
 		18A721B015B0EF8F00653382 /* TableCellHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */; };
 		18A721B115B0EF8F00653382 /* TableCellHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */; };
 		18A721B515B2934400653382 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B415B2934400653382 /* OrderedDictionary.m */; };
@@ -141,6 +144,8 @@
 		18C2654415859E7F005FA6C5 /* ActionItemPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */; };
 		18C2654715859EB4005FA6C5 /* AttendantPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */; };
 		18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
+		18CC190615B91D9C0080C017 /* 19-circle-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */; };
+		18CC190915B91DD80080C017 /* 27-circle-o@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190815B91DD80080C017 /* 27-circle-o@2x.png */; };
 		18DE683C15B0D41E00311F16 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683B15B0D41E00311F16 /* PeopleViewController.m */; };
 		18DE683F15B0D49700311F16 /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683E15B0D49700311F16 /* PersonView.m */; };
 		18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE684115B0D4C600311F16 /* PersonViewController.m */; };
@@ -353,6 +358,10 @@
 		18A7029C15B6F6E100C119F2 /* AttendantQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantQuickButton.h; sourceTree = "<group>"; };
 		18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantQuickButton.m; sourceTree = "<group>"; };
 		18A7029F15B7CBDF00C119F2 /* funnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = funnel.png; sourceTree = "<group>"; };
+		18A702A115B7F5E600C119F2 /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailView.h; sourceTree = "<group>"; };
+		18A702A215B7F5E600C119F2 /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailView.m; sourceTree = "<group>"; };
+		18A702A415B8FF1800C119F2 /* 50-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50-plus@2x.png"; sourceTree = "<group>"; };
+		18A702A615B9149900C119F2 /* 83-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "83-calendar@2x.png"; sourceTree = "<group>"; };
 		18A721AD15B0EF8F00653382 /* TableCellHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHeaderViewController.h; sourceTree = "<group>"; };
 		18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHeaderViewController.m; sourceTree = "<group>"; };
 		18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCellHeaderViewController.xib; sourceTree = "<group>"; };
@@ -410,6 +419,8 @@
 		18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantPlainRenderer.m; sourceTree = "<group>"; };
 		18C2654B15859FE3005FA6C5 /* NotePlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePlainRenderer.h; sourceTree = "<group>"; };
 		18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePlainRenderer.m; sourceTree = "<group>"; };
+		18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check@2x.png"; sourceTree = "<group>"; };
+		18CC190815B91DD80080C017 /* 27-circle-o@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "27-circle-o@2x.png"; sourceTree = "<group>"; };
 		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		18DE683B15B0D41E00311F16 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		18DE683D15B0D49700311F16 /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -543,6 +554,10 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18CC190815B91DD80080C017 /* 27-circle-o@2x.png */,
+				18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */,
+				18A702A615B9149900C119F2 /* 83-calendar@2x.png */,
+				18A702A415B8FF1800C119F2 /* 50-plus@2x.png */,
 				18A7029F15B7CBDF00C119F2 /* funnel.png */,
 				18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */,
 				18A7029715B6DDCA00C119F2 /* 259-list@2x.png */,
@@ -998,8 +1013,6 @@
 				18B235D9158ADF6E009D17D2 /* Attendants */,
 				184976CA1597C1FA00F49F5A /* EntryContentViewController.h */,
 				184976CB1597C1FD00F49F5A /* EntryContentViewController.m */,
-				1851A617159984640089EECF /* EntryContectView.h */,
-				1851A618159984640089EECF /* EntryContectView.m */,
 				18A721C115B549A800653382 /* EntryContent.h */,
 			);
 			name = "Entry View Cell";
@@ -1054,6 +1067,10 @@
 				18A721AD15B0EF8F00653382 /* TableCellHeaderViewController.h */,
 				18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */,
 				18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */,
+				18A702A115B7F5E600C119F2 /* DetailView.h */,
+				18A702A215B7F5E600C119F2 /* DetailView.m */,
+				1851A617159984640089EECF /* EntryContectView.h */,
+				1851A618159984640089EECF /* EntryContectView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1214,6 +1231,10 @@
 				18A7029815B6DDCA00C119F2 /* 259-list@2x.png in Resources */,
 				18A7029A15B6F2CA00C119F2 /* 02-redo@2x.png in Resources */,
 				18A702A015B7CBE000C119F2 /* funnel.png in Resources */,
+				18A702A515B8FF1800C119F2 /* 50-plus@2x.png in Resources */,
+				18A702A715B9149900C119F2 /* 83-calendar@2x.png in Resources */,
+				18CC190615B91D9C0080C017 /* 19-circle-check@2x.png in Resources */,
+				18CC190915B91DD80080C017 /* 27-circle-o@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,6 +1346,7 @@
 				18A721B515B2934400653382 /* OrderedDictionary.m in Sources */,
 				18A721BA15B3E1DB00653382 /* EntrySummaryTableViewCellController.m in Sources */,
 				18A7029E15B6F6E100C119F2 /* AttendantQuickButton.m in Sources */,
+				18A702A315B7F5E700C119F2 /* DetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

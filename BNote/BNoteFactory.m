@@ -307,6 +307,10 @@ NSString *const allEntryHeader = @"All";
 
 + (UIImageView *)createIcon:(Entry *)entry active:(BOOL)active
 {
+    if (!entry) {
+        return nil;
+    }
+    
     BNoteIconType type;
     if (active) {
         type = [BNoteFactory activeType:entry];

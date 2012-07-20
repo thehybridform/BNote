@@ -19,6 +19,7 @@
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
 @property (strong, nonatomic) IBOutlet UIButton *photoAlbumButton;
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
+@property (strong, nonatomic) IBOutlet UIButton *sketchButton;
 @property (assign, nonatomic) BOOL hasCamera;
 @property (strong, nonatomic) UITapGestureRecognizer *normalTap;
 @property (strong, nonatomic) IBOutlet UIView *touchView;
@@ -32,24 +33,24 @@
 @synthesize hasCamera = _hasCamera;
 @synthesize normalTap = _normalTap;
 @synthesize touchView = _touchView;
+@synthesize sketchButton = _sketchButton;
 
 - (id)initWithEntry:(Entry *)entry
 {
-    self = [super initWithNibName:@"KeyPointContentView" bundle:nil];
+    self = [super initWithEntry:entry];
     
     if (self) {
-        [self setEntry:entry];
-
         UITapGestureRecognizer *normalTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto:)];
         [self setNormalTap:normalTap];
-
-        UITableViewCell *cell = (UITableViewCell *) [self view];
-        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
     return self;
+}
+
+- (NSString *)localNibName
+{
+    return @"KeyPointContentView";
 }
 
 - (KeyPoint *)keyPoint
@@ -67,7 +68,6 @@
         [[self cameraButton] setHidden:YES];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImageView:) name:KeyPointPhotoUpdated object:[self keyPoint]];
 }
 
 - (void)viewDidUnload
@@ -79,18 +79,13 @@
     [self setPhotoAlbumButton:nil];
     [self setNormalTap:nil];
     [self setTouchView:nil];
+    [self setSketchButton:nil];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (float)height
 {
-    float height = 45;
-    if ([self hasCamera]) {
-        height += 45;
-    }
-    
-    return MAX(height, [super height]);
+    return MAX(100, [super height]);
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -198,7 +193,27 @@
     [controller setKeyPoint:[self keyPoint]];
     
     [[self parentController] presentModalViewController:controller animated:YES];
+}
+
+- (void)reviewMode:(NSNotification *)notification
+{
+    [[self cameraButton] setHidden:YES];
+    [[self photoAlbumButton] setHidden:YES];
+    [[self sketchButton] setHidden:YES];
+
+    [super reviewMode:notification];
+}
+
+- (void)editingNote:(NSNotification *)notification
+{
+    if ([self hasCamera]) {
+        [[self cameraButton] setHidden:NO];
+    }
     
+    [[self photoAlbumButton] setHidden:NO];
+    [[self sketchButton] setHidden:NO];
+
+    [super editingNote:notification];
 }
 
 @end

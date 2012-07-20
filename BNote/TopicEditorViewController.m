@@ -105,7 +105,8 @@
     [self initButton:[self button_8] withColor:Color8];
     [self initButton:[self button_9] withColor:Color9];
     
-    [LayerFormater addShadowToView:[self buttonControlView]];
+//    [LayerFormater addShadowToView:[self buttonControlView]];
+    [LayerFormater setBorderWidth:1 forView:[self buttonControlView]];
 
     [[self nameTextField] setDelegate:self];
 }

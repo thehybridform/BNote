@@ -67,8 +67,9 @@
     
     [LayerFormater roundCornersForView:[self view]];
     
-    [LayerFormater addShadowToView:[self menuView]];
-    
+//    [LayerFormater addShadowToView:[self menuView]];
+    [LayerFormater setBorderWidth:1 forView:[self menuView]];
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(updateFirstName:)
      name:UITextFieldTextDidChangeNotification object:[self firstNameField]];

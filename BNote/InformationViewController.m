@@ -46,7 +46,7 @@
     [NSArray arrayWithObjects:@"BeNote Google+ Page", nil];
     [self setStorageArray:storageArray];
     
-    [LayerFormater addShadowToView:[self menu]];
+    [LayerFormater setBorderWidth:1 forView:[self menu]];
 }
 
 - (void)viewDidUnload

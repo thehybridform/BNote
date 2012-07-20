@@ -41,6 +41,8 @@ extern NSString *const AttendeeDeleted;
 extern NSString *const AttendeeUpdated;
 extern NSString *const FinishedEditingNote;
 extern NSString *const DeleteNote;
+extern NSString *const ReviewingNote;
+extern NSString *const EditingNote;
 
 extern NSString *const NewLine;
 

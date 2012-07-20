@@ -29,7 +29,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *countLabel;
 @property (strong, nonatomic) IBOutlet UIView *menu;
 @property (strong, nonatomic) IBOutlet UIView *footer;
-@property (strong, nonatomic) IBOutlet UIView *topicsView;
 @property (strong, nonatomic) IBOutlet UIView *detailView;
 @property (strong, nonatomic) IBOutlet MasterViewController *topicsTable;
 @property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *entriesTable;
@@ -48,7 +47,6 @@
 @synthesize countLabel = _countLabel;
 @synthesize notesLabel = _notesLabel;
 @synthesize peopleLabel = _peopleLabel;
-@synthesize topicsView = _topicsView;
 @synthesize shareButton = _shareButton;
 @synthesize addTopicButton = _addTopicButton;
 @synthesize popup = _popup;
@@ -74,9 +72,12 @@ static NSString *email = @"E-mail";
 {
     [super viewDidLoad];
 
-    [LayerFormater addShadowToView:[self menu]];
-    [LayerFormater addShadowToView:[self detailView]];
-    [LayerFormater addShadowToView:[self footer]];
+//    [LayerFormater addShadowToView:[self menu]];
+//    [LayerFormater addShadowToView:[self detailView]];
+//    [LayerFormater addShadowToView:[self footer]];
+    
+    [LayerFormater setBorderWidth:1 forView:[self footer]];
+    [LayerFormater setBorderWidth:1 forView:[self menu]];
     
     [[self notesLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     [[self peopleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
@@ -101,7 +102,6 @@ static NSString *email = @"E-mail";
     [self setCountLabel:nil];
     [self setNotesLabel:nil];
     [self setPeopleLabel:nil];
-    [self setTopicsView:nil];
     [self setShareButton:nil];
     [self setAddTopicButton:nil];
     [self setPopup:nil];

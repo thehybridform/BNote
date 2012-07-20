@@ -10,6 +10,7 @@
 #import "QuickWordsViewController.h"
 #import "LayerFormater.h"
 #import "BNoteFactory.h"
+#import "BNoteSessionData.h"
 
 @interface EntryContentViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
@@ -31,9 +32,10 @@
     
     if (self) {
         [self setEntry:entry];
-        UITableViewCell *cell = (UITableViewCell *) [self view];
-        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:) name:ReviewingNote object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:) name:EditingNote object:nil];
+        
     }
     
     return self;
@@ -78,29 +80,39 @@
 {
     [super viewDidLoad];
     
+    UITableViewCell *cell = (UITableViewCell *) [self view];
+    [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
     [self handleImageIcon:NO];
-    
+
     UITextView *view = [self mainTextView];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:12]];
-    
-    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-    [self setQuickWordsViewController:quick];
-    [view setInputAccessoryView:[quick view]];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(updateText:)
-     name:UITextViewTextDidChangeNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(startedEditingText:)
-     name:UITextViewTextDidBeginEditingNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(stoppedEditingText:)
-     name:UITextViewTextDidEndEditingNotification object:view];
-    
-    [self setSelectedTextView:view];
-    [[self mainTextView] setText:[[self entry] text]];
+    if (view) {
+        [view setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+        
+        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+        [self setQuickWordsViewController:quick];
+        [view setInputAccessoryView:[quick view]];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(updateText:)
+         name:UITextViewTextDidChangeNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(startedEditingText:)
+         name:UITextViewTextDidBeginEditingNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(stoppedEditingText:)
+         name:UITextViewTextDidEndEditingNotification object:view];
+        
+        [self setSelectedTextView:view];
+        [[self mainTextView] setText:[[self entry] text]];
+    }
+
+    if ([[BNoteSessionData instance] phase] == Reviewing) {
+        [self reviewMode:nil];
+    }
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -143,6 +155,19 @@
 - (UIImageView *)iconView
 {
     return [self imageView];
+}
+
+- (void)reviewMode:(NSNotification *)notification
+{
+    [[self mainTextView] resignFirstResponder];
+    [[self mainTextView] setEditable:NO];
+}
+
+- (void)editingNote:(NSNotification *)notification
+{
+    [[self mainTextView] setEditable:YES];
+    
+    [[self view] setNeedsDisplay];
 }
 
 - (void)dealloc

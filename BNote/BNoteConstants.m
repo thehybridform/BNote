@@ -41,6 +41,8 @@ const NSString *const AttendeeDeleted = @"AttendeeDeleted";
 const NSString *const AttendeeUpdated = @"AttendeeUpdated";
 const NSString *const FinishedEditingNote = @"FinishedEditingNote";
 const NSString *const DeleteNote = @"DeleteNote";
+const NSString *const ReviewingNote = @"ReviewingNote";
+const NSString *const EditingNote = @"EditingNote";
 
 const NSString *const NewLine = @"\r\n";
 

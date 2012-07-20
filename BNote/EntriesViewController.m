@@ -143,6 +143,17 @@
     }
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    if ([[BNoteEntryUtils attendants:[self note]] count]) {
+        if ([proposedDestinationIndexPath row] == 0) {
+            return [NSIndexPath indexPathForRow:1 inSection:0];
+        }
+    }
+    
+    return proposedDestinationIndexPath;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 

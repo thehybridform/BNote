@@ -219,6 +219,10 @@
     [self collectEmptyEntries:[BNoteEntryUtils actionItems:note] into:emptyEntries];
 
     [[BNoteWriter instance] removeObjects:[emptyEntries allObjects]];
+    
+    if (![[note entries] count]) {
+        [[BNoteWriter instance] removeNote:note];
+    }
 }
 
 + (void)collectEmptyEntries:(NSMutableArray *)entries into:(NSMutableSet *)emptyEntries

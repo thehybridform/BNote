@@ -87,7 +87,8 @@
     [data filterUsingPredicate:p];
     [self setData:data];
     
-    [LayerFormater addShadowToView:[self menuView]];
+//    [LayerFormater addShadowToView:[self menuView]];
+    [LayerFormater setBorderWidth:1 forView:[self menuView]];
 }
 
 - (void)viewDidUnload

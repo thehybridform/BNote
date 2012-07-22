@@ -16,6 +16,7 @@
 
 + (BNoteReader *)instance;
 - (NSMutableArray *)allTopics;
+- (NSMutableArray *)allTopicGroups;
 - (NSMutableSet *)allKeyWords;
 - (KeyWord *)keyWordFor:(NSString *)word;
 

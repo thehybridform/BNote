@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Topic.h"
+#import "TopicGroup.h"
 
 @interface BNoteSessionData : NSObject <UIActionSheetDelegate>
 @property (strong, nonatomic) UIPopoverController *popup;
@@ -21,7 +22,6 @@ typedef enum {
 } BNotePhase;
 
 @property (assign, nonatomic) BNotePhase phase;
-@property (strong, nonatomic) NSDictionary *settings;
 
 + (BNoteSessionData *)instance;
 
@@ -29,5 +29,10 @@ typedef enum {
 - (BOOL)keyboardVisible;
 - (NSMutableDictionary *)imageIconViews;
 - (NSMutableDictionary *)entrySummaryHeaderImageViews;
+
++ (BOOL)booleanForKey:(NSString *)key;
++ (void)setBoolean:(BOOL)flag forKey:(NSString *)key;
++ (NSString *)stringForKey:(NSString *)key;
++ (void)setString:(NSString *)string forKey:(NSString *)key;
 
 @end

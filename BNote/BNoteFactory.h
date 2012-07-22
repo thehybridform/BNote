@@ -85,7 +85,7 @@ typedef enum {
 @interface BNoteFactory : NSObject
 
 + (TopicGroup *)createTopicGroup:(NSString *)name;
-+ (Topic *)createTopic:(NSString *)name;
++ (Topic *)createTopic:(NSString *)name forGroup:(TopicGroup *)group;
 + (Note *)createNote:(Topic *)topic;
 + (Note *)copyNote:(Note *)note toTopic:(Topic *)topic;
 + (Question *)createQuestion:(Note *)note;

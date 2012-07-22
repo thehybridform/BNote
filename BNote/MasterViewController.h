@@ -12,5 +12,6 @@
 @interface MasterViewController : UITableViewController <UIPopoverControllerDelegate>
 
 - (IBAction)editTopicCell:(id)sender;
+- (Topic *)searchTopic;
 
 @end

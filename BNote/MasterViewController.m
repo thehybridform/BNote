@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSMutableArray *data;
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (strong, nonatomic) IBOutlet UIButton *editTopicsButton;
+@property (strong, nonatomic) Topic *searchTopic;
+@property (strong, nonatomic) TopicGroup *topicGroup;
 
 @end
 
@@ -27,6 +29,37 @@
 @synthesize data = _data;
 @synthesize selectedIndex = _selectedIndex;
 @synthesize editTopicsButton = _editTopicsButton;
+@synthesize searchTopic = _searchTopic;
+@synthesize topicGroup = _topicGroup;
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(createdTopic:)
+                                                     name:TopicCreated
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(selectTopic:)
+                                                     name:TopicUpdated
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(updateReceived:)
+                                                     name:RefetchAllDatabaseData
+                                                   object:nil];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(selectTopicGroup:)
+                                                     name:TopicGroupSelected
+                                                   object:nil];
+    }
+    
+    return self;
+}
 
 - (void)dealloc 
 {
@@ -37,31 +70,24 @@
 {
     [super viewDidLoad];
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateReceived:)
-                                                 name:RefetchAllDatabaseData
-                                               object:[[UIApplication sharedApplication] delegate]];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(createdTopic:)
-                                                 name:TopicCreated
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(selectTopic:)
-                                                 name:TopicUpdated
-                                               object:nil];
+    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self view]];
 }
 
 - (void)updateReceived:(NSNotification *)notification
 {
-    [self setData:[[BNoteReader instance] allTopics]];
+    NSString *groupName = [BNoteSessionData stringForKey:TopicGroupSelected];
+    if (!groupName) {
+        groupName = @"All";
+        [BNoteSessionData setString:groupName forKey:TopicGroupSelected];        
+    }
+
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:groupName];
+    [self setTopicGroup:group];
+    [self setData:[[group topics] mutableCopy]];
     
-    if ([[self data] count] == 0) {
-        [self setData:[[NSMutableArray alloc] init]];
-    } else {
-        [[self tableView] reloadData];
+    [[self tableView] reloadData];
+
+    if ([[self data] count] > 0) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
         [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
@@ -73,8 +99,14 @@
     [super viewDidUnload];
     
     [self setEditTopicsButton:nil];
+    [self setSearchTopic:nil];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (Topic *)searchTopic
+{
+    return [self searchTopic];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -89,7 +121,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
     static NSString *cellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -103,17 +134,18 @@
         UIFont *font = [BNoteConstants font:RobotoLight andSize:15.0];
         [[cell textLabel] setFont:font];
         [[cell textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-    }
 
-    [cell setShowsReorderControl:NO];
-    [LayerFormater setBorderWidth:1 forView:cell];
+        [cell setShowsReorderControl:NO];
+        [LayerFormater setBorderWidth:1 forView:cell];
+    }
     
+    Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
     [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
     [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     
 
-    NSString *text = @"   ";
-    [[cell textLabel] setText:[text stringByAppendingString:[currentTopic title]]];
+    static NSString *spacingText = @"   ";
+    [[cell textLabel] setText:[spacingText stringByAppendingString:[currentTopic title]]];
     
     return cell;
 }
@@ -160,7 +192,7 @@
 {    
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
 
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:[self topicGroup]];
     [controller setTopic:topic];
 
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
@@ -196,6 +228,24 @@
     
     Topic *topic = [notification object];
     [self selectCell:[[self data] indexOfObject:topic]];
+}
+
+- (void)selectTopicGroup:(NSNotification *)notification
+{
+    TopicGroup *group = [notification object];
+    [self setData:[[group topics] mutableCopy]];
+    
+    [[self tableView] reloadData];
+    
+    if ([[self data] count] > 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
+        [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:nil];
+    }
+
+    [BNoteSessionData setString:[group name] forKey:TopicGroupSelected];
 }
 
 - (IBAction)editTopicCell:(id)sender

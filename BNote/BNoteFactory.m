@@ -63,7 +63,7 @@ NSString *const allEntryHeader = @"All";
     return group;
 }
 
-+ (Topic *)createTopic:(NSString *)name
++ (Topic *)createTopic:(NSString *)name forGroup:(TopicGroup *)group
 {
     Topic *topic = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Topic"];
 
@@ -72,8 +72,10 @@ NSString *const allEntryHeader = @"All";
     [topic setTitle:name];
     [topic setColor:0xFFFFFF];
 
-    TopicGroup *group = [[BNoteReader instance] getTopicGroup:@"All"];
     [group addTopicsObject:topic];
+    
+    TopicGroup *all = [[BNoteReader instance] getTopicGroup:@"All"];
+    [all addTopicsObject:topic];
 
     [[BNoteWriter instance] update];
     

@@ -59,7 +59,6 @@
     for (Attendant *attendant in attendees) {
         AttendantView *view = [[AttendantView alloc] initWithFrame:CGRectMake((width * index++) + x , 3, 100, 80)];
         
-        [LayerFormater roundCornersForView:view];
         [view setAttendant:attendant];
         [[self view] addSubview:view];
     }

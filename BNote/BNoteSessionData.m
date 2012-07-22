@@ -19,7 +19,6 @@
 
 @implementation BNoteSessionData
 @synthesize phase = _phase;
-@synthesize settings = _settings;
 @synthesize imageIconViews = _imageIconViews;
 @synthesize keyboardVisible = _keyboardVisible;
 @synthesize popup = _popup;
@@ -84,6 +83,32 @@
     });
     
     return _default;
+}
+
++ (BOOL)booleanForKey:(NSString *)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults boolForKey:key];
+}
+
++ (void)setBoolean:(BOOL)flag forKey:(NSString *)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:flag forKey:key];
+    [defaults synchronize];
+}
+
++ (NSString *)stringForKey:(NSString *)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:key];
+}
+
++ (void)setString:(NSString *)string forKey:(NSString *)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:string forKey:key];
+    [defaults synchronize];
 }
 
 @end

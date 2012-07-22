@@ -60,9 +60,10 @@
     NSString *text = [[self entry] text];
     UITextView *view = [[UITextView alloc] init];
     [view setText:text];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
     [view setFrame:CGRectMake(0, 0, [self width] - 100, 200)];
     
-    return MAX(45, [view contentSize].height) + 10;
+    return MAX(40, [view contentSize].height) + 10;
 }
 
 - (float)width
@@ -88,7 +89,8 @@
 
     UITextView *view = [self mainTextView];
     if (view) {
-        [view setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+        [view setTextColor:UIColorFromRGB(0x444444)];
         
         QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
         [self setQuickWordsViewController:quick];

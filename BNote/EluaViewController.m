@@ -8,6 +8,7 @@
 
 #import "EluaViewController.h"
 #import "LayerFormater.h"
+#import "BNoteSessionData.h"
 
 @interface EluaViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
@@ -107,9 +108,7 @@
 
 - (IBAction)accept:(id)sender
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"OK" forKey:EulaFlag];
-    [defaults synchronize];
+    [BNoteSessionData setBoolean:YES forKey:EulaFlag];
     [self dismissModalViewControllerAnimated:YES];
 }
 

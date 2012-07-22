@@ -66,6 +66,7 @@
 
     [LayerFormater roundCornersForView:[self imageView]];
     [LayerFormater roundCornersForView:[self detailLable]];
+    [LayerFormater setBorderWidth:0 forView:[self detailLable]];
 
     [self handleIcon];
     [self handleActionItem];
@@ -105,12 +106,11 @@
     if ([entry isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) entry;
         if ([actionItem completed]) {
-            [[self detailLable] setText:@"Complete"];
+            [[self detailLable] setText:@"COMPLETE"];
             return;
         } else if ([actionItem dueDate]) {
             NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem dueDate]]; 
-            NSString *detail = [BNoteStringUtils append:@"Due ", [BNoteStringUtils dateToString:dueDate], nil];
-            [[self detailLable] setText:detail];
+            [[self detailLable] setText:[BNoteStringUtils dateToString:dueDate]];
             return;
         }
     }

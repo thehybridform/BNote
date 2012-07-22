@@ -186,10 +186,8 @@
 - (void)selectLastCell
 {
     int index = [[self filteredControllers] count] - 1;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
+
     [[controller mainTextView] becomeFirstResponder];
 }
 

@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *button_9;
 @property (assign, nonatomic) int selectedColor;
 
+@property (assign, nonatomic) TopicGroup *topicGroup;
 @end
 
 @implementation TopicEditorViewController
@@ -49,6 +50,7 @@
 @synthesize selectedColor = _selectedColor;
 @synthesize buttonControlView = _buttonControlView;
 @synthesize popup = _popup;
+@synthesize topicGroup = _topicGroup;
 
 - (void)viewDidUnload
 {
@@ -72,11 +74,12 @@
     [self setButton_9:nil];
 }
 
-- (id)initWithDefaultNib
+- (id)initWithTopicGroup:(TopicGroup *)group
 {
     self = [super initWithNibName:@"TopicEditorViewController" bundle:nil];
     
     if (self) {
+        [self setTopicGroup:group];
     }
     
     return self;
@@ -125,7 +128,7 @@
         if ([self topic]) {
             topic = [self topic];
         } else {
-            topic = [BNoteFactory createTopic:title]; 
+            topic = [BNoteFactory createTopic:title forGroup:[self topicGroup]]; 
         }
     
         [topic setTitle:title];

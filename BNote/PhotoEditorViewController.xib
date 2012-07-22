@@ -55,6 +55,7 @@
 						<string key="NSFrame">{{211, 89}, {800, 600}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIAutoresizesSubviews">NO</bool>
@@ -71,7 +72,7 @@
 								<string key="NSFrame">{{20, 0}, {72, 35}}</string>
 								<reference key="NSSuperview" ref="539267954"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="601934567"/>
+								<reference key="NSNextKeyView" ref="803343266"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -107,14 +108,14 @@
 								<string key="NSFrame">{{932, 0}, {72, 35}}</string>
 								<reference key="NSSuperview" ref="539267954"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="605825421"/>
+								<reference key="NSNextKeyView" ref="601934567"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<int key="IBUIButtonType">1</int>
-								<string key="IBUINormalTitle">Reset</string>
+								<string key="IBUINormalTitle">Clear</string>
 								<reference key="IBUIHighlightedTitleColor" ref="317102164"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
@@ -128,7 +129,7 @@
 						<string key="NSFrameSize">{1024, 35}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="803343266"/>
+						<reference key="NSNextKeyView" ref="605825421"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>

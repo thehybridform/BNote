@@ -139,6 +139,10 @@ static NSString *email = @"E-mail";
     [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     
+    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self menuView]];
+    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self footerView]];
+    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self infoView]];
+    
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
     
@@ -164,6 +168,13 @@ static NSString *email = @"E-mail";
     [LayerFormater setBorderWidth:1 forView:[self footerView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self infoView]];
+    
+    [[[self keyPointButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [[[self actionItemButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [[[self attendantsButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [[[self decisionButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [[[self questionButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [[[self filterButton] titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:14]];
 
     [self setupDate];
     
@@ -316,9 +327,7 @@ static NSString *email = @"E-mail";
 - (void)addEntry:(Entry *)entry
 {
     [[self entriesViewController] reload];
-    if ([entry isKindOfClass:[Attendants class]]) {
-        [[self entriesViewController] selectFirstCell];
-    } else {
+    if (![entry isKindOfClass:[Attendants class]]) {
         [[self entriesViewController] selectLastCell];
     }
 }

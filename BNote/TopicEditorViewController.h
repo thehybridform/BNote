@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Topic.h"
+#import "TopicGroup.h"
 
 @interface TopicEditorViewController : UIViewController <UITextFieldDelegate>
 
@@ -26,6 +27,6 @@
 - (IBAction)color8Selected:(id)sender;
 - (IBAction)color9Selected:(id)sender;
 
-- (id)initWithDefaultNib;
+- (id)initWithTopicGroup:(TopicGroup *)group;
 
 @end

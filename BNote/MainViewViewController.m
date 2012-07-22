@@ -18,9 +18,11 @@
 #import "Note.h"
 #import "EmailViewController.h"
 #import "TopicEditorViewController.h"
+#import "BNoteSessionData.h"
+#import "TopicGroupsViewController.h"
+#import "TopicGroupManagementViewController.h"
 
 @interface MainViewViewController ()
-@property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) IBOutlet UIButton *topicsButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
@@ -34,6 +36,8 @@
 @property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *entriesTable;
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
+@property (assign, nonatomic) Topic *searchTopic;
+@property (assign, nonatomic) TopicGroup *topicGroup;
 
 @end
 
@@ -49,22 +53,32 @@
 @synthesize peopleLabel = _peopleLabel;
 @synthesize shareButton = _shareButton;
 @synthesize addTopicButton = _addTopicButton;
-@synthesize popup = _popup;
 @synthesize footer = _footer;
 @synthesize topicsButton = _topicsButton;
+@synthesize searchTopic = _searchTopic;
+@synthesize topicGroup = _topicGroup;
 
 static NSString *email = @"E-mail";
 
 - (id)initWithDefault
 {
     self = [super initWithNibName:@"MainViewViewController" bundle:nil];
+    
     if (self) {
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedTopic:) name:TopicSelected object:nil];
         
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(presentTopicManagement:) name:TopicGroupManage object:nil];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
+        
     }
+    
     return self;
 }
 
@@ -72,12 +86,11 @@ static NSString *email = @"E-mail";
 {
     [super viewDidLoad];
 
-//    [LayerFormater addShadowToView:[self menu]];
-//    [LayerFormater addShadowToView:[self detailView]];
-//    [LayerFormater addShadowToView:[self footer]];
-    
     [LayerFormater setBorderWidth:1 forView:[self footer]];
     [LayerFormater setBorderWidth:1 forView:[self menu]];
+    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self footer]];
+    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self menu]];
+    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self detailView]];
     
     [[self notesLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     [[self peopleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
@@ -85,8 +98,15 @@ static NSString *email = @"E-mail";
     [[self notesLabel] setFont:[BNoteConstants font:RobotoRegular andSize:18.0]];
     [[self peopleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:18.0]];
     [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:28.0]];
-    
+
     [[self detailView] setHidden:YES];
+    
+    NSString *topicGroup = [BNoteSessionData stringForKey:TopicGroupSelected];
+    if (!topicGroup || [topicGroup isEqualToString:@"All"]) {
+        [[self topicsButton] setTitle:@"All Topics" forState:UIControlStateNormal];
+    } else {
+        [[self topicsButton] setTitle:topicGroup forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidUnload
@@ -104,7 +124,6 @@ static NSString *email = @"E-mail";
     [self setPeopleLabel:nil];
     [self setShareButton:nil];
     [self setAddTopicButton:nil];
-    [self setPopup:nil];
     [self setFooter:nil];
     [self setTopicsButton:nil];
     
@@ -118,6 +137,10 @@ static NSString *email = @"E-mail";
     }
     
     Topic *topic = [notification object];
+    if (!topic) {
+        [[self detailView] setHidden:YES];
+    }
+
     [[self entriesTable] setTopic:topic];
     [[self notesViewController] setTopic:topic];
     
@@ -141,6 +164,7 @@ static NSString *email = @"E-mail";
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
                                                  name:TopicUpdated object:topic];
+    
 }
 
 - (void)selectedNote:(NSNotification *)notification
@@ -167,6 +191,18 @@ static NSString *email = @"E-mail";
     [self setNoteCountForTopic:topic];
 }
 
+- (void)selectedTopicGroup:(NSNotification *)notification
+{
+    TopicGroup *group = [notification object];
+    [self setTopicGroup:group];
+    
+    if ([[group name] isEqualToString:@"All"]) {
+        [[self topicsButton] setTitle:@"All Topics" forState:UIControlStateNormal];
+    } else {
+        [[self topicsButton] setTitle:[group name] forState:UIControlStateNormal];
+    }
+}
+
 - (void)setNoteCountForTopic:(Topic *)topic
 {
     int count = [[topic notes] count] + [[topic associatedNotes] count];
@@ -177,14 +213,10 @@ static NSString *email = @"E-mail";
 
 - (IBAction)addTopic:(id)sender
 {
-    if ([self popup]) {
-        [[self popup] dismissPopoverAnimated:YES];
-    }
-    
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithDefaultNib];
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:[self topicGroup]];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [self setPopup:popup];
+    [[BNoteSessionData instance] setPopup:popup];
     [popup setDelegate:self];
     [controller setPopup:popup];
     
@@ -223,12 +255,72 @@ static NSString *email = @"E-mail";
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    [self setPopup:nil];
+    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    //[self setSearchTopic:[[self topicsTable] searchTopic]];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+//    [self setSearchText:[searchBar text]];
+//    [self reload];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+//    [self setSearchText:[searchBar text]];
+//    [self reload];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
+- (IBAction)showTopicGroups:(id)sender
+{
+    TopicGroupsViewController *controller = [[TopicGroupsViewController alloc] init];
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [[BNoteSessionData instance] setPopup:popup];
+    [popup setDelegate:self];
+    [controller setPopup:popup];
+
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = [self topicsButton];
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
+}
+
+- (void)presentTopicManagement:(NSNotification *)notification
+{
+    TopicGroupManagementViewController *controller = [[TopicGroupManagementViewController alloc] init];
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [[BNoteSessionData instance] setPopup:popup];
+    [popup setDelegate:self];
+    [controller setPopup:popup];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = [self topicsButton];
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny 
+                         animated:YES];
 }
 
 @end

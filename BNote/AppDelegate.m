@@ -11,6 +11,7 @@
 #import "BNoteWriter.h"
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
+#import "BNoteSessionData.h"
 #import "EluaViewController.h"
 
 @interface AppDelegate()
@@ -57,9 +58,7 @@
     [[self window] makeKeyAndVisible];
     
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *agreedToEula = [defaults objectForKey:EulaFlag];
-    if (!agreedToEula) {
+    if (![BNoteSessionData booleanForKey:EulaFlag]) {
         EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
         [controller setEula:YES];
         [controller setModalInPopover:YES];

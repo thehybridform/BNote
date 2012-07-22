@@ -97,6 +97,12 @@
 		18A056F7157F0961002A4A78 /* BNoteImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F6157F0960002A4A78 /* BNoteImageUtils.m */; };
 		18A056FB157F3762002A4A78 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F9157F3762002A4A78 /* PhotoViewController.m */; };
 		18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056FA157F3762002A4A78 /* PhotoViewController.xib */; };
+		18A30FC215BB1FCD00A2FD14 /* TopicGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FC015BB1FCD00A2FD14 /* TopicGroupsViewController.m */; };
+		18A30FC315BB1FCD00A2FD14 /* TopicGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A30FC115BB1FCD00A2FD14 /* TopicGroupsViewController.xib */; };
+		18A30FC715BB3C6600A2FD14 /* TopicGroupManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FC515BB3C6600A2FD14 /* TopicGroupManagementViewController.m */; };
+		18A30FC815BB3C6600A2FD14 /* TopicGroupManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A30FC615BB3C6600A2FD14 /* TopicGroupManagementViewController.xib */; };
+		18A30FCB15BB43AE00A2FD14 /* TopicGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FCA15BB43AE00A2FD14 /* TopicGroupsTableViewController.m */; };
+		18A30FCE15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FCD15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m */; };
 		18A7028115B6777100C119F2 /* KeyPointContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028015B6777100C119F2 /* KeyPointContentView.xib */; };
 		18A7028415B68B5B00C119F2 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028315B68B5B00C119F2 /* 86-camera@2x.png */; };
 		18A7028615B68CE000C119F2 /* 98-palette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028515B68CE000C119F2 /* 98-palette@2x.png */; };
@@ -146,6 +152,7 @@
 		18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
 		18CC190615B91D9C0080C017 /* 19-circle-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */; };
 		18CC190915B91DD80080C017 /* 27-circle-o@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190815B91DD80080C017 /* 27-circle-o@2x.png */; };
+		18CC190C15B929A60080C017 /* TopicSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CC190B15B929A60080C017 /* TopicSearchBar.m */; };
 		18DE683C15B0D41E00311F16 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683B15B0D41E00311F16 /* PeopleViewController.m */; };
 		18DE683F15B0D49700311F16 /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683E15B0D49700311F16 /* PersonView.m */; };
 		18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE684115B0D4C600311F16 /* PersonViewController.m */; };
@@ -342,6 +349,16 @@
 		18A056F8157F3762002A4A78 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		18A056F9157F3762002A4A78 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		18A056FA157F3762002A4A78 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
+		18A30FBF15BB1FCD00A2FD14 /* TopicGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroupsViewController.h; sourceTree = "<group>"; };
+		18A30FC015BB1FCD00A2FD14 /* TopicGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroupsViewController.m; sourceTree = "<group>"; };
+		18A30FC115BB1FCD00A2FD14 /* TopicGroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicGroupsViewController.xib; sourceTree = "<group>"; };
+		18A30FC415BB3C6600A2FD14 /* TopicGroupManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroupManagementViewController.h; sourceTree = "<group>"; };
+		18A30FC515BB3C6600A2FD14 /* TopicGroupManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroupManagementViewController.m; sourceTree = "<group>"; };
+		18A30FC615BB3C6600A2FD14 /* TopicGroupManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicGroupManagementViewController.xib; sourceTree = "<group>"; };
+		18A30FC915BB43AE00A2FD14 /* TopicGroupsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroupsTableViewController.h; sourceTree = "<group>"; };
+		18A30FCA15BB43AE00A2FD14 /* TopicGroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroupsTableViewController.m; sourceTree = "<group>"; };
+		18A30FCC15BB43BE00A2FD14 /* SelectedTopicsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedTopicsTableViewController.h; sourceTree = "<group>"; };
+		18A30FCD15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedTopicsTableViewController.m; sourceTree = "<group>"; };
 		18A7028015B6777100C119F2 /* KeyPointContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyPointContentView.xib; sourceTree = "<group>"; };
 		18A7028315B68B5B00C119F2 /* 86-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera@2x.png"; sourceTree = "<group>"; };
 		18A7028515B68CE000C119F2 /* 98-palette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "98-palette@2x.png"; sourceTree = "<group>"; };
@@ -421,6 +438,8 @@
 		18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePlainRenderer.m; sourceTree = "<group>"; };
 		18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check@2x.png"; sourceTree = "<group>"; };
 		18CC190815B91DD80080C017 /* 27-circle-o@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "27-circle-o@2x.png"; sourceTree = "<group>"; };
+		18CC190A15B929A60080C017 /* TopicSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSearchBar.h; sourceTree = "<group>"; };
+		18CC190B15B929A60080C017 /* TopicSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicSearchBar.m; sourceTree = "<group>"; };
 		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		18DE683B15B0D41E00311F16 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		18DE683D15B0D49700311F16 /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -637,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				18BAC1A915AD450500EEBE1E /* Main View */,
+				18A30FBD15BB1F9F00A2FD14 /* Topic Groups */,
 				1851A626159E96270089EECF /* Photo Editor */,
 				18497682159053B300F49F5A /* Information Details */,
 				184CEAD0158F225900C67CF5 /* EULA */,
@@ -926,6 +946,23 @@
 			name = Dates;
 			sourceTree = "<group>";
 		};
+		18A30FBD15BB1F9F00A2FD14 /* Topic Groups */ = {
+			isa = PBXGroup;
+			children = (
+				18A30FBF15BB1FCD00A2FD14 /* TopicGroupsViewController.h */,
+				18A30FC015BB1FCD00A2FD14 /* TopicGroupsViewController.m */,
+				18A30FC115BB1FCD00A2FD14 /* TopicGroupsViewController.xib */,
+				18A30FC415BB3C6600A2FD14 /* TopicGroupManagementViewController.h */,
+				18A30FC515BB3C6600A2FD14 /* TopicGroupManagementViewController.m */,
+				18A30FC615BB3C6600A2FD14 /* TopicGroupManagementViewController.xib */,
+				18A30FC915BB43AE00A2FD14 /* TopicGroupsTableViewController.h */,
+				18A30FCA15BB43AE00A2FD14 /* TopicGroupsTableViewController.m */,
+				18A30FCC15BB43BE00A2FD14 /* SelectedTopicsTableViewController.h */,
+				18A30FCD15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m */,
+			);
+			name = "Topic Groups";
+			sourceTree = "<group>";
+		};
 		18A7029B15B6F6AA00C119F2 /* Attendants */ = {
 			isa = PBXGroup;
 			children = (
@@ -999,6 +1036,8 @@
 				18BAC1AA15AD453700EEBE1E /* MainViewViewController.h */,
 				18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */,
 				18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */,
+				18CC190A15B929A60080C017 /* TopicSearchBar.h */,
+				18CC190B15B929A60080C017 /* TopicSearchBar.m */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -1235,6 +1274,8 @@
 				18A702A715B9149900C119F2 /* 83-calendar@2x.png in Resources */,
 				18CC190615B91D9C0080C017 /* 19-circle-check@2x.png in Resources */,
 				18CC190915B91DD80080C017 /* 27-circle-o@2x.png in Resources */,
+				18A30FC315BB1FCD00A2FD14 /* TopicGroupsViewController.xib in Resources */,
+				18A30FC815BB3C6600A2FD14 /* TopicGroupManagementViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1347,6 +1388,11 @@
 				18A721BA15B3E1DB00653382 /* EntrySummaryTableViewCellController.m in Sources */,
 				18A7029E15B6F6E100C119F2 /* AttendantQuickButton.m in Sources */,
 				18A702A315B7F5E700C119F2 /* DetailView.m in Sources */,
+				18CC190C15B929A60080C017 /* TopicSearchBar.m in Sources */,
+				18A30FC215BB1FCD00A2FD14 /* TopicGroupsViewController.m in Sources */,
+				18A30FC715BB3C6600A2FD14 /* TopicGroupManagementViewController.m in Sources */,
+				18A30FCB15BB43AE00A2FD14 /* TopicGroupsTableViewController.m in Sources */,
+				18A30FCE15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

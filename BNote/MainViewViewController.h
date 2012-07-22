@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate>
+@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate>
 
 - (id)initWithDefault;
 
 - (IBAction)about:(id)sender;
 - (IBAction)presentShareOptions:(id)sender;
 - (IBAction)addTopic:(id)sender;
+- (IBAction)showTopicGroups:(id)sender;
 
 @end

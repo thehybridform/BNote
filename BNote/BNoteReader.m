@@ -60,46 +60,14 @@
 
 - (NSMutableArray *)allTopics
 {
-    [self checkTopicGroup];
-    
     TopicGroup *group = [self getTopicGroup:@"All"];
     
     if (group) {
         return [[group topics] mutableCopy];
     } else {
-        return [NSMutableArray array];
-    }
-}
-
-// temporaty method.
-- (void)checkTopicGroup
-{
-    TopicGroup *group = [self getTopicGroup:@"All"];
-    if (!group) {
         group = [BNoteFactory createTopicGroup:@"All"];
+        return [NSMutableArray arrayWithObject:group];
     }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
-    NSError *error = nil;
-    NSArray *topics = [[self context] executeFetchRequest:fetchRequest error:&error];
-
-    for (Topic *topic in topics) {
-        if (![self topic:topic contains:group]) {
-            [group addTopicsObject:topic];
-        }
-    }
-}
-
-// temporaty method.
-- (BOOL)topic:(Topic *)topic contains:(TopicGroup *)group
-{
-    for (TopicGroup *g in [topic groups]) {
-        if (g == group) {
-            return YES;
-        }
-    }
-    
-    return NO;
 }
 
 - (NSMutableSet *)allKeyWords
@@ -133,6 +101,22 @@
     }    
     
     return nil;
+}
+
+- (NSMutableArray *)allTopicGroups
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TopicGroup"];
+    
+    NSError *error = nil;
+    NSArray *result = [[self context] executeFetchRequest:fetchRequest error:&error];
+    
+    NSArray *sortedArray = [result sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSString *first = [(TopicGroup *)a name];
+        NSString *second = [(TopicGroup *)a name];
+        return [first compare:second];
+    }];
+    
+    return [sortedArray mutableCopy];
 }
 
 @end

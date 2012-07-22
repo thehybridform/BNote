@@ -83,7 +83,7 @@
             break;
     }
     
-    NSMutableArray *data = [[BNoteReader instance] allTopics];
+    NSMutableArray *data = [[[BNoteReader instance] allTopics] mutableCopy];
     [data filterUsingPredicate:p];
     [self setData:data];
     

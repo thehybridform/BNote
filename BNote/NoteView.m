@@ -10,7 +10,6 @@
 #import "Topic.h"
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
-#import "EditNoteViewPresenter.h"
 #import "BNoteWriter.h"
 #import "TopicManagementViewController.h"
 #import "BNoteSessionData.h"
@@ -52,6 +51,8 @@ const static float h2 = h1 - 10;
         [text setCenter:CGPointMake(50, 50)];
         [text setTextAlignment:UITextAlignmentCenter];
  
+        [text setBackgroundColor:[BNoteConstants appColor1]];
+
         [self addSubview:text];
     }
     return self;
@@ -78,6 +79,8 @@ const static float h2 = h1 - 10;
     UILongPressGestureRecognizer *longPress =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
     [self addGestureRecognizer:longPress];
+    
+    [self setBackgroundColor:[BNoteConstants appColor1]];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -112,6 +115,7 @@ const static float h2 = h1 - 10;
         UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
         [actionSheet setDelegate:[BNoteSessionData instance]];
         [[BNoteSessionData instance] setActionSheetDelegate:self];
+        [[BNoteSessionData instance] setActionSheet:actionSheet];
         
         [actionSheet addButtonWithTitle:copyNote];
         
@@ -128,7 +132,6 @@ const static float h2 = h1 - 10;
         }
                 
         [actionSheet setTitle:@"Note Options"];
-        [[BNoteSessionData instance] setActionSheet:actionSheet];
         
         CGRect rect = [self bounds];
         [actionSheet showFromRect:rect inView:self animated:YES];

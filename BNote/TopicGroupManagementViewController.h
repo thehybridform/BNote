@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopicGroupManagementViewController : UIViewController
-@property (assign, nonatomic) UIPopoverController *popup;
+@interface TopicGroupManagementViewController : UIViewController <UIPopoverControllerDelegate, UITextFieldDelegate>
+@property (strong, nonatomic) UIPopoverController *popup;
 
 - (IBAction)add:(id)sender;
 - (IBAction)done:(id)sender;

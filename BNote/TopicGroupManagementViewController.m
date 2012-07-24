@@ -13,28 +13,37 @@
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
+#import "BNoteStringUtils.h"
 #import "TopicGroup.h"
 
 @interface TopicGroupManagementViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
+@property (strong, nonatomic) IBOutlet UILabel *errorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UITextField *nameText;
 @property (strong, nonatomic) IBOutlet TopicGroupsTableViewController *topicGroupsTableViewController;
 @property (strong, nonatomic) IBOutlet SelectedTopicsTableViewController *selectedTopicsTableViewController;
-@property (assign, nonatomic) TopicGroup *currentTopicGroup;
+@property (strong, nonatomic) TopicGroup *currentTopicGroup;
+@property (strong, nonatomic) NSMutableArray *topicGroupNames;
+@property (assign, nonatomic) BOOL canDismiss;
 
 @end
 
 @implementation TopicGroupManagementViewController
 @synthesize popup = _popup;
 @synthesize textLabel = _textLabel;
+@synthesize errorLabel = _errorLabel;
 @synthesize titleLabel = _titleLabel;
 @synthesize nameText = _nameText;
 @synthesize topicGroupsTableViewController = _topicGroupsTableViewController;
 @synthesize selectedTopicsTableViewController = _selectedTopicsTableViewController;
 @synthesize editButton = _editButton;
 @synthesize currentTopicGroup = _currentTopicGroup;
+@synthesize topicGroupNames = _topicGroupNames;
+@synthesize canDismiss = _canDismiss;
+@synthesize doneButton = _doneButton;
 
 - (id)init
 {
@@ -42,6 +51,12 @@
     
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
+
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(updateTopicGroupName:)
+         name:UITextFieldTextDidChangeNotification object:[self nameText]];
+        
+        [self setCanDismiss:YES];
     }
     
     return self;
@@ -51,6 +66,7 @@
 {
     [super viewDidLoad];
 
+    [[self errorLabel] setFont:[BNoteConstants font:RobotoBold andSize:12]];
     [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:14]];
     [[self titleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     [[self textLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
@@ -58,6 +74,17 @@
     [[self nameText] setFont:[BNoteConstants font:RobotoLight andSize:14]];
     
     [[self topicGroupsTableViewController] setNameText:[self nameText]];
+    
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:@"All"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:EditTopicGroupSelected object:group];
+    
+    [self setTopicGroupNames:[[NSMutableArray alloc] init]];
+    for (TopicGroup *group in [[BNoteReader instance] allTopicGroups]) {
+        [[self topicGroupNames] addObject:[group name]];
+    }
+    
+    [[self errorLabel] setHidden:YES];
+    [[self nameText] setDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -66,10 +93,15 @@
 
     [self setTextLabel:nil];
     [self setTitleLabel:nil];
+    [self setErrorLabel:nil];
     [self setNameText:nil];
     [self setTopicGroupsTableViewController:nil];
     [self setSelectedTopicsTableViewController:nil];
     [self setEditButton:nil];
+    [self setTopicGroupNames:nil];
+    [self setDoneButton:nil];
+    [self setPopup:nil];
+    [self setCurrentTopicGroup:nil];
 }
 
 - (void)dealloc
@@ -87,15 +119,40 @@
 - (IBAction)done:(id)sender
 {
     [[self popup] dismissPopoverAnimated:YES];
+        
     [[BNoteWriter instance] update];
+  
+    BOOL empty = [BNoteStringUtils nilOrEmpty:[[self currentTopicGroup] name]];
+    if (empty) {
+        [self setCurrentTopicGroup:[[BNoteReader instance] getTopicGroup:@"All"]];
+    }
+    
+    NSMutableArray *emptyTopicGroups = [[NSMutableArray alloc] init];
+    for (TopicGroup *group in [[BNoteReader instance] allTopicGroups]) {
+        empty = [BNoteStringUtils nilOrEmpty:[group name]];
+        if (empty) {
+            [emptyTopicGroups addObject:group];
+        }
+    }
+    
+    [[BNoteWriter instance] removeObjects:emptyTopicGroups];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self currentTopicGroup]];
 }
 
 - (void)selectedTopicGroup:(NSNotification *)notification
 {
+    [[BNoteWriter instance] update];
+
     TopicGroup *group = [notification object];
     [self setCurrentTopicGroup:group];
+
+    [[self topicGroupNames] removeAllObjects];
+    for (TopicGroup *topicGroup in [[BNoteReader instance] allTopicGroups]) {
+        if (topicGroup != group) {
+            [[self topicGroupNames] addObject:[topicGroup name]];
+        }
+    }
     
     if ([[group name] isEqualToString:@"All"]) {
         [[self nameText] setHidden:YES];
@@ -105,6 +162,44 @@
         [[self textLabel] setHidden:NO];
         [[self nameText] setText:[group name]];
     }
+}
+
+- (void)updateTopicGroupName:(NSNotification *)notification
+{
+    UITextField *text = [notification object];
+    for (NSString *name in [self topicGroupNames]) {
+        if ([name isEqualToString:[text text]]) {
+            [[self doneButton] setHidden:YES];
+            [[self textLabel] setHidden:YES];
+            [[self errorLabel] setHidden:NO];
+            [self setCanDismiss:NO];
+            return;
+        }
+    }
+    
+    [self setCanDismiss:YES];
+    [[self doneButton] setHidden:NO];
+    [[self textLabel] setHidden:NO];
+    [[self errorLabel] setHidden:YES];
+}
+
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController
+{
+    return [self canDismiss];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [[BNoteSessionData instance] setPopup:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([self canDismiss]) {
+        [textField resignFirstResponder];
+    }
+    
+    return NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

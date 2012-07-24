@@ -22,6 +22,7 @@ extern int const Color8;
 extern int const Color9;
 
 extern int const AppColor1;
+extern int const AppColor2;
 extern int const AppHighlightColor1;
 
 extern int const ColorWhite;
@@ -71,6 +72,7 @@ typedef enum {
 @interface BNoteConstants : NSObject
 
 + (UIColor *)appColor1;
++ (UIColor *)appColor2;
 + (UIColor *)appHighlightColor1;
 + (UIFont *)font:(BNoteFont)font andSize:(float)size;
 

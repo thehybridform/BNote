@@ -14,9 +14,11 @@
 
 @interface EntryContentViewController : UIViewController <EntryContent>
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
-@property (assign, nonatomic) UIViewController *parentController;
-@property (assign, nonatomic) UITextView *selectedTextView;
-@property (assign, nonatomic) Entry *entry;
+@property (strong, nonatomic) UIViewController *parentController;
+@property (strong, nonatomic) UITextView *selectedTextView;
+@property (strong, nonatomic) Entry *entry;
+@property (strong, nonatomic) IBOutlet UIImageView *iconView;
+@property (strong, nonatomic) IBOutlet UITextView *mainTextView;
 
 - (id)initWithEntry:(Entry *)entry;
 - (void)handleImageIcon:(BOOL)active;

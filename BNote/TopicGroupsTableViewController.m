@@ -15,7 +15,7 @@
 
 @interface TopicGroupsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
-@property (assign, nonatomic) TopicGroup *selectedTopicGroup;
+@property (strong, nonatomic) TopicGroup *selectedTopicGroup;
 @property (assign, nonatomic) int selectedIndex;
 
 @end
@@ -50,6 +50,8 @@
     [super viewDidUnload];
 
     [self setData:nil];
+    [self setSelectedTopicGroup:nil];
+    [self setNameText:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -98,7 +100,8 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [indexPath row] > 0;
+    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
+    return ![[topicGroup name] isEqualToString:@"All"];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

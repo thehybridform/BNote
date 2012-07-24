@@ -115,7 +115,6 @@ static const CGFloat large = 20;
     [self setupButton:[self color13Button] withColor:[UIColor brownColor]];
     
     [LayerFormater setBorderWidth:2 forView:[self drawView]];
-//    [LayerFormater addShadowToView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
@@ -170,16 +169,15 @@ static const CGFloat large = 20;
 
 - (IBAction)done:(id)sender
 {        
-        CGRect rect = [[self drawView] bounds];
+    CGRect rect = [[self drawView] bounds];
         
-        UIGraphicsBeginImageContext(rect.size);
-        [[[self imageView] layer] renderInContext:UIGraphicsGetCurrentContext()];
-        [[[self drawView] layer] renderInContext:UIGraphicsGetCurrentContext()];
+    UIGraphicsBeginImageContext(rect.size);
+    [[[self imageView] layer] renderInContext:UIGraphicsGetCurrentContext()];
+    [[[self drawView] layer] renderInContext:UIGraphicsGetCurrentContext()];
         
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         
-        [BNoteEntryUtils updateThumbnailPhotos:image forKeyPoint:[self keyPoint]];
-
+    [BNoteEntryUtils updateThumbnailPhotos:image forKeyPoint:[self keyPoint]];
     
     [self dismissModalViewControllerAnimated:YES];
 }

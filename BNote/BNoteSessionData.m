@@ -18,7 +18,6 @@
 @end
 
 @implementation BNoteSessionData
-@synthesize phase = _phase;
 @synthesize imageIconViews = _imageIconViews;
 @synthesize keyboardVisible = _keyboardVisible;
 @synthesize popup = _popup;
@@ -26,11 +25,6 @@
 @synthesize actionSheetDelegate = _actionSheetDelegate;
 @synthesize entrySummaryHeaderImageViews = _entrySummaryHeaderImageViews;
 @synthesize selectedTopic = _selectedTopic;
-
-- (BOOL)canEditEntry
-{
-    return [self phase] == Editing;
-}
 
 - (id)initSingleton
 {

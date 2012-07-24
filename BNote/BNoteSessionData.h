@@ -13,19 +13,11 @@
 @interface BNoteSessionData : NSObject <UIActionSheetDelegate>
 @property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (assign, nonatomic) id<UIActionSheetDelegate> actionSheetDelegate;
-@property (assign, nonatomic) Topic *selectedTopic;
-
-typedef enum {
-    Reviewing,
-    Editing
-} BNotePhase;
-
-@property (assign, nonatomic) BNotePhase phase;
+@property (strong, nonatomic) id<UIActionSheetDelegate> actionSheetDelegate;
+@property (strong, nonatomic) Topic *selectedTopic;
 
 + (BNoteSessionData *)instance;
 
-- (BOOL)canEditEntry;
 - (BOOL)keyboardVisible;
 - (NSMutableDictionary *)imageIconViews;
 - (NSMutableDictionary *)entrySummaryHeaderImageViews;

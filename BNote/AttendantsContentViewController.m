@@ -17,7 +17,7 @@
 @interface AttendantsContentViewController()
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *peoplePicker; 
-@property (assign, nonatomic) Attendant *selectedAttendant;
+@property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) IBOutlet UIView *addAttendantView;
 
 @end
@@ -27,10 +27,32 @@
 @synthesize peoplePicker = _peoplePicker;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize addAttendantView = _addAttendantView;
+@synthesize iconView = _iconView;
 
 static NSString *addressBook = @"Address Book";
 static NSString *createNew = @"Create";
 
+- (id)initWithEntry:(Entry *)entry
+{
+    self = [super initWithEntry:entry];
+    
+    if (self) {
+        [[self addAttendantView] setBackgroundColor:[BNoteConstants appColor1]];
+        
+        AttendantsViewController *controller = [self attendantsViewController];
+        [controller setAttendants:[self attendants]];
+        
+        [controller update];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
+        [[self addAttendantView] addGestureRecognizer:tap];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantsContentViewController:)
+                                                     name:UIKeyboardDidHideNotification object:nil];
+    }
+    
+    return self;
+}
 - (NSString *)localNibName
 {
     return @"AttendantsContentView";
@@ -44,17 +66,6 @@ static NSString *createNew = @"Create";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    AttendantsViewController *controller = [self attendantsViewController];
-    [controller setAttendants:[self attendants]];
-        
-    [controller update];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
-    [[self addAttendantView] addGestureRecognizer:tap];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantsContentViewController:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -64,6 +75,7 @@ static NSString *createNew = @"Create";
     [self setAttendantsViewController:nil];
     [self setPeoplePicker:nil];
     [self setAddAttendantView:nil];
+    [self setSelectedAttendant:nil];
 }
 
 - (float)height
@@ -122,7 +134,7 @@ static NSString *createNew = @"Create";
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
-    if ([self selectedAttendant]) {
+    if ([self selectedAttendant] != nil) {
         [[BNoteWriter instance] removeAttendant:[self selectedAttendant]];
     }
     

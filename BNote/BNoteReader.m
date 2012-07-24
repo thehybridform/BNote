@@ -111,8 +111,8 @@
     NSArray *result = [[self context] executeFetchRequest:fetchRequest error:&error];
     
     NSArray *sortedArray = [result sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSString *first = [(TopicGroup *)a name];
-        NSString *second = [(TopicGroup *)a name];
+        NSString *first = [[(TopicGroup *)a name] lowercaseString];
+        NSString *second = [[(TopicGroup *)b name] lowercaseString];
         return [first compare:second];
     }];
     

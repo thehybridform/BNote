@@ -12,6 +12,17 @@
 
 static const float x = 97.0;
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [self setBackgroundColor:[BNoteConstants appColor1]];
+    }
+    
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();

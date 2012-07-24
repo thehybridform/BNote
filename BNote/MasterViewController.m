@@ -69,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self view] setBackgroundColor:[BNoteConstants appColor1]];
+    [[self view] setBackgroundColor:[BNoteConstants appColor2]];
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self view]];
 }
 
@@ -82,6 +82,11 @@
     }
 
     TopicGroup *group = [[BNoteReader instance] getTopicGroup:groupName];
+    
+    if (!group) {
+        group = [BNoteFactory createTopicGroup:groupName];
+    }
+    
     [self setTopicGroup:group];
     [self setData:[[group topics] mutableCopy]];
     
@@ -100,6 +105,8 @@
     
     [self setEditTopicsButton:nil];
     [self setSearchTopic:nil];
+    [self setTopicGroup:nil];
+    [self setData:nil];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -227,7 +234,9 @@
     [self updateReceived:notification];
     
     Topic *topic = [notification object];
-    [self selectCell:[[self data] indexOfObject:topic]];
+    int index = [[self data] indexOfObject:topic];
+    
+    [self selectCell:index];
 }
 
 - (void)selectTopicGroup:(NSNotification *)notification

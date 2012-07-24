@@ -57,7 +57,7 @@
     [[self textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     [[self questionLabel] setFont:[BNoteConstants font:RobotoLight andSize:13]];
     [[self questionLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-    [[self answerLabel] setFont:[BNoteConstants font:RobotoLight andSize:13]];
+    [[self answerLabel] setFont:[BNoteConstants font:RobotoItalic andSize:13]];
     [[self answerLabel] setTextColor:[BNoteConstants appHighlightColor1]];
 
     [[self detailLable] setFont:[BNoteConstants font:RobotoLight andSize:10]];

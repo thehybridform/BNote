@@ -21,22 +21,35 @@
 
 @interface EntriesViewController ()
 @property (strong, nonatomic) NSMutableArray *filteredControllers;
-@property (assign, nonatomic) UITextView *textView;
+@property (strong, nonatomic) UITextView *textView;
 
 @end
 
 @implementation EntriesViewController
 @synthesize note = _note;
-@synthesize entryCell = _entryCell;
 @synthesize filter = _filter;
 @synthesize filteredControllers = _filteredControllers;
 @synthesize parentController = _parentController;
 @synthesize textView = _textView;
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
+                                                     name:UITextViewTextDidBeginEditingNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                     name:UITextViewTextDidEndEditingNotification object:nil];        
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self view] setAutoresizesSubviews:YES];
     
     [self setFilteredControllers:[[NSMutableArray alloc] init]];
     [self setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
@@ -47,11 +60,6 @@
     [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObjects:menuItem, nil]];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
-                                                 name:UITextViewTextDidBeginEditingNotification object:nil];
-    [[NSNotificationCenter defaultCenter]
-        addObserver:self selector:@selector(stoppedEditingText:)
-        name:UITextViewTextDidEndEditingNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -59,10 +67,10 @@
     [super viewDidUnload];
 
     [self setNote:nil];
-    [self setEntryCell:nil];
     [self setFilter:nil];
     [self setFilteredControllers:nil];
     [self setParentController:nil];
+    [self setTextView:nil];
 }
 
 - (void)setFilter:(id<BNoteFilter>)filter
@@ -175,7 +183,6 @@
     
     NSArray *attendants = [BNoteEntryUtils attendants:[self note]];
     if (attendants && [attendants count] > 0) {
-        // there will only be one
         id<EntryContent> controller = [BNoteFactory createEntryContent:[attendants objectAtIndex:0]];
         [[self filteredControllers] insertObject:controller atIndex:0];
     }
@@ -187,7 +194,7 @@
 {
     int index = [[self filteredControllers] count] - 1;
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
-
+    
     [[controller mainTextView] becomeFirstResponder];
 }
 
@@ -202,6 +209,7 @@
     for (id<EntryContent> controller in [self filteredControllers]) {
         if ([controller entry] == entry) {
             [[controller mainTextView] becomeFirstResponder];
+            return;
         }
     }
 }
@@ -229,11 +237,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    [[self tableView] reloadData];
 }
 
 @end

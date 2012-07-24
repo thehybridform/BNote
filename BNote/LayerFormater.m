@@ -22,7 +22,7 @@
 
 + (void)roundCornersForLayer:(CALayer *)layer
 {
-    [LayerFormater roundCornersForLayer:layer to:5.0];
+    [LayerFormater roundCornersForLayer:layer to:7.0];
 }
 
 + (void)roundCornersForLayer:(CALayer *)layer to:(float)radius

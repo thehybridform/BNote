@@ -11,6 +11,7 @@
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
 #import "AttendeeDetailViewController.h"
+#import "LayerFormater.h"
 
 @interface AttendantView()
 @property (strong, nonatomic) UIImageView *imageView;
@@ -96,6 +97,7 @@ static NSString *removeAttendant = @"Remove";
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [imageView setFrame:CGRectMake(32, 3, 35, 35)];
         [self addSubview:imageView];
+        [LayerFormater roundCornersForView:imageView];
     }
 }
 

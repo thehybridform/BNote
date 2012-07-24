@@ -24,6 +24,7 @@
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
+		182F1DE815BE75DF0038AC13 /* EditNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1DE715BE75DF0038AC13 /* EditNoteView.m */; };
 		1834D33C15634A650065788F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33B15634A650065788F /* UIKit.framework */; };
 		1834D33E15634A650065788F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33D15634A650065788F /* Foundation.framework */; };
 		1834D34015634A650065788F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33F15634A650065788F /* CoreGraphics.framework */; };
@@ -35,7 +36,6 @@
 		1834D37E156351640065788F /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
 		1834D3A7156375560065788F /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
-		1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */; };
 		18497687159053DA00F49F5A /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
 		18497688159053DA00F49F5A /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
 		184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
@@ -227,6 +227,8 @@
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
 		181968461569FB0700DA31A3 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		181968471569FB0700DA31A3 /* NoteEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteEditorViewController.xib; sourceTree = "<group>"; };
+		182F1DE615BE75DF0038AC13 /* EditNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteView.h; sourceTree = "<group>"; };
+		182F1DE715BE75DF0038AC13 /* EditNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteView.m; sourceTree = "<group>"; };
 		1834D33715634A650065788F /* BeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1834D33B15634A650065788F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1834D33D15634A650065788F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -245,8 +247,6 @@
 		1834D382156364840065788F /* TopicEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditorViewController.xib; path = ../TopicEditorViewController.xib; sourceTree = "<group>"; };
 		1834D3A5156375560065788F /* BNoteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFactory.h; sourceTree = "<group>"; };
 		1834D3A6156375560065788F /* BNoteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFactory.m; sourceTree = "<group>"; };
-		1837667D158D24DA001EE5BF /* EditNoteViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewPresenter.h; sourceTree = "<group>"; };
-		1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewPresenter.m; sourceTree = "<group>"; };
 		18497684159053DA00F49F5A /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		18497685159053DA00F49F5A /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		18497686159053DA00F49F5A /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
@@ -765,8 +765,6 @@
 				18E9FF6F1572A44A00F22272 /* Entries Scroll View */,
 				18E9FF6E1572A43100F22272 /* Notes Scroll View */,
 				18E9FF29156C6FDA00F22272 /* Edit Notes */,
-				1837667D158D24DA001EE5BF /* EditNoteViewPresenter.h */,
-				1837667E158D24DA001EE5BF /* EditNoteViewPresenter.m */,
 			);
 			name = "Detail View";
 			sourceTree = "<group>";
@@ -1126,6 +1124,8 @@
 				181968471569FB0700DA31A3 /* NoteEditorViewController.xib */,
 				18810E5D15770159002B59DA /* EntriesViewController.h */,
 				18810E5E15770159002B59DA /* EntriesViewController.m */,
+				182F1DE615BE75DF0038AC13 /* EditNoteView.h */,
+				182F1DE715BE75DF0038AC13 /* EditNoteView.m */,
 			);
 			name = "Edit Notes";
 			sourceTree = "<group>";
@@ -1339,7 +1339,6 @@
 				18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */,
 				18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */,
 				18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */,
-				1837667F158D24DA001EE5BF /* EditNoteViewPresenter.m in Sources */,
 				18C03E52158DA7E90035AFDA /* AssociatedTopicsTableViewController.m in Sources */,
 				184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */,
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
@@ -1393,6 +1392,7 @@
 				18A30FC715BB3C6600A2FD14 /* TopicGroupManagementViewController.m in Sources */,
 				18A30FCB15BB43AE00A2FD14 /* TopicGroupsTableViewController.m in Sources */,
 				18A30FCE15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m in Sources */,
+				182F1DE815BE75DF0038AC13 /* EditNoteView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

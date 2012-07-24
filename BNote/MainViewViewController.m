@@ -19,6 +19,7 @@
 #import "EmailViewController.h"
 #import "TopicEditorViewController.h"
 #import "BNoteSessionData.h"
+#import "BNoteReader.h"
 #import "TopicGroupsViewController.h"
 #import "TopicGroupManagementViewController.h"
 
@@ -36,8 +37,8 @@
 @property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *entriesTable;
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
-@property (assign, nonatomic) Topic *searchTopic;
-@property (assign, nonatomic) TopicGroup *topicGroup;
+@property (strong, nonatomic) Topic *searchTopic;
+@property (strong, nonatomic) TopicGroup *topicGroup;
 
 @end
 
@@ -107,6 +108,11 @@ static NSString *email = @"E-mail";
     } else {
         [[self topicsButton] setTitle:topicGroup forState:UIControlStateNormal];
     }
+    
+    [self setTopicGroup:[[BNoteReader instance] getTopicGroup:topicGroup]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
+   
+    [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
 }
 
 - (void)viewDidUnload
@@ -126,6 +132,8 @@ static NSString *email = @"E-mail";
     [self setAddTopicButton:nil];
     [self setFooter:nil];
     [self setTopicsButton:nil];
+    [self setSearchTopic:nil];
+    [self setTopicGroup:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -164,16 +172,17 @@ static NSString *email = @"E-mail";
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
                                                  name:TopicUpdated object:topic];
-    
 }
 
 - (void)selectedNote:(NSNotification *)notification
 {
     Note *note;
+    Entry *entry;
     
     NSObject *object = [notification object];
     if ([object isKindOfClass:[Entry class]]) {
-        note = [((Entry *)object) note];
+        entry = (Entry *)object;
+        note = [entry note];
     } else {
         note = (Note *)object;
     }
@@ -183,6 +192,10 @@ static NSString *email = @"E-mail";
     [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
     [self presentModalViewController:noteController animated:YES];
+    
+    if (entry) {
+        [noteController selectEntry:entry];
+    }
 }
 
 - (void)updateNoteCount:(NSNotification *)notification
@@ -196,11 +209,18 @@ static NSString *email = @"E-mail";
     TopicGroup *group = [notification object];
     [self setTopicGroup:group];
     
+    UIButton *button = [self topicsButton];
+    
     if ([[group name] isEqualToString:@"All"]) {
-        [[self topicsButton] setTitle:@"All Topics" forState:UIControlStateNormal];
+        [button setTitle:@"All Topics" forState:UIControlStateNormal];
     } else {
-        [[self topicsButton] setTitle:[group name] forState:UIControlStateNormal];
+        [button setTitle:[group name] forState:UIControlStateNormal];
     }
+    
+    int width = [[[button titleLabel] text] length] * 10;
+    width = MIN(500, width);
+    CGRect frame = [button frame];
+    [button setFrame:CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height)];
 }
 
 - (void)setNoteCountForTopic:(Topic *)topic
@@ -213,7 +233,8 @@ static NSString *email = @"E-mail";
 
 - (IBAction)addTopic:(id)sender
 {
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:[self topicGroup]];
+    TopicGroup *topicGroup = [self topicGroup];
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:topicGroup];
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [[BNoteSessionData instance] setPopup:popup];
@@ -310,7 +331,7 @@ static NSString *email = @"E-mail";
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [[BNoteSessionData instance] setPopup:popup];
-    [popup setDelegate:self];
+    [popup setDelegate:controller];
     [controller setPopup:popup];
     
     [popup setPopoverContentSize:[[controller view] bounds].size];

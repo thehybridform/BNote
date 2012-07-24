@@ -10,7 +10,7 @@
 #import "TopicGroup.h"
 
 @interface TopicGroupsTableViewController : UITableViewController
-@property (assign, nonatomic) UITextField *nameText;
+@property (strong, nonatomic) UITextField *nameText;
 
 - (IBAction)edit:(id)sender;
 

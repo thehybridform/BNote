@@ -12,10 +12,9 @@
 
 @interface EntriesViewController : UITableViewController
 
-@property (assign, nonatomic) IBOutlet UITableViewCell *entryCell;
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) id<BNoteFilter> filter;
-@property (assign, nonatomic) UIViewController *parentController;
+@property (strong, nonatomic) UIViewController *parentController;
 
 - (void)reload;
 - (void)selectLastCell;

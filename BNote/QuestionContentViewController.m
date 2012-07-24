@@ -24,6 +24,30 @@
 @synthesize answerTextView = _answerTextView;
 @synthesize answerQuickWordsViewController = _answerQuickWordsViewController;
 
+- (id)initWithEntry:(Entry *)entry
+{
+    self = [super initWithEntry:entry];
+    
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
+                                                    name:ReviewingNote object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
+                                                    name:EditingNote object:nil];
+        
+        UITextView *view = [self answerTextView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnswerText:)
+                                                     name:UITextViewTextDidChangeNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingAnswerText:)
+                                                     name:UITextViewTextDidBeginEditingNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingAnswerText:)
+                                                     name:UITextViewTextDidEndEditingNotification object:view];
+    }
+    
+    return self;
+}
+
 - (Question *)question
 {
     return (Question *) [self entry];
@@ -38,27 +62,17 @@
 {
     [super viewDidLoad];
     
-    [[self answerLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
-    
+    [[self answerLabel] setFont:[BNoteConstants font:RobotoRegular andSize:14]];
+    [[self answerLabel] setTextColor:UIColorFromRGB(0x444444)];
+
     UITextView *view = [self answerTextView];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+    [view setTextColor:UIColorFromRGB(0x444444)];
     
     QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
     [self setAnswerQuickWordsViewController:quick];
     [view setInputAccessoryView:[quick view]];
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(updateAnswerText:)
-     name:UITextViewTextDidChangeNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(startedEditingAnswerText:)
-     name:UITextViewTextDidBeginEditingNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(stoppedEditingAnswerText:)
-     name:UITextViewTextDidEndEditingNotification object:view];
-
     [[self answerTextView] setText:[[self question] answer]];
     
     [LayerFormater roundCornersForView:[self answerTextView]];
@@ -80,8 +94,9 @@
     NSString *text = [[self question] answer];
     UITextView *view = [[UITextView alloc] init];
     [view setText:text];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
     [view setFrame:CGRectMake(0, 0, [self width] - 110, 200)];
-    float answerHeight = [view contentSize].height + 10;
+    float answerHeight = [view contentSize].height + 20;
 
     return MAX(MAX(45, questionHeight), answerHeight);
 }

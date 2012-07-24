@@ -22,6 +22,7 @@
 #import "EmailViewController.h"
 #import "AssociatedTopicsTableViewController.h"
 #import "BNoteButton.h"
+#import "EditNoteView.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -34,6 +35,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *day;
 @property (strong, nonatomic) IBOutlet UILabel *month;
 @property (strong, nonatomic) IBOutlet UILabel *time;
+@property (strong, nonatomic) IBOutlet UILabel *entryLabel;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
 @property (strong, nonatomic) IBOutlet BNoteButton *attendantsButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *keyPointButton;
@@ -43,12 +46,13 @@
 @property (strong, nonatomic) IBOutlet BNoteButton *reviewButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *trashButton;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
-@property (strong, nonatomic) IBOutlet UIButton *filterButton;
-@property (strong, nonatomic) IBOutlet UIView *infoView;
+@property (strong, nonatomic) IBOutlet EditNoteView *infoView;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AssociatedTopicsTableViewController *associatedTopicsTableViewController;
+
+@property (assign, nonatomic) BOOL isEditing;
 
 @end
 
@@ -76,10 +80,13 @@
 @synthesize infoView = _infoView;
 @synthesize month = _month;
 @synthesize shareButton = _shareButton;
-@synthesize filterButton = _filterButton;
 @synthesize footerView = _footerView;
+@synthesize entryLabel = _entryLabel;
+@synthesize isEditing = _isEditing;
+@synthesize titleLabel = _titleLabel;
 
-static NSString *email = @"E-mail";
+static NSString *REVIEW = @"REVIEW";
+static NSString *DONE = @"DONE";
 
 - (void)viewDidUnload
 {
@@ -107,8 +114,8 @@ static NSString *email = @"E-mail";
     [self setInfoView:nil];
     [self setMonth:nil];
     [self setShareButton:nil];
-    [self setFilterButton:nil];
-    [self setFilterButton:nil];
+    [self setEntryLabel:nil];
+    [self setTitleLabel:nil];
 }
 
 
@@ -117,7 +124,7 @@ static NSString *email = @"E-mail";
     self = [super initWithNibName:@"NoteEditorViewController" bundle:nil];
     if (self) {
         [self setNote:note];
-        [[BNoteSessionData instance] setPhase:Editing];
+        [self setIsEditing:YES];
     }
     return self;
 }
@@ -127,15 +134,14 @@ static NSString *email = @"E-mail";
     [super viewDidLoad];
     
     Note *note = [self note];
-    if ([note subject] && [[note subject] length] > 0) {
+    BOOL empty = [BNoteStringUtils nilOrEmpty:[note subject]];
+    if (empty) {
+        [[self subjectTextView] setText:@"Enter Subject"];
+    } else {
         [[self subjectTextView] setText:[note subject]];
     }
-   
-    [[self infoView] setBackgroundColor:UIColorFromRGB([note color])];
-    [[self filterButton] setHidden:YES];
-                                    
+                                       
     [LayerFormater roundCornersForView:[self dateView]];
-    [LayerFormater roundCornersForView:[self subjectTextView]];
     [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     
@@ -161,35 +167,42 @@ static NSString *email = @"E-mail";
     
     [self normalIcons];
     
-//    [LayerFormater addShadowToView:[self menuView]];
-//    [LayerFormater addShadowToView:[self infoView]];
-//    [LayerFormater addShadowToView:[self footerView]];
-
     [LayerFormater setBorderWidth:1 forView:[self footerView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self infoView]];
+    
+    [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:18]];
+    [[self titleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+    [[self titleLabel] setText:[[note topic] title]];
     
     [[[self keyPointButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[[self actionItemButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[[self attendantsButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[[self decisionButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[[self questionButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
-    [[[self filterButton] titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:14]];
+    [[self entryLabel] setFont:[BNoteConstants font:RobotoBold andSize:14]];
+    [[self entryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+    
+    [[self year] setFont:[BNoteConstants font:RobotoRegular andSize:17]];
+    [[self month] setFont:[BNoteConstants font:RobotoBold andSize:11]];
+    [[self day] setFont:[BNoteConstants font:RobotoRegular andSize:34]];
+    [[self time] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
+    [[self subjectTextView] setFont:[BNoteConstants font:RobotoRegular andSize:20]];
+    [[self subjectTextView] setTextColor:UIColorFromRGB(0x444444)];
 
     [self setupDate];
     
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
+
+    [LayerFormater roundCornersForView:[self infoView]];
+    [LayerFormater setBorderWidth:2 forView:[self infoView]];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[self infoView]];
+    [[self infoView] setNote:note];
+    [[self infoView] setNeedsDisplay];
 }
 
 - (void)setupDate
 {
-    NSString *title = [[self note] subject];
-    if ([BNoteStringUtils nilOrEmpty:title]) {
-        [[self subjectTextView] setText:nil];
-    } else {
-        [[self subjectTextView] setText:title];
-    }
-    
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
@@ -235,18 +248,13 @@ static NSString *email = @"E-mail";
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[[self note] topic]];
 }
 
-- (IBAction)resetFilter:(id)sender
-{
-    [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
-}
-
 - (IBAction)editMode:(id)sender
 {
-    if ([[BNoteSessionData instance] phase] == Reviewing) {
-        [self editing];
-    } else {
+    if ([self isEditing]) {
         [self setupTableViewAddingEntries];
         [self reviewing];
+    } else {
+        [self editing];
     }
 }
 
@@ -255,14 +263,11 @@ static NSString *email = @"E-mail";
     [[NSNotificationCenter defaultCenter] postNotificationName:EditingNote object:nil];
 
     [[self trashButton] setHidden:NO];
-    [[self filterButton] setHidden:YES];
     [self normalIcons];
-    [[self reviewButton] setTitle:@"Review" forState:UIControlStateNormal];
+    [[self reviewButton] setTitle:REVIEW forState:UIControlStateNormal];
     [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
-
-    [[BNoteSessionData instance] setPhase:Editing];
-    
+    [self setIsEditing:YES];
 }
 
 - (void)reviewing
@@ -271,56 +276,54 @@ static NSString *email = @"E-mail";
 
     [[self trashButton] setHidden:YES];
     [self funnelIcons];
-    [[self reviewButton] setTitle:@"Done" forState:UIControlStateNormal];
-    [[self filterButton] setHidden:NO];
+    [[self reviewButton] setTitle:DONE forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:YES];
-
-    [[BNoteSessionData instance] setPhase:Reviewing];
+    [self setIsEditing:NO];
 }
 
 - (IBAction)addAttendies:(id)sender
 {
-    if ([[BNoteSessionData instance] phase] == Editing) {
+    if ([self isEditing]) {
         [[self attendantsButton] setHidden:YES];
         [self addEntry:[BNoteFactory createAttendants:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:AttendantType]];
+        [self setFilter:AttendantType];
     }
 }
 
 - (IBAction)addKeyPoint:(id)sender
 {
-    if ([[BNoteSessionData instance] phase] == Editing) {
+    if ([self isEditing]) {
         [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:KeyPointType]];
+        [self setFilter:KeyPointType];
     }
 }
 
 - (IBAction)addQuestion:(id)sender
 {
-    if ([[BNoteSessionData instance] phase] == Editing) {
+    if ([self isEditing]) {
         [self addEntry:[BNoteFactory createQuestion:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:QuestionType]];
+        [self setFilter:QuestionType];
     }
 }
 
 - (IBAction)addDecision:(id)sender
 {
-    if ([[BNoteSessionData instance] phase] == Editing) {
+    if ([self isEditing]) {
         [self addEntry:[BNoteFactory createDecision:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:DecistionType]];
+        [self setFilter:DecistionType];
     }
 }
 
 - (IBAction)addActionItem:(id)sender
 {
-    if ([[BNoteSessionData instance] phase] == Editing) {
+    if ([self isEditing]) {
         [self addEntry:[BNoteFactory createActionItem:[self note]]];
     } else {
-        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ActionItemType]];
+        [self setFilter:ActionItemType];
     }
 }
 
@@ -351,7 +354,6 @@ static NSString *email = @"E-mail";
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
     [[self reviewButton] setHidden:NO];
     [[self shareButton] setHidden:NO];
-    [[self trashButton] setTitle:@"Organize" forState:UIControlStateNormal];
 }
 
 - (void)setupTableViewForDeletingRows
@@ -364,7 +366,6 @@ static NSString *email = @"E-mail";
     [[self attendantsButton] setHidden:YES];
     [[self reviewButton] setHidden:YES];
     [[self shareButton] setHidden:YES];
-    [[self trashButton] setTitle:@"Done" forState:UIControlStateNormal];
 }
 
 - (void)showDatePicker:(id)sender
@@ -458,11 +459,17 @@ static NSString *email = @"E-mail";
 	return YES;
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+- (void)setFilter:(BNoteFilterType)filterType
 {
-    [[self entriesViewController] reload];
+    id<BNoteFilter> currentFilter = [[self entriesViewController] filter];
+    id<BNoteFilter> nextFilter = [[BNoteFilterFactory instance] create:filterType];
+    
+    if (currentFilter == nextFilter) {
+        nextFilter = [[BNoteFilterFactory instance] create:ItdentityType];
+    }
+    
+    [[self entriesViewController] setFilter:nextFilter];
 }
-
 
 @end
 

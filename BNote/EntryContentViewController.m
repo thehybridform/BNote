@@ -13,18 +13,16 @@
 #import "BNoteSessionData.h"
 
 @interface EntryContentViewController ()
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UITextView *mainTextView;
 
 @end
 
 @implementation EntryContentViewController
 @synthesize entry = _entry;
-@synthesize mainTextView = _mainTextView;
-@synthesize imageView = _imageView;
 @synthesize quickWordsViewController = _quickWordsViewController;
 @synthesize parentController = _parentController;
 @synthesize selectedTextView = _selectedTextView;
+@synthesize mainTextView = _mainTextView;
+@synthesize iconView = _iconView;
 
 - (id)initWithEntry:(Entry *)entry
 {
@@ -33,9 +31,40 @@
     if (self) {
         [self setEntry:entry];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:) name:ReviewingNote object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:) name:EditingNote object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
+                                                     name:ReviewingNote object:nil];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
+                                                     name:EditingNote object:nil];
+
+        UITableViewCell *cell = (UITableViewCell *) [self view];
+        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        [self handleImageIcon:NO];
+        
+        UITextView *view = [self mainTextView];
+        if (view) {
+            [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+            [view setTextColor:UIColorFromRGB(0x444444)];
+            [view setClipsToBounds:NO];
+            
+            QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+            [self setQuickWordsViewController:quick];
+            [view setInputAccessoryView:[quick view]];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                         name:UITextViewTextDidChangeNotification object:view];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
+                                                         name:UITextViewTextDidBeginEditingNotification object:view];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                         name:UITextViewTextDidEndEditingNotification object:view];
+            
+            [self setSelectedTextView:view];
+            [[self mainTextView] setText:[[self entry] text]];
+        }
     }
     
     return self;
@@ -51,8 +80,11 @@
     [super viewDidUnload];
     
     [self setQuickWordsViewController:nil];
+    [self setEntry:nil];
+    [self setParentController:nil];
+    [self setSelectedTextView:nil];
     [self setMainTextView:nil];
-    [self setImageView:nil];
+    [self setIconView:nil];
 }
 
 - (float)height
@@ -80,47 +112,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UITableViewCell *cell = (UITableViewCell *) [self view];
-    [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-
-    [self handleImageIcon:NO];
-
-    UITextView *view = [self mainTextView];
-    if (view) {
-        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-        [view setTextColor:UIColorFromRGB(0x444444)];
-        
-        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-        [self setQuickWordsViewController:quick];
-        [view setInputAccessoryView:[quick view]];
-        
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(updateText:)
-         name:UITextViewTextDidChangeNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(startedEditingText:)
-         name:UITextViewTextDidBeginEditingNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(stoppedEditingText:)
-         name:UITextViewTextDidEndEditingNotification object:view];
-        
-        [self setSelectedTextView:view];
-        [[self mainTextView] setText:[[self entry] text]];
-    }
-
-    if ([[BNoteSessionData instance] phase] == Reviewing) {
-        [self reviewMode:nil];
-    }
 }
 
 - (void)handleImageIcon:(BOOL)active
 {
     UIImageView *imageView = [BNoteFactory createIcon:[self entry] active:active];
-    [[self imageView] setImage:[imageView image]];
+    [[self iconView] setImage:[imageView image]];
 }
 
 - (void)startedEditingText:(NSNotification *)notification
@@ -152,11 +149,6 @@
 - (UITableViewCell *)cell
 {
     return (UITableViewCell *) [self view];
-}
-
-- (UIImageView *)iconView
-{
-    return [self imageView];
 }
 
 - (void)reviewMode:(NSNotification *)notification

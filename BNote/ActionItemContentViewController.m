@@ -42,6 +42,31 @@ static NSString *clearResponsibility = @"Clear Responsibility";
 static NSString *dueDate = @"Due Date";
 static NSString *clearDueDate = @"Clear Due Date";
 
+- (id)initWithEntry:(Entry *)entry
+{
+    self = [super initWithEntry:entry];
+    
+    if (self) {
+        [[self dueDateLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
+        [[self responsibilityLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
+        [[self completionLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
+        
+        [[self responsibilityView] setBackgroundColor:[BNoteConstants appColor1]];
+        [[self completionView] setBackgroundColor:[BNoteConstants appColor1]];
+        [[self dueDateView] setBackgroundColor:[BNoteConstants appColor1]];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleResponsibility:)];
+        [[self responsibilityView] addGestureRecognizer:tap];
+        
+        tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDueDate:)];
+        [[self dueDateView] addGestureRecognizer:tap];
+        
+        tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCompleted:)];
+        [[self completionView] addGestureRecognizer:tap];
+    }
+    
+    return self;
+}
 - (NSString *)localNibName
 {
     return @"ActionItemContentView";
@@ -59,19 +84,6 @@ static NSString *clearDueDate = @"Clear Due Date";
     [self updateDueDate];
     [self updateResponsibility];
     [self updateComplete];
-    
-    [[self dueDateLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-    [[self responsibilityLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-    [[self completionLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleResponsibility:)];
-    [[self responsibilityView] addGestureRecognizer:tap];
-    
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDueDate:)];
-    [[self dueDateView] addGestureRecognizer:tap];
-
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCompleted:)];
-    [[self completionView] addGestureRecognizer:tap];
 }
 
 - (void)viewDidUnload

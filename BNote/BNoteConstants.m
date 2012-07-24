@@ -23,7 +23,8 @@ const int AnswerColor = 0x336633;
 
 
 const int ColorWhite = 0xffffff;
-const int AppColor1 = ColorWhite;
+const int AppColor1 = 0xfefefe;
+const int AppColor2 = 0xf4f4f4;
 const int AppHighlightColor1 = 0x365ab0;
 
 
@@ -84,6 +85,11 @@ const NSString *const EulaFlag = @"EulaFlag";
 + (UIColor *)appColor1
 {
     return UIColorFromRGB(AppColor1);
+}
+
++ (UIColor *)appColor2
+{
+    return UIColorFromRGB(AppColor2);
 }
 
 + (UIFont *)font:(BNoteFont)font andSize:(float)size

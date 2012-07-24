@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) IBOutlet UIButton *addButton;
-@property (assign, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -51,6 +51,8 @@
     [self setFooter:nil];
     [self setData:nil];
     [self setAddButton:nil];
+    [self setPopup:nil];
+    [self setTableView:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -104,7 +106,8 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [indexPath row] > 0;
+    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
+    return ![[topicGroup name] isEqualToString:@"All"];
 }
 
 - (IBAction)newGroup:(id)sender

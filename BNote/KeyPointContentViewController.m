@@ -14,6 +14,7 @@
 #import "BNoteFactory.h"
 #import "PhotoViewController.h"
 #import "PhotoEditorViewController.h"
+#import "LayerFormater.h"
 
 @interface KeyPointContentViewController()
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
@@ -21,8 +22,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
 @property (strong, nonatomic) IBOutlet UIButton *sketchButton;
 @property (assign, nonatomic) BOOL hasCamera;
-@property (strong, nonatomic) UITapGestureRecognizer *normalTap;
 @property (strong, nonatomic) IBOutlet UIView *touchView;
+@property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 
 @end
 
@@ -31,9 +32,11 @@
 @synthesize cameraButton = _cameraButton;
 @synthesize photoAlbumButton = _photoAlbumButton;
 @synthesize hasCamera = _hasCamera;
-@synthesize normalTap = _normalTap;
 @synthesize touchView = _touchView;
 @synthesize sketchButton = _sketchButton;
+@synthesize photoImageView = _photoImageView;
+
+static NSString *removeImage = @"Remove";
 
 - (id)initWithEntry:(Entry *)entry
 {
@@ -42,7 +45,22 @@
     if (self) {
         UITapGestureRecognizer *normalTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto:)];
-        [self setNormalTap:normalTap];
+        [[self photoImageView] addGestureRecognizer:normalTap];
+        
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showDelete:)];
+        [[self photoImageView] addGestureRecognizer:longPress];
+
+        BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+        [self setHasCamera:hasCamera];
+        if (!hasCamera) {
+            [[self cameraButton] setHidden:YES];
+        }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
+                                                     name:KeyPointPhotoUpdated object:nil];
+        [LayerFormater roundCornersForView:[self photoImageView]];
+        
+        [self handlePhotoImage];
     }
     
     return self;
@@ -61,13 +79,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-    [self setHasCamera:hasCamera];
-    if (!hasCamera) {
-        [[self cameraButton] setHidden:YES];
-    }
-
 }
 
 - (void)viewDidUnload
@@ -77,10 +88,9 @@
     [self setImagePickerController:nil];
     [self setCameraButton:nil];
     [self setPhotoAlbumButton:nil];
-    [self setNormalTap:nil];
     [self setTouchView:nil];
     [self setSketchButton:nil];
-    
+    [self setPhotoImageView:nil];
 }
 
 - (float)height
@@ -88,17 +98,22 @@
     return MAX(100, [super height]);
 }
 
-- (void)handleImageIcon:(BOOL)active
+- (void)updatePhotoImage:(NSNotification *)notification
 {
-    KeyPoint *keyPoint = [self keyPoint];
-    
-    if ([keyPoint photo]) {
-        UIImage *image = [UIImage imageWithData:[[keyPoint photo] thumbnail]];
-        [[self iconView] setImage:image];
-        [[self touchView] addGestureRecognizer:[self normalTap]];
+    if ([notification object] == [self keyPoint]) {
+        [self handlePhotoImage];
+    }
+}
+
+- (void)handlePhotoImage
+{
+    Photo *photo = [[self keyPoint] photo];
+    if (photo) {
+        [[self photoImageView] setHidden:NO];
+        UIImage *image = [UIImage imageWithData:[photo thumbnail]];
+        [[self photoImageView] setImage:image];
     } else {
-        [super handleImageIcon:active];
-        [[self touchView] removeGestureRecognizer:[self normalTap]];
+        [[self photoImageView] setHidden:YES];
     }
 }
 
@@ -175,7 +190,7 @@
 
 - (void)updateImageView:(NSNotification *)notification
 {
-    [self handleImageIcon:NO];
+    [self handlePhotoImage];
 }
 
 - (IBAction)presentPhotoEditor:(id)sender
@@ -214,6 +229,35 @@
     [[self sketchButton] setHidden:NO];
 
     [super editingNote:notification];
+}
+
+- (void)showDelete:(id)sender
+{
+    if (![[BNoteSessionData instance] actionSheet]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+        [actionSheet setDelegate:[BNoteSessionData instance]];
+        [[BNoteSessionData instance] setActionSheetDelegate:self];
+        [[BNoteSessionData instance] setActionSheet:actionSheet];
+    
+        int index = [actionSheet addButtonWithTitle:removeImage];
+        [actionSheet setDestructiveButtonIndex:index];
+    
+        [actionSheet setTitle:@"Image Options"];
+    
+        CGRect rect = [[self photoImageView] frame];
+        [actionSheet showFromRect:rect inView:[self view] animated:YES];   
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == removeImage) {
+            [[BNoteWriter instance] removePhoto:[[self keyPoint] photo]];
+            [self handlePhotoImage];
+        }
+    }
 }
 
 @end

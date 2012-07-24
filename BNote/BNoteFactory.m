@@ -74,8 +74,10 @@ NSString *const allEntryHeader = @"All";
 
     [group addTopicsObject:topic];
     
-    TopicGroup *all = [[BNoteReader instance] getTopicGroup:@"All"];
-    [all addTopicsObject:topic];
+    if (![[group name] isEqualToString:@"All"]) {
+        TopicGroup *all = [[BNoteReader instance] getTopicGroup:@"All"];
+        [all addTopicsObject:topic];
+    }
 
     [[BNoteWriter instance] update];
     

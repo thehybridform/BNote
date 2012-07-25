@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Attendant.h"
 
-@interface PersonViewController : UIViewController
+@interface PersonViewController : UIViewController <UIActionSheetDelegate>
 
 - (id)initWithAttendant:(Attendant *)attendant;
 

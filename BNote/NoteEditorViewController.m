@@ -23,6 +23,7 @@
 #import "AssociatedTopicsTableViewController.h"
 #import "BNoteButton.h"
 #import "EditNoteView.h"
+#import "InformationViewController.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -125,6 +126,14 @@ static NSString *DONE = @"DONE";
     if (self) {
         [self setNote:note];
         [self setIsEditing:YES];
+        UITapGestureRecognizer *normalTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
+        [[self dateView] addGestureRecognizer:normalTap];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
+                                                     name:TopicUpdated object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
+                                                     name:AttendantsEntryDeleted object:nil];
     }
     return self;
 }
@@ -151,15 +160,6 @@ static NSString *DONE = @"DONE";
     
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
-    
-    UITapGestureRecognizer *normalTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
-    [[self dateView] addGestureRecognizer:normalTap];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
-                                                 name:TopicUpdated object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
-                                                 name:AttendantsEntryDeleted object:nil];
     
     [[self associatedTopicsTableViewController] setNote:note];
     
@@ -469,6 +469,15 @@ static NSString *DONE = @"DONE";
     }
     
     [[self entriesViewController] setFilter:nextFilter];
+}
+
+- (IBAction)about:(id)sender
+{
+    InformationViewController *controller = [[InformationViewController alloc] initWithDefault];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    [self presentModalViewController:controller animated:YES];
 }
 
 @end

@@ -20,6 +20,8 @@
 #import "TopicEditorViewController.h"
 #import "BNoteSessionData.h"
 #import "BNoteReader.h"
+#import "BNoteFactory.h"
+#import "BNoteWriter.h"
 #import "TopicGroupsViewController.h"
 #import "TopicGroupManagementViewController.h"
 
@@ -37,7 +39,7 @@
 @property (strong, nonatomic) IBOutlet EntrySummariesTableViewController *entriesTable;
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
-@property (strong, nonatomic) Topic *searchTopic;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) TopicGroup *topicGroup;
 
 @end
@@ -58,6 +60,7 @@
 @synthesize topicsButton = _topicsButton;
 @synthesize searchTopic = _searchTopic;
 @synthesize topicGroup = _topicGroup;
+@synthesize searchBar = _searchBar;
 
 static NSString *email = @"E-mail";
 
@@ -73,11 +76,10 @@ static NSString *email = @"E-mail";
             addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
         
         [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(presentTopicManagement:) name:TopicGroupManage object:nil];
+            addObserver:self selector:@selector(presentTopicManagement:) name:TopicGroupManage object:nil];
         
         [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
-        
+            addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
     }
     
     return self;
@@ -101,7 +103,7 @@ static NSString *email = @"E-mail";
     [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:28.0]];
 
     [[self detailView] setHidden:YES];
-    
+/*    
     NSString *topicGroup = [BNoteSessionData stringForKey:TopicGroupSelected];
     if (!topicGroup || [topicGroup isEqualToString:@"All"]) {
         [[self topicsButton] setTitle:@"All Topics" forState:UIControlStateNormal];
@@ -111,7 +113,7 @@ static NSString *email = @"E-mail";
     
     [self setTopicGroup:[[BNoteReader instance] getTopicGroup:topicGroup]];
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
-   
+*/   
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
 }
 
@@ -132,8 +134,13 @@ static NSString *email = @"E-mail";
     [self setAddTopicButton:nil];
     [self setFooter:nil];
     [self setTopicsButton:nil];
-    [self setSearchTopic:nil];
     [self setTopicGroup:nil];
+    
+    if ([self searchTopic]) {
+        [[BNoteWriter instance] removeTopic:[self searchTopic]];
+    }
+    [self setSearchTopic:nil];
+
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -206,6 +213,13 @@ static NSString *email = @"E-mail";
 
 - (void)selectedTopicGroup:(NSNotification *)notification
 {
+    if ([self searchTopic]) {
+        [[BNoteWriter instance] removeTopic:[self searchTopic]];
+        [self setSearchTopic:nil];
+    }
+    
+    [[self searchBar] setText:nil];
+        
     TopicGroup *group = [notification object];
     [self setTopicGroup:group];
     
@@ -286,19 +300,43 @@ static NSString *email = @"E-mail";
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    //[self setSearchTopic:[[self topicsTable] searchTopic]];
+    Topic *topic = [self searchTopic];
+    if (!topic) {
+        topic = [BNoteFactory createTopic:@"Filtered Topic" forGroup:[self topicGroup]];
+        [topic setColor:FilterColor];
+        [self setSearchTopic:topic];
+    }
+
+    for (Topic *t in [[self topicGroup] topics]) {
+        for (Note *note in [t notes]) {
+            [topic addAssociatedNotesObject:note];
+        }
+        for (Note *note in [t associatedNotes]) {
+            [topic addAssociatedNotesObject:note];
+        }
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-//    [self setSearchText:[searchBar text]];
-//    [self reload];
+    NSString *text = [searchBar text];
+    BOOL empty = [BNoteStringUtils nilOrEmpty:text];
+    
+    if (empty) {
+        Topic *topic = [self searchTopic];
+        if (topic) {
+            [[BNoteWriter instance] removeTopic:topic];
+            [self setSearchTopic:nil];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:RefetchAllDatabaseData object:nil];
+    }
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-//    [self setSearchText:[searchBar text]];
-//    [self reload];
+    [[self entriesTable] setSearchText:searchText];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

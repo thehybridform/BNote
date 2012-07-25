@@ -30,33 +30,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
 
-//    MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
-//    UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
-    
-//    [[masterNavigationController navigationBar] setTranslucent:YES];
-//    [[masterNavigationController navigationBar] setTintColor:[UIColor blackColor]];
-
-//    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
-//    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-
-//    masterViewController.detailViewController = detailViewController;
-    
     [[BNoteWriter instance] setContext:[self managedObjectContext]];
     [[BNoteReader instance] setContext:[self managedObjectContext]];
         
-//    self.splitViewController = [[UISplitViewController alloc] init];
-//    self.splitViewController.delegate = detailViewController;
-//    self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
-//    self.window.rootViewController = self.splitViewController;
-    
     MainViewViewController *mainViewViewController = [[MainViewViewController alloc] initWithDefault];
     [self setMainViewViewController:mainViewViewController];
     
     [[self window] setRootViewController:mainViewViewController];
     [[self window] makeKeyAndVisible];
-    
     
     if (![BNoteSessionData booleanForKey:EulaFlag]) {
         EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
@@ -73,31 +55,34 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    
+    if ([[self mainViewViewController] searchTopic]) {
+        [[BNoteWriter instance] removeTopic:[[self mainViewViewController] searchTopic]];
+    }
     [[BNoteWriter instance] update];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    if ([[self mainViewViewController] searchTopic]) {
+        [[BNoteWriter instance] removeTopic:[[self mainViewViewController] searchTopic]];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    if ([[self mainViewViewController] searchTopic]) {
+        [[BNoteWriter instance] removeTopic:[[self mainViewViewController] searchTopic]];
+    }
     [[BNoteWriter instance] update];
 }
 
@@ -156,8 +141,8 @@
         
 
         NSString *iCloudEnabledAppID = @"com.kristinyoung.BeNote";
-        NSString *dataFileName = @"BeNote.sqlite";
-        NSString *iCloudDataDirectoryName = @"BeNote.nosync";
+        NSString *dataFileName = @"BeNote-data.sqlite";
+        NSString *iCloudDataDirectoryName = @"BeNote-data.nosync";
         NSString *iCloudLogsDirectoryName = @"BeNoteLogs";
         NSFileManager *fileManager = [NSFileManager defaultManager];        
         NSURL *localStore = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:dataFileName];
@@ -165,17 +150,8 @@
         
         if (iCloud != nil) {
             
-//            NSLog(@"iCloud is working");
-
             NSURL *iCloudLogsPath = [NSURL fileURLWithPath:[[iCloud path] stringByAppendingPathComponent:iCloudLogsDirectoryName]];
 
-//            NSLog(@"iCloudEnabledAppID = %@",iCloudEnabledAppID);
-//            NSLog(@"dataFileName = %@", dataFileName); 
-//            NSLog(@"iCloudDataDirectoryName = %@", iCloudDataDirectoryName);
-//            NSLog(@"iCloudLogsDirectoryName = %@", iCloudLogsDirectoryName);  
-//            NSLog(@"iCloud = %@", iCloud);
-//            NSLog(@"iCloudLogsPath = %@", iCloudLogsPath);
-            
             if([fileManager fileExistsAtPath:[[iCloud path] stringByAppendingPathComponent:iCloudDataDirectoryName]] == NO) {
                 NSError *fileSystemError;
                 [fileManager createDirectoryAtPath:[[iCloud path] stringByAppendingPathComponent:iCloudDataDirectoryName] 
@@ -192,8 +168,6 @@
                                     stringByAppendingPathComponent:dataFileName];
             
             
-//            NSLog(@"iCloudData = %@", iCloudData);
-
             NSMutableDictionary *options = [NSMutableDictionary dictionary];
             [options setObject:[NSNumber numberWithBool:YES] forKey:NSMigratePersistentStoresAutomaticallyOption];
             [options setObject:[NSNumber numberWithBool:YES] forKey:NSInferMappingModelAutomaticallyOption];
@@ -217,7 +191,6 @@
             [psc unlock];
  
         } else {
-//            NSLog(@"iCloud is NOT working - using a local store");
             NSMutableDictionary *options = [NSMutableDictionary dictionary];
             [options setObject:[NSNumber numberWithBool:YES] forKey:NSMigratePersistentStoresAutomaticallyOption];
             [options setObject:[NSNumber numberWithBool:YES] forKey:NSInferMappingModelAutomaticallyOption];
@@ -239,9 +212,6 @@
             [psc unlock]; 
         }
         
-        
-//        NSLog(@"connected to storage");
-
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter]
              postNotificationName:RefetchAllDatabaseData
@@ -254,9 +224,7 @@
 }
 
 - (void)mergeChangesFrom_iCloud:(NSNotification *)notification {
-    
-//	NSLog(@"Merging in changes from iCloud...");
-    
+        
     NSManagedObjectContext* moc = [self managedObjectContext];
     
     [moc performBlock:^{

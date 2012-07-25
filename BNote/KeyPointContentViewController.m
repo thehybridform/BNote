@@ -212,9 +212,9 @@ static NSString *removeImage = @"Remove";
 
 - (void)reviewMode:(NSNotification *)notification
 {
-    [[self cameraButton] setHidden:YES];
-    [[self photoAlbumButton] setHidden:YES];
-    [[self sketchButton] setHidden:YES];
+//    [[self cameraButton] setHidden:YES];
+//    [[self photoAlbumButton] setHidden:YES];
+//    [[self sketchButton] setHidden:YES];
 
     [super reviewMode:notification];
 }
@@ -225,8 +225,8 @@ static NSString *removeImage = @"Remove";
         [[self cameraButton] setHidden:NO];
     }
     
-    [[self photoAlbumButton] setHidden:NO];
-    [[self sketchButton] setHidden:NO];
+//    [[self photoAlbumButton] setHidden:NO];
+//    [[self sketchButton] setHidden:NO];
 
     [super editingNote:notification];
 }

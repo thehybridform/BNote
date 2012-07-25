@@ -26,7 +26,6 @@
 @property (strong, nonatomic) NSArray *entries;
 @property (assign, nonatomic) BOOL groupEntries;
 @property (assign, nonatomic) SortType sortType;
-@property (strong, nonatomic) NSString *searchText;
 @property (strong, nonatomic) OrderedDictionary *data;
 @property (strong, nonatomic) OrderedDictionary *dataHeaderView;
 
@@ -40,8 +39,6 @@
 @synthesize decisions = _decisions;
 @synthesize actionItemsComplete = _actionItemsComplete;
 @synthesize actionItemsUncomplete = _actionItemsUncomplete;
-@synthesize sorting = _sorting;
-@synthesize grouping = _grouping;
 @synthesize groupEntries = _groupEntries;
 @synthesize entries = _entries;
 @synthesize sortType = _sortType;
@@ -58,7 +55,6 @@
     
     [self setClearsSelectionOnViewWillAppear:NO];
     [self setGroupEntries:YES];
-    [[self sorting] setTitle:@"No Sorting"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
                                                  name:TopicUpdated object:nil];
@@ -80,11 +76,11 @@
     [self setDecisions:nil];
     [self setActionItemsComplete:nil];
     [self setActionItemsUncomplete:nil];
-    [self setGrouping:nil];
-    [self setSorting:nil];
     [self setSearchText:nil];
     [self setData:nil];
     [self setDataHeaderView:nil];
+    [self setTopic:nil];
+    [self setParentController:nil];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -95,6 +91,12 @@
 
 - (void)updateNote:(NSNotification *)notification
 {
+    [self reload];
+}
+
+- (void)setSearchText:(NSString *)searchText
+{
+    _searchText = searchText;
     [self reload];
 }
 
@@ -262,64 +264,6 @@
     
     NSString *key = [[self dataHeaderView] keyAtIndex:section];
     return [[self dataHeaderView] objectForKey:key];
-}
-
-- (IBAction)group:(id)sender
-{
-    UISegmentedControl *control = (UISegmentedControl *)sender;
-    
-    if ([control selectedSegmentIndex] == 0) {
-        [self setGroupEntries:YES];
-    } else {
-        [self setGroupEntries:NO];
-    }
-
-    [self reload];
-}
-
-- (IBAction)sort:(id)sender
-{
-    switch ([self sortType]) {
-        case None:
-            [self setSortType:DateAcending];
-            [[self sorting] setTitle:@"Date Ascending"];
-            break;
-        case DateAcending:
-            [self setSortType:DateDecending];
-            [[self sorting] setTitle:@"Date Decending"];
-            break;
-        case DateDecending:
-            [self setSortType:None];
-            [[self sorting] setTitle:@"No Sorting"];
-            break;
-        default:
-            break;
-    }
-    
-    [self reload];
-}
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-    [self setSearchText:[searchBar text]];
-    [self reload];
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-    [self setSearchText:[searchBar text]];
-    [self reload];
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [self setSearchText:[searchBar text]];
-    [self reload];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [searchBar resignFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

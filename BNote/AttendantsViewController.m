@@ -64,7 +64,7 @@
     }
      
     UIScrollView *view = (UIScrollView *) [self view];
-    float height = [view frame].size.height;
+    float height = 50;
     width = [attendees count] * 100;
 
     if (width > 0) {

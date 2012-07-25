@@ -21,6 +21,7 @@ const int Color9 = 0xd7cd79;
 
 const int AnswerColor = 0x336633;
 
+const int FilterColor = 0xaaaaaa;
 
 const int ColorWhite = 0xffffff;
 const int AppColor1 = 0xfefefe;

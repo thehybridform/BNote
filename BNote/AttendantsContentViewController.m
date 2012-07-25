@@ -211,12 +211,12 @@ static NSString *createNew = @"Create";
 
 - (void)reviewMode:(NSNotification *)notification
 {
-    [[self addAttendantView] setHidden:YES];
+//    [[self addAttendantView] setHidden:YES];
 }
 
 - (void)editingNote:(NSNotification *)notification
 {
-    [[self addAttendantView] setHidden:NO];
+//    [[self addAttendantView] setHidden:NO];
 }
 
 @end

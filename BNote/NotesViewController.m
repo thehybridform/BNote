@@ -73,13 +73,15 @@
         [self addNote:note atX:x += space isAssociated:YES];
     }
     
-    x += space;
-    NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 10, 100, 100)];
-    UITapGestureRecognizer *tap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
-    [noteView addGestureRecognizer:tap];
+    if ([[self topic] color] != FilterColor) {
+        x += space;
+        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 10, 100, 100)];
+        UITapGestureRecognizer *tap =
+            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
+        [noteView addGestureRecognizer:tap];
 
-    [scrollView addSubview:noteView];
+        [scrollView addSubview:noteView];
+    }
     
     float width = x + space;
     if (width > 0) {

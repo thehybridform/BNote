@@ -2,7 +2,7 @@
 //  Note.m
 //  BeNote
 //
-//  Created by Young Kristin on 7/8/12.
+//  Created by Young Kristin on 7/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -20,6 +20,8 @@
 @dynamic associatedTopics;
 @dynamic entries;
 @dynamic topic;
+
+
 
 static NSString *const kItemsKey = @"entries";
 
@@ -45,6 +47,5 @@ static NSString *const kItemsKey = @"entries";
     [self setPrimitiveValue:tmpOrderedSet forKey:kItemsKey];
     [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:kItemsKey];
 }
-
 
 @end

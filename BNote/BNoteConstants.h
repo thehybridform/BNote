@@ -27,6 +27,7 @@ extern int const AppHighlightColor1;
 
 extern int const ColorWhite;
 extern int const AnswerColor;
+extern int const FilterColor;
 
 extern NSString *const KeyPointPhotoUpdated;
 extern NSString *const KeyWordsUpdated;

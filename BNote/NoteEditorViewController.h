@@ -34,5 +34,7 @@
 
 - (void)selectEntry:(Entry *)entry;
 
+- (IBAction)about:(id)sender;
+
 @end
 

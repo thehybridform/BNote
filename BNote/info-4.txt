@@ -1,0 +1,1 @@
+BeNote handles each type of entry appropriately, exposing useful functions and capabilities exactly when you need them. Helpful entry tools are always available to help you quickly enter dates, times, the names of participants and more.

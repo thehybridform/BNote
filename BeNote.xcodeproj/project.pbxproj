@@ -38,6 +38,19 @@
 		182F1E8415BE9EB20038AC13 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8315BE9EB20038AC13 /* KeyWord.m */; };
 		182F1E8715BE9EB20038AC13 /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8615BE9EB20038AC13 /* SketchPath.m */; };
 		182F1E8A15BE9EB20038AC13 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8915BE9EB20038AC13 /* Topic.m */; };
+		182F1E9315BFA5050038AC13 /* info-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E8D15BFA5050038AC13 /* info-1.txt */; };
+		182F1E9415BFA5050038AC13 /* info-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E8E15BFA5050038AC13 /* info-2.txt */; };
+		182F1E9515BFA5050038AC13 /* info-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E8F15BFA5050038AC13 /* info-3.txt */; };
+		182F1E9615BFA5050038AC13 /* info-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9015BFA5050038AC13 /* info-4.txt */; };
+		182F1E9715BFA5050038AC13 /* info-5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9115BFA5050038AC13 /* info-5.txt */; };
+		182F1E9815BFA5050038AC13 /* info-6.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9215BFA5050038AC13 /* info-6.txt */; };
+		182F1E9B15BFA5570038AC13 /* BNoteDefaultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */; };
+		182F1E9D15C0B9240038AC13 /* key-point.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9C15C0B9240038AC13 /* key-point.txt */; };
+		182F1EA115C0B9510038AC13 /* Decision.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA015C0B9500038AC13 /* Decision.txt */; };
+		182F1EA315C0B96E0038AC13 /* question-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA215C0B96E0038AC13 /* question-1.txt */; };
+		182F1EA515C0B9820038AC13 /* question-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA415C0B9820038AC13 /* question-2.txt */; };
+		182F1EA715C0B9900038AC13 /* answer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA615C0B9900038AC13 /* answer.txt */; };
+		182F1EA915C0B9BC0038AC13 /* action-item-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA815C0B9BB0038AC13 /* action-item-1.txt */; };
 		1834D33C15634A650065788F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33B15634A650065788F /* UIKit.framework */; };
 		1834D33E15634A650065788F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33D15634A650065788F /* Foundation.framework */; };
 		1834D34015634A650065788F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33F15634A650065788F /* CoreGraphics.framework */; };
@@ -257,6 +270,20 @@
 		182F1E8615BE9EB20038AC13 /* SketchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SketchPath.m; sourceTree = "<group>"; };
 		182F1E8815BE9EB20038AC13 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
 		182F1E8915BE9EB20038AC13 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		182F1E8D15BFA5050038AC13 /* info-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "info-1.txt"; sourceTree = "<group>"; };
+		182F1E8E15BFA5050038AC13 /* info-2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "info-2.txt"; sourceTree = "<group>"; };
+		182F1E8F15BFA5050038AC13 /* info-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "info-3.txt"; sourceTree = "<group>"; };
+		182F1E9015BFA5050038AC13 /* info-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "info-4.txt"; sourceTree = "<group>"; };
+		182F1E9115BFA5050038AC13 /* info-5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "info-5.txt"; sourceTree = "<group>"; };
+		182F1E9215BFA5050038AC13 /* info-6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "info-6.txt"; sourceTree = "<group>"; };
+		182F1E9915BFA5570038AC13 /* BNoteDefaultData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteDefaultData.h; sourceTree = "<group>"; };
+		182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteDefaultData.m; sourceTree = "<group>"; };
+		182F1E9C15C0B9240038AC13 /* key-point.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "key-point.txt"; sourceTree = "<group>"; };
+		182F1EA015C0B9500038AC13 /* Decision.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Decision.txt; sourceTree = "<group>"; };
+		182F1EA215C0B96E0038AC13 /* question-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "question-1.txt"; sourceTree = "<group>"; };
+		182F1EA415C0B9820038AC13 /* question-2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "question-2.txt"; sourceTree = "<group>"; };
+		182F1EA615C0B9900038AC13 /* answer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = answer.txt; sourceTree = "<group>"; };
+		182F1EA815C0B9BB0038AC13 /* action-item-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "action-item-1.txt"; sourceTree = "<group>"; };
 		1834D33715634A650065788F /* BeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1834D33B15634A650065788F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1834D33D15634A650065788F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -793,9 +820,23 @@
 		18497682159053B300F49F5A /* Information Details */ = {
 			isa = PBXGroup;
 			children = (
+				182F1E8D15BFA5050038AC13 /* info-1.txt */,
+				182F1E8E15BFA5050038AC13 /* info-2.txt */,
+				182F1E8F15BFA5050038AC13 /* info-3.txt */,
+				182F1E9015BFA5050038AC13 /* info-4.txt */,
+				182F1E9115BFA5050038AC13 /* info-5.txt */,
+				182F1E9215BFA5050038AC13 /* info-6.txt */,
+				182F1E9C15C0B9240038AC13 /* key-point.txt */,
+				182F1EA015C0B9500038AC13 /* Decision.txt */,
+				182F1EA215C0B96E0038AC13 /* question-1.txt */,
+				182F1EA415C0B9820038AC13 /* question-2.txt */,
+				182F1EA615C0B9900038AC13 /* answer.txt */,
+				182F1EA815C0B9BB0038AC13 /* action-item-1.txt */,
 				18497684159053DA00F49F5A /* InformationViewController.h */,
 				18497685159053DA00F49F5A /* InformationViewController.m */,
 				18497686159053DA00F49F5A /* InformationViewController.xib */,
+				182F1E9915BFA5570038AC13 /* BNoteDefaultData.h */,
+				182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */,
 			);
 			name = "Information Details";
 			sourceTree = "<group>";
@@ -1278,6 +1319,18 @@
 				18CC190915B91DD80080C017 /* 27-circle-o@2x.png in Resources */,
 				18A30FC315BB1FCD00A2FD14 /* TopicGroupsViewController.xib in Resources */,
 				18A30FC815BB3C6600A2FD14 /* TopicGroupManagementViewController.xib in Resources */,
+				182F1E9315BFA5050038AC13 /* info-1.txt in Resources */,
+				182F1E9415BFA5050038AC13 /* info-2.txt in Resources */,
+				182F1E9515BFA5050038AC13 /* info-3.txt in Resources */,
+				182F1E9615BFA5050038AC13 /* info-4.txt in Resources */,
+				182F1E9715BFA5050038AC13 /* info-5.txt in Resources */,
+				182F1E9815BFA5050038AC13 /* info-6.txt in Resources */,
+				182F1E9D15C0B9240038AC13 /* key-point.txt in Resources */,
+				182F1EA115C0B9510038AC13 /* Decision.txt in Resources */,
+				182F1EA315C0B96E0038AC13 /* question-1.txt in Resources */,
+				182F1EA515C0B9820038AC13 /* question-2.txt in Resources */,
+				182F1EA715C0B9900038AC13 /* answer.txt in Resources */,
+				182F1EA915C0B9BC0038AC13 /* action-item-1.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1395,6 +1448,7 @@
 				182F1E8415BE9EB20038AC13 /* KeyWord.m in Sources */,
 				182F1E8715BE9EB20038AC13 /* SketchPath.m in Sources */,
 				182F1E8A15BE9EB20038AC13 /* Topic.m in Sources */,
+				182F1E9B15BFA5570038AC13 /* BNoteDefaultData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

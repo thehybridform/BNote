@@ -111,6 +111,10 @@ const static float h2 = h1 - 10;
 
 -(void)longPressTap:(id)sender
 {
+    if ([[[self note] topic] color] == FilterColor) {
+        return;
+    }
+    
     if (![[BNoteSessionData instance] actionSheet]) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
         [actionSheet setDelegate:[BNoteSessionData instance]];

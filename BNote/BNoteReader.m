@@ -42,6 +42,22 @@
     return _default;
 }
 
+- (Topic *)getTopic:(NSString *)name
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title = %@", name];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *topics = [[self context] executeFetchRequest:fetchRequest error:&error];
+    
+    if ([topics count]) {
+        return [topics objectAtIndex:0];
+    } else {
+        return nil;
+    }
+}
+
 - (TopicGroup *)getTopicGroup:(NSString *)name
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TopicGroup"];

@@ -13,6 +13,7 @@
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
 #import "EluaViewController.h"
+#import "BNoteDefaultData.h"
 
 @interface AppDelegate()
 
@@ -48,6 +49,7 @@
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         
         [mainViewViewController presentModalViewController:controller animated:YES];
+        
     }
     
     return YES;

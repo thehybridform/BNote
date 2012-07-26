@@ -14,6 +14,7 @@
 #import "LayerFormater.h"
 #import "BNoteSessionData.h"
 #import "TopicEditorViewController.h"
+#import "BNoteDefaultData.h"
 
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
@@ -88,15 +89,18 @@
     }
     
     [self setTopicGroup:group];
-    [self setData:[[group topics] mutableCopy]];
     
-    [[self tableView] reloadData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:group];
 
     if ([[self data] count] > 0) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-        [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [self selectCell:0];
     }
+}
+
+- (void)updateData
+{
+    [self setData:[[[self topicGroup] topics] mutableCopy]];
+    [[self tableView] reloadData];
 }
 
 - (void)viewDidUnload
@@ -166,6 +170,7 @@
 {
     Topic *topic = [[self data] objectAtIndex:[sourceIndexPath row]];
     [[BNoteWriter instance] moveTopic:topic toIndex:[destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -181,6 +186,11 @@
         int index = [indexPath row] - 1;
         if (index >= 0) {
             [self selectCell:index];
+        }
+        
+        if (![[self tableView] numberOfRowsInSection:0]) {
+            [self editTopicCell:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
         }
     }
 }
@@ -231,7 +241,7 @@
 
 - (void)createdTopic:(NSNotification *)notification
 {
-    [self updateReceived:notification];
+    [self updateData];
     
     Topic *topic = [notification object];
     int index = [[self data] indexOfObject:topic];
@@ -261,10 +271,8 @@
 {
     if ([[self tableView] isEditing]) {
         [[self tableView] setEditing:NO animated:YES];
-        [[self editTopicsButton] setTitle:@"Organize" forState:UIControlStateNormal];
     } else {
         [[self tableView] setEditing:YES animated:YES];
-        [[self editTopicsButton] setTitle:@"Done" forState:UIControlStateNormal];
     }
 }
 

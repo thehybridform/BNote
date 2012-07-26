@@ -8,6 +8,7 @@
 
 #import "BNoteButton.h"
 #import "LayerFormater.h"
+#import "TopicGroup.h"
 
 @implementation BNoteButton
 @synthesize icon = _icon;
@@ -45,6 +46,25 @@
     
     CGRect frame = CGRectMake(x, y, width, height);
     [icon setFrame:frame];
+}
+
+- (void)updateTitle:(NSNotification *)notification
+{
+    NSString *title;
+    TopicGroup *group = [notification object];
+    
+    if ([[group name] isEqualToString:@"All"]) {
+        title = @"All Topics";
+    } else {
+        title = [group name];
+    }
+    
+    [self setTitle:title forState:UIControlStateNormal];
+    
+    int width = [title length] * 10;
+    width = MIN(500, width);
+    CGRect frame = [self frame];
+    [self setFrame:CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height)];
 }
 
 @end

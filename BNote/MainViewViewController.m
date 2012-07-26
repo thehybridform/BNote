@@ -80,6 +80,7 @@ static NSString *email = @"E-mail";
         
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
+        
     }
     
     return self;
@@ -88,6 +89,9 @@ static NSString *email = @"E-mail";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[NSNotificationCenter defaultCenter]
+        addObserver:[self topicsButton] selector:@selector(updateTitle:) name:TopicGroupSelected object:nil];
 
     [LayerFormater setBorderWidth:1 forView:[self footer]];
     [LayerFormater setBorderWidth:1 forView:[self menu]];
@@ -103,17 +107,6 @@ static NSString *email = @"E-mail";
     [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:28.0]];
 
     [[self detailView] setHidden:YES];
-/*    
-    NSString *topicGroup = [BNoteSessionData stringForKey:TopicGroupSelected];
-    if (!topicGroup || [topicGroup isEqualToString:@"All"]) {
-        [[self topicsButton] setTitle:@"All Topics" forState:UIControlStateNormal];
-    } else {
-        [[self topicsButton] setTitle:topicGroup forState:UIControlStateNormal];
-    }
-    
-    [self setTopicGroup:[[BNoteReader instance] getTopicGroup:topicGroup]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
-*/   
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
 }
 
@@ -222,19 +215,6 @@ static NSString *email = @"E-mail";
         
     TopicGroup *group = [notification object];
     [self setTopicGroup:group];
-    
-    UIButton *button = [self topicsButton];
-    
-    if ([[group name] isEqualToString:@"All"]) {
-        [button setTitle:@"All Topics" forState:UIControlStateNormal];
-    } else {
-        [button setTitle:[group name] forState:UIControlStateNormal];
-    }
-    
-    int width = [[[button titleLabel] text] length] * 10;
-    width = MIN(500, width);
-    CGRect frame = [button frame];
-    [button setFrame:CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height)];
 }
 
 - (void)setNoteCountForTopic:(Topic *)topic
@@ -305,6 +285,10 @@ static NSString *email = @"E-mail";
         topic = [BNoteFactory createTopic:@"Filtered Topic" forGroup:[self topicGroup]];
         [topic setColor:FilterColor];
         [self setSearchTopic:topic];
+    } else {
+        for (Note *note in [topic notes]) {
+            [[BNoteWriter instance] removeNote:note];
+        }
     }
 
     for (Topic *t in [[self topicGroup] topics]) {
@@ -315,6 +299,8 @@ static NSString *email = @"E-mail";
             [topic addAssociatedNotesObject:note];
         }
     }
+
+    [[BNoteWriter instance] update];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
 }

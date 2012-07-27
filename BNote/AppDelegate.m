@@ -22,7 +22,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-//@synthesize splitViewController = _splitViewController;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
@@ -42,6 +41,8 @@
     [[self window] makeKeyAndVisible];
     
     if (![BNoteSessionData booleanForKey:EulaFlag]) {
+        [BNoteDefaultData setup];
+
         EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
         [controller setEula:YES];
         [controller setModalInPopover:YES];
@@ -49,7 +50,6 @@
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         
         [mainViewViewController presentModalViewController:controller animated:YES];
-        
     }
     
     return YES;

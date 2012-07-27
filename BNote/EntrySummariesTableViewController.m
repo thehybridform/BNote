@@ -195,8 +195,8 @@
     
     [self setQuestionsUnanswered:[self filterEntries:[[BNoteFilterFactory instance] create:QuestionUnansweredType]]];
     if ([[self questionsUnanswered] count]) {
-        [data setObject:[self questionsUnanswered] forKey:questionAnsweredEntryHeader];
-        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionUnansweredHeader] forKey:questionAnsweredEntryHeader];
+        [data setObject:[self questionsUnanswered] forKey:questionUnansweredEntryHeader];
+        [dataHeaderView setObject:[BNoteFactory createEntrySummaryHeaderView:QuestionUnansweredHeader] forKey:questionUnansweredEntryHeader];
     }
     
     [self setEntries:[self filterEntries:[[BNoteFilterFactory instance] create:ItdentityType]]];

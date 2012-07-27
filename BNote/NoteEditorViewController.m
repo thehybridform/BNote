@@ -53,6 +53,8 @@
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet AssociatedTopicsTableViewController *associatedTopicsTableViewController;
 
+@property (strong, nonatomic) UITapGestureRecognizer *dateTap;
+
 @property (assign, nonatomic) BOOL isEditing;
 
 @end
@@ -85,6 +87,7 @@
 @synthesize entryLabel = _entryLabel;
 @synthesize isEditing = _isEditing;
 @synthesize titleLabel = _titleLabel;
+@synthesize dateTap = _dateTap;
 
 static NSString *REVIEW = @"REVIEW";
 static NSString *DONE = @"DONE";
@@ -117,6 +120,7 @@ static NSString *DONE = @"DONE";
     [self setShareButton:nil];
     [self setEntryLabel:nil];
     [self setTitleLabel:nil];
+    [self setDateTap:nil];
 }
 
 
@@ -126,10 +130,11 @@ static NSString *DONE = @"DONE";
     if (self) {
         [self setNote:note];
         [self setIsEditing:YES];
+
         UITapGestureRecognizer *normalTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
-        [[self dateView] addGestureRecognizer:normalTap];
-        
+            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
+        [self setDateTap:normalTap];
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
                                                      name:TopicUpdated object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
@@ -141,7 +146,10 @@ static NSString *DONE = @"DONE";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[self dateView] addGestureRecognizer:[self dateTap]];
     
+
     Note *note = [self note];
     BOOL empty = [BNoteStringUtils nilOrEmpty:[note subject]];
     if (empty) {
@@ -370,6 +378,8 @@ static NSString *DONE = @"DONE";
 
 - (void)showDatePicker:(id)sender
 {
+    [[self subjectTextView] resignFirstResponder];
+    
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self note] created]];
     
     DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];

@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UIView *dueDateView;
 @property (strong, nonatomic) IBOutlet UILabel *responsibilityLabel;
 @property (strong, nonatomic) IBOutlet UIView *responsibilityView;
+@property (strong, nonatomic) IBOutlet UIView *caledarBlankView;
+@property (strong, nonatomic) IBOutlet UIView *calendarCheckView;
 @property (strong, nonatomic) IBOutlet UIView *circleBlankView;
 @property (strong, nonatomic) IBOutlet UIView *circleCheckView;
 @property (strong, nonatomic) IBOutlet UIView *completionView;
@@ -36,6 +38,8 @@
 @synthesize completionView = _completionViewView;
 @synthesize circleBlankView = _circleBlankView;
 @synthesize completionLabel = _completionLabel;
+@synthesize caledarBlankView = _caledarBlankView;
+@synthesize calendarCheckView = _calendarCheckView;
 
 static NSString *responsibility = @"Set Responsibility";
 static NSString *clearResponsibility = @"Clear Responsibility";
@@ -98,6 +102,8 @@ static NSString *clearDueDate = @"Clear Due Date";
     [self setCompletionView:nil];
     [self setCircleBlankView:nil];
     [self setCompletionLabel:nil];
+    [self setCaledarBlankView:nil];
+    [self setCalendarCheckView:nil];
 }
 
 - (float)height
@@ -197,8 +203,12 @@ static NSString *clearDueDate = @"Clear Due Date";
         NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]]; 
         NSString *date = [BNoteStringUtils dateToString:dueDate];
         [[self dueDateLabel] setText:[BNoteStringUtils append:@"Due on \r\n", date, nil]];
+        [[self caledarBlankView] setHidden:YES];
+        [[self calendarCheckView] setHidden:NO];
     } else {
         [[self dueDateLabel] setText:@"No Due Date"];
+        [[self caledarBlankView] setHidden:NO];
+        [[self calendarCheckView] setHidden:YES];
     }
 }
 
@@ -216,7 +226,7 @@ static NSString *clearDueDate = @"Clear Due Date";
     if ([[self actionItem] completed]) {
         [[self circleBlankView] setHidden:YES];
         [[self circleCheckView] setHidden:NO];
-        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]]; 
+        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] completed]]; 
         NSString *date = [BNoteStringUtils dateToString:dueDate];
         [[self completionLabel] setText:[BNoteStringUtils append:@"Completed on \r\n", date, nil]];
     } else {

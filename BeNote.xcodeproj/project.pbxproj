@@ -69,6 +69,7 @@
 		182F1ECE15C271A40038AC13 /* 27-circle-o@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ECD15C271A40038AC13 /* 27-circle-o@2x-color.png */; };
 		182F1ED015C271FF0038AC13 /* 19-circle-check@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ECF15C271FF0038AC13 /* 19-circle-check@2x-color.png */; };
 		182F1ED215C276E80038AC13 /* 83-calendar@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ED115C276E80038AC13 /* 83-calendar@2x-color.png */; };
+		182F1ED415C27BF30038AC13 /* 18-envelope@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ED315C27BF30038AC13 /* 18-envelope@2x-color.png */; };
 		1834D33C15634A650065788F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33B15634A650065788F /* UIKit.framework */; };
 		1834D33E15634A650065788F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33D15634A650065788F /* Foundation.framework */; };
 		1834D34015634A650065788F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33F15634A650065788F /* CoreGraphics.framework */; };
@@ -119,6 +120,7 @@
 		1879F06C1574B1BD003814C2 /* QuickWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F06B1574B1BD003814C2 /* QuickWordButton.m */; };
 		1879F0721574BEE9003814C2 /* QuickWordsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0711574BEE9003814C2 /* QuickWordsFactory.m */; };
 		1879F0781574CA12003814C2 /* DateQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0771574CA12003814C2 /* DateQuickButton.m */; };
+		187F9ABE15C3BB1F007BE5E9 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187F9ABD15C3BB1F007BE5E9 /* ProgressViewController.xib */; };
 		18810E5F15770159002B59DA /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
 		189B445B15AE809D008F11D2 /* RobotoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445715AE809D008F11D2 /* RobotoBold.ttf */; };
 		189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445815AE809D008F11D2 /* RobotoItalic.ttf */; };
@@ -321,6 +323,7 @@
 		182F1ECD15C271A40038AC13 /* 27-circle-o@2x-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "27-circle-o@2x-color.png"; sourceTree = "<group>"; };
 		182F1ECF15C271FF0038AC13 /* 19-circle-check@2x-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check@2x-color.png"; sourceTree = "<group>"; };
 		182F1ED115C276E80038AC13 /* 83-calendar@2x-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "83-calendar@2x-color.png"; sourceTree = "<group>"; };
+		182F1ED315C27BF30038AC13 /* 18-envelope@2x-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18-envelope@2x-color.png"; sourceTree = "<group>"; };
 		1834D33715634A650065788F /* BeNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1834D33B15634A650065788F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1834D33D15634A650065788F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -408,6 +411,7 @@
 		1879F0711574BEE9003814C2 /* QuickWordsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickWordsFactory.m; sourceTree = "<group>"; };
 		1879F0761574CA12003814C2 /* DateQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateQuickButton.h; sourceTree = "<group>"; };
 		1879F0771574CA12003814C2 /* DateQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateQuickButton.m; sourceTree = "<group>"; };
+		187F9ABD15C3BB1F007BE5E9 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
 		18810E5D15770159002B59DA /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
 		18810E5E15770159002B59DA /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
 		189B445715AE809D008F11D2 /* RobotoBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoBold.ttf; sourceTree = "<group>"; };
@@ -684,6 +688,7 @@
 				182F1ECB15C26CFC0038AC13 /* 86-camera@2x-color.png */,
 				182F1ECF15C271FF0038AC13 /* 19-circle-check@2x-color.png */,
 				182F1ED115C276E80038AC13 /* 83-calendar@2x-color.png */,
+				182F1ED315C27BF30038AC13 /* 18-envelope@2x-color.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1207,6 +1212,7 @@
 				1851A618159984640089EECF /* EntryContectView.m */,
 				182F1EAA15C136600038AC13 /* ProgressViewController.h */,
 				182F1EAB15C136600038AC13 /* ProgressViewController.m */,
+				187F9ABD15C3BB1F007BE5E9 /* ProgressViewController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1404,6 +1410,8 @@
 				182F1ECE15C271A40038AC13 /* 27-circle-o@2x-color.png in Resources */,
 				182F1ED015C271FF0038AC13 /* 19-circle-check@2x-color.png in Resources */,
 				182F1ED215C276E80038AC13 /* 83-calendar@2x-color.png in Resources */,
+				182F1ED415C27BF30038AC13 /* 18-envelope@2x-color.png in Resources */,
+				187F9ABE15C3BB1F007BE5E9 /* ProgressViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

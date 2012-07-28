@@ -13,6 +13,7 @@
 #import "BNoteDefaultData.h"
 #import "TopicGroup.h"
 #import "BNoteReader.h"
+#import "ProgressViewController.h"
 
 @interface InformationViewController ()
 @property (strong, nonatomic) NSArray *aboutArray;
@@ -20,6 +21,10 @@
 @property (strong, nonatomic) NSArray *defaultsArray;
 @property (strong, nonatomic) IBOutlet UIView *menu;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
+@property (strong, nonatomic) IBOutlet UIView *progressView;
+@property (strong, nonatomic) IBOutlet UIView *progressBackgroundView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
 @end
 
 @implementation InformationViewController
@@ -28,6 +33,9 @@
 @synthesize menu = _menu;
 @synthesize doneButton = _doneButton;
 @synthesize defaultsArray = _defaultsArray;
+@synthesize progressView = _progressView;
+@synthesize progressBackgroundView = _progressBackgroundView;
+@synthesize activityView = _activityView;
 
 - (id)initWithDefault
 {
@@ -41,6 +49,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [LayerFormater roundCornersForView:[self progressBackgroundView]];
+    [[self progressView] setHidden:YES];
+    [[self progressView] setBackgroundColor:[UIColor clearColor]];
 
     NSArray *aboutArray =
     [NSArray arrayWithObjects:@"Version 1.0", @"A musing of Uobia, Copyright 2012", @"License", @"Contact Us", nil];
@@ -66,6 +78,9 @@
     [self setMenu:nil];
     [self setDoneButton:nil];
     [self setDefaultsArray:nil];
+    [self setProgressView:nil];
+    [self setProgressBackgroundView:nil];
+    [self setActivityView:nil];
 }
 
 - (IBAction)done:(id)sender
@@ -184,14 +199,25 @@
             
         default:
         {
-            [BNoteDefaultData setup];
-            [self dismissModalViewControllerAnimated:YES];
+            [[self progressView] setHidden:NO];
+            [[self activityView] startAnimating];
             
-            TopicGroup *group = [[BNoteReader instance] getTopicGroup:@"All"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:group];
+            [self performSelector: @selector(setup)
+                       withObject: nil
+                       afterDelay: 0];
         }
             break;
     }
+}
+
+- (void)setup
+{
+    [BNoteDefaultData setup];
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:@"All"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:group];
 }
 
 - (void)showElua

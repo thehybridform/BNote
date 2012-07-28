@@ -41,6 +41,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *color13Button;
 @property (assign, nonatomic) UIButton *selectedColorButton;
 @property (assign, nonatomic) UIButton *selectedPencilButton;
+@property (strong, nonatomic) IBOutlet UIView *progressView;
+@property (strong, nonatomic) IBOutlet UIView *progressBackgroundView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @end
 
@@ -74,6 +77,9 @@
 @synthesize menuView = _menuView;
 @synthesize doneButton = _doneButton;
 @synthesize resetButton = _resetButton;
+@synthesize progressView = _progressView;
+@synthesize progressBackgroundView = _progressBackgroundView;
+@synthesize activityView = _activityView;
 
 static const CGFloat small = 5;
 static const CGFloat medium = 10;
@@ -91,6 +97,11 @@ static const CGFloat large = 20;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [LayerFormater roundCornersForView:[self progressBackgroundView]];
+    [[self progressView] setHidden:YES];
+    [[self progressView] setBackgroundColor:[UIColor clearColor]];
+    [[self view] bringSubviewToFront:[self progressView]];
 
     [[self view] setBackgroundColor:[UIColor lightGrayColor]];
 
@@ -165,10 +176,23 @@ static const CGFloat large = 20;
     [self setActionView:nil];
     [self setDoneButton:nil];
     [self setResetButton:nil];
+    [self setProgressView:nil];
+    [self setProgressBackgroundView:nil];
+    [self setActivityView:nil];
 }
 
 - (IBAction)done:(id)sender
-{        
+{
+    [[self progressView] setHidden:NO];
+    [[self activityView] startAnimating];
+    
+    [self performSelector: @selector(finishAndClose)
+               withObject: nil
+               afterDelay: 0];
+}
+
+- (void)finishAndClose
+{
     CGRect rect = [[self drawView] bounds];
         
     UIGraphicsBeginImageContext(rect.size);

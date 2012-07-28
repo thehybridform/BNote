@@ -22,13 +22,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     [LayerFormater roundCornersForView:[self backgroundView]];
     
-    [[self view] setBackgroundColor:[UIColor clearColor]];
-    [[self backgroundView] setBackgroundColor:[UIColor darkGrayColor]];
-    [[self backgroundView] setAlpha:0.8];
     [[self activityView] startAnimating];
+/*
+    [[self view] setAutoresizingMask:(
+                                      UIViewAutoresizingFlexibleWidth |
+                                      //UIViewAutoresizingFlexibleTopMargin |
+                                      UIViewAutoresizingFlexibleRightMargin |
+                                      UIViewAutoresizingFlexibleLeftMargin
+                                      //UIViewAutoresizingFlexibleHeight |
+                                      //UIViewAutoresizingFlexibleBottomMargin
+                                      )];
+ */
 }
 
 - (void)viewDidUnload

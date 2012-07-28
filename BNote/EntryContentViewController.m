@@ -47,12 +47,12 @@
         if (view) {
             [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
             [view setTextColor:UIColorFromRGB(0x444444)];
-            [view setClipsToBounds:NO];
+            [view setClipsToBounds:YES];
             
             QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
             [self setQuickWordsViewController:quick];
             [view setInputAccessoryView:[quick view]];
-            
+
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
                                                          name:UITextViewTextDidChangeNotification object:view];
             
@@ -75,6 +75,11 @@
     return nil;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -89,13 +94,12 @@
 
 - (float)height
 {
-    NSString *text = [[self entry] text];
     UITextView *view = [[UITextView alloc] init];
-    [view setText:text];
+    [view setText:[[self entry] text]];
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, [self width] - 100, 200)];
+    [view setFrame:CGRectMake(0, 0, [self width] - 100, 50)];
     
-    return MAX(40, [view contentSize].height) + 10;
+    return MAX(40, [view contentSize].height + 10);
 }
 
 - (float)width
@@ -107,11 +111,6 @@
     }
     
     return width;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -168,5 +167,17 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [[self mainTextView] resignFirstResponder];
+}
+
+
 
 @end

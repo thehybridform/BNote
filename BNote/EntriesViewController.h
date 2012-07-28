@@ -20,5 +20,6 @@
 - (void)selectLastCell;
 - (void)selectFirstCell;
 - (void)selectEntry:(Entry *)entry;
+- (void)resignControll;
 
 @end

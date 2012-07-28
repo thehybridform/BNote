@@ -95,7 +95,12 @@ static NSString *removeImage = @"Remove";
 
 - (float)height
 {
-    return MAX(100, [super height]);
+    UITextView *view = [[UITextView alloc] init];
+    [view setText:[[self entry] text]];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+    [view setFrame:CGRectMake(0, 0, [self width] - 200, 50)];
+
+    return MAX(90, [view contentSize].height + 10);
 }
 
 - (void)updatePhotoImage:(NSNotification *)notification

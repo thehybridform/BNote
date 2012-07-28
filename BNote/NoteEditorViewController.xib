@@ -2,23 +2,23 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1296</int>
-		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.SystemVersion">12A269</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
+		<string key="IBDocument.AppKitVersion">1187</string>
+		<string key="IBDocument.HIToolboxVersion">624.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">1498</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBUIView</string>
 			<string>IBProxyObject</string>
-			<string>IBUIViewController</string>
-			<string>IBUILabel</string>
-			<string>IBUITableViewController</string>
-			<string>IBUITableView</string>
-			<string>IBUITextView</string>
 			<string>IBUIButton</string>
+			<string>IBUILabel</string>
+			<string>IBUITableView</string>
+			<string>IBUITableViewController</string>
+			<string>IBUITextView</string>
+			<string>IBUIView</string>
+			<string>IBUIViewController</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -447,7 +447,6 @@
 								<string key="NSFrame">{{713, 0}, {35, 35}}</string>
 								<reference key="NSSuperview" ref="812998478"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -670,14 +669,6 @@
 						<reference key="destination" ref="657962967"/>
 					</object>
 					<int key="connectionID">75</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">associatedTopicsTableViewController</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="822876221"/>
-					</object>
-					<int key="connectionID">193</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -1246,6 +1237,7 @@
 						<string key="done:">id</string>
 						<string key="editEntries:">id</string>
 						<string key="editMode:">id</string>
+						<string key="presentShareOptions:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="about:">
@@ -1284,10 +1276,13 @@
 							<string key="name">editMode:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="presentShareOptions:">
+							<string key="name">presentShareOptions:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="actionItemButton">BNoteButton</string>
-						<string key="associatedTopicsTableViewController">AssociatedTopicsTableViewController</string>
 						<string key="attendantsButton">BNoteButton</string>
 						<string key="dateView">UIView</string>
 						<string key="day">UILabel</string>
@@ -1312,10 +1307,6 @@
 						<object class="IBToOneOutletInfo" key="actionItemButton">
 							<string key="name">actionItemButton</string>
 							<string key="candidateClassName">BNoteButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="associatedTopicsTableViewController">
-							<string key="name">associatedTopicsTableViewController</string>
-							<string key="candidateClassName">AssociatedTopicsTableViewController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="attendantsButton">
 							<string key="name">attendantsButton</string>
@@ -1414,6 +1405,6 @@
 			<string key="20-gear-2@2x.png">{52, 56}</string>
 			<string key="bnote-144.png">{144, 144}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>
 </archive>

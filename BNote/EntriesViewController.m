@@ -59,7 +59,6 @@
     UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Add Key Word" action:@selector(addQuickWord:)];
     [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObjects:menuItem, nil]];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
-    
 }
 
 - (void)viewDidUnload
@@ -238,5 +237,11 @@
 {
     return YES;
 }
+
+- (void)resignControll
+{
+    [[self textView] resignFirstResponder];
+}
+
 
 @end

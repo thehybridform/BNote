@@ -20,7 +20,6 @@
 #import "BNoteStringUtils.h"
 #import "BNoteEntryUtils.h"
 #import "EmailViewController.h"
-#import "AssociatedTopicsTableViewController.h"
 #import "BNoteButton.h"
 #import "EditNoteView.h"
 #import "InformationViewController.h"
@@ -51,7 +50,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
-@property (strong, nonatomic) IBOutlet AssociatedTopicsTableViewController *associatedTopicsTableViewController;
 
 @property (strong, nonatomic) UITapGestureRecognizer *dateTap;
 
@@ -78,7 +76,6 @@
 @synthesize attendantsButton = _attendantsButton;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize popup = _popup;
-@synthesize associatedTopicsTableViewController = _associatedTopicsTableViewController;
 @synthesize menuView = _menuView;
 @synthesize infoView = _infoView;
 @synthesize month = _month;
@@ -113,7 +110,6 @@ static NSString *DONE = @"DONE";
     [self setAttendantsButton:nil];
     [self setSelectedAttendant:nil];
     [self setPopup:nil];
-    [self setAssociatedTopicsTableViewController:nil];
     [self setMenuView:nil];
     [self setInfoView:nil];
     [self setMonth:nil];
@@ -146,9 +142,10 @@ static NSString *DONE = @"DONE";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [[self dateView] addGestureRecognizer:[self dateTap]];
     
+    [[self subjectTextView] resignFirstResponder];
+    
+    [[self dateView] addGestureRecognizer:[self dateTap]];
 
     Note *note = [self note];
     BOOL empty = [BNoteStringUtils nilOrEmpty:[note subject]];
@@ -168,8 +165,6 @@ static NSString *DONE = @"DONE";
     
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
-    
-    [[self associatedTopicsTableViewController] setNote:note];
     
     [[self entriesViewController] setParentController:self];
     
@@ -489,6 +484,13 @@ static NSString *DONE = @"DONE";
     
     [self presentModalViewController:controller animated:YES];
 }
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [[self subjectTextView] resignFirstResponder];
+    [[self entriesViewController] resignControll];
+}
+
 
 @end
 

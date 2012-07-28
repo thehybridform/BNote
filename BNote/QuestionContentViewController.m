@@ -87,15 +87,14 @@
     [self setAnswerQuickWordsViewController:nil];
 }
 
-- (float)heights
+- (float)height
 {
     float questionHeight = [super height];
 
-    NSString *text = [[self question] answer];
     UITextView *view = [[UITextView alloc] init];
-    [view setText:text];
+    [view setText:[[self question] answer]];
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, [self width] - 110, 200)];
+    [view setFrame:CGRectMake(0, 0, 110, 50)];
     float answerHeight = [view contentSize].height + 20;
 
     return MAX(MAX(45, questionHeight), answerHeight);

@@ -14,32 +14,43 @@
 @interface PeopleViewController ()
 @property (strong, nonatomic) NSMutableArray *peopleControllers;
 @property (strong, nonatomic) NSMutableArray *attendantsArray;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControlPeople;
+
 @end
 
 @implementation PeopleViewController
 @synthesize peopleControllers = _peopleControllers;
 @synthesize attendantsArray = _attendantsArray;
+@synthesize pageControlPeople = _pageControlPeople;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setPeopleControllers:[[NSMutableArray alloc] init]];
-        [self setAttendantsArray:[[NSMutableArray alloc] init]];
+
     }
     return self;
 }
 
-
-- (void)reset
+- (void)setTopic:(Topic *)topic
 {
-    UIScrollView *scrollView = (UIScrollView *) [self view];
-    for (UIView *view in [scrollView subviews]) {
-        [view removeFromSuperview];
-    }
+    _topic = topic;
 
     [self setPeopleControllers:[[NSMutableArray alloc] init]];
     [self setAttendantsArray:[[NSMutableArray alloc] init]];
+    
+    for (Note *note in [topic notes]) {
+        for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
+            [self addAttendants:attendants];
+        }
+    }
+    
+    for (Note *note in [topic associatedNotes]) {
+        for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
+            [self addAttendants:attendants];
+        }
+    }
+    [self reload];
 }
 
 - (void)addAttendants:(Attendants *)attendants
@@ -63,18 +74,42 @@
     [super viewDidUnload];
 
     [self setPeopleControllers:nil];
+    [self setAttendantsArray:nil];
+    [self setPageControlPeople:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self]; 
 }
 
+- (void)reset
+{
+    UIScrollView *view = (UIScrollView *)[self view];
+    CGRect frame;
+    frame.origin.x = 10;
+    frame.origin.y = 10;
+    frame.size = CGSizeMake(10, 10);
+    [view scrollRectToVisible:frame animated:YES];
+
+    [[self pageControlPeople] setCurrentPage:0];
+}
+
 - (void)reload
 {
+    UIScrollView *scrollView = (UIScrollView *) [self view];
+    for (UIView *view in [scrollView subviews]) {
+        [view removeFromSuperview];
+    }
+
     float y = 5;
     float space = 85;
     
-    UIScrollView *scrollView = (UIScrollView *) [self view];
+    int visiblePeople = 9;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (UIDeviceOrientationIsPortrait(orientation)) {
+        visiblePeople = 6;
+    }
 
     float x = 10;
+    int people = 0;
 
     for (Attendant *attendant in [self attendantsArray]) {
         PersonViewController *controller = [[PersonViewController alloc] initWithAttendant:attendant];
@@ -90,12 +125,22 @@
         [scrollView addSubview:view];
         
         x += space;
+        
+        people++;
     }
     
-    float width = x + space;
+    int count = people / visiblePeople;
+    if (people % visiblePeople) {
+        count++;
+    }
+
+    float width = space * count * visiblePeople;
     if (width > 0) {
         [scrollView setContentSize:CGSizeMake(width, [scrollView bounds].size.height)];
     }
+
+    [[self pageControlPeople] setNumberOfPages:count];
+    [[self pageControlPeople] setNeedsDisplay];
 }
 
 - (BOOL)contains:(Attendant *)attendant
@@ -116,6 +161,28 @@
     }
     
     return NO;
+}
+
+- (IBAction)pageChanged:(UIPageControl *)pageControl
+{
+    UIScrollView *view = (UIScrollView *)[self view];
+    CGRect frame;
+    frame.origin.x = [view frame].size.width * [pageControl currentPage];
+    frame.origin.y = 0;
+    frame.size = [view frame].size;
+    [view scrollRectToVisible:frame animated:YES];
+    
+    [[self pageControlPeople] setNeedsDisplay];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)sender {
+    UIScrollView *view = (UIScrollView *)[self view];
+    
+    CGFloat pageWidth = [view frame].size.width;
+    int page = floor((view.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    [[self pageControlPeople] setCurrentPage:page];
+    
+    [[self pageControlPeople] setNeedsDisplay];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -489,6 +489,8 @@ static NSString *DONE = @"DONE";
 {
     [[self subjectTextView] resignFirstResponder];
     [[self entriesViewController] resignControll];
+    [[[BNoteSessionData instance] actionSheet] dismissWithClickedButtonIndex:-1 animated:YES];
+    [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
 }
 
 

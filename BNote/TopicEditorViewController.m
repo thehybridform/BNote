@@ -114,6 +114,7 @@
     [LayerFormater setBorderWidth:1 forView:[self buttonControlView]];
 
     [[self nameTextField] setDelegate:self];
+    [[self nameTextField] becomeFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

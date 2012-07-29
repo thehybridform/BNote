@@ -11,11 +11,13 @@
 #import "NoteView.h"
 #import "NoteEditorViewController.h"
 
-@interface NotesViewController : UIViewController
+@interface NotesViewController : UIViewController <UIScrollViewDelegate>
 
-@property (assign, nonatomic) Topic *topic;
+@property (strong, nonatomic) Topic *topic;
 
+- (void)reset;
 - (void)reload;
+- (IBAction)pageChanged:(id)sender;
 
 @end
 

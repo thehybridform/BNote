@@ -17,19 +17,21 @@
 
 @interface NotesViewController()
 @property (strong, nonatomic) NSMutableArray *noteControllers;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControlNotes;
 
 @end
 
 @implementation NotesViewController
 @synthesize topic = _topic;
 @synthesize noteControllers = _noteControllers;
+@synthesize pageControlNotes = _pageControlNotes;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        [self setNoteControllers:[[NSMutableArray alloc] init]];
+
     }
     
     return self;
@@ -38,11 +40,16 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    [self setNoteControllers:nil];
+    [self setPageControlNotes:nil];
+    [self setTopic:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self reload];
 }
 
@@ -54,23 +61,45 @@
     [self reload];
 }
 
+- (void)reset
+{
+    UIScrollView *view = (UIScrollView *)[self view];
+    CGRect frame;
+    frame.origin.x = 10;
+    frame.origin.y = 10;
+    frame.size = CGSizeMake(10, 10);
+    [view scrollRectToVisible:frame animated:YES];
+    
+    [[self pageControlNotes] setCurrentPage:0];
+}
+
 - (void)reload
 {   
-    float space = 110;
-    
     UIScrollView *scrollView = (UIScrollView *) [self view];
     for (UIView *view in [scrollView subviews]) {
         [view removeFromSuperview];
     }
     
+    float space = 110;
+    int notes = 0;
+
+    int visibleNotes = 7;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (UIDeviceOrientationIsPortrait(orientation)) {
+        visibleNotes = 4;
+        space = 130;
+    }    
+
     float x = 10 - space;
     
     for (Note *note in [[self topic] notes]) {
         [self addNote:note atX:x += space isAssociated:NO];
+        notes++;
     }
     
     for (Note *note in [[self topic] associatedNotes]) {
         [self addNote:note atX:x += space isAssociated:YES];
+        notes++;
     }
     
     if ([[self topic] color] != FilterColor) {
@@ -81,12 +110,21 @@
         [noteView addGestureRecognizer:tap];
 
         [scrollView addSubview:noteView];
+        notes++;
     }
-    
-    float width = x + space;
+
+    int count = notes / visibleNotes;
+    if (notes % visibleNotes) {
+        count++;
+    }
+
+    float width = space * count * visibleNotes;
     if (width > 0) {
         [scrollView setContentSize:CGSizeMake(width, [scrollView bounds].size.height)];
     }
+    
+    [[self pageControlNotes] setNumberOfPages:count];
+    [[self pageControlNotes] setNeedsDisplay];
 }
 
 - (void)addNote:(Note *)note atX:(float)x isAssociated:(BOOL)associated
@@ -105,6 +143,28 @@
     
     UIScrollView *scrollView = (UIScrollView *) [self view];
     [scrollView addSubview:view];
+}
+
+- (IBAction)pageChanged:(UIPageControl *)pageControl
+{
+    UIScrollView *view = (UIScrollView *)[self view];
+    CGRect frame;
+    frame.origin.x = [view frame].size.width * [pageControl currentPage];
+    frame.origin.y = 0;
+    frame.size = [view frame].size;
+    [view scrollRectToVisible:frame animated:YES];
+    
+    [[self pageControlNotes] setNeedsDisplay];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)sender {
+    UIScrollView *view = (UIScrollView *)[self view];
+    
+    CGFloat pageWidth = [view frame].size.width;
+    int page = floor((view.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    [[self pageControlNotes] setCurrentPage:page];
+
+    [[self pageControlNotes] setNeedsDisplay];
 }
 
 - (void)normalPressTap:(id)sender

@@ -131,7 +131,9 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        if ([self topicSelectType] == AssociateTopic) {
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
     }
 
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];

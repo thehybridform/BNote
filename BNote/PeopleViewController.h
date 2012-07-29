@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Topic.h"
 
-@interface PeopleViewController : UIViewController
+@interface PeopleViewController : UIViewController <UIScrollViewDelegate>
+
+@property (strong, nonatomic) Topic *topic;
 
 - (void)reset;
-- (void)addAttendants:(Attendants *)attendants;
+- (void)reload;
+- (IBAction)pageChanged:(id)sender;
 
 @end

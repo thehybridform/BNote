@@ -139,7 +139,9 @@
 {
     if ([notification object] == [self mainTextView]) {
         NSString *text = [[self mainTextView] text];
-        if (![BNoteStringUtils nilOrEmpty:text]) {
+        if ([BNoteStringUtils nilOrEmpty:text]) {
+            [[self entry] setText:nil];
+        } else {
             [[self entry] setText:text];
         }
     }
@@ -172,12 +174,5 @@
 {
     return YES;
 }
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    [[self mainTextView] resignFirstResponder];
-}
-
-
 
 @end

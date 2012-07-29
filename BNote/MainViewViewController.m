@@ -40,6 +40,7 @@
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
 @property (strong, nonatomic) TopicGroup *topicGroup;
 
 @end
@@ -151,23 +152,10 @@ static NSString *email = @"E-mail";
 
     [[self entriesTable] setTopic:topic];
     [[self notesViewController] setTopic:topic];
-    
-    [[self peopleViewController] reset];
+    [[self peopleViewController] setTopic:topic];
     
     [[self peopleLabel] setHidden:![BNoteEntryUtils topicContainsAttendants:topic]];
     
-    for (Note *note in [topic notes]) {
-        for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
-            [[self peopleViewController] addAttendants:attendants];
-        }
-    }
-    
-    for (Note *note in [topic associatedNotes]) {
-        for (Attendants *attendants in [BNoteEntryUtils attendants:note]) {
-            [[self peopleViewController] addAttendants:attendants];
-        }
-    }
-
     [self setNoteCountForTopic:topic];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
@@ -366,6 +354,21 @@ static NSString *email = @"E-mail";
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
                          animated:YES];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [[[BNoteSessionData instance] actionSheet] dismissWithClickedButtonIndex:-1 animated:YES];
+    [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [[self notesViewController] reset];
+    [[self notesViewController] reload];
+    
+    [[self peopleViewController] reset];
+    [[self peopleViewController] reload];
 }
 
 @end

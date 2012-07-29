@@ -116,10 +116,14 @@
 
 - (void)updateAnswerText:(NSNotification *)notification
 {
-    NSString *text = [BNoteStringUtils trim:[[self answerTextView] text]];
-    if (![BNoteStringUtils nilOrEmpty:text]) {
+    if ([notification object] == [self answerTextView]) {
+        NSString *text = [BNoteStringUtils trim:[[self answerTextView] text]];
         Question *question = [self question];
-        [question setAnswer:text];
+        if ([BNoteStringUtils nilOrEmpty:text]) {
+            [question setAnswer:nil];
+        } else {
+            [question setAnswer:text];
+        }
     }
 }
 

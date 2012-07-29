@@ -121,6 +121,7 @@
 		1879F0721574BEE9003814C2 /* QuickWordsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0711574BEE9003814C2 /* QuickWordsFactory.m */; };
 		1879F0781574CA12003814C2 /* DateQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0771574CA12003814C2 /* DateQuickButton.m */; };
 		187F9ABE15C3BB1F007BE5E9 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187F9ABD15C3BB1F007BE5E9 /* ProgressViewController.xib */; };
+		187F9ACA15C4F568007BE5E9 /* BNotePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9AC915C4F568007BE5E9 /* BNotePageControl.m */; };
 		18810E5F15770159002B59DA /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
 		189B445B15AE809D008F11D2 /* RobotoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445715AE809D008F11D2 /* RobotoBold.ttf */; };
 		189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445815AE809D008F11D2 /* RobotoItalic.ttf */; };
@@ -412,6 +413,8 @@
 		1879F0761574CA12003814C2 /* DateQuickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateQuickButton.h; sourceTree = "<group>"; };
 		1879F0771574CA12003814C2 /* DateQuickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateQuickButton.m; sourceTree = "<group>"; };
 		187F9ABD15C3BB1F007BE5E9 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
+		187F9AC815C4F568007BE5E9 /* BNotePageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNotePageControl.h; sourceTree = "<group>"; };
+		187F9AC915C4F568007BE5E9 /* BNotePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNotePageControl.m; sourceTree = "<group>"; };
 		18810E5D15770159002B59DA /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
 		18810E5E15770159002B59DA /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
 		189B445715AE809D008F11D2 /* RobotoBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoBold.ttf; sourceTree = "<group>"; };
@@ -1213,6 +1216,8 @@
 				182F1EAA15C136600038AC13 /* ProgressViewController.h */,
 				182F1EAB15C136600038AC13 /* ProgressViewController.m */,
 				187F9ABD15C3BB1F007BE5E9 /* ProgressViewController.xib */,
+				187F9AC815C4F568007BE5E9 /* BNotePageControl.h */,
+				187F9AC915C4F568007BE5E9 /* BNotePageControl.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1531,6 +1536,7 @@
 				182F1E8A15BE9EB20038AC13 /* Topic.m in Sources */,
 				182F1E9B15BFA5570038AC13 /* BNoteDefaultData.m in Sources */,
 				182F1EAD15C136600038AC13 /* ProgressViewController.m in Sources */,
+				187F9ACA15C4F568007BE5E9 /* BNotePageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

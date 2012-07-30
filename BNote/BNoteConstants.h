@@ -23,6 +23,7 @@ extern int const Color9;
 
 extern int const AppColor1;
 extern int const AppColor2;
+extern int const darkGray;
 extern int const AppHighlightColor1;
 
 extern int const ColorWhite;
@@ -74,6 +75,7 @@ typedef enum {
 
 + (UIColor *)appColor1;
 + (UIColor *)appColor2;
++ (UIColor *)darkGray;
 + (UIColor *)appHighlightColor1;
 + (UIFont *)font:(BNoteFont)font andSize:(float)size;
 

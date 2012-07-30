@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "EntryContent.h"
+#import "BNoteButton.h"
 
 @protocol QuickWordsCallback;
 
-@interface QuickWordButton : UIButton
+@interface QuickWordButton : BNoteButton
 
 - (id)initWithName:(NSString *)name andEntryContentViewController:(id<EntryContent>)controller;
 - (void)execute:(id)sender;

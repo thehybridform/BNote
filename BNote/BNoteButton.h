@@ -10,6 +10,6 @@
 
 @interface BNoteButton : UIButton
 
-@property (assign, nonatomic) UIImageView *icon;
+@property (strong, nonatomic) UIImageView *icon;
 
 @end

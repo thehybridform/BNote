@@ -23,6 +23,7 @@
 #import "BNoteButton.h"
 #import "EditNoteView.h"
 #import "InformationViewController.h"
+#import "BNoteFilterHelper.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *month;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UILabel *entryLabel;
+@property (strong, nonatomic) IBOutlet UILabel *filteringLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
 @property (strong, nonatomic) IBOutlet BNoteButton *attendantsButton;
@@ -48,6 +50,10 @@
 @property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) IBOutlet EditNoteView *infoView;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
+@property (strong, nonatomic) IBOutlet UIView *normalEntryButtonsView;
+@property (strong, nonatomic) IBOutlet UIView *reviewEntryButtonsView;
+@property (strong, nonatomic) IBOutlet UIScrollView *reviewScrollView;
+@property (strong, nonatomic) UIButton *selectedFilterButton;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 
@@ -85,6 +91,11 @@
 @synthesize isEditing = _isEditing;
 @synthesize titleLabel = _titleLabel;
 @synthesize dateTap = _dateTap;
+@synthesize normalEntryButtonsView = _normalEntryButtonsView;
+@synthesize reviewEntryButtonsView = _reviewEntryButtonsView;
+@synthesize filteringLabel = _filteringLabel;
+@synthesize reviewScrollView = _reviewScrollView;
+@synthesize selectedFilterButton = _selectedFilterButton;
 
 static NSString *REVIEW = @"REVIEW";
 static NSString *DONE = @"DONE";
@@ -117,6 +128,11 @@ static NSString *DONE = @"DONE";
     [self setEntryLabel:nil];
     [self setTitleLabel:nil];
     [self setDateTap:nil];
+    [self setReviewEntryButtonsView:nil];
+    [self setNormalEntryButtonsView:nil];
+    [self setFilteringLabel:nil];
+    [self setReviewScrollView:nil];
+    [self setSelectedFilterButton:nil];
 }
 
 
@@ -166,14 +182,19 @@ static NSString *DONE = @"DONE";
     [[self entriesViewController] setNote:note];
     [[self entriesViewController] setParentController:self];
     
-    [[self entriesViewController] setParentController:self];
-    
-    [self normalIcons];
-    
+    [[self keyPointButton] setIcon:[BNoteFactory createIcon:KeyPointIcon]];
+    [[self actionItemButton] setIcon:[BNoteFactory createIcon:ActionItemIcon]];
+    [[self decisionButton] setIcon:[BNoteFactory createIcon:DecisionIcon]];
+    [[self questionButton] setIcon:[BNoteFactory createIcon:QuestionIcon]];
+    [[self attendantsButton] setIcon:[BNoteFactory createIcon:AttentiesIcon]];
+
     [LayerFormater setBorderWidth:1 forView:[self footerView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self infoView]];
     
+    [[self year] setTextColor:[BNoteConstants appHighlightColor1]];
+    [[self subjectTextView] setTextColor:[BNoteConstants appHighlightColor1]];
+
     [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:18]];
     [[self titleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     [[self titleLabel] setText:[[note topic] title]];
@@ -183,9 +204,13 @@ static NSString *DONE = @"DONE";
     [[[self attendantsButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[[self decisionButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[[self questionButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+
     [[self entryLabel] setFont:[BNoteConstants font:RobotoBold andSize:14]];
     [[self entryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-    
+    [[self filteringLabel] setFont:[BNoteConstants font:RobotoBold andSize:14]];
+    [[self filteringLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+
+    [[self dateView] setBackgroundColor:[BNoteConstants appHighlightColor1]];
     [[self year] setFont:[BNoteConstants font:RobotoRegular andSize:17]];
     [[self month] setFont:[BNoteConstants font:RobotoBold andSize:11]];
     [[self day] setFont:[BNoteConstants font:RobotoRegular andSize:34]];
@@ -197,6 +222,8 @@ static NSString *DONE = @"DONE";
     
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
 
+    [[self reviewEntryButtonsView] setHidden:YES];
+    
     [LayerFormater roundCornersForView:[self infoView]];
     [LayerFormater setBorderWidth:2 forView:[self infoView]];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[self infoView]];
@@ -265,69 +292,55 @@ static NSString *DONE = @"DONE";
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:EditingNote object:nil];
 
-    [[self trashButton] setHidden:NO];
-    [self normalIcons];
     [[self reviewButton] setTitle:REVIEW forState:UIControlStateNormal];
     [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
     [self setIsEditing:YES];
+    
+    [[self reviewEntryButtonsView] setHidden:YES];
+    [[self normalEntryButtonsView] setHidden:NO];
+    [[self trashButton] setHidden:NO];
 }
 
 - (void)reviewing
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:ReviewingNote object:nil];
 
-    [[self trashButton] setHidden:YES];
-    [self funnelIcons];
     [[self reviewButton] setTitle:DONE forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:YES];
     [self setIsEditing:NO];
+    
+    [[self reviewEntryButtonsView] setHidden:NO];
+    [[self normalEntryButtonsView] setHidden:YES];
+    [[self trashButton] setHidden:YES];
+    
+    [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
 }
 
 - (IBAction)addAttendies:(id)sender
 {
-    if ([self isEditing]) {
-        [[self attendantsButton] setHidden:YES];
-        [self addEntry:[BNoteFactory createAttendants:[self note]]];
-    } else {
-        [self setFilter:AttendantType];
-    }
+    [[self attendantsButton] setHidden:YES];
+    [self addEntry:[BNoteFactory createAttendants:[self note]]];
 }
 
 - (IBAction)addKeyPoint:(id)sender
 {
-    if ([self isEditing]) {
-        [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
-    } else {
-        [self setFilter:KeyPointType];
-    }
+    [self addEntry:[BNoteFactory createKeyPoint:[self note]]];
 }
 
 - (IBAction)addQuestion:(id)sender
 {
-    if ([self isEditing]) {
-        [self addEntry:[BNoteFactory createQuestion:[self note]]];
-    } else {
-        [self setFilter:QuestionType];
-    }
+    [self addEntry:[BNoteFactory createQuestion:[self note]]];
 }
 
 - (IBAction)addDecision:(id)sender
 {
-    if ([self isEditing]) {
-        [self addEntry:[BNoteFactory createDecision:[self note]]];
-    } else {
-        [self setFilter:DecistionType];
-    }
+    [self addEntry:[BNoteFactory createDecision:[self note]]];
 }
 
 - (IBAction)addActionItem:(id)sender
 {
-    if ([self isEditing]) {
-        [self addEntry:[BNoteFactory createActionItem:[self note]]];
-    } else {
-        [self setFilter:ActionItemType];
-    }
+    [self addEntry:[BNoteFactory createActionItem:[self note]]];
 }
 
 - (void)addEntry:(Entry *)entry
@@ -441,40 +454,30 @@ static NSString *DONE = @"DONE";
     [[self attendantsButton] setHidden:NO];
 }
 
-- (void)normalIcons
-{
-    [[self keyPointButton] setIcon:[BNoteFactory createIcon:KeyPointIcon]];
-    [[self actionItemButton] setIcon:[BNoteFactory createIcon:ActionItemIcon]];
-    [[self decisionButton] setIcon:[BNoteFactory createIcon:DecisionIcon]];
-    [[self questionButton] setIcon:[BNoteFactory createIcon:QuestionIcon]];
-    [[self attendantsButton] setIcon:[BNoteFactory createIcon:AttentiesIcon]];
-}
-
-- (void)funnelIcons
-{
-    [[self keyPointButton] setIcon:[BNoteFactory createIcon:FilterIcon]];
-    [[self actionItemButton] setIcon:[BNoteFactory createIcon:FilterIcon]];
-    [[self decisionButton] setIcon:[BNoteFactory createIcon:FilterIcon]];
-    [[self questionButton] setIcon:[BNoteFactory createIcon:FilterIcon]];
-    [[self attendantsButton] setIcon:[BNoteFactory createIcon:FilterIcon]];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
 }
 
-- (void)setFilter:(BNoteFilterType)filterType
+- (void)useFilter:(id<BNoteFilter>)filter sender:(UIButton *)button
 {
+
+    [[self selectedFilterButton] setSelected:NO];
+
     id<BNoteFilter> currentFilter = [[self entriesViewController] filter];
-    id<BNoteFilter> nextFilter = [[BNoteFilterFactory instance] create:filterType];
     
-    if (currentFilter == nextFilter) {
-        nextFilter = [[BNoteFilterFactory instance] create:ItdentityType];
+    if (currentFilter == filter) {
+        currentFilter = [[BNoteFilterFactory instance] create:ItdentityType];
+    } else {
+        [button setSelected:YES];
+        currentFilter = filter;
     }
     
-    [[self entriesViewController] setFilter:nextFilter];
+    [self setSelectedFilterButton:button];
+
+    [[self entriesViewController] setFilter:currentFilter];
 }
+
 
 - (IBAction)about:(id)sender
 {

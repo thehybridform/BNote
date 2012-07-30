@@ -9,6 +9,7 @@
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 #import "TopicGroup.h"
+#import "BNoteWriter.h"
 
 @interface BNoteReader()
 
@@ -68,6 +69,16 @@
     NSArray *topicGroups = [[self context] executeFetchRequest:fetchRequest error:&error];
     
     if ([topicGroups count]) {
+/*
+        if ([name isEqualToString:@"All"] && [topicGroups count] > 1) {
+
+            for (TopicGroup *group in topicGroups) {
+                [[BNoteWriter instance] deleteObject:group];
+            }
+            
+            return nil;
+        }
+*/        
         return [topicGroups objectAtIndex:0];
     } else {
         return nil;

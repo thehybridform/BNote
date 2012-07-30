@@ -12,7 +12,7 @@
 @interface QuickWordButton()
 @property (strong, nonatomic) UIColor *color;
 @property (strong, nonatomic) UIColor *highlightColor;
-@property (assign, nonatomic) id<EntryContent> entryContent;
+@property (strong, nonatomic) id<EntryContent> entryContent;
 @end
 
 @implementation QuickWordButton

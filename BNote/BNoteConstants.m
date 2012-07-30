@@ -26,6 +26,7 @@ const int FilterColor = 0xaaaaaa;
 const int ColorWhite = 0xffffff;
 const int AppColor1 = 0xfefefe;
 const int AppColor2 = 0xf4f4f4;
+const int darkGray = 0x888888;
 const int AppHighlightColor1 = 0x365ab0;
 
 
@@ -93,10 +94,13 @@ const NSString *const EulaFlag = @"EulaFlag";
     return UIColorFromRGB(AppColor2);
 }
 
++ (UIColor *)darkGray
+{
+    return UIColorFromRGB(darkGray);
+}
+
 + (UIFont *)font:(BNoteFont)font andSize:(float)size
 {
-//    NSArray* check = [UIFont familyNames];
-    
     NSString *name;
     switch (font) {
         case RobotoRegular:

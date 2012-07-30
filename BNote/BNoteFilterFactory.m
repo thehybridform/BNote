@@ -17,6 +17,7 @@
 #import "QuestionUnansweredFilter.h"
 #import "DecisionFilter.h"
 #import "AttendantFilter.h"
+#import "KeyWordFilter.h"
 
 @interface BNoteFilterFactory()
 @property (strong, nonatomic) NSMutableDictionary *filters;
@@ -95,6 +96,11 @@ NSString *const identityFilter = @"Identity Filter";
             return [[self filters] objectForKey:identityFilter];
             break;
     }
+}
+
++ (id<BNoteFilter>)createEntryTextFilter:(NSString *)searchText
+{
+    return [[KeyWordFilter alloc] initWithSearchString:searchText];
 }
 
 + (BNoteFilterFactory *)instance

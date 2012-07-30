@@ -113,6 +113,15 @@
 		18539D6915AFF6D900D7DC55 /* KeyPointCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6815AFF6D900D7DC55 /* KeyPointCloner.m */; };
 		18539D6C15AFF73F00D7DC55 /* PhotoCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6B15AFF73E00D7DC55 /* PhotoCloner.m */; };
 		18539D7215AFFF6900D7DC55 /* AttendantsCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */; };
+		1860688C15C62F8D003DC4EB /* BNoteFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860688B15C62F8D003DC4EB /* BNoteFilterButton.m */; };
+		1860688F15C632EB003DC4EB /* FilterButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860688E15C632EB003DC4EB /* FilterButtonFactory.m */; };
+		1860689215C63356003DC4EB /* KeyPointFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689115C63356003DC4EB /* KeyPointFilterButton.m */; };
+		1860689515C634F4003DC4EB /* BNoteFilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689415C634F4003DC4EB /* BNoteFilterHelper.m */; };
+		1860689815C63C56003DC4EB /* QuestionFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689715C63C56003DC4EB /* QuestionFilterButton.m */; };
+		1860689B15C63C7A003DC4EB /* ActionItemFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689A15C63C7A003DC4EB /* ActionItemFilterButton.m */; };
+		1860689E15C63C8F003DC4EB /* DecisionFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689D15C63C8F003DC4EB /* DecisionFilterButton.m */; };
+		186068A115C64447003DC4EB /* KeyWordFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A015C64446003DC4EB /* KeyWordFilterButton.m */; };
+		186068A415C644A6003DC4EB /* KeyWordFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A315C644A6003DC4EB /* KeyWordFilter.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -137,8 +146,6 @@
 		18A056CA157C905D002A4A78 /* bnote-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056C9157C905D002A4A78 /* bnote-big.png */; };
 		18A056D4157C9671002A4A78 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056D2157C9671002A4A78 /* HelpViewController.m */; };
 		18A056D5157C9671002A4A78 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D3157C9671002A4A78 /* HelpViewController.xib */; };
-		18A056D7157D7E7D002A4A78 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D6157D7E7D002A4A78 /* Default-Portrait~ipad.png */; };
-		18A056D9157D7E90002A4A78 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D8157D7E8F002A4A78 /* Default-Landscape~ipad.png */; };
 		18A056E6157D9BDA002A4A78 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056E5157D9BDA002A4A78 /* NoteView.m */; };
 		18A056F4157EFA06002A4A78 /* BNoteConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F3157EFA05002A4A78 /* BNoteConstants.m */; };
 		18A056F7157F0961002A4A78 /* BNoteImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F6157F0960002A4A78 /* BNoteImageUtils.m */; };
@@ -400,6 +407,25 @@
 		18539D7015AFFF6800D7DC55 /* AttendantsCloner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsCloner.h; sourceTree = "<group>"; };
 		18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsCloner.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
+		1860688915C62D99003DC4EB /* BNoteFilterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNoteFilterDelegate.h; sourceTree = "<group>"; };
+		1860688A15C62F8D003DC4EB /* BNoteFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFilterButton.h; sourceTree = "<group>"; };
+		1860688B15C62F8D003DC4EB /* BNoteFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFilterButton.m; sourceTree = "<group>"; };
+		1860688D15C632EB003DC4EB /* FilterButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterButtonFactory.h; sourceTree = "<group>"; };
+		1860688E15C632EB003DC4EB /* FilterButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterButtonFactory.m; sourceTree = "<group>"; };
+		1860689015C63356003DC4EB /* KeyPointFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointFilterButton.h; sourceTree = "<group>"; };
+		1860689115C63356003DC4EB /* KeyPointFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointFilterButton.m; sourceTree = "<group>"; };
+		1860689315C634F3003DC4EB /* BNoteFilterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFilterHelper.h; sourceTree = "<group>"; };
+		1860689415C634F4003DC4EB /* BNoteFilterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFilterHelper.m; sourceTree = "<group>"; };
+		1860689615C63C55003DC4EB /* QuestionFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionFilterButton.h; sourceTree = "<group>"; };
+		1860689715C63C56003DC4EB /* QuestionFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionFilterButton.m; sourceTree = "<group>"; };
+		1860689915C63C7A003DC4EB /* ActionItemFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemFilterButton.h; sourceTree = "<group>"; };
+		1860689A15C63C7A003DC4EB /* ActionItemFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemFilterButton.m; sourceTree = "<group>"; };
+		1860689C15C63C8F003DC4EB /* DecisionFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionFilterButton.h; sourceTree = "<group>"; };
+		1860689D15C63C8F003DC4EB /* DecisionFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionFilterButton.m; sourceTree = "<group>"; };
+		1860689F15C64446003DC4EB /* KeyWordFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordFilterButton.h; sourceTree = "<group>"; };
+		186068A015C64446003DC4EB /* KeyWordFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordFilterButton.m; sourceTree = "<group>"; };
+		186068A215C644A6003DC4EB /* KeyWordFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordFilter.h; sourceTree = "<group>"; };
+		186068A315C644A6003DC4EB /* KeyWordFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordFilter.m; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		1879F05915746E9A003814C2 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -630,6 +656,8 @@
 				18A056BB157C6944002A4A78 /* AttendantFilter.m */,
 				18AF4ACB1585632E00A54205 /* BNoteFilterFactory.h */,
 				18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */,
+				186068A215C644A6003DC4EB /* KeyWordFilter.h */,
+				186068A315C644A6003DC4EB /* KeyWordFilter.m */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -838,6 +866,7 @@
 		18368F5415662D8000E511CB /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				1860688415C62C83003DC4EB /* Review Notes */,
 				18DE683515B0D39A00311F16 /* People Scroll View */,
 				18AF4ABA15852F8B00A54205 /* Email Controller */,
 				18A056CB157C9090002A4A78 /* Help Pages */,
@@ -993,6 +1022,30 @@
 				18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */,
 			);
 			name = Cloners;
+			sourceTree = "<group>";
+		};
+		1860688415C62C83003DC4EB /* Review Notes */ = {
+			isa = PBXGroup;
+			children = (
+				1860688915C62D99003DC4EB /* BNoteFilterDelegate.h */,
+				1860688A15C62F8D003DC4EB /* BNoteFilterButton.h */,
+				1860688B15C62F8D003DC4EB /* BNoteFilterButton.m */,
+				1860688D15C632EB003DC4EB /* FilterButtonFactory.h */,
+				1860688E15C632EB003DC4EB /* FilterButtonFactory.m */,
+				1860689015C63356003DC4EB /* KeyPointFilterButton.h */,
+				1860689115C63356003DC4EB /* KeyPointFilterButton.m */,
+				1860689315C634F3003DC4EB /* BNoteFilterHelper.h */,
+				1860689415C634F4003DC4EB /* BNoteFilterHelper.m */,
+				1860689615C63C55003DC4EB /* QuestionFilterButton.h */,
+				1860689715C63C56003DC4EB /* QuestionFilterButton.m */,
+				1860689915C63C7A003DC4EB /* ActionItemFilterButton.h */,
+				1860689A15C63C7A003DC4EB /* ActionItemFilterButton.m */,
+				1860689C15C63C8F003DC4EB /* DecisionFilterButton.h */,
+				1860689D15C63C8F003DC4EB /* DecisionFilterButton.m */,
+				1860689F15C64446003DC4EB /* KeyWordFilterButton.h */,
+				186068A015C64446003DC4EB /* KeyWordFilterButton.m */,
+			);
+			name = "Review Notes";
 			sourceTree = "<group>";
 		};
 		1879F05615746E72003814C2 /* Date Picker */ = {
@@ -1341,8 +1394,6 @@
 				1879F06115747B18003814C2 /* QuickWordsViewController.xib in Resources */,
 				18A056CA157C905D002A4A78 /* bnote-big.png in Resources */,
 				18A056D5157C9671002A4A78 /* HelpViewController.xib in Resources */,
-				18A056D7157D7E7D002A4A78 /* Default-Portrait~ipad.png in Resources */,
-				18A056D9157D7E90002A4A78 /* Default-Landscape~ipad.png in Resources */,
 				18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */,
 				1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */,
 				184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */,
@@ -1537,6 +1588,15 @@
 				182F1E9B15BFA5570038AC13 /* BNoteDefaultData.m in Sources */,
 				182F1EAD15C136600038AC13 /* ProgressViewController.m in Sources */,
 				187F9ACA15C4F568007BE5E9 /* BNotePageControl.m in Sources */,
+				1860688C15C62F8D003DC4EB /* BNoteFilterButton.m in Sources */,
+				1860688F15C632EB003DC4EB /* FilterButtonFactory.m in Sources */,
+				1860689215C63356003DC4EB /* KeyPointFilterButton.m in Sources */,
+				1860689515C634F4003DC4EB /* BNoteFilterHelper.m in Sources */,
+				1860689815C63C56003DC4EB /* QuestionFilterButton.m in Sources */,
+				1860689B15C63C7A003DC4EB /* ActionItemFilterButton.m in Sources */,
+				1860689E15C63C8F003DC4EB /* DecisionFilterButton.m in Sources */,
+				186068A115C64447003DC4EB /* KeyWordFilterButton.m in Sources */,
+				186068A415C644A6003DC4EB /* KeyWordFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

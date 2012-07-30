@@ -50,12 +50,15 @@
     self = [super init];
     
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
 
         [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(updateTopicGroupName:)
-         name:UITextFieldTextDidChangeNotification object:[self nameText]];
+            addObserver:self selector:@selector(updateTopicGroupName:) name:UITextFieldTextDidChangeNotification object:[self nameText]];
         
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(checkTopicGroupName:) name:UIKeyboardWillHideNotification object:nil];
+
         [self setCanDismiss:YES];
     }
     
@@ -181,6 +184,15 @@
     [[self doneButton] setHidden:NO];
     [[self textLabel] setHidden:NO];
     [[self errorLabel] setHidden:YES];
+}
+
+- (void)checkTopicGroupName:(NSNotification *)notification
+{
+    if (![self canDismiss]) {
+        NSString *name = [[self nameText] text];
+        name = [BNoteStringUtils append:name, @" ", @"Copy", nil];
+        [[self nameText] setText:name];
+    }
 }
 
 - (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController

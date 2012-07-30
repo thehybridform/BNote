@@ -10,6 +10,10 @@
 #import "LayerFormater.h"
 #import "TopicGroup.h"
 
+@interface BNoteButton()
+
+@end
+
 @implementation BNoteButton
 @synthesize icon = _icon;
 
@@ -17,26 +21,45 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setTitleColor:[BNoteConstants colorFor:BNoteColorHighlight]
-                   forState:(UIControlStateNormal|UIControlStateHighlighted)];
-        [self setTitleColor:[UIColor whiteColor]
-                   forState:(UIControlStateNormal|UIControlStateDisabled)];
-        [self setBackgroundColor:[BNoteConstants colorFor:BNoteColorMain]];
-        [self setShowsTouchWhenHighlighted:YES];
-        [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
-        
-        [self setBackgroundColor:[UIColor clearColor]];
-        [LayerFormater setBorderWidth:0 forView:self];
+        [self commonInit];
     }
     
     return self;
 }
 
+- (id)init
+{
+    self = [super init];
+    
+    if (self) {
+        [self commonInit];
+    }
+    
+    return self;
+}
+
+- (void)commonInit
+{
+    [self setTitleColor:[BNoteConstants colorFor:BNoteColorHighlight]
+               forState:(UIControlStateNormal|UIControlStateHighlighted)];
+    [self setTitleColor:[UIColor whiteColor]
+               forState:(UIControlStateSelected|UIControlStateDisabled)];
+    [self setBackgroundColor:[BNoteConstants colorFor:BNoteColorMain]];
+    [self setShowsTouchWhenHighlighted:YES];
+    [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
+    
+    [self setBackgroundColor:[UIColor clearColor]];
+    [LayerFormater setBorderWidth:0 forView:self];
+}
+
 - (void)setIcon:(UIImageView *)icon
 {
     [[self icon] removeFromSuperview];
-    
     _icon = icon;
+
+    [LayerFormater roundCornersForView:icon];
+    [LayerFormater setBorderWidth:0 forView:icon];
+    
     [self addSubview:icon];
     
     float x = 0;
@@ -50,14 +73,9 @@
 
 - (void)updateTitle:(NSNotification *)notification
 {
-    NSString *title;
     TopicGroup *group = [notification object];
     
-    if ([[group name] isEqualToString:@"All"]) {
-        title = @"All Topics";
-    } else {
-        title = [group name];
-    }
+    NSString *title = [group name];
     
     [self setTitle:title forState:UIControlStateNormal];
     
@@ -65,6 +83,17 @@
     width = MIN(500, width);
     CGRect frame = [self frame];
     [self setFrame:CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height)];
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    if (selected) {
+        [[self icon] setBackgroundColor:[BNoteConstants appHighlightColor1]];
+    } else {
+        [[self icon] setBackgroundColor:[UIColor clearColor]];
+    }
 }
 
 @end

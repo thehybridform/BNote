@@ -12,13 +12,15 @@
 #import "AttendantsViewController.h"
 #import "DatePickerViewController.h"
 #import "Entry.h"
+#import "BNoteFilterDelegate.h"
 
 @class DetailViewController;
 
 @interface NoteEditorViewController : UIViewController
     <DatePickerViewControllerListener,
      UIActionSheetDelegate,
-    UIPopoverControllerDelegate>
+     UIPopoverControllerDelegate,
+     BNoteFilterDelegate>
 
 
 - (id)initWithNote:(Note *)note;

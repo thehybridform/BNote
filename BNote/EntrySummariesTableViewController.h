@@ -22,6 +22,5 @@ typedef enum {
 
 @property (strong, nonatomic) Topic *topic;
 @property (strong, nonatomic) UIViewController *parentController;
-@property (strong, nonatomic) NSString *searchText;
 
 @end

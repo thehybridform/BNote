@@ -26,17 +26,6 @@
 @synthesize noteControllers = _noteControllers;
 @synthesize pageControlNotes = _pageControlNotes;
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    
-    if (self) {
-
-    }
-    
-    return self;
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -44,6 +33,7 @@
     [self setNoteControllers:nil];
     [self setPageControlNotes:nil];
     [self setTopic:nil];
+    [self setSearchText:nil];
 }
 
 - (void)viewDidLoad
@@ -58,6 +48,11 @@
     _topic = topic;
     
     [self setNoteControllers:[[NSMutableArray alloc] init]];
+    [self setSearchText:nil];
+}
+
+- (void)setSearchText:(NSString *)searchText
+{
     [self reload];
 }
 
@@ -71,6 +66,21 @@
     [view scrollRectToVisible:frame animated:YES];
     
     [[self pageControlNotes] setCurrentPage:0];
+}
+
+- (NSArray *)filterNotes
+{
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+
+    for (Note *note in [[self topic] notes]) {
+        [array addObject:note];
+    }
+    
+    for (Note *note in [[self topic] associatedNotes]) {
+        [array addObject:note];
+    }
+    
+    return array;
 }
 
 - (void)reload
@@ -92,13 +102,8 @@
 
     float x = 10 - space;
     
-    for (Note *note in [[self topic] notes]) {
+    for (Note *note in [self filterNotes]) {
         [self addNote:note atX:x += space isAssociated:NO];
-        notes++;
-    }
-    
-    for (Note *note in [[self topic] associatedNotes]) {
-        [self addNote:note atX:x += space isAssociated:YES];
         notes++;
     }
     

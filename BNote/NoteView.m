@@ -140,7 +140,7 @@ const static float h2 = h1 - 10;
         CGRect rect = [self bounds];
         [actionSheet showFromRect:rect inView:self animated:YES];
         
-        [LayerFormater setBorderColor:[UIColor blackColor] forView:self];
+        [LayerFormater setBorderColor:[UIColor redColor] forView:self];
     }
 }
 

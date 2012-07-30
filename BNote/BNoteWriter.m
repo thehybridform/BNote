@@ -7,6 +7,7 @@
 //
 
 #import "BNoteWriter.h"
+#import "BNoteReader.h"
 
 @interface BNoteWriter()
 
@@ -38,6 +39,12 @@
     });
     
     return _default;
+}
+
+- (void)cleanup
+{
+    Topic *topic = [[BNoteReader instance] getTopic:@"Filtered Topic"];
+    [self removeTopic:topic];
 }
 
 - (id)insertNewObjectForEntityForName:(NSString *)name

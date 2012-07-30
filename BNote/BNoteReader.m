@@ -146,4 +146,20 @@
     return [sortedArray mutableCopy];
 }
 
+- (NSSet *)findNotesWithText:(NSString *)searchText inTopicGroup:(TopicGroup *)group
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Note"];
+    NSPredicate *predicate =
+        [NSPredicate predicateWithFormat:
+            @"(subject contains[cd] %@ or entries.text contains[cd] %@)",
+         searchText, searchText];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *notes = [[self context] executeFetchRequest:fetchRequest error:&error];
+    
+    return [NSMutableSet setWithArray:notes];
+}
+
 @end

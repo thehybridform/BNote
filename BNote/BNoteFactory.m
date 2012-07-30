@@ -84,6 +84,18 @@ NSString *const allEntryHeader = @"All";
     return topic;
 }
 
++ (Topic *)createTopic:(NSString *)name forGroup:(TopicGroup *)group withSearch:(NSString *)text
+{
+    Topic *topic = [BNoteFactory createTopic:name forGroup:group];
+    
+    for (Note *note in [[BNoteReader instance] findNotesWithText:text inTopicGroup:group]) {
+        [note addAssociatedTopicsObject:topic];
+    }
+    
+    return topic;
+}
+
+
 + (Note *)copyNote:(Note *)note toTopic:(Topic *)topic
 {
     Note *copy = [BNoteFactory createNote:topic];

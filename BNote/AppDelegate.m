@@ -33,7 +33,7 @@
 
     [[BNoteWriter instance] setContext:[self managedObjectContext]];
     [[BNoteReader instance] setContext:[self managedObjectContext]];
-        
+    
     MainViewViewController *mainViewViewController = [[MainViewViewController alloc] initWithDefault];
     [self setMainViewViewController:mainViewViewController];
     

@@ -268,54 +268,30 @@ static NSString *email = @"E-mail";
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    Topic *topic = [self searchTopic];
-    if (!topic) {
-        topic = [BNoteFactory createTopic:@"Filtered Topic" forGroup:[self topicGroup]];
-        [topic setColor:FilterColor];
-        [self setSearchTopic:topic];
-    } else {
-        for (Note *note in [topic notes]) {
-            [[BNoteWriter instance] removeNote:note];
-        }
-    }
-
-    for (Topic *t in [[self topicGroup] topics]) {
-        for (Note *note in [t notes]) {
-            [topic addAssociatedNotesObject:note];
-        }
-        for (Note *note in [t associatedNotes]) {
-            [topic addAssociatedNotesObject:note];
-        }
-    }
-
-    [[BNoteWriter instance] update];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    NSString *text = [searchBar text];
-    BOOL empty = [BNoteStringUtils nilOrEmpty:text];
-    
-    if (empty) {
-        Topic *topic = [self searchTopic];
-        if (topic) {
-            [[BNoteWriter instance] removeTopic:topic];
-            [self setSearchTopic:nil];
-        }
+    if ([BNoteStringUtils nilOrEmpty:[searchBar text]]) {
+        [[BNoteWriter instance] removeTopic:[self searchTopic]];
+        [self setSearchTopic:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:RefetchAllDatabaseData object:nil];
+    } else {
+        [self searchBarSearchButtonClicked:searchBar];
     }
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [[self entriesTable] setSearchText:searchText];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    
+    [[BNoteWriter instance] removeTopic:[self searchTopic]];
+    
+    Topic *topic = [BNoteFactory createTopic:@"Filtered Topic" forGroup:[self topicGroup] withSearch:[searchBar text]];
+    [topic setColor:FilterColor];
+    [self setSearchTopic:topic];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
 }
 
 - (IBAction)showTopicGroups:(id)sender

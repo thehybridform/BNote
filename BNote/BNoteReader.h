@@ -24,4 +24,7 @@
 - (TopicGroup *)getTopicGroup:(NSString *)name;
 - (Topic *)getTopic:(NSString *)name;
 
+- (NSSet *)findNotesWithText:(NSString *)searchText inTopicGroup:(TopicGroup *)group;
+
+
 @end

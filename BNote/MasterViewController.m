@@ -76,6 +76,8 @@
 
 - (void)updateReceived:(NSNotification *)notification
 {
+    [[BNoteWriter instance] cleanup];
+    
     NSString *groupName = [BNoteSessionData stringForKey:TopicGroupSelected];
     if (!groupName) {
         groupName = @"All";

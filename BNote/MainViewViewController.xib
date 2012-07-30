@@ -305,7 +305,7 @@
 					</object>
 					<object class="IBUIView" id="881695004">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">294</int>
+						<int key="NSvFlags">290</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUISearchBar" id="974164259">
 								<reference key="NSNextResponder" ref="881695004"/>
@@ -317,7 +317,7 @@
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<int key="IBUIContentMode">3</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<string key="IBPlaceholder">Search Topic Group</string>
+								<string key="IBPlaceholder">Search</string>
 								<object class="IBUITextInputTraits" key="IBTextInputTraits">
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
@@ -420,7 +420,7 @@
 					</object>
 					<object class="IBUIView" id="892000470">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">270</int>
+						<int key="NSvFlags">266</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIButton" id="66307192">
 								<reference key="NSNextResponder" ref="892000470"/>
@@ -454,6 +454,7 @@
 								<string key="NSFrame">{{988, 0}, {35, 35}}</string>
 								<reference key="NSSuperview" ref="892000470"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -492,7 +493,7 @@
 						<string key="NSFrame">{{235, 172}, {781, 36}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="892000470"/>
+						<reference key="NSNextKeyView" ref="910474460"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<float key="IBUIAlpha">0.80000001192092896</float>
@@ -509,6 +510,7 @@
 						<string key="NSFrame">{{235, 278}, {781, 36}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="892000470"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<float key="IBUIAlpha">0.80000001192092896</float>

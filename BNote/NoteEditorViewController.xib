@@ -76,8 +76,8 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUITableView" id="18117635">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">310</int>
-						<string key="NSFrame">{{0, 168}, {748, 806}}</string>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrame">{{0, 168}, {748, 822}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="812998478"/>
@@ -144,7 +144,7 @@
 									<object class="IBUILabel" id="937680534">
 										<reference key="NSNextResponder" ref="1067771047"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{13, 1}, {74, 46}}</string>
+										<string key="NSFrame">{{14, 1}, {74, 46}}</string>
 										<reference key="NSSuperview" ref="1067771047"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="424229029"/>
@@ -207,7 +207,7 @@
 									<object class="IBUILabel" id="424229029">
 										<reference key="NSNextResponder" ref="1067771047"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{20, 40}, {74, 15}}</string>
+										<string key="NSFrame">{{17, 40}, {74, 15}}</string>
 										<reference key="NSSuperview" ref="1067771047"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="451498773"/>
@@ -247,8 +247,8 @@
 							</object>
 							<object class="IBUILabel" id="451498773">
 								<reference key="NSNextResponder" ref="344141282"/>
-								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{592, 51}, {63, 21}}</string>
+								<int key="NSvFlags">265</int>
+								<string key="NSFrame">{{597, 51}, {63, 21}}</string>
 								<reference key="NSSuperview" ref="344141282"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="659342059"/>
@@ -295,7 +295,7 @@
 					</object>
 					<object class="IBUIView" id="552553982">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">294</int>
+						<int key="NSvFlags">290</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIButton" id="263297247">
 								<reference key="NSNextResponder" ref="552553982"/>
@@ -415,7 +415,7 @@
 					</object>
 					<object class="IBUIView" id="812998478">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">270</int>
+						<int key="NSvFlags">266</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIButton" id="573263498">
 								<reference key="NSNextResponder" ref="812998478"/>
@@ -482,7 +482,7 @@
 					</object>
 					<object class="IBUIView" id="659342059">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">294</int>
+						<int key="NSvFlags">290</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIButton" id="137175653">
 								<reference key="NSNextResponder" ref="659342059"/>
@@ -643,7 +643,7 @@
 					</object>
 					<object class="IBUIView" id="596183016">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">294</int>
+						<int key="NSvFlags">290</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUILabel" id="863329235">
 								<reference key="NSNextResponder" ref="596183016"/>
@@ -1351,7 +1351,6 @@
 						<string key="done:">id</string>
 						<string key="editEntries:">id</string>
 						<string key="editMode:">id</string>
-						<string key="presentShareOptions:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="about:">
@@ -1388,10 +1387,6 @@
 						</object>
 						<object class="IBActionInfo" key="editMode:">
 							<string key="name">editMode:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="presentShareOptions:">
-							<string key="name">presentShareOptions:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

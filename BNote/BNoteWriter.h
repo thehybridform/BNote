@@ -50,4 +50,7 @@
 
 - (void)moveEntry:(Entry *)entry toIndex:(NSUInteger)index;
 - (void)moveTopic:(Topic *)topic toIndex:(NSUInteger)index inGroup:(TopicGroup *)group;
+
+- (void)cleanup;
+
 @end

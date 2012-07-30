@@ -42,7 +42,6 @@
 @synthesize groupEntries = _groupEntries;
 @synthesize entries = _entries;
 @synthesize sortType = _sortType;
-@synthesize searchText = _searchText;
 @synthesize parentController = _parentController;
 @synthesize data = _data;
 @synthesize dataHeaderView = _dataHeaderView;
@@ -76,7 +75,6 @@
     [self setDecisions:nil];
     [self setActionItemsComplete:nil];
     [self setActionItemsUncomplete:nil];
-    [self setSearchText:nil];
     [self setData:nil];
     [self setDataHeaderView:nil];
     [self setTopic:nil];
@@ -91,12 +89,6 @@
 
 - (void)updateNote:(NSNotification *)notification
 {
-    [self reload];
-}
-
-- (void)setSearchText:(NSString *)searchText
-{
-    _searchText = searchText;
     [self reload];
 }
 
@@ -118,41 +110,7 @@
         }
     }
     
-    [array sortUsingComparator:^NSComparisonResult(id entry1, id entry2) {
-        switch ([self sortType]) {
-            case DateAcending:
-                if ([entry1 created] > [entry2 created]) {
-                    return (NSComparisonResult)NSOrderedDescending;
-                }
-                if ([entry1 created] < [entry2 created]) {
-                    return (NSComparisonResult)NSOrderedAscending;
-                }
-                
-                break;
-            case DateDecending:
-                if ([entry1 created] < [entry2 created]) {
-                    return (NSComparisonResult)NSOrderedDescending;
-                }
-                if ([entry1 created] > [entry2 created]) {
-                    return (NSComparisonResult)NSOrderedAscending;
-                }
-
-                break;
-            default:
-                break;
-        }
-        return (NSComparisonResult)NSOrderedSame;
-    }];
-    
-    NSArray *filtered;
-    if ([BNoteStringUtils nilOrEmpty:[self searchText]]) {
-        filtered = array;
-    } else {
-        NSPredicate *p = [NSPredicate predicateWithFormat:@"text CONTAINS[c] %@", [self searchText]];
-        filtered = [array filteredArrayUsingPredicate:p];
-    }
-    
-    return filtered;
+    return array;
 }
 
 - (void)reload

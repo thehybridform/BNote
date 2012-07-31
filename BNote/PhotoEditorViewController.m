@@ -179,6 +179,7 @@ static const CGFloat large = 20;
     [self setProgressView:nil];
     [self setProgressBackgroundView:nil];
     [self setActivityView:nil];
+    [self setKeyPoint:nil];
 }
 
 - (IBAction)done:(id)sender

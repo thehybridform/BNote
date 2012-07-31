@@ -122,6 +122,7 @@
 		1860689E15C63C8F003DC4EB /* DecisionFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689D15C63C8F003DC4EB /* DecisionFilterButton.m */; };
 		186068A115C64447003DC4EB /* KeyWordFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A015C64446003DC4EB /* KeyWordFilterButton.m */; };
 		186068A415C644A6003DC4EB /* KeyWordFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A315C644A6003DC4EB /* KeyWordFilter.m */; };
+		186068C615C7979D003DC4EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186068C515C7979C003DC4EB /* QuartzCore.framework */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -426,6 +427,7 @@
 		186068A015C64446003DC4EB /* KeyWordFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordFilterButton.m; sourceTree = "<group>"; };
 		186068A215C644A6003DC4EB /* KeyWordFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordFilter.h; sourceTree = "<group>"; };
 		186068A315C644A6003DC4EB /* KeyWordFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordFilter.m; sourceTree = "<group>"; };
+		186068C515C7979C003DC4EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		1879F05915746E9A003814C2 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186068C615C7979D003DC4EB /* QuartzCore.framework in Frameworks */,
 				18AF4AC015852FFC00A54205 /* MessageUI.framework in Frameworks */,
 				18A05685157B5BCC002A4A78 /* AddressBook.framework in Frameworks */,
 				18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */,
@@ -727,6 +730,7 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
+				186068C515C7979C003DC4EB /* QuartzCore.framework */,
 				189B445715AE809D008F11D2 /* RobotoBold.ttf */,
 				189B445815AE809D008F11D2 /* RobotoItalic.ttf */,
 				189B445915AE809D008F11D2 /* RobotoLight.ttf */,

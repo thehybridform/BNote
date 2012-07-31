@@ -31,12 +31,15 @@
 @synthesize filteredControllers = _filteredControllers;
 @synthesize parentController = _parentController;
 @synthesize textView = _textView;
+@synthesize canEdit = _canEdit;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
     if (self) {
+        [self setCanEdit:YES];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
                                                      name:UITextViewTextDidBeginEditingNotification object:nil];
         
@@ -106,7 +109,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return [self canEdit];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath

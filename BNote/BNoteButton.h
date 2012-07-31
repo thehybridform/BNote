@@ -11,5 +11,7 @@
 @interface BNoteButton : UIButton
 
 @property (strong, nonatomic) UIImageView *icon;
+@property (strong, nonatomic) UIColor *highColor;
+@property (strong, nonatomic) UIColor *lowColor;
 
 @end

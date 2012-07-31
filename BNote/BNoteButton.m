@@ -11,12 +11,50 @@
 #import "TopicGroup.h"
 
 @interface BNoteButton()
+@property (strong, nonatomic) CAGradientLayer *gradientLayer;
 
 @end
 
 @implementation BNoteButton
 @synthesize icon = _icon;
+@synthesize highColor = _highColor;
+@synthesize lowColor = _lowColor;
+@synthesize gradientLayer = _gradientLayer;;
 
+- (void)awakeFromNib;
+{
+    // Initialize the gradient layer
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    [self setGradientLayer:gradientLayer];
+        
+    // Set its bounds to be the same of its parent
+    CGRect bounds = CGRectMake(0, 0, 500, [self bounds].size.height);
+    [gradientLayer setBounds:bounds];
+    
+    // Center the layer inside the parent layer
+    [gradientLayer setPosition:
+     CGPointMake([self bounds].size.width/2,
+                 [self bounds].size.height/2)];
+    
+    // Insert the layer at position zero to make sure the
+    // text of the button is not obscured
+    [[self layer] insertSublayer:gradientLayer atIndex:0];
+    
+    // Set the layer's corner radius
+    [[self layer] setCornerRadius:10.0f];
+    
+    // Turn on masking
+    [[self layer] setMasksToBounds:YES];
+    
+    // Display a border around the button
+    // with a 1.0 pixel width
+    [[self layer] setBorderWidth:1.0f];
+    [[self layer] setBorderColor:[UIColorFromRGB(0xbbbbbb) CGColor]];
+    
+    [self setHighColor:UIColorFromRGB(0xeeeeee)];
+    [self setLowColor:UIColorFromRGB(0xc5c5c5)];
+    
+}
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -63,7 +101,7 @@
     [self addSubview:icon];
     
     float x = 0;
-    float y = [self frame].size.height / 2.0 - [icon frame].size.height / 2.0 - 3;
+    float y = [self frame].size.height / 2.0 - [icon frame].size.height / 2.0;
     float width = [icon frame].size.width;
     float height = [icon frame].size.height;
     
@@ -76,6 +114,10 @@
     TopicGroup *group = [notification object];
     
     NSString *title = [group name];
+    
+    while ([title length] < 6) {
+        title = [BNoteStringUtils append:@" ", title, @" ", nil];
+    }
     
     [self setTitle:title forState:UIControlStateNormal];
     
@@ -94,6 +136,21 @@
     } else {
         [[self icon] setBackgroundColor:[UIColor clearColor]];
     }
+}
+
+- (void)drawRect:(CGRect)rect;
+{
+    if ([self highColor] && [self lowColor]) {
+        // Set the colors for the gradient to the
+        // two colors specified for high and low
+        [[self gradientLayer] setColors:
+            [NSArray arrayWithObjects:
+             (id)[[self highColor] CGColor],
+             (id)[[self lowColor] CGColor],
+             nil]];
+    }
+    
+    [super drawRect:rect];
 }
 
 @end

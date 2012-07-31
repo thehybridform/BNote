@@ -24,9 +24,10 @@
 #import "BNoteWriter.h"
 #import "TopicGroupsViewController.h"
 #import "TopicGroupManagementViewController.h"
+#import "BNoteButton.h"
 
 @interface MainViewViewController ()
-@property (strong, nonatomic) IBOutlet UIButton *topicsButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
 @property (strong, nonatomic) IBOutlet UILabel *notesLabel;

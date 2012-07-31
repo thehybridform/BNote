@@ -300,6 +300,7 @@ static NSString *DONE = @"DONE";
     [[self reviewEntryButtonsView] setHidden:YES];
     [[self normalEntryButtonsView] setHidden:NO];
     [[self trashButton] setHidden:NO];
+    [[self entriesViewController] setCanEdit:YES];
 }
 
 - (void)reviewing
@@ -313,6 +314,7 @@ static NSString *DONE = @"DONE";
     [[self reviewEntryButtonsView] setHidden:NO];
     [[self normalEntryButtonsView] setHidden:YES];
     [[self trashButton] setHidden:YES];
+    [[self entriesViewController] setCanEdit:NO];
     
     [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
 }

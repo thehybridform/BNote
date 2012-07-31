@@ -81,7 +81,7 @@
 
 + (UIColor *)normal
 {
-    return [UIColor orangeColor];
+    return [BNoteConstants appHighlightColor1];
 }
 
 + (UIColor *)special

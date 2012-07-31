@@ -15,6 +15,7 @@
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) id<BNoteFilter> filter;
 @property (strong, nonatomic) UIViewController *parentController;
+@property (assign, nonatomic) BOOL canEdit;
 
 - (void)reload;
 - (void)selectLastCell;

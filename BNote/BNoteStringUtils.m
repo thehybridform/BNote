@@ -16,25 +16,6 @@
 
 @implementation BNoteStringUtils
 
-+ (BOOL)nilOrEmptyAll:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION
-{
-    BOOL empty = YES;
-    
-    va_list args;
-    va_start(args, firstObj);
-    
-    for (NSString *arg = firstObj; arg != nil; arg = va_arg(args, NSString *)) {
-        empty |= [self nilOrEmpty:arg];
-        if (!empty) {
-            return NO;
-        }
-    }
-    
-    va_end(args);
-    
-    return YES;
-}
-
 + (NSString *)trim:(NSString *)string
 {
     if (string) {

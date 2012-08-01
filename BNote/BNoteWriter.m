@@ -147,12 +147,13 @@
 
 - (void)updateAttendee:(Attendant *)attendant
 {
-    NSString *firstName = [attendant firstName];
-    NSString *lastName = [attendant lastName];
-    NSString *email = [attendant email];
+    BOOL first = [BNoteStringUtils nilOrEmpty:[attendant firstName]];
+    BOOL last = [BNoteStringUtils nilOrEmpty:[attendant lastName]];
+    BOOL email = [BNoteStringUtils nilOrEmpty:[attendant email]];
     
-    if ([BNoteStringUtils nilOrEmptyAll:firstName, lastName, email, nil]) {
-        [[BNoteWriter instance] removeAttendant:attendant];
+    if (first && last && email) {
+        Attendants *parent = [attendant parent];
+        [parent removeChildrenObject:attendant];
     }
 }
 

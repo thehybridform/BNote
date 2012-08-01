@@ -108,7 +108,8 @@ static NSString *removeAttendant = @"Remove";
         if (title == details) {
             [self presentAttendeeDetail];
         } else if (title == removeAttendant) {
-            [[BNoteWriter instance] removeAttendant:[self attendant]];
+            Attendants *parent = [[self attendant] parent];
+            [parent removeChildrenObject:[self attendant]];
             [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeDeleted object:nil];
         }
     }

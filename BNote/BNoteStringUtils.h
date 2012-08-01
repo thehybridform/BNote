@@ -12,7 +12,6 @@
 @interface BNoteStringUtils : NSObject
 
 + (NSString *)trim:(NSString *)string;
-+ (BOOL)nilOrEmptyAll:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
 + (BOOL)nilOrEmpty:(NSString *)string;
 
 + (NSString *)dateToString:(NSDate *)date;

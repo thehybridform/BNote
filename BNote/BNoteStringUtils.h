@@ -12,6 +12,7 @@
 @interface BNoteStringUtils : NSObject
 
 + (NSString *)trim:(NSString *)string;
++ (BOOL)nilOrEmptyAll:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
 + (BOOL)nilOrEmpty:(NSString *)string;
 
 + (NSString *)dateToString:(NSDate *)date;
@@ -24,7 +25,5 @@
 + (NSString *)append:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
 + (NSString *)ordinalNumberFormat:(NSInteger)num;
 + (NSString *)monthFor:(NSInteger)month;
-
-+ (BOOL)string:(NSString *)a isEqualsTo:(NSString *)b;
 
 @end

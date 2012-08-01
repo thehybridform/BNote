@@ -2,8 +2,8 @@
 //  Note.m
 //  BeNote
 //
-//  Created by Young Kristin on 7/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by kristin young on 7/31/12.
+//
 //
 
 #import "Note.h"
@@ -17,11 +17,10 @@
 @dynamic created;
 @dynamic lastUpdated;
 @dynamic subject;
+@dynamic summary;
 @dynamic associatedTopics;
 @dynamic entries;
 @dynamic topic;
-
-
 
 static NSString *const kItemsKey = @"entries";
 

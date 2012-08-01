@@ -89,7 +89,6 @@
         if (object) {
             [[self context] deleteObject:object];
         }
-        [self update];
     }
 }
 
@@ -97,7 +96,6 @@
 {
     if (object) {
         [[self context] deleteObject:object];
-        [self update];
     }
 }
 
@@ -109,7 +107,6 @@
     
     [note setTopic:topic];
     [note setColor:[topic color]];
-    [self update];
 }
 
 - (void)associateTopics:(NSArray *)topics toNote:(Note *)note
@@ -129,13 +126,11 @@
 - (void)associateNote:(Note *)note toTopic:(Topic *)topic
 {
     [note addAssociatedTopicsObject:topic];
-    [self update];
 }
 
 - (void)disassociateNote:(Note *)note toTopic:(Topic *)topic
 {
     [note removeAssociatedTopicsObject:topic];
-    [self update];
 }
 
 - (void)removeSketchPath:(SketchPath *)path
@@ -148,8 +143,6 @@
     for (SketchPath *path in [photo sketchPaths]) {
         [[self context] deleteObject:path];
     }
-    
-    [self update];
 }
 
 - (void)updateAttendee:(Attendant *)attendant
@@ -158,17 +151,14 @@
     NSString *lastName = [attendant lastName];
     NSString *email = [attendant email];
     
-    if ([BNoteStringUtils nilOrEmpty:firstName] && [BNoteStringUtils nilOrEmpty:lastName] && [BNoteStringUtils nilOrEmpty:email]) {
+    if ([BNoteStringUtils nilOrEmptyAll:firstName, lastName, email, nil]) {
         [[BNoteWriter instance] removeAttendant:attendant];
-    } else {
-        [[BNoteWriter instance] update];
     }
 }
 
 - (void)addTopic:(Topic *)topic toGroup:(TopicGroup *)group
 {
     [group addTopicsObject:topic];
-    [self update];
 }
 
 - (void)update
@@ -197,7 +187,6 @@
     if ([self topic:topic memberOf:group]) {
         [group removeTopicsObject:topic];
         [group insertObject:topic inTopicsAtIndex:index];
-        [self update];
     }
 }
 

@@ -123,8 +123,6 @@
 {
     [[self popup] dismissPopoverAnimated:YES];
         
-    [[BNoteWriter instance] update];
-  
     BOOL empty = [BNoteStringUtils nilOrEmpty:[[self currentTopicGroup] name]];
     if (empty) {
         [self setCurrentTopicGroup:[[BNoteReader instance] getTopicGroup:@"All"]];
@@ -139,6 +137,8 @@
     }
     
     [[BNoteWriter instance] removeObjects:emptyTopicGroups];
+    
+    [[BNoteWriter instance] update];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self currentTopicGroup]];
 }

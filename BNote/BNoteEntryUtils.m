@@ -172,8 +172,6 @@
     NSData *smallImageData = UIImageJPEGRepresentation(small, 0.8);
     [photo setSmall:smallImageData];
     
-    [[BNoteWriter instance] update];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:KeyPointPhotoUpdated object:keyPoint];
 }
 

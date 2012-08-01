@@ -47,6 +47,7 @@
 @property (strong, nonatomic) IBOutlet BNoteButton *actionItemButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *reviewButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *trashButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *addSummaryButton;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) IBOutlet EditNoteView *infoView;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
@@ -96,6 +97,7 @@
 @synthesize filteringLabel = _filteringLabel;
 @synthesize reviewScrollView = _reviewScrollView;
 @synthesize selectedFilterButton = _selectedFilterButton;
+@synthesize addSummaryButton = _addSummaryButton;
 
 static NSString *REVIEW = @"REVIEW";
 static NSString *DONE = @"DONE";
@@ -133,6 +135,7 @@ static NSString *DONE = @"DONE";
     [self setFilteringLabel:nil];
     [self setReviewScrollView:nil];
     [self setSelectedFilterButton:nil];
+    [self setAddSummaryButton:nil];
 }
 
 
@@ -223,6 +226,7 @@ static NSString *DONE = @"DONE";
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
 
     [[self reviewEntryButtonsView] setHidden:YES];
+    [[self addSummaryButton] setHidden:YES];
     
     [LayerFormater roundCornersForView:[self infoView]];
     [LayerFormater setBorderWidth:2 forView:[self infoView]];
@@ -301,6 +305,7 @@ static NSString *DONE = @"DONE";
     [[self normalEntryButtonsView] setHidden:NO];
     [[self trashButton] setHidden:NO];
     [[self entriesViewController] setCanEdit:YES];
+    [[self addSummaryButton] setHidden:YES];
 }
 
 - (void)reviewing
@@ -315,7 +320,8 @@ static NSString *DONE = @"DONE";
     [[self normalEntryButtonsView] setHidden:YES];
     [[self trashButton] setHidden:YES];
     [[self entriesViewController] setCanEdit:NO];
-    
+    [[self addSummaryButton] setHidden:NO];
+
     [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
 }
 
@@ -498,6 +504,10 @@ static NSString *DONE = @"DONE";
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
 }
 
+- (IBAction)addSummary:(id)sender
+{
+    
+}
 
 @end
 

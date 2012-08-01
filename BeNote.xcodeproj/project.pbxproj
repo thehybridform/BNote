@@ -29,7 +29,6 @@
 		182F1E6915BE9EB00038AC13 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6815BE9EB00038AC13 /* Question.m */; };
 		182F1E6C15BE9EB00038AC13 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6B15BE9EB00038AC13 /* KeyPoint.m */; };
 		182F1E6F15BE9EB00038AC13 /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6E15BE9EB00038AC13 /* TopicGroup.m */; };
-		182F1E7215BE9EB00038AC13 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7115BE9EB00038AC13 /* Note.m */; };
 		182F1E7515BE9EB10038AC13 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7415BE9EB10038AC13 /* Entry.m */; };
 		182F1E7815BE9EB10038AC13 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7715BE9EB10038AC13 /* Attendant.m */; };
 		182F1E7B15BE9EB10038AC13 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7A15BE9EB10038AC13 /* ActionItem.m */; };
@@ -123,6 +122,8 @@
 		186068A115C64447003DC4EB /* KeyWordFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A015C64446003DC4EB /* KeyWordFilterButton.m */; };
 		186068A415C644A6003DC4EB /* KeyWordFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A315C644A6003DC4EB /* KeyWordFilter.m */; };
 		186068C615C7979D003DC4EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186068C515C7979C003DC4EB /* QuartzCore.framework */; };
+		186068C915C7AA00003DC4EB /* BNoteQuickWordUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068C815C7AA00003DC4EB /* BNoteQuickWordUtils.m */; };
+		186068CF15C7B80A003DC4EB /* ToTheRightKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068CE15C7B80A003DC4EB /* ToTheRightKeyWordFinder.m */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -205,6 +206,11 @@
 		18C2654415859E7F005FA6C5 /* ActionItemPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */; };
 		18C2654715859EB4005FA6C5 /* AttendantPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */; };
 		18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
+		18C5E88B15C7B89C005590A2 /* SelectedKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E88A15C7B89C005590A2 /* SelectedKeyWordFinder.m */; };
+		18C5E89315C7C03A005590A2 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89215C7C03A005590A2 /* Note.m */; };
+		18C5E89815C7C0D9005590A2 /* NoteSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89615C7C0D9005590A2 /* NoteSummaryViewController.m */; };
+		18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */; };
+		18C5E89C15C8DE7A005590A2 /* ToTheLeftKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */; };
 		18CC190615B91D9C0080C017 /* 19-circle-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */; };
 		18CC190915B91DD80080C017 /* 27-circle-o@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190815B91DD80080C017 /* 27-circle-o@2x.png */; };
 		18CC190C15B929A60080C017 /* TopicSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CC190B15B929A60080C017 /* TopicSearchBar.m */; };
@@ -281,8 +287,6 @@
 		182F1E6B15BE9EB00038AC13 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
 		182F1E6D15BE9EB00038AC13 /* TopicGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroup.h; sourceTree = "<group>"; };
 		182F1E6E15BE9EB00038AC13 /* TopicGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroup.m; sourceTree = "<group>"; };
-		182F1E7015BE9EB00038AC13 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		182F1E7115BE9EB00038AC13 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		182F1E7315BE9EB10038AC13 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
 		182F1E7415BE9EB10038AC13 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		182F1E7615BE9EB10038AC13 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
@@ -428,6 +432,11 @@
 		186068A215C644A6003DC4EB /* KeyWordFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordFilter.h; sourceTree = "<group>"; };
 		186068A315C644A6003DC4EB /* KeyWordFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordFilter.m; sourceTree = "<group>"; };
 		186068C515C7979C003DC4EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		186068C715C7A9FF003DC4EB /* BNoteQuickWordUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteQuickWordUtils.h; sourceTree = "<group>"; };
+		186068C815C7AA00003DC4EB /* BNoteQuickWordUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteQuickWordUtils.m; sourceTree = "<group>"; };
+		186068CC15C7B77E003DC4EB /* KeyWordFinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyWordFinder.h; sourceTree = "<group>"; };
+		186068CD15C7B80A003DC4EB /* ToTheRightKeyWordFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToTheRightKeyWordFinder.h; sourceTree = "<group>"; };
+		186068CE15C7B80A003DC4EB /* ToTheRightKeyWordFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToTheRightKeyWordFinder.m; sourceTree = "<group>"; };
 		1879F05715746E9A003814C2 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		1879F05815746E9A003814C2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		1879F05915746E9A003814C2 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -563,6 +572,16 @@
 		18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantPlainRenderer.m; sourceTree = "<group>"; };
 		18C2654B15859FE3005FA6C5 /* NotePlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePlainRenderer.h; sourceTree = "<group>"; };
 		18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePlainRenderer.m; sourceTree = "<group>"; };
+		18C5E88915C7B89B005590A2 /* SelectedKeyWordFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedKeyWordFinder.h; sourceTree = "<group>"; };
+		18C5E88A15C7B89C005590A2 /* SelectedKeyWordFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedKeyWordFinder.m; sourceTree = "<group>"; };
+		18C5E88D15C7BFA0005590A2 /* BeNote 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeNote 16.xcdatamodel"; sourceTree = "<group>"; };
+		18C5E89115C7C03A005590A2 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		18C5E89215C7C03A005590A2 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		18C5E89515C7C0D9005590A2 /* NoteSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteSummaryViewController.h; sourceTree = "<group>"; };
+		18C5E89615C7C0D9005590A2 /* NoteSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteSummaryViewController.m; sourceTree = "<group>"; };
+		18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteSummaryViewController.xib; sourceTree = "<group>"; };
+		18C5E89A15C8DE79005590A2 /* ToTheLeftKeyWordFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToTheLeftKeyWordFinder.h; sourceTree = "<group>"; };
+		18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToTheLeftKeyWordFinder.m; sourceTree = "<group>"; };
 		18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check@2x.png"; sourceTree = "<group>"; };
 		18CC190815B91DD80080C017 /* 27-circle-o@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "27-circle-o@2x.png"; sourceTree = "<group>"; };
 		18CC190A15B929A60080C017 /* TopicSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSearchBar.h; sourceTree = "<group>"; };
@@ -814,6 +833,8 @@
 		18368F4A156610B800E511CB /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				18C5E89115C7C03A005590A2 /* Note.h */,
+				18C5E89215C7C03A005590A2 /* Note.m */,
 				18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */,
 				182F1E8815BE9EB20038AC13 /* Topic.h */,
 				182F1E8915BE9EB20038AC13 /* Topic.m */,
@@ -831,8 +852,6 @@
 				182F1E7715BE9EB10038AC13 /* Attendant.m */,
 				182F1E7315BE9EB10038AC13 /* Entry.h */,
 				182F1E7415BE9EB10038AC13 /* Entry.m */,
-				182F1E7015BE9EB00038AC13 /* Note.h */,
-				182F1E7115BE9EB00038AC13 /* Note.m */,
 				182F1E6D15BE9EB00038AC13 /* TopicGroup.h */,
 				182F1E6E15BE9EB00038AC13 /* TopicGroup.m */,
 				182F1E6A15BE9EB00038AC13 /* KeyPoint.h */,
@@ -848,6 +867,7 @@
 		18368F4B156610D200E511CB /* Service Core */ = {
 			isa = PBXGroup;
 			children = (
+				186068CA15C7B3B0003DC4EB /* KeyWordFinder */,
 				18539D5915AFEB2200D7DC55 /* Cloners */,
 				18AF4AC51585620000A54205 /* Renderer */,
 				18070DF115786123003486E3 /* Filters */,
@@ -1052,6 +1072,22 @@
 			name = "Review Notes";
 			sourceTree = "<group>";
 		};
+		186068CA15C7B3B0003DC4EB /* KeyWordFinder */ = {
+			isa = PBXGroup;
+			children = (
+				186068C715C7A9FF003DC4EB /* BNoteQuickWordUtils.h */,
+				186068C815C7AA00003DC4EB /* BNoteQuickWordUtils.m */,
+				186068CC15C7B77E003DC4EB /* KeyWordFinder.h */,
+				186068CD15C7B80A003DC4EB /* ToTheRightKeyWordFinder.h */,
+				186068CE15C7B80A003DC4EB /* ToTheRightKeyWordFinder.m */,
+				18C5E88915C7B89B005590A2 /* SelectedKeyWordFinder.h */,
+				18C5E88A15C7B89C005590A2 /* SelectedKeyWordFinder.m */,
+				18C5E89A15C8DE79005590A2 /* ToTheLeftKeyWordFinder.h */,
+				18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */,
+			);
+			name = KeyWordFinder;
+			sourceTree = "<group>";
+		};
 		1879F05615746E72003814C2 /* Date Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1238,6 +1274,16 @@
 			name = "Plain Text";
 			sourceTree = "<group>";
 		};
+		18C5E89415C7C0A7005590A2 /* Summary View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18C5E89515C7C0D9005590A2 /* NoteSummaryViewController.h */,
+				18C5E89615C7C0D9005590A2 /* NoteSummaryViewController.m */,
+				18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */,
+			);
+			name = "Summary View Cell";
+			sourceTree = "<group>";
+		};
 		18DE683515B0D39A00311F16 /* People Scroll View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1282,6 +1328,7 @@
 		18E9FF29156C6FDA00F22272 /* Edit Notes */ = {
 			isa = PBXGroup;
 			children = (
+				18C5E89415C7C0A7005590A2 /* Summary View Cell */,
 				18BA9623158D817E004A4A38 /* Topic Selctor */,
 				18BF3F60157B456100B6E226 /* Entry View Cell */,
 				1879F05C15747AFB003814C2 /* Quick Buttons */,
@@ -1472,6 +1519,7 @@
 				182F1ED215C276E80038AC13 /* 83-calendar@2x-color.png in Resources */,
 				182F1ED415C27BF30038AC13 /* 18-envelope@2x-color.png in Resources */,
 				187F9ABE15C3BB1F007BE5E9 /* ProgressViewController.xib in Resources */,
+				18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1580,7 +1628,6 @@
 				182F1E6915BE9EB00038AC13 /* Question.m in Sources */,
 				182F1E6C15BE9EB00038AC13 /* KeyPoint.m in Sources */,
 				182F1E6F15BE9EB00038AC13 /* TopicGroup.m in Sources */,
-				182F1E7215BE9EB00038AC13 /* Note.m in Sources */,
 				182F1E7515BE9EB10038AC13 /* Entry.m in Sources */,
 				182F1E7815BE9EB10038AC13 /* Attendant.m in Sources */,
 				182F1E7B15BE9EB10038AC13 /* ActionItem.m in Sources */,
@@ -1601,6 +1648,12 @@
 				1860689E15C63C8F003DC4EB /* DecisionFilterButton.m in Sources */,
 				186068A115C64447003DC4EB /* KeyWordFilterButton.m in Sources */,
 				186068A415C644A6003DC4EB /* KeyWordFilter.m in Sources */,
+				186068C915C7AA00003DC4EB /* BNoteQuickWordUtils.m in Sources */,
+				186068CF15C7B80A003DC4EB /* ToTheRightKeyWordFinder.m in Sources */,
+				18C5E88B15C7B89C005590A2 /* SelectedKeyWordFinder.m in Sources */,
+				18C5E89315C7C03A005590A2 /* Note.m in Sources */,
+				18C5E89815C7C0D9005590A2 /* NoteSummaryViewController.m in Sources */,
+				18C5E89C15C8DE7A005590A2 /* ToTheLeftKeyWordFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1723,6 +1776,7 @@
 				18ECE90915A1726E009E5D0B /* BeNote 12.xcdatamodel */,
 				18F7994515AA14E800DEAB1F /* BeNote 13.xcdatamodel */,
 				182F1E1515BE9D6A0038AC13 /* BeNote 15.xcdatamodel */,
+				18C5E88D15C7BFA0005590A2 /* BeNote 16.xcdatamodel */,
 				182F1DEA15BE9B9D0038AC13 /* BeNote 14.xcdatamodel */,
 				18ECE87D15A15AD4009E5D0B /* BeNote 10.xcdatamodel */,
 				18ECE80915A154E4009E5D0B /* BeNote 9.xcdatamodel */,
@@ -1734,7 +1788,7 @@
 				18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */,
 				18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */,
 			);
-			currentVersion = 182F1E1515BE9D6A0038AC13 /* BeNote 15.xcdatamodel */;
+			currentVersion = 18C5E88D15C7BFA0005590A2 /* BeNote 16.xcdatamodel */;
 			path = BeNote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

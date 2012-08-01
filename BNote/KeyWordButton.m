@@ -70,7 +70,6 @@
 - (void)deleteKeyWord
 {
     [[BNoteWriter instance] removeKeyWord:[self keyWord]];
-    [[BNoteWriter instance] update];
     [[NSNotificationCenter defaultCenter] postNotificationName:KeyWordsUpdated object:nil];
 }
 

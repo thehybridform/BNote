@@ -79,8 +79,6 @@ NSString *const allEntryHeader = @"All";
         [all addTopicsObject:topic];
     }
 
-    [[BNoteWriter instance] update];
-    
     return topic;
 }
 
@@ -116,8 +114,6 @@ NSString *const allEntryHeader = @"All";
     [note setColor:[topic color]];
     [note setTopic:topic];
         
-    [[BNoteWriter instance] update];
-
     return note;
 }
 
@@ -133,8 +129,6 @@ NSString *const allEntryHeader = @"All";
 {
     Attendants *entry = (Attendants *)[BNoteFactory createEntry:@"Attendants" forNote:note];
 
-    [[BNoteWriter instance] update];
-    
     return entry;
 }
 
@@ -142,16 +136,12 @@ NSString *const allEntryHeader = @"All";
 {
     Question *entry = (Question *)[BNoteFactory createEntry:@"Question" forNote:note];
     
-    [[BNoteWriter instance] update];
-
     return entry;
 }
 
 + (ActionItem *)createActionItem:(Note *)note
 {
     ActionItem *entry = (ActionItem *)[BNoteFactory createEntry:@"ActionItem" forNote:note];
-    
-    [[BNoteWriter instance] update];
     
     return entry;
 }
@@ -168,16 +158,12 @@ NSString *const allEntryHeader = @"All";
 {
     KeyPoint *entry = (KeyPoint *)[BNoteFactory createEntry:@"KeyPoint" forNote:note];
     
-    [[BNoteWriter instance] update];
-    
     return entry;
 }
 
 + (Decision *)createDecision:(Note *)note
 {
     Decision *entry = (Decision *)[BNoteFactory createEntry:@"Decision" forNote:note];
-    
-    [[BNoteWriter instance] update];
     
     return entry;
 }
@@ -198,8 +184,6 @@ NSString *const allEntryHeader = @"All";
     [photo setCreated:[NSDate timeIntervalSinceReferenceDate]];
     [photo setKeyPoint:keyPoint];
     
-    [[BNoteWriter instance] update];
-
     return photo;
 }
 
@@ -228,8 +212,6 @@ NSString *const allEntryHeader = @"All";
     if (!keyWord) {
         keyWord = [[BNoteWriter instance] insertNewObjectForEntityForName:@"KeyWord"];
         [keyWord setWord:word];
-    
-        [[BNoteWriter instance] update];
     }
     
     return keyWord;

@@ -16,17 +16,23 @@
 
 @implementation BNoteStringUtils
 
-+ (BOOL)string:(NSString *)a isEqualsTo:(NSString *)b
++ (BOOL)nilOrEmptyAll:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION
 {
-    if (a == nil & b == nil) {
-        return YES;
-    } else if (a != nil & b == nil) {
-        return NO;
-    } else if (a == nil & b != nil) {
-        return NO;
+    BOOL empty = YES;
+    
+    va_list args;
+    va_start(args, firstObj);
+    
+    for (NSString *arg = firstObj; arg != nil; arg = va_arg(args, NSString *)) {
+        empty |= [self nilOrEmpty:arg];
+        if (!empty) {
+            return NO;
+        }
     }
     
-    return [a isEqualToString:b];
+    va_end(args);
+    
+    return YES;
 }
 
 + (NSString *)trim:(NSString *)string

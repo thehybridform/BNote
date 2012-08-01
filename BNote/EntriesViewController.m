@@ -18,6 +18,7 @@
 #import "KeyPoint.h"
 #import "BNoteEntryUtils.h"
 #import "QuickWordsViewController.h"
+#import "BNoteQuickWordUtils.h"
 
 @interface EntriesViewController ()
 @property (strong, nonatomic) NSMutableArray *filteredControllers;
@@ -221,12 +222,12 @@
 
 - (void)addQuickWord:(id)sender
 {
-    UITextView *textView = [self textView];
-    UITextRange *range = [textView selectedTextRange];
-    NSString *keyWord = [textView textInRange:range];
+    NSString *word = [BNoteQuickWordUtils extractKeyWordFromTextView:[self textView]];
     
-    [BNoteFactory createKeyWord:keyWord];
-    [[NSNotificationCenter defaultCenter] postNotificationName:KeyWordsUpdated object:nil];
+    if (word) {
+        [BNoteFactory createKeyWord:word];
+        [[NSNotificationCenter defaultCenter] postNotificationName:KeyWordsUpdated object:nil];
+    }
 }
 
 - (void)startedEditing:(NSNotification *)notification

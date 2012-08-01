@@ -153,8 +153,8 @@
         NSString *firstname2 = [att firstName];
         NSString *lastname2 = [att lastName];
         
-        BOOL firstMatch = [BNoteStringUtils string:firstname1 isEqualsTo:firstname2];
-        BOOL lastMatch = [BNoteStringUtils string:lastname1 isEqualsTo:lastname2];
+        BOOL firstMatch = [firstname1 isEqualToString:firstname2];
+        BOOL lastMatch = [lastname1 isEqualToString:lastname2];
         
         if (firstMatch && lastMatch) {
             return YES;

@@ -65,8 +65,10 @@ static float spacing = 10;
 {
     [super viewDidUnload];
 
+    [self setAttendantsButton:nil];
     [self setDatesButton:nil];
     [self setKeyWordsButton:nil];
+    [self setDoneButton:nil];
     [self setScrollView:nil];
     [self setMenuView:nil];
 }

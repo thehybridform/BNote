@@ -23,6 +23,7 @@
 @interface EntriesViewController ()
 @property (strong, nonatomic) NSMutableArray *filteredControllers;
 @property (strong, nonatomic) UITextView *textView;
+@property (assign, nonatomic) BOOL showSummary;
 
 @end
 
@@ -33,6 +34,7 @@
 @synthesize parentController = _parentController;
 @synthesize textView = _textView;
 @synthesize canEdit = _canEdit;
+@synthesize showSummary = _showSummary;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -68,12 +70,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
-    [self setNote:nil];
-    [self setFilter:nil];
-    [self setFilteredControllers:nil];
-    [self setParentController:nil];
-    [self setTextView:nil];
 }
 
 - (void)setFilter:(id<BNoteFilter>)filter
@@ -85,6 +81,8 @@
 - (void)setNote:(Note *)note
 {
     _note = note;
+    
+    [self setShowSummary:![BNoteStringUtils nilOrEmpty:[note summary]]];
     [self setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
 }
 
@@ -190,6 +188,11 @@
         [[self filteredControllers] insertObject:controller atIndex:0];
     }
     
+    if ([self showSummary]) {
+        id<EntryContent> controller = [BNoteFactory createSummaryEntry:[self note]];
+        [[self filteredControllers] addObject:controller];
+    }
+    
     [[self tableView] reloadData];
 }
 
@@ -250,5 +253,10 @@
     [[self textView] resignFirstResponder];
 }
 
+- (void)displaySummary
+{
+    [self setShowSummary:YES];
+    [self reload];
+}
 
 @end

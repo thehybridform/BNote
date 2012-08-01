@@ -21,6 +21,7 @@
 #import "ClonerFactory.h"
 #import "TableCellHeaderViewController.h"
 #import "DecisionContentViewController.h"
+#import "NoteSummaryViewController.h"
 
 NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -364,6 +365,11 @@ NSString *const allEntryHeader = @"All";
         return [[QuestionContentViewController alloc] initWithEntry:entry];
     }
     return [[DecisionContentViewController alloc] initWithEntry:entry];
+}
+
++ (id<EntryContent>)createSummaryEntry:(Note *)note
+{
+    return [[NoteSummaryViewController alloc] initWithNote:note];
 }
 
 + (UIImage *)paper

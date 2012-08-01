@@ -110,9 +110,6 @@
     [super viewDidUnload];
     
     [self setEditTopicsButton:nil];
-    [self setSearchTopic:nil];
-    [self setTopicGroup:nil];
-    [self setData:nil];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

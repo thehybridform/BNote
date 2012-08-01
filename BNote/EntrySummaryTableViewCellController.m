@@ -32,6 +32,17 @@
 @synthesize questionLabel = _questionLabel;
 @synthesize answerLabel = _answerLabel;
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setTextLabel:nil];
+    [self setDetailLable:nil];
+    [self setQuestionLabel:nil];
+    [self setAnswerLabel:nil];
+    [self setImageView:nil];
+}
+
 - (id)initWithEntry:(Entry *)entry
 {
     self = [super initWithNibName:@"EntrySummaryTableViewCell" bundle:nil];
@@ -71,17 +82,6 @@
     [self handleIcon];
     [self handleActionItem];
     [self handleQuestion];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setTextLabel:nil];
-    [self setDetailLable:nil];
-    [self setQuestionLabel:nil];
-    [self setAnswerLabel:nil];
-    [self setImageView:nil];
 }
 
 - (void)handleIcon

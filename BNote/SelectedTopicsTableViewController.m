@@ -50,8 +50,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
-    [self setData:nil];
 }
 
 - (void)dealloc

@@ -84,7 +84,6 @@
     
     [self setAnswerLabel:nil];
     [self setAnswerTextView:nil];
-    [self setAnswerQuickWordsViewController:nil];
 }
 
 - (float)height

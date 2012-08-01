@@ -16,13 +16,13 @@
 @interface TopicManagementViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *titleLable;
 @property (strong, nonatomic) IBOutlet UILabel *helpLable;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *actionButton;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) NSArray *data;
 @property (assign, nonatomic) Note *note;
 @property (assign, nonatomic) TopicSelectType topicSelectType;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *selected;
-@property (strong, nonatomic) IBOutlet UIButton *actionButton;
-@property (strong, nonatomic) IBOutlet UIView *menuView;
 
 @end
 
@@ -37,6 +37,19 @@
 @synthesize popup = _popup;
 @synthesize actionButton = _actionButton;
 @synthesize menuView = _menuView;
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setTitleLable:nil];
+    [self setData:nil];
+    [self setHelpLable:nil];
+    [self setSelected:nil];
+    [self setMenuView:nil];
+    [self setActionButton:nil];
+    [self setTableView:nil];
+}
 
 - (id)initWithNote:(Note *)note forType:(TopicSelectType)type
 {
@@ -89,19 +102,6 @@
     
 //    [LayerFormater addShadowToView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setTitleLable:nil];
-    [self setData:nil];
-    [self setNote:nil];
-    [self setHelpLable:nil];
-    [self setSelected:nil];
-    [self setMenuView:nil];
-    [self setActionButton:nil];
 }
 
 - (IBAction)done:(id)sender

@@ -69,16 +69,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self setQuestionsAnswered:nil];
-    [self setQuestionsUnanswered:nil];
-    [self setKeyPoints:nil];
-    [self setDecisions:nil];
-    [self setActionItemsComplete:nil];
-    [self setActionItemsUncomplete:nil];
-    [self setData:nil];
-    [self setDataHeaderView:nil];
-    [self setTopic:nil];
-    [self setParentController:nil];
 }
 
 - (void)setTopic:(Topic *)topic

@@ -49,9 +49,7 @@
     [super viewDidUnload];
 
     [self setFooter:nil];
-    [self setData:nil];
     [self setAddButton:nil];
-    [self setPopup:nil];
     [self setTableView:nil];
 }
 

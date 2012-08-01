@@ -46,6 +46,22 @@ static NSString *clearResponsibility = @"Clear Responsibility";
 static NSString *dueDate = @"Due Date";
 static NSString *clearDueDate = @"Clear Due Date";
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setDueDateView:nil];
+    [self setDueDateLabel:nil];
+    [self setResponsibilityView:nil];
+    [self setResponsibilityLabel:nil];
+    [self setCircleCheckView:nil];
+    [self setCompletionView:nil];
+    [self setCircleBlankView:nil];
+    [self setCompletionLabel:nil];
+    [self setCaledarBlankView:nil];
+    [self setCalendarCheckView:nil];
+}
+
 - (id)initWithEntry:(Entry *)entry
 {
     self = [super initWithEntry:entry];
@@ -88,22 +104,6 @@ static NSString *clearDueDate = @"Clear Due Date";
     [self updateDueDate];
     [self updateResponsibility];
     [self updateComplete];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setDueDateView:nil];
-    [self setDueDateLabel:nil];
-    [self setResponsibilityView:nil];
-    [self setResponsibilityLabel:nil];
-    [self setCircleCheckView:nil];
-    [self setCompletionView:nil];
-    [self setCircleBlankView:nil];
-    [self setCompletionLabel:nil];
-    [self setCaledarBlankView:nil];
-    [self setCalendarCheckView:nil];
 }
 
 - (float)height

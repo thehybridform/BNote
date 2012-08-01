@@ -21,9 +21,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *photoAlbumButton;
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
 @property (strong, nonatomic) IBOutlet UIButton *sketchButton;
-@property (assign, nonatomic) BOOL hasCamera;
 @property (strong, nonatomic) IBOutlet UIView *touchView;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (assign, nonatomic) BOOL hasCamera;
 
 @end
 
@@ -37,6 +37,17 @@
 @synthesize photoImageView = _photoImageView;
 
 static NSString *removeImage = @"Remove";
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setCameraButton:nil];
+    [self setPhotoAlbumButton:nil];
+    [self setTouchView:nil];
+    [self setSketchButton:nil];
+    [self setPhotoImageView:nil];
+}
 
 - (id)initWithEntry:(Entry *)entry
 {
@@ -79,18 +90,6 @@ static NSString *removeImage = @"Remove";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    [self setImagePickerController:nil];
-    [self setCameraButton:nil];
-    [self setPhotoAlbumButton:nil];
-    [self setTouchView:nil];
-    [self setSketchButton:nil];
-    [self setPhotoImageView:nil];
 }
 
 - (float)height

@@ -85,6 +85,42 @@ static const CGFloat small = 5;
 static const CGFloat medium = 10;
 static const CGFloat large = 20;
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setImageView:nil];
+    [self setDrawView:nil];
+    [self setUndoButton:nil];
+    [self setRedoButton:nil];
+    [self setSmallPencileButton:nil];
+    [self setMediumPencileButton:nil];
+    [self setLargePencileButton:nil];
+    [self setColor0Button:nil];
+    [self setColor1Button:nil];
+    [self setColor2Button:nil];
+    [self setColor3Button:nil];
+    [self setColor4Button:nil];
+    [self setColor5Button:nil];
+    [self setColor6Button:nil];
+    [self setColor7Button:nil];
+    [self setColor8Button:nil];
+    [self setColor9Button:nil];
+    [self setColor10Button:nil];
+    [self setColor11Button:nil];
+    [self setColor12Button:nil];
+    [self setColor13Button:nil];
+    [self setButtonsView:nil];
+    [self setActionView:nil];
+    [self setMenuView:nil];
+    [self setActionView:nil];
+    [self setDoneButton:nil];
+    [self setResetButton:nil];
+    [self setProgressView:nil];
+    [self setProgressBackgroundView:nil];
+    [self setActivityView:nil];
+}
+
 - (id)initDefault
 {
     self = [super initWithNibName:@"PhotoEditorViewController" bundle:nil];
@@ -142,44 +178,6 @@ static const CGFloat large = 20;
     [[button layer] setCornerRadius:7.0];
     [[button layer] setMasksToBounds:YES];
     [[button layer] setBorderWidth:1];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setImageView:nil];
-    [self setDrawView:nil];
-    [self setUndoButton:nil];
-    [self setRedoButton:nil];
-    [self setSmallPencileButton:nil];
-    [self setMediumPencileButton:nil];
-    [self setLargePencileButton:nil];
-    [self setColor0Button:nil];
-    [self setColor1Button:nil];
-    [self setColor2Button:nil];
-    [self setColor3Button:nil];
-    [self setColor4Button:nil];
-    [self setColor5Button:nil];
-    [self setColor6Button:nil];
-    [self setColor7Button:nil];
-    [self setColor8Button:nil];
-    [self setColor9Button:nil];
-    [self setColor10Button:nil];
-    [self setColor11Button:nil];
-    [self setColor12Button:nil];
-    [self setColor13Button:nil];
-    [self setSelectedColorButton:nil];
-    [self setButtonsView:nil];
-    [self setActionView:nil];
-    [self setMenuView:nil];
-    [self setActionView:nil];
-    [self setDoneButton:nil];
-    [self setResetButton:nil];
-    [self setProgressView:nil];
-    [self setProgressBackgroundView:nil];
-    [self setActivityView:nil];
-    [self setKeyPoint:nil];
 }
 
 - (IBAction)done:(id)sender

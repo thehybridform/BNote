@@ -13,7 +13,7 @@
 @interface NoteViewController : UIViewController
 
 @property (assign, nonatomic) Note *note;
-@property (assign, nonatomic) UIViewController *detailViewController;
+@property (strong, nonatomic) UIViewController *detailViewController;
 
 - (id)initWithNote:(Note *)note isAssociated:(BOOL)associated;
 

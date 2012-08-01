@@ -39,6 +39,22 @@
 @synthesize popup = _popup;
 @synthesize menuView = _menuView;
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setImage:nil];
+    [self setFirstNameField:nil];
+    [self setLastNameField:nil];
+    [self setEmailField:nil];
+    [self setTitleLabel:nil];
+    [self setFirstNameLable:nil];
+    [self setLastNameLable:nil];
+    [self setEmailLable:nil];
+    [self setMenuView:nil];
+}
+
+
 - (id)initWithAttendant:(Attendant *)attendant;
 {
     self = [super initWithNibName:@"AttendeeDetailViewController" bundle:nil];
@@ -116,21 +132,6 @@
 - (IBAction)done:(id)sender
 {
     [[self popup] dismissPopoverAnimated:YES];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setImage:nil];
-    [self setFirstNameField:nil];
-    [self setLastNameField:nil];
-    [self setEmailField:nil];
-    [self setTitleLabel:nil];
-    [self setFirstNameLable:nil];
-    [self setLastNameLable:nil];
-    [self setEmailLable:nil];
-    [self setMenuView:nil];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

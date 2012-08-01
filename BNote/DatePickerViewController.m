@@ -62,8 +62,6 @@
     [super viewDidUnload];
     
     [self setDatePicker:nil];
-    [self setDate:nil];
-    [self setTitleText:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

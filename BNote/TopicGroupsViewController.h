@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TopicGroupsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) UIPopoverController *popup;
+@property (assign, nonatomic) UIPopoverController *popup;
 
 - (IBAction)newGroup:(id)sender;
 

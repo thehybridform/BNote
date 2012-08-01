@@ -73,10 +73,7 @@
 {
     [super viewDidUnload];
 
-    [self setPeopleControllers:nil];
-    [self setAttendantsArray:nil];
     [self setPageControlPeople:nil];
-    [self setTopic:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self]; 
 }

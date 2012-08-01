@@ -12,6 +12,7 @@
 
 @interface BNoteButton()
 @property (strong, nonatomic) CAGradientLayer *gradientLayer;
+@property (strong, nonatomic) CAGradientLayer *pressedGradientLayer;
 
 @end
 
@@ -23,10 +24,25 @@
 
 - (void)awakeFromNib;
 {
-    // Initialize the gradient layer
-    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
-    [self setGradientLayer:gradientLayer];
+    [self setGradientLayer:[self setupGradient]];
+    [self setPressedGradientLayer:[self setupGradient]];
         
+    [[self layer] insertSublayer:[self pressedGradientLayer] atIndex:0];
+    [[self layer] insertSublayer:[self gradientLayer] atIndex:0];
+    
+    [[self layer] setCornerRadius:10.0f];
+    [[self layer] setMasksToBounds:YES];
+    [[self layer] setBorderWidth:1.0f];
+    [[self layer] setBorderColor:[UIColorFromRGB(0xbbbbbb) CGColor]];
+    
+    [self setHighColor:UIColorFromRGB(0xeeeeee)];
+    [self setLowColor:UIColorFromRGB(0xc5c5c5)];
+}
+
+- (CAGradientLayer *)setupGradient
+{
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    
     // Set its bounds to be the same of its parent
     CGRect bounds = CGRectMake(0, 0, 500, [self bounds].size.height);
     [gradientLayer setBounds:bounds];
@@ -36,25 +52,9 @@
      CGPointMake([self bounds].size.width/2,
                  [self bounds].size.height/2)];
     
-    // Insert the layer at position zero to make sure the
-    // text of the button is not obscured
-    [[self layer] insertSublayer:gradientLayer atIndex:0];
-    
-    // Set the layer's corner radius
-    [[self layer] setCornerRadius:10.0f];
-    
-    // Turn on masking
-    [[self layer] setMasksToBounds:YES];
-    
-    // Display a border around the button
-    // with a 1.0 pixel width
-    [[self layer] setBorderWidth:1.0f];
-    [[self layer] setBorderColor:[UIColorFromRGB(0xbbbbbb) CGColor]];
-    
-    [self setHighColor:UIColorFromRGB(0xeeeeee)];
-    [self setLowColor:UIColorFromRGB(0xc5c5c5)];
-    
+    return gradientLayer;
 }
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -148,9 +148,45 @@
              (id)[[self highColor] CGColor],
              (id)[[self lowColor] CGColor],
              nil]];
+
+        [[self pressedGradientLayer] setColors:
+            [NSArray arrayWithObjects:
+             (id)[[self lowColor] CGColor],
+             (id)[[self highColor] CGColor],
+             nil]];
+        
+        [[self pressedGradientLayer] setHidden:YES];
     }
     
     [super drawRect:rect];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self pressedGradientLayer] setHidden:NO];
+    
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self pressedGradientLayer] setHidden:YES];
+    
+    [super touchesCancelled:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self pressedGradientLayer] setHidden:YES];
+    
+    [super touchesEnded:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self pressedGradientLayer] setHidden:YES];
+    
+    [super touchesMoved:touches withEvent:event];
 }
 
 @end

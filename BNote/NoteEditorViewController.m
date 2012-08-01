@@ -26,7 +26,7 @@
 #import "BNoteFilterHelper.h"
 
 @interface NoteEditorViewController ()
-@property (strong, nonatomic) Note *note;
+@property (assign, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
 @property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) UIPopoverController *popup;
@@ -106,8 +106,6 @@ static NSString *DONE = @"DONE";
 {
     [super viewDidUnload];
     
-    [self setNote:nil];
-    [self setToolbarEditColor:nil];
     [self setDateView:nil];
     [self setTime:nil];
     [self setYear:nil];
@@ -121,23 +119,18 @@ static NSString *DONE = @"DONE";
     [self setTrashButton:nil];
     [self setEntriesViewController:nil];
     [self setAttendantsButton:nil];
-    [self setSelectedAttendant:nil];
-    [self setPopup:nil];
     [self setMenuView:nil];
     [self setInfoView:nil];
     [self setMonth:nil];
     [self setShareButton:nil];
     [self setEntryLabel:nil];
     [self setTitleLabel:nil];
-    [self setDateTap:nil];
     [self setReviewEntryButtonsView:nil];
     [self setNormalEntryButtonsView:nil];
     [self setFilteringLabel:nil];
     [self setReviewScrollView:nil];
-    [self setSelectedFilterButton:nil];
     [self setAddSummaryButton:nil];
 }
-
 
 - (id)initWithNote:(Note *)note
 {
@@ -506,7 +499,7 @@ static NSString *DONE = @"DONE";
 
 - (IBAction)addSummary:(id)sender
 {
-    
+    [[self entriesViewController] displaySummary];
 }
 
 @end

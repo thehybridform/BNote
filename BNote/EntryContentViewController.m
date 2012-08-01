@@ -84,10 +84,6 @@
 {
     [super viewDidUnload];
     
-    [self setQuickWordsViewController:nil];
-    [self setEntry:nil];
-    [self setParentController:nil];
-    [self setSelectedTextView:nil];
     [self setMainTextView:nil];
     [self setIconView:nil];
 }

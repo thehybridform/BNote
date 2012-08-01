@@ -30,10 +30,7 @@
 {
     [super viewDidUnload];
     
-    [self setNoteControllers:nil];
     [self setPageControlNotes:nil];
-    [self setTopic:nil];
-    [self setSearchText:nil];
 }
 
 - (void)viewDidLoad

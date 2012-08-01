@@ -22,5 +22,6 @@
 - (void)selectFirstCell;
 - (void)selectEntry:(Entry *)entry;
 - (void)resignControll;
+- (void)displaySummary;
 
 @end

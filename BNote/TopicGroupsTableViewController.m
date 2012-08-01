@@ -15,7 +15,7 @@
 
 @interface TopicGroupsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
-@property (strong, nonatomic) TopicGroup *selectedTopicGroup;
+@property (assign, nonatomic) TopicGroup *selectedTopicGroup;
 @property (assign, nonatomic) int selectedIndex;
 
 @end
@@ -42,16 +42,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
-    [self setData:nil];
-    [self setSelectedTopicGroup:nil];
-    [self setNameText:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

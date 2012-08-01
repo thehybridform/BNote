@@ -73,9 +73,7 @@ static NSString *createNew = @"Create";
     [super viewDidUnload];
 
     [self setAttendantsViewController:nil];
-    [self setPeoplePicker:nil];
     [self setAddAttendantView:nil];
-    [self setSelectedAttendant:nil];
 }
 
 - (float)height

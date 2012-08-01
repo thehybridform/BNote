@@ -25,7 +25,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *nameText;
 @property (strong, nonatomic) IBOutlet TopicGroupsTableViewController *topicGroupsTableViewController;
 @property (strong, nonatomic) IBOutlet SelectedTopicsTableViewController *selectedTopicsTableViewController;
-@property (strong, nonatomic) TopicGroup *currentTopicGroup;
+@property (assign, nonatomic) TopicGroup *currentTopicGroup;
 @property (strong, nonatomic) NSMutableArray *topicGroupNames;
 @property (assign, nonatomic) BOOL canDismiss;
 
@@ -44,6 +44,21 @@
 @synthesize topicGroupNames = _topicGroupNames;
 @synthesize canDismiss = _canDismiss;
 @synthesize doneButton = _doneButton;
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setTextLabel:nil];
+    [self setTitleLabel:nil];
+    [self setErrorLabel:nil];
+    [self setNameText:nil];
+    [self setTopicGroupsTableViewController:nil];
+    [self setSelectedTopicsTableViewController:nil];
+    [self setEditButton:nil];
+    [self setDoneButton:nil];
+    [self setPopup:nil];
+}
 
 - (id)init
 {
@@ -88,23 +103,6 @@
     
     [[self errorLabel] setHidden:YES];
     [[self nameText] setDelegate:self];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setTextLabel:nil];
-    [self setTitleLabel:nil];
-    [self setErrorLabel:nil];
-    [self setNameText:nil];
-    [self setTopicGroupsTableViewController:nil];
-    [self setSelectedTopicsTableViewController:nil];
-    [self setEditButton:nil];
-    [self setTopicGroupNames:nil];
-    [self setDoneButton:nil];
-    [self setPopup:nil];
-    [self setCurrentTopicGroup:nil];
 }
 
 - (void)dealloc

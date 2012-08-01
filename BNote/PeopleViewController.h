@@ -11,7 +11,7 @@
 
 @interface PeopleViewController : UIViewController <UIScrollViewDelegate>
 
-@property (strong, nonatomic) Topic *topic;
+@property (assign, nonatomic) Topic *topic;
 
 - (void)reset;
 - (void)reload;

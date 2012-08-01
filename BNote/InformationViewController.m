@@ -37,6 +37,17 @@
 @synthesize progressBackgroundView = _progressBackgroundView;
 @synthesize activityView = _activityView;
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setMenu:nil];
+    [self setDoneButton:nil];
+    [self setProgressView:nil];
+    [self setProgressBackgroundView:nil];
+    [self setActivityView:nil];
+}
+
 - (id)initWithDefault
 {
     self = [super initWithNibName:@"InformationViewController" bundle:nil];
@@ -67,20 +78,6 @@
     [self setDefaultsArray:defaults];
 
     [LayerFormater setBorderWidth:1 forView:[self menu]];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setStorageArray:nil];
-    [self setAboutArray:nil];
-    [self setMenu:nil];
-    [self setDoneButton:nil];
-    [self setDefaultsArray:nil];
-    [self setProgressView:nil];
-    [self setProgressBackgroundView:nil];
-    [self setActivityView:nil];
 }
 
 - (IBAction)done:(id)sender

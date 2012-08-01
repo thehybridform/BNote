@@ -42,7 +42,7 @@
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property (strong, nonatomic) TopicGroup *topicGroup;
+@property (assign, nonatomic) TopicGroup *topicGroup;
 
 @end
 
@@ -65,6 +65,34 @@
 @synthesize searchBar = _searchBar;
 
 static NSString *email = @"E-mail";
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    [self setMenu:nil];
+    [self setTopicsTable:nil];
+    [self setEntriesTable:nil];
+    [self setDetailView:nil];
+    [self setNotesViewController:nil];
+    [self setPeopleViewController:nil];
+    [self setCountLabel:nil];
+    [self setNotesLabel:nil];
+    [self setPeopleLabel:nil];
+    [self setShareButton:nil];
+    [self setAddTopicButton:nil];
+    [self setFooter:nil];
+    [self setTopicsButton:nil];
+}
+
+- (void)dealloc
+{
+    if ([self searchTopic]) {
+        [[BNoteWriter instance] removeTopic:[self searchTopic]];
+    }
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (id)initWithDefault
 {
@@ -110,34 +138,6 @@ static NSString *email = @"E-mail";
 
     [[self detailView] setHidden:YES];
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    [self setMenu:nil];
-    [self setTopicsTable:nil];
-    [self setEntriesTable:nil];
-    [self setDetailView:nil];
-    [self setNotesViewController:nil];
-    [self setPeopleViewController:nil];
-    [self setCountLabel:nil];
-    [self setNotesLabel:nil];
-    [self setPeopleLabel:nil];
-    [self setShareButton:nil];
-    [self setAddTopicButton:nil];
-    [self setFooter:nil];
-    [self setTopicsButton:nil];
-    [self setTopicGroup:nil];
-    
-    if ([self searchTopic]) {
-        [[BNoteWriter instance] removeTopic:[self searchTopic]];
-    }
-    [self setSearchTopic:nil];
-
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)selectedTopic:(NSNotification *)notification

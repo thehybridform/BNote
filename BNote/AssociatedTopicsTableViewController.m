@@ -50,10 +50,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
-    [self setData:nil];
-    [self setActionSheet:nil];
-    [self setPopup:nil];
 }
 
 - (void)setNote:(Note *)note

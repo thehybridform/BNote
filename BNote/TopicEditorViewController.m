@@ -29,7 +29,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *button_9;
 @property (assign, nonatomic) int selectedColor;
 
-@property (strong, nonatomic) TopicGroup *topicGroup;
+@property (assign, nonatomic) TopicGroup *topicGroup;
 @end
 
 @implementation TopicEditorViewController
@@ -60,7 +60,6 @@
     
     [self setButtonAction:nil];
     [self setNameTextField:nil];
-    [self setTopic:nil];
     [self setSelectedColorButton:nil];
     
     [self setButton_1:nil];
@@ -72,9 +71,6 @@
     [self setButton_7:nil];
     [self setButton_8:nil];
     [self setButton_9:nil];
-    
-    [self setPopup:nil];
-    [self setTopicGroup:nil];
 }
 
 - (id)initWithTopicGroup:(TopicGroup *)group

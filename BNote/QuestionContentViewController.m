@@ -102,6 +102,7 @@
 - (void)startedEditingAnswerText:(NSNotification *)notification
 {
     if ([notification object] == [self answerTextView]) {
+//        [[self answerTextView] setClipsToBounds:NO];
         [self handleImageIcon:YES];
         [self setSelectedTextView:[self answerTextView]];
         [[self answerQuickWordsViewController] selectFirstButton];
@@ -110,7 +111,10 @@
 
 - (void)stoppedEditingAnswerText:(NSNotification *)notification
 {
-    [self handleImageIcon:NO];
+    if ([notification object] == [self answerTextView]) {
+//        [[self answerTextView] setClipsToBounds:YES];
+        [self handleImageIcon:NO];
+    }
 }
 
 - (void)updateAnswerText:(NSNotification *)notification

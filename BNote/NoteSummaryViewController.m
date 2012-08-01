@@ -33,11 +33,38 @@
     if (self) {
         [self setNote:note];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                     name:UITextViewTextDidChangeNotification object:[self textView]];
+        UITableViewCell *cell = (UITableViewCell *) [self view];
+        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [LayerFormater roundCornersForView:cell];
+        [LayerFormater setBorderColor:UIColorFromRGB([note color]) forView:cell];
+        [LayerFormater setBorderWidth:2 forView:cell];
+
+        UITextView *view = [self mainTextView];
         
+        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+        [view setTextColor:UIColorFromRGB(0x444444)];
+        [view setClipsToBounds:YES];
+        [view setText:[[self note] summary]];
+        
+        [LayerFormater roundCornersForView:view];
+        [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:view];
+        
+        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+        [self setQuickWordsViewController:quick];
+        [view setInputAccessoryView:[quick view]];
+        
+        [[self summaryLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
+        [[self summaryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                     name:UITextViewTextDidChangeNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                     name:UITextViewTextDidEndEditingNotification object:view];
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
-                                                     name:UITextViewTextDidBeginEditingNotification object:[self textView]];
+                                                     name:UITextViewTextDidBeginEditingNotification object:view];
     }
     
     return self;
@@ -47,23 +74,6 @@
 {
     [super viewDidLoad];
 
-    [[self summaryLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
-    [[self summaryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-    
-    UITextView *view = [self textView];
-    
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setTextColor:UIColorFromRGB(0x444444)];
-    [view setClipsToBounds:YES];
-    [view setText:[[self note] summary]];
-    
-    [LayerFormater roundCornersForView:view];
-    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:view];
-    
-    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-    [self setQuickWordsViewController:quick];
-    [view setInputAccessoryView:[quick view]];
-    
 }
 
 - (void)viewDidUnload
@@ -106,7 +116,12 @@
 
 - (float)height
 {
-    return 100;
+    UITextView *view = [[UITextView alloc] init];
+    [view setText:[[self note] summary]];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+    [view setFrame:CGRectMake(0, 0, [self width] - 100, 50)];
+    
+    return MAX(100, [view contentSize].height + 10);
 }
 
 - (float)width
@@ -123,7 +138,15 @@
 - (void)startedEditingText:(NSNotification *)notification
 {
     if ([notification object] == [self textView]) {
+//        [[self mainTextView] setClipsToBounds:NO];
         [[self quickWordsViewController] selectFirstButton];
+    }
+}
+
+- (void)stoppedEditingText:(NSNotification *)notification
+{
+    if ([notification object] == [self mainTextView]) {
+//        [[self mainTextView] setClipsToBounds:YES];
     }
 }
 
@@ -132,9 +155,9 @@
     if ([notification object] == [self textView]) {
         NSString *text = [[self mainTextView] text];
         if ([BNoteStringUtils nilOrEmpty:text]) {
-            [[self note] setSubject:nil];
+            [[self note] setSummary:nil];
         } else {
-            [[self note] setSubject:text];
+            [[self note] setSummary:text];
         }
     }
 }

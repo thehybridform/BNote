@@ -19,6 +19,8 @@
 #import "BNoteEntryUtils.h"
 #import "QuickWordsViewController.h"
 #import "BNoteQuickWordUtils.h"
+#import "AttendantsContentViewController.h"
+#import "NoteSummaryViewController.h"
 
 @interface EntriesViewController ()
 @property (strong, nonatomic) NSMutableArray *filteredControllers;
@@ -113,8 +115,14 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([BNoteEntryUtils noteContainsAttendants:[self note]]) {
-        return [indexPath row] > 0;
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]];
+    
+    if ([controller isKindOfClass:[AttendantsContentViewController class]]) {
+        return NO;
+    }
+    
+    if ([controller isKindOfClass:[NoteSummaryViewController class]]) {
+        return NO;
     }
     
     return YES;
@@ -142,24 +150,33 @@
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
         
-        Entry *entry = [controller entry];
-        BOOL isAttendants = [entry isKindOfClass:[Attendants class]];
 
-        [[BNoteWriter instance] removeEntry:entry];
-        if (isAttendants) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:AttendantsEntryDeleted object:nil];
+        if ([controller isKindOfClass:[NoteSummaryViewController class]]) {
+            [[self note] setSummary:nil];
+        } else {
+            Entry *entry = [controller entry];
+            BOOL isAttendants = [entry isKindOfClass:[Attendants class]];
+
+            [[BNoteWriter instance] removeEntry:entry];
+            if (isAttendants) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:AttendantsEntryDeleted object:nil];
+            }
         }
     }
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
-    if ([[BNoteEntryUtils attendants:[self note]] count]) {
-        if ([proposedDestinationIndexPath row] == 0) {
-            return [NSIndexPath indexPathForRow:1 inSection:0];
-        }
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[proposedDestinationIndexPath row]];
+    
+    if ([controller isKindOfClass:[AttendantsContentViewController class]]) {
+        return sourceIndexPath;
     }
     
+    if ([controller isKindOfClass:[NoteSummaryViewController class]]) {
+        return sourceIndexPath;
+    }
+
     return proposedDestinationIndexPath;
 }
 
@@ -257,6 +274,13 @@
 {
     [self setShowSummary:YES];
     [self reload];
+}
+
+- (BOOL)showingSummary
+{
+    id<EntryContent> controller = [[self filteredControllers] lastObject];
+    
+    return [controller isKindOfClass:[NoteSummaryViewController class]];
 }
 
 @end

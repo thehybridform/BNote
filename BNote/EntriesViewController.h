@@ -23,5 +23,6 @@
 - (void)selectEntry:(Entry *)entry;
 - (void)resignControll;
 - (void)displaySummary;
+- (BOOL)showingSummary;
 
 @end

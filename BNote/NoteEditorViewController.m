@@ -313,7 +313,9 @@ static NSString *DONE = @"DONE";
     [[self normalEntryButtonsView] setHidden:YES];
     [[self trashButton] setHidden:YES];
     [[self entriesViewController] setCanEdit:NO];
-    [[self addSummaryButton] setHidden:NO];
+    
+    BOOL showingSummary = [[self entriesViewController] showingSummary];
+    [[self addSummaryButton] setHidden:showingSummary];
 
     [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
 }
@@ -500,6 +502,7 @@ static NSString *DONE = @"DONE";
 - (IBAction)addSummary:(id)sender
 {
     [[self entriesViewController] displaySummary];
+    [[self entriesViewController] selectLastCell];
 }
 
 @end

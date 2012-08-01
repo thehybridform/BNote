@@ -48,6 +48,7 @@
             [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
             [view setTextColor:UIColorFromRGB(0x444444)];
             [view setClipsToBounds:YES];
+            [view setScrollEnabled:NO];
             
             QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
             [self setQuickWordsViewController:quick];
@@ -118,6 +119,8 @@
 - (void)startedEditingText:(NSNotification *)notification
 {
     if ([notification object] == [self mainTextView]) {
+//        [[self mainTextView] setClipsToBounds:NO];
+        [[self mainTextView] setScrollEnabled:YES];
         [self handleImageIcon:YES];
         [self setSelectedTextView:[self mainTextView]];
         [[self quickWordsViewController] selectFirstButton];
@@ -127,6 +130,8 @@
 - (void)stoppedEditingText:(NSNotification *)notification
 {
     if ([notification object] == [self mainTextView]) {
+//        [[self mainTextView] setClipsToBounds:YES];
+        [[self mainTextView] setScrollEnabled:NO];
         [self handleImageIcon:NO];
     }
 }
@@ -157,7 +162,7 @@
 - (void)editingNote:(NSNotification *)notification
 {
     [[self mainTextView] setEditable:YES];
-    
+
     [[self view] setNeedsDisplay];
 }
 

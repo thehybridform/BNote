@@ -16,12 +16,17 @@
 
 @interface NoteView()
 @property (assign, nonatomic) BOOL drawRibbon;
+@property (strong, nonatomic) CAGradientLayer *gradientLayer;
+@property (strong, nonatomic) UIColor *highColor;
+
 @end
 
 @implementation NoteView
 @synthesize note = _note;
 @synthesize drawRibbon = _drawRibbon;
 @synthesize associated = _associated;
+@synthesize highColor = _highColor;
+@synthesize gradientLayer = _gradientLayer;;
 
 static NSString *copyNote = @"Copy";
 static NSString *removeNote = @"Remove";
@@ -50,6 +55,8 @@ const static float h2 = h1 - 10;
         [text setTextColor:[BNoteConstants appHighlightColor1]];
         [text setCenter:CGPointMake(50, 50)];
         [text setTextAlignment:UITextAlignmentCenter];
+        [text setBackgroundColor:[UIColor clearColor]];
+        [text setClipsToBounds:NO];
  
         [text setBackgroundColor:[BNoteConstants appColor1]];
 
@@ -65,6 +72,10 @@ const static float h2 = h1 - 10;
     if (self) {
         [self setDrawRibbon:YES];
         [self commonInit];
+
+        UILongPressGestureRecognizer *longPress =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
+        [self addGestureRecognizer:longPress];
     }
     
     return self;
@@ -76,11 +87,29 @@ const static float h2 = h1 - 10;
     [LayerFormater setBorderWidth:2 forView:self];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
     
-    UILongPressGestureRecognizer *longPress =
-    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
-    [self addGestureRecognizer:longPress];
-    
     [self setBackgroundColor:[BNoteConstants appColor1]];
+    
+    [self setGradientLayer:[self setupGradient]];
+    
+    [[self layer] insertSublayer:[self gradientLayer] atIndex:0];
+    
+    [self setHighColor:UIColorFromRGB(0xeeeeee)];
+}
+
+- (CAGradientLayer *)setupGradient
+{
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    
+    // Set its bounds to be the same of its parent
+    CGRect bounds = CGRectMake(0, 0, 500, [self bounds].size.height);
+    [gradientLayer setBounds:bounds];
+    
+    // Center the layer inside the parent layer
+    [gradientLayer setPosition:
+     CGPointMake([self bounds].size.width/2,
+                 [self bounds].size.height/2)];
+    
+    return gradientLayer;
 }
 
 - (void)drawRect:(CGRect)rect
@@ -102,6 +131,19 @@ const static float h2 = h1 - 10;
         CGContextFillPath(context);
         CGContextStrokePath(context);
     }
+    if ([self highColor]) {
+        // Set the colors for the gradient to the
+        // two colors specified for high and low
+        [[self gradientLayer] setColors:
+         [NSArray arrayWithObjects:
+          (id)[[self highColor] CGColor],
+          (id)[UIColorFromRGB([[self note] color]) CGColor],
+          nil]];
+        
+        [[self gradientLayer] setHidden:YES];
+    }
+    
+    [super drawRect:rect];
 }
 
 - (void)dealloc
@@ -190,6 +232,30 @@ const static float h2 = h1 - 10;
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     [[BNoteSessionData instance] setPopup:nil];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self gradientLayer] setHidden:NO];
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self gradientLayer] setHidden:YES];
+    [super touchesCancelled:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self gradientLayer] setHidden:YES];
+    [super touchesEnded:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self gradientLayer] setHidden:YES];
+    [super touchesMoved:touches withEvent:event];
 }
 
 @end

@@ -88,12 +88,16 @@
 
 - (float)height
 {
-    float questionHeight = [super height];
-
     UITextView *view = [[UITextView alloc] init];
+    [view setText:[[self question] text]];
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+    [view setFrame:CGRectMake(0, 0, [self width] - 240, 60)];
+    
+    float questionHeight = MAX(60, [view contentSize].height + 10);
+
     [view setText:[[self question] answer]];
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, 110, 50)];
+    [view setFrame:CGRectMake(0, 0, 110, 20)];
     float answerHeight = [view contentSize].height + 20;
 
     return MAX(MAX(45, questionHeight), answerHeight);

@@ -15,7 +15,7 @@
 
 @interface TopicGroupsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
-@property (assign, nonatomic) TopicGroup *selectedTopicGroup;
+@property (strong, nonatomic) TopicGroup *selectedTopicGroup;
 @property (assign, nonatomic) int selectedIndex;
 
 @end
@@ -38,8 +38,6 @@
                 break;
             }
         }
-
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:AddTopicGroupSelected object:nil];
     }
     
     return self;
@@ -48,11 +46,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:AddTopicGroupSelected object:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

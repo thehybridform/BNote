@@ -14,7 +14,7 @@
 @protocol ResponsibilityTableViewControllerDelegate;
 
 @interface ResponsibilityTableViewController : UITableViewController
-@property (assign, nonatomic) id<ResponsibilityTableViewControllerDelegate> delegate;
+@property (strong, nonatomic) id<ResponsibilityTableViewControllerDelegate> delegate;
 
 - (id)initWithNote:(Note *)note;
 

@@ -15,7 +15,7 @@
 
 @interface SelectedTopicsTableViewController ()
 @property (strong, nonatomic) NSArray *data;
-@property (assign, nonatomic) TopicGroup *topicGroup;
+@property (strong, nonatomic) TopicGroup *topicGroup;
 
 @end
 
@@ -29,8 +29,6 @@
     
     if (self) {
         [self setData:[[BNoteReader instance] allTopics]];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
     }
     
     return self;
@@ -45,15 +43,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-}
 
-- (void)dealloc
-{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

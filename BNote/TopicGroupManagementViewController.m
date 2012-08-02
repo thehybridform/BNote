@@ -25,7 +25,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *nameText;
 @property (strong, nonatomic) IBOutlet TopicGroupsTableViewController *topicGroupsTableViewController;
 @property (strong, nonatomic) IBOutlet SelectedTopicsTableViewController *selectedTopicsTableViewController;
-@property (assign, nonatomic) TopicGroup *currentTopicGroup;
+@property (strong, nonatomic) TopicGroup *currentTopicGroup;
 @property (strong, nonatomic) NSMutableArray *topicGroupNames;
 @property (assign, nonatomic) BOOL canDismiss;
 
@@ -58,6 +58,7 @@
     [self setEditButton:nil];
     [self setDoneButton:nil];
     [self setPopup:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (id)init
@@ -65,15 +66,6 @@
     self = [super init];
     
     if (self) {
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
-
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(updateTopicGroupName:) name:UITextFieldTextDidChangeNotification object:[self nameText]];
-        
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(checkTopicGroupName:) name:UIKeyboardWillHideNotification object:nil];
-
         [self setCanDismiss:YES];
     }
     
@@ -103,11 +95,15 @@
     
     [[self errorLabel] setHidden:YES];
     [[self nameText] setDelegate:self];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(updateTopicGroupName:) name:UITextFieldTextDidChangeNotification object:[self nameText]];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(checkTopicGroupName:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (IBAction)add:(id)sender
@@ -167,21 +163,22 @@
 
 - (void)updateTopicGroupName:(NSNotification *)notification
 {
-    UITextField *text = [notification object];
-    for (NSString *name in [self topicGroupNames]) {
-        if ([name isEqualToString:[text text]]) {
-            [[self doneButton] setHidden:YES];
-            [[self textLabel] setHidden:YES];
-            [[self errorLabel] setHidden:NO];
-            [self setCanDismiss:NO];
-            return;
+    if ([self nameText] == [notification object]) {
+        for (NSString *name in [self topicGroupNames]) {
+            if ([name isEqualToString:[[self nameText] text]]) {
+                [[self doneButton] setHidden:YES];
+                [[self textLabel] setHidden:YES];
+                [[self errorLabel] setHidden:NO];
+                [self setCanDismiss:NO];
+                return;
+            }
         }
-    }
     
-    [self setCanDismiss:YES];
-    [[self doneButton] setHidden:NO];
-    [[self textLabel] setHidden:NO];
-    [[self errorLabel] setHidden:YES];
+        [self setCanDismiss:YES];
+        [[self doneButton] setHidden:NO];
+        [[self textLabel] setHidden:NO];
+        [[self errorLabel] setHidden:YES];
+    }
 }
 
 - (void)checkTopicGroupName:(NSNotification *)notification

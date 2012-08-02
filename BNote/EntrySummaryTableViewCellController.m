@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *answerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *detailLable;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (assign, nonatomic) Entry *entry;
+@property (strong, nonatomic) Entry *entry;
 
 @end
 

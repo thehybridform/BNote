@@ -10,6 +10,6 @@
 #import "Attendant.h"
 
 @interface AttendantQuickButton : QuickWordButton
-@property (assign, nonatomic) Attendant *attendant;
+@property (strong, nonatomic) Attendant *attendant;
 
 @end

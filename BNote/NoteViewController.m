@@ -44,9 +44,6 @@
         UITapGestureRecognizer *tap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
         [[self view] addGestureRecognizer:tap];
-
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                     name:NoteUpdated object:note];
     }
     
     return self;
@@ -55,6 +52,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
+                                                 name:NoteUpdated object:[self note]];
 
     [self setup];
 }

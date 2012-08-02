@@ -47,8 +47,6 @@ static NSString *createNew = @"Create";
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
         [[self addAttendantView] addGestureRecognizer:tap];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantsContentViewController:)
-                                                     name:UIKeyboardDidHideNotification object:nil];
     }
     
     return self;
@@ -66,6 +64,10 @@ static NSString *createNew = @"Create";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+        selector:@selector(keyboardDidHideAttendantsContentViewController:)
+            name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -74,6 +76,7 @@ static NSString *createNew = @"Create";
 
     [self setAttendantsViewController:nil];
     [self setAddAttendantView:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (float)height

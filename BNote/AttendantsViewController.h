@@ -13,7 +13,7 @@
 
 @interface AttendantsViewController : UIViewController
 
-@property (assign, nonatomic) Attendants *attendants;
+@property (strong, nonatomic) Attendants *attendants;
 
 - (void)update;
 

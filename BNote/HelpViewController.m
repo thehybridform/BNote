@@ -9,7 +9,7 @@
 #import "HelpViewController.h"
 
 @interface HelpViewController ()
-@property (assign, nonatomic) UIViewController *parentController;
+@property (strong, nonatomic) UIViewController *parentController;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @end
 

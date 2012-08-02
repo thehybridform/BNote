@@ -10,9 +10,9 @@
 #import "Photo.h"
 
 @interface DrawingView : UIView
-@property (assign, nonatomic) UIColor *strokeColor;
+@property (strong, nonatomic) UIColor *strokeColor;
 @property (assign, nonatomic) CGFloat strokeWidth;
-@property (assign, nonatomic) Photo *photo;
+@property (strong, nonatomic) Photo *photo;
 
 - (void)undoLast;
 - (void)redoLast;

@@ -11,6 +11,6 @@
 
 @interface AssociatedTopicsTableViewController : UITableViewController <UIActionSheetDelegate, UIPopoverControllerDelegate>
 
-@property (assign, nonatomic) Note *note;
+@property (strong, nonatomic) Note *note;
 
 @end

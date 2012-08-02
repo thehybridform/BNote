@@ -29,7 +29,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *button_9;
 @property (assign, nonatomic) int selectedColor;
 
-@property (assign, nonatomic) TopicGroup *topicGroup;
+@property (strong, nonatomic) TopicGroup *topicGroup;
 @end
 
 @implementation TopicEditorViewController

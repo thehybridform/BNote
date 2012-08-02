@@ -12,7 +12,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (assign, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImage *image;
 
 @end
 

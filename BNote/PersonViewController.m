@@ -15,7 +15,7 @@
 @interface PersonViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *icon;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (assign, nonatomic) Attendant *attendant;
+@property (strong, nonatomic) Attendant *attendant;
 
 @end
 

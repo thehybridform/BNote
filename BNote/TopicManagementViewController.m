@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *actionButton;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) NSArray *data;
-@property (assign, nonatomic) Note *note;
+@property (strong, nonatomic) Note *note;
 @property (assign, nonatomic) TopicSelectType topicSelectType;
 @property (strong, nonatomic) NSMutableArray *selected;
 

@@ -61,14 +61,11 @@
     [[self tableView] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setTopic:(Topic *)topic

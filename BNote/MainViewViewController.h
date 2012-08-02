@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate>
-@property (assign, nonatomic) Topic *searchTopic;
+@property (strong, nonatomic) Topic *searchTopic;
 
 - (id)initWithDefault;
 

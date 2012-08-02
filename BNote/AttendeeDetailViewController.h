@@ -10,7 +10,7 @@
 #import "Attendant.h"
 
 @interface AttendeeDetailViewController : UIViewController <UITextFieldDelegate>
-@property (assign, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 - (id)initWithAttendant:(Attendant *)attendant;
 

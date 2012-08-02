@@ -47,6 +47,7 @@ static NSString *removeImage = @"Remove";
     [self setTouchView:nil];
     [self setSketchButton:nil];
     [self setPhotoImageView:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (id)initWithEntry:(Entry *)entry
@@ -67,8 +68,6 @@ static NSString *removeImage = @"Remove";
             [[self cameraButton] setHidden:YES];
         }
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
-                                                     name:KeyPointPhotoUpdated object:nil];
         [LayerFormater roundCornersForView:[self photoImageView]];
         
         [self handlePhotoImage];
@@ -90,6 +89,9 @@ static NSString *removeImage = @"Remove";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
+                                                 name:KeyPointPhotoUpdated object:nil];
 }
 
 - (float)height

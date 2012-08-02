@@ -12,8 +12,8 @@
 
 @interface TopicEditorViewController : UIViewController <UITextFieldDelegate>
 
-@property (assign, nonatomic) Topic *topic;
-@property (assign, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) Topic *topic;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;

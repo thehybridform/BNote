@@ -74,8 +74,6 @@
     [super viewDidUnload];
 
     [self setPageControlPeople:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self]; 
 }
 
 - (void)reset

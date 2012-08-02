@@ -146,11 +146,6 @@ const static float h2 = h1 - 10;
     [super drawRect:rect];
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 -(void)longPressTap:(id)sender
 {
     if ([[[self note] topic] color] == FilterColor) {

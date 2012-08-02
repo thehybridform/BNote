@@ -13,7 +13,7 @@
 
 @interface NotesViewController : UIViewController <UIScrollViewDelegate>
 
-@property (assign, nonatomic) Topic *topic;
+@property (strong, nonatomic) Topic *topic;
 
 - (void)reset;
 - (void)reload;

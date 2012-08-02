@@ -14,7 +14,7 @@
 @interface NoteSummaryViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
-@property (assign, nonatomic) Note *note;
+@property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 
 @end
@@ -57,14 +57,6 @@
         [[self summaryLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
         [[self summaryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                     name:UITextViewTextDidChangeNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
-                                                     name:UITextViewTextDidEndEditingNotification object:view];
-
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
-                                                     name:UITextViewTextDidBeginEditingNotification object:view];
     }
     
     return self;
@@ -74,6 +66,15 @@
 {
     [super viewDidLoad];
 
+    UITextView *view = [self mainTextView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                 name:UITextViewTextDidChangeNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                 name:UITextViewTextDidEndEditingNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
+                                                 name:UITextViewTextDidBeginEditingNotification object:view];
 }
 
 - (void)viewDidUnload
@@ -82,10 +83,7 @@
 
     [self setTextView:nil];
     [self setSummaryLabel:nil];
-}
 
-- (void)dealloc
-{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

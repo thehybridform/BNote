@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) NSString *titleText;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (assign, nonatomic) id<DatePickerViewControllerListener> listener;
+@property (strong, nonatomic) id<DatePickerViewControllerListener> listener;
 
 - (id)initWithDate:(NSDate *)date;
 - (id)initWithDate:(NSDate *)date andMode:(UIDatePickerMode)mode;

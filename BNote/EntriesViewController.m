@@ -45,11 +45,6 @@
     if (self) {
         [self setCanEdit:YES];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
-                                                     name:UITextViewTextDidBeginEditingNotification object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
-                                                     name:UITextViewTextDidEndEditingNotification object:nil];        
     }
     
     return self;
@@ -67,11 +62,18 @@
     UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Add Key Word" action:@selector(addQuickWord:)];
     [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObjects:menuItem, nil]];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
+                                                 name:UITextViewTextDidBeginEditingNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setFilter:(id<BNoteFilter>)filter
@@ -267,11 +269,14 @@
 
 - (void)startedEditing:(NSNotification *)notification
 {
-    [self setTextView:[notification object]];
+    if ([[notification object] isKindOfClass:[UITextView class]]) {
+        [self setTextView:[notification object]];
+    }
 }
 
 - (void)stoppedEditingText:(NSNotification *)notification
 {
+    [self setTextView:nil];
     [self reload];
 }
 

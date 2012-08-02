@@ -38,33 +38,9 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(createdTopic:)
-                                                     name:TopicCreated
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(selectTopic:)
-                                                     name:TopicUpdated
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(updateReceived:)
-                                                     name:RefetchAllDatabaseData
-                                                   object:nil];
-
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(selectTopicGroup:)
-                                                     name:TopicGroupSelected
-                                                   object:nil];
     }
     
     return self;
-}
-
-- (void)dealloc 
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -72,6 +48,26 @@
     [super viewDidLoad];
     [[self view] setBackgroundColor:[BNoteConstants appColor2]];
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self view]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(createdTopic:)
+                                                 name:TopicCreated
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectTopic:)
+                                                 name:TopicUpdated
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateReceived:)
+                                                 name:RefetchAllDatabaseData
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectTopicGroup:)
+                                                 name:TopicGroupSelected
+                                               object:nil];
 }
 
 - (void)updateReceived:(NSNotification *)notification
@@ -110,6 +106,7 @@
     [super viewDidUnload];
     
     [self setEditTopicsButton:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (Topic *)searchTopic

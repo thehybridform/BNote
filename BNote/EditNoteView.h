@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EditNoteView : UIView
-@property (assign, nonatomic) Note *note;
+@property (strong, nonatomic) Note *note;
 
 @end

@@ -10,7 +10,7 @@
 #import "EntryContent.h"
 
 @interface NoteSummaryViewController : UIViewController <EntryContent>
-@property (assign, nonatomic) UIViewController *parentController;
+@property (strong, nonatomic) UIViewController *parentController;
 
 - (id)initWithNote:(Note *)note;
 

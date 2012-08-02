@@ -29,20 +29,6 @@
     self = [super initWithEntry:entry];
     
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
-                                                    name:ReviewingNote object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
-                                                    name:EditingNote object:nil];
-        
-        UITextView *view = [self answerTextView];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnswerText:)
-                                                     name:UITextViewTextDidChangeNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingAnswerText:)
-                                                     name:UITextViewTextDidBeginEditingNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingAnswerText:)
-                                                     name:UITextViewTextDidEndEditingNotification object:view];
     }
     
     return self;
@@ -76,6 +62,20 @@
     [[self answerTextView] setText:[[self question] answer]];
     
     [LayerFormater roundCornersForView:[self answerTextView]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
+                                                 name:ReviewingNote object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
+                                                 name:EditingNote object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnswerText:)
+                                                 name:UITextViewTextDidChangeNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingAnswerText:)
+                                                 name:UITextViewTextDidBeginEditingNotification object:view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingAnswerText:)
+                                                 name:UITextViewTextDidEndEditingNotification object:view];
 }
 
 - (void)viewDidUnload
@@ -84,6 +84,7 @@
     
     [self setAnswerLabel:nil];
     [self setAnswerTextView:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (float)height

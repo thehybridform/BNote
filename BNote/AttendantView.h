@@ -11,7 +11,7 @@
 
 @interface AttendantView : UIView <UIActionSheetDelegate, UIPopoverControllerDelegate>
 
-@property (assign, nonatomic) Attendant *attendant;
+@property (strong, nonatomic) Attendant *attendant;
 
 @end
 

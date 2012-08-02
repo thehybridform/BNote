@@ -26,7 +26,7 @@
 #import "BNoteFilterHelper.h"
 
 @interface NoteEditorViewController ()
-@property (assign, nonatomic) Note *note;
+@property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
 @property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) UIPopoverController *popup;
@@ -130,6 +130,7 @@ static NSString *DONE = @"DONE";
     [self setFilteringLabel:nil];
     [self setReviewScrollView:nil];
     [self setAddSummaryButton:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (id)initWithNote:(Note *)note
@@ -143,10 +144,6 @@ static NSString *DONE = @"DONE";
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
         [self setDateTap:normalTap];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
-                                                     name:TopicUpdated object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
-                                                     name:AttendantsEntryDeleted object:nil];
     }
     return self;
 }
@@ -226,6 +223,11 @@ static NSString *DONE = @"DONE";
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[self infoView]];
     [[self infoView] setNote:note];
     [[self infoView] setNeedsDisplay];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
+                                                 name:TopicUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
+                                                 name:AttendantsEntryDeleted object:nil];
 }
 
 - (void)setupDate
@@ -256,11 +258,6 @@ static NSString *DONE = @"DONE";
     [format setDateFormat:@"yyyy"];
     str = [format stringFromDate:date];
     [[self year] setText:str];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
 - (IBAction)done:(id)sender

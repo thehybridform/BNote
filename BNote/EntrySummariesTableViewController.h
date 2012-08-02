@@ -20,7 +20,7 @@ typedef enum {
     Unknown
 } SortType;
 
-@property (assign, nonatomic) Topic *topic;
-@property (assign, nonatomic) UIViewController *parentController;
+@property (strong, nonatomic) Topic *topic;
+@property (strong, nonatomic) UIViewController *parentController;
 
 @end

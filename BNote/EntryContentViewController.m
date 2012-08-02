@@ -31,12 +31,6 @@
     if (self) {
         [self setEntry:entry];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
-                                                     name:ReviewingNote object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
-                                                     name:EditingNote object:nil];
-
         UITableViewCell *cell = (UITableViewCell *) [self view];
         [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -53,16 +47,6 @@
             QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
             [self setQuickWordsViewController:quick];
             [view setInputAccessoryView:[quick view]];
-
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                         name:UITextViewTextDidChangeNotification object:view];
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
-                                                         name:UITextViewTextDidBeginEditingNotification object:view];
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
-                                                         name:UITextViewTextDidEndEditingNotification object:view];
-            
             [self setSelectedTextView:view];
             [[self mainTextView] setText:[[self entry] text]];
         }
@@ -79,6 +63,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
+                                                 name:ReviewingNote object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
+                                                 name:EditingNote object:nil];
+    
+    UITextView *view = [self mainTextView];
+    if (view) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                     name:UITextViewTextDidChangeNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
+                                                     name:UITextViewTextDidBeginEditingNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                     name:UITextViewTextDidEndEditingNotification object:view];
+    }
 }
 
 - (void)viewDidUnload
@@ -87,6 +89,7 @@
     
     [self setMainTextView:nil];
     [self setIconView:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (float)height
@@ -164,11 +167,6 @@
     [[self mainTextView] setEditable:YES];
 
     [[self view] setNeedsDisplay];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];            
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

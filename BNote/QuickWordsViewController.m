@@ -26,7 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (assign, nonatomic) id<EntryContent> entryContent;
+@property (strong, nonatomic) id<EntryContent> entryContent;
 
 @end
 
@@ -71,6 +71,7 @@ static float spacing = 10;
     [self setDoneButton:nil];
     [self setScrollView:nil];
     [self setMenuView:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)dates:(id)sender

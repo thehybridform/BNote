@@ -13,7 +13,7 @@
 #import "BNoteFactory.h"
 
 @interface AttendeeDetailViewController ()
-@property (assign, nonatomic) Attendant *attendant;
+@property (strong, nonatomic) Attendant *attendant;
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet UITextField *firstNameField;
 @property (strong, nonatomic) IBOutlet UITextField *lastNameField;
@@ -52,6 +52,7 @@
     [self setLastNameLable:nil];
     [self setEmailLable:nil];
     [self setMenuView:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

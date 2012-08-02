@@ -42,7 +42,7 @@
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property (assign, nonatomic) TopicGroup *topicGroup;
+@property (strong, nonatomic) TopicGroup *topicGroup;
 
 @end
 
@@ -83,14 +83,11 @@ static NSString *email = @"E-mail";
     [self setAddTopicButton:nil];
     [self setFooter:nil];
     [self setTopicsButton:nil];
-}
-
-- (void)dealloc
-{
+    
     if ([self searchTopic]) {
         [[BNoteWriter instance] removeTopic:[self searchTopic]];
     }
-
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -99,17 +96,6 @@ static NSString *email = @"E-mail";
     self = [super initWithNibName:@"MainViewViewController" bundle:nil];
     
     if (self) {
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(selectedTopic:) name:TopicSelected object:nil];
-        
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
-        
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(presentTopicManagement:) name:TopicGroupManage object:nil];
-        
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
         
     }
     
@@ -138,6 +124,18 @@ static NSString *email = @"E-mail";
 
     [[self detailView] setHidden:YES];
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
+
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(selectedTopic:) name:TopicSelected object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(presentTopicManagement:) name:TopicGroupManage object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
 }
 
 - (void)selectedTopic:(NSNotification *)notification

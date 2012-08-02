@@ -39,8 +39,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *color11Button;
 @property (strong, nonatomic) IBOutlet UIButton *color12Button;
 @property (strong, nonatomic) IBOutlet UIButton *color13Button;
-@property (assign, nonatomic) UIButton *selectedColorButton;
-@property (assign, nonatomic) UIButton *selectedPencilButton;
+@property (strong, nonatomic) UIButton *selectedColorButton;
+@property (strong, nonatomic) UIButton *selectedPencilButton;
 @property (strong, nonatomic) IBOutlet UIView *progressView;
 @property (strong, nonatomic) IBOutlet UIView *progressBackgroundView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;

@@ -10,7 +10,7 @@
 #import "KeyPoint.h"
 
 @interface PhotoEditorViewController : UIViewController
-@property (assign, nonatomic) KeyPoint *keyPoint;
+@property (strong, nonatomic) KeyPoint *keyPoint;
 
 - (id)initDefault;
 

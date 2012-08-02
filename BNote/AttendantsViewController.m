@@ -25,10 +25,6 @@
     self = [super initWithCoder:aDecoder];
 
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
-                                                     name:AttendeeDeleted object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
-                                                     name:AttendeeUpdated object:nil];
     }
     
     return self;
@@ -37,15 +33,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
+                                                 name:AttendeeDeleted object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
+                                                 name:AttendeeUpdated object:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-}
 
-- (void) dealloc
-{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

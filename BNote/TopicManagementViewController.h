@@ -17,7 +17,7 @@ typedef enum {
 
 @interface TopicManagementViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (assign, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) UIPopoverController *popup;
 
 - (id)initWithNote:(Note *)note forType:(TopicSelectType)type;
 - (IBAction)done:(id)sender;

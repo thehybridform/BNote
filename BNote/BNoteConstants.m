@@ -30,33 +30,33 @@ const int darkGray = 0x888888;
 const int AppHighlightColor1 = 0x365ab0;
 
 
-const NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
-const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
-const NSString *const NoteUpdated = @"NoteUpdated";
-const NSString *const NoteSelected = @"NoteSelected";
-const NSString *const TopicCreated = @"TopicCreated";
-const NSString *const TopicSelected = @"TopicSelected";
-const NSString *const AddTopicGroupSelected = @"AddTopicGroupSelected";
-const NSString *const EditTopicGroupSelected = @"EditTopicGroupSelected";
-const NSString *const TopicGroupSelected = @"TopicGroupSelected";
-const NSString *const TopicGroupManage = @"TopicGroupManage";
-const NSString *const TopicUpdated = @"TopicUpdated";
-const NSString *const TopicDeleted = @"TopicDeleted";
-const NSString *const AttendantsEntryDeleted = @"AttendantsEntryDeleted";
-const NSString *const AttendeeDeleted = @"AttendeeDeleted";
-const NSString *const AttendeeUpdated = @"AttendeeUpdated";
-const NSString *const FinishedEditingNote = @"FinishedEditingNote";
-const NSString *const DeleteNote = @"DeleteNote";
-const NSString *const ReviewingNote = @"ReviewingNote";
-const NSString *const EditingNote = @"EditingNote";
+NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
+NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
+NSString *const NoteUpdated = @"NoteUpdated";
+NSString *const NoteSelected = @"NoteSelected";
+NSString *const TopicCreated = @"TopicCreated";
+NSString *const TopicSelected = @"TopicSelected";
+NSString *const AddTopicGroupSelected = @"AddTopicGroupSelected";
+NSString *const EditTopicGroupSelected = @"EditTopicGroupSelected";
+NSString *const TopicGroupSelected = @"TopicGroupSelected";
+NSString *const TopicGroupManage = @"TopicGroupManage";
+NSString *const TopicUpdated = @"TopicUpdated";
+NSString *const TopicDeleted = @"TopicDeleted";
+NSString *const AttendantsEntryDeleted = @"AttendantsEntryDeleted";
+NSString *const AttendeeDeleted = @"AttendeeDeleted";
+NSString *const AttendeeUpdated = @"AttendeeUpdated";
+NSString *const FinishedEditingNote = @"FinishedEditingNote";
+NSString *const DeleteNote = @"DeleteNote";
+NSString *const ReviewingNote = @"ReviewingNote";
+NSString *const EditingNote = @"EditingNote";
 
-const NSString *const NewLine = @"\r\n";
+NSString *const NewLine = @"\r\n";
 
-const NSString *const RefetchAllDatabaseData = @"RefetchAllDatabaseData";
-const NSString *const EulaFlag = @"EulaFlag";
+NSString *const RefetchAllDatabaseData = @"RefetchAllDatabaseData";
+NSString *const EulaFlag = @"EulaFlag";
 
-NSString * const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdyd63hvbdkc+_)(*ndjgddnjk<>?/.,ml9912";
-NSString * const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";
+NSString *const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdyd63hvbdkc+_)(*ndjgddnjk<>?/.,ml9912";
+NSString *const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";
 
 
 @implementation BNoteConstants

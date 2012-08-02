@@ -89,7 +89,7 @@
         }
         
         for (Topic *topic in allTopics) {
-            if (![[group topics] indexOfObject:topic]) {
+            if ([[group topics] indexOfObject:topic] == NSNotFound) {
                 [group addTopicsObject:topic];
             }
         }
@@ -156,7 +156,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Note"];
     NSPredicate *predicate =
         [NSPredicate predicateWithFormat:
-            @"(subject contains[cd] %@ or entries.text contains[cd] %@)",
+            @"subject CONTAINS[cd] %@ OR entries.text CONTAINS[cd] %@",
          searchText, searchText];
     
     [fetchRequest setPredicate:predicate];

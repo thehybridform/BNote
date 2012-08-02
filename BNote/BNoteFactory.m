@@ -84,10 +84,12 @@ NSString *const keyPointsEntryHeader = @"Key Points";
 
 + (Topic *)createTopic:(NSString *)name forGroup:(TopicGroup *)group withSearch:(NSString *)text
 {
+    [[BNoteWriter instance] update];
+
     Topic *topic = [BNoteFactory createTopic:name forGroup:group];
     
     for (Note *note in [[BNoteReader instance] findNotesWithText:text inTopicGroup:group]) {
-        [note addAssociatedTopicsObject:topic];
+        [topic addAssociatedNotesObject:note];
     }
     
     return topic;

@@ -277,17 +277,21 @@ static NSString *email = @"E-mail";
         [self setSearchTopic:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:RefetchAllDatabaseData object:nil];
     } else {
-        [self searchBarSearchButtonClicked:searchBar];
+        [self handleSearch:[searchBar text]];
     }
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-    
+    [self handleSearch:[searchBar text]];
+}
+
+- (void)handleSearch:(NSString *)searchText
+{
     [[BNoteWriter instance] removeTopic:[self searchTopic]];
     
-    Topic *topic = [BNoteFactory createTopic:@"Filtered Topic" forGroup:[self topicGroup] withSearch:[searchBar text]];
+    Topic *topic = [BNoteFactory createTopic:kFilteredTopicName forGroup:[self topicGroup] withSearch:searchText];
     [topic setColor:FilterColor];
     [self setSearchTopic:topic];
     

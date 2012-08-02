@@ -152,8 +152,13 @@
     [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     
 
-    static NSString *spacingText = @"   ";
-    [[cell textLabel] setText:[spacingText stringByAppendingString:[currentTopic title]]];
+    static NSString *spacingText = @"  ";
+    NSString *name = [currentTopic title];
+    if ([name isEqualToString:kFilteredTopicName]) {
+        name = @"Filtered Group";
+    }
+    
+    [[cell textLabel] setText:[spacingText stringByAppendingString:name]];
     
     return cell;
 }

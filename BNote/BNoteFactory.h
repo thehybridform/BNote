@@ -48,7 +48,6 @@ extern NSString *const actionItemsCompletedEntryHeader;
 extern NSString *const actionItemsIncompleteEntryHeader;
 extern NSString *const decisionsEntryHeader;
 extern NSString *const keyPointsEntryHeader;
-extern NSString *const allEntryHeader;
 
 typedef enum {
     ActionItemIcon,

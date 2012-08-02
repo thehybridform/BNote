@@ -14,6 +14,7 @@
 #import "Attendants.h"
 #import "KeyPoint.h"
 #import "Entry.h"
+#import "TopicGroup.h"
 
 @interface BNoteEntryUtils : NSObject
 
@@ -36,4 +37,7 @@
 + (void)updateThumbnailPhotos:(UIImage *)image forKeyPoint:(KeyPoint *)keyPoint;
 
 + (void)cleanUpEntriesForNote:(Note *)note;
+
++ (NSString *)topicGroupName:(TopicGroup *)topicGroup;
+
 @end

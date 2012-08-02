@@ -22,7 +22,7 @@
 - (KeyWord *)keyWordFor:(NSString *)word;
 
 - (TopicGroup *)getTopicGroup:(NSString *)name;
-- (Topic *)getTopic:(NSString *)name;
+- (Topic *)getFilteredTopic;
 
 - (NSSet *)findNotesWithText:(NSString *)searchText inTopicGroup:(TopicGroup *)group;
 

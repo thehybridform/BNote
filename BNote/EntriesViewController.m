@@ -213,21 +213,36 @@
     [[self tableView] reloadData];
 }
 
-- (void)selectLastCell
+- (void)selectSummaryCell
 {
-    int index = [[self filteredControllers] count] - 1;
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
+    if ([self showingSummary]) {
+        [self selectEntryCell:[[self filteredControllers] count] - 1];
+    }
+}
 
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-
-    [[controller mainTextView] becomeFirstResponder];
+- (void)selectLastEntryCell
+{
+    if ([self showingSummary]) {
+        [self selectEntryCell:[[self filteredControllers] count] - 2];
+    } else {
+        [self selectEntryCell:[[self filteredControllers] count] - 1];
+    }
 }
 
 - (void)selectFirstCell
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+- (void)selectEntryCell:(int)index
+{
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+    [[controller mainTextView] becomeFirstResponder];    
 }
 
 - (void)selectEntry:(Entry *)entry

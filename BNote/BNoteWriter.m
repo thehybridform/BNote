@@ -43,7 +43,7 @@
 
 - (void)cleanup
 {
-    Topic *topic = [[BNoteReader instance] getTopic:@"Filtered Topic"];
+    Topic *topic = [[BNoteReader instance] getFilteredTopic];
     [self removeTopic:topic];
 }
 
@@ -64,7 +64,6 @@
 
 - (void)removeEntry:(Entry *)entry
 {
-    
     [self deleteObject:entry];
 }
 
@@ -362,5 +361,25 @@
  [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:kItemsKey];
  }
  }
+ 
+ 
+ 
+ 
+ 
+ static NSString *const kItemsKey = @"children";
+ 
+ - (void)removeChildrenObject:(Attendant *)value
+ {
+ NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self mutableOrderedSetValueForKey:kItemsKey]];
+ NSUInteger idx = [tmpOrderedSet indexOfObject:value];
+ if (idx != NSNotFound) {
+ NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+ [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:kItemsKey];
+ [tmpOrderedSet removeObject:value];
+ [self setPrimitiveValue:tmpOrderedSet forKey:kItemsKey];
+ [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:kItemsKey];
+ }
+ }
+
  */
 @end

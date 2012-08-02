@@ -113,7 +113,7 @@
 {
     TopicGroup *group = [notification object];
     
-    NSString *title = [group name];
+    NSString *title = [BNoteEntryUtils topicGroupName:group];
     
     while ([title length] < 6) {
         title = [BNoteStringUtils append:@" ", title, @" ", nil];

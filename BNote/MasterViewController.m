@@ -80,7 +80,7 @@
     
     NSString *groupName = [BNoteSessionData stringForKey:TopicGroupSelected];
     if (!groupName) {
-        groupName = @"All";
+        groupName = kAllTopicGroupName;
         [BNoteSessionData setString:groupName forKey:TopicGroupSelected];        
     }
 
@@ -110,8 +110,6 @@
     [super viewDidUnload];
     
     [self setEditTopicsButton:nil];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (Topic *)searchTopic

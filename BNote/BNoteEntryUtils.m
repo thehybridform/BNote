@@ -178,7 +178,7 @@
 + (BOOL)multipleTopics:(Note *)note
 {
     for (TopicGroup *group in [[note topic] groups]) {
-        if ([[group name] compare:@"All"] == NSOrderedSame) {
+        if ([[group name] compare:kAllTopicGroupName] == NSOrderedSame) {
             return [[group topics] count] > 1;
         }
     }
@@ -231,4 +231,14 @@
         }
     }
 }
+
++ (NSString *)topicGroupName:(TopicGroup *)topicGroup
+{
+    if ([[topicGroup name] isEqualToString:kAllTopicGroupName]) {
+        return @"All";
+    }
+    
+    return [topicGroup name];
+}
+
 @end

@@ -350,7 +350,7 @@ static NSString *DONE = @"DONE";
 {
     [[self entriesViewController] reload];
     if (![entry isKindOfClass:[Attendants class]]) {
-        [[self entriesViewController] selectLastCell];
+        [[self entriesViewController] selectLastEntryCell];
     }
 }
 
@@ -502,7 +502,7 @@ static NSString *DONE = @"DONE";
 - (IBAction)addSummary:(id)sender
 {
     [[self entriesViewController] displaySummary];
-    [[self entriesViewController] selectLastCell];
+    [[self entriesViewController] selectSummaryCell];
 }
 
 @end

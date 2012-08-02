@@ -93,7 +93,7 @@
     
     [[self topicGroupsTableViewController] setNameText:[self nameText]];
     
-    TopicGroup *group = [[BNoteReader instance] getTopicGroup:@"All"];
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
     [[NSNotificationCenter defaultCenter] postNotificationName:EditTopicGroupSelected object:group];
     
     [self setTopicGroupNames:[[NSMutableArray alloc] init]];
@@ -123,7 +123,7 @@
         
     BOOL empty = [BNoteStringUtils nilOrEmpty:[[self currentTopicGroup] name]];
     if (empty) {
-        [self setCurrentTopicGroup:[[BNoteReader instance] getTopicGroup:@"All"]];
+        [self setCurrentTopicGroup:[[BNoteReader instance] getTopicGroup:kAllTopicGroupName]];
     }
     
     NSMutableArray *emptyTopicGroups = [[NSMutableArray alloc] init];
@@ -155,7 +155,7 @@
         }
     }
     
-    if ([[group name] isEqualToString:@"All"]) {
+    if ([[group name] isEqualToString:kAllTopicGroupName]) {
         [[self nameText] setHidden:YES];
         [[self textLabel] setHidden:YES];
     } else {

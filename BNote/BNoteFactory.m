@@ -50,7 +50,6 @@ NSString *const actionItemsCompletedEntryHeader = @"Action Items Completed";
 NSString *const actionItemsIncompleteEntryHeader = @"Action Items Incomplete";
 NSString *const decisionsEntryHeader = @"Decisions";
 NSString *const keyPointsEntryHeader = @"Key Points";
-NSString *const allEntryHeader = @"All";
 
 @implementation BNoteFactory
 
@@ -75,8 +74,8 @@ NSString *const allEntryHeader = @"All";
 
     [group addTopicsObject:topic];
     
-    if (![[group name] isEqualToString:@"All"]) {
-        TopicGroup *all = [[BNoteReader instance] getTopicGroup:@"All"];
+    if (![[group name] isEqualToString:kAllTopicGroupName]) {
+        TopicGroup *all = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
         [all addTopicsObject:topic];
     }
 
@@ -406,7 +405,7 @@ NSString *const allEntryHeader = @"All";
             break;
             
         case AllHeader:
-            text = allEntryHeader;
+            text = @"All";
             break;
             
         default:

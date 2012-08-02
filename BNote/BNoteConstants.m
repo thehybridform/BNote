@@ -32,7 +32,6 @@ const int AppHighlightColor1 = 0x365ab0;
 
 const NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
 const NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
-//const NSString *const AllDataUpdated = @"AllDataUpdated";
 const NSString *const NoteUpdated = @"NoteUpdated";
 const NSString *const NoteSelected = @"NoteSelected";
 const NSString *const TopicCreated = @"TopicCreated";
@@ -55,6 +54,10 @@ const NSString *const NewLine = @"\r\n";
 
 const NSString *const RefetchAllDatabaseData = @"RefetchAllDatabaseData";
 const NSString *const EulaFlag = @"EulaFlag";
+
+NSString * const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdyd63hvbdkc+_)(*ndjgddnjk<>?/.,ml9912";
+NSString * const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";
+
 
 @implementation BNoteConstants
 

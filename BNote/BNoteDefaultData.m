@@ -34,7 +34,7 @@ static NSString *Overview = @"Overview";
 
 + (void)setup
 {
-    NSString *groupName = @"All";
+    NSString *groupName = kAllTopicGroupName;
     TopicGroup *group = [[BNoteReader instance] getTopicGroup:groupName];
     
     if (!group) {

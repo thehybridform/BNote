@@ -202,8 +202,7 @@ static NSString *email = @"E-mail";
     
     [[self searchBar] setText:nil];
         
-    TopicGroup *group = [notification object];
-    [self setTopicGroup:group];
+    [self setTopicGroup:[notification object]];
 }
 
 - (void)setNoteCountForTopic:(Topic *)topic

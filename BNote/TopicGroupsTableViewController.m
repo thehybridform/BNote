@@ -32,6 +32,12 @@
     
     if (self) {
         [self setData:[[BNoteReader instance] allTopicGroups]];
+        for (TopicGroup *topicGroup in [self data]) {
+            if ([[topicGroup name] isEqualToString:kAllTopicGroupName]) {
+                [[self data] removeObject:topicGroup];
+                break;
+            }
+        }
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:AddTopicGroupSelected object:nil];
     }
@@ -88,7 +94,7 @@
     }
     
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[topicGroup name]];
+    [[cell textLabel] setText:[BNoteEntryUtils topicGroupName:topicGroup]];
 
     return cell;
 }
@@ -96,7 +102,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
-    return ![[topicGroup name] isEqualToString:@"All"];
+    return ![[topicGroup name] isEqualToString:kAllTopicGroupName];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

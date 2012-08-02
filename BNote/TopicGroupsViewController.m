@@ -15,7 +15,7 @@
 
 @interface TopicGroupsViewController ()
 @property (strong, nonatomic) IBOutlet UIView *footer;
-@property (strong, nonatomic) NSArray *data;
+@property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) IBOutlet UIButton *addButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -33,7 +33,17 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        [self setData:[[BNoteReader instance] allTopicGroups]];
+        NSMutableArray *data = [[BNoteReader instance] allTopicGroups];
+        [self setData:data];
+        
+        for (TopicGroup *topicGroup in data) {
+            if ([[topicGroup name] isEqualToString:kAllTopicGroupName]) {
+                [data removeObject:topicGroup];
+                [data insertObject:topicGroup atIndex:0];
+                break;
+            }
+        }
+        
     }
     
     return self;
@@ -80,8 +90,8 @@
 
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
     NSString *text = @"   ";
-    [[cell textLabel] setText:[text stringByAppendingString:[topicGroup name]]];
-
+    [[cell textLabel] setText:[text stringByAppendingString:[BNoteEntryUtils topicGroupName:topicGroup]]];
+    
     NSString *name = [BNoteSessionData stringForKey:TopicGroupSelected];
     
     if ([[topicGroup name] isEqualToString:name]) {
@@ -105,7 +115,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
-    return ![[topicGroup name] isEqualToString:@"All"];
+    return ![[topicGroup name] isEqualToString:kAllTopicGroupName];
 }
 
 - (IBAction)newGroup:(id)sender

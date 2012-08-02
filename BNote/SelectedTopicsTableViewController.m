@@ -121,7 +121,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self topicGroup] && ![[[self topicGroup] name] isEqualToString:@"All"]) {
+    if ([self topicGroup] && ![[[self topicGroup] name] isEqualToString:kAllTopicGroupName]) {
         Topic *topic = [[self data] objectAtIndex:[indexPath row]];
 
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];

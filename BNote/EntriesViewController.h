@@ -18,7 +18,8 @@
 @property (assign, nonatomic) BOOL canEdit;
 
 - (void)reload;
-- (void)selectLastCell;
+- (void)selectLastEntryCell;
+- (void)selectSummaryCell;
 - (void)selectFirstCell;
 - (void)selectEntry:(Entry *)entry;
 - (void)resignControll;

@@ -43,10 +43,10 @@
     return _default;
 }
 
-- (Topic *)getTopic:(NSString *)name
+- (Topic *)getFilteredTopic
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title = %@", name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title = %@", kFilteredTopicName];
     [fetchRequest setPredicate:predicate];
     
     NSError *error = nil;
@@ -69,16 +69,6 @@
     NSArray *topicGroups = [[self context] executeFetchRequest:fetchRequest error:&error];
     
     if ([topicGroups count]) {
-/*
-        if ([name isEqualToString:@"All"] && [topicGroups count] > 1) {
-
-            for (TopicGroup *group in topicGroups) {
-                [[BNoteWriter instance] deleteObject:group];
-            }
-            
-            return nil;
-        }
-*/        
         return [topicGroups objectAtIndex:0];
     } else {
         return nil;
@@ -87,14 +77,29 @@
 
 - (NSMutableArray *)allTopics
 {
-    TopicGroup *group = [self getTopicGroup:@"All"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
+
+    NSError *error = nil;
+    NSArray *allTopics = [[self context] executeFetchRequest:fetchRequest error:&error];
     
-    if (group) {
-        return [[group topics] mutableCopy];
-    } else {
-        group = [BNoteFactory createTopicGroup:@"All"];
-        return [NSMutableArray arrayWithObject:group];
+    if ([allTopics count]) {
+        TopicGroup *group = [self getTopicGroup:kAllTopicGroupName];
+        if (!group) {
+            group = [BNoteFactory createTopicGroup:kAllTopicGroupName];
+        }
+        
+        for (Topic *topic in allTopics) {
+            if (![[group topics] indexOfObject:topic]) {
+                [group addTopicsObject:topic];
+            }
+        }
+        
+        [[BNoteWriter instance] update];
+        
+        return [allTopics mutableCopy];
     }
+    
+    return nil;
 }
 
 - (NSMutableSet *)allKeyWords

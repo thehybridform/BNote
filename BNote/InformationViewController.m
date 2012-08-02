@@ -213,7 +213,7 @@
     
     [self dismissModalViewControllerAnimated:YES];
     
-    TopicGroup *group = [[BNoteReader instance] getTopicGroup:@"All"];
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
     [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:group];
 }
 

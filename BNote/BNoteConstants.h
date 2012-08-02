@@ -57,6 +57,10 @@ extern NSString *const RefetchAllDatabaseData;
 
 extern NSString *const EulaFlag;
 
+extern NSString * const kFilteredTopicName;
+extern NSString * const kAllTopicGroupName;
+
+
 typedef enum {
     RobotoItalic,
     RobotoLight,

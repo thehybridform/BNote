@@ -86,6 +86,7 @@ const static float h2 = h1 - 10;
     [LayerFormater roundCornersForView:self to:5];
     [LayerFormater setBorderWidth:2 forView:self];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
+//    [LayerFormater addShadowToView:self];
     
     [self setBackgroundColor:[BNoteConstants appColor1]];
     
@@ -188,6 +189,7 @@ const static float h2 = h1 - 10;
         if (title == removeNote) {
             Topic *topic = [[self note] topic];
             [[BNoteWriter instance] removeNote:[self note]];
+            [[BNoteWriter instance] update];
             [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
         } else if (title == moveNote) {
             [self presentTopicSelectionForType:ChangeMainTopic];

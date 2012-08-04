@@ -78,6 +78,9 @@
     [self setDefaultsArray:defaults];
 
     [LayerFormater setBorderWidth:1 forView:[self menu]];
+    
+    [LayerFormater addShadowToView:[self menu]];
+
 }
 
 - (IBAction)done:(id)sender

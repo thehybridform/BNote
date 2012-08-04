@@ -429,6 +429,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">footer</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="210886888"/>
+					</object>
+					<int key="connectionID">49</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="118791742"/>
 						<reference key="destination" ref="693572122"/>
@@ -641,7 +649,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">48</int>
+			<int key="maxID">49</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -682,6 +690,7 @@
 						<string key="doneButton">UIButton</string>
 						<string key="editButton">UIButton</string>
 						<string key="errorLabel">UILabel</string>
+						<string key="footer">UIView</string>
 						<string key="nameText">UITextField</string>
 						<string key="selectedTopicsTableViewController">SelectedTopicsTableViewController</string>
 						<string key="textLabel">UILabel</string>
@@ -700,6 +709,10 @@
 						<object class="IBToOneOutletInfo" key="errorLabel">
 							<string key="name">errorLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="footer">
+							<string key="name">footer</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="nameText">
 							<string key="name">nameText</string>

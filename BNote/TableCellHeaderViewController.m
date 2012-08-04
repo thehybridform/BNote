@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
 
-//    [LayerFormater addShadowToView:[self view] ofSize:5];
+//    [LayerFormater addShadowToView:[self view] ofSize:2];
     [[self view] setBackgroundColor:[BNoteConstants appHighlightColor1]];
     [[self titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:13.0]];
     [[self titleLabel] setText:[self name]];

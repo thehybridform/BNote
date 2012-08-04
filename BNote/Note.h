@@ -2,7 +2,7 @@
 //  Note.h
 //  BeNote
 //
-//  Created by kristin young on 7/31/12.
+//  Created by kristin young on 8/4/12.
 //
 //
 
@@ -18,6 +18,7 @@
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * subject;
 @property (nonatomic, retain) NSString * summary;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSSet *associatedTopics;
 @property (nonatomic, retain) NSOrderedSet *entries;
 @property (nonatomic, retain) Topic *topic;

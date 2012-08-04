@@ -115,6 +115,9 @@ static NSString *email = @"E-mail";
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self menu]];
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self detailView]];
     
+    [LayerFormater addShadowToView:[self footer]];
+    [LayerFormater addShadowToView:[self menu]];
+    
     [[self notesLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     [[self peopleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     
@@ -270,13 +273,7 @@ static NSString *email = @"E-mail";
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    if ([BNoteStringUtils nilOrEmpty:[searchBar text]]) {
-        [[BNoteWriter instance] removeTopic:[self searchTopic]];
-        [self setSearchTopic:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:RefetchAllDatabaseData object:nil];
-    } else {
-        [self handleSearch:[searchBar text]];
-    }
+    [self handleSearch:[searchBar text]];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -288,12 +285,20 @@ static NSString *email = @"E-mail";
 - (void)handleSearch:(NSString *)searchText
 {
     [[BNoteWriter instance] removeTopic:[self searchTopic]];
+
+    if ([BNoteStringUtils nilOrEmpty:searchText]) {
+        [self setSearchTopic:nil];
+        [[self entriesTable] setSearchText:nil];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:RefetchAllDatabaseData object:nil];
+    } else {
+        Topic *topic = [BNoteFactory createTopic:kFilteredTopicName forGroup:[self topicGroup] withSearch:searchText];
+        [topic setColor:FilterColor];
+        [self setSearchTopic:topic];
+        [[self entriesTable] setSearchText:searchText];
     
-    Topic *topic = [BNoteFactory createTopic:kFilteredTopicName forGroup:[self topicGroup] withSearch:searchText];
-    [topic setColor:FilterColor];
-    [self setSearchTopic:topic];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
+    }
 }
 
 - (IBAction)showTopicGroups:(id)sender

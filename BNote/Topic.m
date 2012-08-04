@@ -2,8 +2,8 @@
 //  Topic.m
 //  BeNote
 //
-//  Created by Young Kristin on 7/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by kristin young on 8/4/12.
+//
 //
 
 #import "Topic.h"
@@ -17,11 +17,11 @@
 @dynamic created;
 @dynamic lastUpdated;
 @dynamic title;
+@dynamic id;
 @dynamic associatedNotes;
 @dynamic groups;
 @dynamic notes;
 @dynamic relationship;
-
 
 static NSString *const kItemsKey = @"associatedNotes";
 
@@ -36,5 +36,4 @@ static NSString *const kItemsKey = @"associatedNotes";
     [self setPrimitiveValue:tmpOrderedSet forKey:kItemsKey];
     [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:kItemsKey];
 }
-
 @end

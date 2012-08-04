@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EntityRenderHandler.h"
 
-@interface DecisionPlainRenderer : NSObject
+@interface DecisionPlainRenderer : NSObject <EntityRenderHandler>
 
 @end

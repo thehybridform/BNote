@@ -65,21 +65,6 @@
     [[self pageControlNotes] setCurrentPage:0];
 }
 
-- (NSArray *)filterNotes
-{
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-
-    for (Note *note in [[self topic] notes]) {
-        [array addObject:note];
-    }
-    
-    for (Note *note in [[self topic] associatedNotes]) {
-        [array addObject:note];
-    }
-    
-    return array;
-}
-
 - (void)reload
 {   
     UIScrollView *scrollView = (UIScrollView *) [self view];
@@ -99,8 +84,13 @@
 
     float x = 10 - space;
     
-    for (Note *note in [self filterNotes]) {
+    for (Note *note in [[self topic] notes]) {
         [self addNote:note atX:x += space isAssociated:NO];
+        notes++;
+    }
+    
+    for (Note *note in [[self topic] associatedNotes]) {
+        [self addNote:note atX:x += space isAssociated:YES];
         notes++;
     }
     

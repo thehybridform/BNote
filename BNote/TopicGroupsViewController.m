@@ -52,6 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [LayerFormater addShadowToView:[self footer]];
 }
 
 - (void)viewDidUnload

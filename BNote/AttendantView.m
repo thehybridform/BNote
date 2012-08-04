@@ -46,6 +46,11 @@ static NSString *removeAttendant = @"Remove";
     return self;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)normalPressTap:(id)sender
 {
     UIActionSheet *sheet = [[UIActionSheet alloc] init];

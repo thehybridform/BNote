@@ -156,6 +156,9 @@ static NSString *DONE = @"DONE";
     
     [[self dateView] addGestureRecognizer:[self dateTap]];
 
+    [LayerFormater addShadowToView:[self footerView]];
+    [LayerFormater addShadowToView:[self menuView]];
+
     Note *note = [self note];
     BOOL empty = [BNoteStringUtils nilOrEmpty:[note subject]];
     if (empty) {

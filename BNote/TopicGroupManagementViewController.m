@@ -15,6 +15,7 @@
 #import "BNoteSessionData.h"
 #import "BNoteStringUtils.h"
 #import "TopicGroup.h"
+#import "LayerFormater.h"
 
 @interface TopicGroupManagementViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
+@property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) IBOutlet UITextField *nameText;
 @property (strong, nonatomic) IBOutlet TopicGroupsTableViewController *topicGroupsTableViewController;
 @property (strong, nonatomic) IBOutlet SelectedTopicsTableViewController *selectedTopicsTableViewController;
@@ -44,6 +46,7 @@
 @synthesize topicGroupNames = _topicGroupNames;
 @synthesize canDismiss = _canDismiss;
 @synthesize doneButton = _doneButton;
+@synthesize footer = _footer;
 
 - (void)viewDidUnload
 {
@@ -96,6 +99,8 @@
     [[self errorLabel] setHidden:YES];
     [[self nameText] setDelegate:self];
     
+    [LayerFormater addShadowToView:[self footer]];
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
     

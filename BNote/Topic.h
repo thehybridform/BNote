@@ -2,8 +2,8 @@
 //  Topic.h
 //  BeNote
 //
-//  Created by Young Kristin on 7/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by kristin young on 8/4/12.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -17,6 +17,7 @@
 @property (nonatomic) NSTimeInterval created;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSOrderedSet *associatedNotes;
 @property (nonatomic, retain) NSOrderedSet *groups;
 @property (nonatomic, retain) NSOrderedSet *notes;

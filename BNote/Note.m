@@ -2,7 +2,7 @@
 //  Note.m
 //  BeNote
 //
-//  Created by kristin young on 7/31/12.
+//  Created by kristin young on 8/4/12.
 //
 //
 
@@ -18,6 +18,7 @@
 @dynamic lastUpdated;
 @dynamic subject;
 @dynamic summary;
+@dynamic id;
 @dynamic associatedTopics;
 @dynamic entries;
 @dynamic topic;

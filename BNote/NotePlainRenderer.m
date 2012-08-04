@@ -19,10 +19,16 @@
 - (NSString *)render:(Note *)note
 {
     NSString *title = @"Note Subject: ";
-    NSString *text = [note subject];
+    NSString *subject = [note subject];
     NSString *created = [BNoteStringUtils formatDate:[note created]];
     
-    return [BNoteStringUtils append:title, text, @" - Created: ", created, NewLine, NewLine, nil];
+    NSString *text = [BNoteStringUtils append:title, subject, @" - Created: ", created, NewLine, NewLine, nil];
+    
+    if ([note summary]) {
+        text = [BNoteStringUtils append:text, @"Summary:", NewLine, [note summary], NewLine, NewLine, nil];
+    }
+    
+    return text;
 }
 
 @end

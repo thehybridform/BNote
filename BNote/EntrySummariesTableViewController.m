@@ -45,6 +45,7 @@
 @synthesize parentController = _parentController;
 @synthesize data = _data;
 @synthesize dataHeaderView = _dataHeaderView;
+@synthesize searchText = _searchText;
 
 - (void)viewDidLoad
 {
@@ -97,7 +98,15 @@
         }
     }
     
-    return array;
+    NSArray *filtered;
+    if ([BNoteStringUtils nilOrEmpty:[self searchText]]) {
+        filtered = array;
+    } else {
+        NSPredicate *p = [NSPredicate predicateWithFormat:@"text CONTAINS[c] %@", [self searchText]];
+        filtered = [array filteredArrayUsingPredicate:p];
+    }
+    
+    return filtered;
 }
 
 - (void)reload

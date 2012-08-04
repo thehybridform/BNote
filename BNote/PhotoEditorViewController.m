@@ -164,6 +164,8 @@ static const CGFloat large = 20;
     [LayerFormater setBorderWidth:2 forView:[self drawView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
 
+    [LayerFormater addShadowToView:[self menuView]];
+
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
     [[self buttonsView] setBackgroundColor:[BNoteConstants appColor1]];
     [[self actionView] setBackgroundColor:[BNoteConstants appColor1]];

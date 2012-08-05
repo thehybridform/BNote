@@ -186,12 +186,12 @@
         if (index >= 0) {
             [self selectCell:index];
         }
-        
-        if (![[self tableView] numberOfRowsInSection:0]) {
-            [self editTopicCell:nil];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
-        }
     }
+
+    [[BNoteWriter instance] update];
+    
+    [self editTopicCell:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -251,6 +251,7 @@
 - (void)selectTopicGroup:(NSNotification *)notification
 {
     TopicGroup *group = [notification object];
+    [self setTopicGroup:group];
     [self setData:[[group topics] mutableCopy]];
     
     [[self tableView] reloadData];

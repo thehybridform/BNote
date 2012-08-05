@@ -36,7 +36,15 @@
 
 - (void)selectedTopicGroup:(NSNotification *)notification
 {
-    [self setTopicGroup:[notification object]];
+    TopicGroup *group = [notification object];
+    
+    if (group) {
+        [[self view] setHidden:NO];
+    } else {
+        [[self view] setHidden:YES];
+    }
+
+    [self setTopicGroup:group];
     [[self tableView] reloadData];
 }
 

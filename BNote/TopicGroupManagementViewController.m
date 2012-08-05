@@ -102,13 +102,15 @@
     [LayerFormater addShadowToView:[self footer]];
 
     [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
+        addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(updateTopicGroupName:) name:UITextFieldTextDidChangeNotification object:[self nameText]];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(checkTopicGroupName:) name:UIKeyboardWillHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:EditTopicGroupSelected object:[self currentTopicGroup]];
 }
 
 - (IBAction)add:(id)sender
@@ -144,25 +146,26 @@
 
 - (void)selectedTopicGroup:(NSNotification *)notification
 {
-    [[BNoteWriter instance] update];
-
     TopicGroup *group = [notification object];
-    [self setCurrentTopicGroup:group];
 
-    [[self topicGroupNames] removeAllObjects];
-    for (TopicGroup *topicGroup in [[BNoteReader instance] allTopicGroups]) {
-        if (topicGroup != group) {
-            [[self topicGroupNames] addObject:[topicGroup name]];
+    if (group) {
+        [[BNoteWriter instance] update];
+
+        [self setCurrentTopicGroup:group];
+
+        [[self topicGroupNames] removeAllObjects];
+        for (TopicGroup *topicGroup in [[BNoteReader instance] allTopicGroups]) {
+            if (topicGroup != group) {
+                [[self topicGroupNames] addObject:[topicGroup name]];
+            }
         }
-    }
     
-    if ([[group name] isEqualToString:kAllTopicGroupName]) {
-        [[self nameText] setHidden:YES];
-        [[self textLabel] setHidden:YES];
-    } else {
         [[self nameText] setHidden:NO];
         [[self textLabel] setHidden:NO];
         [[self nameText] setText:[group name]];
+    } else {
+        [[self nameText] setHidden:YES];
+        [[self textLabel] setHidden:YES];
     }
 }
 

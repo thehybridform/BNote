@@ -140,7 +140,7 @@
         
         [[BNoteWriter instance] update];
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
     }
 
     [[self nameTextField] resignFirstResponder];

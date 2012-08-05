@@ -29,6 +29,15 @@ const int AppColor2 = 0xf4f4f4;
 const int darkGray = 0x888888;
 const int AppHighlightColor1 = 0x365ab0;
 
+#ifdef LITE
+
+const int kMaxTopicGroups = 3;
+const int kMaxTopics = 3;
+const int kMaxNotes = 4;
+const int kMaxEntries = 5;
+
+#endif
+
 
 NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
 NSString *const KeyWordsUpdated = @"KeyWordsUpdated";

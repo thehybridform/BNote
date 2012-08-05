@@ -15,6 +15,11 @@
 #import "EluaViewController.h"
 #import "BNoteDefaultData.h"
 
+#ifdef LITE
+#import "BNoteLiteViewController.h"
+#endif
+
+
 @interface AppDelegate()
 
 @end
@@ -42,6 +47,17 @@
     
     if (![BNoteSessionData booleanForKey:EulaFlag]) {
         [BNoteDefaultData setup];
+        
+#ifdef LITE
+        
+        BNoteLiteViewController *controller = [[BNoteLiteViewController alloc] initWithDefault];
+        [controller setModalInPopover:YES];
+        [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+        [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        
+        [mainViewViewController presentModalViewController:controller animated:YES];
+
+#else
 
         EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
         [controller setEula:YES];
@@ -50,6 +66,9 @@
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         
         [mainViewViewController presentModalViewController:controller animated:YES];
+        
+#endif
+        
     }
     
     return YES;
@@ -148,7 +167,14 @@
         NSString *iCloudLogsDirectoryName = @"BeNoteLogs";
         NSFileManager *fileManager = [NSFileManager defaultManager];        
         NSURL *localStore = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:dataFileName];
-        NSURL *iCloud = [fileManager URLForUbiquityContainerIdentifier:nil];
+        
+        NSURL *iCloud;
+        
+#ifdef LITE
+        iCloud = nil;
+#else
+        iCloud = [fileManager URLForUbiquityContainerIdentifier:nil];
+#endif
         
         if (iCloud != nil) {
             

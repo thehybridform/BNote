@@ -65,8 +65,15 @@
     [[self progressView] setHidden:YES];
     [[self progressView] setBackgroundColor:[UIColor clearColor]];
 
+    NSString *version;
+#ifdef LITE
+    version = @"BeNote Lite Version 1.0";
+#else
+    version = @"BeNote Version 1.0";
+#endif
+    
     NSArray *aboutArray =
-    [NSArray arrayWithObjects:@"Version 1.0", @"A musing of Uobia, Copyright 2012", @"License", @"Contact Us", nil];
+    [NSArray arrayWithObjects:version, @"A musing of Uobia, Copyright 2012", @"License", @"Contact Us", nil];
     [self setAboutArray:aboutArray];
     
     NSArray *storageArray =

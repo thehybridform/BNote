@@ -348,6 +348,22 @@ static NSString *DONE = @"DONE";
 
 - (void)addEntry:(Entry *)entry
 {
+#ifdef LITE
+    if ([[[self note] entries] count] > kMaxEntries) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BeNote Lite does not support adding more note entries.  Please consider buying the full verion.  Delete older note entries to make room."
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        [[BNoteWriter instance] removeEntry:entry];
+        
+        return;
+    }
+    
+#endif
+
     [[self entriesViewController] reload];
     if (![entry isKindOfClass:[Attendants class]]) {
         [[self entriesViewController] selectLastEntryCell];

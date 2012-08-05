@@ -6,8 +6,6 @@
 	<array>
 		<string>$(TeamIdentifierPrefix)com.kristinyoung.BeNote</string>
 	</array>
-	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
-	<string>$(TeamIdentifierPrefix)com.kristinyoung.BeNote</string>
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)com.kristinyoung.BeNote</string>

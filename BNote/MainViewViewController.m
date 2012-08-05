@@ -41,6 +41,7 @@
 @property (strong, nonatomic) IBOutlet NotesViewController *notesViewController;
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UILabel *liteLable;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
 
@@ -63,6 +64,7 @@
 @synthesize searchTopic = _searchTopic;
 @synthesize topicGroup = _topicGroup;
 @synthesize searchBar = _searchBar;
+@synthesize liteLable = _liteLable;
 
 static NSString *email = @"E-mail";
 
@@ -83,6 +85,7 @@ static NSString *email = @"E-mail";
     [self setAddTopicButton:nil];
     [self setFooter:nil];
     [self setTopicsButton:nil];
+    [self setLiteLable:nil];
     
     if ([self searchTopic]) {
         [[BNoteWriter instance] removeTopic:[self searchTopic]];
@@ -139,6 +142,14 @@ static NSString *email = @"E-mail";
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
+
+#ifdef LITE
+    [[self liteLable] setFont:[BNoteConstants font:RobotoBold andSize:20]];
+    [[self liteLable] setTextColor:[BNoteConstants appHighlightColor1]];
+#else
+    [[self liteLable] setHidden:YES];
+#endif
+    
 }
 
 - (void)selectedTopic:(NSNotification *)notification
@@ -216,6 +227,19 @@ static NSString *email = @"E-mail";
 
 - (IBAction)addTopic:(id)sender
 {
+#ifdef LITE
+    if ([[[self topicGroup] topics] count] > kMaxTopics) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BeNote Lite does not support adding more topics.  Please consider buying the full verion.  Delete older topics to make room."
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+#endif
+    
     TopicGroup *topicGroup = [self topicGroup];
     TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:topicGroup];
     

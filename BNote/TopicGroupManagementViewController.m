@@ -115,6 +115,18 @@
 
 - (IBAction)add:(id)sender
 {
+#ifdef LITE
+    if ([[[BNoteReader instance] allTopicGroups] count] > kMaxTopicGroups) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BeNote Lite does not support adding more topic groups.  Please consider buying the full verion.  Delete older topic groups to make room."
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+#endif
+    
     TopicGroup *topicGroup = [BNoteFactory createTopicGroup:@"New Topic Group"];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:AddTopicGroupSelected object:topicGroup];

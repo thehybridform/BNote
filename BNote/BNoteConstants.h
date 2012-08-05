@@ -60,6 +60,14 @@ extern NSString *const EulaFlag;
 extern NSString * const kFilteredTopicName;
 extern NSString * const kAllTopicGroupName;
 
+#ifdef LITE
+
+extern int const kMaxTopicGroups;
+extern int const kMaxTopics;
+extern int const kMaxNotes;
+extern int const kMaxEntries;
+
+#endif
 
 typedef enum {
     RobotoItalic,

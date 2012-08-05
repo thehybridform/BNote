@@ -238,6 +238,240 @@
 		18E9FF6D15729EFA00F22272 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF6C15729EF900F22272 /* NotesViewController.m */; };
 		18ECE92F15A2A9A6009E5D0B /* Squared_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */; };
 		18F290D015CD9CEE00543E65 /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F290CF15CD9CEE00543E65 /* TopicGroup.m */; };
+		18F4E1C715CE4843002095A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34715634A650065788F /* main.m */; };
+		18F4E1C815CE4843002095A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34B15634A650065788F /* AppDelegate.m */; };
+		18F4E1C915CE4843002095A2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34E15634A650065788F /* MasterViewController.m */; };
+		18F4E1CA15CE4843002095A2 /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
+		18F4E1CB15CE4843002095A2 /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
+		18F4E1CC15CE4843002095A2 /* BNoteReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810692D15637A6A0018B03B /* BNoteReader.m */; };
+		18F4E1CD15CE4843002095A2 /* BNoteWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810693715638E9E0018B03B /* BNoteWriter.m */; };
+		18F4E1CE15CE4843002095A2 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
+		18F4E1CF15CE4843002095A2 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
+		18F4E1D015CE4843002095A2 /* LayerFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF10156A343700F22272 /* LayerFormater.m */; };
+		18F4E1D115CE4843002095A2 /* BNoteStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF56156DCE4600F22272 /* BNoteStringUtils.m */; };
+		18F4E1D215CE4843002095A2 /* BNoteSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF5A156DE6A200F22272 /* BNoteSessionData.m */; };
+		18F4E1D315CE4843002095A2 /* BNoteAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF691571835600F22272 /* BNoteAnimation.m */; };
+		18F4E1D415CE4843002095A2 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF6C15729EF900F22272 /* NotesViewController.m */; };
+		18F4E1D515CE4843002095A2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
+		18F4E1D615CE4843002095A2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
+		18F4E1D715CE4843002095A2 /* QuickWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F06B1574B1BD003814C2 /* QuickWordButton.m */; };
+		18F4E1D815CE4843002095A2 /* QuickWordsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0711574BEE9003814C2 /* QuickWordsFactory.m */; };
+		18F4E1D915CE4843002095A2 /* DateQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F0771574CA12003814C2 /* DateQuickButton.m */; };
+		18F4E1DA15CE4843002095A2 /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E5E15770159002B59DA /* EntriesViewController.m */; };
+		18F4E1DB15CE4843002095A2 /* IdentityFillter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DEF15785FB2003486E3 /* IdentityFillter.m */; };
+		18F4E1DC15CE4843002095A2 /* KeyPointFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF31578613F003486E3 /* KeyPointFilter.m */; };
+		18F4E1DD15CE4843002095A2 /* ActionItemFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF6157861CA003486E3 /* ActionItemFilter.m */; };
+		18F4E1DE15CE4843002095A2 /* ActionItemCompleteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DF9157861D9003486E3 /* ActionItemCompleteFilter.m */; };
+		18F4E1DF15CE4843002095A2 /* ActionItemInCompleteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DFC157861E6003486E3 /* ActionItemInCompleteFilter.m */; };
+		18F4E1E015CE4843002095A2 /* QuestionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070DFF157861F6003486E3 /* QuestionFilter.m */; };
+		18F4E1E115CE4843002095A2 /* QuestionUnansweredFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070E021578620A003486E3 /* QuestionUnansweredFilter.m */; };
+		18F4E1E215CE4843002095A2 /* QuestionAnsweredFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070E0515786218003486E3 /* QuestionAnsweredFilter.m */; };
+		18F4E1E315CE4843002095A2 /* DecisionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18070E081578623D003486E3 /* DecisionFilter.m */; };
+		18F4E1E415CE4843002095A2 /* AttendantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056AD157B71BA002A4A78 /* AttendantsViewController.m */; };
+		18F4E1E515CE4843002095A2 /* AttendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056B5157BFD71002A4A78 /* AttendantView.m */; };
+		18F4E1E615CE4843002095A2 /* AttendantFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056BB157C6944002A4A78 /* AttendantFilter.m */; };
+		18F4E1E715CE4843002095A2 /* BNoteEntryUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056C3157C7B26002A4A78 /* BNoteEntryUtils.m */; };
+		18F4E1E815CE4843002095A2 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056D2157C9671002A4A78 /* HelpViewController.m */; };
+		18F4E1E915CE4843002095A2 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056E5157D9BDA002A4A78 /* NoteView.m */; };
+		18F4E1EA15CE4843002095A2 /* BNoteConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F3157EFA05002A4A78 /* BNoteConstants.m */; };
+		18F4E1EB15CE4843002095A2 /* BNoteImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F6157F0960002A4A78 /* BNoteImageUtils.m */; };
+		18F4E1EC15CE4843002095A2 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A056F9157F3762002A4A78 /* PhotoViewController.m */; };
+		18F4E1ED15CE4843002095A2 /* ResponsibilityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B54C15803C2500928BAF /* ResponsibilityTableViewController.m */; };
+		18F4E1EE15CE4843002095A2 /* KeyWordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818B55915807F7B00928BAF /* KeyWordButton.m */; };
+		18F4E1EF15CE4843002095A2 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ABD15852FA700A54205 /* EmailViewController.m */; };
+		18F4E1F015CE4843002095A2 /* BNoteRenderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4AC91585626600A54205 /* BNoteRenderFactory.m */; };
+		18F4E1F115CE4843002095A2 /* BNoteFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */; };
+		18F4E1F215CE4843002095A2 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
+		18F4E1F315CE4843002095A2 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
+		18F4E1F415CE4843002095A2 /* TopicSummaryPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653A15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m */; };
+		18F4E1F515CE4843002095A2 /* QuestionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654015859E4F005FA6C5 /* QuestionPlainRenderer.m */; };
+		18F4E1F615CE4843002095A2 /* ActionItemPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */; };
+		18F4E1F715CE4843002095A2 /* AttendantPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */; };
+		18F4E1F815CE4843002095A2 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
+		18F4E1F915CE4843002095A2 /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
+		18F4E1FA15CE4843002095A2 /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
+		18F4E1FB15CE4843002095A2 /* BeNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */; };
+		18F4E1FC15CE4843002095A2 /* AssociatedTopicsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C03E51158DA7E90035AFDA /* AssociatedTopicsTableViewController.m */; };
+		18F4E1FD15CE4843002095A2 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
+		18F4E1FE15CE4843002095A2 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
+		18F4E1FF15CE4843002095A2 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
+		18F4E20015CE4843002095A2 /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
+		18F4E20115CE4843002095A2 /* EntryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976CB1597C1FD00F49F5A /* EntryContentViewController.m */; };
+		18F4E20215CE4843002095A2 /* DecisionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D3159836AC00F49F5A /* DecisionContentViewController.m */; };
+		18F4E20315CE4843002095A2 /* KeyPointContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D6159843A400F49F5A /* KeyPointContentViewController.m */; };
+		18F4E20415CE4843002095A2 /* ActionItemContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D9159843B300F49F5A /* ActionItemContentViewController.m */; };
+		18F4E20515CE4843002095A2 /* QuestionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976DC159843C900F49F5A /* QuestionContentViewController.m */; };
+		18F4E20615CE4843002095A2 /* AttendantsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976DF159843E100F49F5A /* AttendantsContentViewController.m */; };
+		18F4E20715CE4843002095A2 /* EntryContectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A618159984640089EECF /* EntryContectView.m */; };
+		18F4E20815CE4843002095A2 /* ContactMailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A620159AE7670089EECF /* ContactMailController.m */; };
+		18F4E20915CE4843002095A2 /* PhotoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A628159E964B0089EECF /* PhotoEditorViewController.m */; };
+		18F4E20A15CE4843002095A2 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A637159ECBDE0089EECF /* DrawingView.m */; };
+		18F4E20B15CE4843002095A2 /* PhotoSketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE9C0815A557970058B4EE /* PhotoSketchPath.m */; };
+		18F4E20C15CE4843002095A2 /* BNoteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */; };
+		18F4E20D15CE4843002095A2 /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */; };
+		18F4E20E15CE4843002095A2 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B446315AE8BF0008F11D2 /* NoteViewController.m */; };
+		18F4E20F15CE4843002095A2 /* BNoteLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5615AEBD8500D7DC55 /* BNoteLabel.m */; };
+		18F4E21015CE4843002095A2 /* ClonerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5C15AFEBF200D7DC55 /* ClonerFactory.m */; };
+		18F4E21115CE4843002095A2 /* DecisionCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5F15AFEF2100D7DC55 /* DecisionCloner.m */; };
+		18F4E21215CE4843002095A2 /* ActionItemCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6215AFF56D00D7DC55 /* ActionItemCloner.m */; };
+		18F4E21315CE4843002095A2 /* QuestionCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6515AFF65800D7DC55 /* QuestionCloner.m */; };
+		18F4E21415CE4843002095A2 /* KeyPointCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6815AFF6D900D7DC55 /* KeyPointCloner.m */; };
+		18F4E21515CE4843002095A2 /* PhotoCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6B15AFF73E00D7DC55 /* PhotoCloner.m */; };
+		18F4E21615CE4843002095A2 /* AttendantsCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */; };
+		18F4E21715CE4843002095A2 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683B15B0D41E00311F16 /* PeopleViewController.m */; };
+		18F4E21815CE4843002095A2 /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683E15B0D49700311F16 /* PersonView.m */; };
+		18F4E21915CE4843002095A2 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE684115B0D4C600311F16 /* PersonViewController.m */; };
+		18F4E21A15CE4843002095A2 /* TableCellHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */; };
+		18F4E21B15CE4843002095A2 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B415B2934400653382 /* OrderedDictionary.m */; };
+		18F4E21C15CE4843002095A2 /* EntrySummaryTableViewCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A721B915B3E1DA00653382 /* EntrySummaryTableViewCellController.m */; };
+		18F4E21D15CE4843002095A2 /* AttendantQuickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7029D15B6F6E100C119F2 /* AttendantQuickButton.m */; };
+		18F4E21E15CE4843002095A2 /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A702A215B7F5E600C119F2 /* DetailView.m */; };
+		18F4E21F15CE4843002095A2 /* TopicSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CC190B15B929A60080C017 /* TopicSearchBar.m */; };
+		18F4E22015CE4843002095A2 /* TopicGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FC015BB1FCD00A2FD14 /* TopicGroupsViewController.m */; };
+		18F4E22115CE4843002095A2 /* TopicGroupManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FC515BB3C6600A2FD14 /* TopicGroupManagementViewController.m */; };
+		18F4E22215CE4843002095A2 /* TopicGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FCA15BB43AE00A2FD14 /* TopicGroupsTableViewController.m */; };
+		18F4E22315CE4843002095A2 /* SelectedTopicsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FCD15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m */; };
+		18F4E22415CE4843002095A2 /* EditNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1DE715BE75DF0038AC13 /* EditNoteView.m */; };
+		18F4E22515CE4843002095A2 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6515BE9EAF0038AC13 /* Photo.m */; };
+		18F4E22615CE4843002095A2 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6815BE9EB00038AC13 /* Question.m */; };
+		18F4E22715CE4843002095A2 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6B15BE9EB00038AC13 /* KeyPoint.m */; };
+		18F4E22815CE4843002095A2 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7415BE9EB10038AC13 /* Entry.m */; };
+		18F4E22915CE4843002095A2 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7715BE9EB10038AC13 /* Attendant.m */; };
+		18F4E22A15CE4843002095A2 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7A15BE9EB10038AC13 /* ActionItem.m */; };
+		18F4E22B15CE4843002095A2 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7D15BE9EB10038AC13 /* Attendants.m */; };
+		18F4E22C15CE4843002095A2 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8015BE9EB20038AC13 /* Decision.m */; };
+		18F4E22D15CE4843002095A2 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8315BE9EB20038AC13 /* KeyWord.m */; };
+		18F4E22E15CE4843002095A2 /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8615BE9EB20038AC13 /* SketchPath.m */; };
+		18F4E22F15CE4843002095A2 /* BNoteDefaultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */; };
+		18F4E23015CE4843002095A2 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1EAB15C136600038AC13 /* ProgressViewController.m */; };
+		18F4E23115CE4843002095A2 /* BNotePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9AC915C4F568007BE5E9 /* BNotePageControl.m */; };
+		18F4E23215CE4843002095A2 /* BNoteFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860688B15C62F8D003DC4EB /* BNoteFilterButton.m */; };
+		18F4E23315CE4843002095A2 /* FilterButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860688E15C632EB003DC4EB /* FilterButtonFactory.m */; };
+		18F4E23415CE4843002095A2 /* KeyPointFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689115C63356003DC4EB /* KeyPointFilterButton.m */; };
+		18F4E23515CE4843002095A2 /* BNoteFilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689415C634F4003DC4EB /* BNoteFilterHelper.m */; };
+		18F4E23615CE4843002095A2 /* QuestionFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689715C63C56003DC4EB /* QuestionFilterButton.m */; };
+		18F4E23715CE4843002095A2 /* ActionItemFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689A15C63C7A003DC4EB /* ActionItemFilterButton.m */; };
+		18F4E23815CE4843002095A2 /* DecisionFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689D15C63C8F003DC4EB /* DecisionFilterButton.m */; };
+		18F4E23915CE4843002095A2 /* KeyWordFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A015C64446003DC4EB /* KeyWordFilterButton.m */; };
+		18F4E23A15CE4843002095A2 /* KeyWordFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068A315C644A6003DC4EB /* KeyWordFilter.m */; };
+		18F4E23B15CE4843002095A2 /* BNoteQuickWordUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068C815C7AA00003DC4EB /* BNoteQuickWordUtils.m */; };
+		18F4E23C15CE4843002095A2 /* ToTheRightKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 186068CE15C7B80A003DC4EB /* ToTheRightKeyWordFinder.m */; };
+		18F4E23D15CE4843002095A2 /* SelectedKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E88A15C7B89C005590A2 /* SelectedKeyWordFinder.m */; };
+		18F4E23E15CE4843002095A2 /* NoteSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89615C7C0D9005590A2 /* NoteSummaryViewController.m */; };
+		18F4E23F15CE4843002095A2 /* ToTheLeftKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */; };
+		18F4E24015CE4843002095A2 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C403215CD972C0036BCBD /* Note.m */; };
+		18F4E24115CE4843002095A2 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C403515CD97360036BCBD /* Topic.m */; };
+		18F4E24215CE4843002095A2 /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F290CF15CD9CEE00543E65 /* TopicGroup.m */; };
+		18F4E24415CE4843002095A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186068C515C7979C003DC4EB /* QuartzCore.framework */; };
+		18F4E24515CE4843002095A2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AF4ABF15852FFC00A54205 /* MessageUI.framework */; };
+		18F4E24615CE4843002095A2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A05684157B5BCC002A4A78 /* AddressBook.framework */; };
+		18F4E24715CE4843002095A2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
+		18F4E24815CE4843002095A2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D35E15634AA60065788F /* CoreData.framework */; };
+		18F4E24915CE4843002095A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33B15634A650065788F /* UIKit.framework */; };
+		18F4E24A15CE4843002095A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33D15634A650065788F /* Foundation.framework */; };
+		18F4E24B15CE4843002095A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33F15634A650065788F /* CoreGraphics.framework */; };
+		18F4E24D15CE4843002095A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1834D34415634A650065788F /* InfoPlist.strings */; };
+		18F4E24E15CE4843002095A2 /* RobotoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445715AE809D008F11D2 /* RobotoBold.ttf */; };
+		18F4E24F15CE4843002095A2 /* RobotoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445815AE809D008F11D2 /* RobotoItalic.ttf */; };
+		18F4E25015CE4843002095A2 /* RobotoLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445915AE809D008F11D2 /* RobotoLight.ttf */; };
+		18F4E25115CE4843002095A2 /* RobotoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189B445A15AE809D008F11D2 /* RobotoRegular.ttf */; };
+		18F4E25215CE4843002095A2 /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
+		18F4E25315CE4843002095A2 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
+		18F4E25415CE4843002095A2 /* action_item_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF15156B772D00F22272 /* action_item_active_icon.png */; };
+		18F4E25515CE4843002095A2 /* action_item_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF16156B772D00F22272 /* action_item_icon.png */; };
+		18F4E25615CE4843002095A2 /* attendees_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF17156B772D00F22272 /* attendees_active_icon.png */; };
+		18F4E25715CE4843002095A2 /* attendees_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF18156B772D00F22272 /* attendees_icon.png */; };
+		18F4E25815CE4843002095A2 /* decision_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF19156B772D00F22272 /* decision_active_icon.png */; };
+		18F4E25915CE4843002095A2 /* decision_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF1A156B772D00F22272 /* decision_icon.png */; };
+		18F4E25A15CE4843002095A2 /* question_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF1B156B772D00F22272 /* question_active_icon.png */; };
+		18F4E25B15CE4843002095A2 /* question_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF1C156B772D00F22272 /* question_icon.png */; };
+		18F4E25C15CE4843002095A2 /* key_point_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF25156C6D7E00F22272 /* key_point_active_icon.png */; };
+		18F4E25D15CE4843002095A2 /* key_point_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF26156C6D7E00F22272 /* key_point_icon.png */; };
+		18F4E25E15CE4843002095A2 /* bnote.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF32156C791800F22272 /* bnote.png */; };
+		18F4E25F15CE4843002095A2 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF33156C791800F22272 /* note.png */; };
+		18F4E26015CE4843002095A2 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF38156C7A2400F22272 /* bnote-144.png */; };
+		18F4E26115CE4843002095A2 /* attendant_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF3A156C7C9500F22272 /* attendant_icon.png */; };
+		18F4E26215CE4843002095A2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
+		18F4E26315CE4843002095A2 /* QuickWordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05F15747B18003814C2 /* QuickWordsViewController.xib */; };
+		18F4E26415CE4843002095A2 /* bnote-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056C9157C905D002A4A78 /* bnote-big.png */; };
+		18F4E26515CE4843002095A2 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056D3157C9671002A4A78 /* HelpViewController.xib */; };
+		18F4E26615CE4843002095A2 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056FA157F3762002A4A78 /* PhotoViewController.xib */; };
+		18F4E26715CE4843002095A2 /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
+		18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
+		18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
+		18F4E26A15CE4843002095A2 /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */; };
+		18F4E26B15CE4843002095A2 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
+		18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
+		18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1851A629159E964B0089EECF /* PhotoEditorViewController.xib */; };
+		18F4E26E15CE4843002095A2 /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A62E159EA40F0089EECF /* eraser.png */; };
+		18F4E26F15CE4843002095A2 /* small-penci.pngl.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A630159EA5760089EECF /* small-penci.pngl.png */; };
+		18F4E27015CE4843002095A2 /* medium-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A631159EA5760089EECF /* medium-pencil.png */; };
+		18F4E27115CE4843002095A2 /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
+		18F4E27215CE4843002095A2 /* Squared_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */; };
+		18F4E27315CE4843002095A2 /* key_point_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE9C1115A576F30058B4EE /* key_point_mask.png */; };
+		18F4E27415CE4843002095A2 /* x-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997015AAA91400DEAB1F /* x-image.png */; };
+		18F4E27515CE4843002095A2 /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */; };
+		18F4E27615CE4843002095A2 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189B446415AE8BF0008F11D2 /* NoteViewController.xib */; };
+		18F4E27715CE4843002095A2 /* PersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DE684215B0D4C600311F16 /* PersonViewController.xib */; };
+		18F4E27815CE4843002095A2 /* TableCellHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */; };
+		18F4E27915CE4843002095A2 /* EntrySummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721B615B3DEC100653382 /* EntrySummaryTableViewCell.xib */; };
+		18F4E27A15CE4843002095A2 /* QuestionContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721BB15B506B500653382 /* QuestionContentView.xib */; };
+		18F4E27B15CE4843002095A2 /* DecisionContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721BD15B5126800653382 /* DecisionContentView.xib */; };
+		18F4E27C15CE4843002095A2 /* ActionItemContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A721BF15B5139500653382 /* ActionItemContentView.xib */; };
+		18F4E27D15CE4843002095A2 /* KeyPointContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028015B6777100C119F2 /* KeyPointContentView.xib */; };
+		18F4E27E15CE4843002095A2 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028315B68B5B00C119F2 /* 86-camera@2x.png */; };
+		18F4E27F15CE4843002095A2 /* 98-palette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028515B68CE000C119F2 /* 98-palette@2x.png */; };
+		18F4E28015CE4843002095A2 /* 111-user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028715B68D0600C119F2 /* 111-user@2x.png */; };
+		18F4E28115CE4843002095A2 /* 112-group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028815B68D0600C119F2 /* 112-group@2x.png */; };
+		18F4E28215CE4843002095A2 /* 18-envelope@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028B15B68DD600C119F2 /* 18-envelope@2x.png */; };
+		18F4E28315CE4843002095A2 /* 20-gear-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028D15B68DE500C119F2 /* 20-gear-2@2x.png */; };
+		18F4E28415CE4843002095A2 /* 43-film-roll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7028F15B68E0900C119F2 /* 43-film-roll@2x.png */; };
+		18F4E28515CE4843002095A2 /* 298-circlex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029115B6A66C00C119F2 /* 298-circlex@2x.png */; };
+		18F4E28615CE4843002095A2 /* AttendantsContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029315B6AB0C00C119F2 /* AttendantsContentView.xib */; };
+		18F4E28715CE4843002095A2 /* 218-trash2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029515B6DB6300C119F2 /* 218-trash2@2x.png */; };
+		18F4E28815CE4843002095A2 /* 259-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029715B6DDCA00C119F2 /* 259-list@2x.png */; };
+		18F4E28915CE4843002095A2 /* 02-redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029915B6F2CA00C119F2 /* 02-redo@2x.png */; };
+		18F4E28A15CE4843002095A2 /* funnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A7029F15B7CBDF00C119F2 /* funnel.png */; };
+		18F4E28B15CE4843002095A2 /* 50-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A702A415B8FF1800C119F2 /* 50-plus@2x.png */; };
+		18F4E28C15CE4843002095A2 /* 83-calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A702A615B9149900C119F2 /* 83-calendar@2x.png */; };
+		18F4E28D15CE4843002095A2 /* 19-circle-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190515B91D9C0080C017 /* 19-circle-check@2x.png */; };
+		18F4E28E15CE4843002095A2 /* 27-circle-o@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CC190815B91DD80080C017 /* 27-circle-o@2x.png */; };
+		18F4E28F15CE4843002095A2 /* TopicGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A30FC115BB1FCD00A2FD14 /* TopicGroupsViewController.xib */; };
+		18F4E29015CE4843002095A2 /* TopicGroupManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A30FC615BB3C6600A2FD14 /* TopicGroupManagementViewController.xib */; };
+		18F4E29115CE4843002095A2 /* info-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E8D15BFA5050038AC13 /* info-1.txt */; };
+		18F4E29215CE4843002095A2 /* info-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E8E15BFA5050038AC13 /* info-2.txt */; };
+		18F4E29315CE4843002095A2 /* info-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E8F15BFA5050038AC13 /* info-3.txt */; };
+		18F4E29415CE4843002095A2 /* info-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9015BFA5050038AC13 /* info-4.txt */; };
+		18F4E29515CE4843002095A2 /* info-5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9115BFA5050038AC13 /* info-5.txt */; };
+		18F4E29615CE4843002095A2 /* info-6.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9215BFA5050038AC13 /* info-6.txt */; };
+		18F4E29715CE4843002095A2 /* key-point.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1E9C15C0B9240038AC13 /* key-point.txt */; };
+		18F4E29815CE4843002095A2 /* Decision.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA015C0B9500038AC13 /* Decision.txt */; };
+		18F4E29915CE4843002095A2 /* question-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA215C0B96E0038AC13 /* question-1.txt */; };
+		18F4E29A15CE4843002095A2 /* question-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA415C0B9820038AC13 /* question-2.txt */; };
+		18F4E29B15CE4843002095A2 /* answer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA615C0B9900038AC13 /* answer.txt */; };
+		18F4E29C15CE4843002095A2 /* action-item-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EA815C0B9BB0038AC13 /* action-item-1.txt */; };
+		18F4E29D15CE4843002095A2 /* keypoint-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EAF15C25DBF0038AC13 /* keypoint-1.txt */; };
+		18F4E29E15CE4843002095A2 /* keypoint-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EB115C25DDC0038AC13 /* keypoint-2.txt */; };
+		18F4E29F15CE4843002095A2 /* keypoint-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EB315C25DF50038AC13 /* keypoint-3.txt */; };
+		18F4E2A015CE4843002095A2 /* action_item-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EB515C260290038AC13 /* action_item-2.txt */; };
+		18F4E2A115CE4843002095A2 /* action-item-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EB715C2606B0038AC13 /* action-item-3.txt */; };
+		18F4E2A215CE4843002095A2 /* action-item-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EB915C2607F0038AC13 /* action-item-4.txt */; };
+		18F4E2A315CE4843002095A2 /* attendees-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EBB15C261600038AC13 /* attendees-1.txt */; };
+		18F4E2A415CE4843002095A2 /* attendees-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EBD15C2617F0038AC13 /* attendees-2.txt */; };
+		18F4E2A515CE4843002095A2 /* attendees-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EBF15C261910038AC13 /* attendees-3.txt */; };
+		18F4E2A615CE4843002095A2 /* overview-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EC115C263040038AC13 /* overview-1.txt */; };
+		18F4E2A715CE4843002095A2 /* overview-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EC315C2631A0038AC13 /* overview-2.txt */; };
+		18F4E2A815CE4843002095A2 /* overview-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EC715C2639D0038AC13 /* overview-3.txt */; };
+		18F4E2A915CE4843002095A2 /* 98-palette@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1EC915C26A460038AC13 /* 98-palette@2x-color.png */; };
+		18F4E2AA15CE4843002095A2 /* 86-camera@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ECB15C26CFC0038AC13 /* 86-camera@2x-color.png */; };
+		18F4E2AB15CE4843002095A2 /* 27-circle-o@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ECD15C271A40038AC13 /* 27-circle-o@2x-color.png */; };
+		18F4E2AC15CE4843002095A2 /* 19-circle-check@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ECF15C271FF0038AC13 /* 19-circle-check@2x-color.png */; };
+		18F4E2AD15CE4843002095A2 /* 83-calendar@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ED115C276E80038AC13 /* 83-calendar@2x-color.png */; };
+		18F4E2AE15CE4843002095A2 /* 18-envelope@2x-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F1ED315C27BF30038AC13 /* 18-envelope@2x-color.png */; };
+		18F4E2AF15CE4843002095A2 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187F9ABD15C3BB1F007BE5E9 /* ProgressViewController.xib */; };
+		18F4E2B015CE4843002095A2 /* NoteSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */; };
+		18F4E2BF15CE5202002095A2 /* BNoteLiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */; };
+		18F4E2C115CE52DA002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
 		18F7997115AAA91400DEAB1F /* x-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997015AAA91400DEAB1F /* x-image.png */; };
 /* End PBXBuildFile section */
 
@@ -455,10 +689,10 @@
 		187F9AC915C4F568007BE5E9 /* BNotePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNotePageControl.m; sourceTree = "<group>"; };
 		18810E5D15770159002B59DA /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
 		18810E5E15770159002B59DA /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
-		189B445715AE809D008F11D2 /* RobotoBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoBold.ttf; sourceTree = "<group>"; };
-		189B445815AE809D008F11D2 /* RobotoItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoItalic.ttf; sourceTree = "<group>"; };
-		189B445915AE809D008F11D2 /* RobotoLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoLight.ttf; sourceTree = "<group>"; };
-		189B445A15AE809D008F11D2 /* RobotoRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoRegular.ttf; sourceTree = "<group>"; };
+		189B445715AE809D008F11D2 /* RobotoBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = RobotoBold.ttf; path = ../RobotoBold.ttf; sourceTree = "<group>"; };
+		189B445815AE809D008F11D2 /* RobotoItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = RobotoItalic.ttf; path = ../RobotoItalic.ttf; sourceTree = "<group>"; };
+		189B445915AE809D008F11D2 /* RobotoLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = RobotoLight.ttf; path = ../RobotoLight.ttf; sourceTree = "<group>"; };
+		189B445A15AE809D008F11D2 /* RobotoRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = RobotoRegular.ttf; path = ../RobotoRegular.ttf; sourceTree = "<group>"; };
 		189B446215AE8BF0008F11D2 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
 		189B446315AE8BF0008F11D2 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
 		189B446415AE8BF0008F11D2 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
@@ -623,7 +857,12 @@
 		18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Squared_paper.jpg; sourceTree = "<group>"; };
 		18F290CE15CD9CEE00543E65 /* TopicGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroup.h; sourceTree = "<group>"; };
 		18F290CF15CD9CEE00543E65 /* TopicGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroup.m; sourceTree = "<group>"; };
-		18F290D115CD9D1D00543E65 /* BeNote 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeNote 18.xcdatamodel"; sourceTree = "<group>"; };
+		18F290D115CD9D1D00543E65 /* BeNote 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 18.xcdatamodel"; sourceTree = "<group>"; };
+		18F291CF15CE43F900543E65 /* BeNote Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BeNote Lite-Info.plist"; path = "/Users/kristinyoung/projects/bnote-projects/BNote - github/BeNote Lite-Info.plist"; sourceTree = "<absolute>"; };
+		18F4E2B415CE4843002095A2 /* BeNote Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BeNote Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F4E2B915CE4F10002095A2 /* BNoteLiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteLiteViewController.h; sourceTree = "<group>"; };
+		18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteLiteViewController.m; sourceTree = "<group>"; };
+		18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNoteLiteViewController.xib; sourceTree = "<group>"; };
 		18F7994515AA14E800DEAB1F /* BeNote 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 13.xcdatamodel"; sourceTree = "<group>"; };
 		18F7997015AAA91400DEAB1F /* x-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -641,6 +880,21 @@
 				1834D33C15634A650065788F /* UIKit.framework in Frameworks */,
 				1834D33E15634A650065788F /* Foundation.framework in Frameworks */,
 				1834D34015634A650065788F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F4E24315CE4843002095A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F4E24415CE4843002095A2 /* QuartzCore.framework in Frameworks */,
+				18F4E24515CE4843002095A2 /* MessageUI.framework in Frameworks */,
+				18F4E24615CE4843002095A2 /* AddressBook.framework in Frameworks */,
+				18F4E24715CE4843002095A2 /* AddressBookUI.framework in Frameworks */,
+				18F4E24815CE4843002095A2 /* CoreData.framework in Frameworks */,
+				18F4E24915CE4843002095A2 /* UIKit.framework in Frameworks */,
+				18F4E24A15CE4843002095A2 /* Foundation.framework in Frameworks */,
+				18F4E24B15CE4843002095A2 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,11 +1005,6 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
-				186068C515C7979C003DC4EB /* QuartzCore.framework */,
-				189B445715AE809D008F11D2 /* RobotoBold.ttf */,
-				189B445815AE809D008F11D2 /* RobotoItalic.ttf */,
-				189B445915AE809D008F11D2 /* RobotoLight.ttf */,
-				189B445A15AE809D008F11D2 /* RobotoRegular.ttf */,
 				1834D34115634A650065788F /* BNote */,
 				1834D33A15634A650065788F /* Frameworks */,
 				1834D33815634A650065788F /* Products */,
@@ -766,6 +1015,7 @@
 			isa = PBXGroup;
 			children = (
 				1834D33715634A650065788F /* BeNote.app */,
+				18F4E2B415CE4843002095A2 /* BeNote Lite.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -773,6 +1023,7 @@
 		1834D33A15634A650065788F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				186068C515C7979C003DC4EB /* QuartzCore.framework */,
 				18AF4ABF15852FFC00A54205 /* MessageUI.framework */,
 				18A05684157B5BCC002A4A78 /* AddressBook.framework */,
 				18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */,
@@ -787,6 +1038,7 @@
 		1834D34115634A650065788F /* BNote */ = {
 			isa = PBXGroup;
 			children = (
+				18F4E2B815CE4EE9002095A2 /* Lite Version */,
 				18BAC1A915AD450500EEBE1E /* Main View */,
 				18A30FBD15BB1F9F00A2FD14 /* Topic Groups */,
 				1851A626159E96270089EECF /* Photo Editor */,
@@ -808,9 +1060,14 @@
 		1834D34215634A650065788F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				189B445715AE809D008F11D2 /* RobotoBold.ttf */,
+				189B445815AE809D008F11D2 /* RobotoItalic.ttf */,
+				189B445915AE809D008F11D2 /* RobotoLight.ttf */,
+				189B445A15AE809D008F11D2 /* RobotoRegular.ttf */,
 				18558C451589AE9100BCB45C /* BeNote.entitlements */,
 				184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */,
 				1834D34315634A650065788F /* BeNote-Info.plist */,
+				18F291CF15CE43F900543E65 /* BeNote Lite-Info.plist */,
 				1834D34415634A650065788F /* InfoPlist.strings */,
 				1834D34715634A650065788F /* main.m */,
 				1834D34915634A650065788F /* BeNote-Prefix.pch */,
@@ -1380,6 +1637,16 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
+		18F4E2B815CE4EE9002095A2 /* Lite Version */ = {
+			isa = PBXGroup;
+			children = (
+				18F4E2B915CE4F10002095A2 /* BNoteLiteViewController.h */,
+				18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */,
+				18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */,
+			);
+			name = "Lite Version";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1398,6 +1665,23 @@
 			name = BeNote;
 			productName = BNote;
 			productReference = 1834D33715634A650065788F /* BeNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		18F4E1C515CE4843002095A2 /* BeNote Lite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F4E2B115CE4843002095A2 /* Build configuration list for PBXNativeTarget "BeNote Lite" */;
+			buildPhases = (
+				18F4E1C615CE4843002095A2 /* Sources */,
+				18F4E24315CE4843002095A2 /* Frameworks */,
+				18F4E24C15CE4843002095A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BeNote Lite";
+			productName = BNote;
+			productReference = 18F4E2B415CE4843002095A2 /* BeNote Lite.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1421,6 +1705,7 @@
 			projectRoot = "";
 			targets = (
 				1834D33615634A650065788F /* BeNote */,
+				18F4E1C515CE4843002095A2 /* BeNote Lite */,
 			);
 		};
 /* End PBXProject section */
@@ -1530,6 +1815,114 @@
 				182F1ED415C27BF30038AC13 /* 18-envelope@2x-color.png in Resources */,
 				187F9ABE15C3BB1F007BE5E9 /* ProgressViewController.xib in Resources */,
 				18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F4E24C15CE4843002095A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F4E2C115CE52DA002095A2 /* BNoteLiteViewController.xib in Resources */,
+				18F4E24D15CE4843002095A2 /* InfoPlist.strings in Resources */,
+				18F4E24E15CE4843002095A2 /* RobotoBold.ttf in Resources */,
+				18F4E24F15CE4843002095A2 /* RobotoItalic.ttf in Resources */,
+				18F4E25015CE4843002095A2 /* RobotoLight.ttf in Resources */,
+				18F4E25115CE4843002095A2 /* RobotoRegular.ttf in Resources */,
+				18F4E25215CE4843002095A2 /* TopicEditorViewController.xib in Resources */,
+				18F4E25315CE4843002095A2 /* NoteEditorViewController.xib in Resources */,
+				18F4E25415CE4843002095A2 /* action_item_active_icon.png in Resources */,
+				18F4E25515CE4843002095A2 /* action_item_icon.png in Resources */,
+				18F4E25615CE4843002095A2 /* attendees_active_icon.png in Resources */,
+				18F4E25715CE4843002095A2 /* attendees_icon.png in Resources */,
+				18F4E25815CE4843002095A2 /* decision_active_icon.png in Resources */,
+				18F4E25915CE4843002095A2 /* decision_icon.png in Resources */,
+				18F4E25A15CE4843002095A2 /* question_active_icon.png in Resources */,
+				18F4E25B15CE4843002095A2 /* question_icon.png in Resources */,
+				18F4E25C15CE4843002095A2 /* key_point_active_icon.png in Resources */,
+				18F4E25D15CE4843002095A2 /* key_point_icon.png in Resources */,
+				18F4E25E15CE4843002095A2 /* bnote.png in Resources */,
+				18F4E25F15CE4843002095A2 /* note.png in Resources */,
+				18F4E26015CE4843002095A2 /* bnote-144.png in Resources */,
+				18F4E26115CE4843002095A2 /* attendant_icon.png in Resources */,
+				18F4E26215CE4843002095A2 /* DatePickerViewController.xib in Resources */,
+				18F4E26315CE4843002095A2 /* QuickWordsViewController.xib in Resources */,
+				18F4E26415CE4843002095A2 /* bnote-big.png in Resources */,
+				18F4E26515CE4843002095A2 /* HelpViewController.xib in Resources */,
+				18F4E26615CE4843002095A2 /* PhotoViewController.xib in Resources */,
+				18F4E26715CE4843002095A2 /* ResponsibilityTableViewController.xib in Resources */,
+				18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */,
+				18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */,
+				18F4E26A15CE4843002095A2 /* BeNote-EULA.rtf in Resources */,
+				18F4E26B15CE4843002095A2 /* InformationViewController.xib in Resources */,
+				18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */,
+				18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */,
+				18F4E26E15CE4843002095A2 /* eraser.png in Resources */,
+				18F4E26F15CE4843002095A2 /* small-penci.pngl.png in Resources */,
+				18F4E27015CE4843002095A2 /* medium-pencil.png in Resources */,
+				18F4E27115CE4843002095A2 /* large-pencil.png in Resources */,
+				18F4E27215CE4843002095A2 /* Squared_paper.jpg in Resources */,
+				18F4E27315CE4843002095A2 /* key_point_mask.png in Resources */,
+				18F4E27415CE4843002095A2 /* x-image.png in Resources */,
+				18F4E27515CE4843002095A2 /* MainViewViewController.xib in Resources */,
+				18F4E27615CE4843002095A2 /* NoteViewController.xib in Resources */,
+				18F4E27715CE4843002095A2 /* PersonViewController.xib in Resources */,
+				18F4E27815CE4843002095A2 /* TableCellHeaderViewController.xib in Resources */,
+				18F4E27915CE4843002095A2 /* EntrySummaryTableViewCell.xib in Resources */,
+				18F4E27A15CE4843002095A2 /* QuestionContentView.xib in Resources */,
+				18F4E27B15CE4843002095A2 /* DecisionContentView.xib in Resources */,
+				18F4E27C15CE4843002095A2 /* ActionItemContentView.xib in Resources */,
+				18F4E27D15CE4843002095A2 /* KeyPointContentView.xib in Resources */,
+				18F4E27E15CE4843002095A2 /* 86-camera@2x.png in Resources */,
+				18F4E27F15CE4843002095A2 /* 98-palette@2x.png in Resources */,
+				18F4E28015CE4843002095A2 /* 111-user@2x.png in Resources */,
+				18F4E28115CE4843002095A2 /* 112-group@2x.png in Resources */,
+				18F4E28215CE4843002095A2 /* 18-envelope@2x.png in Resources */,
+				18F4E28315CE4843002095A2 /* 20-gear-2@2x.png in Resources */,
+				18F4E28415CE4843002095A2 /* 43-film-roll@2x.png in Resources */,
+				18F4E28515CE4843002095A2 /* 298-circlex@2x.png in Resources */,
+				18F4E28615CE4843002095A2 /* AttendantsContentView.xib in Resources */,
+				18F4E28715CE4843002095A2 /* 218-trash2@2x.png in Resources */,
+				18F4E28815CE4843002095A2 /* 259-list@2x.png in Resources */,
+				18F4E28915CE4843002095A2 /* 02-redo@2x.png in Resources */,
+				18F4E28A15CE4843002095A2 /* funnel.png in Resources */,
+				18F4E28B15CE4843002095A2 /* 50-plus@2x.png in Resources */,
+				18F4E28C15CE4843002095A2 /* 83-calendar@2x.png in Resources */,
+				18F4E28D15CE4843002095A2 /* 19-circle-check@2x.png in Resources */,
+				18F4E28E15CE4843002095A2 /* 27-circle-o@2x.png in Resources */,
+				18F4E28F15CE4843002095A2 /* TopicGroupsViewController.xib in Resources */,
+				18F4E29015CE4843002095A2 /* TopicGroupManagementViewController.xib in Resources */,
+				18F4E29115CE4843002095A2 /* info-1.txt in Resources */,
+				18F4E29215CE4843002095A2 /* info-2.txt in Resources */,
+				18F4E29315CE4843002095A2 /* info-3.txt in Resources */,
+				18F4E29415CE4843002095A2 /* info-4.txt in Resources */,
+				18F4E29515CE4843002095A2 /* info-5.txt in Resources */,
+				18F4E29615CE4843002095A2 /* info-6.txt in Resources */,
+				18F4E29715CE4843002095A2 /* key-point.txt in Resources */,
+				18F4E29815CE4843002095A2 /* Decision.txt in Resources */,
+				18F4E29915CE4843002095A2 /* question-1.txt in Resources */,
+				18F4E29A15CE4843002095A2 /* question-2.txt in Resources */,
+				18F4E29B15CE4843002095A2 /* answer.txt in Resources */,
+				18F4E29C15CE4843002095A2 /* action-item-1.txt in Resources */,
+				18F4E29D15CE4843002095A2 /* keypoint-1.txt in Resources */,
+				18F4E29E15CE4843002095A2 /* keypoint-2.txt in Resources */,
+				18F4E29F15CE4843002095A2 /* keypoint-3.txt in Resources */,
+				18F4E2A015CE4843002095A2 /* action_item-2.txt in Resources */,
+				18F4E2A115CE4843002095A2 /* action-item-3.txt in Resources */,
+				18F4E2A215CE4843002095A2 /* action-item-4.txt in Resources */,
+				18F4E2A315CE4843002095A2 /* attendees-1.txt in Resources */,
+				18F4E2A415CE4843002095A2 /* attendees-2.txt in Resources */,
+				18F4E2A515CE4843002095A2 /* attendees-3.txt in Resources */,
+				18F4E2A615CE4843002095A2 /* overview-1.txt in Resources */,
+				18F4E2A715CE4843002095A2 /* overview-2.txt in Resources */,
+				18F4E2A815CE4843002095A2 /* overview-3.txt in Resources */,
+				18F4E2A915CE4843002095A2 /* 98-palette@2x-color.png in Resources */,
+				18F4E2AA15CE4843002095A2 /* 86-camera@2x-color.png in Resources */,
+				18F4E2AB15CE4843002095A2 /* 27-circle-o@2x-color.png in Resources */,
+				18F4E2AC15CE4843002095A2 /* 19-circle-check@2x-color.png in Resources */,
+				18F4E2AD15CE4843002095A2 /* 83-calendar@2x-color.png in Resources */,
+				18F4E2AE15CE4843002095A2 /* 18-envelope@2x-color.png in Resources */,
+				18F4E2AF15CE4843002095A2 /* ProgressViewController.xib in Resources */,
+				18F4E2B015CE4843002095A2 /* NoteSummaryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1667,6 +2060,138 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18F4E1C615CE4843002095A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F4E2BF15CE5202002095A2 /* BNoteLiteViewController.m in Sources */,
+				18F4E1C715CE4843002095A2 /* main.m in Sources */,
+				18F4E1C815CE4843002095A2 /* AppDelegate.m in Sources */,
+				18F4E1C915CE4843002095A2 /* MasterViewController.m in Sources */,
+				18F4E1CA15CE4843002095A2 /* TopicEditorViewController.m in Sources */,
+				18F4E1CB15CE4843002095A2 /* BNoteFactory.m in Sources */,
+				18F4E1CC15CE4843002095A2 /* BNoteReader.m in Sources */,
+				18F4E1CD15CE4843002095A2 /* BNoteWriter.m in Sources */,
+				18F4E1CE15CE4843002095A2 /* EntrySummariesTableViewController.m in Sources */,
+				18F4E1CF15CE4843002095A2 /* NoteEditorViewController.m in Sources */,
+				18F4E1D015CE4843002095A2 /* LayerFormater.m in Sources */,
+				18F4E1D115CE4843002095A2 /* BNoteStringUtils.m in Sources */,
+				18F4E1D215CE4843002095A2 /* BNoteSessionData.m in Sources */,
+				18F4E1D315CE4843002095A2 /* BNoteAnimation.m in Sources */,
+				18F4E1D415CE4843002095A2 /* NotesViewController.m in Sources */,
+				18F4E1D515CE4843002095A2 /* DatePickerViewController.m in Sources */,
+				18F4E1D615CE4843002095A2 /* QuickWordsViewController.m in Sources */,
+				18F4E1D715CE4843002095A2 /* QuickWordButton.m in Sources */,
+				18F4E1D815CE4843002095A2 /* QuickWordsFactory.m in Sources */,
+				18F4E1D915CE4843002095A2 /* DateQuickButton.m in Sources */,
+				18F4E1DA15CE4843002095A2 /* EntriesViewController.m in Sources */,
+				18F4E1DB15CE4843002095A2 /* IdentityFillter.m in Sources */,
+				18F4E1DC15CE4843002095A2 /* KeyPointFilter.m in Sources */,
+				18F4E1DD15CE4843002095A2 /* ActionItemFilter.m in Sources */,
+				18F4E1DE15CE4843002095A2 /* ActionItemCompleteFilter.m in Sources */,
+				18F4E1DF15CE4843002095A2 /* ActionItemInCompleteFilter.m in Sources */,
+				18F4E1E015CE4843002095A2 /* QuestionFilter.m in Sources */,
+				18F4E1E115CE4843002095A2 /* QuestionUnansweredFilter.m in Sources */,
+				18F4E1E215CE4843002095A2 /* QuestionAnsweredFilter.m in Sources */,
+				18F4E1E315CE4843002095A2 /* DecisionFilter.m in Sources */,
+				18F4E1E415CE4843002095A2 /* AttendantsViewController.m in Sources */,
+				18F4E1E515CE4843002095A2 /* AttendantView.m in Sources */,
+				18F4E1E615CE4843002095A2 /* AttendantFilter.m in Sources */,
+				18F4E1E715CE4843002095A2 /* BNoteEntryUtils.m in Sources */,
+				18F4E1E815CE4843002095A2 /* HelpViewController.m in Sources */,
+				18F4E1E915CE4843002095A2 /* NoteView.m in Sources */,
+				18F4E1EA15CE4843002095A2 /* BNoteConstants.m in Sources */,
+				18F4E1EB15CE4843002095A2 /* BNoteImageUtils.m in Sources */,
+				18F4E1EC15CE4843002095A2 /* PhotoViewController.m in Sources */,
+				18F4E1ED15CE4843002095A2 /* ResponsibilityTableViewController.m in Sources */,
+				18F4E1EE15CE4843002095A2 /* KeyWordButton.m in Sources */,
+				18F4E1EF15CE4843002095A2 /* EmailViewController.m in Sources */,
+				18F4E1F015CE4843002095A2 /* BNoteRenderFactory.m in Sources */,
+				18F4E1F115CE4843002095A2 /* BNoteFilterFactory.m in Sources */,
+				18F4E1F215CE4843002095A2 /* BNoteHtmlRenderer.m in Sources */,
+				18F4E1F315CE4843002095A2 /* BNotePlainTextRenderer.m in Sources */,
+				18F4E1F415CE4843002095A2 /* TopicSummaryPlainRenderer.m in Sources */,
+				18F4E1F515CE4843002095A2 /* QuestionPlainRenderer.m in Sources */,
+				18F4E1F615CE4843002095A2 /* ActionItemPlainRenderer.m in Sources */,
+				18F4E1F715CE4843002095A2 /* AttendantPlainRenderer.m in Sources */,
+				18F4E1F815CE4843002095A2 /* NotePlainRenderer.m in Sources */,
+				18F4E1F915CE4843002095A2 /* KeyPointPlainRenderer.m in Sources */,
+				18F4E1FA15CE4843002095A2 /* DecisionPlainRenderer.m in Sources */,
+				18F4E1FB15CE4843002095A2 /* BeNote.xcdatamodeld in Sources */,
+				18F4E1FC15CE4843002095A2 /* AssociatedTopicsTableViewController.m in Sources */,
+				18F4E1FD15CE4843002095A2 /* EluaViewController.m in Sources */,
+				18F4E1FE15CE4843002095A2 /* TopicManagementViewController.m in Sources */,
+				18F4E1FF15CE4843002095A2 /* InformationViewController.m in Sources */,
+				18F4E20015CE4843002095A2 /* AttendeeDetailViewController.m in Sources */,
+				18F4E20115CE4843002095A2 /* EntryContentViewController.m in Sources */,
+				18F4E20215CE4843002095A2 /* DecisionContentViewController.m in Sources */,
+				18F4E20315CE4843002095A2 /* KeyPointContentViewController.m in Sources */,
+				18F4E20415CE4843002095A2 /* ActionItemContentViewController.m in Sources */,
+				18F4E20515CE4843002095A2 /* QuestionContentViewController.m in Sources */,
+				18F4E20615CE4843002095A2 /* AttendantsContentViewController.m in Sources */,
+				18F4E20715CE4843002095A2 /* EntryContectView.m in Sources */,
+				18F4E20815CE4843002095A2 /* ContactMailController.m in Sources */,
+				18F4E20915CE4843002095A2 /* PhotoEditorViewController.m in Sources */,
+				18F4E20A15CE4843002095A2 /* DrawingView.m in Sources */,
+				18F4E20B15CE4843002095A2 /* PhotoSketchPath.m in Sources */,
+				18F4E20C15CE4843002095A2 /* BNoteButton.m in Sources */,
+				18F4E20D15CE4843002095A2 /* MainViewViewController.m in Sources */,
+				18F4E20E15CE4843002095A2 /* NoteViewController.m in Sources */,
+				18F4E20F15CE4843002095A2 /* BNoteLabel.m in Sources */,
+				18F4E21015CE4843002095A2 /* ClonerFactory.m in Sources */,
+				18F4E21115CE4843002095A2 /* DecisionCloner.m in Sources */,
+				18F4E21215CE4843002095A2 /* ActionItemCloner.m in Sources */,
+				18F4E21315CE4843002095A2 /* QuestionCloner.m in Sources */,
+				18F4E21415CE4843002095A2 /* KeyPointCloner.m in Sources */,
+				18F4E21515CE4843002095A2 /* PhotoCloner.m in Sources */,
+				18F4E21615CE4843002095A2 /* AttendantsCloner.m in Sources */,
+				18F4E21715CE4843002095A2 /* PeopleViewController.m in Sources */,
+				18F4E21815CE4843002095A2 /* PersonView.m in Sources */,
+				18F4E21915CE4843002095A2 /* PersonViewController.m in Sources */,
+				18F4E21A15CE4843002095A2 /* TableCellHeaderViewController.m in Sources */,
+				18F4E21B15CE4843002095A2 /* OrderedDictionary.m in Sources */,
+				18F4E21C15CE4843002095A2 /* EntrySummaryTableViewCellController.m in Sources */,
+				18F4E21D15CE4843002095A2 /* AttendantQuickButton.m in Sources */,
+				18F4E21E15CE4843002095A2 /* DetailView.m in Sources */,
+				18F4E21F15CE4843002095A2 /* TopicSearchBar.m in Sources */,
+				18F4E22015CE4843002095A2 /* TopicGroupsViewController.m in Sources */,
+				18F4E22115CE4843002095A2 /* TopicGroupManagementViewController.m in Sources */,
+				18F4E22215CE4843002095A2 /* TopicGroupsTableViewController.m in Sources */,
+				18F4E22315CE4843002095A2 /* SelectedTopicsTableViewController.m in Sources */,
+				18F4E22415CE4843002095A2 /* EditNoteView.m in Sources */,
+				18F4E22515CE4843002095A2 /* Photo.m in Sources */,
+				18F4E22615CE4843002095A2 /* Question.m in Sources */,
+				18F4E22715CE4843002095A2 /* KeyPoint.m in Sources */,
+				18F4E22815CE4843002095A2 /* Entry.m in Sources */,
+				18F4E22915CE4843002095A2 /* Attendant.m in Sources */,
+				18F4E22A15CE4843002095A2 /* ActionItem.m in Sources */,
+				18F4E22B15CE4843002095A2 /* Attendants.m in Sources */,
+				18F4E22C15CE4843002095A2 /* Decision.m in Sources */,
+				18F4E22D15CE4843002095A2 /* KeyWord.m in Sources */,
+				18F4E22E15CE4843002095A2 /* SketchPath.m in Sources */,
+				18F4E22F15CE4843002095A2 /* BNoteDefaultData.m in Sources */,
+				18F4E23015CE4843002095A2 /* ProgressViewController.m in Sources */,
+				18F4E23115CE4843002095A2 /* BNotePageControl.m in Sources */,
+				18F4E23215CE4843002095A2 /* BNoteFilterButton.m in Sources */,
+				18F4E23315CE4843002095A2 /* FilterButtonFactory.m in Sources */,
+				18F4E23415CE4843002095A2 /* KeyPointFilterButton.m in Sources */,
+				18F4E23515CE4843002095A2 /* BNoteFilterHelper.m in Sources */,
+				18F4E23615CE4843002095A2 /* QuestionFilterButton.m in Sources */,
+				18F4E23715CE4843002095A2 /* ActionItemFilterButton.m in Sources */,
+				18F4E23815CE4843002095A2 /* DecisionFilterButton.m in Sources */,
+				18F4E23915CE4843002095A2 /* KeyWordFilterButton.m in Sources */,
+				18F4E23A15CE4843002095A2 /* KeyWordFilter.m in Sources */,
+				18F4E23B15CE4843002095A2 /* BNoteQuickWordUtils.m in Sources */,
+				18F4E23C15CE4843002095A2 /* ToTheRightKeyWordFinder.m in Sources */,
+				18F4E23D15CE4843002095A2 /* SelectedKeyWordFinder.m in Sources */,
+				18F4E23E15CE4843002095A2 /* NoteSummaryViewController.m in Sources */,
+				18F4E23F15CE4843002095A2 /* ToTheLeftKeyWordFinder.m in Sources */,
+				18F4E24015CE4843002095A2 /* Note.m in Sources */,
+				18F4E24115CE4843002095A2 /* Topic.m in Sources */,
+				18F4E24215CE4843002095A2 /* TopicGroup.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -1754,6 +2279,36 @@
 			};
 			name = Release;
 		};
+		18F4E2B215CE4843002095A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					LITE,
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "BeNote Lite";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		18F4E2B315CE4843002095A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = LITE;
+				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "BeNote Lite";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1771,6 +2326,15 @@
 			buildConfigurations = (
 				1834D35C15634A650065788F /* Debug */,
 				1834D35D15634A650065788F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18F4E2B115CE4843002095A2 /* Build configuration list for PBXNativeTarget "BeNote Lite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F4E2B215CE4843002095A2 /* Debug */,
+				18F4E2B315CE4843002095A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

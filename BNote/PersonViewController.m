@@ -90,8 +90,8 @@ static NSString *email = @"Send E-mail";
     
         [actionSheet setTitle:@"Attendant Options"];
     
-        CGRect rect = [[self view] frame];
-        [actionSheet showFromRect:rect inView:[self view] animated:YES];   
+        CGRect rect = [[self icon] frame];
+        [actionSheet showFromRect:rect inView:[self view] animated:YES];
     }
 }
 

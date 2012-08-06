@@ -31,13 +31,7 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        [self setData:[[BNoteReader instance] allTopicGroups]];
-        for (TopicGroup *topicGroup in [self data]) {
-            if ([[topicGroup name] isEqualToString:kAllTopicGroupName]) {
-                [[self data] removeObject:topicGroup];
-                break;
-            }
-        }
+        [self refreshTopicGroupData];
     }
     
     return self;
@@ -101,12 +95,6 @@
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
-    return ![[topicGroup name] isEqualToString:kAllTopicGroupName];
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -153,7 +141,7 @@
 
 - (void)selectTopicGroup:(TopicGroup *)group
 {
-    [self setData:[[BNoteReader instance] allTopicGroups]];
+    [self refreshTopicGroupData];
     [[self tableView] reloadData];
 
     int index = [[self data] indexOfObject:group];
@@ -175,6 +163,26 @@
 - (void)addTopicGroup:(NSNotification *)notification
 {
     [self selectTopicGroup:[notification object]];
+    
+    NSString *name = [[self nameText] text];
+    if ([BNoteStringUtils nilOrEmpty:name]) {
+        [[self nameText] setText:nil];
+    }
+    
+    if (![[self nameText] text]) {
+        [[self nameText] becomeFirstResponder];
+    }
+}
+
+- (void)refreshTopicGroupData
+{
+    [self setData:[[BNoteReader instance] allTopicGroups]];
+    for (TopicGroup *topicGroup in [self data]) {
+        if ([[topicGroup name] isEqualToString:kAllTopicGroupName]) {
+            [[self data] removeObject:topicGroup];
+            break;
+        }
+    }
 }
 
 @end

@@ -218,7 +218,11 @@
 
     [[BNoteWriter instance] removeObjects:[emptyEntries allObjects]];
     
-    if (![[note entries] count]) {
+    BOOL noSubject = [BNoteStringUtils nilOrEmpty:[note subject]];
+    BOOL noSummary = [BNoteStringUtils nilOrEmpty:[note summary]];
+    BOOL noEntries = ![[note entries] count];
+    
+    if (noSubject && noSummary && noEntries) {
         [[BNoteWriter instance] removeNote:note];
     }
 }

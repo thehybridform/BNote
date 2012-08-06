@@ -241,10 +241,12 @@
 {
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
     
-    [[controller mainTextView] becomeFirstResponder];    
+    UITextView *textView = [controller mainTextView];
+    
+    [textView becomeFirstResponder];    
 }
 
 - (void)selectEntry:(Entry *)entry
@@ -277,7 +279,6 @@
 - (void)stoppedEditingText:(NSNotification *)notification
 {
     [self setTextView:nil];
-    [self reload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

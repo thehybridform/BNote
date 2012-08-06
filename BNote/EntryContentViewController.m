@@ -11,6 +11,7 @@
 #import "LayerFormater.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
+#import "BNoteWriter.h"
 
 @interface EntryContentViewController ()
 
@@ -99,7 +100,7 @@
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
     [view setFrame:CGRectMake(0, 0, [self width] - 100, 40)];
     
-    return MAX(40, [view contentSize].height + 10);
+    return MAX(80, [view contentSize].height + 10);
 }
 
 - (float)width
@@ -136,6 +137,8 @@
 //        [[self mainTextView] setClipsToBounds:YES];
         [[self mainTextView] setScrollEnabled:NO];
         [self handleImageIcon:NO];
+        
+        [[BNoteWriter instance] update];
     }
 }
 

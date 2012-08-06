@@ -127,7 +127,7 @@
     }
 #endif
     
-    TopicGroup *topicGroup = [BNoteFactory createTopicGroup:@"New Topic Group"];
+    TopicGroup *topicGroup = [BNoteFactory createTopicGroup:@" "];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddTopicGroupSelected object:topicGroup];
 }
@@ -136,15 +136,9 @@
 {
     [[self popup] dismissPopoverAnimated:YES];
         
-    BOOL empty = [BNoteStringUtils nilOrEmpty:[[self currentTopicGroup] name]];
-    if (empty) {
-        [self setCurrentTopicGroup:[[BNoteReader instance] getTopicGroup:kAllTopicGroupName]];
-    }
-    
     NSMutableArray *emptyTopicGroups = [[NSMutableArray alloc] init];
     for (TopicGroup *group in [[BNoteReader instance] allTopicGroups]) {
-        empty = [BNoteStringUtils nilOrEmpty:[group name]];
-        if (empty) {
+        if ([BNoteStringUtils nilOrEmpty:[group name]]) {
             [emptyTopicGroups addObject:group];
         }
     }
@@ -152,6 +146,12 @@
     [[BNoteWriter instance] removeObjects:emptyTopicGroups];
     
     [[BNoteWriter instance] update];
+    
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:[[self currentTopicGroup] name]];
+
+    if (!group) {
+        [self setCurrentTopicGroup:[[BNoteReader instance] getTopicGroup:kAllTopicGroupName]];
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self currentTopicGroup]];
 }

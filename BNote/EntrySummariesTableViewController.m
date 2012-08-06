@@ -57,7 +57,7 @@
     [self setGroupEntries:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                 name:TopicUpdated object:nil];
+                                                 name:kTopicUpdated object:nil];
     
     [[self tableView] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
@@ -207,7 +207,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:entry];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNoteSelected object:entry];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

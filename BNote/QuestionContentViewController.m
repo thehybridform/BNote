@@ -64,9 +64,9 @@
     [LayerFormater roundCornersForView:[self answerTextView]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
-                                                 name:ReviewingNote object:nil];
+                                                 name:kReviewingNote object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
-                                                 name:EditingNote object:nil];
+                                                 name:kEditingNote object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnswerText:)
                                                  name:UITextViewTextDidChangeNotification object:view];

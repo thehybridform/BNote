@@ -12,12 +12,8 @@
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
-#import "EluaViewController.h"
 #import "BNoteDefaultData.h"
-
-#ifdef LITE
 #import "BNoteLiteViewController.h"
-#endif
 
 
 @interface AppDelegate()
@@ -45,30 +41,16 @@
     [[self window] setRootViewController:mainViewViewController];
     [[self window] makeKeyAndVisible];
     
-    if (![BNoteSessionData booleanForKey:EulaFlag]) {
+        
+    if (![BNoteSessionData booleanForKey:kEulaFlag]) {
         [BNoteDefaultData setup];
-        
-#ifdef LITE
-        
-        BNoteLiteViewController *controller = [[BNoteLiteViewController alloc] initWithDefault];
-        [controller setModalInPopover:YES];
+        UIViewController *controller;
+        controller = [[BNoteLiteViewController alloc] initWithDefault];
         [controller setModalPresentationStyle:UIModalPresentationFormSheet];
-        [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-        
-        [mainViewViewController presentModalViewController:controller animated:YES];
-
-#else
-
-        EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
-        [controller setEula:YES];
         [controller setModalInPopover:YES];
-        [controller setModalPresentationStyle:UIModalPresentationPageSheet];
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         
-        [mainViewViewController presentModalViewController:controller animated:YES];
-        
-#endif
-        
+        [mainViewViewController presentViewController:controller animated:YES completion:^{}];
     }
     
     return YES;
@@ -242,7 +224,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter]
-             postNotificationName:RefetchAllDatabaseData
+             postNotificationName:kRefetchAllDatabaseData
              object:self
              userInfo:nil];
         });
@@ -259,7 +241,7 @@
         
         [moc mergeChangesFromContextDidSaveNotification:notification]; 
         
-        NSNotification* refreshNotification = [NSNotification notificationWithName:RefetchAllDatabaseData
+        NSNotification* refreshNotification = [NSNotification notificationWithName:kRefetchAllDatabaseData
                                                                             object:self
                                                                           userInfo:[notification userInfo]];
         

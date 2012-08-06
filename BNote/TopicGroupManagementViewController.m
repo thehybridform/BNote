@@ -89,7 +89,7 @@
     [[self topicGroupsTableViewController] setNameText:[self nameText]];
     
     TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
-    [[NSNotificationCenter defaultCenter] postNotificationName:EditTopicGroupSelected object:group];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEditTopicGroupSelected object:group];
     
     [self setTopicGroupNames:[[NSMutableArray alloc] init]];
     for (TopicGroup *group in [[BNoteReader instance] allTopicGroups]) {
@@ -102,7 +102,7 @@
     [LayerFormater addShadowToView:[self footer]];
 
     [[NSNotificationCenter defaultCenter]
-        addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
+        addObserver:self selector:@selector(selectedTopicGroup:) name:kEditTopicGroupSelected object:nil];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(updateTopicGroupName:) name:UITextFieldTextDidChangeNotification object:[self nameText]];
@@ -110,7 +110,7 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(checkTopicGroupName:) name:UIKeyboardWillHideNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:EditTopicGroupSelected object:[self currentTopicGroup]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEditTopicGroupSelected object:[self currentTopicGroup]];
 }
 
 - (IBAction)add:(id)sender
@@ -129,7 +129,7 @@
     
     TopicGroup *topicGroup = [BNoteFactory createTopicGroup:@"New Topic Group"];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:AddTopicGroupSelected object:topicGroup];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddTopicGroupSelected object:topicGroup];
 }
 
 - (IBAction)done:(id)sender
@@ -153,7 +153,7 @@
     
     [[BNoteWriter instance] update];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self currentTopicGroup]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self currentTopicGroup]];
 }
 
 - (void)selectedTopicGroup:(NSNotification *)notification

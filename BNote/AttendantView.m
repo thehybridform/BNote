@@ -110,7 +110,7 @@ static NSString *removeAttendant = @"Remove";
         } else if (title == removeAttendant) {
             Attendants *parent = [[self attendant] parent];
             [parent removeChildrenObject:[self attendant]];
-            [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeDeleted object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kAttendeeDeleted object:nil];
         }
     }
     

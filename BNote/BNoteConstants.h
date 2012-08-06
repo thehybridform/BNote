@@ -9,53 +9,48 @@
 #import <Foundation/Foundation.h>
 
 
-extern NSString *const ACTION_ITEM_ACTIVE;
 
-extern int const Color1;
-extern int const Color2;
-extern int const Color3;
-extern int const Color4;
-extern int const Color5;
-extern int const Color6;
-extern int const Color7;
-extern int const Color8;
-extern int const Color9;
+extern int const kColor1;
+extern int const kColor2;
+extern int const kColor3;
+extern int const kColor4;
+extern int const kColor5;
+extern int const kColor6;
+extern int const kColor7;
+extern int const kColor8;
+extern int const kColor9;
 
-extern int const AppColor1;
-extern int const AppColor2;
-extern int const darkGray;
-extern int const AppHighlightColor1;
+extern int const kAppColor1;
+extern int const kAppColor2;
+extern int const kDarkGray;
+extern int const kAppHighlightColor1;
 
-extern int const ColorWhite;
-extern int const AnswerColor;
-extern int const FilterColor;
+extern int const kColorWhite;
+extern int const kFilterColor;
 
-extern NSString *const KeyPointPhotoUpdated;
-extern NSString *const KeyWordsUpdated;
-//extern NSString *const AllDataUpdated;
-extern NSString *const NoteUpdated;
-extern NSString *const NoteSelected;
-extern NSString *const TopicCreated;
-extern NSString *const AddTopicGroupSelected;
-extern NSString *const EditTopicGroupSelected;
-extern NSString *const TopicGroupSelected;
-extern NSString *const TopicGroupManage;
-extern NSString *const TopicSelected;
-extern NSString *const TopicUpdated;
-extern NSString *const TopicDeleted;
-extern NSString *const AttendantsEntryDeleted;
-extern NSString *const AttendeeDeleted;
-extern NSString *const AttendeeUpdated;
-extern NSString *const FinishedEditingNote;
-extern NSString *const DeleteNote;
-extern NSString *const ReviewingNote;
-extern NSString *const EditingNote;
+extern NSString * const kKeyPointPhotoUpdated;
+extern NSString * const kKeyWordsUpdated;
+extern NSString * const kNoteUpdated;
+extern NSString * const kNoteSelected;
+extern NSString * const kTopicCreated;
+extern NSString * const kAddTopicGroupSelected;
+extern NSString * const kEditTopicGroupSelected;
+extern NSString * const kTopicGroupSelected;
+extern NSString * const kTopicGroupManage;
+extern NSString * const kTopicSelected;
+extern NSString * const kTopicUpdated;
+extern NSString * const kAttendantsEntryDeleted;
+extern NSString * const kAttendeeDeleted;
+extern NSString * const kAttendeeUpdated;
+extern NSString * const kReviewingNote;
+extern NSString * const kEditingNote;
+extern NSString * const kActionItemActive;
 
-extern NSString *const NewLine;
+extern NSString * const kNewLine;
 
-extern NSString *const RefetchAllDatabaseData;
+extern NSString * const kRefetchAllDatabaseData;
 
-extern NSString *const EulaFlag;
+extern NSString * const kEulaFlag;
 
 extern NSString * const kFilteredTopicName;
 extern NSString * const kAllTopicGroupName;

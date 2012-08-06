@@ -91,7 +91,7 @@ static NSString *removeImage = @"Remove";
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
-                                                 name:KeyPointPhotoUpdated object:nil];
+                                                 name:kKeyPointPhotoUpdated object:nil];
 }
 
 - (float)height

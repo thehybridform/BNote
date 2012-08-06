@@ -105,13 +105,13 @@
 
 - (IBAction)decline:(id)sender
 {
-    UIAlertView *anAlert = [[UIAlertView alloc] initWithTitle:@"Action Required" message:@"Please accept the End User License Agreement, or press home to exit." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *anAlert = [[UIAlertView alloc] initWithTitle:@"Action Required" message:@"Please accept the End User License Agreement, or press the home button to exit." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [anAlert show];
 }
 
 - (IBAction)accept:(id)sender
 {
-    [BNoteSessionData setBoolean:YES forKey:EulaFlag];
+    [BNoteSessionData setBoolean:YES forKey:kEulaFlag];
     [self dismissModalViewControllerAnimated:YES];
 }
 

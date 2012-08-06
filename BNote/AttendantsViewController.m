@@ -34,9 +34,9 @@
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
-                                                 name:AttendeeDeleted object:nil];
+                                                 name:kAttendeeDeleted object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attendeeUpdate:)
-                                                 name:AttendeeUpdated object:nil];
+                                                 name:kAttendeeUpdated object:nil];
 }
 
 - (void)viewDidUnload

@@ -17,7 +17,7 @@
     NSString *text = [topic title];
     NSString *created = [BNoteStringUtils formatDate:[topic created]];
     
-    return [BNoteStringUtils append:title, text, @" - Created: ", created, NewLine, NewLine, nil];
+    return [BNoteStringUtils append:title, text, @" - Created: ", created, kNewLine, kNewLine, nil];
 }
 
 @end

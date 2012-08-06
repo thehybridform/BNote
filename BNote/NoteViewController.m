@@ -54,7 +54,7 @@
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                 name:NoteUpdated object:[self note]];
+                                                 name:kNoteUpdated object:[self note]];
 
     [self setup];
 }
@@ -129,7 +129,7 @@
 {
     [LayerFormater setBorderColorWithInt:[[self note] color] forView:[self view]];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:[self note]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNoteSelected object:[self note]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

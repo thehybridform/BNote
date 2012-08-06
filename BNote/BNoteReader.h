@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
++ (NSString *)readString:(NSString *)filename;
+
 + (BNoteReader *)instance;
 - (NSMutableArray *)allTopics;
 - (NSMutableArray *)allTopicGroups;

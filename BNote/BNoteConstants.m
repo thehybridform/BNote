@@ -9,24 +9,22 @@
 #import "BNoteConstants.h"
 
 
-const int Color1 = 0xd7a779;
-const int Color2 = 0xd1c5a4;
-const int Color3 = 0x665d51;
-const int Color4 = 0x98bac3;
-const int Color5 = 0xcb694d;
-const int Color6 = 0x8e9c6d;
-const int Color7 = 0xc4d1c5;
-const int Color8 = 0xc19cb5;
-const int Color9 = 0xd7cd79;
+const int kColor1 = 0xd7a779;
+const int kColor2 = 0xd1c5a4;
+const int kColor3 = 0x665d51;
+const int kColor4 = 0x98bac3;
+const int kColor5 = 0xcb694d;
+const int kColor6 = 0x8e9c6d;
+const int kColor7 = 0xc4d1c5;
+const int kColor8 = 0xc19cb5;
+const int kColor9 = 0xd7cd79;
 
-const int AnswerColor = 0x336633;
+const int kFilterColor = 0xaaaaaa;
 
-const int FilterColor = 0xaaaaaa;
-
-const int ColorWhite = 0xffffff;
-const int AppColor1 = 0xfefefe;
-const int AppColor2 = 0xf4f4f4;
-const int darkGray = 0x888888;
+const int kColorWhite = 0xffffff;
+const int kAppColor1 = 0xfefefe;
+const int kAppColor2 = 0xf4f4f4;
+const int kDarkGray = 0x888888;
 const int AppHighlightColor1 = 0x365ab0;
 
 #ifdef LITE
@@ -39,33 +37,30 @@ const int kMaxEntries = 5;
 #endif
 
 
-NSString *const KeyPointPhotoUpdated = @"KeyPointPhotoUpdated";
-NSString *const KeyWordsUpdated = @"KeyWordsUpdated";
-NSString *const NoteUpdated = @"NoteUpdated";
-NSString *const NoteSelected = @"NoteSelected";
-NSString *const TopicCreated = @"TopicCreated";
-NSString *const TopicSelected = @"TopicSelected";
-NSString *const AddTopicGroupSelected = @"AddTopicGroupSelected";
-NSString *const EditTopicGroupSelected = @"EditTopicGroupSelected";
-NSString *const TopicGroupSelected = @"TopicGroupSelected";
-NSString *const TopicGroupManage = @"TopicGroupManage";
-NSString *const TopicUpdated = @"TopicUpdated";
-NSString *const TopicDeleted = @"TopicDeleted";
-NSString *const AttendantsEntryDeleted = @"AttendantsEntryDeleted";
-NSString *const AttendeeDeleted = @"AttendeeDeleted";
-NSString *const AttendeeUpdated = @"AttendeeUpdated";
-NSString *const FinishedEditingNote = @"FinishedEditingNote";
-NSString *const DeleteNote = @"DeleteNote";
-NSString *const ReviewingNote = @"ReviewingNote";
-NSString *const EditingNote = @"EditingNote";
+NSString * const kKeyPointPhotoUpdated = @"kKeyPointPhotoUpdated";
+NSString * const kKeyWordsUpdated = @"kKeyWordsUpdated";
+NSString * const kNoteUpdated = @"kNoteUpdated";
+NSString * const kNoteSelected = @"kNoteSelected";
+NSString * const kTopicCreated = @"kTopicCreated";
+NSString * const kTopicSelected = @"kTopicSelected";
+NSString * const kAddTopicGroupSelected = @"kAddTopicGroupSelected";
+NSString * const kEditTopicGroupSelected = @"kEditTopicGroupSelected";
+NSString * const kTopicGroupSelected = @"TopicGroupSelected";
+NSString * const kTopicGroupManage = @"kTopicGroupManage";
+NSString * const kTopicUpdated = @"kTopicUpdated";
+NSString * const kAttendantsEntryDeleted = @"kAttendantsEntryDeleted";
+NSString * const kAttendeeDeleted = @"kAttendeeDeleted";
+NSString * const kAttendeeUpdated = @"kAttendeeUpdated";
+NSString * const kReviewingNote = @"kReviewingNote";
+NSString * const kEditingNote = @"kEditingNote";
 
-NSString *const NewLine = @"\r\n";
+NSString * const kNewLine = @"\r\n";
 
-NSString *const RefetchAllDatabaseData = @"RefetchAllDatabaseData";
-NSString *const EulaFlag = @"EulaFlag";
+NSString * const kRefetchAllDatabaseData = @"kRefetchAllDatabaseData";
+NSString * const kEulaFlag = @"kEulaFlag";
 
-NSString *const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdyd63hvbdkc+_)(*ndjgddnjk<>?/.,ml9912";
-NSString *const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";
+NSString * const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdyd63hvbdkc+_)(*ndjgddnjk<>?/.,ml9912";
+NSString * const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";
 
 
 @implementation BNoteConstants
@@ -78,11 +73,11 @@ NSString *const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv
             break;
             
         case BNoteColorMain:
-            return UIColorFromRGB(AppColor1);
+            return UIColorFromRGB(kAppColor1);
             break;
             
         case BNoteColorGray:
-            return UIColorFromRGB(AppColor1);
+            return UIColorFromRGB(kAppColor1);
             break;
             
         default:
@@ -98,17 +93,17 @@ NSString *const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv
 
 + (UIColor *)appColor1
 {
-    return UIColorFromRGB(AppColor1);
+    return UIColorFromRGB(kAppColor1);
 }
 
 + (UIColor *)appColor2
 {
-    return UIColorFromRGB(AppColor2);
+    return UIColorFromRGB(kAppColor2);
 }
 
 + (UIColor *)darkGray
 {
-    return UIColorFromRGB(darkGray);
+    return UIColorFromRGB(kDarkGray);
 }
 
 + (UIFont *)font:(BNoteFont)font andSize:(float)size

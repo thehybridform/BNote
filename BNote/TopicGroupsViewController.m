@@ -93,7 +93,7 @@
     NSString *text = @"   ";
     [[cell textLabel] setText:[text stringByAppendingString:[BNoteEntryUtils topicGroupName:topicGroup]]];
     
-    NSString *name = [BNoteSessionData stringForKey:TopicGroupSelected];
+    NSString *name = [BNoteSessionData stringForKey:kTopicGroupSelected];
     
     if ([[topicGroup name] isEqualToString:name]) {
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
@@ -107,9 +107,9 @@
     [[self popup] dismissPopoverAnimated:YES];
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
     
-    NSString *currentGroup = [BNoteSessionData stringForKey:TopicGroupSelected];
+    NSString *currentGroup = [BNoteSessionData stringForKey:kTopicGroupSelected];
     if (![[topicGroup name] isEqualToString:currentGroup]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:topicGroup];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:topicGroup];
     }
 }
 
@@ -122,7 +122,7 @@
 - (IBAction)newGroup:(id)sender
 {
     [[self popup] dismissPopoverAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupManage object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupManage object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

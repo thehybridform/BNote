@@ -167,4 +167,12 @@
     return [NSMutableSet setWithArray:notes];
 }
 
++ (NSString *)readString:(NSString *)filename
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
+    return [NSString stringWithContentsOfFile:path
+                                     encoding:NSUTF8StringEncoding
+                                        error:NULL];
+}
+
 @end

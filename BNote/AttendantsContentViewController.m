@@ -178,7 +178,7 @@ static NSString *createNew = @"Create";
 
     [[BNoteWriter instance] updateAttendee:[self selectedAttendant]];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:AttendeeUpdated object:nil];    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAttendeeUpdated object:nil];    
 }
 
 - (void)showOptions:(id)sender

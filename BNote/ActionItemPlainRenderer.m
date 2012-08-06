@@ -48,7 +48,7 @@
     }
     
     
-    return [BNoteStringUtils append:title, @" - Created: ", created, NewLine, text, NewLine, responsibilityText, NewLine, dueDateText, NewLine, completedText, NewLine, NewLine, nil];
+    return [BNoteStringUtils append:title, @" - Created: ", created, kNewLine, text, kNewLine, responsibilityText, kNewLine, dueDateText, kNewLine, completedText, kNewLine, kNewLine, nil];
 }
 
 @end

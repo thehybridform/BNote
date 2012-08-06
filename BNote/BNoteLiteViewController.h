@@ -12,6 +12,7 @@
 
 - (id)initWithDefault;
 
-- (IBAction)done:(id)sender;
+- (IBAction)close:(id)sender;
+- (IBAction)ok:(id)sender;
 
 @end

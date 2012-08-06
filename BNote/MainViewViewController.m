@@ -110,7 +110,7 @@ static NSString *email = @"E-mail";
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter]
-        addObserver:[self topicsButton] selector:@selector(updateTitle:) name:TopicGroupSelected object:nil];
+        addObserver:[self topicsButton] selector:@selector(updateTitle:) name:kTopicGroupSelected object:nil];
 
     [LayerFormater setBorderWidth:1 forView:[self footer]];
     [LayerFormater setBorderWidth:1 forView:[self menu]];
@@ -132,17 +132,17 @@ static NSString *email = @"E-mail";
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
 
     [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(selectedTopic:) name:TopicSelected object:nil];
+     addObserver:self selector:@selector(selectedTopic:) name:kTopicSelected object:nil];
     
     [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(selectedNote:) name:NoteSelected object:nil];
+     addObserver:self selector:@selector(selectedNote:) name:kNoteSelected object:nil];
     
     [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(presentTopicManagement:) name:TopicGroupManage object:nil];
+     addObserver:self selector:@selector(presentTopicManagement:) name:kTopicGroupManage object:nil];
     
     [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(selectedTopicGroup:) name:TopicGroupSelected object:nil];
-
+     addObserver:self selector:@selector(selectedTopicGroup:) name:kTopicGroupSelected object:nil];
+    
 #ifdef LITE
     [[self liteLable] setFont:[BNoteConstants font:RobotoBold andSize:20]];
     [[self liteLable] setTextColor:[BNoteConstants appHighlightColor1]];
@@ -172,7 +172,7 @@ static NSString *email = @"E-mail";
     [self setNoteCountForTopic:topic];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
-                                                 name:TopicUpdated object:topic];
+                                                 name:kTopicUpdated object:topic];
 }
 
 - (void)selectedNote:(NSNotification *)notification
@@ -314,14 +314,14 @@ static NSString *email = @"E-mail";
         [self setSearchTopic:nil];
         [[self entriesTable] setSearchText:nil];
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:RefetchAllDatabaseData object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRefetchAllDatabaseData object:nil];
     } else {
         Topic *topic = [BNoteFactory createTopic:kFilteredTopicName forGroup:[self topicGroup] withSearch:searchText];
-        [topic setColor:FilterColor];
+        [topic setColor:kFilterColor];
         [self setSearchTopic:topic];
         [[self entriesTable] setSearchText:searchText];
     
-        [[NSNotificationCenter defaultCenter] postNotificationName:TopicCreated object:topic];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicCreated object:topic];
     }
 }
 

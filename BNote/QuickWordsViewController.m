@@ -58,7 +58,7 @@ static float spacing = 10;
     [[self scrollView] setBackgroundColor:[UIColor clearColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
-                                                 name:KeyWordsUpdated object:nil];
+                                                 name:kKeyWordsUpdated object:nil];
 }
 
 - (void)viewDidUnload

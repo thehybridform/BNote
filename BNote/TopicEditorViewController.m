@@ -88,7 +88,7 @@
 {
     [super viewDidLoad];
 
-    [self initButton:[self selectedColorButton] withColor:ColorWhite];
+    [self initButton:[self selectedColorButton] withColor:kColorWhite];
 
     if ([self topic]) {
         [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
@@ -97,15 +97,15 @@
         [[self buttonAction] setTitle:@"Update" forState:UIControlStateNormal];        
     }
     
-    [self initButton:[self button_1] withColor:Color1];
-    [self initButton:[self button_2] withColor:Color2];
-    [self initButton:[self button_3] withColor:Color3];
-    [self initButton:[self button_4] withColor:Color4];
-    [self initButton:[self button_5] withColor:Color5];
-    [self initButton:[self button_6] withColor:Color6];
-    [self initButton:[self button_7] withColor:Color7];
-    [self initButton:[self button_8] withColor:Color8];
-    [self initButton:[self button_9] withColor:Color9];
+    [self initButton:[self button_1] withColor:kColor1];
+    [self initButton:[self button_2] withColor:kColor2];
+    [self initButton:[self button_3] withColor:kColor3];
+    [self initButton:[self button_4] withColor:kColor4];
+    [self initButton:[self button_5] withColor:kColor5];
+    [self initButton:[self button_6] withColor:kColor6];
+    [self initButton:[self button_7] withColor:kColor7];
+    [self initButton:[self button_8] withColor:kColor8];
+    [self initButton:[self button_9] withColor:kColor9];
     
     [LayerFormater setBorderWidth:1 forView:[self buttonControlView]];
 
@@ -140,7 +140,7 @@
         
         [[BNoteWriter instance] update];
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self topicGroup]];
     }
 
     [[self nameTextField] resignFirstResponder];
@@ -170,55 +170,55 @@
 - (IBAction)color1Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color1];
+    [self setSelectedColor:kColor1];
 }
 
 - (IBAction)color2Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color2];
+    [self setSelectedColor:kColor2];
 }
 
 - (IBAction)color3Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color3];
+    [self setSelectedColor:kColor3];
 }
 
 - (IBAction)color4Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color4];
+    [self setSelectedColor:kColor4];
 }
 
 - (IBAction)color5Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color5];
+    [self setSelectedColor:kColor5];
 }
 
 - (IBAction)color6Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color6];
+    [self setSelectedColor:kColor6];
 }
 
 - (IBAction)color7Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color7];
+    [self setSelectedColor:kColor7];
 }
 
 - (IBAction)color8Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color8];
+    [self setSelectedColor:kColor8];
 }
 
 - (IBAction)color9Selected:(id)sender
 {
     [self updateHighlightColor:(UIButton *) sender];
-    [self setSelectedColor:Color9];
+    [self setSelectedColor:kColor9];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

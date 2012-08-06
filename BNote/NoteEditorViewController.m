@@ -228,9 +228,9 @@ static NSString *DONE = @"DONE";
     [[self infoView] setNeedsDisplay];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
-                                                 name:TopicUpdated object:nil];
+                                                 name:kTopicUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
-                                                 name:AttendantsEntryDeleted object:nil];
+                                                 name:kAttendantsEntryDeleted object:nil];
 }
 
 - (void)setupDate
@@ -272,7 +272,7 @@ static NSString *DONE = @"DONE";
     
     [[BNoteWriter instance] update];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[[self note] topic]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:[[self note] topic]];
 }
 
 - (IBAction)editMode:(id)sender
@@ -287,7 +287,7 @@ static NSString *DONE = @"DONE";
 
 - (void)editing
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:EditingNote object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEditingNote object:nil];
 
     [[self reviewButton] setTitle:REVIEW forState:UIControlStateNormal];
     [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
@@ -303,7 +303,7 @@ static NSString *DONE = @"DONE";
 
 - (void)reviewing
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:ReviewingNote object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewingNote object:nil];
 
     [[self reviewButton] setTitle:DONE forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:YES];

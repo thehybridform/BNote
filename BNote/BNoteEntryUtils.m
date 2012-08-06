@@ -172,7 +172,7 @@
     NSData *smallImageData = UIImageJPEGRepresentation(small, 0.8);
     [photo setSmall:smallImageData];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:KeyPointPhotoUpdated object:keyPoint];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kKeyPointPhotoUpdated object:keyPoint];
 }
 
 + (BOOL)multipleTopics:(Note *)note

@@ -161,7 +161,7 @@
 
             [[BNoteWriter instance] removeEntry:entry];
             if (isAttendants) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:AttendantsEntryDeleted object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kAttendantsEntryDeleted object:nil];
             }
         }
     }
@@ -263,7 +263,7 @@
     
     if (word) {
         [BNoteFactory createKeyWord:word];
-        [[NSNotificationCenter defaultCenter] postNotificationName:KeyWordsUpdated object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kKeyWordsUpdated object:nil];
     }
 }
 

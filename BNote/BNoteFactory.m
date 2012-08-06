@@ -23,7 +23,7 @@
 #import "DecisionContentViewController.h"
 #import "NoteSummaryViewController.h"
 
-NSString *const ACTION_ITEM_ACTIVE = @"action_item_active_icon.png";
+NSString *const kActionItemActive = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
 NSString *const ATTENDIES_ACTIVE = @"attendees_active_icon.png";
 NSString *const ATTENDIES_INACTIVE = @"attendees_icon.png";
@@ -244,7 +244,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
             icon = ACTION_ITEM_INACTIVE;
             break;
         case ActionItemIconActive:
-            icon = ACTION_ITEM_ACTIVE;
+            icon = kActionItemActive;
             break;
         case AttentiesIcon:
             icon = ATTENDIES_INACTIVE;

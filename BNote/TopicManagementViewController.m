@@ -110,7 +110,7 @@
     
     if ([self topicSelectType] == AssociateTopic) {
         [[BNoteWriter instance] associateTopics:[self selected] toNote:[self note]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:[[self note] topic]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:[[self note] topic]];
     }
 }
 
@@ -170,7 +170,7 @@
             Topic *currentTopic = [[self note] topic];
             
             [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:currentTopic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:currentTopic];
         }
             break;
         case AssociateTopic:
@@ -194,7 +194,7 @@
 
             [BNoteFactory copyNote:[self note] toTopic:topic];
 
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:currentTopic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:currentTopic];
         }
             break;
 

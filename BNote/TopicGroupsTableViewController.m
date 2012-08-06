@@ -47,7 +47,7 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:AddTopicGroupSelected object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:kAddTopicGroupSelected object:nil];
 }
 
 - (void)viewDidUnload
@@ -143,7 +143,7 @@
     [self setSelectedIndex:[indexPath row]];
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
     [self setSelectedTopicGroup:topicGroup];
-    [[NSNotificationCenter defaultCenter] postNotificationName:EditTopicGroupSelected object:topicGroup];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEditTopicGroupSelected object:topicGroup];
 }
 
 - (IBAction)edit:(id)sender

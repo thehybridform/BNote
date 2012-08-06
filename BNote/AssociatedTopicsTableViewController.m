@@ -39,7 +39,7 @@
     [[self tableView] addGestureRecognizer:tap];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
-                                                 name:TopicUpdated object:nil];
+                                                 name:kTopicUpdated object:nil];
 }
 
 - (void)viewDidUnload

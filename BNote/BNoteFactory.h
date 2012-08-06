@@ -21,7 +21,7 @@
 #import "TopicGroup.h"
 #import "EntryContent.h"
 
-extern NSString *const ACTION_ITEM_ACTIVE;
+extern NSString *const kActionItemActive;
 extern NSString *const ACTION_ITEM_INACTIVE;
 extern NSString *const ATTENDIES_ACTIVE;
 extern NSString *const ATTENDIES_INACTIVE;

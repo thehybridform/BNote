@@ -472,6 +472,12 @@
 		18F4E2B015CE4843002095A2 /* NoteSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */; };
 		18F4E2BF15CE5202002095A2 /* BNoteLiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */; };
 		18F4E2C115CE52DA002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
+		18F4E2C215CF7171002095A2 /* BNoteLiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */; };
+		18F4E2C415CF7251002095A2 /* lite-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C315CF7251002095A2 /* lite-description.rtf */; };
+		18F4E2C515CF7252002095A2 /* lite-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C315CF7251002095A2 /* lite-description.rtf */; };
+		18F4E2C715CF7264002095A2 /* full-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C615CF7264002095A2 /* full-description.rtf */; };
+		18F4E2C815CF7264002095A2 /* full-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C615CF7264002095A2 /* full-description.rtf */; };
+		18F4E2C915CF7406002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
 		18F7997115AAA91400DEAB1F /* x-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F7997015AAA91400DEAB1F /* x-image.png */; };
 /* End PBXBuildFile section */
 
@@ -863,6 +869,8 @@
 		18F4E2B915CE4F10002095A2 /* BNoteLiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteLiteViewController.h; sourceTree = "<group>"; };
 		18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteLiteViewController.m; sourceTree = "<group>"; };
 		18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNoteLiteViewController.xib; sourceTree = "<group>"; };
+		18F4E2C315CF7251002095A2 /* lite-description.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "lite-description.rtf"; sourceTree = "<group>"; };
+		18F4E2C615CF7264002095A2 /* full-description.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "full-description.rtf"; sourceTree = "<group>"; };
 		18F7994515AA14E800DEAB1F /* BeNote 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 13.xcdatamodel"; sourceTree = "<group>"; };
 		18F7997015AAA91400DEAB1F /* x-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1640,6 +1648,8 @@
 		18F4E2B815CE4EE9002095A2 /* Lite Version */ = {
 			isa = PBXGroup;
 			children = (
+				18F4E2C315CF7251002095A2 /* lite-description.rtf */,
+				18F4E2C615CF7264002095A2 /* full-description.rtf */,
 				18F4E2B915CE4F10002095A2 /* BNoteLiteViewController.h */,
 				18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */,
 				18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */,
@@ -1715,6 +1725,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F4E2C915CF7406002095A2 /* BNoteLiteViewController.xib in Resources */,
 				1834D34615634A650065788F /* InfoPlist.strings in Resources */,
 				189B445B15AE809D008F11D2 /* RobotoBold.ttf in Resources */,
 				189B445C15AE809D008F11D2 /* RobotoItalic.ttf in Resources */,
@@ -1815,6 +1826,8 @@
 				182F1ED415C27BF30038AC13 /* 18-envelope@2x-color.png in Resources */,
 				187F9ABE15C3BB1F007BE5E9 /* ProgressViewController.xib in Resources */,
 				18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */,
+				18F4E2C415CF7251002095A2 /* lite-description.rtf in Resources */,
+				18F4E2C715CF7264002095A2 /* full-description.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1923,6 +1936,8 @@
 				18F4E2AE15CE4843002095A2 /* 18-envelope@2x-color.png in Resources */,
 				18F4E2AF15CE4843002095A2 /* ProgressViewController.xib in Resources */,
 				18F4E2B015CE4843002095A2 /* NoteSummaryViewController.xib in Resources */,
+				18F4E2C515CF7252002095A2 /* lite-description.rtf in Resources */,
+				18F4E2C815CF7264002095A2 /* full-description.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1933,6 +1948,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F4E2C215CF7171002095A2 /* BNoteLiteViewController.m in Sources */,
 				1834D34815634A650065788F /* main.m in Sources */,
 				1834D34C15634A650065788F /* AppDelegate.m in Sources */,
 				1834D34F15634A650065788F /* MasterViewController.m in Sources */,

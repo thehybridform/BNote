@@ -149,7 +149,7 @@ const static float h2 = h1 - 10;
 
 -(void)longPressTap:(id)sender
 {
-    if ([[[self note] topic] color] == FilterColor) {
+    if ([[[self note] topic] color] == kFilterColor) {
         return;
     }
     
@@ -190,7 +190,7 @@ const static float h2 = h1 - 10;
             Topic *topic = [[self note] topic];
             [[BNoteWriter instance] removeNote:[self note]];
             [[BNoteWriter instance] update];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];
         } else if (title == moveNote) {
             [self presentTopicSelectionForType:ChangeMainTopic];
         } else if (title == copyNote) {
@@ -200,7 +200,7 @@ const static float h2 = h1 - 10;
         } else if (title == disassociateNote) {
             Topic *topic = [[BNoteSessionData instance] selectedTopic];
             [[BNoteWriter instance] disassociateNote:[self note] toTopic:topic];
-            [[NSNotificationCenter defaultCenter] postNotificationName:TopicUpdated object:topic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];
         }
     }
     

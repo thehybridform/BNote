@@ -94,7 +94,7 @@
         notes++;
     }
     
-    if ([[self topic] color] != FilterColor) {
+    if ([[self topic] color] != kFilterColor) {
         x += space;
         NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 10, 100, 100)];
         UITapGestureRecognizer *tap =
@@ -174,7 +174,7 @@
     
 #endif
     Note *note = [BNoteFactory createNote:[self topic]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NoteSelected object:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNoteSelected object:note];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

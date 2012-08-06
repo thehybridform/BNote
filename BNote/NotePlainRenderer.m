@@ -22,10 +22,10 @@
     NSString *subject = [note subject];
     NSString *created = [BNoteStringUtils formatDate:[note created]];
     
-    NSString *text = [BNoteStringUtils append:title, subject, @" - Created: ", created, NewLine, NewLine, nil];
+    NSString *text = [BNoteStringUtils append:title, subject, @" - Created: ", created, kNewLine, kNewLine, nil];
     
     if ([note summary]) {
-        text = [BNoteStringUtils append:text, @"Summary:", NewLine, [note summary], NewLine, NewLine, nil];
+        text = [BNoteStringUtils append:text, @"Summary:", kNewLine, [note summary], kNewLine, kNewLine, nil];
     }
     
     return text;

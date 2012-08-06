@@ -8,16 +8,20 @@
 
 #import "BNoteLiteViewController.h"
 #import "BNoteSessionData.h"
+#import "EluaViewController.h"
+#import "BNoteReader.h"
 
 @interface BNoteLiteViewController ()
-@property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIButton *okButton;
+@property (strong, nonatomic) IBOutlet UIButton *closeButton;
 
 @end
 
 @implementation BNoteLiteViewController
-@synthesize textView = _textView;
+@synthesize webView = _webView;
 @synthesize okButton = _okButton;
+@synthesize closeButton = _closeButton;
 
 - (id)initWithDefault
 {
@@ -28,23 +32,44 @@
     return self;
 }
 
-- (IBAction)done:(id)sender
+- (IBAction)close:(id)sender
 {
-    [BNoteSessionData setBoolean:YES forKey:EulaFlag];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)ok:(id)sender
+{
+    [[self closeButton] setHidden:NO];
+    [[self okButton] setHidden:YES];
+
+    EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
+    [controller setEula:YES];
+    [controller setModalInPopover:YES];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    [[self textView] setFont:[BNoteConstants font:RobotoRegular andSize:20]];
+    [[self closeButton] setHidden:YES];
+    
+#ifdef LITE
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"lite-description.rtf" ofType:nil];
+#else
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"full-description.rtf" ofType:nil];
+#endif
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [[self webView] loadRequest:request];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

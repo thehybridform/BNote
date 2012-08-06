@@ -65,10 +65,10 @@
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
-                                                 name:ReviewingNote object:nil];
+                                                 name:kReviewingNote object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
-                                                 name:EditingNote object:nil];
+                                                 name:kEditingNote object:nil];
     
     UITextView *view = [self mainTextView];
     if (view) {

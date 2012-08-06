@@ -51,22 +51,22 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(createdTopic:)
-                                                 name:TopicCreated
+                                                 name:kTopicCreated
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(selectTopic:)
-                                                 name:TopicUpdated
+                                                 name:kTopicUpdated
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateReceived:)
-                                                 name:RefetchAllDatabaseData
+                                                 name:kRefetchAllDatabaseData
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(selectTopicGroup:)
-                                                 name:TopicGroupSelected
+                                                 name:kTopicGroupSelected
                                                object:nil];
 }
 
@@ -74,10 +74,10 @@
 {
     [[BNoteWriter instance] cleanup];
     
-    NSString *groupName = [BNoteSessionData stringForKey:TopicGroupSelected];
+    NSString *groupName = [BNoteSessionData stringForKey:kTopicGroupSelected];
     if (!groupName) {
         groupName = kAllTopicGroupName;
-        [BNoteSessionData setString:groupName forKey:TopicGroupSelected];        
+        [BNoteSessionData setString:groupName forKey:kTopicGroupSelected];
     }
 
     TopicGroup *group = [[BNoteReader instance] getTopicGroup:groupName];
@@ -88,7 +88,7 @@
     
     [self setTopicGroup:group];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:group];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:group];
 
     if ([[self data] count] > 0) {
         [self selectCell:0];
@@ -169,7 +169,7 @@
 {
     Topic *topic = [[self data] objectAtIndex:[sourceIndexPath row]];
     [[BNoteWriter instance] moveTopic:topic toIndex:[destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self topicGroup]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -191,7 +191,7 @@
     [[BNoteWriter instance] update];
     
     [self editTopicCell:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicGroupSelected object:[self topicGroup]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self topicGroup]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -201,7 +201,7 @@
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     [[BNoteSessionData instance] setSelectedTopic:topic];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:topic];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicSelected object:topic];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -261,10 +261,10 @@
         [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
         [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:TopicSelected object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicSelected object:nil];
     }
 
-    [BNoteSessionData setString:[group name] forKey:TopicGroupSelected];
+    [BNoteSessionData setString:[group name] forKey:kTopicGroupSelected];
 }
 
 - (IBAction)editTopicCell:(id)sender

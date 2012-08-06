@@ -51,7 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:EditTopicGroupSelected object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:kEditTopicGroupSelected object:nil];
 }
 
 - (void)viewDidUnload

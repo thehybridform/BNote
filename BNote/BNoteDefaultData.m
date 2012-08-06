@@ -48,23 +48,23 @@ static NSString *Overview = @"Overview";
 + (void)handleWelcome:(TopicGroup *)group
 {
     Topic *topic = [BNoteFactory createTopic:WelcomeTitle forGroup:group];
-    [topic setColor:FilterColor];
+    [topic setColor:kFilterColor];
     
     Note *note = [BNoteFactory createNote:topic];
     [note setSubject:TapMe];
     
-    [self addKeyPointForNote:note withText:[self readString:@"info-1.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"info-2.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"info-3.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"info-4.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"info-5.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"info-6.txt"]];    
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"info-1.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"info-2.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"info-3.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"info-4.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"info-5.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"info-6.txt"]];    
 }
 
 + (void)handleUsage:(TopicGroup *)group
 {
     Topic *topic = [BNoteFactory createTopic:UsageTitle forGroup:group];
-    [topic setColor:FilterColor];
+    [topic setColor:kFilterColor];
     
     [self handleOverview:topic];
     [self handleKeyPoints:topic];
@@ -79,9 +79,9 @@ static NSString *Overview = @"Overview";
     Note *note = [BNoteFactory createNote:topic];
     [note setSubject:Overview];
     
-    [self addKeyPointForNote:note withText:[self readString:@"overview-1.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"overview-2.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"overview-3.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"overview-1.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"overview-2.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"overview-3.txt"]];
 }
 
 + (void)handleActionItems:(Topic *)topic
@@ -89,10 +89,10 @@ static NSString *Overview = @"Overview";
     Note *note = [BNoteFactory createNote:topic];
     [note setSubject:ActionItems];
     
-    [self addActionItemForNote:note withText:[self readString:@"action-item-1.txt"]];
-    [self addActionItemForNote:note withText:[self readString:@"action_item-2.txt"]];
-    [self addActionItemForNote:note withText:[self readString:@"action-item-3.txt"]];
-    [self addActionItemForNote:note withText:[self readString:@"action-item-4.txt"]];
+    [self addActionItemForNote:note withText:[BNoteReader readString:@"action-item-1.txt"]];
+    [self addActionItemForNote:note withText:[BNoteReader readString:@"action_item-2.txt"]];
+    [self addActionItemForNote:note withText:[BNoteReader readString:@"action-item-3.txt"]];
+    [self addActionItemForNote:note withText:[BNoteReader readString:@"action-item-4.txt"]];
 }
 
 + (void)handleAttendees:(Topic *)topic
@@ -101,9 +101,9 @@ static NSString *Overview = @"Overview";
     [note setSubject:Attendees];
     
     [self addAttendeeForNote:note];
-    [self addKeyPointForNote:note withText:[self readString:@"attendees-1.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"attendees-2.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"attendees-3.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"attendees-1.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"attendees-2.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"attendees-3.txt"]];
 }
 
 + (void)addAttendeeForNote:(Note *)note
@@ -122,7 +122,7 @@ static NSString *Overview = @"Overview";
     Note *note = [BNoteFactory createNote:topic];
     [note setSubject:Decisions];
     
-    [self addDecisionForNote:note withText:[self readString:@"Decision.txt"]];
+    [self addDecisionForNote:note withText:[BNoteReader readString:@"Decision.txt"]];
 }
 
 + (void)handleKeyPoints:(Topic *)topic
@@ -130,10 +130,10 @@ static NSString *Overview = @"Overview";
     Note *note = [BNoteFactory createNote:topic];
     [note setSubject:KeyPoints];
     
-    [self addKeyPointForNote:note withText:[self readString:@"key-point.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"keypoint-1.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"keypoint-2.txt"]];
-    [self addKeyPointForNote:note withText:[self readString:@"keypoint-3.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"key-point.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"keypoint-1.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"keypoint-2.txt"]];
+    [self addKeyPointForNote:note withText:[BNoteReader readString:@"keypoint-3.txt"]];
 }
 
 + (void)handleQuestions:(Topic *)topic
@@ -147,11 +147,11 @@ static NSString *Overview = @"Overview";
 + (void)addQuestionForNote:(Note *)note
 {
     Question *question = [BNoteFactory createQuestion:note];
-    [question setText:[self readString:@"question-1.txt"]];
+    [question setText:[BNoteReader readString:@"question-1.txt"]];
     
     question = [BNoteFactory createQuestion:note];
-    [question setText:[self readString:@"question-2.txt"]];
-    [question setAnswer:[self readString:@"answer.txt"]];
+    [question setText:[BNoteReader readString:@"question-2.txt"]];
+    [question setAnswer:[BNoteReader readString:@"answer.txt"]];
 }
 
 + (void)addActionItemForNote:(Note *)note withText:(NSString *)text
@@ -170,14 +170,6 @@ static NSString *Overview = @"Overview";
 {
     KeyPoint *keyPoint = [BNoteFactory createKeyPoint:note];
     [keyPoint setText:text];
-}
-
-+ (NSString *)readString:(NSString *)filename
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
-    return [NSString stringWithContentsOfFile:path
-                                     encoding:NSUTF8StringEncoding
-                                        error:NULL];
 }
 
 @end

@@ -25,7 +25,7 @@
     Question *question = (Question *) entry;
     NSString *answer = [question answer];
     NSString *answerTitle = answer ? @" - Answer: " : nil;
-    return [BNoteStringUtils append:title, @" - Created: ", created, NewLine, text, NewLine, NewLine, answerTitle, answer, NewLine, NewLine, nil];
+    return [BNoteStringUtils append:title, @" - Created: ", created, kNewLine, text, kNewLine, kNewLine, answerTitle, answer, kNewLine, kNewLine, nil];
 }
 
 @end

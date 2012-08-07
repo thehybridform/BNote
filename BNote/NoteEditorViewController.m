@@ -22,7 +22,6 @@
 #import "EmailViewController.h"
 #import "BNoteButton.h"
 #import "EditNoteView.h"
-#import "InformationViewController.h"
 #import "BNoteFilterHelper.h"
 
 @interface NoteEditorViewController ()
@@ -231,6 +230,10 @@ static NSString *DONE = @"DONE";
                                                  name:kTopicUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
                                                  name:kAttendantsEntryDeleted object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWordsUpdated:)
+                                                 name:kKeyWordsUpdated object:nil];
+
 }
 
 - (void)setupDate
@@ -265,6 +268,8 @@ static NSString *DONE = @"DONE";
 
 - (IBAction)done:(id)sender
 {
+    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
+
     [[self note] setSubject:[[self subjectTextView] text]];
     [self dismissModalViewControllerAnimated:YES];
 
@@ -318,6 +323,13 @@ static NSString *DONE = @"DONE";
     [[self addSummaryButton] setHidden:showingSummary];
 
     [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
+}
+
+- (void)keyWordsUpdated:(NSNotification *)notification
+{
+    if (![self isEditing]) {
+        [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
+    }
 }
 
 - (IBAction)addAttendies:(id)sender
@@ -465,9 +477,7 @@ static NSString *DONE = @"DONE";
 
 - (void)reload:(id)sender
 {
-    
     [[self entriesViewController] reload];
-//    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
 }
 
 - (void)updateToolBar:(NSNotification *)notification
@@ -499,15 +509,6 @@ static NSString *DONE = @"DONE";
     [[self entriesViewController] setFilter:currentFilter];
 }
 
-
-- (IBAction)about:(id)sender
-{
-    InformationViewController *controller = [[InformationViewController alloc] initWithDefault];
-    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    
-    [self presentModalViewController:controller animated:YES];
-}
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {

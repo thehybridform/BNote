@@ -22,7 +22,7 @@
     
     NSArray *buttons = [FilterButtonFactory buildButtions:delegate];
     
-    int spacing = 5;
+    int spacing = 2;
     int x = 5;
     
     for (UIButton *button in buttons) {        

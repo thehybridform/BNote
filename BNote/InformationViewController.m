@@ -141,6 +141,7 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        [[cell textLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
     }
 
     switch ([indexPath section]) {

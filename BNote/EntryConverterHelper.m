@@ -103,9 +103,6 @@ static NSString *actionItem = @"Action Item";
         [actionSheet addButtonWithTitle:actionItem];
     }
     
-    int index = [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setDestructiveButtonIndex:index];
-    
     CGRect rect = [view frame];
     [actionSheet showFromRect:rect inView:view animated:YES];
 }

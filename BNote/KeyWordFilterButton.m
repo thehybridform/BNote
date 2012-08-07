@@ -8,14 +8,17 @@
 
 #import "KeyWordFilterButton.h"
 #import "KeyWordFilter.h"
+#import "LayerFormater.h"
 
 @interface KeyWordFilterButton()
 @property (strong, nonatomic) id<BNoteFilter> filter;
+@property (strong, nonatomic) UIView *highlightView;
 
 @end
 
 @implementation KeyWordFilterButton
 @synthesize filter = _filter;
+@synthesize highlightView = _highlightView;
 
 - (id)initWithName:(NSString *)name andBNoteFilterDelegate:(id<BNoteFilterDelegate>)delegate
 {
@@ -24,6 +27,20 @@
     if (self) {
         id<BNoteFilter> filter = [BNoteFilterFactory createEntryTextFilter:name];
         [self setFilter:filter];
+        
+        
+        CGRect frame = CGRectMake(5, 8, [self frame].size.width - 10, [self frame].size.height - 10);
+        UIView *highlightView = [[UIView alloc] initWithFrame:frame];
+        [highlightView setBackgroundColor:[BNoteConstants appHighlightColor1]];
+        [highlightView setUserInteractionEnabled:NO];
+        
+        [LayerFormater roundCornersForView:highlightView];
+        [LayerFormater setBorderWidth:0 forView:highlightView];
+        [highlightView setHidden:YES];
+        
+        [self addSubview:highlightView];
+        [self sendSubviewToBack:highlightView];
+        [self setHighlightView:highlightView];
     }
     
     return self;
@@ -34,11 +51,9 @@
     [super setSelected:selected];
     
     if (selected) {
-        [[self gradientLayer] setHidden:YES];
-        [[self pressedGradientLayer] setHidden:NO];
+        [[self highlightView] setHidden:NO];
     } else {
-        [[self gradientLayer] setHidden:NO];
-        [[self pressedGradientLayer] setHidden:YES];
+        [[self highlightView] setHidden:YES];
     }
 }
 

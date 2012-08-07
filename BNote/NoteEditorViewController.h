@@ -36,7 +36,6 @@
 
 - (void)selectEntry:(Entry *)entry;
 
-- (IBAction)about:(id)sender;
 - (IBAction)addSummary:(id)sender;
 
 @end

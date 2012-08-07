@@ -174,13 +174,10 @@
 - (void)reviewMode:(NSNotification *)notification
 {
     [[self mainTextView] resignFirstResponder];
-    [[self mainTextView] setEditable:NO];
 }
 
 - (void)editingNote:(NSNotification *)notification
 {
-    [[self mainTextView] setEditable:YES];
-
     [[self view] setNeedsDisplay];
 }
 

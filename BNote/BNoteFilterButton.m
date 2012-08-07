@@ -34,7 +34,7 @@
         [self setFrame:CGRectMake(0, 0, width, height)];
 
         float x = [self frame].size.width / 2.0 - [imageView frame].size.width / 2.0;
-        float y = [self frame].size.height / 2.0 - [imageView frame].size.height / 2.0 - 3;
+        float y = [self frame].size.height / 2.0 - [imageView frame].size.height / 2.0 + 2;
         width = [imageView frame].size.width;
         height = [imageView frame].size.height;
         
@@ -53,13 +53,13 @@
         [self setTitle:name forState:UIControlStateNormal];
         [self setDelegate:delegate];
         
-        float width = MAX([[[self titleLabel] text] length] * 10, 40);
+        float width = MAX([[[self titleLabel] text] length] * 10 + 15, 40);
         [self setFrame:CGRectMake(0, 0, width, 35)];
         [self setAutoresizingMask:UIViewAutoresizingNone];
         
         [self setTitleColor:[BNoteConstants darkGray]
                    forState:(UIControlStateNormal)];
-        [self setTitleColor:[BNoteConstants appHighlightColor1]
+        [self setTitleColor:[BNoteConstants appColor1]
                    forState:(UIControlStateSelected)];
 
         [self setupTouchEvents];

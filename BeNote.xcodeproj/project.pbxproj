@@ -1250,30 +1250,7 @@
 				18497686159053DA00F49F5A /* InformationViewController.xib */,
 				182F1E9915BFA5570038AC13 /* BNoteDefaultData.h */,
 				182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */,
-				182F1E8D15BFA5050038AC13 /* info-1.txt */,
-				182F1E8E15BFA5050038AC13 /* info-2.txt */,
-				182F1E8F15BFA5050038AC13 /* info-3.txt */,
-				182F1E9015BFA5050038AC13 /* info-4.txt */,
-				182F1E9115BFA5050038AC13 /* info-5.txt */,
-				182F1E9215BFA5050038AC13 /* info-6.txt */,
-				182F1EA015C0B9500038AC13 /* Decision.txt */,
-				182F1EA215C0B96E0038AC13 /* question-1.txt */,
-				182F1EA415C0B9820038AC13 /* question-2.txt */,
-				182F1EA615C0B9900038AC13 /* answer.txt */,
-				182F1E9C15C0B9240038AC13 /* key-point.txt */,
-				182F1EAF15C25DBF0038AC13 /* keypoint-1.txt */,
-				182F1EB115C25DDC0038AC13 /* keypoint-2.txt */,
-				182F1EB315C25DF50038AC13 /* keypoint-3.txt */,
-				182F1EA815C0B9BB0038AC13 /* action-item-1.txt */,
-				182F1EB515C260290038AC13 /* action_item-2.txt */,
-				182F1EB715C2606B0038AC13 /* action-item-3.txt */,
-				182F1EB915C2607F0038AC13 /* action-item-4.txt */,
-				182F1EBB15C261600038AC13 /* attendees-1.txt */,
-				182F1EBD15C2617F0038AC13 /* attendees-2.txt */,
-				182F1EBF15C261910038AC13 /* attendees-3.txt */,
-				182F1EC115C263040038AC13 /* overview-1.txt */,
-				182F1EC315C2631A0038AC13 /* overview-2.txt */,
-				182F1EC715C2639D0038AC13 /* overview-3.txt */,
+				18B4FB6B15D170B500619E27 /* Verbiage */,
 			);
 			name = "Information Details";
 			sourceTree = "<group>";
@@ -1566,6 +1543,37 @@
 				18B4FB6415D0DB2A00619E27 /* ActionItemToDecisionConverter.m */,
 			);
 			name = "Entry Conversion";
+			sourceTree = "<group>";
+		};
+		18B4FB6B15D170B500619E27 /* Verbiage */ = {
+			isa = PBXGroup;
+			children = (
+				182F1E8D15BFA5050038AC13 /* info-1.txt */,
+				182F1E8E15BFA5050038AC13 /* info-2.txt */,
+				182F1E8F15BFA5050038AC13 /* info-3.txt */,
+				182F1E9015BFA5050038AC13 /* info-4.txt */,
+				182F1E9115BFA5050038AC13 /* info-5.txt */,
+				182F1E9215BFA5050038AC13 /* info-6.txt */,
+				182F1EA015C0B9500038AC13 /* Decision.txt */,
+				182F1EA215C0B96E0038AC13 /* question-1.txt */,
+				182F1EA415C0B9820038AC13 /* question-2.txt */,
+				182F1EA615C0B9900038AC13 /* answer.txt */,
+				182F1E9C15C0B9240038AC13 /* key-point.txt */,
+				182F1EAF15C25DBF0038AC13 /* keypoint-1.txt */,
+				182F1EB115C25DDC0038AC13 /* keypoint-2.txt */,
+				182F1EB315C25DF50038AC13 /* keypoint-3.txt */,
+				182F1EA815C0B9BB0038AC13 /* action-item-1.txt */,
+				182F1EB515C260290038AC13 /* action_item-2.txt */,
+				182F1EB715C2606B0038AC13 /* action-item-3.txt */,
+				182F1EB915C2607F0038AC13 /* action-item-4.txt */,
+				182F1EBB15C261600038AC13 /* attendees-1.txt */,
+				182F1EBD15C2617F0038AC13 /* attendees-2.txt */,
+				182F1EBF15C261910038AC13 /* attendees-3.txt */,
+				182F1EC115C263040038AC13 /* overview-1.txt */,
+				182F1EC315C2631A0038AC13 /* overview-2.txt */,
+				182F1EC715C2639D0038AC13 /* overview-3.txt */,
+			);
+			name = Verbiage;
 			sourceTree = "<group>";
 		};
 		18BA9623158D817E004A4A38 /* Topic Selctor */ = {

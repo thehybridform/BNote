@@ -11,8 +11,6 @@
 #import "TopicGroup.h"
 
 @interface BNoteButton()
-@property (strong, nonatomic) CAGradientLayer *gradientLayer;
-@property (strong, nonatomic) CAGradientLayer *pressedGradientLayer;
 
 @end
 
@@ -22,7 +20,7 @@
 @synthesize lowColor = _lowColor;
 @synthesize gradientLayer = _gradientLayer;;
 
-- (void)awakeFromNib;
+- (void)awakeFromNib
 {
     [self setGradientLayer:[self setupGradient]];
     [self setPressedGradientLayer:[self setupGradient]];
@@ -30,13 +28,13 @@
     [[self layer] insertSublayer:[self pressedGradientLayer] atIndex:0];
     [[self layer] insertSublayer:[self gradientLayer] atIndex:0];
     
-    [[self layer] setCornerRadius:10.0f];
+    [[self layer] setCornerRadius:5];
     [[self layer] setMasksToBounds:YES];
     [[self layer] setBorderWidth:1.0f];
     [[self layer] setBorderColor:[UIColorFromRGB(0xbbbbbb) CGColor]];
     
     [self setHighColor:UIColorFromRGB(0xeeeeee)];
-    [self setLowColor:UIColorFromRGB(0xc5c5c5)];
+    [self setLowColor:UIColorFromRGB(0xc0c0c0)];
 }
 
 - (CAGradientLayer *)setupGradient

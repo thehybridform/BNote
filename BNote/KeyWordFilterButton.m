@@ -29,6 +29,19 @@
     return self;
 }
 
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    if (selected) {
+        [[self gradientLayer] setHidden:YES];
+        [[self pressedGradientLayer] setHidden:NO];
+    } else {
+        [[self gradientLayer] setHidden:NO];
+        [[self pressedGradientLayer] setHidden:YES];
+    }
+}
+
 - (void)execute:(id)sender
 {
     [[self delegate] useFilter:[self filter] sender:self];

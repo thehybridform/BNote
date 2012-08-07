@@ -192,6 +192,32 @@
 		18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4AC91585626600A54205 /* BNoteRenderFactory.m */; };
 		18AF4ACD1585632F00A54205 /* BNoteFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */; };
 		18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */; };
+		18B4FB3515D0D82E00619E27 /* EntryConverterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3415D0D82E00619E27 /* EntryConverterHelper.m */; };
+		18B4FB3815D0DA4700619E27 /* KeyPointToQuestionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3715D0DA4700619E27 /* KeyPointToQuestionConverter.m */; };
+		18B4FB3B15D0DA5800619E27 /* KeyPointToDecisionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3A15D0DA5800619E27 /* KeyPointToDecisionConverter.m */; };
+		18B4FB3E15D0DA7300619E27 /* KeyPointToActionItemConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3D15D0DA7300619E27 /* KeyPointToActionItemConverter.m */; };
+		18B4FB3F15D0DA7300619E27 /* KeyPointToActionItemConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3D15D0DA7300619E27 /* KeyPointToActionItemConverter.m */; };
+		18B4FB4015D0DA9300619E27 /* EntryConverterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3415D0D82E00619E27 /* EntryConverterHelper.m */; };
+		18B4FB4115D0DA9300619E27 /* KeyPointToQuestionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3715D0DA4700619E27 /* KeyPointToQuestionConverter.m */; };
+		18B4FB4215D0DA9300619E27 /* KeyPointToDecisionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB3A15D0DA5800619E27 /* KeyPointToDecisionConverter.m */; };
+		18B4FB4515D0DAB500619E27 /* QuestionToKeyPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB4415D0DAB500619E27 /* QuestionToKeyPointConverter.m */; };
+		18B4FB4615D0DAB500619E27 /* QuestionToKeyPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB4415D0DAB500619E27 /* QuestionToKeyPointConverter.m */; };
+		18B4FB4D15D0DAD500619E27 /* QuestionToActionItemConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB4C15D0DAD500619E27 /* QuestionToActionItemConverter.m */; };
+		18B4FB4E15D0DAD500619E27 /* QuestionToActionItemConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB4C15D0DAD500619E27 /* QuestionToActionItemConverter.m */; };
+		18B4FB5115D0DAE600619E27 /* DecisionToKeyPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5015D0DAE500619E27 /* DecisionToKeyPointConverter.m */; };
+		18B4FB5215D0DAE600619E27 /* DecisionToKeyPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5015D0DAE500619E27 /* DecisionToKeyPointConverter.m */; };
+		18B4FB5515D0DAEF00619E27 /* DecisionToQuestionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5415D0DAEF00619E27 /* DecisionToQuestionConverter.m */; };
+		18B4FB5615D0DAEF00619E27 /* DecisionToQuestionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5415D0DAEF00619E27 /* DecisionToQuestionConverter.m */; };
+		18B4FB5915D0DAFE00619E27 /* DecisionToActionItemConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5815D0DAFD00619E27 /* DecisionToActionItemConverter.m */; };
+		18B4FB5A15D0DAFE00619E27 /* DecisionToActionItemConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5815D0DAFD00619E27 /* DecisionToActionItemConverter.m */; };
+		18B4FB5D15D0DB1300619E27 /* ActionItemToKeyPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5C15D0DB1300619E27 /* ActionItemToKeyPointConverter.m */; };
+		18B4FB5E15D0DB1300619E27 /* ActionItemToKeyPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB5C15D0DB1300619E27 /* ActionItemToKeyPointConverter.m */; };
+		18B4FB6115D0DB1D00619E27 /* ActionItemToQuestionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB6015D0DB1D00619E27 /* ActionItemToQuestionConverter.m */; };
+		18B4FB6215D0DB1D00619E27 /* ActionItemToQuestionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB6015D0DB1D00619E27 /* ActionItemToQuestionConverter.m */; };
+		18B4FB6515D0DB2A00619E27 /* ActionItemToDecisionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB6415D0DB2A00619E27 /* ActionItemToDecisionConverter.m */; };
+		18B4FB6615D0DB2A00619E27 /* ActionItemToDecisionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB6415D0DB2A00619E27 /* ActionItemToDecisionConverter.m */; };
+		18B4FB6915D0DBA500619E27 /* QuestionToDecisionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB6815D0DBA500619E27 /* QuestionToDecisionConverter.m */; };
+		18B4FB6A15D0DBA500619E27 /* QuestionToDecisionConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FB6815D0DBA500619E27 /* QuestionToDecisionConverter.m */; };
 		18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */; };
 		18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */; };
 		18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */; };
@@ -780,6 +806,33 @@
 		18AF4ACB1585632E00A54205 /* BNoteFilterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFilterFactory.h; sourceTree = "<group>"; };
 		18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFilterFactory.m; sourceTree = "<group>"; };
 		18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeNote.xcdatamodel; sourceTree = "<group>"; };
+		18B4FB2E15D0D70300619E27 /* EntryConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryConverter.h; sourceTree = "<group>"; };
+		18B4FB3315D0D82E00619E27 /* EntryConverterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryConverterHelper.h; sourceTree = "<group>"; };
+		18B4FB3415D0D82E00619E27 /* EntryConverterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryConverterHelper.m; sourceTree = "<group>"; };
+		18B4FB3615D0DA4700619E27 /* KeyPointToQuestionConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointToQuestionConverter.h; sourceTree = "<group>"; };
+		18B4FB3715D0DA4700619E27 /* KeyPointToQuestionConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointToQuestionConverter.m; sourceTree = "<group>"; };
+		18B4FB3915D0DA5800619E27 /* KeyPointToDecisionConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointToDecisionConverter.h; sourceTree = "<group>"; };
+		18B4FB3A15D0DA5800619E27 /* KeyPointToDecisionConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointToDecisionConverter.m; sourceTree = "<group>"; };
+		18B4FB3C15D0DA7300619E27 /* KeyPointToActionItemConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointToActionItemConverter.h; sourceTree = "<group>"; };
+		18B4FB3D15D0DA7300619E27 /* KeyPointToActionItemConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointToActionItemConverter.m; sourceTree = "<group>"; };
+		18B4FB4315D0DAB500619E27 /* QuestionToKeyPointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionToKeyPointConverter.h; sourceTree = "<group>"; };
+		18B4FB4415D0DAB500619E27 /* QuestionToKeyPointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionToKeyPointConverter.m; sourceTree = "<group>"; };
+		18B4FB4B15D0DAD500619E27 /* QuestionToActionItemConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionToActionItemConverter.h; sourceTree = "<group>"; };
+		18B4FB4C15D0DAD500619E27 /* QuestionToActionItemConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionToActionItemConverter.m; sourceTree = "<group>"; };
+		18B4FB4F15D0DAE500619E27 /* DecisionToKeyPointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionToKeyPointConverter.h; sourceTree = "<group>"; };
+		18B4FB5015D0DAE500619E27 /* DecisionToKeyPointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionToKeyPointConverter.m; sourceTree = "<group>"; };
+		18B4FB5315D0DAEE00619E27 /* DecisionToQuestionConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionToQuestionConverter.h; sourceTree = "<group>"; };
+		18B4FB5415D0DAEF00619E27 /* DecisionToQuestionConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionToQuestionConverter.m; sourceTree = "<group>"; };
+		18B4FB5715D0DAFD00619E27 /* DecisionToActionItemConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionToActionItemConverter.h; sourceTree = "<group>"; };
+		18B4FB5815D0DAFD00619E27 /* DecisionToActionItemConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionToActionItemConverter.m; sourceTree = "<group>"; };
+		18B4FB5B15D0DB1200619E27 /* ActionItemToKeyPointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemToKeyPointConverter.h; sourceTree = "<group>"; };
+		18B4FB5C15D0DB1300619E27 /* ActionItemToKeyPointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemToKeyPointConverter.m; sourceTree = "<group>"; };
+		18B4FB5F15D0DB1C00619E27 /* ActionItemToQuestionConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemToQuestionConverter.h; sourceTree = "<group>"; };
+		18B4FB6015D0DB1D00619E27 /* ActionItemToQuestionConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemToQuestionConverter.m; sourceTree = "<group>"; };
+		18B4FB6315D0DB2900619E27 /* ActionItemToDecisionConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemToDecisionConverter.h; sourceTree = "<group>"; };
+		18B4FB6415D0DB2A00619E27 /* ActionItemToDecisionConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemToDecisionConverter.m; sourceTree = "<group>"; };
+		18B4FB6715D0DBA400619E27 /* QuestionToDecisionConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionToDecisionConverter.h; sourceTree = "<group>"; };
+		18B4FB6815D0DBA500619E27 /* QuestionToDecisionConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionToDecisionConverter.m; sourceTree = "<group>"; };
 		18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 2.xcdatamodel"; sourceTree = "<group>"; };
 		18BA964D158D9B39004A4A38 /* BeNote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 3.xcdatamodel"; sourceTree = "<group>"; };
 		18BAC1A415AD2DED00EEBE1E /* BNoteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteButton.h; sourceTree = "<group>"; };
@@ -1135,6 +1188,7 @@
 		18368F4B156610D200E511CB /* Service Core */ = {
 			isa = PBXGroup;
 			children = (
+				18B4FB3215D0D73000619E27 /* Entry Conversion */,
 				186068CA15C7B3B0003DC4EB /* KeyWordFinder */,
 				18539D5915AFEB2200D7DC55 /* Cloners */,
 				18AF4AC51585620000A54205 /* Renderer */,
@@ -1478,6 +1532,40 @@
 				18A7029315B6AB0C00C119F2 /* AttendantsContentView.xib */,
 			);
 			name = Attendants;
+			sourceTree = "<group>";
+		};
+		18B4FB3215D0D73000619E27 /* Entry Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				18B4FB2E15D0D70300619E27 /* EntryConverter.h */,
+				18B4FB3315D0D82E00619E27 /* EntryConverterHelper.h */,
+				18B4FB3415D0D82E00619E27 /* EntryConverterHelper.m */,
+				18B4FB3615D0DA4700619E27 /* KeyPointToQuestionConverter.h */,
+				18B4FB3715D0DA4700619E27 /* KeyPointToQuestionConverter.m */,
+				18B4FB3915D0DA5800619E27 /* KeyPointToDecisionConverter.h */,
+				18B4FB3A15D0DA5800619E27 /* KeyPointToDecisionConverter.m */,
+				18B4FB3C15D0DA7300619E27 /* KeyPointToActionItemConverter.h */,
+				18B4FB3D15D0DA7300619E27 /* KeyPointToActionItemConverter.m */,
+				18B4FB4315D0DAB500619E27 /* QuestionToKeyPointConverter.h */,
+				18B4FB4415D0DAB500619E27 /* QuestionToKeyPointConverter.m */,
+				18B4FB4B15D0DAD500619E27 /* QuestionToActionItemConverter.h */,
+				18B4FB4C15D0DAD500619E27 /* QuestionToActionItemConverter.m */,
+				18B4FB6715D0DBA400619E27 /* QuestionToDecisionConverter.h */,
+				18B4FB6815D0DBA500619E27 /* QuestionToDecisionConverter.m */,
+				18B4FB4F15D0DAE500619E27 /* DecisionToKeyPointConverter.h */,
+				18B4FB5015D0DAE500619E27 /* DecisionToKeyPointConverter.m */,
+				18B4FB5315D0DAEE00619E27 /* DecisionToQuestionConverter.h */,
+				18B4FB5415D0DAEF00619E27 /* DecisionToQuestionConverter.m */,
+				18B4FB5715D0DAFD00619E27 /* DecisionToActionItemConverter.h */,
+				18B4FB5815D0DAFD00619E27 /* DecisionToActionItemConverter.m */,
+				18B4FB5B15D0DB1200619E27 /* ActionItemToKeyPointConverter.h */,
+				18B4FB5C15D0DB1300619E27 /* ActionItemToKeyPointConverter.m */,
+				18B4FB5F15D0DB1C00619E27 /* ActionItemToQuestionConverter.h */,
+				18B4FB6015D0DB1D00619E27 /* ActionItemToQuestionConverter.m */,
+				18B4FB6315D0DB2900619E27 /* ActionItemToDecisionConverter.h */,
+				18B4FB6415D0DB2A00619E27 /* ActionItemToDecisionConverter.m */,
+			);
+			name = "Entry Conversion";
 			sourceTree = "<group>";
 		};
 		18BA9623158D817E004A4A38 /* Topic Selctor */ = {
@@ -2073,6 +2161,19 @@
 				185C403315CD97300036BCBD /* Note.m in Sources */,
 				185C403615CD97370036BCBD /* Topic.m in Sources */,
 				18F290D015CD9CEE00543E65 /* TopicGroup.m in Sources */,
+				18B4FB3515D0D82E00619E27 /* EntryConverterHelper.m in Sources */,
+				18B4FB3815D0DA4700619E27 /* KeyPointToQuestionConverter.m in Sources */,
+				18B4FB3B15D0DA5800619E27 /* KeyPointToDecisionConverter.m in Sources */,
+				18B4FB3E15D0DA7300619E27 /* KeyPointToActionItemConverter.m in Sources */,
+				18B4FB4515D0DAB500619E27 /* QuestionToKeyPointConverter.m in Sources */,
+				18B4FB4D15D0DAD500619E27 /* QuestionToActionItemConverter.m in Sources */,
+				18B4FB5115D0DAE600619E27 /* DecisionToKeyPointConverter.m in Sources */,
+				18B4FB5515D0DAEF00619E27 /* DecisionToQuestionConverter.m in Sources */,
+				18B4FB5915D0DAFE00619E27 /* DecisionToActionItemConverter.m in Sources */,
+				18B4FB5D15D0DB1300619E27 /* ActionItemToKeyPointConverter.m in Sources */,
+				18B4FB6115D0DB1D00619E27 /* ActionItemToQuestionConverter.m in Sources */,
+				18B4FB6515D0DB2A00619E27 /* ActionItemToDecisionConverter.m in Sources */,
+				18B4FB6915D0DBA500619E27 /* QuestionToDecisionConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2080,6 +2181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B4FB4015D0DA9300619E27 /* EntryConverterHelper.m in Sources */,
+				18B4FB4115D0DA9300619E27 /* KeyPointToQuestionConverter.m in Sources */,
+				18B4FB4215D0DA9300619E27 /* KeyPointToDecisionConverter.m in Sources */,
 				18F4E2BF15CE5202002095A2 /* BNoteLiteViewController.m in Sources */,
 				18F4E1C715CE4843002095A2 /* main.m in Sources */,
 				18F4E1C815CE4843002095A2 /* AppDelegate.m in Sources */,
@@ -2205,6 +2309,16 @@
 				18F4E24015CE4843002095A2 /* Note.m in Sources */,
 				18F4E24115CE4843002095A2 /* Topic.m in Sources */,
 				18F4E24215CE4843002095A2 /* TopicGroup.m in Sources */,
+				18B4FB3F15D0DA7300619E27 /* KeyPointToActionItemConverter.m in Sources */,
+				18B4FB4615D0DAB500619E27 /* QuestionToKeyPointConverter.m in Sources */,
+				18B4FB4E15D0DAD500619E27 /* QuestionToActionItemConverter.m in Sources */,
+				18B4FB5215D0DAE600619E27 /* DecisionToKeyPointConverter.m in Sources */,
+				18B4FB5615D0DAEF00619E27 /* DecisionToQuestionConverter.m in Sources */,
+				18B4FB5A15D0DAFE00619E27 /* DecisionToActionItemConverter.m in Sources */,
+				18B4FB5E15D0DB1300619E27 /* ActionItemToKeyPointConverter.m in Sources */,
+				18B4FB6215D0DB1D00619E27 /* ActionItemToQuestionConverter.m in Sources */,
+				18B4FB6615D0DB2A00619E27 /* ActionItemToDecisionConverter.m in Sources */,
+				18B4FB6A15D0DBA500619E27 /* QuestionToDecisionConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -318,5 +318,4 @@ static NSString *clearDueDate = @"Clear Due Date";
     [[BNoteSessionData instance] setActionSheet:nil];
 }
 
-
 @end

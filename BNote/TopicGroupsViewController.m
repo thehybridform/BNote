@@ -14,6 +14,8 @@
 #import "Topic.h"
 
 @interface TopicGroupsViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *topicGroupLabel;
+@property (strong, nonatomic) IBOutlet UIView *menu;
 @property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) IBOutlet UIButton *addButton;
@@ -23,10 +25,12 @@
 
 @implementation TopicGroupsViewController
 @synthesize footer = _footer;
+@synthesize menu = _menu;
 @synthesize data = _data;
 @synthesize popup = _popup;
 @synthesize addButton = _addButton;
 @synthesize tableView = _tableView;
+@synthesize topicGroupLabel = _topicGroupLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,7 +56,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [LayerFormater addShadowToView:[self menu]];
     [LayerFormater addShadowToView:[self footer]];
+    
+    [[self topicGroupLabel] setFont:[BNoteConstants font:RobotoBold andSize:20]];
+    [[self topicGroupLabel] setTextColor:[BNoteConstants appHighlightColor1]];
 }
 
 - (void)viewDidUnload
@@ -62,6 +71,8 @@
     [self setFooter:nil];
     [self setAddButton:nil];
     [self setTableView:nil];
+    [self setMenu:nil];
+    [self setTopicGroupLabel:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

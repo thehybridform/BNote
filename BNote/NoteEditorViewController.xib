@@ -422,7 +422,7 @@
 							<object class="IBUIButton" id="573263498">
 								<reference key="NSNextResponder" ref="812998478"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 3}, {30, 30}}</string>
+								<string key="NSFrame">{{20, 2}, {55, 35}}</string>
 								<reference key="NSSuperview" ref="812998478"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="965179381"/>
@@ -433,16 +433,13 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<bool key="IBUIReversesTitleShadowWhenHighlighted">YES</bool>
 								<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
+								<string key="IBUINormalTitle">Edit</string>
 								<reference key="IBUIHighlightedTitleColor" ref="519478129"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="92897031"/>
-								<object class="NSCustomResource" key="IBUINormalImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">20-gear-2@2x.png</string>
-								</object>
 								<reference key="IBUIFontDescription" ref="826631238"/>
 								<reference key="IBUIFont" ref="376973252"/>
 							</object>
@@ -452,6 +449,7 @@
 								<string key="NSFrame">{{693, 2}, {35, 35}}</string>
 								<reference key="NSSuperview" ref="812998478"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -1327,6 +1325,7 @@
 				<string key="279.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="285.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="326.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="329.CustomClassName">BNoteButton</string>
 				<string key="329.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="346.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="348.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1595,7 +1594,6 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="18-envelope@2x.png">{48, 32}</string>
-			<string key="20-gear-2@2x.png">{52, 56}</string>
 			<string key="bnote-144.png">{144, 144}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1498</string>

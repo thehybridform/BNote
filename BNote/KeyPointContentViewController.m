@@ -21,7 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *photoAlbumButton;
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
 @property (strong, nonatomic) IBOutlet UIButton *sketchButton;
-@property (strong, nonatomic) IBOutlet UIView *touchView;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (assign, nonatomic) BOOL hasCamera;
 
@@ -32,7 +31,6 @@
 @synthesize cameraButton = _cameraButton;
 @synthesize photoAlbumButton = _photoAlbumButton;
 @synthesize hasCamera = _hasCamera;
-@synthesize touchView = _touchView;
 @synthesize sketchButton = _sketchButton;
 @synthesize photoImageView = _photoImageView;
 
@@ -44,7 +42,6 @@ static NSString *removeImage = @"Remove";
     
     [self setCameraButton:nil];
     [self setPhotoAlbumButton:nil];
-    [self setTouchView:nil];
     [self setSketchButton:nil];
     [self setPhotoImageView:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];

@@ -253,7 +253,7 @@ static NSString *email = @"E-mail";
     UIView *view = [self addTopicButton];
     CGRect rect = [view bounds];
     
-    [popup presentPopoverFromRect:rect inView:view
+    [popup presentPopoverFromRect:rect inView:[self topicsButton]
          permittedArrowDirections:UIPopoverArrowDirectionAny 
                          animated:YES];
 }

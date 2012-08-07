@@ -85,6 +85,7 @@
 						<string key="NSFrame">{{226, 95}, {424, 276}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="55373825"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -105,7 +106,7 @@
 							<object class="IBUIButton" id="33232575">
 								<reference key="NSNextResponder" ref="210886888"/>
 								<int key="NSvFlags">300</int>
-								<string key="NSFrame">{{27, 5}, {33, 33}}</string>
+								<string key="NSFrame">{{20, 4}, {55, 35}}</string>
 								<reference key="NSSuperview" ref="210886888"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="898020508"/>
@@ -116,6 +117,7 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<bool key="IBUIReversesTitleShadowWhenHighlighted">YES</bool>
 								<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
+								<string key="IBUINormalTitle">Edit</string>
 								<reference key="IBUIHighlightedTitleColor" ref="55373825"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
@@ -124,10 +126,6 @@
 								<object class="NSColor" key="IBUINormalTitleShadowColor" id="698753858">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
-								</object>
-								<object class="NSCustomResource" key="IBUINormalImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">20-gear-2@2x.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">2</int>
@@ -627,6 +625,7 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="10.CustomClassName">BNoteButton</string>
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.CustomClassName">BNoteButton</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -769,10 +768,6 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">20-gear-2@2x.png</string>
-			<string key="NS.object.0">{52, 56}</string>
-		</object>
 		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>
 </archive>

@@ -24,7 +24,7 @@
         <relationship name="note" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="entries" inverseEntity="Note" syncable="YES"/>
     </entity>
     <entity name="KeyPoint" representedClassName="KeyPoint" parentEntity="Entry" syncable="YES">
-        <relationship name="photo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="keyPoint" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="photo" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Photo" inverseName="keyPoint" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <entity name="KeyWord" representedClassName="KeyWord" syncable="YES">
         <attribute name="word" attributeType="String" syncable="YES"/>

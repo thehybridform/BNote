@@ -29,7 +29,7 @@
         [self setIcon:imageView];
         
         float width = 45;
-        float height = 40;
+        float height = 35;
         
         [self setFrame:CGRectMake(0, 0, width, height)];
 
@@ -55,6 +55,7 @@
         
         float width = MAX([[[self titleLabel] text] length] * 10, 40);
         [self setFrame:CGRectMake(0, 0, width, 35)];
+        [self setAutoresizingMask:UIViewAutoresizingNone];
         
         [self setTitleColor:[BNoteConstants darkGray]
                    forState:(UIControlStateNormal)];

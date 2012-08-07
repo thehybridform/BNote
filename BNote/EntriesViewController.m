@@ -239,14 +239,11 @@
 
 - (void)selectEntryCell:(int)index
 {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
-    
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-//    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
-    
-    UITextView *textView = [controller mainTextView];
-    
-    [textView becomeFirstResponder];    
+    [[controller mainTextView] becomeFirstResponder];
 }
 
 - (void)selectEntry:(Entry *)entry

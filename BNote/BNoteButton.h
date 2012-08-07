@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface BNoteButton : UIButton
 
 @property (strong, nonatomic) UIImageView *icon;
 @property (strong, nonatomic) UIColor *highColor;
 @property (strong, nonatomic) UIColor *lowColor;
+@property (strong, nonatomic) CAGradientLayer *gradientLayer;
+@property (strong, nonatomic) CAGradientLayer *pressedGradientLayer;
+
+- (CAGradientLayer *)setupGradient;
 
 @end

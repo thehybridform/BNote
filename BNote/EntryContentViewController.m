@@ -12,8 +12,11 @@
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
 #import "BNoteWriter.h"
+#import "EntryConverterHelper.h"
 
 @interface EntryContentViewController ()
+
+@property (strong, nonatomic) IBOutlet UIView *entryMarginView;
 
 @end
 
@@ -24,6 +27,7 @@
 @synthesize selectedTextView = _selectedTextView;
 @synthesize mainTextView = _mainTextView;
 @synthesize iconView = _iconView;
+@synthesize entryMarginView = _entryMarginView;
 
 - (id)initWithEntry:(Entry *)entry
 {
@@ -50,6 +54,12 @@
             [view setInputAccessoryView:[quick view]];
             [self setSelectedTextView:view];
             [[self mainTextView] setText:[[self entry] text]];
+        }
+        
+        if (![entry isKindOfClass:[Attendants class]]) {
+            UITapGestureRecognizer *tap =
+                [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEntryOptions:)];
+            [[self entryMarginView] addGestureRecognizer:tap];
         }
     }
     
@@ -90,6 +100,8 @@
     
     [self setMainTextView:nil];
     [self setIconView:nil];
+    [self setEntryMarginView:nil];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -170,6 +182,11 @@
     [[self mainTextView] setEditable:YES];
 
     [[self view] setNeedsDisplay];
+}
+
+- (void)showEntryOptions:(id)sender
+{
+    [[EntryConverterHelper instance] handleConvertion:[self entry] withinView:[self entryMarginView]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

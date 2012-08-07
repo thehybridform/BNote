@@ -45,19 +45,21 @@ NSString *const identityFilter = @"Identity Filter";
 {
     self = [super init];
     
-    NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
-    [self setFilters:filters];
+    if (self) {
+        NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
+        [self setFilters:filters];
     
-    [filters setObject:[[KeyPointFilter alloc] init] forKey:keyPointsFilter];
-    [filters setObject:[[ActionItemFilter alloc] init] forKey:actionItemFilter];
-    [filters setObject:[[ActionItemCompleteFilter alloc] init] forKey:actionItemCompleteFilter];
-    [filters setObject:[[ActionItemInCompleteFilter alloc] init] forKey:actionItemIncompleteFilter];
-    [filters setObject:[[QuestionFilter alloc] init] forKey:questionFilter];
-    [filters setObject:[[QuestionAnsweredFilter alloc] init] forKey:questionAnsweredFilter];
-    [filters setObject:[[QuestionUnansweredFilter alloc] init] forKey:questionUnansweredFilter];
-    [filters setObject:[[DecisionFilter alloc] init] forKey:decisionsFilter];
-    [filters setObject:[[AttendantFilter alloc] init] forKey:attendantsFilter];
-    [filters setObject:[[IdentityFillter alloc] init] forKey:identityFilter];
+        [filters setObject:[[KeyPointFilter alloc] init] forKey:keyPointsFilter];
+        [filters setObject:[[ActionItemFilter alloc] init] forKey:actionItemFilter];
+        [filters setObject:[[ActionItemCompleteFilter alloc] init] forKey:actionItemCompleteFilter];
+        [filters setObject:[[ActionItemInCompleteFilter alloc] init] forKey:actionItemIncompleteFilter];
+        [filters setObject:[[QuestionFilter alloc] init] forKey:questionFilter];
+        [filters setObject:[[QuestionAnsweredFilter alloc] init] forKey:questionAnsweredFilter];
+        [filters setObject:[[QuestionUnansweredFilter alloc] init] forKey:questionUnansweredFilter];
+        [filters setObject:[[DecisionFilter alloc] init] forKey:decisionsFilter];
+        [filters setObject:[[AttendantFilter alloc] init] forKey:attendantsFilter];
+        [filters setObject:[[IdentityFillter alloc] init] forKey:identityFilter];
+    }
     
     return self;
 }

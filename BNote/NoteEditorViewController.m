@@ -465,7 +465,9 @@ static NSString *DONE = @"DONE";
 
 - (void)reload:(id)sender
 {
-    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
+    
+    [[self entriesViewController] reload];
+//    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
 }
 
 - (void)updateToolBar:(NSNotification *)notification

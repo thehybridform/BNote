@@ -17,9 +17,13 @@
     UITextView *textView = [[self entryContent] selectedTextView];
     NSRange cursorPosition = [textView selectedRange];
     
+    NSString *dateText = [self dateText];
     NSMutableString *text = [[NSMutableString alloc] initWithString:[textView text]];
-    [text replaceCharactersInRange:cursorPosition withString:[self dateText]];
+    [text replaceCharactersInRange:cursorPosition withString:dateText];
     [textView setText:text];
+
+    cursorPosition = NSMakeRange(cursorPosition.location + [dateText length], 0);
+    [textView setSelectedRange:cursorPosition];
 }
 
 - (NSString *)dateText

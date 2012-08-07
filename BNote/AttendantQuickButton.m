@@ -16,11 +16,14 @@
     UITextView *textView = [[self entryContent] selectedTextView];
     NSRange cursorPosition = [textView selectedRange];
     
-    NSString *keyWord = [BNoteStringUtils append:@" ", [[self titleLabel] text], @" ", nil];
+    NSString *attendant = [BNoteStringUtils append:@" ", [[self titleLabel] text], @" ", nil];
     
     NSMutableString *text = [[NSMutableString alloc] initWithString:[textView text]];
-    [text replaceCharactersInRange:cursorPosition withString:keyWord];
+    [text replaceCharactersInRange:cursorPosition withString:attendant];
     [textView setText:text];
+    
+    cursorPosition = NSMakeRange(cursorPosition.location + [attendant length], 0);
+    [textView setSelectedRange:cursorPosition];
 }
 
 @end

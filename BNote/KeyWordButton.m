@@ -30,6 +30,9 @@
     NSMutableString *text = [[NSMutableString alloc] initWithString:[textView text]];
     [text replaceCharactersInRange:cursorPosition withString:keyWord];
     [textView setText:text];
+
+    cursorPosition = NSMakeRange(cursorPosition.location + [keyWord length], 0);
+    [textView setSelectedRange:cursorPosition];
 }
 
 - (void)initCommon

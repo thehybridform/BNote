@@ -13,6 +13,7 @@
 #import "BNoteWriter.h"
 #import "LayerFormater.h"
 #import "BNoteSessionData.h"
+#import "BNoteAnimation.h"
 
 @interface AttendantsContentViewController()
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
@@ -64,10 +65,18 @@ static NSString *createNew = @"Create";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
         selector:@selector(keyboardDidHideAttendantsContentViewController:)
             name:UIKeyboardDidHideNotification object:nil];
+    
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self addAttendantView],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
+
 }
 
 - (void)viewDidUnload

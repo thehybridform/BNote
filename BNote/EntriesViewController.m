@@ -21,6 +21,7 @@
 #import "BNoteQuickWordUtils.h"
 #import "AttendantsContentViewController.h"
 #import "NoteSummaryViewController.h"
+#import "BNoteAnimation.h"
 
 @interface EntriesViewController ()
 @property (strong, nonatomic) NSMutableArray *filteredControllers;
@@ -44,7 +45,6 @@
     
     if (self) {
         [self setCanEdit:YES];
-        
     }
     
     return self;
@@ -104,7 +104,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]];
+    
+    [BNoteAnimation winkInView:[controller iconView] withDuration:0.2 andDelay:0.5];
+    
     [controller setParentController:[self parentController]];
 
     return [controller cell];
@@ -297,8 +300,6 @@
 - (BOOL)showingSummary
 {
     id<EntryContent> controller = [[self filteredControllers] lastObject];
-    
     return [controller isKindOfClass:[NoteSummaryViewController class]];
 }
-
 @end

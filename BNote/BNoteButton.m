@@ -120,7 +120,7 @@
     [self setTitle:title forState:UIControlStateNormal];
     
     int width = [title length] * 10;
-    width = MIN(500, width);
+    width = MIN(300, width);
     CGRect frame = [self frame];
     [self setFrame:CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height)];
 }

@@ -137,6 +137,18 @@
 
     [[self pageControlPeople] setNumberOfPages:count];
     [[self pageControlPeople] setNeedsDisplay];
+    
+    [scrollView setAlpha:0];
+    
+    [UIView animateWithDuration:0.2
+                          delay:0.2
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^(void) {
+                         [scrollView setAlpha:1];
+                     }
+                     completion:^(BOOL finished) {
+                     }
+     ];
 }
 
 - (BOOL)contains:(Attendant *)attendant

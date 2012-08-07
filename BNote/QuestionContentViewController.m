@@ -11,6 +11,7 @@
 #import "BNoteEntryUtils.h"
 #import "QuickWordsViewController.h"
 #import "LayerFormater.h"
+#import "BNoteAnimation.h"
 
 @interface QuestionContentViewController()
 @property (strong, nonatomic) IBOutlet UITextView *answerTextView;
@@ -76,6 +77,13 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingAnswerText:)
                                                  name:UITextViewTextDidEndEditingNotification object:view];
+
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self answerTextView],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
+
 }
 
 - (void)viewDidUnload

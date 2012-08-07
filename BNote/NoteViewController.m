@@ -11,7 +11,6 @@
 #import "LayerFormater.h"
 
 @interface NoteViewController ()
-@property (strong, nonatomic) IBOutlet UILabel *subject;
 @property (strong, nonatomic) IBOutlet UILabel *month;
 @property (strong, nonatomic) IBOutlet UILabel *day;
 @property (strong, nonatomic) IBOutlet UILabel *year;

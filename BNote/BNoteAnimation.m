@@ -10,32 +10,76 @@
 
 @implementation BNoteAnimation
 
-+ (void)startWobble:(UIView *)view
++ (void)winkInView:(NSArray *)views withDuration:(float)duration andDelay:(float)delay andDelayIncrement:(float)increment
 {
-    [UIView animateWithDuration:0.15
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionCurveEaseInOut
+    for (UIView *view in views) {
+        [self winkInView:view withDuration:duration andDelay:delay += increment];
+    }
+}
+
++ (void)winkOutView:(NSArray *)views withDuration:(float)duration andDelay:(float)delay andDelayIncrement:(float)increment
+{
+    for (UIView *view in views) {
+        [self winkOutView:view withDuration:duration andDelay:delay += increment];
+    }
+}
+
++ (void)winkInView:(UIView *)view withDuration:(float)duration andDelay:(float)delay
+{
+    CGRect frame = [view frame];
+    CGRect initialFrame = CGRectMake(frame.origin.x, frame.origin.y + frame.size.height / 2.0, frame.size.width, 0);
+    [view setFrame:initialFrame];
+    float alpha = [view alpha];
+    
+    [view setAlpha:0];
+    
+    [UIView animateWithDuration:duration
+                          delay:delay
+                        options:(UIViewAnimationOptionCurveEaseOut)
                      animations:^(void) {
-                         CGAffineTransform scale = CGAffineTransformScale([view transform], 1.02, 1.02);
-                         [view setTransform:scale];
+                         [view setFrame:frame];
+                     }
+                     completion:^(BOOL finished) {
+                     }
+     ];
+    
+    
+    [UIView animateWithDuration:0.1
+                          delay:delay
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^(void) {
+                         [view setAlpha:alpha];
                      }
                      completion:^(BOOL finished) {
                      }
      ];
 }
 
-+ (void)moveEntryView:(UIView *)view xPixels:(float)x yPixels:(float)y withDelay:(float)delay
++ (void)winkOutView:(UIView *)view withDuration:(float)duration andDelay:(float)delay
 {
-    [UIView animateWithDuration:0.3
+    CGRect initialFrame = [view frame];
+    CGRect frame = CGRectMake(frame.origin.x, frame.origin.y + frame.size.height / 2.0, frame.size.width, 0);
+    [view setFrame:initialFrame];
+
+    [UIView animateWithDuration:duration
                           delay:delay
-                        options:(UIViewAnimationOptionCurveEaseIn)
+                        options:(UIViewAnimationOptionCurveEaseOut)
                      animations:^(void) {
-                         CGAffineTransform move = CGAffineTransformTranslate([view transform], x, y);
-                         [view setTransform:move];
+                         [view setFrame:frame];
                      }
                      completion:^(BOOL finished) {
                      }
-    ];
+     ];
+    
+    
+    [UIView animateWithDuration:0.1
+                          delay:delay
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^(void) {
+                         [view setAlpha:0];
+                     }
+                     completion:^(BOOL finished) {
+                     }];
 }
 
 @end

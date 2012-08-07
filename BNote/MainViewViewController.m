@@ -191,7 +191,6 @@ static NSString *email = @"E-mail";
     NoteEditorViewController *noteController = [[NoteEditorViewController alloc] initWithNote:note];
     [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
     [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    
     [self presentModalViewController:noteController animated:YES];
     
     if (entry) {
@@ -253,7 +252,7 @@ static NSString *email = @"E-mail";
     UIView *view = [self addTopicButton];
     CGRect rect = [view bounds];
     
-    [popup presentPopoverFromRect:rect inView:[self topicsButton]
+    [popup presentPopoverFromRect:rect inView:[self addTopicButton]
          permittedArrowDirections:UIPopoverArrowDirectionAny 
                          animated:YES];
 }

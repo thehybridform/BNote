@@ -13,6 +13,7 @@
 #import "BNoteSessionData.h"
 #import "BNoteWriter.h"
 #import "EntryConverterHelper.h"
+#import "BNoteAnimation.h"
 
 @interface EntryContentViewController ()
 

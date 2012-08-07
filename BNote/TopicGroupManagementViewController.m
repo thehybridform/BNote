@@ -100,7 +100,7 @@
     [[self nameText] setDelegate:self];
     
     [LayerFormater addShadowToView:[self footer]];
-
+    
     [[NSNotificationCenter defaultCenter]
         addObserver:self selector:@selector(selectedTopicGroup:) name:kEditTopicGroupSelected object:nil];
     

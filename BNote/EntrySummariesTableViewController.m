@@ -156,6 +156,32 @@
     [self setEntries:[self filterEntries:[[BNoteFilterFactory instance] create:ItdentityType]]];
         
     [[self tableView] reloadData];
+    
+    UIView *view = [self view];
+    CGRect frame = [view frame];
+    CGRect initalFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 0);
+    [view setFrame:initalFrame];
+    [view setAlpha:0];
+    
+    [UIView animateWithDuration:0.3
+                          delay:0.25
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^(void) {
+                         [view setFrame:frame];
+                     }
+                     completion:^(BOOL finished) {
+                     }
+     ];
+    
+    [UIView animateWithDuration:0.2
+                          delay:0.25
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^(void) {
+                         [view setAlpha:1];
+                     }
+                     completion:^(BOOL finished) {
+                     }
+     ];
 }
 
 #pragma mark - Table view data source

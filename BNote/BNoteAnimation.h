@@ -12,8 +12,10 @@
 
 @interface BNoteAnimation : NSObject
 
-+ (void)startWobble:(UIView *)view;
-+ (void)moveEntryView:(UIView *)view xPixels:(float)x yPixels:(float)y withDelay:(float)delay;
++ (void)winkInView:(UIView *)view withDuration:(float)duration andDelay:(float)delay;
++ (void)winkOutView:(UIView *)view withDuration:(float)duration andDelay:(float)delay;
 
++ (void)winkInView:(NSArray *)views withDuration:(float)duration andDelay:(float)delay andDelayIncrement:(float)increment;
++ (void)winkOutView:(NSArray *)views withDuration:(float)duration andDelay:(float)delay andDelayIncrement:(float)increment;
 
 @end

@@ -15,6 +15,7 @@
 #import "PhotoViewController.h"
 #import "PhotoEditorViewController.h"
 #import "LayerFormater.h"
+#import "BNoteAnimation.h"
 
 @interface KeyPointContentViewController()
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
@@ -87,6 +88,16 @@ static NSString *removeImage = @"Remove";
 {
     [super viewDidLoad];
 
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self cameraButton],
+                      [self photoAlbumButton],
+                      [self sketchButton],
+                      [self photoImageView],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
                                                  name:kKeyPointPhotoUpdated object:nil];
 }
@@ -258,6 +269,7 @@ static NSString *removeImage = @"Remove";
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == removeImage) {
             [[BNoteWriter instance] removePhoto:[[self keyPoint] photo]];
+            [[BNoteWriter instance] update];
             [self handlePhotoImage];
         }
     }

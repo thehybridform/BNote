@@ -12,6 +12,8 @@
 
 @interface NoteViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *subject;
+
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIViewController *detailViewController;
 

@@ -9,6 +9,7 @@
 #import "BNoteFilterHelper.h"
 #import "FilterButtonFactory.h"
 #import "LayerFormater.h"
+#import "BNoteAnimation.h"
 
 @implementation BNoteFilterHelper
 
@@ -22,6 +23,8 @@
     
     NSArray *buttons = [FilterButtonFactory buildButtions:delegate];
     
+    float delay = 0;
+    float delayIncrement = 0.1;
     int spacing = 2;
     int x = 5;
     
@@ -34,6 +37,8 @@
         [button setFrame:frame];
         
         [scrollView addSubview:button];
+        
+        [BNoteAnimation winkInView:button withDuration:0.03 andDelay:delay += delayIncrement];
         
         x += spacing + width;
     }

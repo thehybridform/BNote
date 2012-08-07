@@ -14,6 +14,7 @@
 #import "Note.h"
 #import "NoteViewController.h"
 #import "BNoteFactory.h"
+#import "BNoteAnimation.h"
 
 @interface NotesViewController()
 @property (strong, nonatomic) NSMutableArray *noteControllers;
@@ -72,6 +73,8 @@
         [view removeFromSuperview];
     }
     
+    float delay = 0;
+    float delayIncrement = 0.1;
     float space = 110;
     int notes = 0;
 
@@ -85,12 +88,12 @@
     float x = 10 - space;
     
     for (Note *note in [[self topic] notes]) {
-        [self addNote:note atX:x += space isAssociated:NO];
+        [self addNote:note atX:x += space withDelay:delay += delayIncrement isAssociated:NO];
         notes++;
     }
     
     for (Note *note in [[self topic] associatedNotes]) {
-        [self addNote:note atX:x += space isAssociated:YES];
+        [self addNote:note atX:x += space withDelay:delay += delayIncrement isAssociated:YES];
         notes++;
     }
     
@@ -119,20 +122,22 @@
     [[self pageControlNotes] setNeedsDisplay];
 }
 
-- (void)addNote:(Note *)note atX:(float)x isAssociated:(BOOL)associated
+- (void)addNote:(Note *)note atX:(float)x withDelay:(float)delay isAssociated:(BOOL)associated
 {
     float y = 10;
 
     NoteViewController *controller = [[NoteViewController alloc] initWithNote:note isAssociated:associated];
     [[self noteControllers] addObject:controller];
         
-    UIView *view = [controller view];
+    NoteView *view = (NoteView *)[controller view];
     float width = [view bounds].size.width;
     float height = [view bounds].size.height;
     
     CGRect frame = CGRectMake(x, y, width, height);
     [view setFrame:frame];
     
+    [BNoteAnimation winkInView:view withDuration:0.05 andDelay:delay];
+
     UIScrollView *scrollView = (UIScrollView *) [self view];
     [scrollView addSubview:view];
 }

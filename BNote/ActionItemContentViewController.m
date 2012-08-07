@@ -12,6 +12,7 @@
 #import "LayerFormater.h"
 #import "BNoteStringUtils.h"
 #import "BNoteEntryUtils.h"
+#import "BNoteAnimation.h"
 
 @interface ActionItemContentViewController()
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
@@ -104,6 +105,16 @@ static NSString *clearDueDate = @"Clear Due Date";
     [self updateDueDate];
     [self updateResponsibility];
     [self updateComplete];
+
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self responsibilityView],
+                      [self caledarBlankView],
+                      [self calendarCheckView],
+                      [self circleBlankView],
+                      [self circleCheckView],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
 }
 
 - (float)height

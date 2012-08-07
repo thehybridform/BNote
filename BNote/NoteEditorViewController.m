@@ -23,6 +23,7 @@
 #import "BNoteButton.h"
 #import "EditNoteView.h"
 #import "BNoteFilterHelper.h"
+#import "BNoteAnimation.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) Note *note;
@@ -234,6 +235,27 @@ static NSString *DONE = @"DONE";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWordsUpdated:)
                                                  name:kKeyWordsUpdated object:nil];
 
+    [self showNormalButtons];
+    
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self infoView],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:.5 andDelayIncrement:0.1];
+}
+
+- (void)showNormalButtons
+{
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self attendantsButton],
+                      [self actionItemButton],
+                      [self decisionButton],
+                      [self questionButton],
+                      [self keyPointButton],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.15 andDelay:0 andDelayIncrement:0.1];
+    
 }
 
 - (void)setupDate
@@ -304,6 +326,8 @@ static NSString *DONE = @"DONE";
     [[self trashButton] setHidden:NO];
     [[self entriesViewController] setCanEdit:YES];
     [[self addSummaryButton] setHidden:YES];
+    
+    [self showNormalButtons];
 }
 
 - (void)reviewing

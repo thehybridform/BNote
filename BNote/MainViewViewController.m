@@ -42,6 +42,7 @@
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UILabel *liteLable;
+@property (strong, nonatomic) NoteEditorViewController *noteEditorViewController;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
 
@@ -99,7 +100,7 @@ static NSString *email = @"E-mail";
     self = [super initWithNibName:@"MainViewViewController" bundle:nil];
     
     if (self) {
-        
+        [self setNoteEditorViewController:[[NoteEditorViewController alloc] init]];
     }
     
     return self;
@@ -188,11 +189,13 @@ static NSString *email = @"E-mail";
         note = (Note *)object;
     }
    
-    NoteEditorViewController *noteController = [[NoteEditorViewController alloc] initWithNote:note];
+    NoteEditorViewController *noteController = [self noteEditorViewController];
     [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
     [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentModalViewController:noteController animated:YES];
     
+    [noteController setNote:note];
+
     if (entry) {
         [noteController selectEntry:entry];
     }

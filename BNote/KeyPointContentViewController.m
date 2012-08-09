@@ -23,7 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
 @property (strong, nonatomic) IBOutlet UIButton *sketchButton;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
-@property (assign, nonatomic) BOOL hasCamera;
 
 @end
 
@@ -31,7 +30,6 @@
 @synthesize imagePickerController = _imagePickerController;
 @synthesize cameraButton = _cameraButton;
 @synthesize photoAlbumButton = _photoAlbumButton;
-@synthesize hasCamera = _hasCamera;
 @synthesize sketchButton = _sketchButton;
 @synthesize photoImageView = _photoImageView;
 
@@ -60,12 +58,6 @@ static NSString *removeImage = @"Remove";
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showDelete:)];
         [[self photoImageView] addGestureRecognizer:longPress];
 
-        BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-        [self setHasCamera:hasCamera];
-        if (!hasCamera) {
-            [[self cameraButton] setHidden:YES];
-        }
-        
         [LayerFormater roundCornersForView:[self photoImageView]];
         
         [self handlePhotoImage];
@@ -87,16 +79,6 @@ static NSString *removeImage = @"Remove";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self cameraButton],
-                      [self photoAlbumButton],
-                      [self sketchButton],
-                      [self photoImageView],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
                                                  name:kKeyPointPhotoUpdated object:nil];
@@ -158,7 +140,7 @@ static NSString *removeImage = @"Remove";
     
     [self setImagePickerController:controller];
 
-    [[self parentController] presentModalViewController:controller animated:YES];
+    [[self parentViewController] presentModalViewController:controller animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -199,7 +181,7 @@ static NSString *removeImage = @"Remove";
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         
-    [[self parentController] presentModalViewController:controller animated:YES];
+    [[self parentViewController] presentModalViewController:controller animated:YES];
 }
 
 - (void)updateImageView:(NSNotification *)notification
@@ -221,28 +203,7 @@ static NSString *removeImage = @"Remove";
     
     [controller setKeyPoint:[self keyPoint]];
     
-    [[self parentController] presentModalViewController:controller animated:YES];
-}
-
-- (void)reviewMode:(NSNotification *)notification
-{
-//    [[self cameraButton] setHidden:YES];
-//    [[self photoAlbumButton] setHidden:YES];
-//    [[self sketchButton] setHidden:YES];
-
-    [super reviewMode:notification];
-}
-
-- (void)editingNote:(NSNotification *)notification
-{
-    if ([self hasCamera]) {
-        [[self cameraButton] setHidden:NO];
-    }
-    
-//    [[self photoAlbumButton] setHidden:NO];
-//    [[self sketchButton] setHidden:NO];
-
-    [super editingNote:notification];
+    [[self parentViewController] presentModalViewController:controller animated:YES];
 }
 
 - (void)showDelete:(id)sender
@@ -273,6 +234,30 @@ static NSString *removeImage = @"Remove";
             [self handlePhotoImage];
         }
     }
+}
+
+- (void)hideControls
+{
+    [[self cameraButton] setHidden:YES];
+    [[self photoAlbumButton] setHidden:YES];
+    [[self sketchButton] setHidden:YES];
+}
+
+- (void)showControls
+{
+    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    [[self cameraButton] setHidden:!hasCamera];
+    [[self photoAlbumButton] setHidden:NO];
+    [[self sketchButton] setHidden:NO];
+
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self photoImageView],
+                      [self cameraButton],
+                      [self photoAlbumButton],
+                      [self sketchButton],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.8 andDelayIncrement:0.15];
 }
 
 @end

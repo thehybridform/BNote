@@ -52,9 +52,6 @@
 {
     [super viewDidLoad];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNote:)
-                                                 name:kNoteUpdated object:[self note]];
-
     [self setup];
 }
 
@@ -68,8 +65,6 @@
     [self setYear:nil];
     [self setTime:nil];
     [self setDateView:nil];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setup
@@ -126,8 +121,6 @@
 
 -(void)normalPressTap:(id)sender
 {
-    [LayerFormater setBorderColorWithInt:[[self note] color] forView:[self view]];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNoteSelected object:[self note]];
 }
 

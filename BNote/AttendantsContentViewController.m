@@ -70,13 +70,6 @@ static NSString *createNew = @"Create";
      addObserver:self
         selector:@selector(keyboardDidHideAttendantsContentViewController:)
             name:UIKeyboardDidHideNotification object:nil];
-    
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self addAttendantView],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
-
 }
 
 - (void)viewDidUnload
@@ -219,14 +212,20 @@ static NSString *createNew = @"Create";
     [[BNoteSessionData instance] setActionSheet:nil];
 }
 
-- (void)reviewMode:(NSNotification *)notification
+- (void)hideControls
 {
-//    [[self addAttendantView] setHidden:YES];
+    [[self addAttendantView] setHidden:YES];
 }
 
-- (void)editingNote:(NSNotification *)notification
+- (void)showControls
 {
-//    [[self addAttendantView] setHidden:NO];
+    [[self addAttendantView] setHidden:NO];
+
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self addAttendantView],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.7 andDelayIncrement:0.1];
 }
 
 @end

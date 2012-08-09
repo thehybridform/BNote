@@ -39,7 +39,6 @@ const int kMaxEntries = 5;
 
 NSString * const kKeyPointPhotoUpdated = @"kKeyPointPhotoUpdated";
 NSString * const kKeyWordsUpdated = @"kKeyWordsUpdated";
-NSString * const kNoteUpdated = @"kNoteUpdated";
 NSString * const kNoteSelected = @"kNoteSelected";
 NSString * const kTopicCreated = @"kTopicCreated";
 NSString * const kTopicSelected = @"kTopicSelected";
@@ -48,6 +47,7 @@ NSString * const kEditTopicGroupSelected = @"kEditTopicGroupSelected";
 NSString * const kTopicGroupSelected = @"TopicGroupSelected";
 NSString * const kTopicGroupManage = @"kTopicGroupManage";
 NSString * const kTopicUpdated = @"kTopicUpdated";
+NSString * const kClosedNoteEditor = @"kClosedNoteEditor";
 NSString * const kAttendantsEntryDeleted = @"kAttendantsEntryDeleted";
 NSString * const kAttendeeDeleted = @"kAttendeeDeleted";
 NSString * const kAttendeeUpdated = @"kAttendeeUpdated";

@@ -60,6 +60,11 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectTopic:)
+                                                 name:kClosedNoteEditor
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateReceived:)
                                                  name:kRefetchAllDatabaseData
                                                object:nil];

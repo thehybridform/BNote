@@ -14,7 +14,6 @@
 
 @interface EntryContentViewController : UIViewController <EntryContent>
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
-@property (strong, nonatomic) UIViewController *parentController;
 @property (strong, nonatomic) UITextView *selectedTextView;
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
@@ -24,5 +23,8 @@
 - (void)handleImageIcon:(BOOL)active;
 - (void)reviewMode:(NSNotification *)notification;
 - (void)editingNote:(NSNotification *)notification;
+
+- (void)hideControls;
+- (void)showControls;
 
 @end

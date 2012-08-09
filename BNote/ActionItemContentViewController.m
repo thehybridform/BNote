@@ -105,16 +105,6 @@ static NSString *clearDueDate = @"Clear Due Date";
     [self updateDueDate];
     [self updateResponsibility];
     [self updateComplete];
-
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self responsibilityView],
-                      [self caledarBlankView],
-                      [self calendarCheckView],
-                      [self circleBlankView],
-                      [self circleCheckView],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
 }
 
 - (float)height
@@ -327,6 +317,24 @@ static NSString *clearDueDate = @"Clear Due Date";
     }
     
     [[BNoteSessionData instance] setActionSheet:nil];
+}
+
+- (void)showControls
+{
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      [self responsibilityView],
+                      [self dueDateView],
+                      [self completionView],
+                      [self circleBlankView],
+                      [self circleCheckView],
+                      [self caledarBlankView],
+                      [self calendarCheckView],
+                      [self completionLabel],
+                      [self dueDateLabel],
+                      [self responsibilityLabel],
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.2 andDelay:0.9 andDelayIncrement:0.08];
 }
 
 @end

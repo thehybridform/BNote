@@ -32,23 +32,23 @@
 {    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    [[BNoteWriter instance] setContext:[self managedObjectContext]];
-    [[BNoteReader instance] setContext:[self managedObjectContext]];
+    BNoteWriter.instance.context = self.managedObjectContext;
+    BNoteReader.instance.context = self.managedObjectContext;
     
     MainViewViewController *mainViewViewController = [[MainViewViewController alloc] initWithDefault];
     [self setMainViewViewController:mainViewViewController];
     
-    [[self window] setRootViewController:mainViewViewController];
-    [[self window] makeKeyAndVisible];
+    self.window.rootViewController = mainViewViewController;
+    [self.window makeKeyAndVisible];
     
         
     if (![BNoteSessionData booleanForKey:kEulaFlag]) {
         [BNoteDefaultData setup];
         UIViewController *controller;
         controller = [[BNoteLiteViewController alloc] initWithDefault];
-        [controller setModalPresentationStyle:UIModalPresentationFormSheet];
-        [controller setModalInPopover:YES];
-        [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        controller.modalPresentationStyle = UIModalPresentationFormSheet;
+        controller.modalInPopover = YES;
+        controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
         [mainViewViewController presentViewController:controller animated:YES completion:^{}];
     }
@@ -58,7 +58,7 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    if ([[self mainViewViewController] searchTopic]) {
+    if (self.mainViewViewController.searchTopic) {
         [[BNoteWriter instance] removeTopic:[[self mainViewViewController] searchTopic]];
     }
     [[BNoteWriter instance] update];
@@ -66,7 +66,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    if ([[self mainViewViewController] searchTopic]) {
+    if (self.mainViewViewController.searchTopic) {
         [[BNoteWriter instance] removeTopic:[[self mainViewViewController] searchTopic]];
     }
 }
@@ -83,7 +83,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    if ([[self mainViewViewController] searchTopic]) {
+    if (self.mainViewViewController.searchTopic) {
         [[BNoteWriter instance] removeTopic:[[self mainViewViewController] searchTopic]];
     }
     [[BNoteWriter instance] update];

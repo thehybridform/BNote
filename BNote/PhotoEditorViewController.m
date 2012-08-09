@@ -11,6 +11,7 @@
 #import "LayerFormater.h"
 #import "Photo.h"
 #import "BNoteWriter.h"
+#import "BNoteAnimation.h"
 
 @interface PhotoEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
@@ -172,6 +173,43 @@ static const CGFloat large = 20;
  
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     [self changeTheViewToPortrait:UIInterfaceOrientationIsPortrait(orientation) andDuration:0.3];
+    
+    NSArray *views1 = [[NSArray alloc]
+                       initWithObjects:
+                       [self color0Button],
+                       [self color1Button],
+                       [self color2Button],
+                       [self color3Button],
+                       [self color4Button],
+                       [self color5Button],
+                       [self color6Button],
+                       nil];
+    NSArray *views4 = [[NSArray alloc]
+                       initWithObjects:
+                       [self color7Button],
+                       [self color8Button],
+                       [self color9Button],
+                       [self color10Button],
+                       [self color11Button],
+                       [self color12Button],
+                       [self color13Button],
+                       nil];
+    NSArray *views2 = [[NSArray alloc]
+                       initWithObjects:
+                       [self smallPencileButton],
+                       [self mediumPencileButton],
+                       [self largePencileButton],
+                       nil];
+    NSArray *views3 = [[NSArray alloc]
+                       initWithObjects:
+                       [self redoButton],
+                       [self undoButton],
+                       nil];
+    [BNoteAnimation winkInView:views1 withDuration:0.05 andDelay:0.8 andDelayIncrement:0.1];
+    [BNoteAnimation winkInView:views4 withDuration:0.05 andDelay:0.8 andDelayIncrement:0.1];
+    [BNoteAnimation winkInView:views2 withDuration:0.05 andDelay:0.9 andDelayIncrement:0.1];
+    [BNoteAnimation winkInView:views3 withDuration:0.05 andDelay:1.0 andDelayIncrement:0.1];
+    [BNoteAnimation winkInView:[self imageView] withDuration:0.2 andDelay:0.7];
 }
 
 - (void)setupButton:(UIButton *)button withColor:(UIColor *)color

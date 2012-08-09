@@ -30,7 +30,6 @@ extern int const kFilterColor;
 
 extern NSString * const kKeyPointPhotoUpdated;
 extern NSString * const kKeyWordsUpdated;
-extern NSString * const kNoteUpdated;
 extern NSString * const kNoteSelected;
 extern NSString * const kTopicCreated;
 extern NSString * const kAddTopicGroupSelected;
@@ -39,6 +38,7 @@ extern NSString * const kTopicGroupSelected;
 extern NSString * const kTopicGroupManage;
 extern NSString * const kTopicSelected;
 extern NSString * const kTopicUpdated;
+extern NSString * const kClosedNoteEditor;
 extern NSString * const kAttendantsEntryDeleted;
 extern NSString * const kAttendeeDeleted;
 extern NSString * const kAttendeeUpdated;

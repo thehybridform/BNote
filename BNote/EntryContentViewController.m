@@ -24,7 +24,6 @@
 @implementation EntryContentViewController
 @synthesize entry = _entry;
 @synthesize quickWordsViewController = _quickWordsViewController;
-@synthesize parentController = _parentController;
 @synthesize selectedTextView = _selectedTextView;
 @synthesize mainTextView = _mainTextView;
 @synthesize iconView = _iconView;
@@ -75,6 +74,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[BNoteSessionData instance] editingNote]) {
+        [self showControls];
+    } else {
+        [self hideControls];
+    }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
                                                  name:kReviewingNote object:nil];
@@ -102,7 +107,12 @@
     [self setMainTextView:nil];
     [self setIconView:nil];
     [self setEntryMarginView:nil];
-    
+
+    [self detacthFromNotificationCenter];
+}
+
+- (void)detacthFromNotificationCenter
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -174,12 +184,14 @@
 
 - (void)reviewMode:(NSNotification *)notification
 {
+    [self hideControls];
     [[self mainTextView] resignFirstResponder];
 }
 
 - (void)editingNote:(NSNotification *)notification
 {
     [[self view] setNeedsDisplay];
+    [self showControls];
 }
 
 - (void)showEntryOptions:(id)sender
@@ -190,6 +202,16 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void)hideControls
+{
+    
+}
+
+- (void)showControls
+{
+    
 }
 
 @end

@@ -34,9 +34,7 @@
 @synthesize note = _note;
 @synthesize filter = _filter;
 @synthesize filteredControllers = _filteredControllers;
-@synthesize parentController = _parentController;
 @synthesize textView = _textView;
-@synthesize canEdit = _canEdit;
 @synthesize showSummary = _showSummary;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -44,7 +42,7 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        [self setCanEdit:YES];
+
     }
     
     return self;
@@ -65,7 +63,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
                                                  name:UITextViewTextDidBeginEditingNotification object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
                                                  name:UIKeyboardDidHideNotification object:nil];
 }
@@ -107,15 +104,8 @@
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]];
     
     [BNoteAnimation winkInView:[controller iconView] withDuration:0.2 andDelay:0.5];
-    
-    [controller setParentController:[self parentController]];
 
     return [controller cell];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [self canEdit];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -194,6 +184,10 @@
 
 - (void)reload
 {
+    for (id<EntryContent> ec in [self filteredControllers]) {
+        [ec detacthFromNotificationCenter];
+    }
+    
     [[self filteredControllers] removeAllObjects];
     for (Entry *entry in [[self note] entries]) {
         if ([[self filter] accept:entry]) {

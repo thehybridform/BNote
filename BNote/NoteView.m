@@ -233,25 +233,37 @@ const static float h2 = h1 - 10;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [[self gradientLayer] setHidden:NO];
     [super touchesBegan:touches withEvent:event];
+
+    [LayerFormater setBorderWidth:4 forView:self];
+    [LayerFormater setBorderColor:UIColorFromRGB([[self note] color]) forView:self];
+    [[self gradientLayer] setHidden:NO];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [LayerFormater setBorderWidth:2 forView:self];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
     [[self gradientLayer] setHidden:YES];
+    
     [super touchesCancelled:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [LayerFormater setBorderWidth:2 forView:self];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
     [[self gradientLayer] setHidden:YES];
+    
     [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [LayerFormater setBorderWidth:2 forView:self];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
     [[self gradientLayer] setHidden:YES];
+
     [super touchesMoved:touches withEvent:event];
 }
 

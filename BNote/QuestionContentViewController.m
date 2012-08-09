@@ -64,11 +64,6 @@
     
     [LayerFormater roundCornersForView:[self answerTextView]];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
-                                                 name:kReviewingNote object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
-                                                 name:kEditingNote object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnswerText:)
                                                  name:UITextViewTextDidChangeNotification object:view];
     
@@ -77,13 +72,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingAnswerText:)
                                                  name:UITextViewTextDidEndEditingNotification object:view];
-
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self answerTextView],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.2 andDelayIncrement:0.1];
-
 }
 
 - (void)viewDidUnload

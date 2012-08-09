@@ -20,6 +20,6 @@
 - (UITableViewCell *)cell;
 - (float)height;
 - (float)width;
-- (void)setParentController:(UIViewController *)controller;
+- (void)detacthFromNotificationCenter;
 
 @end

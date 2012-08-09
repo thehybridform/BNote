@@ -26,7 +26,6 @@
 #import "BNoteAnimation.h"
 
 @interface NoteEditorViewController ()
-@property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) UIColor *toolbarEditColor;
 @property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) UIPopoverController *popup;
@@ -57,8 +56,6 @@
 @property (strong, nonatomic) UIButton *selectedFilterButton;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
-
-@property (strong, nonatomic) UITapGestureRecognizer *dateTap;
 
 @property (assign, nonatomic) BOOL isEditing;
 
@@ -91,7 +88,6 @@
 @synthesize entryLabel = _entryLabel;
 @synthesize isEditing = _isEditing;
 @synthesize titleLabel = _titleLabel;
-@synthesize dateTap = _dateTap;
 @synthesize normalEntryButtonsView = _normalEntryButtonsView;
 @synthesize reviewEntryButtonsView = _reviewEntryButtonsView;
 @synthesize filteringLabel = _filteringLabel;
@@ -133,16 +129,10 @@ static NSString *DONE = @"DONE";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (id)initWithNote:(Note *)note
+- (id)init
 {
     self = [super initWithNibName:@"NoteEditorViewController" bundle:nil];
     if (self) {
-        [self setNote:note];
-        [self setIsEditing:YES];
-
-        UITapGestureRecognizer *normalTap =
-            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
-        [self setDateTap:normalTap];
 
     }
     return self;
@@ -152,21 +142,9 @@ static NSString *DONE = @"DONE";
 {
     [super viewDidLoad];
     
-    [[self subjectTextView] resignFirstResponder];
-    
-    [[self dateView] addGestureRecognizer:[self dateTap]];
-
     [LayerFormater addShadowToView:[self footerView]];
     [LayerFormater addShadowToView:[self menuView]];
 
-    Note *note = [self note];
-    BOOL empty = [BNoteStringUtils nilOrEmpty:[note subject]];
-    if (empty) {
-        [[self subjectTextView] setText:@"Enter Subject"];
-    } else {
-        [[self subjectTextView] setText:[note subject]];
-    }
-                                       
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
@@ -174,9 +152,6 @@ static NSString *DONE = @"DONE";
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self menuView]];
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self footerView]];
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self infoView]];
-    
-    [[self entriesViewController] setNote:note];
-    [[self entriesViewController] setParentController:self];
     
     [[self keyPointButton] setIcon:[BNoteFactory createIcon:KeyPointIcon]];
     [[self actionItemButton] setIcon:[BNoteFactory createIcon:ActionItemIcon]];
@@ -193,7 +168,6 @@ static NSString *DONE = @"DONE";
 
     [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:18]];
     [[self titleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-    [[self titleLabel] setText:[[note topic] title]];
     
     [[[self keyPointButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[[self actionItemButton] titleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
@@ -214,34 +188,44 @@ static NSString *DONE = @"DONE";
     [[self subjectTextView] setFont:[BNoteConstants font:RobotoRegular andSize:20]];
     [[self subjectTextView] setTextColor:UIColorFromRGB(0x444444)];
 
-    [self setupDate];
-    
-    [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
+    UITapGestureRecognizer *normalTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
+    [[self dateView] addGestureRecognizer:normalTap];
 
-    [[self reviewEntryButtonsView] setHidden:YES];
-    [[self addSummaryButton] setHidden:YES];
-    
     [LayerFormater roundCornersForView:[self infoView]];
     [LayerFormater setBorderWidth:2 forView:[self infoView]];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[self infoView]];
-    [[self infoView] setNote:note];
-    [[self infoView] setNeedsDisplay];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:)
-                                                 name:kTopicUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
                                                  name:kAttendantsEntryDeleted object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWordsUpdated:)
                                                  name:kKeyWordsUpdated object:nil];
+}
 
-    [self showNormalButtons];
+- (void)setNote:(Note *)note
+{
+    _note = note;
     
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self infoView],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:.5 andDelayIncrement:0.1];
+    [self setup];
+}
+
+- (void)setup
+{
+    [self editing];
+    [self setupDate];
+
+    Note *note = [self note];
+    if ([BNoteStringUtils nilOrEmpty:[note subject]]) {
+        [[self subjectTextView] setText:@"Enter Subject"];
+    } else {
+        [[self subjectTextView] setText:[note subject]];
+    }
+    
+    [[self entriesViewController] setNote:note];
+    [[self titleLabel] setText:[[note topic] title]];
+    [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
+    [[self infoView] setNote:note];
+    [[self infoView] setNeedsDisplay];
 }
 
 - (void)showNormalButtons
@@ -254,8 +238,8 @@ static NSString *DONE = @"DONE";
                       [self questionButton],
                       [self keyPointButton],
                       nil];
-    [BNoteAnimation winkInView:views withDuration:0.15 andDelay:0 andDelayIncrement:0.1];
     
+    [BNoteAnimation winkInView:views withDuration:0.15 andDelay:0.6 andDelayIncrement:0.1];
 }
 
 - (void)setupDate
@@ -290,22 +274,21 @@ static NSString *DONE = @"DONE";
 
 - (IBAction)done:(id)sender
 {
-    [[self view] setBackgroundColor:UIColorFromRGB([[self note] color])];
+    [self dismissModalViewControllerAnimated:YES];
+    [self setupTableViewAddingEntries];
 
     [[self note] setSubject:[[self subjectTextView] text]];
-    [self dismissModalViewControllerAnimated:YES];
-
+    
     [BNoteEntryUtils cleanUpEntriesForNote:[self note]];
     
     [[BNoteWriter instance] update];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:[[self note] topic]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kClosedNoteEditor object:[[self note] topic]];
 }
 
 - (IBAction)editMode:(id)sender
 {
     if ([self isEditing]) {
-        [self setupTableViewAddingEntries];
         [self reviewing];
     } else {
         [self editing];
@@ -314,8 +297,6 @@ static NSString *DONE = @"DONE";
 
 - (void)editing
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kEditingNote object:nil];
-
     [[self reviewButton] setTitle:REVIEW forState:UIControlStateNormal];
     [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
@@ -324,16 +305,15 @@ static NSString *DONE = @"DONE";
     [[self reviewEntryButtonsView] setHidden:YES];
     [[self normalEntryButtonsView] setHidden:NO];
     [[self trashButton] setHidden:NO];
-    [[self entriesViewController] setCanEdit:YES];
     [[self addSummaryButton] setHidden:YES];
     
     [self showNormalButtons];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEditingNote object:nil];
 }
 
 - (void)reviewing
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewingNote object:nil];
-
     [[self reviewButton] setTitle:DONE forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:YES];
     [self setIsEditing:NO];
@@ -341,12 +321,12 @@ static NSString *DONE = @"DONE";
     [[self reviewEntryButtonsView] setHidden:NO];
     [[self normalEntryButtonsView] setHidden:YES];
     [[self trashButton] setHidden:YES];
-    [[self entriesViewController] setCanEdit:NO];
     
     BOOL showingSummary = [[self entriesViewController] showingSummary];
     [[self addSummaryButton] setHidden:showingSummary];
 
     [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewingNote object:nil];
 }
 
 - (void)keyWordsUpdated:(NSNotification *)notification
@@ -497,11 +477,6 @@ static NSString *DONE = @"DONE";
 - (void)selectEntry:(Entry *)entry
 {
     [[self entriesViewController] selectEntry:entry];
-}
-
-- (void)reload:(id)sender
-{
-    [[self entriesViewController] reload];
 }
 
 - (void)updateToolBar:(NSNotification *)notification

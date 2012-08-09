@@ -33,6 +33,26 @@
     
     [view setAlpha:0];
     
+    UIView *spark = [[UIView alloc] initWithFrame:frame];
+    [[spark layer] setCornerRadius:15];
+    [spark setBackgroundColor:[BNoteConstants appColor1]];
+    [spark setAlpha:0.5];
+    [[view superview] addSubview:spark];
+    
+    CGRect finalSparkFrame = CGRectMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2.0, 0, 0);
+    
+    [UIView animateWithDuration:0.8
+                          delay:delay * 2 / 3
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^(void) {
+                         [spark setAlpha:0];
+                         [spark setFrame:finalSparkFrame];
+                     }
+                     completion:^(BOOL finished) {
+                         [spark removeFromSuperview];
+                     }
+     ];
+    
     [UIView animateWithDuration:duration
                           delay:delay
                         options:(UIViewAnimationOptionCurveEaseOut)
@@ -42,7 +62,6 @@
                      completion:^(BOOL finished) {
                      }
      ];
-    
     
     [UIView animateWithDuration:0.1
                           delay:delay

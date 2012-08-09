@@ -72,7 +72,7 @@
 			</object>
 			<object class="IBUIView" id="766721923">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">310</int>
+				<int key="NSvFlags">278</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUITableView" id="18117635">
 						<reference key="NSNextResponder" ref="766721923"/>
@@ -1300,7 +1300,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">386</int>
+			<int key="maxID">387</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

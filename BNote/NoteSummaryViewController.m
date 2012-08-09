@@ -22,7 +22,6 @@
 @implementation NoteSummaryViewController
 @synthesize textView = _textView;
 @synthesize note = _note;
-@synthesize parentController = _parentController;
 @synthesize summaryLabel = _summaryLabel;
 @synthesize quickWordsViewController = _quickWordsViewController;
 
@@ -84,6 +83,11 @@
     [self setTextView:nil];
     [self setSummaryLabel:nil];
 
+    [self detacthFromNotificationCenter];
+}
+
+- (void)detacthFromNotificationCenter
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

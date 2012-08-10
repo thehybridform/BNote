@@ -1605,6 +1605,7 @@
 		18BF3F60157B456100B6E226 /* Entry View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				18C5E89415C7C0A7005590A2 /* Summary View Cell */,
 				184976BC1597A72100F49F5A /* Decision */,
 				1849769F15919E1700F49F5A /* Key Point */,
 				1849769B15919D9400F49F5A /* Action Item */,
@@ -1692,7 +1693,6 @@
 		18E9FF29156C6FDA00F22272 /* Edit Notes */ = {
 			isa = PBXGroup;
 			children = (
-				18C5E89415C7C0A7005590A2 /* Summary View Cell */,
 				18BA9623158D817E004A4A38 /* Topic Selctor */,
 				18BF3F60157B456100B6E226 /* Entry View Cell */,
 				1879F05C15747AFB003814C2 /* Quick Buttons */,

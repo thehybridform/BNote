@@ -39,6 +39,7 @@ const int kMaxEntries = 5;
 
 NSString * const kKeyPointPhotoUpdated = @"kKeyPointPhotoUpdated";
 NSString * const kKeyWordsUpdated = @"kKeyWordsUpdated";
+NSString * const kNoteUpdated = @"kNoteUpdated";
 NSString * const kNoteSelected = @"kNoteSelected";
 NSString * const kTopicCreated = @"kTopicCreated";
 NSString * const kTopicSelected = @"kTopicSelected";

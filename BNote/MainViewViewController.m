@@ -101,6 +101,7 @@ static NSString *email = @"E-mail";
     
     if (self) {
         [self setNoteEditorViewController:[[NoteEditorViewController alloc] init]];
+        [BNoteSessionData instance].mainViewController = self.noteEditorViewController;
     }
     
     return self;

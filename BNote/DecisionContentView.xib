@@ -117,8 +117,10 @@
 				<reference key="NSNextKeyView" ref="781524128"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUISelectionStyle">0</int>
 				<bool key="IBUIShowsReorderControl">YES</bool>
 				<reference key="IBUIContentView" ref="781524128"/>
+				<string key="IBUIReuseIdentifier">decisionId</string>
 				<real value="99" key="IBUIRowHeight"/>
 			</object>
 		</array>

@@ -314,7 +314,9 @@
 				<reference key="NSNextKeyView" ref="1058313644"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="1058313644"/>
+				<string key="IBUIReuseIdentifier">actionItemId</string>
 				<real value="99" key="IBUIRowHeight"/>
 			</object>
 		</array>

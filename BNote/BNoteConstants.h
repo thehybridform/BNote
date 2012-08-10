@@ -30,6 +30,7 @@ extern int const kFilterColor;
 
 extern NSString * const kKeyPointPhotoUpdated;
 extern NSString * const kKeyWordsUpdated;
+extern NSString * const kNoteUpdated;
 extern NSString * const kNoteSelected;
 extern NSString * const kTopicCreated;
 extern NSString * const kAddTopicGroupSelected;

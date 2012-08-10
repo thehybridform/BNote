@@ -143,7 +143,7 @@ static NSString *actionItem = @"Action Item";
             [note insertObject:entry inEntriesAtIndex:index];
 
             [[BNoteWriter instance] update];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNoteUpdated object:nil];
         }
     }
     

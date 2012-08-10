@@ -211,7 +211,6 @@ static NSString *DONE = @"DONE";
 
 - (void)setup
 {
-    [self editing];
     [self setupDate];
 
     Note *note = [self note];
@@ -226,6 +225,8 @@ static NSString *DONE = @"DONE";
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:note]];
     [[self infoView] setNote:note];
     [[self infoView] setNeedsDisplay];
+    
+    [self editing];
 }
 
 - (void)showNormalButtons
@@ -274,15 +275,13 @@ static NSString *DONE = @"DONE";
 
 - (IBAction)done:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
-    [self setupTableViewAddingEntries];
-
-    [[self note] setSubject:[[self subjectTextView] text]];
-    
     [BNoteEntryUtils cleanUpEntriesForNote:[self note]];
-    
     [[BNoteWriter instance] update];
     
+    [self dismissModalViewControllerAnimated:YES];
+    [[self note] setSubject:[[self subjectTextView] text]];
+    [self setupTableViewAddingEntries];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:kClosedNoteEditor object:[[self note] topic]];
 }
 

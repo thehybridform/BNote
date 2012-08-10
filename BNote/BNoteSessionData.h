@@ -16,6 +16,7 @@
 @property (strong, nonatomic) id<UIActionSheetDelegate> actionSheetDelegate;
 @property (strong, nonatomic) Topic *selectedTopic;
 @property (assign, nonatomic) BOOL editingNote;
+@property (strong, nonatomic) UIViewController *mainViewController;
 
 + (BNoteSessionData *)instance;
 

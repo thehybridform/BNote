@@ -26,6 +26,7 @@
 @synthesize entrySummaryHeaderImageViews = _entrySummaryHeaderImageViews;
 @synthesize selectedTopic = _selectedTopic;
 @synthesize editingNote = _editingNote;
+@synthesize mainViewController = _mainViewController;
 
 - (id)initSingleton
 {

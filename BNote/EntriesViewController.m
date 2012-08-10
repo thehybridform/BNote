@@ -66,8 +66,8 @@
                                                  name:UIKeyboardDidHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteUpdated:)
                                                  name:kNoteUpdated object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteUpdated:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteUpdated:)
+//                                                 name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -192,6 +192,10 @@
 
 - (void)reload
 {
+    for (id<EntryContent> ec in self.filteredControllers) {
+        [ec detatchFromNotificationCenter];
+    }
+    
     [[self filteredControllers] removeAllObjects];
     
     for (Entry *entry in [[self note] entries]) {
@@ -235,8 +239,7 @@
 
 - (void)selectFirstCell
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self selectEntryCell:0];
 }
 
 - (void)selectEntryCell:(int)index
@@ -244,15 +247,16 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
-    [[controller mainTextView] becomeFirstResponder];
+    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:index];
+    [[controller selectedTextView] becomeFirstResponder];
 }
 
 - (void)selectEntry:(Entry *)entry
 {
     for (id<EntryContent> controller in [self filteredControllers]) {
         if ([controller entry] == entry) {
-            [[controller mainTextView] becomeFirstResponder];
+            int index = [self.filteredControllers indexOfObject:controller];
+            [self selectEntryCell:index];
             return;
         }
     }

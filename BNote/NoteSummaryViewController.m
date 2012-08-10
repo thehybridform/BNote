@@ -164,7 +164,7 @@
     return YES;
 }
 
-- (void)dealloc
+- (void)detatchFromNotificationCenter
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

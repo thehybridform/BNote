@@ -15,10 +15,11 @@
 - (UIView *)view;
 - (Entry *)entry;
 - (UITextView *)selectedTextView;
-- (UITextView *)mainTextView;
 - (UIImageView *)iconView;
 - (UITableViewCell *)cell;
 - (float)height;
 - (float)width;
+
+- (void)detatchFromNotificationCenter;
 
 @end

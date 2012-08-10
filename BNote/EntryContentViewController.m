@@ -40,10 +40,12 @@
         [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
-        [self handleImageIcon:NO];
         
         UITextView *view = [self mainTextView];
         if (view) {
+            [self setSelectedTextView:view];
+            [view setText:[[self entry] text]];
+            
             [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
             [view setTextColor:UIColorFromRGB(0x444444)];
             [view setClipsToBounds:YES];
@@ -52,15 +54,17 @@
             QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
             [self setQuickWordsViewController:quick];
             [view setInputAccessoryView:[quick view]];
-            [self setSelectedTextView:view];
-            [[self mainTextView] setText:[[self entry] text]];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                         name:UITextViewTextDidChangeNotification object:view];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
+                                                         name:UITextViewTextDidBeginEditingNotification object:view];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                         name:UITextViewTextDidEndEditingNotification object:view];
         }
         
-        if (![entry isKindOfClass:[Attendants class]]) {
-            UITapGestureRecognizer *tap =
-                [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEntryOptions:)];
-            [[self entryMarginView] addGestureRecognizer:tap];
-        }
     }
     
     return self;
@@ -75,6 +79,14 @@
 {
     [super viewDidLoad];
     
+    [self handleImageIcon:NO];
+    
+    if (![self.entry isKindOfClass:[Attendants class]]) {
+        UITapGestureRecognizer *tap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEntryOptions:)];
+        [[self entryMarginView] addGestureRecognizer:tap];
+    }
+
     if ([[BNoteSessionData instance] editingNote]) {
         [self showControls];
     } else {
@@ -87,17 +99,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
                                                  name:kEditingNote object:nil];
     
-    UITextView *view = [self mainTextView];
-    if (view) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                     name:UITextViewTextDidChangeNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
-                                                     name:UITextViewTextDidBeginEditingNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
-                                                     name:UITextViewTextDidEndEditingNotification object:view];
-    }
 }
 
 - (void)viewDidUnload
@@ -185,7 +186,6 @@
 
 - (void)editingNote:(NSNotification *)notification
 {
-    NSLog(@"%i", self.hash);
     [self showControls];
 }
 
@@ -209,9 +209,8 @@
     
 }
 
-- (void)dealloc
+- (void)detatchFromNotificationCenter
 {
-    NSLog(@"cell %i", self.hash);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

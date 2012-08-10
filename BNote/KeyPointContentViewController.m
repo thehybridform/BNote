@@ -260,8 +260,5 @@ static NSString *removeImage = @"Remove";
     [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.2];
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+
 @end

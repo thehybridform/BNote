@@ -108,11 +108,6 @@
     [self setIconView:nil];
     [self setEntryMarginView:nil];
 
-    [self detacthFromNotificationCenter];
-}
-
-- (void)detacthFromNotificationCenter
-{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -190,7 +185,7 @@
 
 - (void)editingNote:(NSNotification *)notification
 {
-    [[self view] setNeedsDisplay];
+    NSLog(@"%i", self.hash);
     [self showControls];
 }
 
@@ -212,6 +207,12 @@
 - (void)showControls
 {
     
+}
+
+- (void)dealloc
+{
+    NSLog(@"cell %i", self.hash);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

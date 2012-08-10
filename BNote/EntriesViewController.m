@@ -53,7 +53,6 @@
     [super viewDidLoad];
     
     [self setFilteredControllers:[[NSMutableArray alloc] init]];
-    [self setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
      
@@ -64,6 +63,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditing:)
                                                  name:UITextViewTextDidBeginEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteUpdated:)
+                                                 name:kNoteUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteUpdated:)
                                                  name:UIKeyboardDidHideNotification object:nil];
 }
 
@@ -182,13 +185,15 @@
     return [controller height];
 }
 
+- (void)noteUpdated:(NSNotification *)notificaiton
+{
+    [self reload];
+}
+
 - (void)reload
 {
-    for (id<EntryContent> ec in [self filteredControllers]) {
-        [ec detacthFromNotificationCenter];
-    }
-    
     [[self filteredControllers] removeAllObjects];
+    
     for (Entry *entry in [[self note] entries]) {
         if ([[self filter] accept:entry]) {
             if (![entry isKindOfClass:[Attendants class]]) {
@@ -296,4 +301,10 @@
     id<EntryContent> controller = [[self filteredControllers] lastObject];
     return [controller isKindOfClass:[NoteSummaryViewController class]];
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

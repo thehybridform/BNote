@@ -282,6 +282,7 @@ static NSString *DONE = @"DONE";
     [[self note] setSubject:[[self subjectTextView] text]];
     [self setupTableViewAddingEntries];
 
+    [[BNoteSessionData instance] setMainViewController:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:kClosedNoteEditor object:[[self note] topic]];
 }
 
@@ -297,7 +298,6 @@ static NSString *DONE = @"DONE";
 - (void)editing
 {
     [[self reviewButton] setTitle:REVIEW forState:UIControlStateNormal];
-    [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
     [self setIsEditing:YES];
     
@@ -520,6 +520,11 @@ static NSString *DONE = @"DONE";
 {
     [[self entriesViewController] displaySummary];
     [[self entriesViewController] selectSummaryCell];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

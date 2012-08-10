@@ -21,8 +21,6 @@
 
 - (id)initWithEntry:(Entry *)entry;
 - (void)handleImageIcon:(BOOL)active;
-- (void)reviewMode:(NSNotification *)notification;
-- (void)editingNote:(NSNotification *)notification;
 
 - (void)hideControls;
 - (void)showControls;

@@ -107,7 +107,7 @@ typedef enum {
 
 + (UIView *)createEntrySummaryHeaderView:(EntrySummaryHeaderType)type;
 
-+ (id<EntryContent>)createEntryContent:(Entry *)entry;
++ (EntryContentViewController *)createEntryContent:(Entry *)entry;
 + (id<EntryContent>)createSummaryEntry:(Note *)note;
 
 @end

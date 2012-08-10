@@ -83,11 +83,6 @@
     [self setTextView:nil];
     [self setSummaryLabel:nil];
 
-    [self detacthFromNotificationCenter];
-}
-
-- (void)detacthFromNotificationCenter
-{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -167,6 +162,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

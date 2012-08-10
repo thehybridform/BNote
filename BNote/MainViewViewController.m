@@ -42,7 +42,6 @@
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UILabel *liteLable;
-@property (strong, nonatomic) NoteEditorViewController *noteEditorViewController;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
 
@@ -53,7 +52,6 @@
 @synthesize topicsTable = _topicsTable;
 @synthesize entriesTable = _entriesTable;
 @synthesize detailView = _detailView;
-@synthesize notesViewController = _notesViewController;
 @synthesize peopleViewController = _peopleViewController;
 @synthesize countLabel = _countLabel;
 @synthesize notesLabel = _notesLabel;
@@ -100,8 +98,6 @@ static NSString *email = @"E-mail";
     self = [super initWithNibName:@"MainViewViewController" bundle:nil];
     
     if (self) {
-        [self setNoteEditorViewController:[[NoteEditorViewController alloc] init]];
-        [BNoteSessionData instance].mainViewController = self.noteEditorViewController;
     }
     
     return self;
@@ -190,11 +186,12 @@ static NSString *email = @"E-mail";
         note = (Note *)object;
     }
    
-    NoteEditorViewController *noteController = [self noteEditorViewController];
+    NoteEditorViewController *noteController = [[NoteEditorViewController alloc] init];
     [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
     [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentModalViewController:noteController animated:YES];
-    
+    [BNoteSessionData instance].mainViewController = noteController;
+
     [noteController setNote:note];
 
     if (entry) {
@@ -381,4 +378,8 @@ static NSString *email = @"E-mail";
     [[self peopleViewController] reload];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

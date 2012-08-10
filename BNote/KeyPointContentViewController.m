@@ -140,7 +140,7 @@ static NSString *removeImage = @"Remove";
     
     [self setImagePickerController:controller];
 
-    [[self parentViewController] presentModalViewController:controller animated:YES];
+    [[[BNoteSessionData instance] mainViewController] presentModalViewController:controller animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -181,7 +181,7 @@ static NSString *removeImage = @"Remove";
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         
-    [[self parentViewController] presentModalViewController:controller animated:YES];
+    [[[BNoteSessionData instance] mainViewController] presentModalViewController:controller animated:YES];
 }
 
 - (void)updateImageView:(NSNotification *)notification
@@ -203,7 +203,7 @@ static NSString *removeImage = @"Remove";
     
     [controller setKeyPoint:[self keyPoint]];
     
-    [[self parentViewController] presentModalViewController:controller animated:YES];
+    [[[BNoteSessionData instance] mainViewController] presentModalViewController:controller animated:YES];
 }
 
 - (void)showDelete:(id)sender
@@ -257,7 +257,11 @@ static NSString *removeImage = @"Remove";
                       [self photoAlbumButton],
                       [self sketchButton],
                       nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.8 andDelayIncrement:0.15];
+    [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.2];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

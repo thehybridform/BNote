@@ -228,4 +228,8 @@ static NSString *createNew = @"Create";
     [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.7 andDelayIncrement:0.1];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

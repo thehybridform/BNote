@@ -354,7 +354,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return -1;
 }
 
-+ (id<EntryContent>)createEntryContent:(Entry *)entry
++ (EntryContentViewController *)createEntryContent:(Entry *)entry
 {
     if ([entry isKindOfClass:[Attendants class]]) {
         return [[AttendantsContentViewController alloc] initWithEntry:entry];

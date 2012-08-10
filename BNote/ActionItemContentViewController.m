@@ -334,7 +334,7 @@ static NSString *clearDueDate = @"Clear Due Date";
                       [self dueDateLabel],
                       [self responsibilityLabel],
                       nil];
-    [BNoteAnimation winkInView:views withDuration:0.2 andDelay:0.9 andDelayIncrement:0.08];
+    [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.08];
 }
 
 @end

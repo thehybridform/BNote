@@ -136,4 +136,8 @@ static float spacing = 10;
     return YES;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

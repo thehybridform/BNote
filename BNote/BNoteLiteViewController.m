@@ -12,14 +12,22 @@
 #import "BNoteReader.h"
 
 @interface BNoteLiteViewController ()
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) IBOutlet UILabel *thankYouLabel;
+@property (strong, nonatomic) IBOutlet UITextView *line1TextView;
+@property (strong, nonatomic) IBOutlet UITextView *line2TextView;
+@property (strong, nonatomic) IBOutlet UITextView *line3TextView;
+@property (strong, nonatomic) IBOutlet UITextView *line4TextView;
 @property (strong, nonatomic) IBOutlet UIButton *okButton;
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 
 @end
 
 @implementation BNoteLiteViewController
-@synthesize webView = _webView;
+@synthesize thankYouLabel = _thankYouLabel;
+@synthesize line1TextView = _line1TextView;
+@synthesize line2TextView = _line2TextView;
+@synthesize line3TextView = _line3TextView;
+@synthesize line4TextView = _line4TextView;
 @synthesize okButton = _okButton;
 @synthesize closeButton = _closeButton;
 
@@ -59,15 +67,19 @@
     [self.okButton setTitle:NSLocalizedString(@"Continue", @"Continue to the next window") forState:UIControlStateNormal];
 
     [[self closeButton] setHidden:YES];
-    
+
 #ifdef LITE
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"lite-description.rtf" ofType:nil];
+    self.thankYouLabel.text = NSLocalizedString(@"Splash Screen Lite Title", nil);
+    self.line2TextView.text =  NSLocalizedString(@"Splash Screen Lite Line 2", nil);
 #else
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"full-description.rtf" ofType:nil];
+    self.thankYouLabel.text = NSLocalizedString(@"Splash Screen Full Title", nil);
+    self.line2TextView.text =  NSLocalizedString(@"Splash Screen Full Line 2", nil);
 #endif
-    NSURL *url = [NSURL fileURLWithPath:path];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [[self webView] loadRequest:request];
+    
+    self.line1TextView.text = NSLocalizedString(@"Welcome 1", nil);
+    self.line3TextView.text = NSLocalizedString(@"Splash Screen Line 1", nil);
+    self.line4TextView.text = NSLocalizedString(@"Splash Screen Line 3", nil);
+
 }
 
 - (void)viewDidUnload

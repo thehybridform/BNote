@@ -24,7 +24,8 @@
 @synthesize nameLabel = _nameLabel;
 @synthesize attendant = _attendant;
 
-static NSString *email = @"Send E-mail";
+static NSString *emailText;
+static NSString *attendantOptionsText;
 
 - (id)initWithAttendant:(Attendant *)attendant
 {
@@ -44,6 +45,9 @@ static NSString *email = @"Send E-mail";
 {
     [super viewDidLoad];
     
+    attendantOptionsText = NSLocalizedString(@"Attendant Options", @"Options for the attendant.");
+    emailText = NSLocalizedString(@"Send E-mail", @"Send an email to this person.");
+
     Attendant *attendant = [self attendant];
 
     NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
@@ -86,9 +90,9 @@ static NSString *email = @"Send E-mail";
         [[BNoteSessionData instance] setActionSheet:actionSheet];
         [[BNoteSessionData instance] setActionSheetDelegate:self];
     
-        [actionSheet addButtonWithTitle:email];
+        [actionSheet addButtonWithTitle:emailText];
     
-        [actionSheet setTitle:@"Attendant Options"];
+        [actionSheet setTitle:attendantOptionsText];
     
         CGRect rect = [[self icon] frame];
         [actionSheet showFromRect:rect inView:[self view] animated:YES];
@@ -111,7 +115,7 @@ static NSString *email = @"Send E-mail";
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == email) {
+        if (title == emailText) {
             [self presentEmailer];
         }
     }

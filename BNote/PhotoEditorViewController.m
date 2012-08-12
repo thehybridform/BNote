@@ -86,6 +86,11 @@ static const CGFloat small = 5;
 static const CGFloat medium = 10;
 static const CGFloat large = 20;
 
+static NSString *doneText;
+static NSString *undoText;
+static NSString *redoText;
+static NSString *resetText;
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -134,6 +139,16 @@ static const CGFloat large = 20;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    doneText = NSLocalizedString(@"Done", @"Done");
+    redoText = NSLocalizedString(@"Redo", @"Redo last action");
+    undoText = NSLocalizedString(@"Undo", @"Undo last action");
+    resetText = NSLocalizedString(@"Reset", @"Reset image");
+    
+    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+    [self.redoButton setTitle:redoText forState:UIControlStateNormal];
+    [self.undoButton setTitle:undoText forState:UIControlStateNormal];
+    [self.resetButton setTitle:resetText forState:UIControlStateNormal];
 
     [LayerFormater roundCornersForView:[self progressBackgroundView]];
     [[self progressView] setHidden:YES];

@@ -1,2 +1,0 @@
-Improve Recall
-Notetaking studies consistently support reviewing your notes to enhance recall.  BeNote's Review Mode allows you to filter your note entries by type, or by specified keywords. Add a summary to your notes when your review session is complete. BeNote shows all action items, questions and decisions across all notes in the topic overview.

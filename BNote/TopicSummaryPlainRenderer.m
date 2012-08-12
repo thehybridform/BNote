@@ -13,11 +13,11 @@
 
 - (NSString *)render:(Topic *)topic;
 {
-    NSString *title = @"Topic: ";
+    NSString *title = [NSLocalizedString(@"Topic", nil) stringByAppendingString:@": "];
     NSString *text = [topic title];
     NSString *created = [BNoteStringUtils formatDate:[topic created]];
     
-    return [BNoteStringUtils append:title, text, @" - Created: ", created, kNewLine, kNewLine, nil];
+    return [BNoteStringUtils append:title, text, @" - ", NSLocalizedString(@"Created Date", nil), @": ", created, kNewLine, kNewLine, nil];
 }
 
 @end

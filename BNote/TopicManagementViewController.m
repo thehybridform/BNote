@@ -38,6 +38,14 @@
 @synthesize actionButton = _actionButton;
 @synthesize menuView = _menuView;
 
+static NSString *cancelText;
+static NSString *doneText;
+static NSString *changeTopicText;
+static NSString *selectTopicText;
+static NSString *associateTopic;
+static NSString *copyTopicText;
+static NSString *highligtTopicText;
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -68,27 +76,41 @@
 {
     [super viewDidLoad];
 
+    cancelText = NSLocalizedString(@"Cancel", @"Cancel");
+    doneText = NSLocalizedString(@"Done", @"Done");
+    changeTopicText = NSLocalizedString(@"Change Topic", @"Change the note topic owner");
+    selectTopicText = NSLocalizedString(@"Select topic for note.", @"Select topic for this note");
+    associateTopic = NSLocalizedString(@"Associated Topics", @"Topics associated to with this note");
+    copyTopicText = NSLocalizedString(@"Copy to Topic", @"Copy to a differernt topic");
+    highligtTopicText = NSLocalizedString(@"Highlight topics to add.", @"Highlight the topics to add to this note");
+    
+    self.titleLable.font = [BNoteConstants font:RobotoBold andSize:24];
+    self.titleLable.textColor = [BNoteConstants appHighlightColor1];
+    
+    self.helpLable.font = [BNoteConstants font:RobotoRegular andSize:18];
+    self.helpLable.textColor = [BNoteConstants appHighlightColor1];
+    
     NSPredicate *p = [NSPredicate predicateWithFormat:@"title != %@", [[[self note] topic] title]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
-            [[self titleLable] setText:@"Change Topic"];
-            [[self helpLable] setText:@"Select topic for note."];
-            [[self actionButton] setTitle:@"Cancel" forState:UIControlStateNormal];
+            [[self titleLable] setText:changeTopicText];
+            [[self helpLable] setText:selectTopicText];
+            [[self actionButton] setTitle:cancelText forState:UIControlStateNormal];
             [[self tableView] setAllowsMultipleSelection:NO];
             break;
             
         case AssociateTopic:
-            [[self titleLable] setText:@"Associated Topics"];
-            [[self helpLable] setText:@"Highlight topics to add."];
+            [[self titleLable] setText:associateTopic];
+            [[self helpLable] setText:highligtTopicText];
             [[self tableView] setAllowsMultipleSelection:YES];
-            [[self actionButton] setTitle:@"Done" forState:UIControlStateNormal];
+            [[self actionButton] setTitle:doneText forState:UIControlStateNormal];
             break;
             
         case CopyToTopic:
-            [[self titleLable] setText:@"Copy to Topic"];
-            [[self helpLable] setText:@"Select topic for note."];
+            [[self titleLable] setText:copyTopicText];
+            [[self helpLable] setText:selectTopicText];
             [[self tableView] setAllowsMultipleSelection:NO];
-            [[self actionButton] setTitle:@"Cancel" forState:UIControlStateNormal];
+            [[self actionButton] setTitle:cancelText forState:UIControlStateNormal];
             p = [NSPredicate predicateWithValue:YES];
             break;
             
@@ -134,6 +156,8 @@
         if ([self topicSelectType] == AssociateTopic) {
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
+        cell.textLabel.font = [BNoteConstants font:RobotoRegular andSize:16];
+        cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
     }
 
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];

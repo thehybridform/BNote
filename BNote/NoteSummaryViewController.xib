@@ -45,7 +45,7 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{109, 9}, {649, 82}}</string>
 								<reference key="NSSuperview" ref="471787974"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -74,8 +74,9 @@
 							<object class="IBUILabel" id="588057462">
 								<reference key="NSNextResponder" ref="471787974"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{12, 9}, {74, 40}}</string>
+								<string key="NSFrame">{{12, 9}, {89, 82}}</string>
 								<reference key="NSSuperview" ref="471787974"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="329900377"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -109,6 +110,7 @@
 						</array>
 						<string key="NSFrameSize">{769, 99}</string>
 						<reference key="NSSuperview" ref="959101821"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="588057462"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -124,6 +126,7 @@
 				</array>
 				<string key="NSFrameSize">{769, 100}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="471787974"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -214,7 +217,32 @@
 			<nil key="sourceID"/>
 			<int key="maxID">13</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">NoteSummaryViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="summaryLabel">UILabel</string>
+						<string key="textView">UITextView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="summaryLabel">
+							<string key="name">summaryLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="textView">
+							<string key="name">textView</string>
+							<string key="candidateClassName">UITextView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NoteSummaryViewController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

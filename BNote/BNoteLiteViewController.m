@@ -55,6 +55,9 @@
 {
     [super viewDidLoad];
 
+    [self.closeButton setTitle:NSLocalizedString(@"Close", @"Close current window") forState:UIControlStateNormal];
+    [self.okButton setTitle:NSLocalizedString(@"Continue", @"Continue to the next window") forState:UIControlStateNormal];
+
     [[self closeButton] setHidden:YES];
     
 #ifdef LITE

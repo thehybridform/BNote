@@ -41,6 +41,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 40}, {768, 930}}</string>
 						<reference key="NSSuperview" ref="752127217"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1066430571"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -58,8 +59,9 @@
 							<object class="IBUIButton" id="408865103">
 								<reference key="NSNextResponder" ref="774275390"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 2}, {72, 35}}</string>
+								<string key="NSFrame">{{676, 2}, {72, 35}}</string>
 								<reference key="NSSuperview" ref="774275390"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="304169316"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -93,6 +95,7 @@
 						</array>
 						<string key="NSFrameSize">{768, 40}</string>
 						<reference key="NSSuperview" ref="752127217"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="408865103"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -108,8 +111,9 @@
 							<object class="IBUIButton" id="782755391">
 								<reference key="NSNextResponder" ref="1066430571"/>
 								<int key="NSvFlags">269</int>
-								<string key="NSFrame">{{305, 2}, {72, 35}}</string>
+								<string key="NSFrame">{{295, 2}, {72, 35}}</string>
 								<reference key="NSSuperview" ref="1066430571"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1021747286"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -130,8 +134,9 @@
 							<object class="IBUIButton" id="1021747286">
 								<reference key="NSNextResponder" ref="1066430571"/>
 								<int key="NSvFlags">269</int>
-								<string key="NSFrame">{{396, 2}, {72, 35}}</string>
+								<string key="NSFrame">{{406, 2}, {72, 35}}</string>
 								<reference key="NSSuperview" ref="1066430571"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -151,6 +156,7 @@
 						</array>
 						<string key="NSFrame">{{0, 969}, {768, 40}}</string>
 						<reference key="NSSuperview" ref="752127217"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="782755391"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -162,6 +168,7 @@
 				</array>
 				<string key="NSFrameSize">{768, 1009}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="774275390"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -342,7 +349,74 @@
 			<nil key="sourceID"/>
 			<int key="maxID">55</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">BNoteButton</string>
+					<string key="superclassName">UIButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BNoteButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">EluaViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="accept:">id</string>
+						<string key="decline:">id</string>
+						<string key="done:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="accept:">
+							<string key="name">accept:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="decline:">
+							<string key="name">decline:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="done:">
+							<string key="name">done:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="acceptButton">UIButton</string>
+						<string key="declineButton">UIButton</string>
+						<string key="eulaToobar">UIView</string>
+						<string key="normalToobar">UIView</string>
+						<string key="webView">UIWebView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="acceptButton">
+							<string key="name">acceptButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="declineButton">
+							<string key="name">declineButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="eulaToobar">
+							<string key="name">eulaToobar</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="normalToobar">
+							<string key="name">normalToobar</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="webView">
+							<string key="name">webView</string>
+							<string key="candidateClassName">UIWebView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/EluaViewController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

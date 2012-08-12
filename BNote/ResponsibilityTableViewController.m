@@ -59,7 +59,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.textLabel.font = [BNoteConstants font:RobotoRegular andSize:15];
+        cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
+    }
     
     Attendant *attendant = [[self data] objectAtIndex:[indexPath row]];
     NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];

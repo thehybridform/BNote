@@ -32,6 +32,9 @@
 @synthesize tableView = _tableView;
 @synthesize topicGroupLabel = _topicGroupLabel;
 
+static NSString *menuText;
+static NSString *manageText;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,8 +50,10 @@
                 break;
             }
         }
-        
     }
+    
+    menuText = NSLocalizedString(@"Select Topic Group", @"The select topics group menu title.");
+    manageText = NSLocalizedString(@"Manage", @"The manage topic groups button.");
     
     return self;
 }
@@ -62,6 +67,9 @@
     
     [[self topicGroupLabel] setFont:[BNoteConstants font:RobotoBold andSize:20]];
     [[self topicGroupLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+    
+    self.topicGroupLabel.text = menuText;
+    [self.addButton setTitle:manageText forState:UIControlStateNormal];
 }
 
 - (void)viewDidUnload

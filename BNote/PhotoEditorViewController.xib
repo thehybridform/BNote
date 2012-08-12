@@ -52,6 +52,7 @@
 					<object class="IBUIView" id="751461341">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">293</int>
+						<array class="NSMutableArray" key="NSSubviews"/>
 						<string key="NSFrame">{{211, 89}, {800, 600}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -66,8 +67,8 @@
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIButton" id="605825421">
 								<reference key="NSNextResponder" ref="539267954"/>
-								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{20, 2}, {72, 35}}</string>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{932, 2}, {72, 35}}</string>
 								<reference key="NSSuperview" ref="539267954"/>
 								<reference key="NSNextKeyView" ref="803343266"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -101,8 +102,8 @@
 							</object>
 							<object class="IBUIButton" id="803343266">
 								<reference key="NSNextResponder" ref="539267954"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{932, 2}, {72, 35}}</string>
+								<int key="NSvFlags">289</int>
+								<string key="NSFrame">{{20, 2}, {72, 35}}</string>
 								<reference key="NSSuperview" ref="539267954"/>
 								<reference key="NSNextKeyView" ref="601934567"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -828,6 +829,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">doneButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="605825421"/>
+					</object>
+					<int key="connectionID">111</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">resetButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="803343266"/>
+					</object>
+					<int key="connectionID">112</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">progressView</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="1025710216"/>
@@ -849,22 +866,6 @@
 						<reference key="destination" ref="647183673"/>
 					</object>
 					<int key="connectionID">110</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">doneButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="605825421"/>
-					</object>
-					<int key="connectionID">111</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">resetButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="803343266"/>
-					</object>
-					<int key="connectionID">112</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -1226,8 +1227,8 @@
 						<int key="objectID">98</int>
 						<reference key="object" ref="539267954"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="605825421"/>
 							<reference ref="803343266"/>
+							<reference ref="605825421"/>
 						</array>
 						<reference key="parent" ref="766721923"/>
 					</object>

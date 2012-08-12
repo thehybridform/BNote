@@ -106,7 +106,7 @@
     if ([entry isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) entry;
         if ([actionItem completed]) {
-            [[self detailLable] setText:@"COMPLETE"];
+            [[self detailLable] setText:NSLocalizedString(@"Complete", @"This item is complete.")];
             return;
         } else if ([actionItem dueDate]) {
             NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem dueDate]]; 

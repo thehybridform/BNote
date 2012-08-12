@@ -37,6 +37,8 @@
 @synthesize textView = _textView;
 @synthesize showSummary = _showSummary;
 
+static NSString *addKeyWordText;
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -44,7 +46,9 @@
     if (self) {
 
     }
-    
+
+    addKeyWordText = NSLocalizedString(@"Add Key Word", @"Add key word menu item");
+
     return self;
 }
 
@@ -56,7 +60,7 @@
 
     [[self view] setBackgroundColor:[BNoteConstants appColor1]];
      
-    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Add Key Word" action:@selector(addQuickWord:)];
+    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:addKeyWordText action:@selector(addQuickWord:)];
     [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObjects:menuItem, nil]];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
     
@@ -66,8 +70,6 @@
                                                  name:UIKeyboardDidHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteUpdated:)
                                                  name:kNoteUpdated object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteUpdated:)
-//                                                 name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload

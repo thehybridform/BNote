@@ -31,31 +31,6 @@
     
     if (self) {
         [self setNote:note];
-
-        UITableViewCell *cell = (UITableViewCell *) [self view];
-        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [LayerFormater roundCornersForView:cell];
-        [LayerFormater setBorderColor:UIColorFromRGB([note color]) forView:cell];
-        [LayerFormater setBorderWidth:2 forView:cell];
-
-        UITextView *view = [self mainTextView];
-        
-        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-        [view setTextColor:UIColorFromRGB(0x444444)];
-        [view setClipsToBounds:YES];
-        [view setText:[[self note] summary]];
-        
-        [LayerFormater roundCornersForView:view];
-        [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:view];
-        
-        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-        [self setQuickWordsViewController:quick];
-        [view setInputAccessoryView:[quick view]];
-        
-        [[self summaryLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
-        [[self summaryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
-        
     }
     
     return self;
@@ -64,8 +39,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    UITableViewCell *cell = (UITableViewCell *) [self view];
+    [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [LayerFormater roundCornersForView:cell];
+    [LayerFormater setBorderColor:UIColorFromRGB(self.note.color) forView:cell];
+    [LayerFormater setBorderWidth:2 forView:cell];
+    
     UITextView *view = [self mainTextView];
+    
+    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+    [view setTextColor:UIColorFromRGB(0x444444)];
+    [view setClipsToBounds:YES];
+    [view setText:[[self note] summary]];
+    
+    [LayerFormater roundCornersForView:view];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:view];
+    
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+    [self setQuickWordsViewController:quick];
+    [view setInputAccessoryView:[quick view]];
+    
+    [[self summaryLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
+    [[self summaryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+
+    self.summaryLabel.text = NSLocalizedString(@"Note Summary", @"Note summary title");
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
                                                  name:UITextViewTextDidChangeNotification object:view];
     

@@ -105,7 +105,11 @@
 
 - (IBAction)decline:(id)sender
 {
-    UIAlertView *anAlert = [[UIAlertView alloc] initWithTitle:@"Action Required" message:@"Please accept the End User License Agreement, or press the home button to exit." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *anAlert = [[UIAlertView alloc]
+                            initWithTitle:NSLocalizedString(@"Action Required", nil)
+                            message:NSLocalizedString(@"EULA Message Action", nil)
+                            delegate:self cancelButtonTitle:nil
+                            otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
     [anAlert show];
 }
 

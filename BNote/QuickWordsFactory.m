@@ -26,22 +26,22 @@
     NSMutableArray *data = [[NSMutableArray alloc] init];
     DateQuickButton *button;
     
-    button = [[DateQuickButton alloc] initWithName:@"yesterday" andEntryContentViewController:controller];
+    button = [[DateQuickButton alloc] initWithName:NSLocalizedString(@"yesterday", @"yeterday") andEntryContentViewController:controller];
     [button setOffset:-1];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[DateQuickButton alloc] initWithName:@"tomorrow" andEntryContentViewController:controller];
+    button = [[DateQuickButton alloc] initWithName:NSLocalizedString(@"tomorrow", @"tomorrow") andEntryContentViewController:controller];
     [button setOffset:1];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
 
-    button = [[DateQuickButton alloc] initWithName:@"week ago" andEntryContentViewController:controller];
+    button = [[DateQuickButton alloc] initWithName:NSLocalizedString(@"week ago", @"A week ago") andEntryContentViewController:controller];
     [button setOffset:-7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
     
-    button = [[DateQuickButton alloc] initWithName:@"week form now" andEntryContentViewController:controller];
+    button = [[DateQuickButton alloc] initWithName:NSLocalizedString(@"week from now", @"A week from now") andEntryContentViewController:controller];
     [button setOffset:7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];

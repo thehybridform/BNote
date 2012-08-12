@@ -19,7 +19,7 @@
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
 @property (assign, nonatomic) NSInteger selectedIndex;
-@property (strong, nonatomic) IBOutlet UIButton *editTopicsButton;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) Topic *searchTopic;
 @property (strong, nonatomic) TopicGroup *topicGroup;
 
@@ -29,9 +29,11 @@
 
 @synthesize data = _data;
 @synthesize selectedIndex = _selectedIndex;
-@synthesize editTopicsButton = _editTopicsButton;
 @synthesize searchTopic = _searchTopic;
 @synthesize topicGroup = _topicGroup;
+@synthesize editButton = _editButton;
+
+static NSString *filterdGroupText;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -73,6 +75,8 @@
                                              selector:@selector(selectTopicGroup:)
                                                  name:kTopicGroupSelected
                                                object:nil];
+
+    filterdGroupText = NSLocalizedString(@"Filtered Group", @"The filtered topic title.");
 }
 
 - (void)updateReceived:(NSNotification *)notification
@@ -110,7 +114,7 @@
 {
     [super viewDidUnload];
     
-    [self setEditTopicsButton:nil];
+    [self setEditButton:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -157,7 +161,7 @@
     static NSString *spacingText = @"  ";
     NSString *name = [currentTopic title];
     if ([name isEqualToString:kFilteredTopicName]) {
-        name = @"Filtered Group";
+        name = filterdGroupText;
     }
     
     [[cell textLabel] setText:[spacingText stringByAppendingString:name]];

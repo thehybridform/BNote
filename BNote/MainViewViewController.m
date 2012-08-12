@@ -65,8 +65,6 @@
 @synthesize searchBar = _searchBar;
 @synthesize liteLable = _liteLable;
 
-static NSString *email = @"E-mail";
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -148,6 +146,9 @@ static NSString *email = @"E-mail";
     [[self liteLable] setHidden:YES];
 #endif
     
+    self.searchBar.placeholder = NSLocalizedString(@"Seacrh All Topics", @"Search all topic.");
+    self.notesLabel.text = NSLocalizedString(@"Notes", @"The notes section title.");
+    self.peopleLabel.text = NSLocalizedString(@"Poeple", @"The attendees section title.");
 }
 
 - (void)selectedTopic:(NSNotification *)notification
@@ -221,7 +222,7 @@ static NSString *email = @"E-mail";
 {
     int count = [[topic notes] count] + [[topic associatedNotes] count];
     
-    NSString *s = [NSString stringWithFormat:@"%d", count];
+    NSString *s = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:count] numberStyle:NSNumberFormatterNoStyle];
     [[self countLabel] setText:s];
 }
 
@@ -229,11 +230,13 @@ static NSString *email = @"E-mail";
 {
 #ifdef LITE
     if ([[[self topicGroup] topics] count] > kMaxTopics) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BeNote Lite does not support adding more topics.  Please consider buying the full verion.  Delete older topics to make room."
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]
+                                initWithTitle:NSLocalizedString(@"More Topics Not Supported", nil)
+                                message:nil
+                                delegate:self
+                                cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                otherButtonTitles:nil];
+
         [alert show];
         return;
     }

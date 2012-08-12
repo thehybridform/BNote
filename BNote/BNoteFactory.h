@@ -34,13 +34,6 @@ extern NSString *const QUESTION_ACTIVE;
 extern NSString *const QUESTION_INACTIVE;
 extern NSString *const ATTENDANT;
 extern NSString *const PAPER;
-extern NSString *const CAMERA_ICON;
-extern NSString *const FILM_ICON;
-extern NSString *const GEAR_ICON;
-extern NSString *const ENVELOPE_ICON;
-extern NSString *const PALETTE_ICON;
-extern NSString *const X_ICON;
-extern NSString *const FUNNEL_ICON;
 
 extern NSString *const questionAnsweredEntryHeader;
 extern NSString *const questionUnansweredEntryHeader;
@@ -64,9 +57,7 @@ typedef enum {
 
     KeyPointIconMask,
 
-    AttendantIcon,
-    
-    FilterIcon
+    AttendantIcon
     
 } BNoteIconType;
 

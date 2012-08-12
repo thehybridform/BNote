@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) TopicGroup *selectedTopicGroup;
 @property (assign, nonatomic) int selectedIndex;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
 @end
 
@@ -25,6 +26,9 @@
 @synthesize nameText = _nameText;
 @synthesize selectedTopicGroup = _selectedTopicGroup;
 @synthesize selectedIndex = _selectedIndex;
+@synthesize editButton = _editButton;
+
+static NSString *editText;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -34,19 +38,24 @@
         [self refreshTopicGroupData];
     }
     
+    editText = NSLocalizedString(@"Edit", @"Edit");
+
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    [self.editButton setTitle:editText forState:UIControlStateNormal];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:kAddTopicGroupSelected object:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [self setEditButton:nil];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

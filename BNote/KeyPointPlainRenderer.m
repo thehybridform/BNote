@@ -18,11 +18,11 @@
 
 - (NSString *)render:(Entry *)entry
 {
-    NSString *title = @" - Key Point: ";
+    NSString *title = [NSLocalizedString(@"Key Point", nil) stringByAppendingString:@": "];
     NSString *created = [BNoteStringUtils formatDate:[entry created]];
     NSString *text = [entry text];
     
-    return [BNoteStringUtils append:title, @" - Created: ", created, kNewLine, text, kNewLine, kNewLine, nil];
+    return [BNoteStringUtils append:title, @" - ", NSLocalizedString(@"Created Date", nil), @": ", created, kNewLine, text, kNewLine, kNewLine, nil];
 }
 
 @end

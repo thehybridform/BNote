@@ -28,17 +28,40 @@
 @synthesize highColor = _highColor;
 @synthesize gradientLayer = _gradientLayer;;
 
-static NSString *copyNote = @"Copy";
-static NSString *removeNote = @"Remove";
-static NSString *moveNote = @"Move";
-static NSString *associateNote = @"Associate";
-static NSString *disassociateNote = @"Disassociate";
+static NSString *noteOptionsText;
+static NSString *copyNoteText;
+static NSString *removeNoteText;
+static NSString *moveNoteText;
+static NSString *associateNoteText;
+static NSString *disassociateNoteText;
 
 const static float x1 = 6;
 const static float x2 = x1 + 10;
 const static float x3 = x2 + 10;
 const static float h1 = 44;
 const static float h2 = h1 - 10;
+
+- (void)commonInit
+{
+    [LayerFormater roundCornersForView:self to:5];
+    [LayerFormater setBorderWidth:2 forView:self];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
+    
+    [self setBackgroundColor:[BNoteConstants appColor1]];
+    
+    [self setGradientLayer:[self setupGradient]];
+    
+    [[self layer] insertSublayer:[self gradientLayer] atIndex:0];
+    
+    [self setHighColor:UIColorFromRGB(0xeeeeee)];
+    
+    noteOptionsText = NSLocalizedString(@"Note Options", @"Note edit options.");
+    copyNoteText = NSLocalizedString(@"Copy", @"Copy this note to another note");
+    removeNoteText = NSLocalizedString(@"Remove", @"Revome note from topic.");
+    moveNoteText = NSLocalizedString(@"Move", @"Move note to another topic.");
+    associateNoteText = NSLocalizedString(@"Associate", @"Associate note with another topic.");
+    disassociateNoteText = NSLocalizedString(@"Disassociate", @"Disassociate note form this topic.");
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -49,7 +72,7 @@ const static float h2 = h1 - 10;
         [self setBackgroundColor:[BNoteConstants appColor1]];
         
         UILabel *text = [[UILabel alloc] init];
-        [text setText:@"Add Note"];
+        [text setText:NSLocalizedString(@"Add Note", @"Add new note to this topic.")];
         [text setFont:[BNoteConstants font:RobotoLight andSize:13]];
         [text setFrame:CGRectMake(5, 43, 90, 30)];
         [text setTextColor:[BNoteConstants appHighlightColor1]];
@@ -79,22 +102,6 @@ const static float h2 = h1 - 10;
     }
     
     return self;
-}
-
-- (void)commonInit
-{
-    [LayerFormater roundCornersForView:self to:5];
-    [LayerFormater setBorderWidth:2 forView:self];
-    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
-//    [LayerFormater addShadowToView:self];
-    
-    [self setBackgroundColor:[BNoteConstants appColor1]];
-    
-    [self setGradientLayer:[self setupGradient]];
-    
-    [[self layer] insertSublayer:[self gradientLayer] atIndex:0];
-    
-    [self setHighColor:UIColorFromRGB(0xeeeeee)];
 }
 
 - (CAGradientLayer *)setupGradient
@@ -159,21 +166,21 @@ const static float h2 = h1 - 10;
         [[BNoteSessionData instance] setActionSheetDelegate:self];
         [[BNoteSessionData instance] setActionSheet:actionSheet];
         
-        [actionSheet addButtonWithTitle:copyNote];
+        [actionSheet addButtonWithTitle:copyNoteText];
         
         if ([BNoteEntryUtils multipleTopics:[self note]] &&![self associated]) {
-            [actionSheet addButtonWithTitle:moveNote];
-            [actionSheet addButtonWithTitle:associateNote];
+            [actionSheet addButtonWithTitle:moveNoteText];
+            [actionSheet addButtonWithTitle:associateNoteText];
         }
         
         if ([self associated]) {
-            [actionSheet addButtonWithTitle:disassociateNote];
+            [actionSheet addButtonWithTitle:disassociateNoteText];
         } else {
-            NSInteger index = [actionSheet addButtonWithTitle:removeNote];
+            NSInteger index = [actionSheet addButtonWithTitle:removeNoteText];
             [actionSheet setDestructiveButtonIndex:index];
         }
                 
-        [actionSheet setTitle:@"Note Options"];
+        [actionSheet setTitle:noteOptionsText];
         
         CGRect rect = [self bounds];
         [actionSheet showFromRect:rect inView:self animated:YES];
@@ -186,18 +193,18 @@ const static float h2 = h1 - 10;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == removeNote) {
+        if (title == removeNoteText) {
             Topic *topic = [[self note] topic];
             [[BNoteWriter instance] removeNote:[self note]];
             [[BNoteWriter instance] update];
             [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];
-        } else if (title == moveNote) {
+        } else if (title == moveNoteText) {
             [self presentTopicSelectionForType:ChangeMainTopic];
-        } else if (title == copyNote) {
+        } else if (title == copyNoteText) {
             [self presentTopicSelectionForType:CopyToTopic];
-        } else if (title == associateNote) {
+        } else if (title == associateNoteText) {
             [self presentTopicSelectionForType:AssociateTopic];
-        } else if (title == disassociateNote) {
+        } else if (title == disassociateNoteText) {
             Topic *topic = [[BNoteSessionData instance] selectedTopic];
             [[BNoteWriter instance] disassociateNote:[self note] toTopic:topic];
             [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];

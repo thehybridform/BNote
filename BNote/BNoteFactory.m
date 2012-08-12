@@ -34,15 +34,8 @@ NSString *const KEY_POINT_ACTIVE = @"key_point_active_icon.png";
 NSString *const KEY_POINT_INACTIVE = @"key_point_icon.png";
 NSString *const QUESTION_ACTIVE = @"question_active_icon.png";
 NSString *const QUESTION_INACTIVE = @"question_icon.png";
-NSString *const ATTENDANT = @"111-user@2x.png";
+NSString *const ATTENDANT = @"bnote-contact.png";
 NSString *const PAPER = @"Squared_paper.jpg";
-NSString *const CAMERA_ICON = @"86-camera@2x.png";
-NSString *const FILM_ICON = @"film-roll@2x.png";
-NSString *const GEAR_ICON = @"20-gear-2@2x.png";
-NSString *const ENVELOPE_ICON = @"18-envelope@2x.png";
-NSString *const PALETTE_ICON = @"86-palette@2x.png";
-NSString *const X_ICON = @"298-circlex@2x.png";
-NSString *const FUNNEL_ICON = @"funnel.png";
 
 NSString *const questionAnsweredEntryHeader = @"Questions Answered";
 NSString *const questionUnansweredEntryHeader = @"Questions Unanswered";
@@ -276,9 +269,6 @@ NSString *const keyPointsEntryHeader = @"Key Points";
         case KeyPointIconMask:
             icon = KEY_POINT_MASK;
             break;
-        case FilterIcon:
-            icon = FUNNEL_ICON;
-            break;
         default:
             break;
     }
@@ -383,31 +373,27 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     NSString *text;
     switch (type) {
         case QuestionAnsweredHeader:
-            text = questionAnsweredEntryHeader;
+            text = NSLocalizedString(@"Questions Answered", @"The questions answered note entry header.") ;
             break;
             
         case QuestionUnansweredHeader:
-            text = questionUnansweredEntryHeader;
+            text = NSLocalizedString(@"Questions Unanswered", @"The questions unanswered note entry header.") ;
             break;
             
         case DecisionHeader:
-            text = decisionsEntryHeader;
+            text = NSLocalizedString(@"Decisions", @"The decisions note entry header.") ;
             break;
             
         case KeyPointHeader:
-            text = keyPointsEntryHeader;
+            text = NSLocalizedString(@"Key Points", @"The key points note entry header.") ;
             break;
             
         case ActionItemCompleteHeader:
-            text = actionItemsCompletedEntryHeader;
+            text = NSLocalizedString(@"Action Incompletes", @"The action items incomplete header.") ;
             break;
             
         case ActionItemIncompleteHeader:
-            text = actionItemsIncompleteEntryHeader;
-            break;
-            
-        case AllHeader:
-            text = @"All";
+            text = NSLocalizedString(@"Action Completes", @"The action items complete header.") ;
             break;
             
         default:

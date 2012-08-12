@@ -45,7 +45,7 @@
 - (void)longPressTap:(id)sender
 {
     if (![self actionSheet]) {
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Key Words" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove" otherButtonTitles:nil];
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Key Word Options", @"Key work option title") delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:NSLocalizedString(@"Remove", @"Remove") otherButtonTitles:nil];
         [self setActionSheet:sheet];
     
         CGRect rect = [self bounds];

@@ -49,6 +49,7 @@
 {
     [super viewDidLoad];
     
+    self.answerLabel.text = NSLocalizedString(@"Answer", @"The answer to the question");
     [[self answerLabel] setFont:[BNoteConstants font:RobotoRegular andSize:14]];
     [[self answerLabel] setTextColor:UIColorFromRGB(0x444444)];
 

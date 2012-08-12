@@ -30,8 +30,9 @@
 @synthesize addAttendantView = _addAttendantView;
 @synthesize iconView = _iconView;
 
-static NSString *addressBook = @"Address Book";
-static NSString *createNew = @"Create";
+static NSString *addressBook;
+static NSString *createNew;
+static NSString *attendants;
 
 - (id)initWithEntry:(Entry *)entry
 {
@@ -66,6 +67,10 @@ static NSString *createNew = @"Create";
 {
     [super viewDidLoad];
 
+    addressBook = NSLocalizedString(@"Address Book", @"ipad addres book");
+    createNew = NSLocalizedString(@"Create New", @"Create new attendants");
+    attendants = NSLocalizedString(@"Attendants", @"Attendants menu title");
+    
     [[NSNotificationCenter defaultCenter]
      addObserver:self
         selector:@selector(keyboardDidHideAttendantsContentViewController:)
@@ -190,7 +195,7 @@ static NSString *createNew = @"Create";
     [actionSheet setDelegate:[BNoteSessionData instance]];
     [[BNoteSessionData instance] setActionSheetDelegate:self];
     
-    [actionSheet setTitle:@"Attendants"];
+    [actionSheet setTitle:attendants];
     [actionSheet addButtonWithTitle:addressBook];
     [actionSheet addButtonWithTitle:createNew];
     

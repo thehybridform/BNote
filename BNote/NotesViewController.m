@@ -168,11 +168,13 @@
 {
 #ifdef LITE
     if ([[[self topic] notes] count] > kMaxNotes) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BeNote Lite does not support adding more notes.  Please consider buying the full verion.  Delete older notes to make room."
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"More Notes Not Supported", nil)
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+
         [alert show];
         return;
     }

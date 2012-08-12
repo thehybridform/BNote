@@ -46,7 +46,6 @@
 @synthesize data = _data;
 @synthesize dataHeaderView = _dataHeaderView;
 @synthesize searchText = _searchText;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

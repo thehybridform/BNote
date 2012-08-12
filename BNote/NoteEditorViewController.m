@@ -39,6 +39,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *filteringLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
+@property (strong, nonatomic) IBOutlet BNoteButton *closeButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *attendantsButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *keyPointButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *questionButton;
@@ -94,9 +95,22 @@
 @synthesize reviewScrollView = _reviewScrollView;
 @synthesize selectedFilterButton = _selectedFilterButton;
 @synthesize addSummaryButton = _addSummaryButton;
+@synthesize closeButton = _closeButton;
 
-static NSString *REVIEW = @"REVIEW";
-static NSString *DONE = @"DONE";
+static NSString *closeText;
+static NSString *reviewText;
+static NSString *doneText;
+static NSString *filteringText;
+static NSString *entryText;
+static NSString *addSummaryText;
+
+static NSString *keyPointText;
+static NSString *questionText;
+static NSString *decisionText;
+static NSString *actionItemText;
+static NSString *attendeesText;
+
+static NSString *spacing = @"   ";
 
 - (void)viewDidUnload
 {
@@ -135,12 +149,39 @@ static NSString *DONE = @"DONE";
     if (self) {
 
     }
+    
+    closeText = NSLocalizedString(@"Close", @"Close window");
+    reviewText = NSLocalizedString(@"REVIEW", @"Review");
+    doneText = NSLocalizedString(@"Done", @"Done");
+    filteringText = NSLocalizedString(@"FILTERING", @"Note entry filtering lable");
+    entryText = NSLocalizedString(@"ENRTY", @"Note entry lable");
+    addSummaryText = NSLocalizedString(@"Add Summary", @"Add summary entry to this note");
+
+    keyPointText = NSLocalizedString(@"Key Point", @"Add key point button title");
+    questionText = NSLocalizedString(@"Question", @"Add quetion button title");
+    decisionText = NSLocalizedString(@"Decision", @"Add decision button title");
+    actionItemText = NSLocalizedString(@"Action Item", @"Add action item button title");
+    attendeesText = NSLocalizedString(@"Attendees", @"Add attendees button title");
+
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.closeButton setTitle:closeText forState:UIControlStateNormal];
+    [self.reviewButton setTitle:reviewText forState:UIControlStateNormal];
+    [[self addSummaryButton] setTitle:addSummaryText forState:UIControlStateNormal];
+
+    [[self keyPointButton] setTitle:[spacing stringByAppendingString:keyPointText] forState:UIControlStateNormal];
+    [[self questionButton] setTitle:[spacing stringByAppendingString:questionText] forState:UIControlStateNormal];
+    [[self decisionButton] setTitle:[spacing stringByAppendingString:decisionText] forState:UIControlStateNormal];
+    [[self actionItemButton] setTitle:[spacing stringByAppendingString:actionItemText] forState:UIControlStateNormal];
+    [[self attendantsButton] setTitle:[spacing stringByAppendingString:attendeesText] forState:UIControlStateNormal];
+
+    self.filteringLabel.text = filteringText;
+    self.entryLabel.text = entryText;
     
     [LayerFormater addShadowToView:[self footerView]];
     [LayerFormater addShadowToView:[self menuView]];
@@ -215,7 +256,7 @@ static NSString *DONE = @"DONE";
 
     Note *note = [self note];
     if ([BNoteStringUtils nilOrEmpty:[note subject]]) {
-        [[self subjectTextView] setText:@"Enter Subject"];
+        [[self subjectTextView] setText:NSLocalizedString(@"Enter Subject", @"The new note's subject place holder text.")];
     } else {
         [[self subjectTextView] setText:[note subject]];
     }
@@ -297,7 +338,7 @@ static NSString *DONE = @"DONE";
 
 - (void)editing
 {
-    [[self reviewButton] setTitle:REVIEW forState:UIControlStateNormal];
+    [[self reviewButton] setTitle:reviewText forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
     [self setIsEditing:YES];
     
@@ -313,7 +354,7 @@ static NSString *DONE = @"DONE";
 
 - (void)reviewing
 {
-    [[self reviewButton] setTitle:DONE forState:UIControlStateNormal];
+    [[self reviewButton] setTitle:doneText forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:YES];
     [self setIsEditing:NO];
     
@@ -365,11 +406,13 @@ static NSString *DONE = @"DONE";
 {
 #ifdef LITE
     if ([[[self note] entries] count] > kMaxEntries) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BeNote Lite does not support adding more note entries.  Please consider buying the full verion.  Delete older note entries to make room."
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"More Notes Entries Not Supported", nil)
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+
         [alert show];
         
         [[BNoteWriter instance] removeEntry:entry];
@@ -396,7 +439,7 @@ static NSString *DONE = @"DONE";
 
 - (void)setupTableViewAddingEntries
 {
-    [[self entriesViewController] setEditing:NO animated:YES]; 
+    [[self entriesViewController] setEditing:NO animated:YES];
     [[self keyPointButton] setHidden:NO];
     [[self questionButton] setHidden:NO];
     [[self decisionButton] setHidden:NO];
@@ -408,7 +451,7 @@ static NSString *DONE = @"DONE";
 
 - (void)setupTableViewForDeletingRows
 {
-    [[self entriesViewController] setEditing:YES animated:YES]; 
+    [[self entriesViewController] setEditing:YES animated:YES];
     [[self keyPointButton] setHidden:YES];
     [[self questionButton] setHidden:YES];
     [[self decisionButton] setHidden:YES];

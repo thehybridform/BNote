@@ -41,12 +41,23 @@
 
 static float spacing = 10;
 
+static NSString *doneText;
+static NSString *datesText;
+static NSString *keyWordsText;
+static NSString *attendenatsText;
+
 - (id)initWithEntryContent:(id<EntryContent>)entryContent
 {
     self = [super initWithNibName:@"QuickWordsViewController" bundle:nil];
     if (self) {
         [self setEntryContent:entryContent];
     }
+    
+    doneText = NSLocalizedString(@"Done", @"Done");
+    datesText = NSLocalizedString(@"Dates", @"Select dates menu item");
+    keyWordsText = NSLocalizedString(@"Key Words", @"Select key words menu item");
+    attendenatsText = NSLocalizedString(@"Attendants", @"Select attendants menu item");
+
     return self;
 }
 
@@ -56,6 +67,11 @@ static float spacing = 10;
     
     [[self view] setBackgroundColor:[UIColor clearColor]];
     [[self scrollView] setBackgroundColor:[UIColor clearColor]];
+    
+    [self.attendantsButton setTitle:attendenatsText forState:UIControlStateNormal];
+    [self.datesButton setTitle:datesText forState:UIControlStateNormal];
+    [self.keyWordsButton setTitle:keyWordsText forState:UIControlStateNormal];
+    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:kKeyWordsUpdated object:nil];

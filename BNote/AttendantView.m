@@ -24,8 +24,9 @@
 @synthesize imageView = _imageView;
 @synthesize popup = _popup;
 
-static NSString *details = @"Details";
-static NSString *removeAttendant = @"Remove";
+static NSString *attendantOptions;
+static NSString *detailsText;
+static NSString *removeAttendanText;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -43,6 +44,11 @@ static NSString *removeAttendant = @"Remove";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideAttendantView:)
                                                      name:UIKeyboardDidHideNotification object:nil];
     }
+    
+    detailsText = NSLocalizedString(@"Details", @"Show attenant details.");
+    removeAttendanText = NSLocalizedString(@"Remove", @"Remove attenant from note.");
+    attendantOptions = NSLocalizedString(@"Attendee Options", @"Attendee options menu title.");
+    
     return self;
 }
 
@@ -58,9 +64,11 @@ static NSString *removeAttendant = @"Remove";
     [[BNoteSessionData instance] setActionSheet:sheet];
     [[BNoteSessionData instance] setActionSheetDelegate:self];
     
-    [sheet addButtonWithTitle:details];
-    int index = [sheet addButtonWithTitle:removeAttendant];
+    [sheet addButtonWithTitle:detailsText];
+    int index = [sheet addButtonWithTitle:removeAttendanText];
     [sheet setDestructiveButtonIndex:index];
+    
+    sheet.title = attendantOptions;
     
     CGRect rect = [self bounds];
     [sheet showFromRect:rect inView:self animated:YES];
@@ -105,9 +113,9 @@ static NSString *removeAttendant = @"Remove";
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == details) {
+        if (title == detailsText) {
             [self presentAttendeeDetail];
-        } else if (title == removeAttendant) {
+        } else if (title == removeAttendanText) {
             Attendants *parent = [[self attendant] parent];
             [parent removeChildrenObject:[self attendant]];
             [[NSNotificationCenter defaultCenter] postNotificationName:kAttendeeDeleted object:nil];
@@ -119,10 +127,6 @@ static NSString *removeAttendant = @"Remove";
 
 - (void)presentAttendeeDetail
 {
-    if ([self popup]) {
-        [self setPopup:nil];
-    }
-    
     AttendeeDetailViewController *controller = [[AttendeeDetailViewController alloc] initWithAttendant:[self attendant]];
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [controller setPopup:popup];
@@ -130,8 +134,8 @@ static NSString *removeAttendant = @"Remove";
     [popup setDelegate:self];
     
     [popup presentPopoverFromRect:[self frame]
-                           inView:self permittedArrowDirections:
-                                            (UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight) animated:YES];
+                           inView:[self superview] permittedArrowDirections:
+                                            (UIPopoverArrowDirectionAny) animated:YES];
 
     [popup setPopoverContentSize:CGSizeMake(367, 224)];
     [self setPopup:popup];

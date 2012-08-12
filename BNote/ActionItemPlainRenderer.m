@@ -18,7 +18,7 @@
 
 - (NSString *)render:(Entry *)entry
 {
-    NSString *title = @" - Action Item: ";
+    NSString *title = [NSLocalizedString(@"Action Item", nil) stringByAppendingString:@": "];
     NSString *created = [BNoteStringUtils formatDate:[entry created]];
     NSString *text = [entry text];
     
@@ -27,28 +27,28 @@
     NSTimeInterval dueDate = [actionItem dueDate];
     NSString *dueDateText;
     if (dueDate) {
-        dueDateText = [BNoteStringUtils append:@"Due on ", [BNoteStringUtils formatDate:dueDate], nil];
+        dueDateText = [BNoteStringUtils append:NSLocalizedString(@"Due On", nil), @" ", [BNoteStringUtils formatDate:dueDate], nil];
     } else {
-        dueDateText = @"No due date";
+        dueDateText = NSLocalizedString(@"No Due Date", nil);
     }
     
     NSTimeInterval completed = [actionItem completed];
     NSString *completedText;
     if (completed) {
-        completedText = [BNoteStringUtils append:@"Completed on ", [BNoteStringUtils formatDate:completed], nil];
+        completedText = [BNoteStringUtils append:NSLocalizedString(@"Completed on", nil), @" ", [BNoteStringUtils formatDate:completed], nil];
     } else {
-        completedText = @"Not completed";
+        completedText = NSLocalizedString(@"Not Complete", nil);
     }
 
     NSString *responsibilityText;
     if ([actionItem responsibility]) {
-        responsibilityText = [BNoteStringUtils append:@"Assigned to ", [actionItem responsibility], nil];
+        responsibilityText = [BNoteStringUtils append:NSLocalizedString(@"Assigned to", nil), @" ", [actionItem responsibility], nil];
     } else {
-        responsibilityText = @"Not Assigned";
+        responsibilityText = NSLocalizedString(@"Not assigned", nil);
     }
     
     
-    return [BNoteStringUtils append:title, @" - Created: ", created, kNewLine, text, kNewLine, responsibilityText, kNewLine, dueDateText, kNewLine, completedText, kNewLine, kNewLine, nil];
+    return [BNoteStringUtils append:title, @" - ", NSLocalizedString(@"Created Date", nil), @": ", created, kNewLine, text, kNewLine, responsibilityText, kNewLine, dueDateText, kNewLine, completedText, kNewLine, kNewLine, nil];
 }
 
 @end

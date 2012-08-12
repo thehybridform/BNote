@@ -1,6 +1,0 @@
-Add any of the following entries on the fly to any note:
- * Participants
- * Key Points (with images, snapshots or sketches)
- * Action Items
- * Questions
- * Decisions

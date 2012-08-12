@@ -21,7 +21,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *responsibilityLabel;
 @property (strong, nonatomic) IBOutlet UIView *responsibilityView;
 @property (strong, nonatomic) IBOutlet UIView *caledarBlankView;
-@property (strong, nonatomic) IBOutlet UIView *calendarCheckView;
 @property (strong, nonatomic) IBOutlet UIView *circleBlankView;
 @property (strong, nonatomic) IBOutlet UIView *circleCheckView;
 @property (strong, nonatomic) IBOutlet UIView *completionView;
@@ -40,12 +39,21 @@
 @synthesize circleBlankView = _circleBlankView;
 @synthesize completionLabel = _completionLabel;
 @synthesize caledarBlankView = _caledarBlankView;
-@synthesize calendarCheckView = _calendarCheckView;
 
-static NSString *responsibility = @"Set Responsibility";
-static NSString *clearResponsibility = @"Clear Responsibility";
-static NSString *dueDate = @"Due Date";
-static NSString *clearDueDate = @"Clear Due Date";
+static NSString *responsibilityOptionsText;
+static NSString *setResponsibilityText;
+static NSString *clearResponsibilityText;
+static NSString *noResponsibilityText;
+
+static NSString *dueDateOptionsText;
+static NSString *setDueDateText;
+static NSString *clearDueDateText;
+static NSString *dueDateText;
+static NSString *noDueDateText;
+static NSString *dueOnText;
+
+static NSString *notCompleteText;
+static NSString *completedOnDateText;
 
 - (void)viewDidUnload
 {
@@ -60,7 +68,6 @@ static NSString *clearDueDate = @"Clear Due Date";
     [self setCircleBlankView:nil];
     [self setCompletionLabel:nil];
     [self setCaledarBlankView:nil];
-    [self setCalendarCheckView:nil];
 }
 
 - (id)initWithEntry:(Entry *)entry
@@ -85,7 +92,7 @@ static NSString *clearDueDate = @"Clear Due Date";
         tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCompleted:)];
         [[self completionView] addGestureRecognizer:tap];
     }
-    
+
     return self;
 }
 - (NSString *)localNibName
@@ -102,6 +109,21 @@ static NSString *clearDueDate = @"Clear Due Date";
 {
     [super viewDidLoad];
     
+    notCompleteText = NSLocalizedString(@"Not Complete", @"This action item is not complete");
+    completedOnDateText = NSLocalizedString(@"Complete on", @"As in 'This action item was ompleted On 12/1/1970'");
+    
+    noResponsibilityText = NSLocalizedString(@"No Responsibility", @"This action item has no resposibility assigned");
+    responsibilityOptionsText = NSLocalizedString(@"Responsibility Options", @"Responsibility options menu title");
+    setResponsibilityText = NSLocalizedString(@"Set Responsibility", @"Set the responsibility for this action item");
+    clearResponsibilityText = NSLocalizedString(@"Clear Responsibility", @"Clear the responsibility for this action item");
+    
+    noDueDateText = NSLocalizedString(@"No Due Date", @"This action item has no due date");
+    dueDateText = NSLocalizedString(@"Due Date", @"Due date label");
+    dueDateOptionsText = NSLocalizedString(@"Due Date Options", @"Due date options menu title");
+    setDueDateText = NSLocalizedString(@"Set Due Date", @"Set the due date for this action item");
+    clearDueDateText = NSLocalizedString(@"Clear Due Date", @"Clear the due date for this action item");
+    dueOnText = NSLocalizedString(@"Due On", @"As in 'This action item is due on 12/1/1970'");
+
     [self updateDueDate];
     [self updateResponsibility];
     [self updateComplete];
@@ -177,7 +199,7 @@ static NSString *clearDueDate = @"Clear Due Date";
     DatePickerViewController *controller =
     [[DatePickerViewController alloc] initWithDate:date andMode:UIDatePickerModeDate];
     [controller setListener:self];
-    [controller setTitleText:@"Due Date"];
+    [controller setTitleText:dueDateText];
     [[controller datePicker] setDatePickerMode:UIDatePickerModeDate];
     [self setDatePickerViewController:controller];
     
@@ -208,13 +230,11 @@ static NSString *clearDueDate = @"Clear Due Date";
     if ([[self actionItem] dueDate]) {
         NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]]; 
         NSString *date = [BNoteStringUtils dateToString:dueDate];
-        [[self dueDateLabel] setText:[BNoteStringUtils append:@"Due on \r\n", date, nil]];
+        [[self dueDateLabel] setText:[BNoteStringUtils append:dueOnText, @"\r\n", date, nil]];
         [[self caledarBlankView] setHidden:YES];
-        [[self calendarCheckView] setHidden:NO];
     } else {
-        [[self dueDateLabel] setText:@"No Due Date"];
+        [[self dueDateLabel] setText:noDueDateText];
         [[self caledarBlankView] setHidden:NO];
-        [[self calendarCheckView] setHidden:YES];
     }
 }
 
@@ -223,7 +243,7 @@ static NSString *clearDueDate = @"Clear Due Date";
     if ([[self actionItem] responsibility]) {
         [[self responsibilityLabel] setText:[[self actionItem] responsibility]];
     } else {
-        [[self responsibilityLabel] setText:@"Add Responsibility"];
+        [[self responsibilityLabel] setText:noResponsibilityText];
     }
 }
 
@@ -234,11 +254,11 @@ static NSString *clearDueDate = @"Clear Due Date";
         [[self circleCheckView] setHidden:NO];
         NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] completed]]; 
         NSString *date = [BNoteStringUtils dateToString:dueDate];
-        [[self completionLabel] setText:[BNoteStringUtils append:@"Completed on \r\n", date, nil]];
+        [[self completionLabel] setText:[BNoteStringUtils append:completedOnDateText, @"\r\n", date, nil]];
     } else {
         [[self circleBlankView] setHidden:NO];
         [[self circleCheckView] setHidden:YES];
-        [[self completionLabel] setText:@"Not Complete"];
+        [[self completionLabel] setText:notCompleteText];
     }
 }
 
@@ -258,9 +278,9 @@ static NSString *clearDueDate = @"Clear Due Date";
         [actionSheet setDelegate:[BNoteSessionData instance]];
         [[BNoteSessionData instance] setActionSheetDelegate:self];
         
-        [actionSheet setTitle:@"Responsibility"];
-        [actionSheet addButtonWithTitle:responsibility];
-        int index = [actionSheet addButtonWithTitle:clearResponsibility];
+        [actionSheet setTitle:responsibilityOptionsText];
+        [actionSheet addButtonWithTitle:setResponsibilityText];
+        int index = [actionSheet addButtonWithTitle:clearResponsibilityText];
         [actionSheet setDestructiveButtonIndex:index];
         
         CGRect rect = [[self responsibilityView] frame];
@@ -278,9 +298,9 @@ static NSString *clearDueDate = @"Clear Due Date";
         [actionSheet setDelegate:[BNoteSessionData instance]];
         [[BNoteSessionData instance] setActionSheetDelegate:self];
         
-        [actionSheet setTitle:@"Due Date"];
-        [actionSheet addButtonWithTitle:dueDate];
-        int index = [actionSheet addButtonWithTitle:clearDueDate];
+        [actionSheet setTitle:dueDateOptionsText];
+        [actionSheet addButtonWithTitle:setDueDateText];
+        int index = [actionSheet addButtonWithTitle:clearDueDateText];
         [actionSheet setDestructiveButtonIndex:index];
         
         CGRect rect = [[self dueDateView] frame];
@@ -305,13 +325,13 @@ static NSString *clearDueDate = @"Clear Due Date";
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == responsibility) {
+        if (title == setResponsibilityText) {
             [self showResponsibilityPicker];
-        } else if (title == clearResponsibility) {
+        } else if (title == clearResponsibilityText) {
             [self clearResponsibility];
-        } else if (title == dueDate) {
+        } else if (title == setDueDateText) {
             [self showDatePicker];
-        } else if (title == clearDueDate) {
+        } else if (title == clearDueDateText) {
             [self clearDueDate];
         }
     }
@@ -329,7 +349,6 @@ static NSString *clearDueDate = @"Clear Due Date";
                       [self circleBlankView],
                       [self circleCheckView],
                       [self caledarBlankView],
-                      [self calendarCheckView],
                       [self completionLabel],
                       [self dueDateLabel],
                       [self responsibilityLabel],

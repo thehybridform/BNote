@@ -33,7 +33,8 @@
 @synthesize sketchButton = _sketchButton;
 @synthesize photoImageView = _photoImageView;
 
-static NSString *removeImage = @"Remove";
+static NSString *removeImageText;
+static NSString *imageOptionsText;
 
 - (void)viewDidUnload
 {
@@ -80,6 +81,9 @@ static NSString *removeImage = @"Remove";
 {
     [super viewDidLoad];
     
+    imageOptionsText = NSLocalizedString(@"Image Options", @"Image options menu title");
+    removeImageText = NSLocalizedString(@"Remove", @"Remove");
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
                                                  name:kKeyPointPhotoUpdated object:nil];
 }
@@ -91,7 +95,7 @@ static NSString *removeImage = @"Remove";
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
     [view setFrame:CGRectMake(0, 0, [self width] - 200, 90)];
 
-    return MAX(90, [view contentSize].height + 10);
+    return MAX(100, [view contentSize].height + 10);
 }
 
 - (void)updatePhotoImage:(NSNotification *)notification
@@ -214,10 +218,10 @@ static NSString *removeImage = @"Remove";
         [[BNoteSessionData instance] setActionSheetDelegate:self];
         [[BNoteSessionData instance] setActionSheet:actionSheet];
     
-        int index = [actionSheet addButtonWithTitle:removeImage];
+        int index = [actionSheet addButtonWithTitle:removeImageText];
         [actionSheet setDestructiveButtonIndex:index];
     
-        [actionSheet setTitle:@"Image Options"];
+        [actionSheet setTitle:imageOptionsText];
     
         CGRect rect = [[self photoImageView] frame];
         [actionSheet showFromRect:rect inView:[self view] animated:YES];   
@@ -228,7 +232,7 @@ static NSString *removeImage = @"Remove";
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == removeImage) {
+        if (title == removeImageText) {
             [[BNoteWriter instance] removePhoto:[[self keyPoint] photo]];
             [[BNoteWriter instance] update];
             [self handlePhotoImage];
@@ -257,7 +261,7 @@ static NSString *removeImage = @"Remove";
                       [self photoAlbumButton],
                       [self sketchButton],
                       nil];
-    [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.2];
+    [BNoteAnimation winkInView:views withDuration:0.06 andDelay:0.5 andDelayIncrement:0.2];
 }
 
 

@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *emailLable;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
 
 @end
 
@@ -38,6 +39,13 @@
 @synthesize emailLable = _emailLable;
 @synthesize popup = _popup;
 @synthesize menuView = _menuView;
+@synthesize doneButton = _doneButton;
+
+static NSString *doneText;
+static NSString *menuTitleText;
+static NSString *firstNameText;
+static NSString *lastNameText;
+static NSString *emailText;
 
 - (void)viewDidUnload
 {
@@ -52,6 +60,8 @@
     [self setLastNameLable:nil];
     [self setEmailLable:nil];
     [self setMenuView:nil];
+    self.doneButton = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -62,6 +72,7 @@
     if (self) {
         [self setAttendant:attendant];
     }
+    
     return self;
 }
 
@@ -69,6 +80,12 @@
 {
     [super viewDidLoad];
 
+    doneText = NSLocalizedString(@"Done", @"Done");
+    menuTitleText = NSLocalizedString(@"Attendee Details", @"Attendee details menu title.");
+    firstNameText = NSLocalizedString(@"First Name", @"Attendee first name");
+    lastNameText = NSLocalizedString(@"Last Name", @"Attendee last name");
+    emailText = NSLocalizedString(@"E-Mail", @"Attendee emakl address");
+    
     Attendant *attendant = [self attendant];
     
     UIImage *image = [UIImage imageWithData:[attendant image]];
@@ -82,9 +99,16 @@
     [[self lastNameField] setText:[attendant lastName]];
     [[self emailField] setText:[attendant email]];
     
+    self.firstNameLable.text = firstNameText;
+    self.lastNameLable.text = lastNameText;
+    self.emailLable.text = emailText;
+
+    self.titleLabel.text = menuTitleText;
+    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+    
     [LayerFormater roundCornersForView:[self view]];
     
-//    [LayerFormater addShadowToView:[self menuView]];
+    [LayerFormater addShadowToView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
 
     [[NSNotificationCenter defaultCenter]

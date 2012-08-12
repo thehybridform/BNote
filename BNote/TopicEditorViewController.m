@@ -30,6 +30,9 @@
 @property (assign, nonatomic) int selectedColor;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
+
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+
 @end
 
 @implementation TopicEditorViewController
@@ -51,6 +54,13 @@
 @synthesize buttonControlView = _buttonControlView;
 @synthesize popup = _popup;
 @synthesize topicGroup = _topicGroup;
+@synthesize cancelButton = _cancelButton;
+
+static NSString *createText;
+static NSString *updateText;
+static NSString *cancelText;
+static NSString *placeHolderText;
+
 
 - (void)viewDidUnload
 {
@@ -71,6 +81,8 @@
     [self setButton_7:nil];
     [self setButton_8:nil];
     [self setButton_9:nil];
+    
+    self.cancelButton = nil;
 }
 
 - (id)initWithTopicGroup:(TopicGroup *)group
@@ -81,6 +93,11 @@
         [self setTopicGroup:group];
     }
     
+    createText = NSLocalizedString(@"Create", @"Commit create.");
+    updateText = NSLocalizedString(@"Update", @"Commit update.");
+    cancelText = NSLocalizedString(@"Cancel", @"Commit cancel.");
+    placeHolderText = NSLocalizedString(@"Type in a new Topic Title", @"New top place holder text.");
+
     return self;
 }
 
@@ -94,7 +111,9 @@
         [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
         [self setSelectedColor:[[self topic] color]];
         [[self nameTextField] setText:[[self topic] title]];
-        [[self buttonAction] setTitle:@"Update" forState:UIControlStateNormal];        
+        [[self buttonAction] setTitle:updateText forState:UIControlStateNormal];
+    } else {
+        [[self buttonAction] setTitle:createText forState:UIControlStateNormal];
     }
     
     [self initButton:[self button_1] withColor:kColor1];
@@ -111,6 +130,10 @@
 
     [[self nameTextField] setDelegate:self];
     [[self nameTextField] becomeFirstResponder];
+
+    self.nameTextField.placeholder = placeHolderText;
+    
+    [self.cancelButton setTitle:cancelText forState:UIControlStateNormal];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

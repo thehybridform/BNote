@@ -21,7 +21,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
 @property (strong, nonatomic) IBOutlet UILabel *errorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) IBOutlet UITextField *nameText;
@@ -41,12 +41,18 @@
 @synthesize nameText = _nameText;
 @synthesize topicGroupsTableViewController = _topicGroupsTableViewController;
 @synthesize selectedTopicsTableViewController = _selectedTopicsTableViewController;
-@synthesize editButton = _editButton;
 @synthesize currentTopicGroup = _currentTopicGroup;
 @synthesize topicGroupNames = _topicGroupNames;
 @synthesize canDismiss = _canDismiss;
 @synthesize doneButton = _doneButton;
 @synthesize footer = _footer;
+@synthesize addButton = _addButton;
+
+static NSString *topicGroupText;
+static NSString *doneText;
+static NSString *errorText;
+static NSString *normalText;
+static NSString *newTopicGroupPlaceHolderText;
 
 - (void)viewDidUnload
 {
@@ -58,9 +64,11 @@
     [self setNameText:nil];
     [self setTopicGroupsTableViewController:nil];
     [self setSelectedTopicsTableViewController:nil];
-    [self setEditButton:nil];
     [self setDoneButton:nil];
     [self setPopup:nil];
+    
+    self.addButton = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -71,6 +79,12 @@
     if (self) {
         [self setCanDismiss:YES];
     }
+    
+    errorText = NSLocalizedString(@"Topic name already exists.", @"Error text for duplicate topic group name.");
+    normalText = NSLocalizedString(@"Select Topics for this gorup.", @"Instruciton to select topic group to be included.");
+    topicGroupText = NSLocalizedString(@"Topic Groups", @"Topic groups menu title.");
+    newTopicGroupPlaceHolderText = NSLocalizedString(@"New Topic Group Name", @"New topic group name place holder.");
+    doneText = NSLocalizedString(@"Done", @"Done");
     
     return self;
 }
@@ -87,6 +101,12 @@
     [[self nameText] setFont:[BNoteConstants font:RobotoLight andSize:14]];
     
     [[self topicGroupsTableViewController] setNameText:[self nameText]];
+    
+    self.titleLabel.text = topicGroupText;
+    self.nameText.placeholder = newTopicGroupPlaceHolderText;
+    self.textLabel.text = normalText;
+    self.errorLabel.text = errorText;
+    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
     
     TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
     [[NSNotificationCenter defaultCenter] postNotificationName:kEditTopicGroupSelected object:group];
@@ -117,11 +137,13 @@
 {
 #ifdef LITE
     if ([[[BNoteReader instance] allTopicGroups] count] > kMaxTopicGroups) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BeNote Lite does not support adding more topic groups.  Please consider buying the full verion.  Delete older topic groups to make room."
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"More Topic Groups Not Supported", nil)
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+
         [alert show];
         return;
     }

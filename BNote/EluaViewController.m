@@ -86,7 +86,7 @@
         height = 650;
     }
 
-    if (point.y > height) {
+    if (point.y > height - 300) {
         [[self acceptButton] setEnabled:YES];
         [[self declineButton] setEnabled:YES];
     } else {

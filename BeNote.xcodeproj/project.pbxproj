@@ -47,8 +47,6 @@
 		1834D37E156351640065788F /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
 		1834D3A7156375560065788F /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
-		183994CA15D78FE5008E7023 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 183994C815D78FE5008E7023 /* Localizable.strings */; };
-		183994CB15D78FE5008E7023 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 183994C815D78FE5008E7023 /* Localizable.strings */; };
 		18497687159053DA00F49F5A /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
 		18497688159053DA00F49F5A /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
 		184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
@@ -63,7 +61,6 @@
 		184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
 		184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
-		184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */; };
 		1851A619159984640089EECF /* EntryContectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A618159984640089EECF /* EntryContectView.m */; };
 		1851A621159AE7670089EECF /* ContactMailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A620159AE7670089EECF /* ContactMailController.m */; };
 		1851A62A159E964B0089EECF /* PhotoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A628159E964B0089EECF /* PhotoEditorViewController.m */; };
@@ -211,6 +208,14 @@
 		18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */; };
 		18C5E89C15C8DE7A005590A2 /* ToTheLeftKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */; };
 		18CC190C15B929A60080C017 /* TopicSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CC190B15B929A60080C017 /* TopicSearchBar.m */; };
+		18D50F7215D85AFF00A9650D /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */; };
+		18D50F7315D85AFF00A9650D /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */; };
+		18D50F7A15D85B3300A9650D /* lite-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F7D15D85B3300A9650D /* lite-description.rtf */; };
+		18D50F7B15D85B3300A9650D /* lite-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F7D15D85B3300A9650D /* lite-description.rtf */; };
+		18D50F8115D85B3E00A9650D /* full-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F8415D85B3E00A9650D /* full-description.rtf */; };
+		18D50F8215D85B3E00A9650D /* full-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F8415D85B3E00A9650D /* full-description.rtf */; };
+		18D50F9915D85BB300A9650D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F9C15D85BB300A9650D /* Localizable.strings */; };
+		18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F9C15D85BB300A9650D /* Localizable.strings */; };
 		18DE683C15B0D41E00311F16 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683B15B0D41E00311F16 /* PeopleViewController.m */; };
 		18DE683F15B0D49700311F16 /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683E15B0D49700311F16 /* PersonView.m */; };
 		18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE684115B0D4C600311F16 /* PersonViewController.m */; };
@@ -391,7 +396,6 @@
 		18F4E26715CE4843002095A2 /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
 		18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
-		18F4E26A15CE4843002095A2 /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */; };
 		18F4E26B15CE4843002095A2 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
 		18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
 		18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1851A629159E964B0089EECF /* PhotoEditorViewController.xib */; };
@@ -416,10 +420,6 @@
 		18F4E2BF15CE5202002095A2 /* BNoteLiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */; };
 		18F4E2C115CE52DA002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
 		18F4E2C215CF7171002095A2 /* BNoteLiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */; };
-		18F4E2C415CF7251002095A2 /* lite-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C315CF7251002095A2 /* lite-description.rtf */; };
-		18F4E2C515CF7252002095A2 /* lite-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C315CF7251002095A2 /* lite-description.rtf */; };
-		18F4E2C715CF7264002095A2 /* full-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C615CF7264002095A2 /* full-description.rtf */; };
-		18F4E2C815CF7264002095A2 /* full-description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2C615CF7264002095A2 /* full-description.rtf */; };
 		18F4E2C915CF7406002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -502,7 +502,6 @@
 		1834D382156364840065788F /* TopicEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditorViewController.xib; path = ../TopicEditorViewController.xib; sourceTree = "<group>"; };
 		1834D3A5156375560065788F /* BNoteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFactory.h; sourceTree = "<group>"; };
 		1834D3A6156375560065788F /* BNoteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFactory.m; sourceTree = "<group>"; };
-		183994C915D78FE5008E7023 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		18497684159053DA00F49F5A /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		18497685159053DA00F49F5A /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		18497686159053DA00F49F5A /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
@@ -527,7 +526,6 @@
 		184CEAD715901FFC00C67CF5 /* TopicManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicManagementViewController.h; sourceTree = "<group>"; };
 		184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicManagementViewController.m; sourceTree = "<group>"; };
 		184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicManagementViewController.xib; sourceTree = "<group>"; };
-		184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "BeNote-EULA.rtf"; path = "../BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		1851A617159984640089EECF /* EntryContectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryContectView.h; sourceTree = "<group>"; };
 		1851A618159984640089EECF /* EntryContectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryContectView.m; sourceTree = "<group>"; };
 		1851A61F159AE7670089EECF /* ContactMailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactMailController.h; sourceTree = "<group>"; };
@@ -750,6 +748,26 @@
 		18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToTheLeftKeyWordFinder.m; sourceTree = "<group>"; };
 		18CC190A15B929A60080C017 /* TopicSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSearchBar.h; sourceTree = "<group>"; };
 		18CC190B15B929A60080C017 /* TopicSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicSearchBar.m; sourceTree = "<group>"; };
+		18D50F7415D85AFF00A9650D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "en.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18D50F7715D85B0D00A9650D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = "es.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18D50F7815D85B0E00A9650D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = "ja.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18D50F7915D85B2000A9650D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18D50F7C15D85B3300A9650D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "en.lproj/lite-description.rtf"; sourceTree = "<group>"; };
+		18D50F7E15D85B3800A9650D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/lite-description.rtf"; sourceTree = "<group>"; };
+		18D50F7F15D85B3900A9650D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = "ja.lproj/lite-description.rtf"; sourceTree = "<group>"; };
+		18D50F8015D85B3900A9650D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = "es.lproj/lite-description.rtf"; sourceTree = "<group>"; };
+		18D50F8315D85B3E00A9650D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "en.lproj/full-description.rtf"; sourceTree = "<group>"; };
+		18D50F8515D85B4000A9650D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = "es.lproj/full-description.rtf"; sourceTree = "<group>"; };
+		18D50F8615D85B4100A9650D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = "ja.lproj/full-description.rtf"; sourceTree = "<group>"; };
+		18D50F8715D85B4200A9650D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/full-description.rtf"; sourceTree = "<group>"; };
+		18D50F9215D85B7E00A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "de.lproj/lite-description.rtf"; sourceTree = "<group>"; };
+		18D50F9315D85B7E00A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "de.lproj/full-description.rtf"; sourceTree = "<group>"; };
+		18D50F9515D85B7E00A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "de.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18D50F9B15D85BB300A9650D /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18D50F9D15D85BB600A9650D /* es */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18D50F9E15D85BB800A9650D /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18D50F9F15D85BB800A9650D /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18D50FA715D8625600A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		18DE683B15B0D41E00311F16 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		18DE683D15B0D49700311F16 /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -793,8 +811,6 @@
 		18F4E2B915CE4F10002095A2 /* BNoteLiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteLiteViewController.h; sourceTree = "<group>"; };
 		18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteLiteViewController.m; sourceTree = "<group>"; };
 		18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNoteLiteViewController.xib; sourceTree = "<group>"; };
-		18F4E2C315CF7251002095A2 /* lite-description.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "lite-description.rtf"; sourceTree = "<group>"; };
-		18F4E2C615CF7264002095A2 /* full-description.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "full-description.rtf"; sourceTree = "<group>"; };
 		18F7994515AA14E800DEAB1F /* BeNote 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 13.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -974,13 +990,15 @@
 		1834D34215634A650065788F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				183994C815D78FE5008E7023 /* Localizable.strings */,
+				18D50F9C15D85BB300A9650D /* Localizable.strings */,
+				18D50F7D15D85B3300A9650D /* lite-description.rtf */,
+				18D50F8415D85B3E00A9650D /* full-description.rtf */,
 				189B445715AE809D008F11D2 /* RobotoBold.ttf */,
 				189B445815AE809D008F11D2 /* RobotoItalic.ttf */,
 				189B445915AE809D008F11D2 /* RobotoLight.ttf */,
 				189B445A15AE809D008F11D2 /* RobotoRegular.ttf */,
 				18558C451589AE9100BCB45C /* BeNote.entitlements */,
-				184CEADD15904FF800C67CF5 /* BeNote-EULA.rtf */,
+				18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */,
 				1834D34315634A650065788F /* BeNote-Info.plist */,
 				18F291CF15CE43F900543E65 /* BeNote Lite-Info.plist */,
 				1834D34715634A650065788F /* main.m */,
@@ -1552,8 +1570,6 @@
 		18F4E2B815CE4EE9002095A2 /* Lite Version */ = {
 			isa = PBXGroup;
 			children = (
-				18F4E2C315CF7251002095A2 /* lite-description.rtf */,
-				18F4E2C615CF7264002095A2 /* full-description.rtf */,
 				18F4E2B915CE4F10002095A2 /* BNoteLiteViewController.h */,
 				18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */,
 				18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */,
@@ -1614,6 +1630,8 @@
 				en,
 				es,
 				ja,
+				"zh-Hans",
+				de,
 			);
 			mainGroup = 1834D32C15634A650065788F;
 			productRefGroup = 1834D33815634A650065788F /* Products */;
@@ -1658,7 +1676,7 @@
 				1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */,
 				184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */,
 				184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */,
-				184CEADE15904FF800C67CF5 /* BeNote-EULA.rtf in Resources */,
+				18D50F7215D85AFF00A9650D /* BeNote-EULA.rtf in Resources */,
 				18497688159053DA00F49F5A /* InformationViewController.xib in Resources */,
 				184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */,
 				1851A62B159E964B0089EECF /* PhotoEditorViewController.xib in Resources */,
@@ -1680,9 +1698,8 @@
 				18A30FC815BB3C6600A2FD14 /* TopicGroupManagementViewController.xib in Resources */,
 				187F9ABE15C3BB1F007BE5E9 /* ProgressViewController.xib in Resources */,
 				18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */,
-				18F4E2C415CF7251002095A2 /* lite-description.rtf in Resources */,
-				18F4E2C715CF7264002095A2 /* full-description.rtf in Resources */,
-				183994CA15D78FE5008E7023 /* Localizable.strings in Resources */,
+				18D50F7A15D85B3300A9650D /* lite-description.rtf in Resources */,
+				18D50F8115D85B3E00A9650D /* full-description.rtf in Resources */,
 				18653A5615D842550017BD1E /* bnote-action.png in Resources */,
 				18653A5815D842550017BD1E /* bnote-add-participant.png in Resources */,
 				18653A5A15D842550017BD1E /* bnote-add-topic.png in Resources */,
@@ -1694,6 +1711,7 @@
 				18653A6615D842550017BD1E /* bnote-photos.png in Resources */,
 				18653A6815D842550017BD1E /* bnote-sketch.png in Resources */,
 				18653A6A15D842550017BD1E /* bnote-take-snapshot.png in Resources */,
+				18D50F9915D85BB300A9650D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1728,7 +1746,7 @@
 				18F4E26715CE4843002095A2 /* ResponsibilityTableViewController.xib in Resources */,
 				18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */,
 				18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */,
-				18F4E26A15CE4843002095A2 /* BeNote-EULA.rtf in Resources */,
+				18D50F7315D85AFF00A9650D /* BeNote-EULA.rtf in Resources */,
 				18F4E26B15CE4843002095A2 /* InformationViewController.xib in Resources */,
 				18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */,
 				18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */,
@@ -1750,9 +1768,8 @@
 				18F4E29015CE4843002095A2 /* TopicGroupManagementViewController.xib in Resources */,
 				18F4E2AF15CE4843002095A2 /* ProgressViewController.xib in Resources */,
 				18F4E2B015CE4843002095A2 /* NoteSummaryViewController.xib in Resources */,
-				18F4E2C515CF7252002095A2 /* lite-description.rtf in Resources */,
-				18F4E2C815CF7264002095A2 /* full-description.rtf in Resources */,
-				183994CB15D78FE5008E7023 /* Localizable.strings in Resources */,
+				18D50F7B15D85B3300A9650D /* lite-description.rtf in Resources */,
+				18D50F8215D85B3E00A9650D /* full-description.rtf in Resources */,
 				18653A5715D842550017BD1E /* bnote-action.png in Resources */,
 				18653A5915D842550017BD1E /* bnote-add-participant.png in Resources */,
 				18653A5B15D842550017BD1E /* bnote-add-topic.png in Resources */,
@@ -1764,6 +1781,7 @@
 				18653A6715D842550017BD1E /* bnote-photos.png in Resources */,
 				18653A6915D842550017BD1E /* bnote-sketch.png in Resources */,
 				18653A6B15D842550017BD1E /* bnote-take-snapshot.png in Resources */,
+				18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2059,13 +2077,53 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		183994C815D78FE5008E7023 /* Localizable.strings */ = {
+		18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				183994C915D78FE5008E7023 /* en */,
+				18D50F7415D85AFF00A9650D /* en */,
+				18D50F7715D85B0D00A9650D /* es */,
+				18D50F7815D85B0E00A9650D /* ja */,
+				18D50F7915D85B2000A9650D /* zh-Hans */,
+				18D50F9515D85B7E00A9650D /* de */,
+			);
+			name = "BeNote-EULA.rtf";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		18D50F7D15D85B3300A9650D /* lite-description.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18D50F7C15D85B3300A9650D /* en */,
+				18D50F7E15D85B3800A9650D /* zh-Hans */,
+				18D50F7F15D85B3900A9650D /* ja */,
+				18D50F8015D85B3900A9650D /* es */,
+				18D50F9215D85B7E00A9650D /* de */,
+			);
+			name = "lite-description.rtf";
+			sourceTree = "<group>";
+		};
+		18D50F8415D85B3E00A9650D /* full-description.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18D50F8315D85B3E00A9650D /* en */,
+				18D50F8515D85B4000A9650D /* es */,
+				18D50F8615D85B4100A9650D /* ja */,
+				18D50F8715D85B4200A9650D /* zh-Hans */,
+				18D50F9315D85B7E00A9650D /* de */,
+			);
+			name = "full-description.rtf";
+			sourceTree = "<group>";
+		};
+		18D50F9C15D85BB300A9650D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18D50F9B15D85BB300A9650D /* en */,
+				18D50F9D15D85BB600A9650D /* es */,
+				18D50F9E15D85BB800A9650D /* ja */,
+				18D50F9F15D85BB800A9650D /* zh-Hans */,
+				18D50FA715D8625600A9650D /* de */,
 			);
 			name = Localizable.strings;
-			path = en.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

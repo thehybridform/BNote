@@ -146,7 +146,7 @@
     [[self liteLable] setHidden:YES];
 #endif
     
-    self.searchBar.placeholder = NSLocalizedString(@"Seacrh All Topics", @"Search all topic.");
+    self.searchBar.placeholder = NSLocalizedString(@"Search All Topics", @"Search all topics.");
     self.notesLabel.text = NSLocalizedString(@"Notes", @"The notes section title.");
     self.peopleLabel.text = NSLocalizedString(@"Poeple", @"The attendees section title.");
 }

@@ -12,6 +12,7 @@
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
+#import "LayerFormater.h"
 
 @interface TopicGroupsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
@@ -48,6 +49,9 @@ static NSString *editText;
     [super viewDidLoad];
 
     [self.editButton setTitle:editText forState:UIControlStateNormal];
+    
+    [LayerFormater setBorderWidth:1 forView:self.view];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:self.view];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:kAddTopicGroupSelected object:nil];
 }
@@ -93,8 +97,7 @@ static NSString *editText;
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-
+        cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
         [[cell textLabel] setFont:[BNoteConstants font:RobotoLight andSize:15]];
     }
     

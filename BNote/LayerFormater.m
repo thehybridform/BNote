@@ -10,6 +10,10 @@
 
 @implementation LayerFormater
 
+static float shadowOffset = 0.5;
+static float shadowRadius = 5.0;
+static float shawdowOpacity = 0.5;
+
 + (void)roundCornersForView:(UIView *)view
 {
     [LayerFormater roundCornersForLayer:[view layer]];
@@ -51,17 +55,8 @@
 {
     [view.layer setMasksToBounds:NO];
     [view.layer setShadowColor:[UIColor blackColor].CGColor];
-    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowOpacity:shawdowOpacity];
     [view.layer setShadowRadius:size];
-    [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];    
-}
-
-+ (void)addShadowToView:(UIView *)view withColor:(UIColor *)color
-{
-    [view.layer setMasksToBounds:NO];
-    [view.layer setShadowColor:color.CGColor];
-    [view.layer setShadowOpacity:0.9];
-    [view.layer setShadowRadius:7.0];
     [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];    
 }
 
@@ -69,18 +64,9 @@
 {
     [view.layer setMasksToBounds:NO];
     [view.layer setShadowColor:[UIColor blackColor].CGColor];
-    [view.layer setShadowOpacity:0.8];
-    [view.layer setShadowRadius:7.0];
-    [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
-}
-
-+ (void)removeShadowFromView:(UIView *)view
-{
-    [view.layer setMasksToBounds:YES];
-    [view.layer setShadowColor:[UIColor clearColor].CGColor];
-    [view.layer setShadowRadius:0];
-    [view.layer setShadowOpacity:0];
-    [view.layer setShadowOffset:CGSizeMake(0, 0)];
+    [view.layer setShadowOpacity:shawdowOpacity];
+    [view.layer setShadowRadius:shadowRadius];
+    [view.layer setShadowOffset:CGSizeMake(shadowOffset, shadowOffset)];
 }
 
 @end

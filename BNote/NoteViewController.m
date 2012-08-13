@@ -69,13 +69,13 @@
 
 - (void)setup
 {
-    [[self month] setFont:[BNoteConstants font:RobotoBold andSize:10]];
-    [[self day] setFont:[BNoteConstants font:RobotoLight andSize:21]];
-    [[self year] setFont:[BNoteConstants font:RobotoLight andSize:10]];
-    [[self time] setFont:[BNoteConstants font:RobotoLight andSize:12]];
+    [[self month] setFont:[BNoteConstants font:RobotoBold andSize:9]];
+    [[self day] setFont:[BNoteConstants font:RobotoLight andSize:19]];
+    [[self year] setFont:[BNoteConstants font:RobotoLight andSize:8]];
+    [[self time] setFont:[BNoteConstants font:RobotoLight andSize:10]];
     [[self subject] setFont:[BNoteConstants font:RobotoLight andSize:13]];
     
-    [LayerFormater roundCornersForView:[self dateView]];
+    [LayerFormater roundCornersForView:self.dateView to:5];
     [LayerFormater setBorderColor:[UIColor clearColor] forView:[self dateView]];
     [[self dateView] setBackgroundColor:[BNoteConstants appHighlightColor1]];
     

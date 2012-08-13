@@ -76,11 +76,6 @@
 
 - (void)commonInit
 {
-    [self setTitleColor:[BNoteConstants colorFor:BNoteColorHighlight]
-               forState:(UIControlStateNormal|UIControlStateHighlighted)];
-    [self setTitleColor:[UIColor whiteColor]
-               forState:(UIControlStateSelected|UIControlStateDisabled)];
-    [self setBackgroundColor:[BNoteConstants colorFor:BNoteColorMain]];
     [self setShowsTouchWhenHighlighted:YES];
     [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
     

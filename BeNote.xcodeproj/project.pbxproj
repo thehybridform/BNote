@@ -749,7 +749,7 @@
 		18D50F7815D85B0E00A9650D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = "ja.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F7915D85B2000A9650D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F9515D85B7E00A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "de.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18D50F9B15D85BB300A9650D /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18D50F9B15D85BB300A9650D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D50F9D15D85BB600A9650D /* es */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D50F9E15D85BB800A9650D /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D50F9F15D85BB800A9650D /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };

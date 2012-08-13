@@ -203,7 +203,7 @@ static NSString *addKeyWordText;
     for (Entry *entry in [[self note] entries]) {
         if ([[self filter] accept:entry]) {
             if (![entry isKindOfClass:[Attendants class]]) {
-                id<EntryContent> controller = [BNoteFactory createEntryContent:entry];
+                EntryContentViewController *controller = [BNoteFactory createEntryContent:entry];
                 [[self filteredControllers] addObject:controller];
             }
         }
@@ -230,13 +230,22 @@ static NSString *addKeyWordText;
     }
 }
 
-- (void)selectLastEntryCell
+- (void)addAndSelectLastEntry:(Entry *)entry
 {
+    int index;
     if ([self showingSummary]) {
-        [self selectEntryCell:[[self filteredControllers] count] - 2];
+        index = [self.filteredControllers count] - 1;
     } else {
-        [self selectEntryCell:[[self filteredControllers] count] - 1];
+        index = [self.filteredControllers count];
     }
+    
+    EntryContentViewController *controller = [BNoteFactory createEntryContent:entry];
+    [self.filteredControllers insertObject:controller atIndex:index];
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    [controller.mainTextView becomeFirstResponder];
 }
 
 - (void)selectFirstCell
@@ -247,10 +256,10 @@ static NSString *addKeyWordText;
 - (void)selectEntryCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
     EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:index];
-    [[controller selectedTextView] becomeFirstResponder];
+    [controller.selectedTextView becomeFirstResponder];
 }
 
 - (void)selectEntry:(Entry *)entry

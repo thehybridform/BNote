@@ -25,16 +25,6 @@
 @synthesize answerTextView = _answerTextView;
 @synthesize answerQuickWordsViewController = _answerQuickWordsViewController;
 
-- (id)initWithEntry:(Entry *)entry
-{
-    self = [super initWithEntry:entry];
-    
-    if (self) {
-    }
-    
-    return self;
-}
-
 - (Question *)question
 {
     return (Question *) [self entry];
@@ -132,5 +122,9 @@
     }
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

@@ -12,6 +12,7 @@
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
 #import "BNoteFactory.h"
+#import "LayerFormater.h"
 
 @interface SelectedTopicsTableViewController ()
 @property (strong, nonatomic) NSArray *data;
@@ -51,6 +52,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [LayerFormater setBorderWidth:1 forView:self.view];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:self.view];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:kEditTopicGroupSelected object:nil];
 }
 
@@ -88,6 +92,7 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
 
+        cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
         [[cell textLabel] setFont:[BNoteConstants font:RobotoLight andSize:15]];
     }
     

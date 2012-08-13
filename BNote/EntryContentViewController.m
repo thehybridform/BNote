@@ -35,36 +35,6 @@
     
     if (self) {
         [self setEntry:entry];
-
-        UITableViewCell *cell = (UITableViewCell *) [self view];
-        [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
-        
-        UITextView *view = [self mainTextView];
-        if (view) {
-            [self setSelectedTextView:view];
-            [view setText:[[self entry] text]];
-            
-            [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-            [view setTextColor:UIColorFromRGB(0x444444)];
-            [view setClipsToBounds:YES];
-            [view setScrollEnabled:NO];
-            
-            QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-            [self setQuickWordsViewController:quick];
-            [view setInputAccessoryView:[quick view]];
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                         name:UITextViewTextDidChangeNotification object:view];
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
-                                                         name:UITextViewTextDidBeginEditingNotification object:view];
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
-                                                         name:UITextViewTextDidEndEditingNotification object:view];
-        }
-        
     }
     
     return self;
@@ -93,12 +63,35 @@
         [self hideControls];
     }
 
+    UITextView *view = [self mainTextView];
+    if (view) {
+        [self setSelectedTextView:view];
+        [view setText:[[self entry] text]];
+        
+        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+        [view setTextColor:UIColorFromRGB(0x444444)];
+        [view setClipsToBounds:YES];
+        [view setScrollEnabled:NO];
+        
+        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+        [self setQuickWordsViewController:quick];
+        [view setInputAccessoryView:[quick view]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
+                                                     name:UITextViewTextDidChangeNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
+                                                     name:UITextViewTextDidBeginEditingNotification object:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
+                                                     name:UITextViewTextDidEndEditingNotification object:view];
+    }
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
                                                  name:kReviewingNote object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
                                                  name:kEditingNote object:nil];
-    
 }
 
 - (void)viewDidUnload

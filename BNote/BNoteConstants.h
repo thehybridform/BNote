@@ -84,6 +84,7 @@ typedef enum {
 + (UIColor *)appColor1;
 + (UIColor *)appColor2;
 + (UIColor *)darkGray;
++ (UIColor *)darkGray2;
 + (UIColor *)appHighlightColor1;
 + (UIFont *)font:(BNoteFont)font andSize:(float)size;
 

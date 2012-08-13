@@ -32,6 +32,8 @@
     }
     
     [self handleWelcome:group];
+    
+    [[BNoteWriter instance] update];
 }
 
 + (void)handleWelcome:(TopicGroup *)group

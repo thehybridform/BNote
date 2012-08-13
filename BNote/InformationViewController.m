@@ -77,7 +77,7 @@
     [self setAboutArray:aboutArray];
     
     NSArray *storageArray =
-    [NSArray arrayWithObjects:@"BeNote Google+ Page", nil];
+    [NSArray arrayWithObjects:@"BeNote On Google+ Page", nil];
     [self setStorageArray:storageArray];
     
     NSArray *defaults =

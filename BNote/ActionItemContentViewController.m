@@ -70,31 +70,6 @@ static NSString *completedOnDateText;
     [self setCaledarBlankView:nil];
 }
 
-- (id)initWithEntry:(Entry *)entry
-{
-    self = [super initWithEntry:entry];
-    
-    if (self) {
-        [[self dueDateLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-        [[self responsibilityLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-        [[self completionLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-        
-        [[self responsibilityView] setBackgroundColor:[BNoteConstants appColor1]];
-        [[self completionView] setBackgroundColor:[BNoteConstants appColor1]];
-        [[self dueDateView] setBackgroundColor:[BNoteConstants appColor1]];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleResponsibility:)];
-        [[self responsibilityView] addGestureRecognizer:tap];
-        
-        tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDueDate:)];
-        [[self dueDateView] addGestureRecognizer:tap];
-        
-        tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCompleted:)];
-        [[self completionView] addGestureRecognizer:tap];
-    }
-
-    return self;
-}
 - (NSString *)localNibName
 {
     return @"ActionItemContentView";
@@ -110,7 +85,7 @@ static NSString *completedOnDateText;
     [super viewDidLoad];
     
     notCompleteText = NSLocalizedString(@"Not Complete", @"This action item is not complete");
-    completedOnDateText = NSLocalizedString(@"Complete on", @"As in 'This action item was ompleted On 12/1/1970'");
+    completedOnDateText = NSLocalizedString(@"Completed On", @"As in 'This action item was ompleted On 12/1/1970'");
     
     noResponsibilityText = NSLocalizedString(@"No Responsibility", @"This action item has no resposibility assigned");
     responsibilityOptionsText = NSLocalizedString(@"Responsibility Options", @"Responsibility options menu title");
@@ -123,6 +98,23 @@ static NSString *completedOnDateText;
     setDueDateText = NSLocalizedString(@"Set Due Date", @"Set the due date for this action item");
     clearDueDateText = NSLocalizedString(@"Clear Due Date", @"Clear the due date for this action item");
     dueOnText = NSLocalizedString(@"Due On", @"As in 'This action item is due on 12/1/1970'");
+
+    [[self dueDateLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
+    [[self responsibilityLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
+    [[self completionLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
+    
+    [[self responsibilityView] setBackgroundColor:[BNoteConstants appColor1]];
+    [[self completionView] setBackgroundColor:[BNoteConstants appColor1]];
+    [[self dueDateView] setBackgroundColor:[BNoteConstants appColor1]];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleResponsibility:)];
+    [[self responsibilityView] addGestureRecognizer:tap];
+    
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDueDate:)];
+    [[self dueDateView] addGestureRecognizer:tap];
+    
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCompleted:)];
+    [[self completionView] addGestureRecognizer:tap];
 
     [self updateDueDate];
     [self updateResponsibility];
@@ -354,6 +346,11 @@ static NSString *completedOnDateText;
                       [self responsibilityLabel],
                       nil];
     [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.08];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

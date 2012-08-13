@@ -94,7 +94,7 @@ static NSString *newTopicGroupPlaceHolderText;
     [super viewDidLoad];
 
     [[self errorLabel] setFont:[BNoteConstants font:RobotoBold andSize:12]];
-    [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:14]];
+    [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
     [[self titleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     [[self textLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[self textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
@@ -107,6 +107,9 @@ static NSString *newTopicGroupPlaceHolderText;
     self.textLabel.text = normalText;
     self.errorLabel.text = errorText;
     [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+    
+    [LayerFormater setBorderWidth:1 forView:[self footer]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:self.footer];
     
     TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
     [[NSNotificationCenter defaultCenter] postNotificationName:kEditTopicGroupSelected object:group];

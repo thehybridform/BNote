@@ -24,7 +24,8 @@ const int kFilterColor = 0xaaaaaa;
 const int kColorWhite = 0xffffff;
 const int kAppColor1 = 0xfefefe;
 const int kAppColor2 = 0xf4f4f4;
-const int kDarkGray = 0x888888;
+const int kDarkGray = 0xa8a8a8;
+const int kDarkGray2 = 0xe0e0e0;
 const int AppHighlightColor1 = 0x365ab0;
 
 #ifdef LITE
@@ -104,6 +105,11 @@ NSString * const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjk
 + (UIColor *)darkGray
 {
     return UIColorFromRGB(kDarkGray);
+}
+
++ (UIColor *)darkGray2
+{
+    return UIColorFromRGB(kDarkGray2);
 }
 
 + (UIFont *)font:(BNoteFont)font andSize:(float)size

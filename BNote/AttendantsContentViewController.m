@@ -34,25 +34,6 @@ static NSString *addressBook;
 static NSString *createNew;
 static NSString *attendants;
 
-- (id)initWithEntry:(Entry *)entry
-{
-    self = [super initWithEntry:entry];
-    
-    if (self) {
-        [[self addAttendantView] setBackgroundColor:[BNoteConstants appColor1]];
-        
-        AttendantsViewController *controller = [self attendantsViewController];
-        [controller setAttendants:[self attendants]];
-        
-        [controller update];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
-        [[self addAttendantView] addGestureRecognizer:tap];
-        
-    }
-    
-    return self;
-}
 - (NSString *)localNibName
 {
     return @"AttendantsContentView";
@@ -71,6 +52,16 @@ static NSString *attendants;
     createNew = NSLocalizedString(@"Create New", @"Create new attendants");
     attendants = NSLocalizedString(@"Attendants", @"Attendants menu title");
     
+    [[self addAttendantView] setBackgroundColor:[BNoteConstants appColor1]];
+    
+    AttendantsViewController *controller = [self attendantsViewController];
+    [controller setAttendants:[self attendants]];
+    
+    [controller update];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
+    [[self addAttendantView] addGestureRecognizer:tap];
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
         selector:@selector(keyboardDidHideAttendantsContentViewController:)
@@ -233,5 +224,9 @@ static NSString *attendants;
     [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.7 andDelayIncrement:0.1];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

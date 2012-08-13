@@ -110,9 +110,8 @@
 
     [LayerFormater setBorderWidth:1 forView:[self footer]];
     [LayerFormater setBorderWidth:1 forView:[self menu]];
-    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self footer]];
-    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self menu]];
-    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self detailView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self footer]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menu]];
     
     [LayerFormater addShadowToView:[self footer]];
     [LayerFormater addShadowToView:[self menu]];
@@ -148,7 +147,7 @@
     
     self.searchBar.placeholder = NSLocalizedString(@"Search All Topics", @"Search all topics.");
     self.notesLabel.text = NSLocalizedString(@"Notes", @"The notes section title.");
-    self.peopleLabel.text = NSLocalizedString(@"Poeple", @"The attendees section title.");
+    self.peopleLabel.text = NSLocalizedString(@"People", @"The attendees section title.");
 }
 
 - (void)selectedTopic:(NSNotification *)notification

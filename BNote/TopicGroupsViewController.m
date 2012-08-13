@@ -16,7 +16,6 @@
 @interface TopicGroupsViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *topicGroupLabel;
 @property (strong, nonatomic) IBOutlet UIView *menu;
-@property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) IBOutlet UIButton *addButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -24,7 +23,6 @@
 @end
 
 @implementation TopicGroupsViewController
-@synthesize footer = _footer;
 @synthesize menu = _menu;
 @synthesize data = _data;
 @synthesize popup = _popup;
@@ -53,7 +51,7 @@ static NSString *manageText;
     }
     
     menuText = NSLocalizedString(@"Select Topic Group", @"The select topics group menu title.");
-    manageText = NSLocalizedString(@"Manage", @"The manage topic groups button.");
+    manageText = NSLocalizedString(@"Edit", nil);
     
     return self;
 }
@@ -63,9 +61,8 @@ static NSString *manageText;
     [super viewDidLoad];
     
     [LayerFormater addShadowToView:[self menu]];
-    [LayerFormater addShadowToView:[self footer]];
     
-    [[self topicGroupLabel] setFont:[BNoteConstants font:RobotoBold andSize:20]];
+    [[self topicGroupLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
     [[self topicGroupLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     
     self.topicGroupLabel.text = menuText;
@@ -76,7 +73,6 @@ static NSString *manageText;
 {
     [super viewDidUnload];
 
-    [self setFooter:nil];
     [self setAddButton:nil];
     [self setTableView:nil];
     [self setMenu:nil];
@@ -96,9 +92,6 @@ static NSString *manageText;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell setEditingAccessoryType:UITableViewCellAccessoryNone];
-        [cell setShowsReorderControl:NO];
         [LayerFormater setBorderWidth:1 forView:cell];
 
         [LayerFormater setBorderColor:[UIColor clearColor] forView:cell];
@@ -115,7 +108,7 @@ static NSString *manageText;
     NSString *name = [BNoteSessionData stringForKey:kTopicGroupSelected];
     
     if ([[topicGroup name] isEqualToString:name]) {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
     
     return cell;

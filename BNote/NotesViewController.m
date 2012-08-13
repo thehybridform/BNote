@@ -99,7 +99,7 @@
     
     if ([[self topic] color] != kFilterColor) {
         x += space;
-        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 10, 100, 100)];
+        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 7, 100, 110)];
         UITapGestureRecognizer *tap =
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
         [noteView addGestureRecognizer:tap];
@@ -124,7 +124,7 @@
 
 - (void)addNote:(Note *)note atX:(float)x withDelay:(float)delay isAssociated:(BOOL)associated
 {
-    float y = 10;
+    float y = 7;
 
     NoteViewController *controller = [[NoteViewController alloc] initWithNote:note isAssociated:associated];
     [[self noteControllers] addObject:controller];
@@ -138,8 +138,15 @@
     
     [BNoteAnimation winkInView:view withDuration:0.05 andDelay:delay];
 
+    UIView *shadowView = [[UIView alloc] initWithFrame:CGRectMake(x + 2, y + 2, width - 4, height - 4)];
+    [LayerFormater addShadowToView:shadowView];
+    [LayerFormater setBorderColorWithInt:10 forView:shadowView];
+    shadowView.backgroundColor = [BNoteConstants appColor1];
+
     UIScrollView *scrollView = (UIScrollView *) [self view];
+    [scrollView addSubview:shadowView];
     [scrollView addSubview:view];
+    
 }
 
 - (IBAction)pageChanged:(UIPageControl *)pageControl

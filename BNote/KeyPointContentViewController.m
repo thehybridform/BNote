@@ -47,26 +47,6 @@ static NSString *imageOptionsText;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (id)initWithEntry:(Entry *)entry
-{
-    self = [super initWithEntry:entry];
-    
-    if (self) {
-        UITapGestureRecognizer *normalTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto:)];
-        [[self photoImageView] addGestureRecognizer:normalTap];
-        
-        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showDelete:)];
-        [[self photoImageView] addGestureRecognizer:longPress];
-
-        [LayerFormater roundCornersForView:[self photoImageView]];
-        
-        [self handlePhotoImage];
-    }
-    
-    return self;
-}
-
 - (NSString *)localNibName
 {
     return @"KeyPointContentView";
@@ -84,6 +64,17 @@ static NSString *imageOptionsText;
     imageOptionsText = NSLocalizedString(@"Image Options", @"Image options menu title");
     removeImageText = NSLocalizedString(@"Remove", @"Remove");
     
+    UITapGestureRecognizer *normalTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto:)];
+    [[self photoImageView] addGestureRecognizer:normalTap];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showDelete:)];
+    [[self photoImageView] addGestureRecognizer:longPress];
+    
+    [LayerFormater roundCornersForView:[self photoImageView]];
+    
+    [self handlePhotoImage];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoImage:)
                                                  name:kKeyPointPhotoUpdated object:nil];
 }
@@ -264,5 +255,9 @@ static NSString *imageOptionsText;
     [BNoteAnimation winkInView:views withDuration:0.06 andDelay:0.5 andDelayIncrement:0.2];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

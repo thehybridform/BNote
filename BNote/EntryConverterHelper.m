@@ -39,10 +39,11 @@
 @synthesize converters = _converters;
 @synthesize entry = _entry;
 
-static NSString *keyPoint = @"Key Point";
-static NSString *question = @"Question";
-static NSString *decision = @"Decision";
-static NSString *actionItem = @"Action Item";
+static NSString *convertToText;
+static NSString *keyPointText;
+static NSString *questionText;
+static NSString *decisionText;
+static NSString *actionItemText;
 
 - (id)initSingleton
 {
@@ -69,6 +70,12 @@ static NSString *actionItem = @"Action Item";
         [converters addObject:[[ActionItemToQuestionConverter alloc] init]];
     }
     
+    convertToText = NSLocalizedString(@"Convert Note Entry To", nil);
+    keyPointText = NSLocalizedString(@"Key Point", nil);
+    questionText = NSLocalizedString(@"Question", nil);
+    decisionText = NSLocalizedString(@"Decision", nil);
+    actionItemText = NSLocalizedString(@"Action Item", nil);
+    
     return self;
 }
 
@@ -85,22 +92,22 @@ static NSString *actionItem = @"Action Item";
     [actionSheet setDelegate:[BNoteSessionData instance]];
     [[BNoteSessionData instance] setActionSheetDelegate:self];
     
-    [actionSheet setTitle:@"Convert Note Entry To"];
+    [actionSheet setTitle:convertToText];
     
     if (![entry isKindOfClass:[KeyPoint class]]) {
-        [actionSheet addButtonWithTitle:keyPoint];
+        [actionSheet addButtonWithTitle:keyPointText];
     }
     
     if (![entry isKindOfClass:[Question class]]) {
-        [actionSheet addButtonWithTitle:question];
+        [actionSheet addButtonWithTitle:questionText];
     }
     
     if (![entry isKindOfClass:[Decision class]]) {
-        [actionSheet addButtonWithTitle:decision];
+        [actionSheet addButtonWithTitle:decisionText];
     }
     
     if (![entry isKindOfClass:[ActionItem class]]) {
-        [actionSheet addButtonWithTitle:actionItem];
+        [actionSheet addButtonWithTitle:actionItemText];
     }
     
     CGRect rect = [view frame];
@@ -122,13 +129,13 @@ static NSString *actionItem = @"Action Item";
         Note *note = [[self entry] note];
         Entry *entry;
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == keyPoint) {
+        if (title == keyPointText) {
             entry = [BNoteFactory createKeyPoint:note];
-        } else if (title == question) {
+        } else if (title == questionText) {
             entry = [BNoteFactory createQuestion:note];
-        } else if (title == decision) {
+        } else if (title == decisionText) {
             entry = [BNoteFactory createDecision:note];
-        } else if (title == actionItem) {
+        } else if (title == actionItemText) {
             entry = [BNoteFactory createActionItem:note];
         }
         

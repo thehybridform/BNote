@@ -35,7 +35,7 @@ static NSString *moveNoteText;
 static NSString *associateNoteText;
 static NSString *disassociateNoteText;
 
-const static float x1 = 6;
+const static float x1 = 7;
 const static float x2 = x1 + 10;
 const static float x3 = x2 + 10;
 const static float h1 = 44;

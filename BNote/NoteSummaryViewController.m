@@ -47,7 +47,7 @@
     [LayerFormater setBorderColor:UIColorFromRGB(self.note.color) forView:cell];
     [LayerFormater setBorderWidth:2 forView:cell];
     
-    UITextView *view = [self mainTextView];
+    UITextView *view = self.textView;
     
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
     [view setTextColor:UIColorFromRGB(0x444444)];
@@ -165,6 +165,11 @@
 }
 
 - (void)detatchFromNotificationCenter
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

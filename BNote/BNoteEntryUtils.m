@@ -35,17 +35,17 @@
     NSString *detailText = @"";
     
     if ([actionItem responsibility]) {
-        detailText = [BNoteStringUtils append:@" Responsibility: ", [actionItem responsibility], nil];
+        detailText = [BNoteStringUtils append:@" ", NSLocalizedString(@"Responsibility", nil), @": ", [actionItem responsibility], nil];
     }
     
     if ([actionItem dueDate]) {
         NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem dueDate]]; 
-        detailText = [BNoteStringUtils append:detailText, @" - Due on ", [BNoteStringUtils dateToString:dueDate], nil];
+        detailText = [BNoteStringUtils append:detailText, @" - ", NSLocalizedString(@"Due On", nil), @" ", [BNoteStringUtils dateToString:dueDate], nil];
     }
     
     if ([actionItem completed]) {
         NSDate *completed = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem completed]]; 
-        detailText = [BNoteStringUtils append:detailText, @" - Completed on ", [BNoteStringUtils dateToString:completed], nil];
+        detailText = [BNoteStringUtils append:detailText, @" - ", NSLocalizedString(@"Completed On", nil), @" ", [BNoteStringUtils dateToString:completed], nil];
     }
         
     return [BNoteStringUtils nilOrEmpty:detailText] ? nil : detailText;
@@ -239,7 +239,7 @@
 + (NSString *)topicGroupName:(TopicGroup *)topicGroup
 {
     if ([[topicGroup name] isEqualToString:kAllTopicGroupName]) {
-        return @"All";
+        return NSLocalizedString(@"All", nil);
     }
     
     return [topicGroup name];

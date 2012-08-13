@@ -317,10 +317,10 @@ static NSString *spacing = @"   ";
 - (IBAction)done:(id)sender
 {
     [BNoteEntryUtils cleanUpEntriesForNote:[self note]];
+    [[self note] setSubject:[[self subjectTextView] text]];
     [[BNoteWriter instance] update];
     
     [self dismissModalViewControllerAnimated:YES];
-    [[self note] setSubject:[[self subjectTextView] text]];
     [self setupTableViewAddingEntries];
 
     [[BNoteSessionData instance] setMainViewController:nil];
@@ -333,6 +333,7 @@ static NSString *spacing = @"   ";
         [self reviewing];
     } else {
         [self editing];
+        [[self entriesViewController] setFilter:[[BNoteFilterFactory instance] create:ItdentityType]];
     }
 }
 
@@ -422,9 +423,8 @@ static NSString *spacing = @"   ";
     
 #endif
 
-    [[self entriesViewController] reload];
     if (![entry isKindOfClass:[Attendants class]]) {
-        [[self entriesViewController] selectLastEntryCell];
+        [[self entriesViewController] addAndSelectLastEntry:entry];
     }
 }
 
@@ -469,7 +469,7 @@ static NSString *spacing = @"   ";
     
     DatePickerViewController *controller = [[DatePickerViewController alloc] initWithDate:date];
     [controller setListener:self];
-    [controller setTitleText:@"Created Date"];
+    [controller setTitleText:NSLocalizedString(@"Created Date", nil)];
 
     if ([self popup]) {
         [[self popup] dismissPopoverAnimated:YES];

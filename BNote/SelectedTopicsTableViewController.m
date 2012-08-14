@@ -89,6 +89,7 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
         cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
         [[cell textLabel] setFont:[BNoteConstants font:RobotoLight andSize:15]];
     }
@@ -98,10 +99,7 @@
     [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     
     if ([[[self topicGroup] topics] containsObject:currentTopic]) {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
         [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-    } else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
         
     static NSString *spacingText = @"   ";
@@ -126,15 +124,15 @@
 {
     if ([self topicGroup] && ![[[self topicGroup] name] isEqualToString:kAllTopicGroupName]) {
         Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+        [[self topicGroup] addTopicsObject:topic];
+    }
+}
 
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-        if ([cell accessoryType] == UITableViewCellAccessoryNone) {
-            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-            [[self topicGroup] addTopicsObject:topic];
-        } else {
-            [cell setAccessoryType:UITableViewCellAccessoryNone];
-            [[self topicGroup] removeTopicsObject:topic];
-        }
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self topicGroup] && ![[[self topicGroup] name] isEqualToString:kAllTopicGroupName]) {
+        Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+        [[self topicGroup] removeTopicsObject:topic];
     }
 }
 

@@ -13,6 +13,7 @@
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
 #import "LayerFormater.h"
+#import "BNoteFactory.h"
 
 @interface TopicGroupsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
@@ -99,6 +100,7 @@ static NSString *editText;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
         [[cell textLabel] setFont:[BNoteConstants font:RobotoLight andSize:15]];
+        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:[BNoteConstants appHighlightColor1]]];
     }
     
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 
-@interface NoteView : UIView <UIActionSheetDelegate, UIPopoverControllerDelegate>
+@interface NoteView : UIView <UIActionSheetDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) Note *note;
 @property (assign, nonatomic) BOOL associated;

@@ -1,4 +1,6 @@
 {
+	Confirm = Confirm;
+	"Delete Note?" = "Delete Note?";
 	All = "All Topics";
 	"Completed On" = "Completed On";
 	"Splash Screen Lite Title" = "Thank you for installing BeNote Lite!";

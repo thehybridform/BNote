@@ -122,8 +122,9 @@ static NSString *highligtTopicText;
     [data filterUsingPredicate:p];
     [self setData:data];
     
-//    [LayerFormater addShadowToView:[self menuView]];
+    [LayerFormater addShadowToView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
 }
 
 - (IBAction)done:(id)sender
@@ -153,11 +154,10 @@ static NSString *highligtTopicText;
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        if ([self topicSelectType] == AssociateTopic) {
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        }
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
         cell.textLabel.font = [BNoteConstants font:RobotoRegular andSize:16];
         cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
+        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:[BNoteConstants appHighlightColor1]]];
     }
 
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
@@ -165,8 +165,8 @@ static NSString *highligtTopicText;
     
     if ([self topicSelectType] == AssociateTopic) {
         if ([[[self note] associatedTopics] containsObject:topic]) {
-            [[self selected] addObject:topic];
-            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [self tableView:tableView didSelectRowAtIndexPath:indexPath];
         }
     }
 
@@ -198,16 +198,7 @@ static NSString *highligtTopicText;
         }
             break;
         case AssociateTopic:
-        {
-            UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-            if ([cell accessoryType] == UITableViewCellAccessoryNone) {
-                [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-                [[self selected] addObject:topic];
-            } else {
-                [cell setAccessoryType:UITableViewCellAccessoryNone];
-                [[self selected] removeObject:topic];
-            }
-        }
+            [[self selected] addObject:topic];
             break;
         
         case CopyToTopic:
@@ -225,6 +216,12 @@ static NSString *highligtTopicText;
         default:
             break;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+    [[self selected] removeObject:topic];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

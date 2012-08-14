@@ -110,12 +110,16 @@
 
 - (void)associateTopics:(NSArray *)topics toNote:(Note *)note
 {
+    NSMutableSet *toBeRemoved = [[NSMutableSet alloc] init];
+    
     NSSet *currentTopics = [note associatedTopics];
     for (Topic *topic in currentTopics) {
         if (![topics containsObject:topic]) {
-            [self disassociateNote:note toTopic:topic];
+            [toBeRemoved addObject:topic];
         }
     }
+
+    [note removeAssociatedTopics:toBeRemoved];
     
     for (Topic *topic in topics) {
         [self associateNote:note toTopic:topic];

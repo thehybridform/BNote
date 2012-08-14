@@ -12,6 +12,7 @@
 #import "BNoteReader.h"
 #import "TopicGroup.h"
 #import "Topic.h"
+#import "BNoteFactory.h"
 
 @interface TopicGroupsViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *topicGroupLabel;
@@ -62,6 +63,9 @@ static NSString *manageText;
     
     [LayerFormater addShadowToView:[self menu]];
     
+    [LayerFormater setBorderWidth:1 forView:[self menu]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menu]];
+
     [[self topicGroupLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
     [[self topicGroupLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     
@@ -99,6 +103,7 @@ static NSString *manageText;
         UIFont *font = [BNoteConstants font:RobotoLight andSize:15.0];
         [[cell textLabel] setFont:font];
         [[cell textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:[BNoteConstants appHighlightColor1]]];
     }
 
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];

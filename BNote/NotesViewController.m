@@ -138,7 +138,7 @@
     
     UIView *shadowView = [[UIView alloc] initWithFrame:CGRectMake(x + 2, y + 2, width - 4, height - 4)];
     [LayerFormater addShadowToView:shadowView];
-    [LayerFormater setBorderColorWithInt:10 forView:shadowView];
+    [LayerFormater setBorderColorWithInt:1 forView:shadowView];
     shadowView.backgroundColor = [BNoteConstants appColor1];
 
     UIScrollView *scrollView = (UIScrollView *) [self view];

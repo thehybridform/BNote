@@ -194,10 +194,7 @@ const static float h2 = h1 - 10;
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == removeNoteText) {
-            Topic *topic = [[self note] topic];
-            [[BNoteWriter instance] removeNote:[self note]];
-            [[BNoteWriter instance] update];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];
+            [self comfirmDelete];
         } else if (title == moveNoteText) {
             [self presentTopicSelectionForType:ChangeMainTopic];
         } else if (title == copyNoteText) {
@@ -213,6 +210,27 @@ const static float h2 = h1 - 10;
     }
     
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self];
+}
+
+- (void)comfirmDelete
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Note?", nil)
+                                                    message:nil
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                          otherButtonTitles:NSLocalizedString(@"Confirm", nil), nil];
+    alert.delegate = self;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex) {
+        Topic *topic = [[self note] topic];
+        [[BNoteWriter instance] removeNote:[self note]];
+        [[BNoteWriter instance] update];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];
+    }
 }
 
 - (void)presentTopicSelectionForType:(TopicSelectType)type

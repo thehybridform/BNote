@@ -103,19 +103,19 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     if (error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Failed to Send E-Mail", nil)
                                                         message:[error localizedDescription]
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                               otherButtonTitles:nil];
         [alert show];
     }
     
     if (result == MFMailComposeResultSent) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email Sent"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"E-Mail Sent", nil)
                                                         message:nil
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                               otherButtonTitles:nil];
         [alert show];
     }

@@ -89,27 +89,21 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-
         cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
         [[cell textLabel] setFont:[BNoteConstants font:RobotoLight andSize:15]];
-    }
-    
-    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[topic title]];
-
-    if ([[[self topicGroup] topics] containsObject:topic]) {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-    } else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     
     Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
     [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
     [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     
-    
+    if ([[[self topicGroup] topics] containsObject:currentTopic]) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    } else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+        
     static NSString *spacingText = @"   ";
     [[cell textLabel] setText:[spacingText stringByAppendingString:[currentTopic title]]];
 
@@ -148,4 +142,5 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 @end

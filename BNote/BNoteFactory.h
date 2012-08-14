@@ -18,6 +18,7 @@
 #import "Photo.h"
 #import "KeyWord.h"
 #import "EntryContentViewController.h"
+#import "NoteSummaryViewController.h"
 #import "TopicGroup.h"
 #import "EntryContent.h"
 
@@ -99,6 +100,6 @@ typedef enum {
 + (UIView *)createEntrySummaryHeaderView:(EntrySummaryHeaderType)type;
 
 + (EntryContentViewController *)createEntryContent:(Entry *)entry;
-+ (id<EntryContent>)createSummaryEntry:(Note *)note;
++ (NoteSummaryViewController *)createSummaryEntry:(Note *)note;
 
 @end

@@ -179,6 +179,7 @@ static NSString *resetText;
     
     [LayerFormater setBorderWidth:2 forView:[self drawView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
 
     [LayerFormater addShadowToView:[self menuView]];
 
@@ -220,11 +221,14 @@ static NSString *resetText;
                        [self redoButton],
                        [self undoButton],
                        nil];
-    [BNoteAnimation winkInView:views1 withDuration:0.05 andDelay:0.8 andDelayIncrement:0.1];
-    [BNoteAnimation winkInView:views4 withDuration:0.05 andDelay:0.8 andDelayIncrement:0.1];
-    [BNoteAnimation winkInView:views2 withDuration:0.05 andDelay:0.9 andDelayIncrement:0.1];
-    [BNoteAnimation winkInView:views3 withDuration:0.05 andDelay:1.0 andDelayIncrement:0.1];
-    [BNoteAnimation winkInView:[self imageView] withDuration:0.2 andDelay:0.7];
+    [BNoteAnimation winkInView:views1 withDuration:0.05 andDelay:0.8 andDelayIncrement:0.1 spark:NO];
+    [BNoteAnimation winkInView:views4 withDuration:0.05 andDelay:0.8 andDelayIncrement:0.1 spark:NO];
+    [BNoteAnimation winkInView:views2 withDuration:0.05 andDelay:0.9 andDelayIncrement:0.1 spark:NO];
+    [BNoteAnimation winkInView:views3 withDuration:0.05 andDelay:1.0 andDelayIncrement:0.1 spark:NO];
+    [BNoteAnimation winkInView:[self imageView] withDuration:0.2 andDelay:0.7 spark:NO];
+    
+    [self selectPencil:self.smallPencileButton];
+    [self selectColor:self.color11Button];
 }
 
 - (void)setupButton:(UIButton *)button withColor:(UIColor *)color

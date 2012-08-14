@@ -145,7 +145,7 @@ static NSString *completedOnDateText;
     
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny
-                         animated:YES];
+                         animated:NO];
 
     [popup setPopoverContentSize:CGSizeMake(367, 300)];
 }
@@ -206,7 +206,7 @@ static NSString *completedOnDateText;
     
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
+                         animated:NO];
 }
 
 - (void)dateTimeUpdated:(NSDate *)date
@@ -345,7 +345,7 @@ static NSString *completedOnDateText;
                       [self dueDateLabel],
                       [self responsibilityLabel],
                       nil];
-    [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.08];
+    [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.08 spark:NO];
 }
 
 - (void)dealloc

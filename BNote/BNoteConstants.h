@@ -46,6 +46,7 @@ extern NSString * const kAttendeeUpdated;
 extern NSString * const kReviewingNote;
 extern NSString * const kEditingNote;
 extern NSString * const kActionItemActive;
+extern NSString * const kFocusTextInput;
 
 extern NSString * const kNewLine;
 

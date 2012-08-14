@@ -104,6 +104,12 @@ static NSString *editText;
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[BNoteEntryUtils topicGroupName:topicGroup]];
 
+    NSString *name = [BNoteSessionData stringForKey:kTopicGroupSelected];
+    if ([[topicGroup name] isEqualToString:name]) {
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+
     return cell;
 }
 

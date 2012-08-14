@@ -20,7 +20,8 @@
     <DatePickerViewControllerListener,
      UIActionSheetDelegate,
      UIPopoverControllerDelegate,
-     BNoteFilterDelegate>
+     BNoteFilterDelegate,
+     UITextFieldDelegate>
 
 @property (strong, nonatomic) Note *note;
 

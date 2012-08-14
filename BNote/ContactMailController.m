@@ -36,7 +36,7 @@
     
     if (result == MFMailComposeResultSent) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"E-Mail Sent", nil)
-                                                        message:NSLocalizedString(@"Thank you for cantacting us!", nil)
+                                                        message:NSLocalizedString(@"Thank you for contacting us!", nil)
                                                        delegate:nil
                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                               otherButtonTitles:nil];

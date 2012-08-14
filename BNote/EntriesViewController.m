@@ -108,7 +108,7 @@ static NSString *addKeyWordText;
 {
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]];
     
-    [BNoteAnimation winkInView:[controller iconView] withDuration:0.2 andDelay:0.5];
+    [BNoteAnimation winkInView:[controller iconView] withDuration:0.2 andDelay:0.5 spark:NO];
 
     return [controller cell];
 }
@@ -223,29 +223,25 @@ static NSString *addKeyWordText;
     [[self tableView] reloadData];
 }
 
-- (void)selectSummaryCell
-{
-    if ([self showingSummary]) {
-        [self selectEntryCell:[[self filteredControllers] count] - 1];
-    }
-}
-
 - (void)addAndSelectLastEntry:(Entry *)entry
 {
     int index;
-    if ([self showingSummary]) {
-        index = [self.filteredControllers count] - 1;
+    if ([entry isKindOfClass:[Attendants class]]) {
+        index = 0;
     } else {
-        index = [self.filteredControllers count];
+        if ([self showingSummary]) {
+            index = [self.filteredControllers count] - 1;
+        } else {
+            index = [self.filteredControllers count];
+        }
     }
     
     EntryContentViewController *controller = [BNoteFactory createEntryContent:entry];
     [self.filteredControllers insertObject:controller atIndex:index];
-
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    [controller.mainTextView becomeFirstResponder];
 }
 
 - (void)selectFirstCell
@@ -258,7 +254,7 @@ static NSString *addKeyWordText;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
-    EntryContentViewController *controller = [[self filteredControllers] objectAtIndex:index];
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
     [controller.selectedTextView becomeFirstResponder];
 }
 
@@ -307,13 +303,19 @@ static NSString *addKeyWordText;
 
 - (void)displaySummary
 {
-    [self setShowSummary:YES];
-    [self reload];
+    self.showSummary = YES;
+    
+    NoteSummaryViewController *controller = [BNoteFactory createSummaryEntry:[self note]];
+    [[self filteredControllers] addObject:controller];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.filteredControllers count] - 1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (BOOL)showingSummary
 {
-    id<EntryContent> controller = [[self filteredControllers] lastObject];
+    NoteSummaryViewController *controller = [[self filteredControllers] lastObject];
     return [controller isKindOfClass:[NoteSummaryViewController class]];
 }
 

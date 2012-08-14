@@ -10,10 +10,10 @@
 
 @implementation BNoteAnimation
 
-+ (void)winkInView:(NSArray *)views withDuration:(float)duration andDelay:(float)delay andDelayIncrement:(float)increment
++ (void)winkInView:(NSArray *)views withDuration:(float)duration andDelay:(float)delay andDelayIncrement:(float)increment spark:(BOOL)spark
 {
     for (UIView *view in views) {
-        [self winkInView:view withDuration:duration andDelay:delay += increment];
+        [self winkInView:view withDuration:duration andDelay:delay += increment spark:spark];
     }
 }
 
@@ -24,7 +24,7 @@
     }
 }
 
-+ (void)winkInView:(UIView *)view withDuration:(float)duration andDelay:(float)delay
++ (void)winkInView:(UIView *)view withDuration:(float)duration andDelay:(float)delay spark:(BOOL)spark
 {
     CGRect frame = [view frame];
     CGRect initialFrame = CGRectMake(frame.origin.x, frame.origin.y + frame.size.height / 2.0, frame.size.width, 0);
@@ -33,25 +33,27 @@
     
     [view setAlpha:0];
     
-    UIView *spark = [[UIView alloc] initWithFrame:frame];
-    [[spark layer] setCornerRadius:15];
-    [spark setBackgroundColor:[BNoteConstants appColor1]];
-    [spark setAlpha:0.5];
-    [[view superview] addSubview:spark];
+    if (spark) {
+        UIView *spark = [[UIView alloc] initWithFrame:frame];
+        [[spark layer] setCornerRadius:15];
+        [spark setBackgroundColor:[BNoteConstants appColor1]];
+        [spark setAlpha:0.5];
+        [[view superview] addSubview:spark];
     
-    CGRect finalSparkFrame = CGRectMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2.0, 0, 0);
+        CGRect finalSparkFrame = CGRectMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2.0, 0, 0);
     
-    [UIView animateWithDuration:0.8
-                          delay:delay * 2 / 3
-                        options:(UIViewAnimationOptionCurveEaseOut)
-                     animations:^(void) {
-                         [spark setAlpha:0];
-                         [spark setFrame:finalSparkFrame];
-                     }
-                     completion:^(BOOL finished) {
-                         [spark removeFromSuperview];
-                     }
-     ];
+        [UIView animateWithDuration:0.8
+                              delay:delay * 2 / 3
+                            options:(UIViewAnimationOptionCurveEaseOut)
+                         animations:^(void) {
+                             [spark setAlpha:0];
+                             [spark setFrame:finalSparkFrame];
+                         }
+                         completion:^(BOOL finished) {
+                             [spark removeFromSuperview];
+                         }
+         ];
+    }
     
     [UIView animateWithDuration:duration
                           delay:delay

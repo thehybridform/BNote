@@ -24,6 +24,7 @@
 #import "EditNoteView.h"
 #import "BNoteFilterHelper.h"
 #import "BNoteAnimation.h"
+#import "BNoteTextField.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) UIColor *toolbarEditColor;
@@ -38,7 +39,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *entryLabel;
 @property (strong, nonatomic) IBOutlet UILabel *filteringLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UITextView *subjectTextView;
+@property (strong, nonatomic) IBOutlet UITextField *subjectTextView;
 @property (strong, nonatomic) IBOutlet BNoteButton *closeButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *attendantsButton;
 @property (strong, nonatomic) IBOutlet BNoteButton *keyPointButton;
@@ -154,7 +155,7 @@ static NSString *spacing = @"   ";
     reviewText = NSLocalizedString(@"REVIEW", @"Review");
     doneText = NSLocalizedString(@"Done", @"Done");
     filteringText = NSLocalizedString(@"FILTERING", @"Note entry filtering lable");
-    entryText = NSLocalizedString(@"ENRTY", @"Note entry lable");
+    entryText = NSLocalizedString(@"ENTRY", @"Note entry lable");
     addSummaryText = NSLocalizedString(@"Add Summary", @"Add summary entry to this note");
 
     keyPointText = NSLocalizedString(@"Key Point", @"Add key point button title");
@@ -186,12 +187,15 @@ static NSString *spacing = @"   ";
     [LayerFormater addShadowToView:[self footerView]];
     [LayerFormater addShadowToView:[self menuView]];
 
+    [LayerFormater setBorderWidth:1 forView:[self footerView]];
+    [LayerFormater setBorderWidth:1 forView:[self menuView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self footerView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
+
     [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     
-    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self menuView]];
-    [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self footerView]];
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self infoView]];
     
     [[self keyPointButton] setIcon:[BNoteFactory createIcon:KeyPointIcon]];
@@ -200,8 +204,6 @@ static NSString *spacing = @"   ";
     [[self questionButton] setIcon:[BNoteFactory createIcon:QuestionIcon]];
     [[self attendantsButton] setIcon:[BNoteFactory createIcon:AttentiesIcon]];
 
-    [LayerFormater setBorderWidth:1 forView:[self footerView]];
-    [LayerFormater setBorderWidth:1 forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self infoView]];
     
     [[self year] setTextColor:[BNoteConstants appHighlightColor1]];
@@ -228,6 +230,8 @@ static NSString *spacing = @"   ";
     [[self time] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
     [[self subjectTextView] setFont:[BNoteConstants font:RobotoRegular andSize:20]];
     [[self subjectTextView] setTextColor:UIColorFromRGB(0x444444)];
+    self.subjectTextView.delegate = self;
+    self.subjectTextView.placeholder = NSLocalizedString(@"Enter Subject", @"note subject place holder.");
 
     UITapGestureRecognizer *normalTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
@@ -256,7 +260,7 @@ static NSString *spacing = @"   ";
 
     Note *note = [self note];
     if ([BNoteStringUtils nilOrEmpty:[note subject]]) {
-        [[self subjectTextView] setText:NSLocalizedString(@"Enter Subject", @"The new note's subject place holder text.")];
+        [[self subjectTextView] setText:nil];
     } else {
         [[self subjectTextView] setText:[note subject]];
     }
@@ -281,7 +285,7 @@ static NSString *spacing = @"   ";
                       [self keyPointButton],
                       nil];
     
-    [BNoteAnimation winkInView:views withDuration:0.15 andDelay:0.6 andDelayIncrement:0.1];
+    [BNoteAnimation winkInView:views withDuration:0.15 andDelay:0.6 andDelayIncrement:0.1 spark:YES];
 }
 
 - (void)setupDate
@@ -423,9 +427,7 @@ static NSString *spacing = @"   ";
     
 #endif
 
-    if (![entry isKindOfClass:[Attendants class]]) {
-        [[self entriesViewController] addAndSelectLastEntry:entry];
-    }
+    [[self entriesViewController] addAndSelectLastEntry:entry];
 }
 
 - (IBAction)editEntries:(id)sender
@@ -486,7 +488,7 @@ static NSString *spacing = @"   ";
 
     [popup presentPopoverFromRect:rect inView:view
                      permittedArrowDirections:UIPopoverArrowDirectionAny 
-                                     animated:YES];
+                                     animated:NO];
 }
 
 - (void)dateTimeUpdated:(NSDate *)date
@@ -562,7 +564,24 @@ static NSString *spacing = @"   ";
 - (IBAction)addSummary:(id)sender
 {
     [[self entriesViewController] displaySummary];
-    [[self entriesViewController] selectSummaryCell];
+    self.addSummaryButton.hidden = YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.subjectTextView resignFirstResponder];
+    
+    return NO;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [((BNoteTextField *)textField) showFrame:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [((BNoteTextField *)textField) showFrame:NO];
 }
 
 - (void)dealloc

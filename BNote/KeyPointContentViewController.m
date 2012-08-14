@@ -122,7 +122,7 @@ static NSString *imageOptionsText;
     
     [popup presentPopoverFromRect:rect inView:view 
          permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
+                         animated:NO];
 }
 
 - (IBAction)presentCamera:(id)sender
@@ -252,7 +252,7 @@ static NSString *imageOptionsText;
                       [self photoAlbumButton],
                       [self sketchButton],
                       nil];
-    [BNoteAnimation winkInView:views withDuration:0.06 andDelay:0.5 andDelayIncrement:0.2];
+    [BNoteAnimation winkInView:views withDuration:0.06 andDelay:0.5 andDelayIncrement:0.2 spark:NO];
 }
 
 - (void)dealloc

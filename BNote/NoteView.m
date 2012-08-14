@@ -207,6 +207,7 @@ const static float h2 = h1 - 10;
         } else if (title == disassociateNoteText) {
             Topic *topic = [[BNoteSessionData instance] selectedTopic];
             [[BNoteWriter instance] disassociateNote:[self note] toTopic:topic];
+            [[BNoteWriter instance] update];
             [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];
         }
     }
@@ -230,7 +231,7 @@ const static float h2 = h1 - 10;
     
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
+                         animated:NO];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController

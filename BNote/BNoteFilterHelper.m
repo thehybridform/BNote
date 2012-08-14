@@ -38,7 +38,7 @@
         
         [scrollView addSubview:button];
         
-        [BNoteAnimation winkInView:button withDuration:0.03 andDelay:delay += delayIncrement];
+        [BNoteAnimation winkInView:button withDuration:0.03 andDelay:delay += delayIncrement spark:YES];
         
         x += spacing + width;
     }

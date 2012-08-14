@@ -257,7 +257,7 @@
     
     [popup presentPopoverFromRect:rect inView:[self addTopicButton]
          permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
+                         animated:NO];
 }
 
 - (IBAction)about:(id)sender
@@ -343,7 +343,7 @@
     
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
+                         animated:NO];
 }
 
 - (void)presentTopicManagement:(NSNotification *)notification
@@ -362,7 +362,7 @@
     
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
+                         animated:NO];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

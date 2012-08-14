@@ -55,6 +55,8 @@ NSString * const kAttendeeDeleted = @"kAttendeeDeleted";
 NSString * const kAttendeeUpdated = @"kAttendeeUpdated";
 NSString * const kReviewingNote = @"kReviewingNote";
 NSString * const kEditingNote = @"kEditingNote";
+NSString * const kFocusTextInput = @"kFocusTextInput";
+
 
 NSString * const kNewLine = @"\r\n";
 

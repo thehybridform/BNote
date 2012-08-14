@@ -135,7 +135,7 @@ static NSString *removeAttendanText;
     
     [popup presentPopoverFromRect:[self frame]
                            inView:[self superview] permittedArrowDirections:
-                                            (UIPopoverArrowDirectionAny) animated:YES];
+                                            (UIPopoverArrowDirectionAny) animated:NO];
 
     [popup setPopoverContentSize:CGSizeMake(367, 224)];
     [self setPopup:popup];

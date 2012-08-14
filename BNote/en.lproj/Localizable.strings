@@ -19,13 +19,13 @@
 	"More Topics Not Supported" = "BeNote Lite does not support adding more topics.  Please consider buying the full verion.  Delete older topics to make room.";
 	"EULA Message Action" = "Please accept the End User License Agreement, or press the home button to exit.";
 	"Action Required" = "Action Required";
-	"Thank you for cantacting us!" = "Thank you for contacting us!";
+	"Thank you for contacting us!" = "Thank you for contacting us!";
 	"E-Mail Sent" = "E-Mail Sent";
 	"Failed to Send E-Mail" = "Failed to Send E-Mail";
-	"Action Incompletes" = "Action Incompletes";
+	"Action Items - Incomplete" = "Action Items - Incomplete";
 	"Action Item" = "Action Item";
 	"Add Key Word" = "Add Key Word";
-	"Action Completes" = "Action Completes";
+	"Action Items - Completed" = "Action Items - Completed";
 	"Add Note" = "Add Note";
 	"Add Summary" = "Add Summary";
 	"Add Topic" = "Add Topic";
@@ -43,7 +43,7 @@
 	"Clear Due Date" = "Clear Due Date";
 	"Clear Responsibility" = "Clear Responsibility";
 	Close = Close;
-	Complete = Complete;
+	Complete = COMPLETE;
 	Continue = Continue;
 	Copy = Copy;
 	"Copy to Topic" = "Copy to Topic";
@@ -59,7 +59,7 @@
 	"Due Date Options" = "Due Date Options";
 	"Due On" = "Due On";
 	"E-Mail" = "E-Mail";
-	ENRTY = ENRTY;
+	ENTRY = ENTRY;
 	"Enter Subject" = "Enter Subject";
 	"Filtered Group" = "Filtered Group";
 	FILTERING = FILTERING;
@@ -82,8 +82,8 @@
 	Notes = Notes;
 	People = People;
 	Question = Question;
-	"Questions Answered" = "Questions Answered";
-	"Questions Unanswered" = "Questions Unanswered";
+	"Questions - Answered" = "Questions - Answered";
+	"Questions - Unanswered" = "Questions - Unanswered";
 	Redo = Redo;
 	Remove = Remove;
 	Reset = Reset;
@@ -92,7 +92,7 @@
 	"Seacrh All Topics" = "Seacrh All Topics";
 	"Select topic for note." = "Select topic for note.";
 	"Select Topic Group" = "Select Topic Group";
-	"Select Topics for this gorup." = "Select topics for this group";
+	"Select Topics for this group." = "Select topics for this group";
 	"Send E-mail" = "Send E-mail";
 	"Set Due Date" = "Set Due Date";
 	"Set Responsibility" = "Set Responsibility";

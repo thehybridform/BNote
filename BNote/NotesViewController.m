@@ -136,8 +136,6 @@
     CGRect frame = CGRectMake(x, y, width, height);
     [view setFrame:frame];
     
-    [BNoteAnimation winkInView:view withDuration:0.05 andDelay:delay];
-
     UIView *shadowView = [[UIView alloc] initWithFrame:CGRectMake(x + 2, y + 2, width - 4, height - 4)];
     [LayerFormater addShadowToView:shadowView];
     [LayerFormater setBorderColorWithInt:10 forView:shadowView];
@@ -147,6 +145,12 @@
     [scrollView addSubview:shadowView];
     [scrollView addSubview:view];
     
+    NSArray *views = [[NSArray alloc]
+                      initWithObjects:
+                      view,
+                      shadowView,
+                      nil];
+    [BNoteAnimation winkInView:views withDuration:0.05 andDelay:delay andDelayIncrement:0 spark:NO];
 }
 
 - (IBAction)pageChanged:(UIPageControl *)pageControl

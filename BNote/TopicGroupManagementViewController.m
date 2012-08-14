@@ -81,7 +81,7 @@ static NSString *newTopicGroupPlaceHolderText;
     }
     
     errorText = NSLocalizedString(@"Topic name already exists.", @"Error text for duplicate topic group name.");
-    normalText = NSLocalizedString(@"Select Topics for this gorup.", @"Instruciton to select topic group to be included.");
+    normalText = NSLocalizedString(@"Select Topics for this group.", @"Instruciton to select topic group to be included.");
     topicGroupText = NSLocalizedString(@"Topic Groups", @"Topic groups menu title.");
     newTopicGroupPlaceHolderText = NSLocalizedString(@"New Topic Group Name", @"New topic group name place holder.");
     doneText = NSLocalizedString(@"Done", @"Done");

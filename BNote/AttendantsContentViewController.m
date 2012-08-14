@@ -162,7 +162,7 @@ static NSString *attendants;
     
     UIView *view = [self addAttendantView];
     [popup presentPopoverFromRect:[view frame]
-                           inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                           inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
     
     [popup setPopoverContentSize:CGSizeMake(367, 224)];
     
@@ -221,7 +221,7 @@ static NSString *attendants;
                       initWithObjects:
                       [self addAttendantView],
                       nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.7 andDelayIncrement:0.1];
+    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.7 andDelayIncrement:0.1 spark:NO];
 }
 
 - (void)dealloc

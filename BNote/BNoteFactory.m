@@ -358,7 +358,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return [[DecisionContentViewController alloc] initWithEntry:entry];
 }
 
-+ (id<EntryContent>)createSummaryEntry:(Note *)note
++ (NoteSummaryViewController *)createSummaryEntry:(Note *)note
 {
     return [[NoteSummaryViewController alloc] initWithNote:note];
 }
@@ -373,11 +373,11 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     NSString *text;
     switch (type) {
         case QuestionAnsweredHeader:
-            text = NSLocalizedString(@"Questions Answered", @"The questions answered note entry header.") ;
+            text = NSLocalizedString(@"Questions - Answered", @"The questions answered note entry header.") ;
             break;
             
         case QuestionUnansweredHeader:
-            text = NSLocalizedString(@"Questions Unanswered", @"The questions unanswered note entry header.") ;
+            text = NSLocalizedString(@"Questions - Unanswered", @"The questions unanswered note entry header.") ;
             break;
             
         case DecisionHeader:
@@ -389,11 +389,11 @@ NSString *const keyPointsEntryHeader = @"Key Points";
             break;
             
         case ActionItemCompleteHeader:
-            text = NSLocalizedString(@"Action Incompletes", @"The action items incomplete header.") ;
+            text = NSLocalizedString(@"Action Items - Incomplete", @"The action items incomplete header.") ;
             break;
             
         case ActionItemIncompleteHeader:
-            text = NSLocalizedString(@"Action Completes", @"The action items complete header.") ;
+            text = NSLocalizedString(@"Action Items - Completed", @"The action items complete header.") ;
             break;
             
         default:

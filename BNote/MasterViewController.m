@@ -232,7 +232,7 @@ static NSString *filterdGroupText;
     
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:YES];
+                         animated:NO];
 }
 
 - (void)selectCell:(int)index

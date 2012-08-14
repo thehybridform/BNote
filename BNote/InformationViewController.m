@@ -85,6 +85,7 @@
     [self setDefaultsArray:defaults];
 
     [LayerFormater setBorderWidth:1 forView:[self menu]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menu]];
     
     [LayerFormater addShadowToView:[self menu]];
 

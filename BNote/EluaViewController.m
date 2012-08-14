@@ -40,8 +40,11 @@
 {
     [super viewDidLoad];
     
-    [LayerFormater setBorderWidth:1 forView:[self normalToobar]];
     [LayerFormater setBorderWidth:1 forView:[self eulaToobar]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self eulaToobar]];
+    
+    [LayerFormater setBorderWidth:1 forView:[self normalToobar]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self normalToobar]];
 
     [LayerFormater addShadowToView:[self normalToobar]];
     [LayerFormater addShadowToView:[self eulaToobar]];

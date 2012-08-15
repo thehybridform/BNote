@@ -289,6 +289,7 @@ static NSString *addKeyWordText;
 - (void)stoppedEditingText:(NSNotification *)notification
 {
     [self setTextView:nil];
+    [self reload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

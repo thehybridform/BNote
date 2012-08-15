@@ -389,11 +389,11 @@ NSString *const keyPointsEntryHeader = @"Key Points";
             break;
             
         case ActionItemCompleteHeader:
-            text = NSLocalizedString(@"Action Items - Incomplete", @"The action items incomplete header.") ;
+            text = NSLocalizedString(@"Action Items - Completed", @"The action items complete header.") ;
             break;
             
         case ActionItemIncompleteHeader:
-            text = NSLocalizedString(@"Action Items - Completed", @"The action items complete header.") ;
+            text = NSLocalizedString(@"Action Items - Incomplete", @"The action items incomplete header.") ;
             break;
             
         default:

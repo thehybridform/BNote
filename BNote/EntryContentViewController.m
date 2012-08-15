@@ -18,6 +18,7 @@
 @interface EntryContentViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *entryMarginView;
+@property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
 
 @end
 
@@ -72,19 +73,11 @@
         [view setTextColor:UIColorFromRGB(0x444444)];
         [view setClipsToBounds:YES];
         [view setScrollEnabled:NO];
+        view.delegate = self;
         
         QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
         [self setQuickWordsViewController:quick];
-        [view setInputAccessoryView:[quick view]];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                     name:UITextViewTextDidChangeNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
-                                                     name:UITextViewTextDidBeginEditingNotification object:view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
-                                                     name:UITextViewTextDidEndEditingNotification object:view];
+        [[self mainTextView] setInputAccessoryView:[quick view]];
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
@@ -132,38 +125,30 @@
     [[self iconView] setImage:[imageView image]];
 }
 
-- (void)startedEditingText:(NSNotification *)notification
+- (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([notification object] == [self mainTextView]) {
-//        [[self mainTextView] setClipsToBounds:NO];
-        [[self mainTextView] setScrollEnabled:YES];
-        [self handleImageIcon:YES];
-        [self setSelectedTextView:[self mainTextView]];
-        [[self quickWordsViewController] selectFirstButton];
-    }
+    [textView setScrollEnabled:YES];
+    [self handleImageIcon:YES];
+    [self setSelectedTextView:textView];
+    [[self quickWordsViewController] selectFirstButton];
 }
 
-- (void)stoppedEditingText:(NSNotification *)notification
+- (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if ([notification object] == [self mainTextView]) {
-//        [[self mainTextView] setClipsToBounds:YES];
-        [[self mainTextView] setScrollEnabled:NO];
-        [self handleImageIcon:NO];
-        
-        [[BNoteWriter instance] update];
+    [textView setScrollEnabled:NO];
+    [self handleImageIcon:NO];
+    
+    NSString *text = [textView text];
+    if ([BNoteStringUtils nilOrEmpty:text]) {
+        [[self entry] setText:nil];
+    } else {
+        [[self entry] setText:text];
     }
-}
-
-- (void)updateText:(NSNotification *)notification
-{
-    if ([notification object] == [self mainTextView]) {
-        NSString *text = [[self mainTextView] text];
-        if ([BNoteStringUtils nilOrEmpty:text]) {
-            [[self entry] setText:nil];
-        } else {
-            [[self entry] setText:text];
-        }
-    }
+    
+    [[BNoteWriter instance] update];
+    
+    [textView setInputAccessoryView:nil];
+    [self setQuickWordsViewController:nil];
 }
 
 - (UITableViewCell *)cell
@@ -194,12 +179,10 @@
 
 - (void)hideControls
 {
-    
 }
 
 - (void)showControls
 {
-    
 }
 
 - (void)detatchFromNotificationCenter

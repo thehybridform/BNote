@@ -192,7 +192,7 @@ static NSString *spacing = @"   ";
     [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self footerView]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
 
-    [LayerFormater roundCornersForView:[self dateView]];
+//    [LayerFormater roundCornersForView:[self dateView]];
     [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     

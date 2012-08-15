@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EntryContent.h"
 
-@interface NoteSummaryViewController : UIViewController <EntryContent>
+@interface NoteSummaryViewController : UIViewController <EntryContent, UITextViewDelegate>
 
 - (id)initWithNote:(Note *)note;
 

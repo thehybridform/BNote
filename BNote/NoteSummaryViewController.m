@@ -48,7 +48,8 @@
     [LayerFormater setBorderWidth:2 forView:cell];
     
     UITextView *view = self.textView;
-    
+    view.delegate = self;
+
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
     [view setTextColor:UIColorFromRGB(0x444444)];
     [view setClipsToBounds:YES];
@@ -65,15 +66,6 @@
     [[self summaryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
 
     self.summaryLabel.text = NSLocalizedString(@"Note Summary", @"Note summary title");
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateText:)
-                                                 name:UITextViewTextDidChangeNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingText:)
-                                                 name:UITextViewTextDidEndEditingNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingText:)
-                                                 name:UITextViewTextDidBeginEditingNotification object:view];
 }
 
 - (void)viewDidUnload
@@ -132,30 +124,20 @@
     return width;
 }
 
-- (void)startedEditingText:(NSNotification *)notification
+- (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([notification object] == [self textView]) {
-//        [[self mainTextView] setClipsToBounds:NO];
-        [[self quickWordsViewController] selectFirstButton];
-    }
+    [textView setScrollEnabled:YES];
+    [[self quickWordsViewController] selectFirstButton];
 }
 
-- (void)stoppedEditingText:(NSNotification *)notification
+- (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if ([notification object] == [self mainTextView]) {
-//        [[self mainTextView] setClipsToBounds:YES];
-    }
-}
-
-- (void)updateText:(NSNotification *)notification
-{
-    if ([notification object] == [self textView]) {
-        NSString *text = [[self mainTextView] text];
-        if ([BNoteStringUtils nilOrEmpty:text]) {
-            [[self note] setSummary:nil];
-        } else {
-            [[self note] setSummary:text];
-        }
+    [textView setScrollEnabled:NO];
+    NSString *text = [textView text];
+    if ([BNoteStringUtils nilOrEmpty:text]) {
+        [[self note] setSummary:nil];
+    } else {
+        [[self note] setSummary:text];
     }
 }
 
@@ -166,12 +148,6 @@
 
 - (void)detatchFromNotificationCenter
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -12,8 +12,7 @@
 
 @class QuickWordsViewController;
 
-@interface EntryContentViewController : UIViewController <EntryContent>
-@property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
+@interface EntryContentViewController : UIViewController <EntryContent, UITextViewDelegate>
 @property (strong, nonatomic) UITextView *selectedTextView;
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;

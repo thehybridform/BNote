@@ -120,6 +120,11 @@ static NSString *highligtTopicText;
     
     NSMutableArray *data = [[[BNoteReader instance] allTopics] mutableCopy];
     [data filterUsingPredicate:p];
+
+    [data sortUsingComparator:^NSComparisonResult(Topic *topic1, Topic *topic2) {
+        return [topic1.title compare:topic2.title];
+    }];
+    
     [self setData:data];
     
     [LayerFormater addShadowToView:[self menuView]];

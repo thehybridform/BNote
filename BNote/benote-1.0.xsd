@@ -44,6 +44,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="subject" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                <xs:element ref="attendee" maxOccurs="unbounded" minOccurs="0"/>
                 <xs:choice maxOccurs="unbounded" minOccurs="0">
                     <xs:element name="question" type="question-type"/>
                     <xs:element name="decision" type="decision-type"/>
@@ -93,7 +94,13 @@
                 <xs:sequence>
                     <xs:element name="due-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
                     <xs:element name="completed-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
-                    <xs:element ref="responsibility" maxOccurs="1" minOccurs="0"/>
+                    <xs:element name="responsibility" maxOccurs="1" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element ref="attendee" maxOccurs="unbounded" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -118,7 +125,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="responsibility">
+    <xs:element name="attendee">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="first" type="xs:string" maxOccurs="1" minOccurs="0"/>

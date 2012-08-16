@@ -7,6 +7,11 @@
         <topic id="t-123">
             <note id="n-123">
                 <subject>note subject 123</subject>
+                <attendee>
+                    <first>bob</first>
+                    <last>bob</last>
+                    <email>bob@bob.com</email>
+                </attendee>
                 <decision>
                     <text>decision 123</text>
                     <created-date>0</created-date>
@@ -27,9 +32,11 @@
                     <due-date>0</due-date>
                     <completed-date>0</completed-date>
                     <responsibility>
-                        <first>bob</first>
-                        <last>bob</last>
-                        <email>bob@bob.com</email>
+                        <attendee>
+                            <first>bob</first>
+                            <last>bob</last>
+                            <email>bob@bob.com</email>
+                        </attendee>
                     </responsibility>
                 </action-item>
                 <question>

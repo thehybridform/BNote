@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0"
+           targetNamespace="http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0"
+           elementFormDefault="qualified">
+
+    <xs:element name="benote">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="topic-group" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="topic-group">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="topic" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="topic">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="associated-note" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:IDREF" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="associated-topic-group" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:IDREF" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="note">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="subject" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                <xs:choice maxOccurs="unbounded" minOccurs="0">
+                    <xs:element name="question" type="question-type"/>
+                    <xs:element name="decision" type="decision-type"/>
+                    <xs:element name="key-point" type="key-point-type"/>
+                    <xs:element name="action-item" type="action-item-type"/>
+                </xs:choice>
+                <xs:element name="summary" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="associated-topic" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:IDREF" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="entry-type">
+        <xs:sequence>
+            <xs:element name="text" type="xs:string" maxOccurs="1" minOccurs="0"/>
+            <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+            <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="decision-type">
+        <xs:complexContent>
+            <xs:extension base="entry-type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="question-type">
+        <xs:complexContent>
+            <xs:extension base="entry-type">
+                <xs:sequence>
+                    <xs:element name="answer" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="action-item-type">
+        <xs:complexContent>
+            <xs:extension base="entry-type">
+                <xs:sequence>
+                    <xs:element name="due-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                    <xs:element name="completed-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                    <xs:element ref="responsibility" maxOccurs="1" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="key-point-type">
+        <xs:complexContent>
+            <xs:extension base="entry-type">
+                <xs:sequence>
+                    <xs:element ref="photo" maxOccurs="1" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="photo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="data" type="xs:long" maxOccurs="1" minOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="format" type="image-format" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="responsibility">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="first" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="last" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="email" type="xs:string" maxOccurs="1" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="image-format">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="jpg|gif|png" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

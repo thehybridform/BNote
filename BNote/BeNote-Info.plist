@@ -2,16 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>zh_CN</string>
-		<string>Spanish</string>
-		<string>ja</string>
-		<string>de</string>
-		<string>en</string>
-	</array>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>key_point_active_icon</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>BeNote Archive File</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>net.uobia.benote.bna</string>
+				<string>org.gnu.gnu-zip-archive</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -31,6 +39,14 @@
 	<string>com.kristinyoung.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>zh_CN</string>
+		<string>Spanish</string>
+		<string>ja</string>
+		<string>de</string>
+		<string>en</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
@@ -66,6 +82,26 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.xml</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>BeNote Archive File</string>
+			<key>UTTypeIdentifier</key>
+			<string>net.uobia.benote.bna</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>key_point_active_icon</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>benote</string>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>

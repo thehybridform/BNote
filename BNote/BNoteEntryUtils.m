@@ -45,7 +45,7 @@
     
     if ([actionItem completed]) {
         NSDate *completed = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem completed]]; 
-        detailText = [BNoteStringUtils append:detailText, @" - ", NSLocalizedString(@"Completed On", nil), @" ", [BNoteStringUtils dateToString:completed], nil];
+        detailText = [BNoteStringUtils append:detailText, @" - ", NSLocalizedString(@"Completed on", nil), @" ", [BNoteStringUtils dateToString:completed], nil];
     }
         
     return [BNoteStringUtils nilOrEmpty:detailText] ? nil : detailText;

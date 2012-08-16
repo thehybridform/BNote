@@ -195,6 +195,10 @@
 		18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */; };
 		18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
+		18BEF24615DC71B000E16CFD /* benote-1.0.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24515DC71B000E16CFD /* benote-1.0.xsd */; };
+		18BEF24715DC71B000E16CFD /* benote-1.0.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24515DC71B000E16CFD /* benote-1.0.xsd */; };
+		18BEF24A15DC71D000E16CFD /* example-benote.xml in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24915DC71D000E16CFD /* example-benote.xml */; };
+		18BEF24B15DC71D000E16CFD /* example-benote.xml in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24915DC71D000E16CFD /* example-benote.xml */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
@@ -716,6 +720,8 @@
 		18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPlainRenderer.m; sourceTree = "<group>"; };
 		18BBD3541585BB2800B1709E /* DecisionPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionPlainRenderer.h; sourceTree = "<group>"; };
 		18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionPlainRenderer.m; sourceTree = "<group>"; };
+		18BEF24515DC71B000E16CFD /* benote-1.0.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "benote-1.0.xsd"; sourceTree = "<group>"; };
+		18BEF24915DC71D000E16CFD /* example-benote.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "example-benote.xml"; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -991,6 +997,8 @@
 				18F291CF15CE43F900543E65 /* BeNote Lite-Info.plist */,
 				1834D34715634A650065788F /* main.m */,
 				1834D34915634A650065788F /* BeNote-Prefix.pch */,
+				18BEF24515DC71B000E16CFD /* benote-1.0.xsd */,
+				18BEF24915DC71D000E16CFD /* example-benote.xml */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1700,6 +1708,8 @@
 				18653A6815D842550017BD1E /* bnote-sketch.png in Resources */,
 				18653A6A15D842550017BD1E /* bnote-take-snapshot.png in Resources */,
 				18D50F9915D85BB300A9650D /* Localizable.strings in Resources */,
+				18BEF24615DC71B000E16CFD /* benote-1.0.xsd in Resources */,
+				18BEF24A15DC71D000E16CFD /* example-benote.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1768,6 +1778,8 @@
 				18653A6915D842550017BD1E /* bnote-sketch.png in Resources */,
 				18653A6B15D842550017BD1E /* bnote-take-snapshot.png in Resources */,
 				18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */,
+				18BEF24715DC71B000E16CFD /* benote-1.0.xsd in Resources */,
+				18BEF24B15DC71D000E16CFD /* example-benote.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

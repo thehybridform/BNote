@@ -85,7 +85,7 @@ static NSString *completedOnDateText;
     [super viewDidLoad];
     
     notCompleteText = NSLocalizedString(@"Not Complete", @"This action item is not complete");
-    completedOnDateText = NSLocalizedString(@"Completed On", @"As in 'This action item was ompleted On 12/1/1970'");
+    completedOnDateText = NSLocalizedString(@"Completed on", @"As in 'This action item was ompleted On 12/1/1970'");
     
     noResponsibilityText = NSLocalizedString(@"No Responsibility", @"This action item has no resposibility assigned");
     responsibilityOptionsText = NSLocalizedString(@"Responsibility Options", @"Responsibility options menu title");

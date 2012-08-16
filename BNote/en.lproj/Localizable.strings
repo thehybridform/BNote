@@ -1,4 +1,8 @@
 {
+	About = About;
+	"More Information" = "More Information";
+	Help = Help;
+	"Create Help Notes" = "Create Help Notes";
 	Confirm = Confirm;
 	"Delete Note?" = "Delete Note?";
 	All = "All Topics";
@@ -108,9 +112,9 @@
 	"week from now" = "week from now";
 	yesterday = yesterday;
 	"Topics Description" = "You can assign each topic a color. You can also group topics into custom Topic Groups. For example you could group all topics with notes from work into a topic group called \U201cWork\U201d. For all the topics from your lectures, you could groups them into \U201cCollege Classes\U201d.";
-	"Notes Description" = "Notes are arranged into Topics.  Notes are arranged according to the date and time of each note. Action Items, Questions and Decisions for each topic are summarized below the notes listing. You can select any of these summarized entries to open the selected entry in its corresponding note. ";
-	"Sharing Description" = "Notes are arranged into Topics.  Notes are arranged according to the date and time of each note. Action Items, Questions and Decisions for each topic are summarized below the notes listing. You can select any of these summarized entries to open the selected entry in its corresponding note. ";
-	"Search Description" = "You can search through all notes in a topic group, by selecting the search icon.";
+	"Notes Description" = "Notes are arranged into Topics.  Notes are arranged according to the date and time of each note. Action Items, Questions and Decisions for each topic are summarized below the notes listing. You can select any of these summarized entries to open the selected entry in its corresponding note.";
+	"Sharing Description" = "Notes are arranged into Topics.  Notes are arranged according to the date and time of each note. Action Items, Questions and Decisions for each topic are summarized below the notes listing. You can select any of these summarized entries to open the selected entry in its corresponding note.";
+	"Search Description" = "You can search through all notes in a topic group, by selecting the search bar.";
 	"Overview Note Title" = Overview;
 	"Note Taking Title" = "Note Taking";
 	"Participants Description" = "You can add participants to your note if other people are present that would like to record. Participants are selected from the contact list on your device. If a participant is not in the contact list, this is a good opportunity add them.";

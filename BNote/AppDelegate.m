@@ -17,6 +17,11 @@
 
 
 @interface AppDelegate()
+@property (strong, nonatomic) MainViewViewController *mainViewViewController;
+
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @end
 
@@ -52,7 +57,7 @@
         
         [mainViewViewController presentViewController:controller animated:YES completion:^{}];
     }
-    
+        
     return YES;
 }
 
@@ -73,12 +78,29 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
 
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+
+    if (url) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"incomming data"
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+        
+        [alert show];
+    }
+    
+    return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -171,9 +171,11 @@
 
     BOOL success = [[self context] save:&error];  
     
-    if (success) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:AllDataUpdated object:nil];
-    } else {
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+
+    if (!success) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }    
 }

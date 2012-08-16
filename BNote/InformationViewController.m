@@ -81,7 +81,7 @@
     [self setStorageArray:storageArray];
     
     NSArray *defaults =
-    [NSArray arrayWithObjects:@"Create Help Notes", nil];
+    [NSArray arrayWithObjects:NSLocalizedString(@"Create Help Notes", @"Create Help Notes"), nil];
     [self setDefaultsArray:defaults];
 
     [LayerFormater setBorderWidth:1 forView:[self menu]];
@@ -122,15 +122,15 @@
 {
     switch (section) {
         case 0:
-            return @"About";
+            return NSLocalizedString(@"About", @"About");
             break;
             
         case 1:
-            return @"More Information";
+            return NSLocalizedString(@"More Information", @"More Information");
             break;
             
         default:
-            return @"Help";
+            return NSLocalizedString(@"Help", @"Help");
             break;
     }
 }

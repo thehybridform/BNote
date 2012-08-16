@@ -52,6 +52,10 @@
     NSError *error = nil;
     NSArray *topics = [[self context] executeFetchRequest:fetchRequest error:&error];
     
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+
     if ([topics count]) {
         return [topics objectAtIndex:0];
     } else {
@@ -68,6 +72,10 @@
     NSError *error = nil;
     NSArray *topicGroups = [[self context] executeFetchRequest:fetchRequest error:&error];
     
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+    
     if ([topicGroups count]) {
         return [topicGroups objectAtIndex:0];
     } else {
@@ -81,6 +89,10 @@
 
     NSError *error = nil;
     NSArray *allTopics = [[self context] executeFetchRequest:fetchRequest error:&error];
+    
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
     
     if ([allTopics count]) {
         TopicGroup *group = [self getTopicGroup:kAllTopicGroupName];
@@ -112,6 +124,10 @@
     NSError *error = nil;
     NSArray *keyWords = [[self context] executeFetchRequest:fetchRequest error:&error];
     
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+    
     if (keyWords) {
         return [keyWords mutableCopy];
     } else {
@@ -128,6 +144,10 @@
     NSError *error = nil;
     NSArray *keyWords = [[self context] executeFetchRequest:fetchRequest error:&error];
     
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+    
     if (keyWords && [keyWords count] > 0) {
         return [keyWords objectAtIndex:0];
     }    
@@ -142,6 +162,10 @@
     NSError *error = nil;
     NSArray *result = [[self context] executeFetchRequest:fetchRequest error:&error];
     
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+
     NSArray *sortedArray = [result sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         NSString *first = [[(TopicGroup *)a name] lowercaseString];
         NSString *second = [[(TopicGroup *)b name] lowercaseString];
@@ -164,6 +188,10 @@
     NSError *error = nil;
     NSArray *notes = [[self context] executeFetchRequest:fetchRequest error:&error];
     
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+
     return [NSMutableSet setWithArray:notes];
 }
 

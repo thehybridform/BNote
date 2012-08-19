@@ -49,7 +49,7 @@
         [self setActionSheet:sheet];
     
         CGRect rect = [self bounds];
-        [sheet showFromRect:rect inView:self animated:YES];
+        [sheet showFromRect:rect inView:self animated:NO];
     }
 }
 

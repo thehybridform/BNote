@@ -162,5 +162,13 @@
     }
 }
 
++ (NSString *)guuid
+{
+    CFUUIDRef uuid = CFUUIDCreate(NULL);
+    CFStringRef guiid = CFUUIDCreateString(NULL, uuid);
+    CFRelease(uuid);
+    
+    return (__bridge NSString *)(guiid);
+}
 
 @end

@@ -10,6 +10,7 @@
 #import "Attendants.h"
 #import "Attendant.h"
 #import "PersonViewController.h"
+#import "LayerFormater.h"
 
 @interface PeopleViewController ()
 @property (strong, nonatomic) NSMutableArray *peopleControllers;
@@ -100,7 +101,7 @@
     
     int visiblePeople = 9;
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (UIDeviceOrientationIsPortrait(orientation)) {
+    if (UIDeviceOrientationIsPortrait(orientation) || scrollView.frame.size.width < 600) {
         visiblePeople = 6;
     }
 
@@ -115,6 +116,7 @@
         float width = [view bounds].size.width;
         float height = [view bounds].size.height;
         
+
         CGRect frame = CGRectMake(x, y, width, height);
         [view setFrame:frame];
         

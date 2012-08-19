@@ -14,6 +14,7 @@
 
 @interface PersonViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *icon;
+@property (strong, nonatomic) IBOutlet UIView *shadowView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) Attendant *attendant;
 
@@ -23,6 +24,7 @@
 @synthesize icon = _icon;
 @synthesize nameLabel = _nameLabel;
 @synthesize attendant = _attendant;
+@synthesize shadowView = _shadowView;
 
 static NSString *emailText;
 static NSString *attendantOptionsText;
@@ -63,6 +65,8 @@ static NSString *attendantOptionsText;
     
     [LayerFormater roundCornersForView:[self icon]];
     [LayerFormater setBorderColor:[UIColor clearColor] forView:[self icon]];
+    
+    [LayerFormater addShadowToView:self.shadowView];
 
     [[self nameLabel] setFont:[BNoteConstants font:RobotoLight andSize:12.0]];
     [[self nameLabel] setTextColor:[BNoteConstants appHighlightColor1]];
@@ -75,6 +79,7 @@ static NSString *attendantOptionsText;
 
     [self setNameLabel:nil];
     [self setIcon:nil];
+    self.shadowView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -95,7 +100,7 @@ static NSString *attendantOptionsText;
         [actionSheet setTitle:attendantOptionsText];
     
         CGRect rect = [[self icon] frame];
-        [actionSheet showFromRect:rect inView:[self view] animated:YES];
+        [actionSheet showFromRect:rect inView:[self view] animated:NO];
     }
 }
 

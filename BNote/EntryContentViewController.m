@@ -133,6 +133,11 @@
     [[self quickWordsViewController] selectFirstButton];
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [[self entry] setText:textView.text];
+}
+
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     [textView setScrollEnabled:NO];

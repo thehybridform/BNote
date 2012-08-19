@@ -71,7 +71,7 @@ static NSString *removeAttendanText;
     sheet.title = attendantOptions;
     
     CGRect rect = [self bounds];
-    [sheet showFromRect:rect inView:self animated:YES];
+    [sheet showFromRect:rect inView:self animated:NO];
 }
 
 - (void)setAttendant:(Attendant *)attendant

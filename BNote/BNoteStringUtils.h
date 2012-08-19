@@ -25,4 +25,6 @@
 + (NSString *)ordinalNumberFormat:(NSInteger)num;
 + (NSString *)monthFor:(NSInteger)month;
 
++ (NSString *)guuid;
+
 @end

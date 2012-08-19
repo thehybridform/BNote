@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *selectedColorButton;
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UIButton *buttonAction;
+@property (strong, nonatomic) IBOutlet UILabel *menuLabel;
 
 @property (strong, nonatomic) IBOutlet UIButton *button_1;
 @property (strong, nonatomic) IBOutlet UIButton *button_2;
@@ -31,7 +32,15 @@
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
 
-@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) IBOutlet UIView *shadowView1;
+@property (strong, nonatomic) IBOutlet UIView *shadowView2;
+@property (strong, nonatomic) IBOutlet UIView *shadowView3;
+@property (strong, nonatomic) IBOutlet UIView *shadowView4;
+@property (strong, nonatomic) IBOutlet UIView *shadowView5;
+@property (strong, nonatomic) IBOutlet UIView *shadowView6;
+@property (strong, nonatomic) IBOutlet UIView *shadowView7;
+@property (strong, nonatomic) IBOutlet UIView *shadowView8;
+@property (strong, nonatomic) IBOutlet UIView *shadowView9;
 
 @end
 
@@ -54,11 +63,22 @@
 @synthesize buttonControlView = _buttonControlView;
 @synthesize popup = _popup;
 @synthesize topicGroup = _topicGroup;
-@synthesize cancelButton = _cancelButton;
+@synthesize menuLabel = _menuLabel;
+
+@synthesize shadowView1 = _shadowView1;
+@synthesize shadowView2 = _shadowView2;
+@synthesize shadowView3 = _shadowView3;
+@synthesize shadowView4 = _shadowView4;
+@synthesize shadowView5 = _shadowView5;
+@synthesize shadowView6 = _shadowView6;
+@synthesize shadowView7 = _shadowView7;
+@synthesize shadowView8 = _shadowView8;
+@synthesize shadowView9 = _shadowView9;
 
 static NSString *createText;
 static NSString *updateText;
-static NSString *cancelText;
+static NSString *addTopicText;
+static NSString *editTopicText;
 static NSString *placeHolderText;
 
 
@@ -81,8 +101,17 @@ static NSString *placeHolderText;
     [self setButton_7:nil];
     [self setButton_8:nil];
     [self setButton_9:nil];
+    self.menuLabel = nil;
     
-    self.cancelButton = nil;
+    self.shadowView1 = nil;
+    self.shadowView2 = nil;
+    self.shadowView3 = nil;
+    self.shadowView4 = nil;
+    self.shadowView5 = nil;
+    self.shadowView6 = nil;
+    self.shadowView7 = nil;
+    self.shadowView8 = nil;
+    self.shadowView9 = nil;
 }
 
 - (id)initWithTopicGroup:(TopicGroup *)group
@@ -95,7 +124,8 @@ static NSString *placeHolderText;
     
     createText = NSLocalizedString(@"Create", @"Commit create.");
     updateText = NSLocalizedString(@"Update", @"Commit update.");
-    cancelText = NSLocalizedString(@"Cancel", @"Commit cancel.");
+    addTopicText = NSLocalizedString(@"Add Topic", @"Add Topic text.");
+    editTopicText = NSLocalizedString(@"Edit Topic", @"Edit Topic text.");
     placeHolderText = NSLocalizedString(@"Type in a new Topic Title", @"New top place holder text.");
 
     return self;
@@ -111,9 +141,11 @@ static NSString *placeHolderText;
         [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
         [self setSelectedColor:[[self topic] color]];
         [[self nameTextField] setText:[[self topic] title]];
-        [[self buttonAction] setTitle:updateText forState:UIControlStateNormal];
+        self.menuLabel.text = editTopicText;
     } else {
-        [[self buttonAction] setTitle:createText forState:UIControlStateNormal];
+        [self setSelectedColor:kColor1];
+        [[self view] setBackgroundColor:UIColorFromRGB(kColor1)];
+        self.menuLabel.text = addTopicText;
     }
     
     [self initButton:[self button_1] withColor:kColor1];
@@ -127,13 +159,26 @@ static NSString *placeHolderText;
     [self initButton:[self button_9] withColor:kColor9];
     
     [LayerFormater setBorderWidth:1 forView:[self buttonControlView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self buttonControlView]];
+    [LayerFormater addShadowToView:[self buttonControlView]];
+
+    [LayerFormater addShadowToView:[self shadowView1]];
+    [LayerFormater addShadowToView:[self shadowView2]];
+    [LayerFormater addShadowToView:[self shadowView3]];
+    [LayerFormater addShadowToView:[self shadowView4]];
+    [LayerFormater addShadowToView:[self shadowView5]];
+    [LayerFormater addShadowToView:[self shadowView6]];
+    [LayerFormater addShadowToView:[self shadowView7]];
+    [LayerFormater addShadowToView:[self shadowView8]];
+    [LayerFormater addShadowToView:[self shadowView9]];
 
     [[self nameTextField] setDelegate:self];
     [[self nameTextField] becomeFirstResponder];
 
-    self.nameTextField.placeholder = placeHolderText;
+    self.menuLabel.font = [BNoteConstants font:RobotoBold andSize:15];
+    self.menuLabel.textColor = [BNoteConstants appHighlightColor1];
     
-    [self.cancelButton setTitle:cancelText forState:UIControlStateNormal];
+    self.nameTextField.placeholder = placeHolderText;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -180,7 +225,6 @@ static NSString *placeHolderText;
     [button setBackgroundColor:UIColorFromRGB(color)];
     [[button layer] setCornerRadius:7.0];
     [[button layer] setMasksToBounds:YES];
-    [[button layer] setBorderWidth:1];
 }
 
 - (void)updateHighlightColor:(UIButton *)button

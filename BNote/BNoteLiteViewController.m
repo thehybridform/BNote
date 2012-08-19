@@ -9,7 +9,7 @@
 #import "BNoteLiteViewController.h"
 #import "BNoteSessionData.h"
 #import "EluaViewController.h"
-#import "BNoteReader.h"
+#import "BNoteDefaultData.h"
 
 @interface BNoteLiteViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *thankYouLabel;
@@ -43,6 +43,9 @@
 - (IBAction)close:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+    [BNoteDefaultData setup];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRefetchAllDatabaseData object:nil];
 }
 
 - (IBAction)ok:(id)sender

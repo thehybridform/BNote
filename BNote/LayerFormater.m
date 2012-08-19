@@ -33,7 +33,6 @@ static float shawdowOpacity = 0.5;
 {
     [layer setCornerRadius:radius];
     [layer setMasksToBounds:YES];
-    [layer setBorderWidth:1];
 }
 
 + (void)setBorderWidth:(CGFloat)thickness forView:(UIView *)view

@@ -25,6 +25,7 @@
 #import "TopicGroupsViewController.h"
 #import "TopicGroupManagementViewController.h"
 #import "BNoteButton.h"
+#import "BNoteExporterViewController.h"
 
 @interface MainViewViewController ()
 @property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
@@ -64,6 +65,9 @@
 @synthesize topicGroup = _topicGroup;
 @synthesize searchBar = _searchBar;
 @synthesize liteLable = _liteLable;
+
+static NSString *emailTopicText;
+static NSString *exportText;
 
 - (void)viewDidUnload
 {
@@ -121,8 +125,8 @@
     [[self peopleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     
     [[self notesLabel] setFont:[BNoteConstants font:RobotoRegular andSize:18.0]];
-    [[self peopleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:18.0]];
-    [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:28.0]];
+    [[self peopleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:14.0]];
+    [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:24.0]];
 
     [[self detailView] setHidden:YES];
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
@@ -149,6 +153,9 @@
     self.searchBar.placeholder = NSLocalizedString(@"Search All Topics", @"Search all topics.");
     self.notesLabel.text = NSLocalizedString(@"Notes", @"The notes section title.");
     self.peopleLabel.text = NSLocalizedString(@"People", @"The attendees section title.");
+    
+    emailTopicText = NSLocalizedString(@"Email Selected Topic", nil);
+    exportText = NSLocalizedString(@"Archive Options", nil);
 }
 
 - (void)selectedTopic:(NSNotification *)notification
@@ -272,7 +279,38 @@
 
 - (IBAction)presentShareOptions:(id)sender
 {
-    [self presentEmailer];
+    if (![[BNoteSessionData instance] actionSheet]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+        [actionSheet setDelegate:[BNoteSessionData instance]];
+        [[BNoteSessionData instance] setActionSheetDelegate:self];
+        [[BNoteSessionData instance] setActionSheet:actionSheet];
+        
+        if ([MFMailComposeViewController canSendMail]) {
+            [actionSheet addButtonWithTitle:emailTopicText];
+        }
+        
+        [actionSheet addButtonWithTitle:exportText];
+        
+        UIView *view = self.shareButton;
+        CGRect rect = view.bounds;
+        [actionSheet showFromRect:rect inView:view animated:NO];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == emailTopicText) {
+            [self presentEmailer];
+        } else if (title == exportText) {
+            BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
+            [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+            
+            [self presentModalViewController:controller animated:YES];
+        }
+    }
 }
 
 - (void)presentEmailer
@@ -292,10 +330,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
-}
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar

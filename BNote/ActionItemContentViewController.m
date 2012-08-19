@@ -276,7 +276,7 @@ static NSString *completedOnDateText;
         [actionSheet setDestructiveButtonIndex:index];
         
         CGRect rect = [[self responsibilityView] frame];
-        [actionSheet showFromRect:rect inView:[self view] animated:YES];
+        [actionSheet showFromRect:rect inView:[self view] animated:NO];
     } else {
         [self showResponsibilityPicker];
     }
@@ -296,7 +296,7 @@ static NSString *completedOnDateText;
         [actionSheet setDestructiveButtonIndex:index];
         
         CGRect rect = [[self dueDateView] frame];
-        [actionSheet showFromRect:rect inView:[self view] animated:YES];
+        [actionSheet showFromRect:rect inView:[self view] animated:NO];
     } else {
         [self showDatePicker];
     }

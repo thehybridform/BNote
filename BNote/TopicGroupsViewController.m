@@ -127,6 +127,7 @@ static NSString *manageText;
     NSString *currentGroup = [BNoteSessionData stringForKey:kTopicGroupSelected];
     if (![[topicGroup name] isEqualToString:currentGroup]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:topicGroup];
+        [BNoteSessionData instance].selectedTopicGroup = topicGroup;
     }
 }
 

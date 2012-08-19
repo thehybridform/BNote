@@ -11,10 +11,10 @@
 @implementation EditNoteView
 @synthesize note = _note;
 
-const static float x1 = 10;
-const static float x2 = x1 + 13;
-const static float x3 = x2 + 13;
-const static float h1 = 44;
+const static float x1 = 20;
+const static float x2 = x1 + 17;
+const static float x3 = x2 + 17;
+const static float h1 = 60;
 const static float h2 = h1 - 10;
 
 - (id)initWithCoder:(NSCoder *)aDecoder

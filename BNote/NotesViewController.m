@@ -37,8 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self reload];
 }
 
 - (void)setTopic:(Topic *)topic
@@ -80,7 +78,7 @@
 
     int visibleNotes = 7;
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (UIDeviceOrientationIsPortrait(orientation)) {
+    if (UIDeviceOrientationIsPortrait(orientation) || scrollView.frame.size.width < 600) {
         visibleNotes = 4;
         space = 130;
     }    
@@ -99,7 +97,7 @@
     
     if ([[self topic] color] != kFilterColor) {
         x += space;
-        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x, 7, 100, 110)];
+        NoteView *noteView = [[NoteView alloc] initWithFrame:CGRectMake(x < 10 ? 10 : x + 2, 9, 96, 106)];
         UITapGestureRecognizer *tap =
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(normalPressTap:)];
         [noteView addGestureRecognizer:tap];

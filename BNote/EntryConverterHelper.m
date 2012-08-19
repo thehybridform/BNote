@@ -111,7 +111,7 @@ static NSString *actionItemText;
     }
     
     CGRect rect = [view frame];
-    [actionSheet showFromRect:rect inView:view animated:YES];
+    [actionSheet showFromRect:rect inView:view animated:NO];
 }
 
 - (void)convert:(Entry *)from to:(Entry *)to

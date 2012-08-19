@@ -191,7 +191,7 @@ static NSString *attendants;
     [actionSheet addButtonWithTitle:createNew];
     
     CGRect rect = [[self addAttendantView] frame];
-    [actionSheet showFromRect:rect inView:[self view] animated:YES];
+    [actionSheet showFromRect:rect inView:[self view] animated:NO];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

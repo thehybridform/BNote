@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1296</int>
+		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">12A269</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
@@ -117,6 +117,23 @@
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">274</int>
 						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUIPageControl" id="441097273">
+								<reference key="NSNextResponder" ref="232312553"/>
+								<int key="NSvFlags">1314</int>
+								<object class="NSPSMatrix" key="NSFrameMatrix"/>
+								<string key="NSFrame">{{8, 0}, {781, 36}}</string>
+								<reference key="NSSuperview" ref="232312553"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="961133830"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<float key="IBUIAlpha">0.80000001192092896</float>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<bool key="IBUIHidesForSinglePage">YES</bool>
+								<int key="IBUINumberOfPages">1</int>
+							</object>
 							<object class="IBUIView" id="556990205">
 								<reference key="NSNextResponder" ref="232312553"/>
 								<int key="NSvFlags">290</int>
@@ -124,10 +141,10 @@
 									<object class="IBUILabel" id="613136891">
 										<reference key="NSNextResponder" ref="556990205"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{6, 7}, {72, 21}}</string>
+										<string key="NSFrame">{{6, 9}, {72, 21}}</string>
 										<reference key="NSSuperview" ref="556990205"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="399865561"/>
+										<reference key="NSNextKeyView" ref="96353271"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -193,10 +210,10 @@
 									<object class="IBUIScrollView" id="96353271">
 										<reference key="NSNextResponder" ref="556990205"/>
 										<int key="NSvFlags">294</int>
-										<string key="NSFrame">{{5, 24}, {776, 128}}</string>
+										<string key="NSFrame">{{5, 34}, {776, 128}}</string>
 										<reference key="NSSuperview" ref="556990205"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="613136891"/>
+										<reference key="NSNextKeyView" ref="399865561"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -207,10 +224,10 @@
 										<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 									</object>
 								</array>
-								<string key="NSFrame">{{5, 0}, {793, 152}}</string>
+								<string key="NSFrame">{{5, 0}, {793, 162}}</string>
 								<reference key="NSSuperview" ref="232312553"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="96353271"/>
+								<reference key="NSNextKeyView" ref="613136891"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 							</object>
@@ -224,7 +241,7 @@
 										<string key="NSFrame">{{6, 3}, {72, 21}}</string>
 										<reference key="NSSuperview" ref="993854626"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="961133830"/>
+										<reference key="NSNextKeyView" ref="441097273"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -259,7 +276,7 @@
 										<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 									</object>
 								</array>
-								<string key="NSFrame">{{5, 155}, {793, 100}}</string>
+								<string key="NSFrame">{{5, 165}, {793, 100}}</string>
 								<reference key="NSSuperview" ref="232312553"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="844258177"/>
@@ -269,10 +286,10 @@
 							<object class="IBUITableView" id="961133830">
 								<reference key="NSNextResponder" ref="232312553"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{13, 272}, {773, 386}}</string>
+								<string key="NSFrame">{{12, 283}, {773, 376}}</string>
 								<reference key="NSSuperview" ref="232312553"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="441097273"/>
+								<reference key="NSNextKeyView" ref="910474460"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor" id="84763578">
 									<int key="NSColorSpace">2</int>
@@ -529,28 +546,11 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
-					<object class="IBUIPageControl" id="441097273">
-						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">1314</int>
-						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{235, 172}, {781, 36}}</string>
-						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="910474460"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<float key="IBUIAlpha">0.80000001192092896</float>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<bool key="IBUIHidesForSinglePage">YES</bool>
-						<int key="IBUINumberOfPages">1</int>
-					</object>
 					<object class="IBUIPageControl" id="910474460">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">1314</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{235, 278}, {781, 36}}</string>
+						<string key="NSFrame">{{235, 205}, {781, 36}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="892000470"/>
@@ -956,7 +956,6 @@
 							<reference ref="881695004"/>
 							<reference ref="232312553"/>
 							<reference ref="456762475"/>
-							<reference ref="441097273"/>
 							<reference ref="910474460"/>
 							<reference ref="892000470"/>
 						</array>
@@ -978,9 +977,10 @@
 						<int key="objectID">44</int>
 						<reference key="object" ref="232312553"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="961133830"/>
 							<reference ref="556990205"/>
 							<reference ref="993854626"/>
+							<reference ref="961133830"/>
+							<reference ref="441097273"/>
 						</array>
 						<reference key="parent" ref="766721923"/>
 					</object>
@@ -1090,11 +1090,6 @@
 						<reference key="parent" ref="881695004"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">115</int>
-						<reference key="object" ref="441097273"/>
-						<reference key="parent" ref="766721923"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">123</int>
 						<reference key="object" ref="910474460"/>
 						<reference key="parent" ref="766721923"/>
@@ -1118,6 +1113,11 @@
 						<int key="objectID">63</int>
 						<reference key="object" ref="467815127"/>
 						<reference key="parent" ref="892000470"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">115</int>
+						<reference key="object" ref="441097273"/>
+						<reference key="parent" ref="232312553"/>
 					</object>
 				</array>
 			</object>
@@ -1416,10 +1416,6 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
-		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">

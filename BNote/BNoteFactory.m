@@ -22,6 +22,7 @@
 #import "TableCellHeaderViewController.h"
 #import "DecisionContentViewController.h"
 #import "NoteSummaryViewController.h"
+#import "BNoteStringUtils.h"
 
 NSString *const kActionItemActive = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -52,6 +53,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     [group setCreated:[NSDate timeIntervalSinceReferenceDate]];
     [group setLastUpdated:[group created]];
     [group setName:name];
+    group.id = [BNoteStringUtils guuid];
 
     return group;
 }
@@ -64,6 +66,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     [topic setLastUpdated:[topic created]];
     [topic setTitle:name];
     [topic setColor:0xFFFFFF];
+    topic.id = [BNoteStringUtils guuid];
 
     [group addTopicsObject:topic];
     
@@ -108,7 +111,8 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     [note setLastUpdated:[note created]];
     [note setColor:[topic color]];
     [note setTopic:topic];
-        
+    note.id = [BNoteStringUtils guuid];
+
     return note;
 }
 

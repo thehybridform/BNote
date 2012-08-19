@@ -12,6 +12,11 @@
                     <last>bob</last>
                     <email>bob@bob.com</email>
                 </attendee>
+                <attendee>
+                    <first>billy</first>
+                    <last>billy</last>
+                    <email>billy@billy.net</email>
+                </attendee>
                 <decision>
                     <text>decision 123</text>
                     <created-date>0</created-date>
@@ -27,8 +32,6 @@
                 </key-point>
                 <action-item>
                     <text>action item 123</text>
-                    <created-date>0</created-date>
-                    <last-updated>0</last-updated>
                     <due-date>0</due-date>
                     <completed-date>0</completed-date>
                     <responsibility>
@@ -38,6 +41,8 @@
                             <email>bob@bob.com</email>
                         </attendee>
                     </responsibility>
+                    <created-date>0</created-date>
+                    <last-updated>0</last-updated>
                 </action-item>
                 <question>
                     <text>question 123</text>

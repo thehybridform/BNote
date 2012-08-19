@@ -25,6 +25,7 @@
 @synthesize actionSheetDelegate = _actionSheetDelegate;
 @synthesize entrySummaryHeaderImageViews = _entrySummaryHeaderImageViews;
 @synthesize selectedTopic = _selectedTopic;
+@synthesize selectedTopicGroup = _selectedTopicGroup;
 @synthesize editingNote = _editingNote;
 @synthesize mainViewController = _mainViewController;
 

@@ -16,8 +16,10 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="topic" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="id" type="xs:ID"/>
         </xs:complexType>
     </xs:element>
 
@@ -32,11 +34,13 @@
                 </xs:element>
                 <xs:element name="associated-topic-group" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType>
-                        <xs:attribute name="id" type="xs:IDREF" use="required"/>
+                        <xs:attribute name="id" type="xs:IDREF"/>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="id" type="xs:ID"/>
         </xs:complexType>
     </xs:element>
 
@@ -53,14 +57,14 @@
                 </xs:choice>
                 <xs:element name="summary" type="xs:string" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="last-updated-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="associated-topic" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType>
-                        <xs:attribute name="id" type="xs:IDREF" use="required"/>
+                        <xs:attribute name="id" type="xs:IDREF"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="id" type="xs:ID"/>
         </xs:complexType>
     </xs:element>
 

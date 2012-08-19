@@ -21,7 +21,6 @@
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) Topic *searchTopic;
-@property (strong, nonatomic) TopicGroup *topicGroup;
 
 @end
 
@@ -30,7 +29,6 @@
 @synthesize data = _data;
 @synthesize selectedIndex = _selectedIndex;
 @synthesize searchTopic = _searchTopic;
-@synthesize topicGroup = _topicGroup;
 @synthesize editButton = _editButton;
 
 static NSString *filterdGroupText;
@@ -94,19 +92,13 @@ static NSString *filterdGroupText;
     if (!group) {
         group = [BNoteFactory createTopicGroup:groupName];
     }
-    
-    [self setTopicGroup:group];
-    
+        
     [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:group];
-
-    if ([[self data] count] > 0) {
-        [self selectCell:0];
-    }
 }
 
 - (void)updateData
 {
-    [self setData:[[[self topicGroup] topics] mutableCopy]];
+    [self setData:[[[BNoteSessionData instance].selectedTopicGroup topics] mutableCopy]];
     [[self tableView] reloadData];
 }
 
@@ -178,7 +170,8 @@ static NSString *filterdGroupText;
 {
     Topic *topic = [[self data] objectAtIndex:[sourceIndexPath row]];
     [[BNoteWriter instance] moveTopic:topic toIndex:[destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self topicGroup]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[BNoteSessionData instance].selectedTopicGroup];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,11 +189,11 @@ static NSString *filterdGroupText;
             [self selectCell:index];
         }
     }
-
+    
     [[BNoteWriter instance] update];
     
     [self editTopicCell:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self topicGroup]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[BNoteSessionData instance].selectedTopicGroup];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -209,6 +202,7 @@ static NSString *filterdGroupText;
     
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     [[BNoteSessionData instance] setSelectedTopic:topic];
+    [BNoteSessionData setString:topic.title forKey:kTopicSelected];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:kTopicSelected object:topic];
 }
@@ -217,7 +211,7 @@ static NSString *filterdGroupText;
 {    
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
 
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:[self topicGroup]];
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:[BNoteSessionData instance].selectedTopicGroup];
     [controller setTopic:topic];
 
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
@@ -238,8 +232,7 @@ static NSString *filterdGroupText;
 - (void)selectCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];    
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 - (void)selectTopic:(NSNotification *)notification
@@ -260,17 +253,30 @@ static NSString *filterdGroupText;
 - (void)selectTopicGroup:(NSNotification *)notification
 {
     TopicGroup *group = [notification object];
-    [self setTopicGroup:group];
+    [[BNoteSessionData instance] setSelectedTopicGroup:group];
     [self setData:[[group topics] mutableCopy]];
     
     [[self tableView] reloadData];
     
-    if ([[self data] count] > 0) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    int selectedTopicIndex = -1;
+    NSString *topicName = [BNoteSessionData stringForKey:kTopicSelected];
+    for (Topic *topic in group.topics) {
+        if ([topic.title isEqualToString:topicName]) {
+            selectedTopicIndex = [group.topics indexOfObject:topic];
+            break;
+        }
+    }
+
+    NSIndexPath *indexPath;
+    if (selectedTopicIndex >= 0) {
+        indexPath = [NSIndexPath indexPathForRow:selectedTopicIndex inSection:0];
+    } else if ([[self data] count] > 0) {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    }
+
+    if (indexPath) {
         [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
         [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-    } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicSelected object:nil];
     }
 
     [BNoteSessionData setString:[group name] forKey:kTopicGroupSelected];

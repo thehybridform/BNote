@@ -12,7 +12,7 @@
 @synthesize activePageColor = _activePageColor;
 @synthesize inactivePageColor = _inactivePageColor;
 
-const float dotSize = 7.5;
+const float dotSize = 5.0;
 const float dotsWidth = 7.5;
 
 - (void)drawRect:(CGRect)rect

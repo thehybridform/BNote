@@ -213,11 +213,6 @@
     return [[self data] objectForKey:key];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 45;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];

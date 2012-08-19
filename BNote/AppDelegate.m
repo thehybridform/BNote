@@ -12,7 +12,6 @@
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
-#import "BNoteDefaultData.h"
 #import "BNoteLiteViewController.h"
 
 
@@ -48,7 +47,6 @@
     
         
     if (![BNoteSessionData booleanForKey:kEulaFlag]) {
-        [BNoteDefaultData setup];
         UIViewController *controller;
         controller = [[BNoteLiteViewController alloc] initWithDefault];
         controller.modalPresentationStyle = UIModalPresentationFormSheet;

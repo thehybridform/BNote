@@ -1,4 +1,13 @@
 {
+	"All Data" = "All Data";
+	"Archive Options" = "Archive Options";
+	"Email Selected Topic" = "Email Selected Topic";
+	"Current Note" = "Current Note";
+	"Selected Topic Group" = "Selected Topic Group";
+	"Selected Topic" = "Selected Topic";
+	"Archive BeNote Data" = "Archive BeNote Data";
+	"Email Archiver Help Text" = "Send the BeNote archive as an email attachment.  This can be reimported via the email application on your iPad at a later date.";
+	"Email Archiver" = "Email Archiver";
 	About = About;
 	"More Information" = "More Information";
 	Help = Help;
@@ -94,7 +103,7 @@
 	Remove = Remove;
 	Reset = Reset;
 	"Responsibility Options" = "Responsibility Options";
-	REVIEW = REVIEW;
+	REVIEW = Review;
 	"Seacrh All Topics" = "Seacrh All Topics";
 	"Select topic for note." = "Select topic for note.";
 	"Select Topic Group" = "Select Topic Group";
@@ -105,7 +114,7 @@
 	tomorrow = tomorrow;
 	"Topic Groups" = "Edit Topic Groups";
 	"Topic name already exists." = "Topic name already exists";
-	"Type in a new Topic Title" = "Type in a new Topic Title";
+	"Type in a new Topic Title" = "Topic Title";
 	Undo = Undo;
 	Update = Update;
 	"week ago" = "week ago";

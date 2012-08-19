@@ -58,6 +58,7 @@
 @property (strong, nonatomic) UIButton *selectedFilterButton;
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
+@property (strong, nonatomic) IBOutlet UIView *shadowView;
 
 @property (assign, nonatomic) BOOL isEditing;
 
@@ -97,6 +98,7 @@
 @synthesize selectedFilterButton = _selectedFilterButton;
 @synthesize addSummaryButton = _addSummaryButton;
 @synthesize closeButton = _closeButton;
+@synthesize shadowView = _shadowView;
 
 static NSString *closeText;
 static NSString *reviewText;
@@ -141,6 +143,8 @@ static NSString *spacing = @"   ";
     [self setFilteringLabel:nil];
     [self setReviewScrollView:nil];
     [self setAddSummaryButton:nil];
+    self.shadowView = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -171,6 +175,8 @@ static NSString *spacing = @"   ";
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColorFromRGB(0xf0f0f0);
+    
     [self.closeButton setTitle:closeText forState:UIControlStateNormal];
     [self.reviewButton setTitle:reviewText forState:UIControlStateNormal];
     [[self addSummaryButton] setTitle:addSummaryText forState:UIControlStateNormal];
@@ -192,11 +198,9 @@ static NSString *spacing = @"   ";
     [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self footerView]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
 
-//    [LayerFormater roundCornersForView:[self dateView]];
-    [LayerFormater setBorderColor:[BNoteConstants colorFor:BNoteColorHighlight] forView:[self menuView]];
-    [LayerFormater setBorderWidth:1 forView:[self menuView]];
-    
     [LayerFormater setBorderColor:[UIColor lightGrayColor] forView:[self infoView]];
+    [LayerFormater roundCornersForView:self.dateView];
+    [LayerFormater addShadowToView:self.shadowView];
     
     [[self keyPointButton] setIcon:[BNoteFactory createIcon:KeyPointIcon]];
     [[self actionItemButton] setIcon:[BNoteFactory createIcon:ActionItemIcon]];
@@ -224,14 +228,24 @@ static NSString *spacing = @"   ";
     [[self filteringLabel] setTextColor:[BNoteConstants appHighlightColor1]];
 
     [[self dateView] setBackgroundColor:[BNoteConstants appHighlightColor1]];
-    [[self year] setFont:[BNoteConstants font:RobotoRegular andSize:17]];
+    [[self year] setFont:[BNoteConstants font:RobotoRegular andSize:13]];
     [[self month] setFont:[BNoteConstants font:RobotoBold andSize:11]];
-    [[self day] setFont:[BNoteConstants font:RobotoRegular andSize:34]];
-    [[self time] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
-    [[self subjectTextView] setFont:[BNoteConstants font:RobotoRegular andSize:20]];
-    [[self subjectTextView] setTextColor:UIColorFromRGB(0x444444)];
+    [[self day] setFont:[BNoteConstants font:RobotoRegular andSize:26]];
+    [[self time] setFont:[BNoteConstants font:RobotoRegular andSize:13]];
+    [[self subjectTextView] setFont:[BNoteConstants font:RobotoRegular andSize:18]];
+
     self.subjectTextView.delegate = self;
     self.subjectTextView.placeholder = NSLocalizedString(@"Enter Subject", @"note subject place holder.");
+
+    
+    [LayerFormater setBorderWidth:1 forView:[self normalEntryButtonsView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self normalEntryButtonsView]];
+    [LayerFormater setBorderWidth:1 forView:[self reviewEntryButtonsView]];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self reviewEntryButtonsView]];
+    [LayerFormater addShadowToView:[self normalEntryButtonsView]];
+    [LayerFormater addShadowToView:[self reviewEntryButtonsView]];
+
+    [[self reviewEntryButtonsView] setHidden:YES];
 
     UITapGestureRecognizer *normalTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker:)];
@@ -310,7 +324,7 @@ static NSString *spacing = @"   ";
     [[self day] setText:str];
     
     [format setDateFormat:@"h:mm aaa"];
-    str = [format stringFromDate:date];
+    str = [[format stringFromDate:date] lowercaseString];
     [[self time] setText:str];
     
     [format setDateFormat:@"yyyy"];

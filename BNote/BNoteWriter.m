@@ -193,6 +193,8 @@
     if ([self topic:topic memberOf:group]) {
         [group removeTopicsObject:topic];
         [group insertObject:topic inTopicsAtIndex:index];
+        
+        [self update];
     }
 }
 

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate>
+@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate, UIActionSheetDelegate>
+
 @property (strong, nonatomic) Topic *searchTopic;
 
 - (id)initWithDefault;

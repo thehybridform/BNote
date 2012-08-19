@@ -199,6 +199,24 @@
 		18BEF24715DC71B000E16CFD /* benote-1.0.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24515DC71B000E16CFD /* benote-1.0.xsd */; };
 		18BEF24A15DC71D000E16CFD /* example-benote.xml in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24915DC71D000E16CFD /* example-benote.xml */; };
 		18BEF24B15DC71D000E16CFD /* example-benote.xml in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24915DC71D000E16CFD /* example-benote.xml */; };
+		18BEF25015DCA72B00E16CFD /* BNoteExporterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF24E15DCA72B00E16CFD /* BNoteExporterViewController.m */; };
+		18BEF25115DCA72B00E16CFD /* BNoteExporterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF24E15DCA72B00E16CFD /* BNoteExporterViewController.m */; };
+		18BEF25215DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24F15DCA72B00E16CFD /* BNoteExporterViewController.xib */; };
+		18BEF25315DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24F15DCA72B00E16CFD /* BNoteExporterViewController.xib */; };
+		18BEF25715DCB0CC00E16CFD /* BNoteArchiverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF25615DCB0CC00E16CFD /* BNoteArchiverManager.m */; };
+		18BEF25815DCB0CC00E16CFD /* BNoteArchiverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF25615DCB0CC00E16CFD /* BNoteArchiverManager.m */; };
+		18BEF25C15DCB4CB00E16CFD /* EmailArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF25B15DCB4CB00E16CFD /* EmailArchiver.m */; };
+		18BEF25D15DCB4CB00E16CFD /* EmailArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF25B15DCB4CB00E16CFD /* EmailArchiver.m */; };
+		18BEF26815DDF28400E16CFD /* BNoteMarshallingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF26715DDF28400E16CFD /* BNoteMarshallingManager.m */; };
+		18BEF26915DDF28400E16CFD /* BNoteMarshallingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF26715DDF28400E16CFD /* BNoteMarshallingManager.m */; };
+		18BEF26D15DDF40700E16CFD /* TopicGroupMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF26C15DDF40700E16CFD /* TopicGroupMarshaller.m */; };
+		18BEF26E15DDF40700E16CFD /* TopicGroupMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF26C15DDF40700E16CFD /* TopicGroupMarshaller.m */; };
+		18BEF27515DEEA1D00E16CFD /* BNoteXmlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27415DEEA1D00E16CFD /* BNoteXmlFormatter.m */; };
+		18BEF27615DEEA1D00E16CFD /* BNoteXmlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27415DEEA1D00E16CFD /* BNoteXmlFormatter.m */; };
+		18BEF27915DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */; };
+		18BEF27A15DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */; };
+		18BEF27D15DEED9900E16CFD /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */; };
+		18BEF27E15DEED9900E16CFD /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
@@ -207,6 +225,16 @@
 		18C2654415859E7F005FA6C5 /* ActionItemPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */; };
 		18C2654715859EB4005FA6C5 /* AttendantPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */; };
 		18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
+		18C2773515DEF936009AC728 /* NoteMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773415DEF936009AC728 /* NoteMarshaller.m */; };
+		18C2773615DEF936009AC728 /* NoteMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773415DEF936009AC728 /* NoteMarshaller.m */; };
+		18C2773A15DEF9CC009AC728 /* KeyPointMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773915DEF9CC009AC728 /* KeyPointMarshaller.m */; };
+		18C2773B15DEF9CC009AC728 /* KeyPointMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773915DEF9CC009AC728 /* KeyPointMarshaller.m */; };
+		18C2773E15DF0E97009AC728 /* DecisionMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773D15DF0E96009AC728 /* DecisionMarshaller.m */; };
+		18C2773F15DF0E97009AC728 /* DecisionMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773D15DF0E96009AC728 /* DecisionMarshaller.m */; };
+		18C2774215DF0F57009AC728 /* QuestionMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2774115DF0F57009AC728 /* QuestionMarshaller.m */; };
+		18C2774315DF0F57009AC728 /* QuestionMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2774115DF0F57009AC728 /* QuestionMarshaller.m */; };
+		18C2774615DF1019009AC728 /* ActionItemMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2774515DF1018009AC728 /* ActionItemMarshaller.m */; };
+		18C2774715DF1019009AC728 /* ActionItemMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2774515DF1018009AC728 /* ActionItemMarshaller.m */; };
 		18C5E88B15C7B89C005590A2 /* SelectedKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E88A15C7B89C005590A2 /* SelectedKeyWordFinder.m */; };
 		18C5E89815C7C0D9005590A2 /* NoteSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89615C7C0D9005590A2 /* NoteSummaryViewController.m */; };
 		18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */; };
@@ -722,6 +750,29 @@
 		18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionPlainRenderer.m; sourceTree = "<group>"; };
 		18BEF24515DC71B000E16CFD /* benote-1.0.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "benote-1.0.xsd"; sourceTree = "<group>"; };
 		18BEF24915DC71D000E16CFD /* example-benote.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "example-benote.xml"; sourceTree = "<group>"; };
+		18BEF24D15DCA72B00E16CFD /* BNoteExporterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteExporterViewController.h; sourceTree = "<group>"; };
+		18BEF24E15DCA72B00E16CFD /* BNoteExporterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteExporterViewController.m; sourceTree = "<group>"; };
+		18BEF24F15DCA72B00E16CFD /* BNoteExporterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNoteExporterViewController.xib; sourceTree = "<group>"; };
+		18BEF25515DCB0CC00E16CFD /* BNoteArchiverManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteArchiverManager.h; sourceTree = "<group>"; };
+		18BEF25615DCB0CC00E16CFD /* BNoteArchiverManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteArchiverManager.m; sourceTree = "<group>"; };
+		18BEF25A15DCB4CB00E16CFD /* EmailArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailArchiver.h; sourceTree = "<group>"; };
+		18BEF25B15DCB4CB00E16CFD /* EmailArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailArchiver.m; sourceTree = "<group>"; };
+		18BEF25E15DCB95400E16CFD /* BNoteArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteArchiver.h; sourceTree = "<group>"; };
+		18BEF26115DCD6A900E16CFD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18BEF26215DCD6A900E16CFD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18BEF26315DCD6B100E16CFD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hant"; path = "zh-Hant.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18BEF26415DCD6B100E16CFD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18BEF26615DDF28400E16CFD /* BNoteMarshallingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshallingManager.h; sourceTree = "<group>"; };
+		18BEF26715DDF28400E16CFD /* BNoteMarshallingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteMarshallingManager.m; sourceTree = "<group>"; };
+		18BEF26A15DDF38200E16CFD /* BNoteMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshaller.h; sourceTree = "<group>"; };
+		18BEF26B15DDF40700E16CFD /* TopicGroupMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroupMarshaller.h; sourceTree = "<group>"; };
+		18BEF26C15DDF40700E16CFD /* TopicGroupMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroupMarshaller.m; sourceTree = "<group>"; };
+		18BEF27315DEEA1D00E16CFD /* BNoteXmlFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteXmlFormatter.h; sourceTree = "<group>"; };
+		18BEF27415DEEA1D00E16CFD /* BNoteXmlFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteXmlFormatter.m; sourceTree = "<group>"; };
+		18BEF27715DEEC8900E16CFD /* BNoteMarshallerBasis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshallerBasis.h; sourceTree = "<group>"; };
+		18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteMarshallerBasis.m; sourceTree = "<group>"; };
+		18BEF27B15DEED9900E16CFD /* TopicMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicMarshaller.h; sourceTree = "<group>"; };
+		18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicMarshaller.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -742,6 +793,16 @@
 		18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantPlainRenderer.m; sourceTree = "<group>"; };
 		18C2654B15859FE3005FA6C5 /* NotePlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePlainRenderer.h; sourceTree = "<group>"; };
 		18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePlainRenderer.m; sourceTree = "<group>"; };
+		18C2773315DEF936009AC728 /* NoteMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteMarshaller.h; sourceTree = "<group>"; };
+		18C2773415DEF936009AC728 /* NoteMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteMarshaller.m; sourceTree = "<group>"; };
+		18C2773815DEF9CC009AC728 /* KeyPointMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointMarshaller.h; sourceTree = "<group>"; };
+		18C2773915DEF9CC009AC728 /* KeyPointMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointMarshaller.m; sourceTree = "<group>"; };
+		18C2773C15DF0E96009AC728 /* DecisionMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionMarshaller.h; sourceTree = "<group>"; };
+		18C2773D15DF0E96009AC728 /* DecisionMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionMarshaller.m; sourceTree = "<group>"; };
+		18C2774015DF0F57009AC728 /* QuestionMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionMarshaller.h; sourceTree = "<group>"; };
+		18C2774115DF0F57009AC728 /* QuestionMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionMarshaller.m; sourceTree = "<group>"; };
+		18C2774415DF1018009AC728 /* ActionItemMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemMarshaller.h; sourceTree = "<group>"; };
+		18C2774515DF1018009AC728 /* ActionItemMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemMarshaller.m; sourceTree = "<group>"; };
 		18C5E88915C7B89B005590A2 /* SelectedKeyWordFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedKeyWordFinder.h; sourceTree = "<group>"; };
 		18C5E88A15C7B89C005590A2 /* SelectedKeyWordFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedKeyWordFinder.m; sourceTree = "<group>"; };
 		18C5E88D15C7BFA0005590A2 /* BeNote 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 16.xcdatamodel"; sourceTree = "<group>"; };
@@ -755,12 +816,10 @@
 		18D50F7415D85AFF00A9650D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "en.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F7715D85B0D00A9650D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = "es.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F7815D85B0E00A9650D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = "ja.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18D50F7915D85B2000A9650D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F9515D85B7E00A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "de.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F9B15D85BB300A9650D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D50F9D15D85BB600A9650D /* es */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D50F9E15D85BB800A9650D /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		18D50F9F15D85BB800A9650D /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		18D50FA715D8625600A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D50FA815DA206100A9650D /* BNoteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteTextField.h; sourceTree = "<group>"; };
 		18D50FA915DA206200A9650D /* BNoteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteTextField.m; sourceTree = "<group>"; };
@@ -964,6 +1023,7 @@
 		1834D34115634A650065788F /* BNote */ = {
 			isa = PBXGroup;
 			children = (
+				18BEF24C15DCA6FE00E16CFD /* Import-Export */,
 				18F4E2B815CE4EE9002095A2 /* Lite Version */,
 				18BAC1A915AD450500EEBE1E /* Main View */,
 				18A30FBD15BB1F9F00A2FD14 /* Topic Groups */,
@@ -1055,6 +1115,8 @@
 		18368F4B156610D200E511CB /* Service Core */ = {
 			isa = PBXGroup;
 			children = (
+				18BEF26515DDF26500E16CFD /* Marashalling */,
+				18BEF25415DCB0B300E16CFD /* Archivers */,
 				18B4FB3215D0D73000619E27 /* Entry Conversion */,
 				186068CA15C7B3B0003DC4EB /* KeyWordFinder */,
 				18539D5915AFEB2200D7DC55 /* Cloners */,
@@ -1422,6 +1484,56 @@
 			name = "Main View";
 			sourceTree = "<group>";
 		};
+		18BEF24C15DCA6FE00E16CFD /* Import-Export */ = {
+			isa = PBXGroup;
+			children = (
+				18BEF24D15DCA72B00E16CFD /* BNoteExporterViewController.h */,
+				18BEF24E15DCA72B00E16CFD /* BNoteExporterViewController.m */,
+				18BEF24F15DCA72B00E16CFD /* BNoteExporterViewController.xib */,
+			);
+			name = "Import-Export";
+			sourceTree = "<group>";
+		};
+		18BEF25415DCB0B300E16CFD /* Archivers */ = {
+			isa = PBXGroup;
+			children = (
+				18BEF25515DCB0CC00E16CFD /* BNoteArchiverManager.h */,
+				18BEF25615DCB0CC00E16CFD /* BNoteArchiverManager.m */,
+				18BEF25A15DCB4CB00E16CFD /* EmailArchiver.h */,
+				18BEF25B15DCB4CB00E16CFD /* EmailArchiver.m */,
+				18BEF25E15DCB95400E16CFD /* BNoteArchiver.h */,
+			);
+			name = Archivers;
+			sourceTree = "<group>";
+		};
+		18BEF26515DDF26500E16CFD /* Marashalling */ = {
+			isa = PBXGroup;
+			children = (
+				18BEF26615DDF28400E16CFD /* BNoteMarshallingManager.h */,
+				18BEF26715DDF28400E16CFD /* BNoteMarshallingManager.m */,
+				18BEF26A15DDF38200E16CFD /* BNoteMarshaller.h */,
+				18BEF27315DEEA1D00E16CFD /* BNoteXmlFormatter.h */,
+				18BEF27415DEEA1D00E16CFD /* BNoteXmlFormatter.m */,
+				18BEF27715DEEC8900E16CFD /* BNoteMarshallerBasis.h */,
+				18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */,
+				18BEF26B15DDF40700E16CFD /* TopicGroupMarshaller.h */,
+				18BEF26C15DDF40700E16CFD /* TopicGroupMarshaller.m */,
+				18BEF27B15DEED9900E16CFD /* TopicMarshaller.h */,
+				18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */,
+				18C2773315DEF936009AC728 /* NoteMarshaller.h */,
+				18C2773415DEF936009AC728 /* NoteMarshaller.m */,
+				18C2773815DEF9CC009AC728 /* KeyPointMarshaller.h */,
+				18C2773915DEF9CC009AC728 /* KeyPointMarshaller.m */,
+				18C2773C15DF0E96009AC728 /* DecisionMarshaller.h */,
+				18C2773D15DF0E96009AC728 /* DecisionMarshaller.m */,
+				18C2774015DF0F57009AC728 /* QuestionMarshaller.h */,
+				18C2774115DF0F57009AC728 /* QuestionMarshaller.m */,
+				18C2774415DF1018009AC728 /* ActionItemMarshaller.h */,
+				18C2774515DF1018009AC728 /* ActionItemMarshaller.m */,
+			);
+			name = Marashalling;
+			sourceTree = "<group>";
+		};
 		18BF3F60157B456100B6E226 /* Entry View Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1710,6 +1822,7 @@
 				18D50F9915D85BB300A9650D /* Localizable.strings in Resources */,
 				18BEF24615DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF24A15DC71D000E16CFD /* example-benote.xml in Resources */,
+				18BEF25215DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1780,6 +1893,7 @@
 				18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */,
 				18BEF24715DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF24B15DC71D000E16CFD /* example-benote.xml in Resources */,
+				18BEF25315DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1927,6 +2041,19 @@
 				18B4FB6515D0DB2A00619E27 /* ActionItemToDecisionConverter.m in Sources */,
 				18B4FB6915D0DBA500619E27 /* QuestionToDecisionConverter.m in Sources */,
 				18D50FAA15DA206300A9650D /* BNoteTextField.m in Sources */,
+				18BEF25015DCA72B00E16CFD /* BNoteExporterViewController.m in Sources */,
+				18BEF25715DCB0CC00E16CFD /* BNoteArchiverManager.m in Sources */,
+				18BEF25C15DCB4CB00E16CFD /* EmailArchiver.m in Sources */,
+				18BEF26815DDF28400E16CFD /* BNoteMarshallingManager.m in Sources */,
+				18BEF26D15DDF40700E16CFD /* TopicGroupMarshaller.m in Sources */,
+				18BEF27515DEEA1D00E16CFD /* BNoteXmlFormatter.m in Sources */,
+				18BEF27915DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */,
+				18BEF27D15DEED9900E16CFD /* TopicMarshaller.m in Sources */,
+				18C2773515DEF936009AC728 /* NoteMarshaller.m in Sources */,
+				18C2773A15DEF9CC009AC728 /* KeyPointMarshaller.m in Sources */,
+				18C2773E15DF0E97009AC728 /* DecisionMarshaller.m in Sources */,
+				18C2774215DF0F57009AC728 /* QuestionMarshaller.m in Sources */,
+				18C2774615DF1019009AC728 /* ActionItemMarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2071,6 +2198,19 @@
 				18B4FB6615D0DB2A00619E27 /* ActionItemToDecisionConverter.m in Sources */,
 				18B4FB6A15D0DBA500619E27 /* QuestionToDecisionConverter.m in Sources */,
 				18D50FAB15DA206300A9650D /* BNoteTextField.m in Sources */,
+				18BEF25115DCA72B00E16CFD /* BNoteExporterViewController.m in Sources */,
+				18BEF25815DCB0CC00E16CFD /* BNoteArchiverManager.m in Sources */,
+				18BEF25D15DCB4CB00E16CFD /* EmailArchiver.m in Sources */,
+				18BEF26915DDF28400E16CFD /* BNoteMarshallingManager.m in Sources */,
+				18BEF26E15DDF40700E16CFD /* TopicGroupMarshaller.m in Sources */,
+				18BEF27615DEEA1D00E16CFD /* BNoteXmlFormatter.m in Sources */,
+				18BEF27A15DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */,
+				18BEF27E15DEED9900E16CFD /* TopicMarshaller.m in Sources */,
+				18C2773615DEF936009AC728 /* NoteMarshaller.m in Sources */,
+				18C2773B15DEF9CC009AC728 /* KeyPointMarshaller.m in Sources */,
+				18C2773F15DF0E97009AC728 /* DecisionMarshaller.m in Sources */,
+				18C2774315DF0F57009AC728 /* QuestionMarshaller.m in Sources */,
+				18C2774715DF1019009AC728 /* ActionItemMarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2083,8 +2223,9 @@
 				18D50F7415D85AFF00A9650D /* en */,
 				18D50F7715D85B0D00A9650D /* es */,
 				18D50F7815D85B0E00A9650D /* ja */,
-				18D50F7915D85B2000A9650D /* zh-Hans */,
 				18D50F9515D85B7E00A9650D /* de */,
+				18BEF26115DCD6A900E16CFD /* zh-Hans */,
+				18BEF26315DCD6B100E16CFD /* zh-Hant */,
 			);
 			name = "BeNote-EULA.rtf";
 			path = ..;
@@ -2096,8 +2237,9 @@
 				18D50F9B15D85BB300A9650D /* en */,
 				18D50F9D15D85BB600A9650D /* es */,
 				18D50F9E15D85BB800A9650D /* ja */,
-				18D50F9F15D85BB800A9650D /* zh-Hans */,
 				18D50FA715D8625600A9650D /* de */,
+				18BEF26215DCD6A900E16CFD /* zh-Hans */,
+				18BEF26415DCD6B100E16CFD /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

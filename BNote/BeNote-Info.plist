@@ -41,6 +41,7 @@
 	<string>6.0</string>
 	<key>CFBundleLocalizations</key>
 	<array>
+		<string>zh_TW</string>
 		<string>zh_CN</string>
 		<string>Spanish</string>
 		<string>ja</string>

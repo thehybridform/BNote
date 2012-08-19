@@ -39,7 +39,7 @@ const static float x1 = 7;
 const static float x2 = x1 + 10;
 const static float x3 = x2 + 10;
 const static float h1 = 44;
-const static float h2 = h1 - 10;
+const static float h2 = h1 - 8;
 
 - (void)commonInit
 {
@@ -76,7 +76,7 @@ const static float h2 = h1 - 10;
         [text setFont:[BNoteConstants font:RobotoLight andSize:13]];
         [text setFrame:CGRectMake(5, 43, 90, 30)];
         [text setTextColor:[BNoteConstants appHighlightColor1]];
-        [text setCenter:CGPointMake(50, 50)];
+        [text setCenter:CGPointMake(48, 65)];
         [text setTextAlignment:UITextAlignmentCenter];
         [text setBackgroundColor:[UIColor clearColor]];
         [text setClipsToBounds:NO];
@@ -183,7 +183,7 @@ const static float h2 = h1 - 10;
         [actionSheet setTitle:noteOptionsText];
         
         CGRect rect = [self bounds];
-        [actionSheet showFromRect:rect inView:self animated:YES];
+        [actionSheet showFromRect:rect inView:self animated:NO];
         
         [LayerFormater setBorderColor:[UIColor redColor] forView:self];
     }
@@ -216,10 +216,10 @@ const static float h2 = h1 - 10;
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Note?", nil)
                                                     message:nil
-                                                   delegate:nil
+                                                   delegate:self
                                           cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                           otherButtonTitles:NSLocalizedString(@"Confirm", nil), nil];
-    alert.delegate = self;
+
     [alert show];
 }
 

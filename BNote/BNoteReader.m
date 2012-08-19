@@ -57,7 +57,11 @@
     }
 
     if ([topics count]) {
-        return [topics objectAtIndex:0];
+        Topic *topic = [topics objectAtIndex:0];
+        if (!topic.id) {
+            topic.id = [BNoteStringUtils guuid];
+        }
+        return topic;
     } else {
         return nil;
     }
@@ -98,12 +102,6 @@
         TopicGroup *group = [self getTopicGroup:kAllTopicGroupName];
         if (!group) {
             group = [BNoteFactory createTopicGroup:kAllTopicGroupName];
-        }
-        
-        for (Topic *topic in allTopics) {
-            if ([[group topics] indexOfObject:topic] == NSNotFound) {
-                [group addTopicsObject:topic];
-            }
         }
         
         [[BNoteWriter instance] update];

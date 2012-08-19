@@ -215,7 +215,7 @@ static NSString *imageOptionsText;
         [actionSheet setTitle:imageOptionsText];
     
         CGRect rect = [[self photoImageView] frame];
-        [actionSheet showFromRect:rect inView:[self view] animated:YES];   
+        [actionSheet showFromRect:rect inView:[self view] animated:NO];   
     }
 }
 

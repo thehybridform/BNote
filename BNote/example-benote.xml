@@ -32,6 +32,8 @@
                 </key-point>
                 <action-item>
                     <text>action item 123</text>
+                    <created-date>0</created-date>
+                    <last-updated>0</last-updated>
                     <due-date>0</due-date>
                     <completed-date>0</completed-date>
                     <responsibility>
@@ -41,8 +43,6 @@
                             <email>bob@bob.com</email>
                         </attendee>
                     </responsibility>
-                    <created-date>0</created-date>
-                    <last-updated>0</last-updated>
                 </action-item>
                 <question>
                     <text>question 123</text>

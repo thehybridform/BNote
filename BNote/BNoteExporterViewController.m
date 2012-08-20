@@ -12,6 +12,8 @@
 #import "LayerFormater.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
+#import "BNoteExportFileWrapper.h"
+#import "EmailViewController.h"
 
 @interface BNoteExporterViewController ()
 
@@ -105,42 +107,29 @@
 
 - (IBAction)export:(id)sender
 {
-    int index = self.destinationSegmentedControl.selectedSegmentIndex;
-    NSString *title = [self.destinationSegmentedControl titleForSegmentAtIndex:index];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Archive BeNote Data", @"The Archive BeNote Data title")
-                                                    message:title
-                                                   delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                          otherButtonTitles:NSLocalizedString(@"Confirm", nil), nil];
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex) {
-
-        BOOL result;
+        BNoteExportFileWrapper *fileWrapper;
         id<BNoteArchiver> archiver = self.selectedArchiver;
         
         switch (self.destinationSegmentedControl.selectedSegmentIndex) {
             case 0:
-                result = [archiver archiveTopicGroup:[BNoteSessionData instance].selectedTopicGroup];
+                fileWrapper = [archiver archiveData:[BNoteSessionData instance].selectedTopicGroup];
                 break;
                 
             case 1:
-                result = [archiver archiveTopic:[BNoteSessionData instance].selectedTopic];
+                fileWrapper = [archiver archiveData:[BNoteSessionData instance].selectedTopic];
                 break;
                 
             case 2:
-                result = [archiver archiveAll];
+                fileWrapper = [archiver archiveAll];
                 break;
                 
             default:
                 break;
         }
         
-        [self dismissModalViewControllerAnimated:YES];
-    }
+        if (fileWrapper) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kArchiveFilename object:fileWrapper];
+        }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

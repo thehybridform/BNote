@@ -20,7 +20,7 @@ static NSString *kDecision = @"decision";
     return [obj isKindOfClass:[Decision class]];
 }
 
-- (void)marshall:(Decision *)decision into:(NSFileHandle *)file
+- (void)marshall:(Decision *)decision into:(BNoteExportFileWrapper *)file
 {
     [self write:[BNoteXmlFormatter openTag:kDecision] into:file];
     

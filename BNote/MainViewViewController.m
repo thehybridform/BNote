@@ -26,6 +26,7 @@
 #import "TopicGroupManagementViewController.h"
 #import "BNoteButton.h"
 #import "BNoteExporterViewController.h"
+#import "BNoteExportFileWrapper.h"
 
 @interface MainViewViewController ()
 @property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
@@ -142,6 +143,9 @@ static NSString *exportText;
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(selectedTopicGroup:) name:kTopicGroupSelected object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(presentEmailer:) name:kArchiveFilename object:nil];
     
 #ifdef LITE
     [[self liteLable] setFont:[BNoteConstants font:RobotoBold andSize:20]];
@@ -302,7 +306,7 @@ static NSString *exportText;
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == emailTopicText) {
-            [self presentEmailer];
+            [self presentEmailer:nil];
         } else if (title == exportText) {
             BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
@@ -313,13 +317,30 @@ static NSString *exportText;
     }
 }
 
-- (void)presentEmailer
+- (void)presentEmailer:(NSNotification *)notification
 {
-    EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[[self entriesTable] topic]];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    
-    [self presentModalViewController:controller animated:YES];
+    if (notification) {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:^(void) {
+            BNoteExportFileWrapper *fileWrapper = notification.object;
+            NSData *data = [NSData dataWithContentsOfFile:fileWrapper.zipFile.fileName];
+
+            EmailViewController *controller =
+                [[EmailViewController alloc]
+                    initWithAttachment:data mimeType:@"application/gzip" filename:kArchiveFilename];
+            
+            [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+            
+            [self presentModalViewController:controller animated:YES];
+        }];
+    } else {
+        EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[[self entriesTable] topic]];
+        [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+        [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        
+        [self presentModalViewController:controller animated:YES];
+    }
+
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController

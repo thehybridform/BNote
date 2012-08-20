@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BNoteExportFileWrapper.h"
 
 static NSString *const kBeNoteOpen =
-    @"<?xml version=\"1.0\" encoding=\"UTF-16\"?>\r\n\
-      <benote xmlns=\"http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0\"\r\n\
-              xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\
-              xsi:schemaLocation=\"http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0\r\n\
-                                  http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0/benote-1.0.xsd\">\r\n";
+    @"<?xml version=\"1.0\" encoding=\"UTF-16\"?>\
+      <benote xmlns=\"http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0\"\
+              xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              xsi:schemaLocation=\"http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0\
+                                  http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0/benote-1.0.xsd\">\n";
 
-static NSString *const kBeNoteClose = @"</benote>";
+static NSString *const kBeNoteClose = @"</benote>\n";
 
 static NSString *const kId = @"id";
 static NSString *const kCreated = @"created-date";
@@ -26,6 +27,6 @@ static NSString *const kText = @"text";
 
 - (BOOL)accept:(id)obj;
 
-- (void)marshall:(id)data into:(NSFileHandle *)file;
+- (void)marshall:(id)data into:(BNoteExportFileWrapper *)file;
 
 @end

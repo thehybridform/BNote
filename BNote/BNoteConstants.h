@@ -28,6 +28,8 @@ extern int const kAppHighlightColor1;
 extern int const kColorWhite;
 extern int const kFilterColor;
 
+extern NSString * const kArchiveFilename;
+
 extern NSString * const kKeyPointPhotoUpdated;
 extern NSString * const kKeyWordsUpdated;
 extern NSString * const kNoteUpdated;

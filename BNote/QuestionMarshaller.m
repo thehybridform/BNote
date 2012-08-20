@@ -21,7 +21,7 @@ static NSString *kAnswer = @"answer";
     return [obj isKindOfClass:[Question class]];
 }
 
-- (void)marshall:(Question *)question into:(NSFileHandle *)file
+- (void)marshall:(Question *)question into:(BNoteExportFileWrapper *)file
 {
     [self write:[BNoteXmlFormatter openTag:kQuestion] into:file];
     

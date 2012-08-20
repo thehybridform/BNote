@@ -1,28 +1,17 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns="http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0"
-           targetNamespace="http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0"
-           elementFormDefault="qualified">
-
+    xmlns="http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0"
+    targetNamespace="http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0"
+    elementFormDefault="qualified">
+    
     <xs:element name="benote">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="topic-group" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="topic-group">
-        <xs:complexType>
-            <xs:sequence>
                 <xs:element ref="topic" maxOccurs="unbounded" minOccurs="0"/>
-                <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:ID"/>
         </xs:complexType>
     </xs:element>
-
+    
     <xs:element name="topic">
         <xs:complexType>
             <xs:sequence>
@@ -32,18 +21,13 @@
                         <xs:attribute name="id" type="xs:IDREF" use="required"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="associated-topic-group" maxOccurs="unbounded" minOccurs="0">
-                    <xs:complexType>
-                        <xs:attribute name="id" type="xs:IDREF"/>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="created-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="last-updated" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:ID"/>
         </xs:complexType>
     </xs:element>
-
+    
     <xs:element name="note">
         <xs:complexType>
             <xs:sequence>
@@ -56,8 +40,8 @@
                     <xs:element name="action-item" type="action-item-type"/>
                 </xs:choice>
                 <xs:element name="summary" type="xs:string" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="last-updated-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="created-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="last-updated-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="associated-topic" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType>
                         <xs:attribute name="id" type="xs:IDREF"/>
@@ -67,21 +51,21 @@
             <xs:attribute name="id" type="xs:ID"/>
         </xs:complexType>
     </xs:element>
-
+    
     <xs:complexType name="entry-type">
         <xs:sequence>
             <xs:element name="text" type="xs:string" maxOccurs="1" minOccurs="0"/>
-            <xs:element name="created-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
-            <xs:element name="last-updated" type="xs:long" maxOccurs="1" minOccurs="0"/>
+            <xs:element name="created-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
+            <xs:element name="last-updated" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-
+    
     <xs:complexType name="decision-type">
         <xs:complexContent>
             <xs:extension base="entry-type"/>
         </xs:complexContent>
     </xs:complexType>
-
+    
     <xs:complexType name="question-type">
         <xs:complexContent>
             <xs:extension base="entry-type">
@@ -91,13 +75,13 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-
+    
     <xs:complexType name="action-item-type">
         <xs:complexContent>
             <xs:extension base="entry-type">
                 <xs:sequence>
-                    <xs:element name="due-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
-                    <xs:element name="completed-date" type="xs:long" maxOccurs="1" minOccurs="0"/>
+                    <xs:element name="due-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
+                    <xs:element name="completed-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
                     <xs:element name="responsibility" maxOccurs="1" minOccurs="0">
                         <xs:complexType>
                             <xs:sequence>
@@ -109,7 +93,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-
+    
     <xs:complexType name="key-point-type">
         <xs:complexContent>
             <xs:extension base="entry-type">
@@ -119,16 +103,16 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-
+    
     <xs:element name="photo">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="data" type="xs:long" maxOccurs="1" minOccurs="1"/>
+                <xs:element name="location" type="xs:string" maxOccurs="1" minOccurs="1"/>
             </xs:sequence>
-            <xs:attribute name="format" type="image-format" use="required"/>
+            <xs:attribute name="mime-type" type="image-mime-types" use="required"/>
         </xs:complexType>
     </xs:element>
-
+    
     <xs:element name="attendee">
         <xs:complexType>
             <xs:sequence>
@@ -138,10 +122,10 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-
-    <xs:simpleType name="image-format">
+    
+    <xs:simpleType name="image-mime-types">
         <xs:restriction base="xs:string">
-            <xs:pattern value="jpg|gif|png" />
+            <xs:pattern value="image/jpeg|image/gif|image/png" />
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

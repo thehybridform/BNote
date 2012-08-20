@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "BNoteMarshaller.h"
 #import "BNoteMarshallerBasis.h"
+#import "BNoteExportFileWrapper.h"
 
 @interface BNoteMarshallingManager : BNoteMarshallerBasis <BNoteMarshaller>
 
 + (BNoteMarshallingManager *)instance;
 
-- (NSFileHandle *)marshall:(id)data;
-- (void)marshall:(id)data into:(NSFileHandle *)strem;
+- (BNoteExportFileWrapper *)marshall:(id)data;
+- (void)marshall:(id)data into:(BNoteExportFileWrapper *)file;
 
 @end

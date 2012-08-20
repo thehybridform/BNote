@@ -20,7 +20,7 @@ static NSString *kTopic = @"topic";
     return [obj isKindOfClass:[Topic class]];
 }
 
-- (void)marshall:(Topic *)topic into:(NSFileHandle *)file
+- (void)marshall:(Topic *)topic into:(BNoteExportFileWrapper *)file
 {
     [self write:[BNoteXmlFormatter openTag:kTopic withAttribute:kId value:topic.id] into:file];
     

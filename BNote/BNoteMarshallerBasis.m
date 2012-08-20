@@ -22,18 +22,22 @@
     
     if (self) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
-        [formatter setTimeStyle:NSDateFormatterFullStyle];
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        
+        [formatter setLocale:enUSPOSIXLocale];
+        [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
         self.formatter = formatter;
     }
     
     return self;
 }
 
-- (void)write:(NSString *)string into:(NSFileHandle *)file
+- (void)write:(NSString *)string into:(BNoteExportFileWrapper *)file
 {
     if (string) {
-        [file writeData:[string dataUsingEncoding:NSUnicodeStringEncoding]];
+        [file.file writeData:[string dataUsingEncoding:NSUnicodeStringEncoding]];
     }
 }
 

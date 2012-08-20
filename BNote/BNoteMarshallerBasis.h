@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BNoteExportFileWrapper.h"
 
 @interface BNoteMarshallerBasis : NSObject
 
-- (void)write:(NSString *)string into:(NSFileHandle *)file;
+- (void)write:(NSString *)string into:(BNoteExportFileWrapper *)file;
 - (NSString *)toString:(NSTimeInterval)time;
 
 @end

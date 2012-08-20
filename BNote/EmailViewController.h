@@ -12,6 +12,7 @@
 
 @interface EmailViewController : MFMailComposeViewController <MFMailComposeViewControllerDelegate>
 
+- (id)initWithAttachment:(NSData *)attachment mimeType:(NSString *)mimeType filename:(NSString *)filename;
 - (id)initWithTopic:(Topic *)topic;
 - (id)initWithNote:(Note *)note;
 

@@ -10,15 +10,14 @@
 #import "Topic.h"
 #import "TopicGroup.h"
 #import "Note.h"
+#import "BNoteExportFileWrapper.h"
 
 @protocol BNoteArchiver <NSObject>
 
 - (NSString *)displayName;
 - (NSString *)helpText;
 
-- (BOOL)archiveTopicGroup:(TopicGroup *)topicGroup;
-- (BOOL)archiveTopic:(Topic *)topic;
-- (BOOL)archiveNote:(Note *)note;
-- (BOOL)archiveAll;
+- (BNoteExportFileWrapper *)archiveData:(id)data;
+- (BNoteExportFileWrapper *)archiveAll;
 
 @end

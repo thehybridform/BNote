@@ -22,7 +22,7 @@ static NSString *kSummary = @"summary";
     return [obj isKindOfClass:[Note class]];
 }
 
-- (void)marshall:(Note *)note into:(NSFileHandle *)file
+- (void)marshall:(Note *)note into:(BNoteExportFileWrapper *)file
 {
     [self write:[BNoteXmlFormatter openTag:kNote withAttribute:kId value:note.id] into:file];
     

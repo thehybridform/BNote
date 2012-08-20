@@ -21,26 +21,14 @@
     return NSLocalizedString(@"Email Archiver Help Text", @"Email Archiver help text");
 }
 
-- (BOOL)archiveTopicGroup:(TopicGroup *)topicGroup
+- (BNoteExportFileWrapper *)archiveData:(id)data
 {
-    [[BNoteMarshallingManager instance] marshall:topicGroup];
-    
-    return YES;
+    return [[BNoteMarshallingManager instance] marshall:data];
 }
 
-- (BOOL)archiveTopic:(Topic *)topic
+- (BNoteExportFileWrapper *)archiveAll
 {
-    return YES;
-}
-
-- (BOOL)archiveNote:(Note *)note
-{
-    return YES;
-}
-
-- (BOOL)archiveAll
-{
-    return YES;
+    return [[BNoteMarshallingManager instance] marshall:nil];
 }
 
 @end

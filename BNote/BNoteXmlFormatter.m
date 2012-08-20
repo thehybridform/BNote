@@ -10,33 +10,62 @@
 
 @implementation BNoteXmlFormatter
 
-static NSString *kOpenTag = @"<%@>\r\n";
-static NSString *kOpenTagWithAtribute = @"<%@ %@=\"%@\">\r\n";
-static NSString *kCloseTag = @"</%@>\r\n";
-static NSString *kNode = @"<%@>%@</%@>\r\n";
+static NSString *kOpenTag = @"<%@>\n";
+static NSString *kOpenTagWithAtribute = @"<%@ %@=\"%@\">\n";
+static NSString *kCloseTag = @"</%@>\n";
+static NSString *kNode = @"<%@>%@</%@>\n";
+
+static NSString *spaces = @"    ";
+static int level = 0;
 
 + (NSString *)openTag:(NSString *)tag
 {
-    return [NSString stringWithFormat:kOpenTag, tag];
+    level++;
+    return [self formatLine:[NSString stringWithFormat:kOpenTag, tag]];
 }
 
 + (NSString *)openTag:(NSString *)tag withAttribute:(NSString *)attribute value:(NSString *)value
 {
-    return [NSString stringWithFormat:kOpenTagWithAtribute, tag, attribute, value];
+    level++;
+    
+    NSString *line;
+    
+    if ([BNoteStringUtils nilOrEmpty:value]) {
+        line = [NSString stringWithFormat:kOpenTag, tag];
+    } else {
+        line = [NSString stringWithFormat:kOpenTagWithAtribute, tag, attribute, value];
+    }
+    
+    return [self formatLine:line];
 }
 
 + (NSString *)closeTag:(NSString *)tag
 {
-    return [NSString stringWithFormat:kCloseTag, tag];
+    NSString *line = [self formatLine:[NSString stringWithFormat:kCloseTag, tag]];
+    level--;
+    return line;
 }
 
 + (NSString *)node:(NSString *)name withText:(NSString *)value
 {
+    NSString *line;
     if (value) {
-        return [NSString stringWithFormat:kNode, name, value, name];
+        level++;
+        line = [self formatLine:[NSString stringWithFormat:kNode, name, value, name]];
+        level--;
     }
     
-    return nil;
+    return line;
+}
+
++ (NSString *)formatLine:(NSString *)line
+{
+    NSString *spacing = @"";
+    for (int i = 0; i < level; i++) {
+        spacing = [spacing stringByAppendingString:spaces];
+    }
+    
+    return [spacing stringByAppendingString:line];
 }
 
 @end

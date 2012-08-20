@@ -27,6 +27,20 @@
 
 @implementation EmailViewController
 
+- (id)initWithAttachment:(NSData *)attachment mimeType:(NSString *)mimeType filename:(NSString *)filename
+{
+    self = [super init];
+    if (self) {
+        [self setMailComposeDelegate:self];
+        
+        [self setSubject:@"BeNote Archive"];
+        
+        [self addAttachmentData:attachment mimeType:mimeType fileName:filename];
+    }
+    
+    return self;
+}
+
 - (id)initWithTopic:(Topic *)topic
 {
     NSMutableArray *allNotes = [[topic notes] mutableCopy];
@@ -94,10 +108,6 @@
     }
     
     return self;
-}
-
-- (void)viewDidLoad
-{
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error

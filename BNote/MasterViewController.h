@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Topic.h"
 
-@interface MasterViewController : UITableViewController <UIPopoverControllerDelegate>
+@protocol TopicSelector;
+
+@interface MasterViewController : UITableViewController
+
+@property (strong, nonatomic) id<TopicSelector> listener;
 
 - (IBAction)editTopicCell:(id)sender;
 - (Topic *)searchTopic;
+
+@end
+
+@protocol TopicSelector <NSObject>
+
+- (void)selectedTopic:(Topic *)topic;
 
 @end

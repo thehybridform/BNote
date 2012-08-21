@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopicGroupSelector.h"
 
 @interface TopicGroupsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
 @property (strong, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) id<TopicGroupSelector> delegate;
 
 - (IBAction)newGroup:(id)sender;
 

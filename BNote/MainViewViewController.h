@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BNoteExporterViewController.h"
+#import "TopicGroupSelector.h"
+#import "MasterViewController.h"
 
-@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate, UIActionSheetDelegate>
+@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate, UIActionSheetDelegate, BNoteExportedDelegate, TopicGroupSelector, TopicSelector>
 
 @property (strong, nonatomic) Topic *searchTopic;
 

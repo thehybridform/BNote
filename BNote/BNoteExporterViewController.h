@@ -7,12 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BNoteExportFileWrapper.h"
+
+@protocol BNoteExportedDelegate;
 
 @interface BNoteExporterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+
+@property (assign, nonatomic) id<BNoteExportedDelegate> delegate;
+@property (strong, nonatomic) Note *note;
 
 - (id)initWithDefault;
 
 - (IBAction)close:(id)sender;
 - (IBAction)export:(id)sender;
+
+@end
+
+@protocol BNoteExportedDelegate <NSObject>
+
+- (void)finishedWithFile:(BNoteExportFileWrapper *)file;
 
 @end

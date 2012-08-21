@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TopicGroup.h"
+#import "TopicGroupsTableViewController.h"
 
-@interface SelectedTopicsTableViewController : UITableViewController
+@interface SelectedTopicsTableViewController : UITableViewController <TopicGroupsTableListener>
 
 @end

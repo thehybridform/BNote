@@ -18,5 +18,6 @@
 @property (strong, nonatomic) CAGradientLayer *pressedGradientLayer;
 
 - (CAGradientLayer *)setupGradient;
+- (void)updateTitle:(NSString *)title;
 
 @end

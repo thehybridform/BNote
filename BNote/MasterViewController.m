@@ -30,6 +30,7 @@
 @synthesize selectedIndex = _selectedIndex;
 @synthesize searchTopic = _searchTopic;
 @synthesize editButton = _editButton;
+@synthesize listener = _listener;
 
 static NSString *filterdGroupText;
 
@@ -106,6 +107,7 @@ static NSString *filterdGroupText;
 {
     [super viewDidUnload];
     
+    self.listener = nil;
     [self setEditButton:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -204,7 +206,7 @@ static NSString *filterdGroupText;
     [[BNoteSessionData instance] setSelectedTopic:topic];
     [BNoteSessionData setString:topic.title forKey:kTopicSelected];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicSelected object:topic];
+    [self.listener selectedTopic:topic];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -216,7 +218,6 @@ static NSString *filterdGroupText;
 
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [[BNoteSessionData instance] setPopup:popup];
-    [popup setDelegate:self];
     [controller setPopup:popup];
     
     [popup setPopoverContentSize:[[controller view] bounds].size];
@@ -232,6 +233,7 @@ static NSString *filterdGroupText;
 - (void)selectCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
     [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
@@ -289,11 +291,6 @@ static NSString *filterdGroupText;
     } else {
         [[self tableView] setEditing:YES animated:YES];
     }
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

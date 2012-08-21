@@ -11,6 +11,7 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "LayerFormater.h"
+#import "BNoteSessionData.h"
 
 @interface TopicEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIView *buttonControlView;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) IBOutlet UIView *shadowView7;
 @property (strong, nonatomic) IBOutlet UIView *shadowView8;
 @property (strong, nonatomic) IBOutlet UIView *shadowView9;
+@property (assign, nonatomic) BOOL canDismiss;
 
 @end
 
@@ -74,6 +76,8 @@
 @synthesize shadowView7 = _shadowView7;
 @synthesize shadowView8 = _shadowView8;
 @synthesize shadowView9 = _shadowView9;
+@synthesize canDismiss = _canDismiss;
+
 
 static NSString *createText;
 static NSString *updateText;
@@ -181,6 +185,18 @@ static NSString *placeHolderText;
     self.nameTextField.placeholder = placeHolderText;
 }
 
+- (void)setPopup:(UIPopoverController *)popup
+{
+    _popup = popup;
+    
+    popup.delegate = self;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [[BNoteSessionData instance] setPopup:nil];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
@@ -192,9 +208,7 @@ static NSString *placeHolderText;
     
     if (![BNoteStringUtils nilOrEmpty:title]) {
         Topic *topic = [self topic];
-        if ([self topic]) {
-            topic = [self topic];
-        } else {
+        if (!topic) {
             topic = [BNoteFactory createTopic:title forGroup:[self topicGroup]]; 
         }
     

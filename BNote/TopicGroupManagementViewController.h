@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopicGroupSelector.h"
+#import "TopicGroupsTableViewController.h"
 
-@interface TopicGroupManagementViewController : UIViewController <UIPopoverControllerDelegate, UITextFieldDelegate>
-@property (strong, nonatomic) UIPopoverController *popup;
+@interface TopicGroupManagementViewController : UIViewController
 
-- (IBAction)add:(id)sender;
+@property (strong, nonatomic) id<TopicGroupSelector> delegate;
+@property (strong, nonatomic) TopicGroup *currentTopicGroup;
+
 - (IBAction)done:(id)sender;
 
 @end
+
+

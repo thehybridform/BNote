@@ -30,6 +30,7 @@
 @synthesize addButton = _addButton;
 @synthesize tableView = _tableView;
 @synthesize topicGroupLabel = _topicGroupLabel;
+@synthesize delegate = _delegate;
 
 static NSString *menuText;
 static NSString *manageText;
@@ -126,15 +127,8 @@ static NSString *manageText;
     
     NSString *currentGroup = [BNoteSessionData stringForKey:kTopicGroupSelected];
     if (![[topicGroup name] isEqualToString:currentGroup]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:topicGroup];
-        [BNoteSessionData instance].selectedTopicGroup = topicGroup;
+        [self.delegate selectTopicGroup:topicGroup];
     }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
-    return ![[topicGroup name] isEqualToString:kAllTopicGroupName];
 }
 
 - (IBAction)newGroup:(id)sender

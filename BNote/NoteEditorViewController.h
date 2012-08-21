@@ -13,15 +13,15 @@
 #import "DatePickerViewController.h"
 #import "Entry.h"
 #import "BNoteFilterDelegate.h"
-
-@class DetailViewController;
+#import "BNoteExporterViewController.h"
 
 @interface NoteEditorViewController : UIViewController
     <DatePickerViewControllerListener,
      UIActionSheetDelegate,
      UIPopoverControllerDelegate,
      BNoteFilterDelegate,
-     UITextFieldDelegate>
+     UITextFieldDelegate,
+     BNoteExportedDelegate>
 
 @property (strong, nonatomic) Note *note;
 
@@ -38,6 +38,8 @@
 - (void)selectEntry:(Entry *)entry;
 
 - (IBAction)addSummary:(id)sender;
+
+- (IBAction)about:(id)sender;
 
 @end
 

@@ -14,6 +14,7 @@
 @implementation TopicMarshaller
 
 static NSString *kTopic = @"topic";
+static NSString *kTopicName = @"name";
 
 - (BOOL)accept:(id)obj
 {
@@ -22,16 +23,20 @@ static NSString *kTopic = @"topic";
 
 - (void)marshall:(Topic *)topic into:(BNoteExportFileWrapper *)file
 {
-    [self write:[BNoteXmlFormatter openTag:kTopic withAttribute:kId value:topic.id] into:file];
-    
+    [self write:[BNoteXmlFormatter openTag:kTopic] into:file];
+
+    NSString *s = [BNoteXmlFormatter node:kTopicName withText:topic.title];
+    [self write:s into:file];
+
     for (Note *note in topic.notes) {
         [[BNoteMarshallingManager instance] marshall:note into:file];
     }
+    
     for (Note *note in topic.associatedNotes) {
         [[BNoteMarshallingManager instance] marshall:note into:file];
     }
     
-    NSString *s = [BNoteXmlFormatter node:kCreated withText:[self toString:topic.created]];
+    s = [BNoteXmlFormatter node:kCreated withText:[self toString:topic.created]];
     [self write:s into:file];
     
     s = [BNoteXmlFormatter node:kLastUpdated withText:[self toString:topic.lastUpdated]];

@@ -11,7 +11,6 @@
 @interface BNoteXmlFormatter : NSObject
 
 + (NSString *)openTag:(NSString *)tag;
-+ (NSString *)openTag:(NSString *)tag withAttribute:(NSString *)attribute value:(NSString *)value;
 + (NSString *)closeTag:(NSString *)tag;
 + (NSString *)node:(NSString *)name withText:(NSString *)value;
 

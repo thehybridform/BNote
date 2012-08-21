@@ -35,10 +35,8 @@
     return self;
 }
 
-- (void)selectedTopicGroup:(NSNotification *)notification
+- (void)selectedTopicGroup:(TopicGroup *)group
 {
-    TopicGroup *group = [notification object];
-    
     if (group) {
         [[self view] setHidden:NO];
     } else {
@@ -55,14 +53,11 @@
 
     [LayerFormater setBorderWidth:1 forView:self.view];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:self.view];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTopicGroup:) name:kEditTopicGroupSelected object:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -134,11 +129,6 @@
         Topic *topic = [[self data] objectAtIndex:[indexPath row]];
         [[self topicGroup] removeTopicsObject:topic];
     }
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

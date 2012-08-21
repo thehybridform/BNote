@@ -12,7 +12,6 @@
 #import "LayerFormater.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
-#import "BNoteExportFileWrapper.h"
 #import "EmailViewController.h"
 
 @interface BNoteExporterViewController ()
@@ -40,15 +39,17 @@
 @synthesize helpView = _helpView;
 @synthesize tableView = _tableView;
 @synthesize selectedArchiver = _selectedArchiver;
+@synthesize delegate = _delegate;
+@synthesize note = _note;
 
 - (id)initWithDefault
 {
     self = [super initWithNibName:@"BNoteExporterViewController" bundle:nil];
+    
     if (self) {
-        
         self.archiveOutlets = [BNoteArchiverManager instance].archivers;
-
     }
+    
     return self;
 }
 
@@ -61,7 +62,12 @@
     [self.destinationSegmentedControl setTitle:NSLocalizedString(@"All Data", nil) forSegmentAtIndex:2];
     [self.destinationSegmentedControl setTintColor:[BNoteConstants appHighlightColor1]];
 
-    self.destinationSegmentedControl.selectedSegmentIndex = 0;
+    if (self.note) {
+        [self.destinationSegmentedControl insertSegmentWithTitle:NSLocalizedString(@"Selected Note", nil) atIndex:3 animated:YES];
+        self.destinationSegmentedControl.selectedSegmentIndex = 3;
+    } else {
+        self.destinationSegmentedControl.selectedSegmentIndex = 0;
+    }
     
     self.titleLabel.text = NSLocalizedString(@"Archive BeNote Data", @"The Archive BeNote Data title");
     self.titleLabel.textColor = [BNoteConstants appHighlightColor1];
@@ -123,12 +129,16 @@
                 fileWrapper = [archiver archiveAll];
                 break;
                 
+            case 3:
+                fileWrapper = [archiver archiveData:self.note];
+                break;
+                
             default:
                 break;
         }
         
         if (fileWrapper) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kArchiveFilename object:fileWrapper];
+            [self.delegate finishedWithFile:fileWrapper];
         }
 }
 

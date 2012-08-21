@@ -24,21 +24,6 @@ static int level = 0;
     return [self formatLine:[NSString stringWithFormat:kOpenTag, tag]];
 }
 
-+ (NSString *)openTag:(NSString *)tag withAttribute:(NSString *)attribute value:(NSString *)value
-{
-    level++;
-    
-    NSString *line;
-    
-    if ([BNoteStringUtils nilOrEmpty:value]) {
-        line = [NSString stringWithFormat:kOpenTag, tag];
-    } else {
-        line = [NSString stringWithFormat:kOpenTagWithAtribute, tag, attribute, value];
-    }
-    
-    return [self formatLine:line];
-}
-
 + (NSString *)closeTag:(NSString *)tag
 {
     NSString *line = [self formatLine:[NSString stringWithFormat:kCloseTag, tag]];

@@ -10,7 +10,6 @@
 #import "LayerFormater.h"
 #import "InformationViewController.h"
 #import "EntrySummariesTableViewController.h"
-#import "MasterViewController.h"
 #import "PeopleViewController.h"
 #import "Topic.h"
 #import "NotesViewController.h"
@@ -23,10 +22,9 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "TopicGroupsViewController.h"
-#import "TopicGroupManagementViewController.h"
 #import "BNoteButton.h"
 #import "BNoteExporterViewController.h"
-#import "BNoteExportFileWrapper.h"
+#import "TopicGroupManagementViewController.h"
 
 @interface MainViewViewController ()
 @property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
@@ -103,15 +101,19 @@ static NSString *exportText;
     if (self) {
     }
     
+    self.searchBar.placeholder = NSLocalizedString(@"Search All Topics", @"Search all topics.");
+    self.notesLabel.text = NSLocalizedString(@"Notes", @"The notes section title.");
+    self.peopleLabel.text = NSLocalizedString(@"People", @"The attendees section title.");
+    
+    emailTopicText = NSLocalizedString(@"Email Selected Topic", nil);
+    exportText = NSLocalizedString(@"Archive Options", nil);
+
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [[NSNotificationCenter defaultCenter]
-        addObserver:[self topicsButton] selector:@selector(updateTitle:) name:kTopicGroupSelected object:nil];
 
     [LayerFormater setBorderWidth:1 forView:[self footer]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self footer]];
@@ -131,21 +133,14 @@ static NSString *exportText;
 
     [[self detailView] setHidden:YES];
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];
-
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(selectedTopic:) name:kTopicSelected object:nil];
     
+    self.topicsTable.listener = self;
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(selectedNote:) name:kNoteSelected object:nil];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(presentTopicManagement:) name:kTopicGroupManage object:nil];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(selectedTopicGroup:) name:kTopicGroupSelected object:nil];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(presentEmailer:) name:kArchiveFilename object:nil];
     
 #ifdef LITE
     [[self liteLable] setFont:[BNoteConstants font:RobotoBold andSize:20]];
@@ -154,21 +149,14 @@ static NSString *exportText;
     [[self liteLable] setHidden:YES];
 #endif
     
-    self.searchBar.placeholder = NSLocalizedString(@"Search All Topics", @"Search all topics.");
-    self.notesLabel.text = NSLocalizedString(@"Notes", @"The notes section title.");
-    self.peopleLabel.text = NSLocalizedString(@"People", @"The attendees section title.");
-    
-    emailTopicText = NSLocalizedString(@"Email Selected Topic", nil);
-    exportText = NSLocalizedString(@"Archive Options", nil);
 }
 
-- (void)selectedTopic:(NSNotification *)notification
+- (void)selectedTopic:(Topic *)topic
 {
     if ([[self detailView] isHidden]) {
         [[self detailView] setHidden:NO];
     }
     
-    Topic *topic = [notification object];
     if (!topic) {
         [[self detailView] setHidden:YES];
     }
@@ -215,18 +203,6 @@ static NSString *exportText;
 {
     Topic *topic = [notification object];
     [self setNoteCountForTopic:topic];
-}
-
-- (void)selectedTopicGroup:(NSNotification *)notification
-{
-    if ([self searchTopic]) {
-        [[BNoteWriter instance] removeTopic:[self searchTopic]];
-        [self setSearchTopic:nil];
-    }
-    
-    [[self searchBar] setText:nil];
-        
-    [self setTopicGroup:[notification object]];
 }
 
 - (void)setNoteCountForTopic:(Topic *)topic
@@ -306,41 +282,43 @@ static NSString *exportText;
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == emailTopicText) {
-            [self presentEmailer:nil];
+            [self presentEmailer];
         } else if (title == exportText) {
             BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+            controller.delegate = self;
             
             [self presentModalViewController:controller animated:YES];
         }
     }
+
+    [BNoteSessionData instance].actionSheet = nil;
 }
 
-- (void)presentEmailer:(NSNotification *)notification
+- (void)presentEmailer
 {
-    if (notification) {
-        [self.presentedViewController dismissViewControllerAnimated:YES completion:^(void) {
-            BNoteExportFileWrapper *fileWrapper = notification.object;
-            NSData *data = [NSData dataWithContentsOfFile:fileWrapper.zipFile.fileName];
+    EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[[self entriesTable] topic]];
+    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        
+    [self presentModalViewController:controller animated:YES];
+}
 
-            EmailViewController *controller =
-                [[EmailViewController alloc]
-                    initWithAttachment:data mimeType:@"application/gzip" filename:kArchiveFilename];
-            
-            [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-            
-            [self presentModalViewController:controller animated:YES];
-        }];
-    } else {
-        EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[[self entriesTable] topic]];
+- (void)finishedWithFile:(BNoteExportFileWrapper *)file
+{
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^(void) {
+        NSData *data = [NSData dataWithContentsOfFile:file.zipFile.fileName];
+        
+        EmailViewController *controller =
+        [[EmailViewController alloc]
+         initWithAttachment:data mimeType:@"application/zip" filename:kArchiveFilename];
+        
         [controller setModalPresentationStyle:UIModalPresentationPageSheet];
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         
         [self presentModalViewController:controller animated:YES];
-    }
-
+    }];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
@@ -386,6 +364,7 @@ static NSString *exportText;
 - (IBAction)showTopicGroups:(id)sender
 {
     TopicGroupsViewController *controller = [[TopicGroupsViewController alloc] init];
+    controller.delegate = self;
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [[BNoteSessionData instance] setPopup:popup];
@@ -406,19 +385,14 @@ static NSString *exportText;
 {
     TopicGroupManagementViewController *controller = [[TopicGroupManagementViewController alloc] init];
     
-    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [[BNoteSessionData instance] setPopup:popup];
-    [popup setDelegate:controller];
-    [controller setPopup:popup];
+    [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
-    [popup setPopoverContentSize:[[controller view] bounds].size];
+    controller.delegate = self;
     
-    UIView *view = [self topicsButton];
-    CGRect rect = [view bounds];
-    
-    [popup presentPopoverFromRect:rect inView:view
-         permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:NO];
+    [self presentViewController:controller animated:YES completion:^{
+        controller.currentTopicGroup = self.topicGroup;
+    }];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -434,6 +408,29 @@ static NSString *exportText;
     
     [[self peopleViewController] reset];
     [[self peopleViewController] reload];
+}
+
+- (void)selectTopicGroup:(TopicGroup *)topicGroup
+{
+    if ([self searchTopic]) {
+        [[BNoteWriter instance] removeTopic:[self searchTopic]];
+        [self setSearchTopic:nil];
+    }
+    
+    [[self searchBar] setText:nil];
+    
+    [self setTopicGroup:topicGroup];
+    
+    if (topicGroup.topics.count) {
+        self.detailView.hidden = NO;
+    } else {
+        self.detailView.hidden = YES;
+    }
+    
+    [self.topicsButton updateTitle:[BNoteEntryUtils topicGroupName:topicGroup]];
+    [BNoteSessionData instance].selectedTopicGroup = topicGroup;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:topicGroup];
 }
 
 - (void)dealloc

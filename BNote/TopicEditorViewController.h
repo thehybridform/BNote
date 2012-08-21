@@ -10,7 +10,7 @@
 #import "Topic.h"
 #import "TopicGroup.h"
 
-@interface TopicEditorViewController : UIViewController <UITextFieldDelegate>
+@interface TopicEditorViewController : UIViewController <UITextFieldDelegate, UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) Topic *topic;
 @property (strong, nonatomic) UIPopoverController *popup;

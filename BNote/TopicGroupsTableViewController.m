@@ -17,9 +17,11 @@
 
 @interface TopicGroupsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
-@property (strong, nonatomic) TopicGroup *selectedTopicGroup;
-@property (assign, nonatomic) int selectedIndex;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
+@property (strong, nonatomic) IBOutlet UITextField *nameText;
+@property (strong, nonatomic) IBOutlet UILabel *textLabel;
+@property (strong, nonatomic) UILabel *selectedCellLabel;
 
 @end
 
@@ -27,10 +29,15 @@
 @synthesize data = _data;
 @synthesize nameText = _nameText;
 @synthesize selectedTopicGroup = _selectedTopicGroup;
-@synthesize selectedIndex = _selectedIndex;
 @synthesize editButton = _editButton;
+@synthesize listener = _listener;
+@synthesize addButton = _addButton;
+@synthesize textLabel = _textLabel;
+@synthesize selectedCellLabel = _selectedCellLabel;
 
 static NSString *editText;
+static NSString *newTopicGroupPlaceHolderText;
+static NSString *normalText;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -41,6 +48,8 @@ static NSString *editText;
     }
     
     editText = NSLocalizedString(@"Edit", @"Edit");
+    newTopicGroupPlaceHolderText = NSLocalizedString(@"New Topic Group Name", @"New topic group name place holder.");
+    normalText = NSLocalizedString(@"Select Topics for this group.", @"Instruciton to select topic group to be included.");
 
     return self;
 }
@@ -49,35 +58,64 @@ static NSString *editText;
 {
     [super viewDidLoad];
 
+    self.nameText.hidden = YES;
+    self.textLabel.hidden = YES;
+    [self.listener selectedTopicGroup:nil];
+    
     [self.editButton setTitle:editText forState:UIControlStateNormal];
     
     [LayerFormater setBorderWidth:1 forView:self.view];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:self.view];
+    
+    [[self nameText] setFont:[BNoteConstants font:RobotoLight andSize:14]];
+    self.nameText.placeholder = newTopicGroupPlaceHolderText;
+    self.nameText.delegate = self;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTopicGroup:) name:kAddTopicGroupSelected object:nil];
+    self.textLabel.text = normalText;
+    [[self textLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
+    [[self textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopicGroupName:) name:UITextFieldTextDidChangeNotification object:self.nameText];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     [self setEditButton:nil];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.addButton = nil;
+    [self setNameText:nil];
+    [self setTextLabel:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (IBAction)add:(id)sender
 {
-    return YES;
-}
-
-- (void)setNameText:(UITextField *)nameText
-{
-    _nameText = nameText;
+#ifdef LITE
+    if ([[[BNoteReader instance] allTopicGroups] count] > kMaxTopicGroups) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"More Topic Groups Not Supported", nil)
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+        
+        [alert show];
+        return;
+    }
+#endif
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(updateTopicGroupName:)
-     name:UITextFieldTextDidChangeNotification object:nameText];
+    int index = self.data.count;
+    
+    TopicGroup *topicGroup = [BNoteFactory createTopicGroup:@""];
+    [self.data addObject:topicGroup];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self selectCell:index];
+    
+    [[self nameText] becomeFirstResponder];
 }
+
 
 #pragma mark - Table view data source
 
@@ -106,12 +144,6 @@ static NSString *editText;
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[BNoteEntryUtils topicGroupName:topicGroup]];
 
-    NSString *name = [BNoteSessionData stringForKey:kTopicGroupSelected];
-    if ([[topicGroup name] isEqualToString:name]) {
-        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
-    }
-
     return cell;
 }
 
@@ -134,24 +166,32 @@ static NSString *editText;
 
 - (void)selectCell:(int)index
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self tableView:[self tableView] didSelectRowAtIndexPath:indexPath];
-    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];    
+    if (self.data.count > 0) {
+        self.nameText.hidden = NO;
+        self.textLabel.hidden = NO;
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    } else {
+        self.nameText.hidden = YES;
+        self.textLabel.hidden = YES;
+        [self.listener selectedTopicGroup:nil];
+    }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-    
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self setSelectedIndex:[indexPath row]];
+    self.selectedCellLabel = [tableView cellForRowAtIndexPath:indexPath].textLabel;
+    
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
     [self setSelectedTopicGroup:topicGroup];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kEditTopicGroupSelected object:topicGroup];
+    
+    [self.listener selectedTopicGroup:topicGroup];
+    self.nameText.text = topicGroup.name;
+
 }
 
 - (IBAction)edit:(id)sender
@@ -159,12 +199,14 @@ static NSString *editText;
     [[self tableView] setEditing:![[self tableView] isEditing] animated:YES];
 }
 
-- (void)selectTopicGroup:(TopicGroup *)group
+- (void)selectTopicGroup:(TopicGroup *)topicGroup
 {
-    [self refreshTopicGroupData];
-    [[self tableView] reloadData];
+    int index = 0;
 
-    int index = [[self data] indexOfObject:group];
+    if ([self.data containsObject:topicGroup]) {
+        index = [self.data indexOfObject:topicGroup];
+    }
+    
     [self selectCell:index];
 }
 
@@ -174,23 +216,7 @@ static NSString *editText;
         UITextField *nameText = [self nameText];
         [[self selectedTopicGroup] setName:[nameText text]];
         
-        NSIndexPath *path = [NSIndexPath indexPathForRow:[self selectedIndex] inSection:0];
-        UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:path];
-        [[cell textLabel] setText:[nameText text]];
-    }
-}
-
-- (void)addTopicGroup:(NSNotification *)notification
-{
-    [self selectTopicGroup:[notification object]];
-    
-    NSString *name = [[self nameText] text];
-    if ([BNoteStringUtils nilOrEmpty:name]) {
-        [[self nameText] setText:nil];
-    }
-    
-    if (![[self nameText] text]) {
-        [[self nameText] becomeFirstResponder];
+        self.selectedCellLabel.text = nameText.text;
     }
 }
 
@@ -205,8 +231,21 @@ static NSString *editText;
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.nameText resignFirstResponder];
+    
+    return NO;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 @end

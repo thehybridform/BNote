@@ -38,7 +38,7 @@ const int kMaxEntries = 5;
 #endif
 
 
-NSString * const kArchiveFilename = @"BeNote-archive.bna";
+NSString * const kArchiveFilename = @"BeNote-archive.benote";
 
 NSString * const kKeyPointPhotoUpdated = @"kKeyPointPhotoUpdated";
 NSString * const kKeyWordsUpdated = @"kKeyWordsUpdated";
@@ -46,7 +46,6 @@ NSString * const kNoteUpdated = @"kNoteUpdated";
 NSString * const kNoteSelected = @"kNoteSelected";
 NSString * const kTopicCreated = @"kTopicCreated";
 NSString * const kTopicSelected = @"kTopicSelected";
-NSString * const kAddTopicGroupSelected = @"kAddTopicGroupSelected";
 NSString * const kEditTopicGroupSelected = @"kEditTopicGroupSelected";
 NSString * const kTopicGroupSelected = @"TopicGroupSelected";
 NSString * const kTopicGroupManage = @"kTopicGroupManage";

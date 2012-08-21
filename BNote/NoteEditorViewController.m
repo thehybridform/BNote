@@ -24,7 +24,8 @@
 #import "EditNoteView.h"
 #import "BNoteFilterHelper.h"
 #import "BNoteAnimation.h"
-#import "BNoteTextField.h"
+#import "InformationViewController.h"
+#import "BNoteExporterViewController.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) UIColor *toolbarEditColor;
@@ -113,6 +114,9 @@ static NSString *decisionText;
 static NSString *actionItemText;
 static NSString *attendeesText;
 
+static NSString *emailNoteText;
+static NSString *exportText;
+
 static NSString *spacing = @"   ";
 
 - (void)viewDidUnload
@@ -167,6 +171,9 @@ static NSString *spacing = @"   ";
     decisionText = NSLocalizedString(@"Decision", @"Add decision button title");
     actionItemText = NSLocalizedString(@"Action Item", @"Add action item button title");
     attendeesText = NSLocalizedString(@"Attendees", @"Add attendees button title");
+
+    emailNoteText = NSLocalizedString(@"Email Selected Note", nil);
+    exportText = NSLocalizedString(@"Archive Options", nil);
 
     return self;
 }
@@ -524,12 +531,64 @@ static NSString *spacing = @"   ";
 
 - (IBAction)presentShareOptions:(id)sender
 {
-    Note *note = [self note];
-    EmailViewController *controller = [[EmailViewController alloc] initWithNote:note];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    if (![[BNoteSessionData instance] actionSheet]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+        [actionSheet setDelegate:[BNoteSessionData instance]];
+        [[BNoteSessionData instance] setActionSheetDelegate:self];
+        [[BNoteSessionData instance] setActionSheet:actionSheet];
+        
+        if ([MFMailComposeViewController canSendMail]) {
+            [actionSheet addButtonWithTitle:emailNoteText];
+        }
+        
+        [actionSheet addButtonWithTitle:exportText];
+        
+        UIView *view = self.shareButton;
+        CGRect rect = view.bounds;
+        [actionSheet showFromRect:rect inView:view animated:NO];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex >= 0) {
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if (title == emailNoteText) {
+            Note *note = [self note];
+            EmailViewController *controller = [[EmailViewController alloc] initWithNote:note];
+            [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+            
+            [self presentModalViewController:controller animated:YES];
+        } else if (title == exportText) {
+            BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
+            controller.note = self.note;
+            
+            [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+            controller.delegate = self;
+            
+            [self presentModalViewController:controller animated:YES];
+        }
+    }
     
-    [self presentModalViewController:controller animated:YES];
+    [BNoteSessionData instance].actionSheet = nil;
+}
+
+- (void)finishedWithFile:(BNoteExportFileWrapper *)file
+{
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^(void) {
+        NSData *data = [NSData dataWithContentsOfFile:file.zipFile.fileName];
+        
+        EmailViewController *controller =
+        [[EmailViewController alloc]
+         initWithAttachment:data mimeType:@"application/zip" filename:kArchiveFilename];
+        
+        [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+        [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        
+        [self presentModalViewController:controller animated:YES];
+    }];
 }
 
 - (void)selectEntry:(Entry *)entry
@@ -588,14 +647,13 @@ static NSString *spacing = @"   ";
     return NO;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (IBAction)about:(id)sender
 {
-    [((BNoteTextField *)textField) showFrame:YES];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [((BNoteTextField *)textField) showFrame:NO];
+    InformationViewController *controller = [[InformationViewController alloc] initWithDefault];
+    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    
+    [self presentModalViewController:controller animated:YES];
 }
 
 - (void)dealloc

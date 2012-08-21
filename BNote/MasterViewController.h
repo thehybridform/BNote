@@ -12,7 +12,7 @@
 
 @protocol TopicSelector;
 
-@interface MasterViewController : UITableViewController <UIPopoverControllerDelegate, TopicEditorDelegate>
+@interface MasterViewController : UITableViewController <TopicEditorDelegate>
 
 @property (strong, nonatomic) id<TopicSelector> listener;
 

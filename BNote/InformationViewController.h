@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopicGroupSelector.h"
 
 @interface InformationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) id<TopicGroupSelector> topicGroupSelector;
 
 - (id)initWithDefault;
 

@@ -108,8 +108,6 @@ static NSString *filterdGroupText;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
-        [cell setEditingAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-        
         [LayerFormater setBorderColor:[UIColor clearColor] forView:cell];
         
         UIFont *font = [BNoteConstants font:RobotoLight andSize:15.0];
@@ -118,6 +116,10 @@ static NSString *filterdGroupText;
 
         [cell setShowsReorderControl:NO];
         [LayerFormater setBorderWidth:1 forView:cell];
+        
+        UILongPressGestureRecognizer *longPress =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTap:)];
+        [cell addGestureRecognizer:longPress];
     }
     
     Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
@@ -134,6 +136,28 @@ static NSString *filterdGroupText;
     [[cell textLabel] setText:[spacingText stringByAppendingString:name]];
     
     return cell;
+}
+
+- (void)longPressTap:(UIGestureRecognizer *)gesture
+{
+    UITableViewCell *cell = (UITableViewCell *) gesture.view;
+        
+    int index = [self.tableView indexPathForCell:cell].row;
+        
+    Topic *topic = [[self data] objectAtIndex:index];
+        
+    if (topic.color == kFilterColor) {
+        return;
+    }
+
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:[BNoteSessionData instance].selectedTopicGroup];
+    [controller setTopic:topic];
+        
+    [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    controller.delegate = self;
+        
+    [self presentModalViewController:controller animated:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -181,29 +205,12 @@ static NSString *filterdGroupText;
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {    
-    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:[BNoteSessionData instance].selectedTopicGroup];
-    [controller setTopic:topic];
-
-    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [[BNoteSessionData instance] setPopup:popup];
-    [controller setPopup:popup];
-    
-    [popup setPopoverContentSize:[[controller view] bounds].size];
-    
-    UIView *view = [[self tableView] cellForRowAtIndexPath:indexPath];
-    CGRect rect = [view bounds];
-    
-    [popup presentPopoverFromRect:rect inView:view
-         permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:NO];
 }
 
 - (void)selectCell:(int)index
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
@@ -279,21 +286,12 @@ static NSString *filterdGroupText;
     
     TopicGroup *topicGroup = [BNoteSessionData instance].selectedTopicGroup;
     TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:topicGroup];
+    
+    [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     controller.delegate = self;
     
-    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [[BNoteSessionData instance] setPopup:popup];
-    [popup setDelegate:self];
-    [controller setPopup:popup];
-    
-    [popup setPopoverContentSize:[[controller view] bounds].size];
-    
-    UIView *view = [self addTopicButton];
-    CGRect rect = [view bounds];
-    
-    [popup presentPopoverFromRect:rect inView:[self addTopicButton]
-         permittedArrowDirections:UIPopoverArrowDirectionAny
-                         animated:NO];
+    [self presentModalViewController:controller animated:YES];
 }
 
 - (void)finishedWith:(Topic *)topic
@@ -302,11 +300,6 @@ static NSString *filterdGroupText;
     
     int index = [self.data indexOfObject:topic];
     [self selectCell:index];
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

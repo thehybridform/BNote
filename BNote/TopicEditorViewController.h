@@ -12,10 +12,9 @@
 
 @protocol TopicEditorDelegate;
 
-@interface TopicEditorViewController : UIViewController <UITextFieldDelegate, UIPopoverControllerDelegate>
+@interface TopicEditorViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) Topic *topic;
-@property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) id<TopicEditorDelegate> delegate;
 
 - (IBAction)done:(id)sender;
@@ -29,6 +28,9 @@
 - (IBAction)color7Selected:(id)sender;
 - (IBAction)color8Selected:(id)sender;
 - (IBAction)color9Selected:(id)sender;
+- (IBAction)color10Selected:(id)sender;
+- (IBAction)color11Selected:(id)sender;
+- (IBAction)color12Selected:(id)sender;
 
 - (id)initWithTopicGroup:(TopicGroup *)group;
 

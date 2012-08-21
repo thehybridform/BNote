@@ -29,6 +29,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *button_7;
 @property (strong, nonatomic) IBOutlet UIButton *button_8;
 @property (strong, nonatomic) IBOutlet UIButton *button_9;
+@property (strong, nonatomic) IBOutlet UIButton *button_10;
+@property (strong, nonatomic) IBOutlet UIButton *button_11;
+@property (strong, nonatomic) IBOutlet UIButton *button_12;
 @property (assign, nonatomic) int selectedColor;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
@@ -42,6 +45,9 @@
 @property (strong, nonatomic) IBOutlet UIView *shadowView7;
 @property (strong, nonatomic) IBOutlet UIView *shadowView8;
 @property (strong, nonatomic) IBOutlet UIView *shadowView9;
+@property (strong, nonatomic) IBOutlet UIView *shadowView10;
+@property (strong, nonatomic) IBOutlet UIView *shadowView11;
+@property (strong, nonatomic) IBOutlet UIView *shadowView12;
 @property (assign, nonatomic) BOOL canDismiss;
 
 @end
@@ -60,10 +66,12 @@
 @synthesize button_7 = _button_7;
 @synthesize button_8 = _button_8;
 @synthesize button_9 = _button_9;
+@synthesize button_10 = _button_10;
+@synthesize button_11 = _button_11;
+@synthesize button_12 = _button_12;
 @synthesize selectedColorButton = _selectedColorButton;
 @synthesize selectedColor = _selectedColor;
 @synthesize buttonControlView = _buttonControlView;
-@synthesize popup = _popup;
 @synthesize topicGroup = _topicGroup;
 @synthesize menuLabel = _menuLabel;
 
@@ -76,6 +84,9 @@
 @synthesize shadowView7 = _shadowView7;
 @synthesize shadowView8 = _shadowView8;
 @synthesize shadowView9 = _shadowView9;
+@synthesize shadowView10 = _shadowView10;
+@synthesize shadowView11 = _shadowView11;
+@synthesize shadowView12 = _shadowView12;
 @synthesize canDismiss = _canDismiss;
 
 @synthesize delegate = _delegate;
@@ -106,6 +117,9 @@ static NSString *placeHolderText;
     [self setButton_7:nil];
     [self setButton_8:nil];
     [self setButton_9:nil];
+    [self setButton_10:nil];
+    [self setButton_11:nil];
+    [self setButton_12:nil];
     self.menuLabel = nil;
     
     self.shadowView1 = nil;
@@ -117,6 +131,9 @@ static NSString *placeHolderText;
     self.shadowView7 = nil;
     self.shadowView8 = nil;
     self.shadowView9 = nil;
+    self.shadowView10 = nil;
+    self.shadowView11 = nil;
+    self.shadowView12 = nil;
 }
 
 - (id)initWithTopicGroup:(TopicGroup *)group
@@ -162,6 +179,9 @@ static NSString *placeHolderText;
     [self initButton:[self button_7] withColor:kColor7];
     [self initButton:[self button_8] withColor:kColor8];
     [self initButton:[self button_9] withColor:kColor9];
+    [self initButton:[self button_10] withColor:kColor10];
+    [self initButton:[self button_11] withColor:kColor11];
+    [self initButton:[self button_12] withColor:kColor12];
     
     [LayerFormater setBorderWidth:1 forView:[self buttonControlView]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self buttonControlView]];
@@ -176,6 +196,9 @@ static NSString *placeHolderText;
     [LayerFormater addShadowToView:[self shadowView7]];
     [LayerFormater addShadowToView:[self shadowView8]];
     [LayerFormater addShadowToView:[self shadowView9]];
+    [LayerFormater addShadowToView:[self shadowView10]];
+    [LayerFormater addShadowToView:[self shadowView11]];
+    [LayerFormater addShadowToView:[self shadowView12]];
 
     [[self nameTextField] setDelegate:self];
     [[self nameTextField] becomeFirstResponder];
@@ -184,18 +207,6 @@ static NSString *placeHolderText;
     self.menuLabel.textColor = [BNoteConstants appHighlightColor1];
     
     self.nameTextField.placeholder = placeHolderText;
-}
-
-- (void)setPopup:(UIPopoverController *)popup
-{
-    _popup = popup;
-    
-    popup.delegate = self;
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -228,12 +239,12 @@ static NSString *placeHolderText;
     }
 
     [[self nameTextField] resignFirstResponder];
-    [[self popup] dismissPopoverAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)cancel:(id)sender
 {
-    [[self popup] dismissPopoverAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)initButton:(UIButton *)button withColor:(int)color
@@ -302,6 +313,24 @@ static NSString *placeHolderText;
 {
     [self updateHighlightColor:(UIButton *) sender];
     [self setSelectedColor:kColor9];
+}
+
+- (IBAction)color10Selected:(id)sender
+{
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:kColor10];
+}
+
+- (IBAction)color11Selected:(id)sender
+{
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:kColor11];
+}
+
+- (IBAction)color12Selected:(id)sender
+{
+    [self updateHighlightColor:(UIButton *) sender];
+    [self setSelectedColor:kColor12];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

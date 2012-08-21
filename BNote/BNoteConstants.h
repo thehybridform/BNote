@@ -19,6 +19,9 @@ extern int const kColor6;
 extern int const kColor7;
 extern int const kColor8;
 extern int const kColor9;
+extern int const kColor10;
+extern int const kColor11;
+extern int const kColor12;
 
 extern int const kAppColor1;
 extern int const kAppColor2;

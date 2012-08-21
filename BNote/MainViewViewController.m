@@ -239,6 +239,8 @@ static NSString *exportText;
 - (IBAction)about:(id)sender
 {
     InformationViewController *controller = [[InformationViewController alloc] initWithDefault];
+    controller.topicGroupSelector = self;
+    
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     

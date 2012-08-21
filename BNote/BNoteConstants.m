@@ -11,13 +11,16 @@
 
 const int kColor1 = 0xd7a779;
 const int kColor2 = 0xd1c5a4;
-const int kColor3 = 0x665d51;
+const int kColor3 = 0x6C7A7D;
 const int kColor4 = 0x98bac3;
 const int kColor5 = 0xcb694d;
 const int kColor6 = 0x8e9c6d;
 const int kColor7 = 0xc4d1c5;
 const int kColor8 = 0xc19cb5;
 const int kColor9 = 0xd7cd79;
+const int kColor10 = 0x177F75;
+const int kColor11 = 0xC94591;
+const int kColor12 = 0xE9AF32;
 
 const int kFilterColor = 0xaaaaaa;
 

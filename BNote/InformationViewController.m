@@ -36,6 +36,7 @@
 @synthesize progressView = _progressView;
 @synthesize progressBackgroundView = _progressBackgroundView;
 @synthesize activityView = _activityView;
+@synthesize topicGroupSelector = _topicGroupSelector;
 
 - (void)viewDidUnload
 {
@@ -222,10 +223,11 @@
 - (void)setup
 {
     [BNoteDefaultData setup];
-    
-    [self dismissModalViewControllerAnimated:YES];
-    
-    TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
+        [self.topicGroupSelector selectTopicGroup:group];
+    }];
 }
 
 - (void)showElua

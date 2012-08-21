@@ -13,12 +13,12 @@
 #import "Topic.h"
 #import "LayerFormater.h"
 #import "BNoteSessionData.h"
-#import "TopicEditorViewController.h"
 #import "BNoteDefaultData.h"
 
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
 @property (assign, nonatomic) NSInteger selectedIndex;
+@property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) Topic *searchTopic;
 
@@ -31,6 +31,7 @@
 @synthesize searchTopic = _searchTopic;
 @synthesize editButton = _editButton;
 @synthesize listener = _listener;
+@synthesize addTopicButton = _addTopicButton;
 
 static NSString *filterdGroupText;
 
@@ -65,36 +66,7 @@ static NSString *filterdGroupText;
                                                  name:kClosedNoteEditor
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateReceived:)
-                                                 name:kRefetchAllDatabaseData
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(selectTopicGroup:)
-                                                 name:kTopicGroupSelected
-                                               object:nil];
-
     filterdGroupText = NSLocalizedString(@"Filtered Group", @"The filtered topic title.");
-}
-
-- (void)updateReceived:(NSNotification *)notification
-{
-    [[BNoteWriter instance] cleanup];
-    
-    NSString *groupName = [BNoteSessionData stringForKey:kTopicGroupSelected];
-    if (!groupName) {
-        groupName = kAllTopicGroupName;
-        [BNoteSessionData setString:groupName forKey:kTopicGroupSelected];
-    }
-
-    TopicGroup *group = [[BNoteReader instance] getTopicGroup:groupName];
-    
-    if (!group) {
-        group = [BNoteFactory createTopicGroup:groupName];
-    }
-        
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:group];
 }
 
 - (void)updateData
@@ -107,6 +79,7 @@ static NSString *filterdGroupText;
 {
     [super viewDidUnload];
     
+    [self setAddTopicButton:nil];
     self.listener = nil;
     [self setEditButton:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -172,8 +145,6 @@ static NSString *filterdGroupText;
 {
     Topic *topic = [[self data] objectAtIndex:[sourceIndexPath row]];
     [[BNoteWriter instance] moveTopic:topic toIndex:[destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[BNoteSessionData instance].selectedTopicGroup];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -195,7 +166,6 @@ static NSString *filterdGroupText;
     [[BNoteWriter instance] update];
     
     [self editTopicCell:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[BNoteSessionData instance].selectedTopicGroup];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -252,19 +222,17 @@ static NSString *filterdGroupText;
     [self selectCell:index];
 }
 
-- (void)selectTopicGroup:(NSNotification *)notification
+- (void)selectTopicGroup:(TopicGroup *)topicGroup
 {
-    TopicGroup *group = [notification object];
-    [[BNoteSessionData instance] setSelectedTopicGroup:group];
-    [self setData:[[group topics] mutableCopy]];
+    [self setData:[[topicGroup topics] mutableCopy]];
     
     [[self tableView] reloadData];
     
     int selectedTopicIndex = -1;
     NSString *topicName = [BNoteSessionData stringForKey:kTopicSelected];
-    for (Topic *topic in group.topics) {
+    for (Topic *topic in topicGroup.topics) {
         if ([topic.title isEqualToString:topicName]) {
-            selectedTopicIndex = [group.topics indexOfObject:topic];
+            selectedTopicIndex = [topicGroup.topics indexOfObject:topic];
             break;
         }
     }
@@ -281,7 +249,6 @@ static NSString *filterdGroupText;
         [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 
-    [BNoteSessionData setString:[group name] forKey:kTopicGroupSelected];
 }
 
 - (IBAction)editTopicCell:(id)sender
@@ -291,6 +258,55 @@ static NSString *filterdGroupText;
     } else {
         [[self tableView] setEditing:YES animated:YES];
     }
+}
+
+- (IBAction)addTopic:(id)sender
+{
+#ifdef LITE
+    if ([[[self topicGroup] topics] count] > kMaxTopics) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"More Topics Not Supported", nil)
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+        
+        [alert show];
+        return;
+    }
+    
+#endif
+    
+    TopicGroup *topicGroup = [BNoteSessionData instance].selectedTopicGroup;
+    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:topicGroup];
+    controller.delegate = self;
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [[BNoteSessionData instance] setPopup:popup];
+    [popup setDelegate:self];
+    [controller setPopup:popup];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = [self addTopicButton];
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:[self addTopicButton]
+         permittedArrowDirections:UIPopoverArrowDirectionAny
+                         animated:NO];
+}
+
+- (void)finishedWith:(Topic *)topic
+{
+    [self updateData];
+    
+    int index = [self.data indexOfObject:topic];
+    [self selectCell:index];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

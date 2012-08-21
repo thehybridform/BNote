@@ -78,6 +78,7 @@
 @synthesize shadowView9 = _shadowView9;
 @synthesize canDismiss = _canDismiss;
 
+@synthesize delegate = _delegate;
 
 static NSString *createText;
 static NSString *updateText;
@@ -205,6 +206,7 @@ static NSString *placeHolderText;
 - (IBAction)done:(id)sender
 {
     NSString *title = [[self nameTextField] text];
+    title = [BNoteStringUtils trim:title];
     
     if (![BNoteStringUtils nilOrEmpty:title]) {
         Topic *topic = [self topic];
@@ -221,8 +223,8 @@ static NSString *placeHolderText;
         }
         
         [[BNoteWriter instance] update];
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:[self topicGroup]];
+        
+        [self.delegate finishedWith:topic];
     }
 
     [[self nameTextField] resignFirstResponder];

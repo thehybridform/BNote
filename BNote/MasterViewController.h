@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "Topic.h"
+#import "TopicEditorViewController.h"
 
 @protocol TopicSelector;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <UIPopoverControllerDelegate, TopicEditorDelegate>
 
 @property (strong, nonatomic) id<TopicSelector> listener;
 
 - (IBAction)editTopicCell:(id)sender;
 - (Topic *)searchTopic;
+- (void)selectTopicGroup:(TopicGroup *)topicGroup;
+- (IBAction)addTopic:(id)sender;
 
 @end
 

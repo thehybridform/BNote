@@ -29,7 +29,6 @@
 @interface MainViewViewController ()
 @property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
-@property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
 @property (strong, nonatomic) IBOutlet UILabel *notesLabel;
 @property (strong, nonatomic) IBOutlet UILabel *peopleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *countLabel;
@@ -57,7 +56,6 @@
 @synthesize notesLabel = _notesLabel;
 @synthesize peopleLabel = _peopleLabel;
 @synthesize shareButton = _shareButton;
-@synthesize addTopicButton = _addTopicButton;
 @synthesize footer = _footer;
 @synthesize topicsButton = _topicsButton;
 @synthesize searchTopic = _searchTopic;
@@ -82,7 +80,6 @@ static NSString *exportText;
     [self setNotesLabel:nil];
     [self setPeopleLabel:nil];
     [self setShareButton:nil];
-    [self setAddTopicButton:nil];
     [self setFooter:nil];
     [self setTopicsButton:nil];
     [self setLiteLable:nil];
@@ -142,6 +139,12 @@ static NSString *exportText;
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(presentTopicManagement:) name:kTopicGroupManage object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateReceived:)
+                                                 name:kRefetchAllDatabaseData
+                                               object:nil];
+    
+
 #ifdef LITE
     [[self liteLable] setFont:[BNoteConstants font:RobotoBold andSize:20]];
     [[self liteLable] setTextColor:[BNoteConstants appHighlightColor1]];
@@ -150,6 +153,26 @@ static NSString *exportText;
 #endif
     
 }
+
+- (void)updateReceived:(NSNotification *)notification
+{
+    [[BNoteWriter instance] cleanup];
+    
+    NSString *groupName = [BNoteSessionData stringForKey:kTopicGroupSelected];
+    if (!groupName) {
+        groupName = kAllTopicGroupName;
+        [BNoteSessionData setString:groupName forKey:kTopicGroupSelected];
+    }
+    
+    TopicGroup *group = [[BNoteReader instance] getTopicGroup:groupName];
+    
+    if (!group) {
+        group = [BNoteFactory createTopicGroup:groupName];
+    }
+    
+    [self selectTopicGroup:group];
+}
+
 
 - (void)selectedTopic:(Topic *)topic
 {
@@ -168,7 +191,7 @@ static NSString *exportText;
     [[self peopleLabel] setHidden:![BNoteEntryUtils topicContainsAttendants:topic]];
     
     [self setNoteCountForTopic:topic];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoteCount:)
                                                  name:kTopicUpdated object:topic];
 }
@@ -211,41 +234,6 @@ static NSString *exportText;
     
     NSString *s = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:count] numberStyle:NSNumberFormatterNoStyle];
     [[self countLabel] setText:s];
-}
-
-- (IBAction)addTopic:(id)sender
-{
-#ifdef LITE
-    if ([[[self topicGroup] topics] count] > kMaxTopics) {
-        UIAlertView *alert = [[UIAlertView alloc]
-                                initWithTitle:NSLocalizedString(@"More Topics Not Supported", nil)
-                                message:nil
-                                delegate:self
-                                cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                otherButtonTitles:nil];
-
-        [alert show];
-        return;
-    }
-    
-#endif
-    
-    TopicGroup *topicGroup = [self topicGroup];
-    TopicEditorViewController *controller = [[TopicEditorViewController alloc] initWithTopicGroup:topicGroup];
-    
-    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [[BNoteSessionData instance] setPopup:popup];
-    [popup setDelegate:self];
-    [controller setPopup:popup];
-    
-    [popup setPopoverContentSize:[[controller view] bounds].size];
-    
-    UIView *view = [self addTopicButton];
-    CGRect rect = [view bounds];
-    
-    [popup presentPopoverFromRect:rect inView:[self addTopicButton]
-         permittedArrowDirections:UIPopoverArrowDirectionAny 
-                         animated:NO];
 }
 
 - (IBAction)about:(id)sender
@@ -428,9 +416,10 @@ static NSString *exportText;
     }
     
     [self.topicsButton updateTitle:[BNoteEntryUtils topicGroupName:topicGroup]];
-    [BNoteSessionData instance].selectedTopicGroup = topicGroup;
+    [self.topicsTable selectTopicGroup:topicGroup];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:topicGroup];
+    [BNoteSessionData instance].selectedTopicGroup = topicGroup;
+    [BNoteSessionData setString:[topicGroup name] forKey:kTopicGroupSelected];
 }
 
 - (void)dealloc

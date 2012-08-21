@@ -19,7 +19,6 @@
 
 - (IBAction)about:(id)sender;
 - (IBAction)presentShareOptions:(id)sender;
-- (IBAction)addTopic:(id)sender;
 - (IBAction)showTopicGroups:(id)sender;
 
 @end

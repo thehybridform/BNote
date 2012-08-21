@@ -226,7 +226,6 @@
     [self dismissModalViewControllerAnimated:YES];
     
     TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicGroupSelected object:group];
 }
 
 - (void)showElua

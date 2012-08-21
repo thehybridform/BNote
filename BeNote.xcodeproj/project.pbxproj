@@ -24,6 +24,8 @@
 		181967C21569E50100DA31A3 /* EntrySummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181967C01569E50100DA31A3 /* EntrySummariesTableViewController.m */; };
 		181968481569FB0700DA31A3 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181968461569FB0700DA31A3 /* NoteEditorViewController.m */; };
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
+		181A2CE615E36B770036FF2D /* ButtonPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CE515E36B770036FF2D /* ButtonPair.m */; };
+		181A2CE715E36B770036FF2D /* ButtonPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CE515E36B770036FF2D /* ButtonPair.m */; };
 		182F1DE815BE75DF0038AC13 /* EditNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1DE715BE75DF0038AC13 /* EditNoteView.m */; };
 		182F1E6615BE9EAF0038AC13 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6515BE9EAF0038AC13 /* Photo.m */; };
 		182F1E6915BE9EB00038AC13 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6815BE9EB00038AC13 /* Question.m */; };
@@ -535,6 +537,8 @@
 		181968451569FB0700DA31A3 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
 		181968461569FB0700DA31A3 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		181968471569FB0700DA31A3 /* NoteEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteEditorViewController.xib; sourceTree = "<group>"; };
+		181A2CE415E36B770036FF2D /* ButtonPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonPair.h; sourceTree = "<group>"; };
+		181A2CE515E36B770036FF2D /* ButtonPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonPair.m; sourceTree = "<group>"; };
 		182F1DE615BE75DF0038AC13 /* EditNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteView.h; sourceTree = "<group>"; };
 		182F1DE715BE75DF0038AC13 /* EditNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteView.m; sourceTree = "<group>"; };
 		182F1DEA15BE9B9D0038AC13 /* BeNote 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 14.xcdatamodel"; sourceTree = "<group>"; };
@@ -1347,6 +1351,8 @@
 				1851A637159ECBDE0089EECF /* DrawingView.m */,
 				18AE9C0715A557970058B4EE /* PhotoSketchPath.h */,
 				18AE9C0815A557970058B4EE /* PhotoSketchPath.m */,
+				181A2CE415E36B770036FF2D /* ButtonPair.h */,
+				181A2CE515E36B770036FF2D /* ButtonPair.m */,
 			);
 			name = "Photo Editor";
 			sourceTree = "<group>";
@@ -2242,6 +2248,7 @@
 				18C277AB15E1B0FC009AC728 /* uncompr.c in Sources */,
 				18C277AD15E1B0FC009AC728 /* zutil.c in Sources */,
 				18C277B115E1B4F5009AC728 /* BNoteExportFileWrapper.m in Sources */,
+				181A2CE615E36B770036FF2D /* ButtonPair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2423,6 +2430,7 @@
 				18C277AC15E1B0FC009AC728 /* uncompr.c in Sources */,
 				18C277AE15E1B0FC009AC728 /* zutil.c in Sources */,
 				18C277B215E1B4F5009AC728 /* BNoteExportFileWrapper.m in Sources */,
+				181A2CE715E36B770036FF2D /* ButtonPair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

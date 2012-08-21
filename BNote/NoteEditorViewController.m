@@ -341,8 +341,8 @@ static NSString *spacing = @"   ";
 
 - (IBAction)done:(id)sender
 {
-    [BNoteEntryUtils cleanUpEntriesForNote:[self note]];
     [[self note] setSubject:[[self subjectTextView] text]];
+    [BNoteEntryUtils cleanUpEntriesForNote:[self note]];
     [[BNoteWriter instance] update];
     
     [self dismissModalViewControllerAnimated:YES];

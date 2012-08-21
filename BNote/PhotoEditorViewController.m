@@ -12,6 +12,7 @@
 #import "Photo.h"
 #import "BNoteWriter.h"
 #import "BNoteAnimation.h"
+#import "ButtonPair.h"
 
 @interface PhotoEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
@@ -45,6 +46,23 @@
 @property (strong, nonatomic) IBOutlet UIView *progressView;
 @property (strong, nonatomic) IBOutlet UIView *progressBackgroundView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
+@property (strong, nonatomic) IBOutlet UIView *shadowView0;
+@property (strong, nonatomic) IBOutlet UIView *shadowView1;
+@property (strong, nonatomic) IBOutlet UIView *shadowView2;
+@property (strong, nonatomic) IBOutlet UIView *shadowView3;
+@property (strong, nonatomic) IBOutlet UIView *shadowView4;
+@property (strong, nonatomic) IBOutlet UIView *shadowView5;
+@property (strong, nonatomic) IBOutlet UIView *shadowView6;
+@property (strong, nonatomic) IBOutlet UIView *shadowView7;
+@property (strong, nonatomic) IBOutlet UIView *shadowView8;
+@property (strong, nonatomic) IBOutlet UIView *shadowView9;
+@property (strong, nonatomic) IBOutlet UIView *shadowView10;
+@property (strong, nonatomic) IBOutlet UIView *shadowView11;
+@property (strong, nonatomic) IBOutlet UIView *shadowView12;
+@property (strong, nonatomic) IBOutlet UIView *shadowView13;
+
+@property (strong, nonatomic) NSMutableArray *buttons;
 
 @end
 
@@ -81,6 +99,23 @@
 @synthesize progressView = _progressView;
 @synthesize progressBackgroundView = _progressBackgroundView;
 @synthesize activityView = _activityView;
+
+@synthesize shadowView0 = _shadowView0;
+@synthesize shadowView1 = _shadowView1;
+@synthesize shadowView2 = _shadowView2;
+@synthesize shadowView3 = _shadowView3;
+@synthesize shadowView4 = _shadowView4;
+@synthesize shadowView5 = _shadowView5;
+@synthesize shadowView6 = _shadowView6;
+@synthesize shadowView7 = _shadowView7;
+@synthesize shadowView8 = _shadowView8;
+@synthesize shadowView9 = _shadowView9;
+@synthesize shadowView10 = _shadowView10;
+@synthesize shadowView11 = _shadowView11;
+@synthesize shadowView12 = _shadowView12;
+@synthesize shadowView13 = _shadowView13;
+
+@synthesize buttons = _buttons;
 
 static const CGFloat small = 5;
 static const CGFloat medium = 10;
@@ -125,6 +160,21 @@ static NSString *resetText;
     [self setProgressView:nil];
     [self setProgressBackgroundView:nil];
     [self setActivityView:nil];
+    
+    self.shadowView0 = nil;
+    self.shadowView1 = nil;
+    self.shadowView2 = nil;
+    self.shadowView3 = nil;
+    self.shadowView4 = nil;
+    self.shadowView5 = nil;
+    self.shadowView6 = nil;
+    self.shadowView7 = nil;
+    self.shadowView8 = nil;
+    self.shadowView9 = nil;
+    self.shadowView10 = nil;
+    self.shadowView11 = nil;
+    self.shadowView12 = nil;
+    self.shadowView13 = nil;
 }
 
 - (id)initDefault
@@ -155,8 +205,6 @@ static NSString *resetText;
     [[self progressView] setBackgroundColor:[UIColor clearColor]];
     [[self view] bringSubviewToFront:[self progressView]];
 
-    [[self view] setBackgroundColor:[UIColor lightGrayColor]];
-
     [[self drawView] setPhoto:[[self keyPoint] photo]];
     
     UIImage *image = [UIImage imageWithData:[[[self keyPoint] photo] original]];
@@ -182,11 +230,31 @@ static NSString *resetText;
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
 
     [LayerFormater addShadowToView:[self menuView]];
+    
+    [LayerFormater addShadowToView:self.shadowView0 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView1 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView2 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView3 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView4 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView5 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView6 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView7 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView8 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView9 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView10 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView11 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView12 ofSize:7];
+    [LayerFormater addShadowToView:self.shadowView13 ofSize:7];
 
-    [[self view] setBackgroundColor:[BNoteConstants appColor1]];
-    [[self buttonsView] setBackgroundColor:[BNoteConstants appColor1]];
-    [[self actionView] setBackgroundColor:[BNoteConstants appColor1]];
- 
+    [LayerFormater addShadowToView:[self smallPencileButton]];
+    [LayerFormater addShadowToView:[self mediumPencileButton]];
+    [LayerFormater addShadowToView:[self largePencileButton]];
+
+    [[self buttonsView] setBackgroundColor:[UIColor clearColor]];
+    [[self actionView] setBackgroundColor:[UIColor clearColor]];
+    self.view.backgroundColor = UIColorFromRGB(0xf0f0f0);
+
+
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     [self changeTheViewToPortrait:UIInterfaceOrientationIsPortrait(orientation) andDuration:0.3];
     
@@ -199,6 +267,15 @@ static NSString *resetText;
                        [self color4Button],
                        [self color5Button],
                        [self color6Button],
+                       
+                       self.shadowView0,
+                       self.shadowView1,
+                       self.shadowView2,
+                       self.shadowView3,
+                       self.shadowView4,
+                       self.shadowView5,
+                       self.shadowView6,
+                       
                        nil];
     NSArray *views4 = [[NSArray alloc]
                        initWithObjects:
@@ -209,6 +286,15 @@ static NSString *resetText;
                        [self color11Button],
                        [self color12Button],
                        [self color13Button],
+                       
+                       self.shadowView7,
+                       self.shadowView8,
+                       self.shadowView9,
+                       self.shadowView10,
+                       self.shadowView11,
+                       self.shadowView12,
+                       self.shadowView13,
+
                        nil];
     NSArray *views2 = [[NSArray alloc]
                        initWithObjects:
@@ -229,6 +315,44 @@ static NSString *resetText;
     
     [self selectPencil:self.smallPencileButton];
     [self selectColor:self.color11Button];
+    
+    NSMutableArray *buttons = [[NSMutableArray alloc] init];
+    self.buttons = buttons;
+    
+    [self button:self.color0Button paired:self.shadowView0];
+    [self button:self.color1Button paired:self.shadowView1];
+    [self button:self.color2Button paired:self.shadowView2];
+    [self button:self.color3Button paired:self.shadowView3];
+    [self button:self.color4Button paired:self.shadowView4];
+    [self button:self.color5Button paired:self.shadowView5];
+    [self button:self.color6Button paired:self.shadowView6];
+    [self button:self.color7Button paired:self.shadowView7];
+    [self button:self.color8Button paired:self.shadowView8];
+    [self button:self.color9Button paired:self.shadowView9];
+    [self button:self.color10Button paired:self.shadowView10];
+    [self button:self.color11Button paired:self.shadowView11];
+    [self button:self.color12Button paired:self.shadowView12];
+    [self button:self.color13Button paired:self.shadowView13];
+}
+
+- (void)button:(UIButton *)button paired:(UIView *)view
+{
+    ButtonPair *pair = [[ButtonPair alloc] init];
+    pair.colorButton = button;
+    pair.shadowView = view;
+    
+    [self.buttons addObject:pair];
+}
+
+- (UIView *)shadowFor:(UIButton *)button
+{
+    for (ButtonPair *pair in self.buttons) {
+        if (pair.colorButton == button) {
+            return pair.shadowView;
+        }
+    }
+    
+    return nil;
 }
 
 - (void)setupButton:(UIButton *)button withColor:(UIColor *)color
@@ -236,7 +360,6 @@ static NSString *resetText;
     [button setBackgroundColor:color];
     [[button layer] setCornerRadius:7.0];
     [[button layer] setMasksToBounds:YES];
-    [[button layer] setBorderWidth:1];
 }
 
 - (IBAction)done:(id)sender
@@ -266,24 +389,47 @@ static NSString *resetText;
 
 - (IBAction)selectColor:(UIButton *)button
 {
-    [[button layer] setBorderColor:[[UIColor blackColor] CGColor]];
-    [[[self selectedColorButton] layer] setBorderWidth:1];
-    [self setSelectedColorButton:button];
-    [[[self selectedColorButton] layer] setBorderWidth:5];
+    static int offset = 10;
     
-    if (button == [self color0Button]) {
-        [[button layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    UIButton *currentButton = self.selectedColorButton;
+    
+    if (currentButton) {
+        [self view:currentButton resize:-offset];
+    
+        UIView *shadow = [self shadowFor:currentButton];
+        [self view:shadow resize:-offset];
     }
+
+    [self setSelectedColorButton:button];
     
+    [self view:button resize:offset];
+
+    UIView *shadow = [self shadowFor:button];
+    [self view:shadow resize:offset];
+
     [[self drawView] setStrokeColor:[button backgroundColor]];
+}
+
+- (void)view:(UIView *)view resize:(int)offset
+{
+    CGRect frame = view.frame;
+    view.frame = CGRectMake(frame.origin.x - offset, frame.origin.y - offset, frame.size.width + 2 * offset, frame.size.height + 2 * offset);
 }
 
 - (IBAction)selectPencil:(UIButton *)button
 {
-    [[[self selectedPencilButton] layer] setBorderWidth:0];
-    [self setSelectedPencilButton:button];
-    [[[self selectedPencilButton] layer] setBorderWidth:5];
+    static int offset = 10;
     
+    UIButton *currentButton = self.selectedPencilButton;
+    
+    if (currentButton) {
+        [self view:currentButton resize:-offset];
+    }
+    
+    [self setSelectedPencilButton:button];
+
+    [self view:button resize:offset];
+
     if (button == [self smallPencileButton]) {
         [[self drawView] setStrokeWidth:small];
     } else if (button == [self mediumPencileButton]) {

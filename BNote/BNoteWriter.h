@@ -41,8 +41,8 @@
 - (id)insertNewObjectForEntityForName:(NSString *)name;
 
 - (void)moveNote:(Note *)note toTopic:(Topic *)topic;
-- (void)associateTopics:(NSArray *)topics toNote:(Note *)note;
 - (void)disassociateNote:(Note *)note toTopic:(Topic *)topic;
+- (void)associateNote:(Note *)note toTopic:(Topic *)topic;
 
 - (void)updateAttendee:(Attendant *)attendant;
 

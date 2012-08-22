@@ -11,7 +11,6 @@
 #import "LayerFormater.h"
 #import "NoteEditorViewController.h"
 #import "BNoteWriter.h"
-#import "TopicManagementViewController.h"
 #import "BNoteSessionData.h"
 
 @interface NoteView()
@@ -235,12 +234,14 @@ const static float h2 = h1 - 8;
 
 - (void)presentTopicSelectionForType:(TopicSelectType)type
 {
-    TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:type];
+    TopicManagementViewController *controller =
+        [[TopicManagementViewController alloc] initWithNote:[self note] forType:type];
+    
+    controller.delegate = self;
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [[BNoteSessionData instance] setPopup:popup];
     [popup setDelegate:self];
-    [controller setPopup:popup];
     
     [popup setPopoverContentSize:[[controller view] bounds].size];
     
@@ -250,6 +251,12 @@ const static float h2 = h1 - 8;
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny 
                          animated:NO];
+}
+
+- (void):(TopicManagementViewController *)controller finishedWithTopic:(Topic *)topic
+{
+    [[BNoteSessionData instance].popup dismissPopoverAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController

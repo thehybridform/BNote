@@ -88,6 +88,10 @@
     [LayerFormater addShadowToView:self.footerView];
     [LayerFormater addShadowToView:self.menuView];
     
+    [LayerFormater roundCornersForView:self.tableView];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self.tableView];
+    [LayerFormater setBorderWidth:1 forView:self.tableView];
+
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     [self tableView:self.tableView didSelectRowAtIndexPath:path];
     [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];

@@ -116,6 +116,9 @@ static NSString *attendeesText;
 
 static NSString *emailNoteText;
 static NSString *exportText;
+static NSString *changeTopicText;
+static NSString *topicAssociationsText;
+
 
 static NSString *spacing = @"   ";
 
@@ -174,6 +177,8 @@ static NSString *spacing = @"   ";
 
     emailNoteText = NSLocalizedString(@"Email Selected Note", nil);
     exportText = NSLocalizedString(@"Archive Options", nil);
+    changeTopicText = NSLocalizedString(@"Change Topic ", nil);
+    topicAssociationsText = NSLocalizedString(@"Associated Topics", nil);
 
     return self;
 }
@@ -244,7 +249,6 @@ static NSString *spacing = @"   ";
     self.subjectTextView.delegate = self;
     self.subjectTextView.placeholder = NSLocalizedString(@"Enter Subject", @"note subject place holder.");
 
-    
     [LayerFormater setBorderWidth:1 forView:[self normalEntryButtonsView]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:[self normalEntryButtonsView]];
     [LayerFormater setBorderWidth:1 forView:[self reviewEntryButtonsView]];
@@ -537,6 +541,9 @@ static NSString *spacing = @"   ";
         [[BNoteSessionData instance] setActionSheetDelegate:self];
         [[BNoteSessionData instance] setActionSheet:actionSheet];
         
+        [actionSheet addButtonWithTitle:changeTopicText];
+        [actionSheet addButtonWithTitle:topicAssociationsText];
+
         if ([MFMailComposeViewController canSendMail]) {
             [actionSheet addButtonWithTitle:emailNoteText];
         }
@@ -552,27 +559,40 @@ static NSString *spacing = @"   ";
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex >= 0) {
+        UIViewController *controller;
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == emailNoteText) {
-            Note *note = [self note];
-            EmailViewController *controller = [[EmailViewController alloc] initWithNote:note];
-            [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-            
-            [self presentModalViewController:controller animated:YES];
+            controller = [[EmailViewController alloc] initWithNote:[self note]];
         } else if (title == exportText) {
-            BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
-            controller.note = self.note;
-            
+            BNoteExporterViewController *exportController = [[BNoteExporterViewController alloc] initWithDefault];
+            exportController.note = self.note;
+            exportController.delegate = self;
+            controller = exportController;
+        } else if (title == topicAssociationsText) {
+            TopicManagementViewController *topiCcontroller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:AssociateTopic];
+            topiCcontroller.delegate = self;
+            controller = topiCcontroller;
+        } else if (title == changeTopicText) {
+            TopicManagementViewController *topiCcontroller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:ChangeMainTopic];
+            topiCcontroller.delegate = self;
+            controller = topiCcontroller;
+        }
+        
+        if (controller) {
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-            controller.delegate = self;
-            
             [self presentModalViewController:controller animated:YES];
         }
     }
     
     [BNoteSessionData instance].actionSheet = nil;
+}
+
+- (void):(TopicManagementViewController *)controller finishedWithTopic:(Topic *)topic
+{
+    [controller dismissViewControllerAnimated:YES completion:^{}];
+    [self.infoView setNeedsDisplay];
+    self.titleLabel.text = topic.title;
 }
 
 - (void)finishedWithFile:(BNoteExportFileWrapper *)file

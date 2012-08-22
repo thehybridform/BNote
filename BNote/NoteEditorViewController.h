@@ -14,6 +14,7 @@
 #import "Entry.h"
 #import "BNoteFilterDelegate.h"
 #import "BNoteExporterViewController.h"
+#import "TopicManagementViewController.h"
 
 @interface NoteEditorViewController : UIViewController
     <DatePickerViewControllerListener,
@@ -21,7 +22,8 @@
      UIPopoverControllerDelegate,
      BNoteFilterDelegate,
      UITextFieldDelegate,
-     BNoteExportedDelegate>
+     BNoteExportedDelegate,
+     TopicManagementViewControllerDelegate>
 
 @property (strong, nonatomic) Note *note;
 

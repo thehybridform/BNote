@@ -15,12 +15,19 @@ typedef enum {
     CopyToTopic
 } TopicSelectType;
 
+@protocol TopicManagementViewControllerDelegate;
+
 @interface TopicManagementViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) UIPopoverController *popup;
+@property (strong, nonatomic) id<TopicManagementViewControllerDelegate> delegate;
 
 - (id)initWithNote:(Note *)note forType:(TopicSelectType)type;
 - (IBAction)done:(id)sender;
 
 @end
 
+@protocol TopicManagementViewControllerDelegate <NSObject>
+
+- (void):(TopicManagementViewController *)controller finishedWithTopic:(Topic *)topic;
+
+@end

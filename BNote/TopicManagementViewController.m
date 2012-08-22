@@ -17,12 +17,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLable;
 @property (strong, nonatomic) IBOutlet UILabel *helpLable;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIButton *actionButton;
-@property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) Note *note;
 @property (assign, nonatomic) TopicSelectType topicSelectType;
-@property (strong, nonatomic) NSMutableArray *selected;
+@property (strong, nonatomic) IBOutlet UIButton *actionButton;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
 
 @end
 
@@ -33,10 +32,9 @@
 @synthesize note = _note;
 @synthesize topicSelectType = _topicSelectType;
 @synthesize tableView = _tableView;
-@synthesize selected = _selected;
-@synthesize popup = _popup;
 @synthesize actionButton = _actionButton;
 @synthesize menuView = _menuView;
+@synthesize delegate = _delegate;
 
 static NSString *cancelText;
 static NSString *doneText;
@@ -53,9 +51,6 @@ static NSString *highligtTopicText;
     [self setTitleLable:nil];
     [self setData:nil];
     [self setHelpLable:nil];
-    [self setSelected:nil];
-    [self setMenuView:nil];
-    [self setActionButton:nil];
     [self setTableView:nil];
 }
 
@@ -66,16 +61,8 @@ static NSString *highligtTopicText;
     if (self) {
         [self setNote:note];
         [self setTopicSelectType:type];
-        [self setSelected:[[NSMutableArray alloc] init]];
     }
     
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
     cancelText = NSLocalizedString(@"Cancel", @"Cancel");
     doneText = NSLocalizedString(@"Done", @"Done");
     changeTopicText = NSLocalizedString(@"Change Topic", @"Change the note topic owner");
@@ -84,18 +71,25 @@ static NSString *highligtTopicText;
     copyTopicText = NSLocalizedString(@"Copy to Topic", @"Copy to a differernt topic");
     highligtTopicText = NSLocalizedString(@"Highlight topics to add.", @"Highlight the topics to add to this note");
     
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
     self.titleLable.font = [BNoteConstants font:RobotoBold andSize:24];
     self.titleLable.textColor = [BNoteConstants appHighlightColor1];
     
     self.helpLable.font = [BNoteConstants font:RobotoRegular andSize:18];
     self.helpLable.textColor = [BNoteConstants appHighlightColor1];
-    
+        
     NSPredicate *p = [NSPredicate predicateWithFormat:@"title != %@", [[[self note] topic] title]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
+            self.menuView.hidden = YES;
             [[self titleLable] setText:changeTopicText];
             [[self helpLable] setText:selectTopicText];
-            [[self actionButton] setTitle:cancelText forState:UIControlStateNormal];
             [[self tableView] setAllowsMultipleSelection:NO];
             break;
             
@@ -104,13 +98,14 @@ static NSString *highligtTopicText;
             [[self helpLable] setText:highligtTopicText];
             [[self tableView] setAllowsMultipleSelection:YES];
             [[self actionButton] setTitle:doneText forState:UIControlStateNormal];
+            
             break;
             
         case CopyToTopic:
+            self.menuView.hidden = YES;
             [[self titleLable] setText:copyTopicText];
             [[self helpLable] setText:selectTopicText];
             [[self tableView] setAllowsMultipleSelection:NO];
-            [[self actionButton] setTitle:cancelText forState:UIControlStateNormal];
             p = [NSPredicate predicateWithValue:YES];
             break;
             
@@ -127,6 +122,10 @@ static NSString *highligtTopicText;
     
     [self setData:data];
     
+    [LayerFormater roundCornersForView:self.tableView];
+    [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self.tableView];
+    [LayerFormater setBorderWidth:1 forView:self.tableView];
+    
     [LayerFormater addShadowToView:[self menuView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
@@ -134,12 +133,8 @@ static NSString *highligtTopicText;
 
 - (IBAction)done:(id)sender
 {
-    [[self popup] dismissPopoverAnimated:YES];
-    
-    if ([self topicSelectType] == AssociateTopic) {
-        [[BNoteWriter instance] associateTopics:[self selected] toNote:[self note]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:[[self note] topic]];
-    }
+    [[BNoteWriter instance] update];
+    [self.delegate :self finishedWithTopic:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -162,12 +157,14 @@ static NSString *highligtTopicText;
         [cell setAccessoryType:UITableViewCellAccessoryNone];
         cell.textLabel.font = [BNoteConstants font:RobotoRegular andSize:16];
         cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
-        [cell setSelectedBackgroundView:[BNoteFactory createHighlight:[BNoteConstants appHighlightColor1]]];
     }
 
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[topic title]];
+    [[cell textLabel] setText:[@"  " stringByAppendingString:[topic title]]];
     
+    [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([topic color])]];
+    [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([topic color])]];
+
     if ([self topicSelectType] == AssociateTopic) {
         if ([[[self note] associatedTopics] containsObject:topic]) {
             [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
@@ -178,43 +175,28 @@ static NSString *highligtTopicText;
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
         {
-            [[self popup] dismissPopoverAnimated:YES];
-            
-            Topic *currentTopic = [[self note] topic];
-            
             [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:currentTopic];
+            
+            [[BNoteWriter instance] update];
+            [self.delegate :self finishedWithTopic:topic];
         }
             break;
         case AssociateTopic:
-            [[self selected] addObject:topic];
+            [[BNoteWriter instance] associateNote:self.note toTopic:topic];
             break;
         
         case CopyToTopic:
         {
-            [[self popup] dismissPopoverAnimated:YES];
-            
-            Topic *currentTopic = [[self note] topic];
-
             [BNoteFactory copyNote:[self note] toTopic:topic];
 
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:currentTopic];
+            [[BNoteWriter instance] update];
+            [self.delegate :self finishedWithTopic:topic];
         }
             break;
 
@@ -226,7 +208,7 @@ static NSString *highligtTopicText;
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Topic *topic = [[self data] objectAtIndex:[indexPath row]];
-    [[self selected] removeObject:topic];
+    [[BNoteWriter instance] disassociateNote:self.note toTopic:topic];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

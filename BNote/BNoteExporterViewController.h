@@ -11,7 +11,7 @@
 
 @protocol BNoteExportedDelegate;
 
-@interface BNoteExporterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface BNoteExporterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (assign, nonatomic) id<BNoteExportedDelegate> delegate;
 @property (strong, nonatomic) Note *note;

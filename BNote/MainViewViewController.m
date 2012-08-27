@@ -25,6 +25,7 @@
 #import "BNoteButton.h"
 #import "BNoteExporterViewController.h"
 #import "TopicGroupManagementViewController.h"
+#import "BNoteUnarshallingManager.h"
 
 @interface MainViewViewController ()
 @property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *liteLable;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
+
 
 @end
 
@@ -424,8 +426,26 @@ static NSString *exportText;
     [BNoteSessionData setString:[topicGroup name] forKey:kTopicGroupSelected];
 }
 
+- (IBAction)testImport:(id)sender
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"BeNote-archive" ofType:@"benote"];
+    NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
+    [self presentImportController:url];
+}
+
+- (void)presentImportController:(NSURL *)url
+{
+    [[BNoteUnarshallingManager instance] delegate:nil unmarshallUrl:url];
+}
+
+- (void)finishedImporting:(int)count
+{
+    [self.modalViewController dismissViewControllerAnimated:YES completion:^{}];
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 @end

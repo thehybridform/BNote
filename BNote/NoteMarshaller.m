@@ -11,14 +11,9 @@
 #import "BNoteMarshallingManager.h"
 #import "Note.h"
 #import "Topic.h"
+#import "BNoteXmlConstants.h"
 
 @implementation NoteMarshaller
-
-static NSString *kNote = @"note";
-static NSString *kSubject = @"subject";
-static NSString *kSummary = @"summary";
-static NSString *kTopicName = @"topic";
-static NSString *kAssociatedTopicName = @"associated-topic";
 
 - (BOOL)accept:(id)obj
 {
@@ -36,22 +31,20 @@ static NSString *kAssociatedTopicName = @"associated-topic";
         [[BNoteMarshallingManager instance] marshall:entry into:file];
     }
     
+    s = [BNoteXmlFormatter node:kNoteColor withText:[BNoteXmlConstants colorToString:note.color]];
+    [self write:s into:file];
+    
     s = [BNoteXmlFormatter node:kSummary withText:note.summary];
     [self write:s into:file];
     
-    s = [BNoteXmlFormatter node:kCreated withText:[self toString:note.created]];
+    s = [BNoteXmlFormatter node:kCreated withText:[BNoteXmlConstants toString:note.created]];
     [self write:s into:file];
     
-    s = [BNoteXmlFormatter node:kLastUpdated withText:[self toString:note.lastUpdated]];
+    s = [BNoteXmlFormatter node:kLastUpdated withText:[BNoteXmlConstants toString:note.lastUpdated]];
     [self write:s into:file];
 
     s = [BNoteXmlFormatter node:kTopicName withText:note.topic.title];
     [self write:s into:file];
-    
-    for (Topic *topic in note.associatedTopics) {
-        s = [BNoteXmlFormatter node:kAssociatedTopicName withText:note.topic.title];
-        [self write:s into:file];
-    }
     
     [self write:[BNoteXmlFormatter closeTag:kNote] into:file];
 }

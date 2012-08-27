@@ -104,6 +104,16 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return copy;
 }
 
++ (Note *)createNote
+{
+    Note *note = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Note"];
+    [note setCreated:[NSDate timeIntervalSinceReferenceDate]];
+    [note setLastUpdated:[note created]];
+    note.id = [BNoteStringUtils guuid];
+    
+    return note;
+}
+
 + (Note *)createNote:(Topic *)topic
 {
     Note *note = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Note"];
@@ -112,7 +122,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     [note setColor:[topic color]];
     [note setTopic:topic];
     note.id = [BNoteStringUtils guuid];
-
+    
     return note;
 }
 

@@ -1,7 +1,9 @@
 {
+	"Import Notes Title" = "Import Notes?";
+	Stop = Stop;
+	"Importing Notes" = "Importing Notes...";
 	"Selected Note" = "Selected Note";
 	"Email Selected Note" = "Email Selected Note";
-	"All Data" = "All Data";
 	"Archive Options" = "Archive Options";
 	"Email Selected Topic" = "Email Selected Topic";
 	"Current Note" = "Current Note";

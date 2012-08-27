@@ -22,12 +22,11 @@ typedef enum {
 @property (strong, nonatomic) id<TopicManagementViewControllerDelegate> delegate;
 
 - (id)initWithNote:(Note *)note forType:(TopicSelectType)type;
-- (IBAction)done:(id)sender;
 
 @end
 
 @protocol TopicManagementViewControllerDelegate <NSObject>
 
-- (void):(TopicManagementViewController *)controller finishedWithTopic:(Topic *)topic;
+- (void)finishedWithTopic:(Topic *)topic;
 
 @end

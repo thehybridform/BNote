@@ -57,13 +57,13 @@
 {
     [super viewDidLoad];
     
-    [self.destinationSegmentedControl setTitle:NSLocalizedString(@"Selected Topic Group", nil) forSegmentAtIndex:0];
-    [self.destinationSegmentedControl setTitle:NSLocalizedString(@"Selected Topic", nil) forSegmentAtIndex:1];
+    [self.destinationSegmentedControl setTitle:NSLocalizedString(@"Topic Group", nil) forSegmentAtIndex:0];
+    [self.destinationSegmentedControl setTitle:NSLocalizedString(@"Topic", nil) forSegmentAtIndex:1];
     [self.destinationSegmentedControl setTitle:NSLocalizedString(@"All Data", nil) forSegmentAtIndex:2];
     [self.destinationSegmentedControl setTintColor:[BNoteConstants appHighlightColor1]];
 
     if (self.note) {
-        [self.destinationSegmentedControl insertSegmentWithTitle:NSLocalizedString(@"Selected Note", nil) atIndex:3 animated:YES];
+        [self.destinationSegmentedControl insertSegmentWithTitle:NSLocalizedString(@"Note", nil) atIndex:3 animated:YES];
         self.destinationSegmentedControl.selectedSegmentIndex = 3;
     } else {
         self.destinationSegmentedControl.selectedSegmentIndex = 0;

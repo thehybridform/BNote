@@ -43,10 +43,10 @@
     return _default;
 }
 
-- (Topic *)getFilteredTopic
+- (Topic *)getTopicForName:(NSString *)name
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title = %@", kFilteredTopicName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title = %@", name];
     [fetchRequest setPredicate:predicate];
     
     NSError *error = nil;
@@ -55,7 +55,7 @@
     if (error != nil) {
         NSLog(@"Error: %@", error);
     }
-
+    
     if ([topics count]) {
         Topic *topic = [topics objectAtIndex:0];
         if (!topic.id) {
@@ -65,6 +65,11 @@
     } else {
         return nil;
     }
+}
+
+- (Topic *)getFilteredTopic
+{
+    return [self getTopicForName:kFilteredTopicName];
 }
 
 - (TopicGroup *)getTopicGroup:(NSString *)name

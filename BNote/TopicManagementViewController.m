@@ -20,8 +20,6 @@
 @property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) Note *note;
 @property (assign, nonatomic) TopicSelectType topicSelectType;
-@property (strong, nonatomic) IBOutlet UIButton *actionButton;
-@property (strong, nonatomic) IBOutlet UIView *menuView;
 
 @end
 
@@ -32,8 +30,6 @@
 @synthesize note = _note;
 @synthesize topicSelectType = _topicSelectType;
 @synthesize tableView = _tableView;
-@synthesize actionButton = _actionButton;
-@synthesize menuView = _menuView;
 @synthesize delegate = _delegate;
 
 static NSString *cancelText;
@@ -87,7 +83,6 @@ static NSString *highligtTopicText;
     NSPredicate *p = [NSPredicate predicateWithFormat:@"title != %@", [[[self note] topic] title]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
-            self.menuView.hidden = YES;
             [[self titleLable] setText:changeTopicText];
             [[self helpLable] setText:selectTopicText];
             [[self tableView] setAllowsMultipleSelection:NO];
@@ -97,12 +92,10 @@ static NSString *highligtTopicText;
             [[self titleLable] setText:associateTopic];
             [[self helpLable] setText:highligtTopicText];
             [[self tableView] setAllowsMultipleSelection:YES];
-            [[self actionButton] setTitle:doneText forState:UIControlStateNormal];
             
             break;
             
         case CopyToTopic:
-            self.menuView.hidden = YES;
             [[self titleLable] setText:copyTopicText];
             [[self helpLable] setText:selectTopicText];
             [[self tableView] setAllowsMultipleSelection:NO];
@@ -125,16 +118,6 @@ static NSString *highligtTopicText;
     [LayerFormater roundCornersForView:self.tableView];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self.tableView];
     [LayerFormater setBorderWidth:1 forView:self.tableView];
-    
-    [LayerFormater addShadowToView:[self menuView]];
-    [LayerFormater setBorderWidth:1 forView:[self menuView]];
-    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
-}
-
-- (IBAction)done:(id)sender
-{
-    [[BNoteWriter instance] update];
-    [self.delegate :self finishedWithTopic:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -184,7 +167,7 @@ static NSString *highligtTopicText;
             [[BNoteWriter instance] moveNote:[self note] toTopic:topic];
             
             [[BNoteWriter instance] update];
-            [self.delegate :self finishedWithTopic:topic];
+            [self.delegate finishedWithTopic:topic];
         }
             break;
         case AssociateTopic:
@@ -196,7 +179,7 @@ static NSString *highligtTopicText;
             [BNoteFactory copyNote:[self note] toTopic:topic];
 
             [[BNoteWriter instance] update];
-            [self.delegate :self finishedWithTopic:topic];
+            [self.delegate finishedWithTopic:topic];
         }
             break;
 

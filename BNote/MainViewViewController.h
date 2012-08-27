@@ -21,4 +21,8 @@
 - (IBAction)presentShareOptions:(id)sender;
 - (IBAction)showTopicGroups:(id)sender;
 
+- (void)presentImportController:(NSURL *)url;
+
+- (IBAction)testImport:(id)sender;
+
 @end

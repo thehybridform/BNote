@@ -10,12 +10,10 @@
 #import "ActionItem.h"
 #import "BNoteXmlFormatter.h"
 #import "BNoteMarshallingManager.h"
+#import "BNoteXmlConstants.h"
 
 @implementation ActionItemMarshaller
 
-static NSString *kActionItem = @"action-item";
-static NSString *kDueDate = @"due-date";
-static NSString *kCompletedDate = @"completed-date";
 
 - (BOOL)accept:(id)obj
 {
@@ -29,19 +27,19 @@ static NSString *kCompletedDate = @"completed-date";
     NSString *s = [BNoteXmlFormatter node:kText withText:actionItem.text];
     [self write:s into:file];
     
-    s = [BNoteXmlFormatter node:kCreated withText:[self toString:actionItem.created]];
+    s = [BNoteXmlFormatter node:kCreated withText:[BNoteXmlConstants toString:actionItem.created]];
     [self write:s into:file];
     
-    s = [BNoteXmlFormatter node:kLastUpdated withText:[self toString:actionItem.lastUpdated]];
+    s = [BNoteXmlFormatter node:kLastUpdated withText:[BNoteXmlConstants toString:actionItem.lastUpdated]];
     [self write:s into:file];
     
     if (actionItem.dueDate) {
-        s = [BNoteXmlFormatter node:kDueDate withText:[self toString:actionItem.dueDate]];
+        s = [BNoteXmlFormatter node:kDueDate withText:[BNoteXmlConstants toString:actionItem.dueDate]];
         [self write:s into:file];
     }
     
     if (actionItem.completed) {
-        s = [BNoteXmlFormatter node:kCompletedDate withText:[self toString:actionItem.completed]];
+        s = [BNoteXmlFormatter node:kCompletedDate withText:[BNoteXmlConstants toString:actionItem.completed]];
         [self write:s into:file];
     }
     

@@ -253,7 +253,7 @@ const static float h2 = h1 - 8;
                          animated:NO];
 }
 
-- (void):(TopicManagementViewController *)controller finishedWithTopic:(Topic *)topic
+- (void)finishedWithTopic:(Topic *)topic
 {
     [[BNoteSessionData instance].popup dismissPopoverAnimated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:kTopicUpdated object:topic];

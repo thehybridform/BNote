@@ -12,8 +12,6 @@
 
 @implementation TopicGroupMarshaller
 
-static NSString *kTopicGroup = @"topic-group";
-
 - (BOOL)accept:(id)obj
 {
     return [obj isKindOfClass:[TopicGroup class]];

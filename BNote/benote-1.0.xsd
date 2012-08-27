@@ -7,19 +7,7 @@
     <xs:element name="benote">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="topic" maxOccurs="unbounded" minOccurs="0"/>
                 <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    
-    <xs:element name="topic">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1"/>
-                <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
-                <xs:element name="created-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="last-updated" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -27,6 +15,7 @@
     <xs:element name="note">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="color" type="xs:long" maxOccurs="1" minOccurs="1"/>
                 <xs:element name="subject" type="xs:string" maxOccurs="1" minOccurs="0"/>
                 <xs:element ref="attendee" maxOccurs="unbounded" minOccurs="0"/>
                 <xs:choice maxOccurs="unbounded" minOccurs="0">
@@ -108,8 +97,8 @@
     <xs:element name="attendee">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="first" type="xs:string" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="last" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="firstname" type="xs:string" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="lastname" type="xs:string" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="email" type="xs:string" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>

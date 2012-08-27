@@ -25,6 +25,7 @@
 
 - (TopicGroup *)getTopicGroup:(NSString *)name;
 - (Topic *)getFilteredTopic;
+- (Topic *)getTopicForName:(NSString *)name;
 
 - (NSSet *)findNotesWithText:(NSString *)searchText inTopicGroup:(TopicGroup *)group;
 

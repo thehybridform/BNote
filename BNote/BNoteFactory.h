@@ -78,6 +78,7 @@ typedef enum {
 + (TopicGroup *)createTopicGroup:(NSString *)name;
 + (Topic *)createTopic:(NSString *)name forGroup:(TopicGroup *)group;
 + (Topic *)createTopic:(NSString *)name forGroup:(TopicGroup *)group withSearch:(NSString *)text;
++ (Note *)createNote;
 + (Note *)createNote:(Topic *)topic;
 + (Note *)copyNote:(Note *)note toTopic:(Topic *)topic;
 + (Question *)createQuestion:(Note *)note;

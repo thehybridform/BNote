@@ -26,6 +26,20 @@
 		181968491569FB0700DA31A3 /* NoteEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181968471569FB0700DA31A3 /* NoteEditorViewController.xib */; };
 		181A2CE615E36B770036FF2D /* ButtonPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CE515E36B770036FF2D /* ButtonPair.m */; };
 		181A2CE715E36B770036FF2D /* ButtonPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CE515E36B770036FF2D /* ButtonPair.m */; };
+		181A2CF215E4BD7F0036FF2D /* BNoteUnarshallingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CF115E4BD7F0036FF2D /* BNoteUnarshallingManager.m */; };
+		181A2CF315E4BD7F0036FF2D /* BNoteUnarshallingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CF115E4BD7F0036FF2D /* BNoteUnarshallingManager.m */; };
+		181A2CF515E7FFB50036FF2D /* BeNote-archive.benote in Resources */ = {isa = PBXBuildFile; fileRef = 181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */; };
+		181A2CF615E7FFB50036FF2D /* BeNote-archive.benote in Resources */ = {isa = PBXBuildFile; fileRef = 181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */; };
+		181A2CFE15EAB8E10036FF2D /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CFD15EAB8E00036FF2D /* TopicMarshaller.m */; };
+		181A2CFF15EAB8E10036FF2D /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CFD15EAB8E00036FF2D /* TopicMarshaller.m */; };
+		181A2D0A15EABCA10036FF2D /* RootUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D0915EABCA00036FF2D /* RootUnmarshaller.m */; };
+		181A2D0B15EABCA10036FF2D /* RootUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D0915EABCA00036FF2D /* RootUnmarshaller.m */; };
+		181A2D0E15EABE680036FF2D /* NoteUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D0D15EABE680036FF2D /* NoteUnmarshaller.m */; };
+		181A2D0F15EABE680036FF2D /* NoteUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D0D15EABE680036FF2D /* NoteUnmarshaller.m */; };
+		181A2D1215EB1FB50036FF2D /* ActionItemUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D1115EB1FB40036FF2D /* ActionItemUnmarshaller.m */; };
+		181A2D1315EB1FB50036FF2D /* ActionItemUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D1115EB1FB40036FF2D /* ActionItemUnmarshaller.m */; };
+		181A2D1615EB22690036FF2D /* BNoteXmlConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D1515EB22670036FF2D /* BNoteXmlConstants.m */; };
+		181A2D1715EB22690036FF2D /* BNoteXmlConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D1515EB22670036FF2D /* BNoteXmlConstants.m */; };
 		182F1DE815BE75DF0038AC13 /* EditNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1DE715BE75DF0038AC13 /* EditNoteView.m */; };
 		182F1E6615BE9EAF0038AC13 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6515BE9EAF0038AC13 /* Photo.m */; };
 		182F1E6915BE9EB00038AC13 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6815BE9EB00038AC13 /* Question.m */; };
@@ -213,8 +227,14 @@
 		18BEF27615DEEA1D00E16CFD /* BNoteXmlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27415DEEA1D00E16CFD /* BNoteXmlFormatter.m */; };
 		18BEF27915DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */; };
 		18BEF27A15DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */; };
-		18BEF27D15DEED9900E16CFD /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */; };
-		18BEF27E15DEED9900E16CFD /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */; };
+		18BEF90B15EB340A00B37F29 /* EntryUnmarshallerBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF90A15EB340A00B37F29 /* EntryUnmarshallerBasis.m */; };
+		18BEF90C15EB340A00B37F29 /* EntryUnmarshallerBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF90A15EB340A00B37F29 /* EntryUnmarshallerBasis.m */; };
+		18BEF91015EB357800B37F29 /* QuestionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF90F15EB357700B37F29 /* QuestionUnmarshaller.m */; };
+		18BEF91115EB357800B37F29 /* QuestionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF90F15EB357700B37F29 /* QuestionUnmarshaller.m */; };
+		18BEF91415EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */; };
+		18BEF91515EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */; };
+		18BEF91815EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */; };
+		18BEF91915EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
@@ -539,6 +559,20 @@
 		181968471569FB0700DA31A3 /* NoteEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteEditorViewController.xib; sourceTree = "<group>"; };
 		181A2CE415E36B770036FF2D /* ButtonPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonPair.h; sourceTree = "<group>"; };
 		181A2CE515E36B770036FF2D /* ButtonPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonPair.m; sourceTree = "<group>"; };
+		181A2CF015E4BD7F0036FF2D /* BNoteUnarshallingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteUnarshallingManager.h; sourceTree = "<group>"; };
+		181A2CF115E4BD7F0036FF2D /* BNoteUnarshallingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteUnarshallingManager.m; sourceTree = "<group>"; };
+		181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeNote-archive.benote"; sourceTree = "<group>"; };
+		181A2CF715E804200036FF2D /* BNoteUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteUnmarshaller.h; sourceTree = "<group>"; };
+		181A2CFC15EAB8E00036FF2D /* TopicMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicMarshaller.h; sourceTree = "<group>"; };
+		181A2CFD15EAB8E00036FF2D /* TopicMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicMarshaller.m; sourceTree = "<group>"; };
+		181A2D0815EABCA00036FF2D /* RootUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootUnmarshaller.h; sourceTree = "<group>"; };
+		181A2D0915EABCA00036FF2D /* RootUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootUnmarshaller.m; sourceTree = "<group>"; };
+		181A2D0C15EABE680036FF2D /* NoteUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteUnmarshaller.h; sourceTree = "<group>"; };
+		181A2D0D15EABE680036FF2D /* NoteUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteUnmarshaller.m; sourceTree = "<group>"; };
+		181A2D1015EB1FB40036FF2D /* ActionItemUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemUnmarshaller.h; sourceTree = "<group>"; };
+		181A2D1115EB1FB40036FF2D /* ActionItemUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemUnmarshaller.m; sourceTree = "<group>"; };
+		181A2D1415EB22660036FF2D /* BNoteXmlConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteXmlConstants.h; sourceTree = "<group>"; };
+		181A2D1515EB22670036FF2D /* BNoteXmlConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteXmlConstants.m; sourceTree = "<group>"; };
 		182F1DE615BE75DF0038AC13 /* EditNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteView.h; sourceTree = "<group>"; };
 		182F1DE715BE75DF0038AC13 /* EditNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteView.m; sourceTree = "<group>"; };
 		182F1DEA15BE9B9D0038AC13 /* BeNote 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 14.xcdatamodel"; sourceTree = "<group>"; };
@@ -820,8 +854,14 @@
 		18BEF27415DEEA1D00E16CFD /* BNoteXmlFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteXmlFormatter.m; sourceTree = "<group>"; };
 		18BEF27715DEEC8900E16CFD /* BNoteMarshallerBasis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshallerBasis.h; sourceTree = "<group>"; };
 		18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteMarshallerBasis.m; sourceTree = "<group>"; };
-		18BEF27B15DEED9900E16CFD /* TopicMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicMarshaller.h; sourceTree = "<group>"; };
-		18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicMarshaller.m; sourceTree = "<group>"; };
+		18BEF90915EB340A00B37F29 /* EntryUnmarshallerBasis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryUnmarshallerBasis.h; sourceTree = "<group>"; };
+		18BEF90A15EB340A00B37F29 /* EntryUnmarshallerBasis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryUnmarshallerBasis.m; sourceTree = "<group>"; };
+		18BEF90E15EB357700B37F29 /* QuestionUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionUnmarshaller.h; sourceTree = "<group>"; };
+		18BEF90F15EB357700B37F29 /* QuestionUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionUnmarshaller.m; sourceTree = "<group>"; };
+		18BEF91215EB359500B37F29 /* KeyPointUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointUnmarshaller.h; sourceTree = "<group>"; };
+		18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointUnmarshaller.m; sourceTree = "<group>"; };
+		18BEF91615EB35A500B37F29 /* DecisionUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionUnmarshaller.h; sourceTree = "<group>"; };
+		18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionUnmarshaller.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1087,6 +1127,30 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		181A2CEF15E4BD590036FF2D /* Unmarshalling */ = {
+			isa = PBXGroup;
+			children = (
+				181A2CF015E4BD7F0036FF2D /* BNoteUnarshallingManager.h */,
+				181A2CF115E4BD7F0036FF2D /* BNoteUnarshallingManager.m */,
+				181A2CF715E804200036FF2D /* BNoteUnmarshaller.h */,
+				181A2D0815EABCA00036FF2D /* RootUnmarshaller.h */,
+				181A2D0915EABCA00036FF2D /* RootUnmarshaller.m */,
+				181A2D0C15EABE680036FF2D /* NoteUnmarshaller.h */,
+				181A2D0D15EABE680036FF2D /* NoteUnmarshaller.m */,
+				18BEF90915EB340A00B37F29 /* EntryUnmarshallerBasis.h */,
+				18BEF90A15EB340A00B37F29 /* EntryUnmarshallerBasis.m */,
+				181A2D1015EB1FB40036FF2D /* ActionItemUnmarshaller.h */,
+				181A2D1115EB1FB40036FF2D /* ActionItemUnmarshaller.m */,
+				18BEF90E15EB357700B37F29 /* QuestionUnmarshaller.h */,
+				18BEF90F15EB357700B37F29 /* QuestionUnmarshaller.m */,
+				18BEF91215EB359500B37F29 /* KeyPointUnmarshaller.h */,
+				18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */,
+				18BEF91615EB35A500B37F29 /* DecisionUnmarshaller.h */,
+				18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */,
+			);
+			name = Unmarshalling;
+			sourceTree = "<group>";
+		};
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
@@ -1147,6 +1211,7 @@
 		1834D34215634A650065788F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */,
 				18C2774F15E1B0FC009AC728 /* MiniZip */,
 				18C2775915E1B0FC009AC728 /* Objective-Zip */,
 				18C2776415E1B0FC009AC728 /* ZLib */,
@@ -1218,6 +1283,7 @@
 		18368F4B156610D200E511CB /* Service Core */ = {
 			isa = PBXGroup;
 			children = (
+				181A2CEF15E4BD590036FF2D /* Unmarshalling */,
 				18BEF26515DDF26500E16CFD /* Marashalling */,
 				18BEF25415DCB0B300E16CFD /* Archivers */,
 				18B4FB3215D0D73000619E27 /* Entry Conversion */,
@@ -1237,6 +1303,8 @@
 				18A056C3157C7B26002A4A78 /* BNoteEntryUtils.m */,
 				18A056F5157F0960002A4A78 /* BNoteImageUtils.h */,
 				18A056F6157F0960002A4A78 /* BNoteImageUtils.m */,
+				181A2D1415EB22660036FF2D /* BNoteXmlConstants.h */,
+				181A2D1515EB22670036FF2D /* BNoteXmlConstants.m */,
 			);
 			name = "Service Core";
 			sourceTree = "<group>";
@@ -1622,10 +1690,10 @@
 				18BEF27415DEEA1D00E16CFD /* BNoteXmlFormatter.m */,
 				18BEF27715DEEC8900E16CFD /* BNoteMarshallerBasis.h */,
 				18BEF27815DEEC8900E16CFD /* BNoteMarshallerBasis.m */,
+				181A2CFC15EAB8E00036FF2D /* TopicMarshaller.h */,
+				181A2CFD15EAB8E00036FF2D /* TopicMarshaller.m */,
 				18C2774915E18000009AC728 /* TopicGroupMarshaller.h */,
 				18C2774815E17FFF009AC728 /* TopicGroupMarshaller.m */,
-				18BEF27B15DEED9900E16CFD /* TopicMarshaller.h */,
-				18BEF27C15DEED9900E16CFD /* TopicMarshaller.m */,
 				18C2773315DEF936009AC728 /* NoteMarshaller.h */,
 				18C2773415DEF936009AC728 /* NoteMarshaller.m */,
 				18C2773815DEF9CC009AC728 /* KeyPointMarshaller.h */,
@@ -1994,6 +2062,7 @@
 				18D50F9915D85BB300A9650D /* Localizable.strings in Resources */,
 				18BEF24615DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF25215DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
+				181A2CF515E7FFB50036FF2D /* BeNote-archive.benote in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2064,6 +2133,7 @@
 				18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */,
 				18BEF24715DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF25315DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
+				181A2CF615E7FFB50036FF2D /* BeNote-archive.benote in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2216,7 +2286,6 @@
 				18BEF26815DDF28400E16CFD /* BNoteMarshallingManager.m in Sources */,
 				18BEF27515DEEA1D00E16CFD /* BNoteXmlFormatter.m in Sources */,
 				18BEF27915DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */,
-				18BEF27D15DEED9900E16CFD /* TopicMarshaller.m in Sources */,
 				18C2773515DEF936009AC728 /* NoteMarshaller.m in Sources */,
 				18C2773A15DEF9CC009AC728 /* KeyPointMarshaller.m in Sources */,
 				18C2773E15DF0E97009AC728 /* DecisionMarshaller.m in Sources */,
@@ -2249,6 +2318,16 @@
 				18C277AD15E1B0FC009AC728 /* zutil.c in Sources */,
 				18C277B115E1B4F5009AC728 /* BNoteExportFileWrapper.m in Sources */,
 				181A2CE615E36B770036FF2D /* ButtonPair.m in Sources */,
+				181A2CF215E4BD7F0036FF2D /* BNoteUnarshallingManager.m in Sources */,
+				181A2CFE15EAB8E10036FF2D /* TopicMarshaller.m in Sources */,
+				181A2D0A15EABCA10036FF2D /* RootUnmarshaller.m in Sources */,
+				181A2D0E15EABE680036FF2D /* NoteUnmarshaller.m in Sources */,
+				181A2D1215EB1FB50036FF2D /* ActionItemUnmarshaller.m in Sources */,
+				181A2D1615EB22690036FF2D /* BNoteXmlConstants.m in Sources */,
+				18BEF90B15EB340A00B37F29 /* EntryUnmarshallerBasis.m in Sources */,
+				18BEF91015EB357800B37F29 /* QuestionUnmarshaller.m in Sources */,
+				18BEF91415EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */,
+				18BEF91815EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2398,7 +2477,6 @@
 				18BEF26915DDF28400E16CFD /* BNoteMarshallingManager.m in Sources */,
 				18BEF27615DEEA1D00E16CFD /* BNoteXmlFormatter.m in Sources */,
 				18BEF27A15DEEC8A00E16CFD /* BNoteMarshallerBasis.m in Sources */,
-				18BEF27E15DEED9900E16CFD /* TopicMarshaller.m in Sources */,
 				18C2773615DEF936009AC728 /* NoteMarshaller.m in Sources */,
 				18C2773B15DEF9CC009AC728 /* KeyPointMarshaller.m in Sources */,
 				18C2773F15DF0E97009AC728 /* DecisionMarshaller.m in Sources */,
@@ -2431,6 +2509,16 @@
 				18C277AE15E1B0FC009AC728 /* zutil.c in Sources */,
 				18C277B215E1B4F5009AC728 /* BNoteExportFileWrapper.m in Sources */,
 				181A2CE715E36B770036FF2D /* ButtonPair.m in Sources */,
+				181A2CF315E4BD7F0036FF2D /* BNoteUnarshallingManager.m in Sources */,
+				181A2CFF15EAB8E10036FF2D /* TopicMarshaller.m in Sources */,
+				181A2D0B15EABCA10036FF2D /* RootUnmarshaller.m in Sources */,
+				181A2D0F15EABE680036FF2D /* NoteUnmarshaller.m in Sources */,
+				181A2D1315EB1FB50036FF2D /* ActionItemUnmarshaller.m in Sources */,
+				181A2D1715EB22690036FF2D /* BNoteXmlConstants.m in Sources */,
+				18BEF90C15EB340A00B37F29 /* EntryUnmarshallerBasis.m in Sources */,
+				18BEF91115EB357800B37F29 /* QuestionUnmarshaller.m in Sources */,
+				18BEF91515EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */,
+				18BEF91915EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

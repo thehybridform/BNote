@@ -12,6 +12,5 @@
 @interface BNoteMarshallerBasis : NSObject
 
 - (void)write:(NSString *)string into:(BNoteExportFileWrapper *)file;
-- (NSString *)toString:(NSTimeInterval)time;
 
 @end

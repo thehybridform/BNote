@@ -559,38 +559,55 @@ static NSString *spacing = @"   ";
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex >= 0) {
-        UIViewController *controller;
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if (title == emailNoteText) {
-            controller = [[EmailViewController alloc] initWithNote:[self note]];
+            UIViewController *controller = [[EmailViewController alloc] initWithNote:[self note]];
+            [self showModal:controller style:UIModalPresentationPageSheet];
         } else if (title == exportText) {
-            BNoteExporterViewController *exportController = [[BNoteExporterViewController alloc] initWithDefault];
-            exportController.note = self.note;
-            exportController.delegate = self;
-            controller = exportController;
+            BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
+            controller.note = self.note;
+            controller.delegate = self;
+            [self showModal:controller style:UIModalPresentationFormSheet];
         } else if (title == topicAssociationsText) {
-            TopicManagementViewController *topiCcontroller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:AssociateTopic];
-            topiCcontroller.delegate = self;
-            controller = topiCcontroller;
+            TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:AssociateTopic];
+            controller.delegate = self;
+            [self showPopup:controller];
         } else if (title == changeTopicText) {
-            TopicManagementViewController *topiCcontroller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:ChangeMainTopic];
-            topiCcontroller.delegate = self;
-            controller = topiCcontroller;
-        }
-        
-        if (controller) {
-            [controller setModalPresentationStyle:UIModalPresentationFormSheet];
-            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-            [self presentModalViewController:controller animated:YES];
+            TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:ChangeMainTopic];
+            controller.delegate = self;
+            [self showPopup:controller];
         }
     }
     
     [BNoteSessionData instance].actionSheet = nil;
 }
 
-- (void):(TopicManagementViewController *)controller finishedWithTopic:(Topic *)topic
+- (void)showModal:(UIViewController *)controller style:(UIModalPresentationStyle)style
 {
-    [controller dismissViewControllerAnimated:YES completion:^{}];
+    [controller setModalPresentationStyle:style];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [self presentModalViewController:controller animated:YES];
+}
+
+- (void)showPopup:(UIViewController *)controller
+{
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [[BNoteSessionData instance] setPopup:popup];
+    [popup setDelegate:self];
+    
+    [popup setPopoverContentSize:[[controller view] bounds].size];
+    
+    UIView *view = self.infoView;
+    CGRect rect = [view bounds];
+    
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny
+                         animated:NO];
+}
+
+- (void)finishedWithTopic:(Topic *)topic
+{
+    [[BNoteSessionData instance].popup dismissPopoverAnimated:YES];
     [self.infoView setNeedsDisplay];
     self.titleLabel.text = topic.title;
 }

@@ -14,13 +14,13 @@
 #import "BNoteSessionData.h"
 #import "BNoteLiteViewController.h"
 
-
 @interface AppDelegate()
 @property (strong, nonatomic) MainViewViewController *mainViewViewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) NSURL *url;
 
 @end
 
@@ -31,6 +31,7 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize mainViewViewController = _mainViewViewController;
+@synthesize url = _url;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
@@ -86,19 +87,27 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-
+    
     if (url) {
+        self.url = url;
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"incomming data"
+                              initWithTitle:NSLocalizedString(@"Import Notes Title", nil)
                               message:nil
                               delegate:self
-                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                              otherButtonTitles:nil];
+                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                              otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
         
         [alert show];
     }
     
     return YES;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self.mainViewViewController presentImportController:self.url];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

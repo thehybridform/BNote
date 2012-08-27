@@ -16,6 +16,7 @@
 #import "ActionItemMarshaller.h"
 #import "BNoteReader.h"
 #import "ZipWriteStream.h"
+#import "BNoteXmlConstants.h"
 
 @interface BNoteMarshallingManager()
 @property (strong, nonatomic) NSMutableArray *marshallers;
@@ -51,6 +52,8 @@ static NSString *xmlFile = @"bnote.xml";
     ZipFile *zipFile= [[ZipFile alloc] initWithFileName:zipPath mode:ZipFileModeCreate];
     fileWrapper.zipFile = zipFile;
     
+    [self initMarshallers];
+    
     [self write:kBeNoteOpen into:fileWrapper];
     if (data) {
         [self marshall:data into:fileWrapper];
@@ -62,6 +65,8 @@ static NSString *xmlFile = @"bnote.xml";
     [self write:kBeNoteClose into:fileWrapper];
     
     [file closeFile];
+    
+    [self clearMarshallers];
     
     if (error) {
         NSLog(@"%@",error);
@@ -90,21 +95,30 @@ static NSString *xmlFile = @"bnote.xml";
     return NO;
 }
 
+- (void)initMarshallers
+{
+    NSMutableArray *marshallers = [[NSMutableArray alloc] init];
+    self.marshallers = marshallers;
+    
+    [marshallers addObject:[[TopicGroupMarshaller alloc] init]];
+    [marshallers addObject:[[TopicMarshaller alloc] init]];
+    [marshallers addObject:[[NoteMarshaller alloc] init]];
+    [marshallers addObject:[[KeyPointMarshaller alloc] init]];
+    [marshallers addObject:[[DecisionMarshaller alloc] init]];
+    [marshallers addObject:[[QuestionMarshaller alloc] init]];
+    [marshallers addObject:[[ActionItemMarshaller alloc] init]];
+}
+
+- (void)clearMarshallers
+{
+    self.marshallers = nil;
+}
+
 - (id)initSingleton
 {
     self = [super init];
     
     if (self) {
-        NSMutableArray *marshallers = [[NSMutableArray alloc] init];
-        self.marshallers = marshallers;
-        
-        [marshallers addObject:[[TopicGroupMarshaller alloc] init]];
-        [marshallers addObject:[[TopicMarshaller alloc] init]];
-        [marshallers addObject:[[NoteMarshaller alloc] init]];
-        [marshallers addObject:[[KeyPointMarshaller alloc] init]];
-        [marshallers addObject:[[DecisionMarshaller alloc] init]];
-        [marshallers addObject:[[QuestionMarshaller alloc] init]];
-        [marshallers addObject:[[ActionItemMarshaller alloc] init]];
     }
     
     return self;

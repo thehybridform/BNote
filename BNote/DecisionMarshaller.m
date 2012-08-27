@@ -10,10 +10,10 @@
 #import "Decision.h"
 #import "BNoteXmlFormatter.h"
 #import "BNoteMarshallingManager.h"
+#import "BNoteXmlConstants.h"
 
 @implementation DecisionMarshaller
 
-static NSString *kDecision = @"decision";
 
 - (BOOL)accept:(id)obj
 {
@@ -27,10 +27,10 @@ static NSString *kDecision = @"decision";
     NSString *s = [BNoteXmlFormatter node:kText withText:decision.text];
     [self write:s into:file];
     
-    s = [BNoteXmlFormatter node:kCreated withText:[self toString:decision.created]];
+    s = [BNoteXmlFormatter node:kCreated withText:[BNoteXmlConstants toString:decision.created]];
     [self write:s into:file];
     
-    s = [BNoteXmlFormatter node:kLastUpdated withText:[self toString:decision.lastUpdated]];
+    s = [BNoteXmlFormatter node:kLastUpdated withText:[BNoteXmlConstants toString:decision.lastUpdated]];
     [self write:s into:file];
     
     [self write:[BNoteXmlFormatter closeTag:kDecision] into:file];

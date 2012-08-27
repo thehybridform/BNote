@@ -12,14 +12,10 @@
 #import "BNoteMarshallingManager.h"
 #import "ZipWriteStream.h"
 #import "Photo.h"
+#import "BNoteXmlConstants.h"
 
 @implementation KeyPointMarshaller
 
-static NSString *kKeyPoint = @"key-point";
-static NSString *kPhoto = @"photo";
-static NSString *kLocation = @"location";
-static NSString *kFormat = @"format";
-static NSString *kJpeg = @"image/jpeg";
 
 - (BOOL)accept:(id)obj
 {
@@ -33,10 +29,10 @@ static NSString *kJpeg = @"image/jpeg";
     NSString *s = [BNoteXmlFormatter node:kText withText:keyPoint.text];
     [self write:s into:file];
     
-    s = [BNoteXmlFormatter node:kCreated withText:[self toString:keyPoint.created]];
+    s = [BNoteXmlFormatter node:kCreated withText:[BNoteXmlConstants toString:keyPoint.created]];
     [self write:s into:file];
 
-    s = [BNoteXmlFormatter node:kLastUpdated withText:[self toString:keyPoint.lastUpdated]];
+    s = [BNoteXmlFormatter node:kLastUpdated withText:[BNoteXmlConstants toString:keyPoint.lastUpdated]];
     [self write:s into:file];
     
     if (keyPoint.photo) {

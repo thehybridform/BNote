@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) Topic *searchTopic;
+@property (strong, nonatomic) TopicGroup *currentTopicGroup;
 
 @end
 
@@ -32,6 +33,7 @@
 @synthesize editButton = _editButton;
 @synthesize listener = _listener;
 @synthesize addTopicButton = _addTopicButton;
+@synthesize currentTopicGroup = _currentTopicGroup;
 
 static NSString *filterdGroupText;
 
@@ -231,6 +233,8 @@ static NSString *filterdGroupText;
 
 - (void)selectTopicGroup:(TopicGroup *)topicGroup
 {
+    self.currentTopicGroup = topicGroup;
+    
     [self setData:[[topicGroup topics] mutableCopy]];
     
     [[self tableView] reloadData];
@@ -270,7 +274,7 @@ static NSString *filterdGroupText;
 - (IBAction)addTopic:(id)sender
 {
 #ifdef LITE
-    if ([[[self topicGroup] topics] count] > kMaxTopics) {
+    if (self.currentTopicGroup.topics.count > kMaxTopics) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:NSLocalizedString(@"More Topics Not Supported", nil)
                               message:nil

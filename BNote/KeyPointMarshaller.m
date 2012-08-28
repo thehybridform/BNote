@@ -51,12 +51,13 @@
         
         [stream writeData:data];
         [stream finishedWriting];
+
+        [self write:[BNoteXmlFormatter openTag:kPhoto] into:file];
  
         s = [BNoteXmlFormatter node:kLocation withText:location];
         [self write:s into:file];
 
-        s = [BNoteXmlFormatter node:kLocation withText:kJpeg];
-        [self write:s into:file];
+        [self write:[BNoteXmlFormatter closeTag:kPhoto] into:file];
     }
     
     [self write:[BNoteXmlFormatter closeTag:kKeyPoint] into:file];

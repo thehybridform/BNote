@@ -18,6 +18,7 @@
 #import "BNoteReader.h"
 #import "ZipWriteStream.h"
 #import "BNoteXmlConstants.h"
+#import "BNoteFileUtils.h"
 
 @interface BNoteMarshallingManager()
 @property (strong, nonatomic) NSMutableArray *marshallers;
@@ -38,8 +39,7 @@ static NSString *xmlFile = @"bnote.xml";
     NSString *path = [documentsDirectory
                       stringByAppendingPathComponent:xmlFile];
     
-    NSError *error;
-    [@"" writeToFile:path atomically:NO encoding:NSUnicodeStringEncoding error:&error];
+    [BNoteFileUtils primeFileForWriting:path];
     
     NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:path];
     
@@ -69,10 +69,6 @@ static NSString *xmlFile = @"bnote.xml";
     
     [self clearMarshallers];
     
-    if (error) {
-        NSLog(@"%@",error);
-    }
-        
     ZipWriteStream *stream = [zipFile writeFileInZipWithName:[@"benote/xml/" stringByAppendingString:xmlFile] compressionLevel:ZipCompressionLevelBest];
     [stream writeData:[NSData dataWithContentsOfFile:path]];
     [stream finishedWriting];

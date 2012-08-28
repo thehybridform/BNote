@@ -194,6 +194,14 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return entry;
 }
 
++ (Photo *)createPhoto
+{
+    Photo *photo = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Photo"];
+    [photo setCreated:[NSDate timeIntervalSinceReferenceDate]];
+    
+    return photo;
+}
+
 + (Photo *)createPhoto:(KeyPoint *)keyPoint
 {
     Photo *photo = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Photo"];

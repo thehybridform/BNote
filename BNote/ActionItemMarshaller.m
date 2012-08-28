@@ -48,7 +48,7 @@
         
         [self write:[BNoteXmlFormatter openTag:kResponsibility] into:file];
         
-        NSString *s = [BNoteXmlFormatter node:kFirstName withText:attendant.firstName];
+        s = [BNoteXmlFormatter node:kFirstName withText:attendant.firstName];
         [self write:s into:file];
         
         s = [BNoteXmlFormatter node:kLastName withText:attendant.lastName];

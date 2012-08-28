@@ -54,6 +54,8 @@ typedef enum {
     FirstNameNode,
     LastNameNode,
     EmailNode,
+    LocationNode,
+    MimeTypeNode,
     
     NoNode
 } CurrentNode;

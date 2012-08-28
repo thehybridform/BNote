@@ -10,14 +10,17 @@
 #import "BNoteFactory.h"
 #import "BNoteXmlConstants.h"
 #import "KeyPoint.h"
+#import "PhotoUnmarshaller.h"
 
 @interface KeyPointUnmarshaller()
 @property (strong, nonatomic) KeyPoint *keyPoint;
+@property (strong, nonatomic) PhotoUnmarshaller *photoUnmarshaller;
 
 @end
 
 @implementation KeyPointUnmarshaller
 @synthesize keyPoint = _keyPoint;
+@synthesize photoUnmarshaller = _photoUnmarshaller;
 
 - (NSString *)nodeName
 {
@@ -38,7 +41,9 @@
     } else if ([elementName isEqualToString:kLastUpdated]) {
         self.nodeType = LastUpdatedDateNode;
     } else if ([elementName isEqualToString:kPhoto]) {
-        self.nodeType = PhotoNode;
+        self.photoUnmarshaller = [[PhotoUnmarshaller alloc] initWithNote:self.note andPreviousParser:self];
+        self.photoUnmarshaller.keyPoint = self.keyPoint;
+        parser.delegate = self.photoUnmarshaller;
     } else {
         self.nodeType = NoNode;
     }    
@@ -59,10 +64,6 @@
             
         case LastUpdatedDateNode:
             self.keyPoint.lastUpdated = [BNoteXmlConstants toTimeInterval:string];
-            break;
-            
-        case PhotoNode:
-
             break;
             
         default:

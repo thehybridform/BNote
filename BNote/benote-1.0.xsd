@@ -89,8 +89,8 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="location" type="xs:string" maxOccurs="1" minOccurs="1"/>
+                <xs:element name="mime-type" type="image-mime-types" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="mime-type" type="image-mime-types" use="required"/>
         </xs:complexType>
     </xs:element>
     
@@ -106,7 +106,7 @@
     
     <xs:simpleType name="image-mime-types">
         <xs:restriction base="xs:string">
-            <xs:pattern value="image/jpeg|image/gif|image/png" />
+            <xs:pattern value="image/jpeg|image/jpg|image/gif|image/png" />
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

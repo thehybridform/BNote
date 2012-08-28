@@ -7,11 +7,11 @@
 //
 
 #import "BNoteUnarshallingManager.h"
-#import "ZipFile.h"
 #import "FileInZipInfo.h"
 #import "ZipException.h"
 #import "RootUnmarshaller.h"
 #import "BNoteWriter.h"
+#import "BNoteFileUtils.h"
 
 @interface BNoteUnarshallingManager()
 @property (strong, nonatomic) id<NSXMLParserDelegate> benoteParser;
@@ -22,6 +22,7 @@
 
 @implementation BNoteUnarshallingManager
 @synthesize benoteParser = _benoteParser;
+@synthesize zipFile = _zipFile;
 
 static int BUFFER_SIZE = 1024;
 static NSString *xmlFile = @"bnote.xml";
@@ -29,14 +30,13 @@ static NSString *kBeNote = @"benote";
 
 - (void)delegate:(id<UnmarshallerListener>)delegate unmarshallUrl:(NSURL *)url
 {
-    ZipFile *zipFile;
     @try {
-        zipFile = [[ZipFile alloc] initWithFileName:url.path mode:ZipFileModeUnzip];
+        self.zipFile = [[ZipFile alloc] initWithFileName:url.path mode:ZipFileModeUnzip];
 
         NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
         NSString *filename = [documentsDirectory stringByAppendingPathComponent:xmlFile];
 
-        BOOL result = [self extractXml:zipFile toFile:filename];
+        BOOL result = [self extractXml:self.zipFile toFile:filename];
         if (result) {
 
             NSInputStream *in = [[NSInputStream alloc] initWithFileAtPath:filename];
@@ -55,8 +55,9 @@ static NSString *kBeNote = @"benote";
         NSLog(@"failed to parse, %@", exception);
     }
     @finally {
-        if (zipFile) {
-            [zipFile close];
+        if (self.zipFile) {
+            [self.zipFile close];
+            self.zipFile = nil;
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kRefetchAllDatabaseData object:nil];
@@ -76,6 +77,7 @@ static NSString *kBeNote = @"benote";
     }
         
     if (xml && [zipFile locateFileInZip:xml]) {
+        [BNoteFileUtils primeFileForWriting:filename];
         ZipReadStream *stream = [zipFile readCurrentFileInZip];
         [BNoteUnarshallingManager writeZipReadStream:stream toFile:filename];
         return YES;

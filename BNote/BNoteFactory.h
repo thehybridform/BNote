@@ -86,6 +86,7 @@ typedef enum {
 + (KeyPoint *)createKeyPoint:(Note *)note;
 + (Decision *)createDecision:(Note *)note;
 + (Attendants *)createAttendants:(Note *)note;
++ (Photo *)createPhoto;
 + (Photo *)createPhoto:(KeyPoint *)keyPoint;
 + (KeyWord *)createKeyWord:(NSString *)word;
 + (Attendant *)createAttendant;

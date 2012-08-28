@@ -242,6 +242,10 @@
 		18BEF92E15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */; };
 		18BEF93115EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */; };
 		18BEF93215EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */; };
+		18BEF93515EC6DE400B37F29 /* PhotoUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */; };
+		18BEF93615EC6DE400B37F29 /* PhotoUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */; };
+		18BEF93915EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */; };
+		18BEF93A15EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
@@ -875,6 +879,10 @@
 		18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeUnmarshaller.m; sourceTree = "<group>"; };
 		18BEF92F15EC33EE00B37F29 /* ResponsibilityUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsibilityUnmarshaller.h; sourceTree = "<group>"; };
 		18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsibilityUnmarshaller.m; sourceTree = "<group>"; };
+		18BEF93315EC6DE200B37F29 /* PhotoUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUnmarshaller.h; sourceTree = "<group>"; };
+		18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUnmarshaller.m; sourceTree = "<group>"; };
+		18BEF93715EC7CF900B37F29 /* BNoteFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFileUtils.h; sourceTree = "<group>"; };
+		18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFileUtils.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1164,6 +1172,8 @@
 				18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */,
 				18BEF92F15EC33EE00B37F29 /* ResponsibilityUnmarshaller.h */,
 				18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */,
+				18BEF93315EC6DE200B37F29 /* PhotoUnmarshaller.h */,
+				18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */,
 			);
 			name = Unmarshalling;
 			sourceTree = "<group>";
@@ -1322,6 +1332,8 @@
 				18A056F6157F0960002A4A78 /* BNoteImageUtils.m */,
 				181A2D1415EB22660036FF2D /* BNoteXmlConstants.h */,
 				181A2D1515EB22670036FF2D /* BNoteXmlConstants.m */,
+				18BEF93715EC7CF900B37F29 /* BNoteFileUtils.h */,
+				18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */,
 			);
 			name = "Service Core";
 			sourceTree = "<group>";
@@ -2350,6 +2362,8 @@
 				18BEF92915EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */,
 				18BEF92D15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */,
 				18BEF93115EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
+				18BEF93515EC6DE400B37F29 /* PhotoUnmarshaller.m in Sources */,
+				18BEF93915EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2544,6 +2558,8 @@
 				18BEF92A15EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */,
 				18BEF92E15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */,
 				18BEF93215EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
+				18BEF93615EC6DE400B37F29 /* PhotoUnmarshaller.m in Sources */,
+				18BEF93A15EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

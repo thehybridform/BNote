@@ -177,7 +177,7 @@ static NSString *spacing = @"   ";
 
     emailNoteText = NSLocalizedString(@"Email Selected Note", nil);
     exportText = NSLocalizedString(@"Archive Options", nil);
-    changeTopicText = NSLocalizedString(@"Change Topic", nil);
+    changeTopicText = NSLocalizedString(@"Change Topic ", nil);
     topicAssociationsText = NSLocalizedString(@"Associated Topics", nil);
 
     return self;

@@ -67,6 +67,8 @@
 
 static NSString *emailTopicText;
 static NSString *exportText;
+static NSString *notesText;
+static NSString *peopleText;
 
 - (void)viewDidUnload
 {
@@ -106,6 +108,8 @@ static NSString *exportText;
     
     emailTopicText = NSLocalizedString(@"Email Selected Topic", nil);
     exportText = NSLocalizedString(@"Archive Options", nil);
+    notesText = NSLocalizedString(@"Notes", nil);
+    peopleText = NSLocalizedString(@"People", nil);
 
     return self;
 }
@@ -129,6 +133,9 @@ static NSString *exportText;
     [[self notesLabel] setFont:[BNoteConstants font:RobotoRegular andSize:18.0]];
     [[self peopleLabel] setFont:[BNoteConstants font:RobotoRegular andSize:14.0]];
     [[self countLabel] setFont:[BNoteConstants font:RobotoRegular andSize:24.0]];
+    
+    self.notesLabel.text = notesText;
+    self.peopleLabel.text = peopleText;
 
     [[self detailView] setHidden:YES];
     [[self detailView] setBackgroundColor:[BNoteConstants appColor1]];

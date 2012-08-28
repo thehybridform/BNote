@@ -46,12 +46,12 @@
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 - (NSString *)nodeName

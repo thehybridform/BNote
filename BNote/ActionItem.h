@@ -2,19 +2,20 @@
 //  ActionItem.h
 //  BeNote
 //
-//  Created by Young Kristin on 7/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by kristin young on 8/27/12.
+//
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Entry.h"
 
+@class Attendant;
 
 @interface ActionItem : Entry
 
 @property (nonatomic) NSTimeInterval completed;
 @property (nonatomic) NSTimeInterval dueDate;
-@property (nonatomic, retain) NSString * responsibility;
+@property (nonatomic, retain) Attendant *attendant;
 
 @end

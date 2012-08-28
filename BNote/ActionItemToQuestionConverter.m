@@ -17,8 +17,10 @@
         ActionItem *actionItem = (ActionItem *)entryFrom;
         NSString *text = [actionItem text];
         
-        if ([actionItem responsibility]) {
-            text = [BNoteStringUtils append:text, kNewLine, @"Responsibility: ", [actionItem responsibility], nil];
+        if ([actionItem attendant]) {
+            Attendant *attendant = actionItem.attendant;
+            NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, nil];
+            text = [BNoteStringUtils append:text, kNewLine, @"Responsibility: ", name, nil];
         }
         
         if ([actionItem dueDate]) {

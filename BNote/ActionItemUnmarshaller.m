@@ -9,14 +9,17 @@
 #import "ActionItemUnmarshaller.h"
 #import "BNoteFactory.h"
 #import "BNoteXmlConstants.h"
+#import "ResponsibilityUnmarshaller.h"
 
 @interface ActionItemUnmarshaller()
 @property (strong, nonatomic) ActionItem *actionItem;
+@property (strong, nonatomic) ResponsibilityUnmarshaller *responsibilityUnmarshaller;
 
 @end
 
 @implementation ActionItemUnmarshaller
 @synthesize actionItem = _actionItem;
+@synthesize responsibilityUnmarshaller = _responsibilityUnmarshaller;
 
 - (NSString *)nodeName
 {
@@ -41,14 +44,17 @@
     } else if ([elementName isEqualToString:kCompletedDate]) {
         self.nodeType = CompletedDateNode;
     } else if ([elementName isEqualToString:kResponsibility]) {
-        self.nodeType = ResponsibilityNode;
+        self.responsibilityUnmarshaller = [[ResponsibilityUnmarshaller alloc] initWithNote:self.note andPreviousParser:self];
+        parser.delegate = self.responsibilityUnmarshaller;
     } else {
         self.nodeType = NoNode;
     }
 }
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)text
 {
+    NSString *string = [BNoteStringUtils trim:text];
+    
     switch (self.nodeType) {
         case TextNode:
             self.actionItem.text = string;
@@ -68,10 +74,6 @@
             
         case CompletedDateNode:
             self.actionItem.completed = [BNoteXmlConstants toTimeInterval:string];
-            break;
-            
-        case ResponsibilityNode:
-            
             break;
             
         default:

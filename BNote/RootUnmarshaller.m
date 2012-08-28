@@ -33,19 +33,14 @@
     
 }
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-{
-    
-}
-
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 @end

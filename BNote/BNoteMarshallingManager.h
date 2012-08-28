@@ -12,6 +12,7 @@
 #import "BNoteExportFileWrapper.h"
 
 @interface BNoteMarshallingManager : BNoteMarshallerBasis <BNoteMarshaller>
+@property (strong, nonatomic) NSMutableArray *marshalledNotes;
 
 + (BNoteMarshallingManager *)instance;
 

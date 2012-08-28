@@ -44,8 +44,10 @@
     }    
 }
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)text
 {
+    NSString *string = [BNoteStringUtils trim:text];
+    
     switch (self.nodeType) {
         case TextNode:
             self.keyPoint.text = string;

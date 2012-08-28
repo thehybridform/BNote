@@ -43,6 +43,23 @@
         [self write:s into:file];
     }
     
+    if (actionItem.attendant) {
+        Attendant *attendant = actionItem.attendant;
+        
+        [self write:[BNoteXmlFormatter openTag:kResponsibility] into:file];
+        
+        NSString *s = [BNoteXmlFormatter node:kFirstName withText:attendant.firstName];
+        [self write:s into:file];
+        
+        s = [BNoteXmlFormatter node:kLastName withText:attendant.lastName];
+        [self write:s into:file];
+        
+        s = [BNoteXmlFormatter node:kEmail withText:attendant.email];
+        [self write:s into:file];
+        
+        [self write:[BNoteXmlFormatter closeTag:kResponsibility] into:file];
+    }
+    
     [self write:[BNoteXmlFormatter closeTag:kActionItem] into:file];
 }
 

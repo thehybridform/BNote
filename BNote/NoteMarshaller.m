@@ -22,6 +22,10 @@
 
 - (void)marshall:(Note *)note into:(BNoteExportFileWrapper *)file
 {
+    if ([[BNoteMarshallingManager instance].marshalledNotes containsObject:note]) {
+        return;
+    }
+    
     [self write:[BNoteXmlFormatter openTag:kNote] into:file];
     
     NSString *s = [BNoteXmlFormatter node:kSubject withText:note.subject];
@@ -46,7 +50,14 @@
     s = [BNoteXmlFormatter node:kTopicName withText:note.topic.title];
     [self write:s into:file];
     
+    for (Topic *topic in note.associatedTopics) {
+        s = [BNoteXmlFormatter node:kAssociatedTopicName withText:topic.title];
+        [self write:s into:file];
+    }
+    
     [self write:[BNoteXmlFormatter closeTag:kNote] into:file];
+    
+    [[BNoteMarshallingManager instance].marshalledNotes addObject:note];
 }
 
 @end

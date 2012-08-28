@@ -426,13 +426,6 @@ static NSString *exportText;
     [BNoteSessionData setString:[topicGroup name] forKey:kTopicGroupSelected];
 }
 
-- (IBAction)testImport:(id)sender
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"BeNote-archive" ofType:@"benote"];
-    NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
-    [self presentImportController:url];
-}
-
 - (void)presentImportController:(NSURL *)url
 {
     [[BNoteUnarshallingManager instance] delegate:nil unmarshallUrl:url];

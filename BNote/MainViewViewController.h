@@ -23,6 +23,4 @@
 
 - (void)presentImportController:(NSURL *)url;
 
-- (IBAction)testImport:(id)sender;
-
 @end

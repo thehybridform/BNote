@@ -102,12 +102,12 @@ static NSString *kBeNote = @"benote";
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 + (void)writeZipReadStream:(ZipReadStream *)stream toFile:(NSString *)filename

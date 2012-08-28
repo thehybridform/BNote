@@ -46,7 +46,6 @@
 		182F1E6C15BE9EB00038AC13 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6B15BE9EB00038AC13 /* KeyPoint.m */; };
 		182F1E7515BE9EB10038AC13 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7415BE9EB10038AC13 /* Entry.m */; };
 		182F1E7815BE9EB10038AC13 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7715BE9EB10038AC13 /* Attendant.m */; };
-		182F1E7B15BE9EB10038AC13 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7A15BE9EB10038AC13 /* ActionItem.m */; };
 		182F1E7E15BE9EB10038AC13 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7D15BE9EB10038AC13 /* Attendants.m */; };
 		182F1E8115BE9EB20038AC13 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8015BE9EB20038AC13 /* Decision.m */; };
 		182F1E8415BE9EB20038AC13 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8315BE9EB20038AC13 /* KeyWord.m */; };
@@ -235,6 +234,14 @@
 		18BEF91515EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */; };
 		18BEF91815EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */; };
 		18BEF91915EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */; };
+		18BEF92515EC2AF400B37F29 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92415EC2AF400B37F29 /* ActionItem.m */; };
+		18BEF92615EC2AF400B37F29 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92415EC2AF400B37F29 /* ActionItem.m */; };
+		18BEF92915EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92815EC2E8D00B37F29 /* AttendeeMarshaller.m */; };
+		18BEF92A15EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92815EC2E8D00B37F29 /* AttendeeMarshaller.m */; };
+		18BEF92D15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */; };
+		18BEF92E15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */; };
+		18BEF93115EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */; };
+		18BEF93215EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
@@ -437,7 +444,6 @@
 		18F4E22715CE4843002095A2 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6B15BE9EB00038AC13 /* KeyPoint.m */; };
 		18F4E22815CE4843002095A2 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7415BE9EB10038AC13 /* Entry.m */; };
 		18F4E22915CE4843002095A2 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7715BE9EB10038AC13 /* Attendant.m */; };
-		18F4E22A15CE4843002095A2 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7A15BE9EB10038AC13 /* ActionItem.m */; };
 		18F4E22B15CE4843002095A2 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7D15BE9EB10038AC13 /* Attendants.m */; };
 		18F4E22C15CE4843002095A2 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8015BE9EB20038AC13 /* Decision.m */; };
 		18F4E22D15CE4843002095A2 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8315BE9EB20038AC13 /* KeyWord.m */; };
@@ -587,8 +593,6 @@
 		182F1E7415BE9EB10038AC13 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		182F1E7615BE9EB10038AC13 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
 		182F1E7715BE9EB10038AC13 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
-		182F1E7915BE9EB10038AC13 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		182F1E7A15BE9EB10038AC13 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
 		182F1E7C15BE9EB10038AC13 /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
 		182F1E7D15BE9EB10038AC13 /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
 		182F1E7F15BE9EB20038AC13 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
@@ -862,6 +866,15 @@
 		18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointUnmarshaller.m; sourceTree = "<group>"; };
 		18BEF91615EB35A500B37F29 /* DecisionUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionUnmarshaller.h; sourceTree = "<group>"; };
 		18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionUnmarshaller.m; sourceTree = "<group>"; };
+		18BEF91A15EC293E00B37F29 /* BeNote 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeNote 19.xcdatamodel"; sourceTree = "<group>"; };
+		18BEF92315EC2AF400B37F29 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		18BEF92415EC2AF400B37F29 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		18BEF92715EC2E8D00B37F29 /* AttendeeMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeMarshaller.h; sourceTree = "<group>"; };
+		18BEF92815EC2E8D00B37F29 /* AttendeeMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeMarshaller.m; sourceTree = "<group>"; };
+		18BEF92B15EC311900B37F29 /* AttendeeUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeUnmarshaller.h; sourceTree = "<group>"; };
+		18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeUnmarshaller.m; sourceTree = "<group>"; };
+		18BEF92F15EC33EE00B37F29 /* ResponsibilityUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsibilityUnmarshaller.h; sourceTree = "<group>"; };
+		18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsibilityUnmarshaller.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1147,6 +1160,10 @@
 				18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */,
 				18BEF91615EB35A500B37F29 /* DecisionUnmarshaller.h */,
 				18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */,
+				18BEF92B15EC311900B37F29 /* AttendeeUnmarshaller.h */,
+				18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */,
+				18BEF92F15EC33EE00B37F29 /* ResponsibilityUnmarshaller.h */,
+				18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */,
 			);
 			name = Unmarshalling;
 			sourceTree = "<group>";
@@ -1250,6 +1267,8 @@
 			isa = PBXGroup;
 			children = (
 				18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */,
+				18BEF92315EC2AF400B37F29 /* ActionItem.h */,
+				18BEF92415EC2AF400B37F29 /* ActionItem.m */,
 				18F290CE15CD9CEE00543E65 /* TopicGroup.h */,
 				18F290CF15CD9CEE00543E65 /* TopicGroup.m */,
 				185C403115CD972A0036BCBD /* Note.h */,
@@ -1264,8 +1283,6 @@
 				182F1E8015BE9EB20038AC13 /* Decision.m */,
 				182F1E7C15BE9EB10038AC13 /* Attendants.h */,
 				182F1E7D15BE9EB10038AC13 /* Attendants.m */,
-				182F1E7915BE9EB10038AC13 /* ActionItem.h */,
-				182F1E7A15BE9EB10038AC13 /* ActionItem.m */,
 				182F1E7615BE9EB10038AC13 /* Attendant.h */,
 				182F1E7715BE9EB10038AC13 /* Attendant.m */,
 				182F1E7315BE9EB10038AC13 /* Entry.h */,
@@ -1706,6 +1723,8 @@
 				18C2774515DF1018009AC728 /* ActionItemMarshaller.m */,
 				18C277AF15E1B4F2009AC728 /* BNoteExportFileWrapper.h */,
 				18C277B015E1B4F3009AC728 /* BNoteExportFileWrapper.m */,
+				18BEF92715EC2E8D00B37F29 /* AttendeeMarshaller.h */,
+				18BEF92815EC2E8D00B37F29 /* AttendeeMarshaller.m */,
 			);
 			name = Marashalling;
 			sourceTree = "<group>";
@@ -2242,7 +2261,6 @@
 				182F1E6C15BE9EB00038AC13 /* KeyPoint.m in Sources */,
 				182F1E7515BE9EB10038AC13 /* Entry.m in Sources */,
 				182F1E7815BE9EB10038AC13 /* Attendant.m in Sources */,
-				182F1E7B15BE9EB10038AC13 /* ActionItem.m in Sources */,
 				182F1E7E15BE9EB10038AC13 /* Attendants.m in Sources */,
 				182F1E8115BE9EB20038AC13 /* Decision.m in Sources */,
 				182F1E8415BE9EB20038AC13 /* KeyWord.m in Sources */,
@@ -2328,6 +2346,10 @@
 				18BEF91015EB357800B37F29 /* QuestionUnmarshaller.m in Sources */,
 				18BEF91415EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */,
 				18BEF91815EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */,
+				18BEF92515EC2AF400B37F29 /* ActionItem.m in Sources */,
+				18BEF92915EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */,
+				18BEF92D15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */,
+				18BEF93115EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2436,7 +2458,6 @@
 				18F4E22715CE4843002095A2 /* KeyPoint.m in Sources */,
 				18F4E22815CE4843002095A2 /* Entry.m in Sources */,
 				18F4E22915CE4843002095A2 /* Attendant.m in Sources */,
-				18F4E22A15CE4843002095A2 /* ActionItem.m in Sources */,
 				18F4E22B15CE4843002095A2 /* Attendants.m in Sources */,
 				18F4E22C15CE4843002095A2 /* Decision.m in Sources */,
 				18F4E22D15CE4843002095A2 /* KeyWord.m in Sources */,
@@ -2519,6 +2540,10 @@
 				18BEF91115EB357800B37F29 /* QuestionUnmarshaller.m in Sources */,
 				18BEF91515EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */,
 				18BEF91915EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */,
+				18BEF92615EC2AF400B37F29 /* ActionItem.m in Sources */,
+				18BEF92A15EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */,
+				18BEF92E15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */,
+				18BEF93215EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2696,6 +2721,7 @@
 			children = (
 				185C402F15CD96730036BCBD /* BeNote 17.xcdatamodel */,
 				18F290D115CD9D1D00543E65 /* BeNote 18.xcdatamodel */,
+				18BEF91A15EC293E00B37F29 /* BeNote 19.xcdatamodel */,
 				1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */,
 				18ECE8E415A15BC3009E5D0B /* BeNote 11.xcdatamodel */,
 				18ECE90915A1726E009E5D0B /* BeNote 12.xcdatamodel */,
@@ -2713,7 +2739,7 @@
 				18BA95D2158D5860004A4A38 /* BeNote 2.xcdatamodel */,
 				18B2361B158AEC4B009D17D2 /* BeNote.xcdatamodel */,
 			);
-			currentVersion = 18F290D115CD9D1D00543E65 /* BeNote 18.xcdatamodel */;
+			currentVersion = 18BEF91A15EC293E00B37F29 /* BeNote 19.xcdatamodel */;
 			path = BeNote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

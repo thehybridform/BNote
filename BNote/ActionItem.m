@@ -2,17 +2,18 @@
 //  ActionItem.m
 //  BeNote
 //
-//  Created by Young Kristin on 7/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by kristin young on 8/27/12.
+//
 //
 
 #import "ActionItem.h"
+#import "Attendant.h"
 
 
 @implementation ActionItem
 
 @dynamic completed;
 @dynamic dueDate;
-@dynamic responsibility;
+@dynamic attendant;
 
 @end

@@ -126,11 +126,18 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return note;
 }
 
++ (Attendant *)createAttendant
+{
+    Attendant *attendant = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Attendees"];
+
+    return attendant;
+}
+
 + (Attendant *)createAttendant:(Attendants *)attendants
 {
     Attendant *attendant = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Attendees"];
     [attendant setParent:attendants];
-
+    
     return attendant;
 }
 

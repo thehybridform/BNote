@@ -152,14 +152,13 @@ static NSString *completedOnDateText;
 
 - (void)clearResponsibility
 {
-    [[self actionItem] setResponsibility:nil];
+    [self actionItem].attendant = nil;
     [self updateResponsibility];
 }
 
 - (void)selectedAttendant:(Attendant *)attendant
 {
-    NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
-    [[self actionItem] setResponsibility:name];
+    [self actionItem].attendant = attendant;
     
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
     [[BNoteSessionData instance] setPopup:nil];
@@ -232,8 +231,11 @@ static NSString *completedOnDateText;
 
 - (void)updateResponsibility
 {
-    if ([[self actionItem] responsibility]) {
-        [[self responsibilityLabel] setText:[[self actionItem] responsibility]];
+    if ([[self actionItem] attendant]) {
+        Attendant *attendant = [self actionItem].attendant;
+        NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, nil];
+
+        [[self responsibilityLabel] setText:name];
     } else {
         [[self responsibilityLabel] setText:noResponsibilityText];
     }
@@ -264,7 +266,7 @@ static NSString *completedOnDateText;
 
 - (void)handleResponsibility:(id)sender
 {
-    if ([[self actionItem] responsibility]) {
+    if ([[self actionItem] attendant]) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
         [[BNoteSessionData instance] setActionSheet:actionSheet];
         [actionSheet setDelegate:[BNoteSessionData instance]];

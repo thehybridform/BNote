@@ -41,8 +41,12 @@
     }
 
     NSString *responsibilityText;
-    if ([actionItem responsibility]) {
-        responsibilityText = [BNoteStringUtils append:NSLocalizedString(@"Assigned to", nil), @" ", [actionItem responsibility], nil];
+    if ([actionItem attendant]) {
+        if ([actionItem attendant]) {
+            Attendant *attendant = actionItem.attendant;
+            NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, nil];
+            responsibilityText = [BNoteStringUtils append:@" ", NSLocalizedString(@"Assigned to", nil), @": ", name, nil];
+        }
     } else {
         responsibilityText = NSLocalizedString(@"Not assigned", nil);
     }

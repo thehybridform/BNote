@@ -13,6 +13,7 @@
 #import "QuestionUnmarshaller.h"
 #import "KeyPointUnmarshaller.h"
 #import "DecisionUnmarshaller.h"
+#import "AttendeeUnmarshaller.h"
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 #import "Topic.h"
@@ -44,6 +45,7 @@
         [self.parsers addObject:[[QuestionUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
         [self.parsers addObject:[[KeyPointUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
         [self.parsers addObject:[[DecisionUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
+        [self.parsers addObject:[[AttendeeUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
     }
     
     return self;
@@ -61,6 +63,8 @@
         self.nodeType = SubjectNode;
     } else if ([elementName isEqualToString:kTopicName]) {
         self.nodeType = TopicNode;
+    } else if ([elementName isEqualToString:kAssociatedTopicName]) {
+        self.nodeType = AssociatedTopicNode;
     } else if ([elementName isEqualToString:kNoteColor]) {
         self.nodeType = ColorNode;
     } else {
@@ -88,8 +92,9 @@
     }
 }
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)text
 {
+    NSString *string = [BNoteStringUtils trim:text];
     switch (self.nodeType) {
         case CreatedDateNode:
             self.note.created = [BNoteXmlConstants toTimeInterval:string];
@@ -121,11 +126,11 @@
                 }
                 
                 topic = [BNoteFactory createTopic:string forGroup:group];
-                self.note.topic = topic;
             }
+            self.note.topic = topic;
         }
             break;
-/*
+
         case AssociatedTopicNode:
         {
             Topic *topic = [[BNoteReader instance] getTopicForName:string];
@@ -136,11 +141,11 @@
                 }
                 
                 topic = [BNoteFactory createTopic:string forGroup:group];
-                [self.note addAssociatedTopicsObject:topic];
             }
+            [self.note addAssociatedTopicsObject:topic];
         }
             break;
-*/            
+
         default:
             break;
     }
@@ -148,12 +153,12 @@
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError
 {
-    
+    NSLog(@"%@", parser);
 }
 
 @end

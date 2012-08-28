@@ -43,6 +43,7 @@ NSString *const kActionItem = @"action-item";
 NSString *const kDueDate = @"due-date";
 NSString *const kCompletedDate = @"completed-date";
 
+NSString *const kAttendee = @"attendee";
 NSString *const kResponsibility = @"responsibility";
 NSString *const kFirstName = @"firstname";
 NSString *const kLastName = @"lastname";

@@ -14,6 +14,7 @@
 #import "DecisionMarshaller.h"
 #import "QuestionMarshaller.h"
 #import "ActionItemMarshaller.h"
+#import "AttendeeMarshaller.h"
 #import "BNoteReader.h"
 #import "ZipWriteStream.h"
 #import "BNoteXmlConstants.h"
@@ -103,15 +104,19 @@ static NSString *xmlFile = @"bnote.xml";
     [marshallers addObject:[[TopicGroupMarshaller alloc] init]];
     [marshallers addObject:[[TopicMarshaller alloc] init]];
     [marshallers addObject:[[NoteMarshaller alloc] init]];
+    [marshallers addObject:[[AttendeeMarshaller alloc] init]];
     [marshallers addObject:[[KeyPointMarshaller alloc] init]];
     [marshallers addObject:[[DecisionMarshaller alloc] init]];
     [marshallers addObject:[[QuestionMarshaller alloc] init]];
     [marshallers addObject:[[ActionItemMarshaller alloc] init]];
+    
+    self.marshalledNotes = [[NSMutableArray alloc] init];
 }
 
 - (void)clearMarshallers
 {
     self.marshallers = nil;
+    self.marshalledNotes = nil;
 }
 
 - (id)initSingleton

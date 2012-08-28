@@ -333,7 +333,7 @@
 								<int key="NSvFlags">288</int>
 								<string key="NSFrame">{{15, 13}, {123, 30}}</string>
 								<reference key="NSSuperview" ref="881695004"/>
-								<reference key="NSNextKeyView" ref="102532079"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -394,28 +394,6 @@
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
-							</object>
-							<object class="IBUIButton" id="102532079">
-								<reference key="NSNextResponder" ref="881695004"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{528, 6}, {107, 37}}</string>
-								<reference key="NSSuperview" ref="881695004"/>
-								<reference key="NSNextKeyView" ref="974164259"/>
-								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
-								<int key="IBUIContentVerticalAlignment">0</int>
-								<int key="IBUIButtonType">1</int>
-								<string key="IBUINormalTitle">Test import</string>
-								<reference key="IBUIHighlightedTitleColor" ref="1049287502"/>
-								<object class="NSColor" key="IBUINormalTitleColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-								</object>
-								<reference key="IBUINormalTitleShadowColor" ref="776479954"/>
-								<reference key="IBUIFontDescription" ref="411917956"/>
-								<reference key="IBUIFont" ref="745260860"/>
 							</object>
 						</array>
 						<string key="NSFrame">{{-5, -5}, {1034, 50}}</string>
@@ -929,15 +907,6 @@
 					</object>
 					<int key="connectionID">133</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">testImport:</string>
-						<reference key="source" ref="102532079"/>
-						<reference key="destination" ref="841351856"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">139</int>
-				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1034,7 +1003,6 @@
 							<reference ref="974164259"/>
 							<reference ref="1065443965"/>
 							<reference ref="937712985"/>
-							<reference ref="102532079"/>
 						</array>
 						<reference key="parent" ref="766721923"/>
 					</object>
@@ -1129,11 +1097,6 @@
 						<reference key="object" ref="937712985"/>
 						<reference key="parent" ref="881695004"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">138</int>
-						<reference key="object" ref="102532079"/>
-						<reference key="parent" ref="881695004"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1150,7 +1113,6 @@
 				<string key="123.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="129.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="132.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="138.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

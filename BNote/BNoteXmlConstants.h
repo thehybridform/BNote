@@ -34,6 +34,7 @@ extern NSString *const kFirstName;
 extern NSString *const kLastName;
 extern NSString *const kEmail;
 extern NSString *const kNoteColor;
+extern NSString *const kAttendee;
 
 typedef enum {
     TextNode,
@@ -49,6 +50,10 @@ typedef enum {
     SummaryNode,
     SubjectNode,
     ColorNode,
+    AttendantNode,
+    FirstNameNode,
+    LastNameNode,
+    EmailNode,
     
     NoNode
 } CurrentNode;

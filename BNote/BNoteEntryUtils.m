@@ -34,8 +34,10 @@
 {
     NSString *detailText = @"";
     
-    if ([actionItem responsibility]) {
-        detailText = [BNoteStringUtils append:@" ", NSLocalizedString(@"Responsibility", nil), @": ", [actionItem responsibility], nil];
+    if ([actionItem attendant]) {
+        Attendant *attendant = actionItem.attendant;
+        NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, nil];
+        detailText = [BNoteStringUtils append:@" ", NSLocalizedString(@"Responsibility", nil), @": ", name, nil];
     }
     
     if ([actionItem dueDate]) {
@@ -76,13 +78,18 @@
 
 + (BOOL)noteContainsAttendants:(Note *)note
 {
+    return [self attendantsEntryForNote:note] != nil;
+}
+
++ (Attendants *)attendantsEntryForNote:(Note *)note
+{
     for (Entry *entry in [note entries]) {
         if ([entry isKindOfClass:[Attendants class]]) {
-            return YES;
+            return (Attendants *) entry;
         }
     }
     
-    return NO;
+    return nil;
 }
 
 + (NSMutableArray *)attendants:(Note *)note

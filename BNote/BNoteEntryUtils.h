@@ -39,5 +39,6 @@
 + (void)cleanUpEntriesForNote:(Note *)note;
 
 + (NSString *)topicGroupName:(TopicGroup *)topicGroup;
++ (Attendants *)attendantsEntryForNote:(Note *)note;
 
 @end

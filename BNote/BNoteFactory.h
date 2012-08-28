@@ -88,6 +88,7 @@ typedef enum {
 + (Attendants *)createAttendants:(Note *)note;
 + (Photo *)createPhoto:(KeyPoint *)keyPoint;
 + (KeyWord *)createKeyWord:(NSString *)word;
++ (Attendant *)createAttendant;
 + (Attendant *)createAttendant:(Attendants *)attendants;
 + (SketchPath *)createSketchPath:(Photo *)photo;
 + (void)addUIBezierPath:(UIBezierPath *)path withColor:(UIColor *)color toPhoto:(Photo *)photo;

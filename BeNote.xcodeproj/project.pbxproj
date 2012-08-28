@@ -852,9 +852,7 @@
 		18BEF25B15DCB4CB00E16CFD /* EmailArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailArchiver.m; sourceTree = "<group>"; };
 		18BEF25E15DCB95400E16CFD /* BNoteArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteArchiver.h; sourceTree = "<group>"; };
 		18BEF26115DCD6A900E16CFD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18BEF26215DCD6A900E16CFD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		18BEF26315DCD6B100E16CFD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hant"; path = "zh-Hant.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18BEF26415DCD6B100E16CFD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		18BEF26615DDF28400E16CFD /* BNoteMarshallingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshallingManager.h; sourceTree = "<group>"; };
 		18BEF26715DDF28400E16CFD /* BNoteMarshallingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteMarshallingManager.m; sourceTree = "<group>"; };
 		18BEF26A15DDF38200E16CFD /* BNoteMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshaller.h; sourceTree = "<group>"; };
@@ -883,6 +881,8 @@
 		18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUnmarshaller.m; sourceTree = "<group>"; };
 		18BEF93715EC7CF900B37F29 /* BNoteFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFileUtils.h; sourceTree = "<group>"; };
 		18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFileUtils.m; sourceTree = "<group>"; };
+		18BEF93C15EC834600B37F29 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18BEF93D15ECA44000B37F29 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -979,9 +979,6 @@
 		18D50F7815D85B0E00A9650D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = "ja.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F9515D85B7E00A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "de.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18D50F9B15D85BB300A9650D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		18D50F9D15D85BB600A9650D /* es */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		18D50F9E15D85BB800A9650D /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		18D50FA715D8625600A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		18DE683B15B0D41E00311F16 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		18DE683D15B0D49700311F16 /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -2013,6 +2010,7 @@
 				ja,
 				"zh-Hans",
 				de,
+				"zh-Hant",
 			);
 			mainGroup = 1834D32C15634A650065788F;
 			productRefGroup = 1834D33815634A650065788F /* Products */;
@@ -2584,11 +2582,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				18D50F9B15D85BB300A9650D /* en */,
-				18D50F9D15D85BB600A9650D /* es */,
-				18D50F9E15D85BB800A9650D /* ja */,
-				18D50FA715D8625600A9650D /* de */,
-				18BEF26215DCD6A900E16CFD /* zh-Hans */,
-				18BEF26415DCD6B100E16CFD /* zh-Hant */,
+				18BEF93C15EC834600B37F29 /* zh-Hant */,
+				18BEF93D15ECA44000B37F29 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

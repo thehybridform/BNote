@@ -23,6 +23,7 @@
 @implementation BNoteUnarshallingManager
 @synthesize benoteParser = _benoteParser;
 @synthesize zipFile = _zipFile;
+@synthesize errors = _errors;
 
 static int BUFFER_SIZE = 1024;
 static NSString *xmlFile = @"bnote.xml";
@@ -30,6 +31,8 @@ static NSString *kBeNote = @"benote";
 
 - (void)delegate:(id<UnmarshallerListener>)delegate unmarshallUrl:(NSURL *)url
 {
+    self.errors = [[NSMutableArray alloc] init];
+    
     @try {
         self.zipFile = [[ZipFile alloc] initWithFileName:url.path mode:ZipFileModeUnzip];
 
@@ -52,7 +55,14 @@ static NSString *kBeNote = @"benote";
         }
     }
     @catch (ZipException *exception) {
-        NSLog(@"failed to parse, %@", exception);
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"Note Import Errors", nil)
+                              message:NSLocalizedString(@"import failed message corrupt xml", nil)
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+        
+        [alert show];
     }
     @finally {
         if (self.zipFile) {
@@ -62,6 +72,17 @@ static NSString *kBeNote = @"benote";
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kRefetchAllDatabaseData object:nil];
         [[BNoteWriter instance] update];
+        
+        if (self.errors.count) {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:NSLocalizedString(@"Note Import Error", nil)
+                                  message:NSLocalizedString(@"import failed message", nil)
+                                  delegate:self
+                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                  otherButtonTitles:nil];
+            
+            [alert show];
+        }
     }
 }
 

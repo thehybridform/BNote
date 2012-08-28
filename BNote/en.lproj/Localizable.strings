@@ -1,4 +1,16 @@
 {
+	Accept = Accept;
+	Decline = Decline;
+	"Contact Us" = "Contact Us";
+	Note = Note;
+	Export = Export;
+	"Topic Group" = "Topic Group";
+	"All Data" = "All Data";
+	Responsibility = Responsibility;
+	"Convert Note Entry To" = "Convert Note Entry To";
+	"import failed message" = "I may not have imported all the note data properly.  Please Review the imported notes.";
+	"import failed message corrupt xml" = "The BeNote archive file was corrupted.";
+	"Note Import Errors" = "Note Import Errors";
 	"Import Notes Title" = "Import Notes?";
 	Stop = Stop;
 	"Importing Notes" = "Importing Notes...";
@@ -35,11 +47,10 @@
 	"More Topic Groups Not Supported" = "BeNote Lite does not support adding more topic groups.  Please consider buying the full verion.  Delete older topic groups to make room.";
 	"More Notes Not Supported" = "BeNote Lite does not support adding more notes.  Please consider buying the full verion.  Delete older notes to make room.";
 	"More Notes Entries Not Supported" = "BeNote Lite does not support adding more note entries.  Please consider buying the full verion.  Delete older note entries to make room.";
-	"More Topics Not Supported" = "BeNote Lite does not support adding more topics.  Please consider buying the full verion.  Delete older topics to make room.";
+	"More Topics Not Supported" = "More Topics Not Supported";
 	"EULA Message Action" = "Please accept the End User License Agreement, or press the home button to exit.";
 	"Action Required" = "Action Required";
 	"Thank you for contacting us!" = "Thank you for contacting us!";
-	"E-Mail Sent" = "E-Mail Sent";
 	"Failed to Send E-Mail" = "Failed to Send E-Mail";
 	"Action Items - Incomplete" = "Action Items - Incomplete";
 	"Action Item" = "Action Item";
@@ -139,12 +150,12 @@
 	"Quick Words Description" = "Sometime when you\U2019re entering notes it can be helpful to have a quick way to enter certain kinds of information like dates, the names of participants and even keywords. BeNote provides a simple way of doing that. When a note entry is open, above the keyboard is a set of tools that allow you to easily enter that information.";
 	"Multiple Note Topics Description" = "Each note has a main topic. However, sometimes a note you\U2019re taking may touch on another topic. BeNote allows you to add such topics to a note by selecting Note Topics.  Once other topics are added the note will show up under those topics as well. The topic color assigned to the note will always be the main topic color.";
 	"Welcome to BeNote Title" = "Welcome to BeNote!";
-	"Tap Me Title" = "Tap Me";
+	"Tap Me" = "Tap Me";
 	"Welcome 1" = "BeNote is a carefully crafted notetaking tool for your tablet device that helps you to efficiently capture and recall important information. Great for meetings, brainstorming sessions or just to capture a quick thought, BeNote helps to keep your notes organized and easily accessible.";
 	"Welcome 2" = "The purpose of notetaking is to capture information. BeNote is designed from the ground up to help you do that efficiently. Don't be forced to choose between a to-do list or text (or a picture), or to sign up for yet another service before actually taking notes. With BeNote, you can start taking notes immediately.";
 	"Welcome 3" = "Add any of the following entries on the fly to any note:\n * Participants\n * Key Points (with images, snapshots or sketches)\n * Action Items\n * Questions\n * Decisions";
 	"Welcome 4" = "BeNote handles each type of entry appropriately, exposing useful functions and capabilities exactly when you need them. Helpful entry tools are always available to help you quickly enter dates, times, the names of participants and more.";
-	"Welcome 5" = "Improve Recall\nNotetaking studies consistently support reviewing your notes to enhance recall.  BeNote's Review Mode allows you to filter your note entries by type, or by specified keywords. Add a summary to your notes when your review session is complete. BeNote shows all action items, questions and decisions across all notes in the topic overview.";
+	"Welcome 5" = "Improve Recall\\nNotetaking studies consistently support reviewing your notes to enhance recall.  BeNote's Review Mode allows you to filter your note entries by type, or by specified keywords. Add a summary to your notes when your review session is complete. BeNote shows all action items, questions and decisions across all notes in the topic overview.";
 	"Welcome 6" = "Flexible, Powerful Organization\nAssign multiple topics to a note.  Group topics so you can focus on only the topics that matter.  The powerful built-in search can quickly locate any note instantly.";
 	OK = OK;
 }

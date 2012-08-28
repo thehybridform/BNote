@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIView *normalToobar;
 @property (strong, nonatomic) IBOutlet UIView *eulaToobar;
+@property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIButton *acceptButton;
 @property (strong, nonatomic) IBOutlet UIButton *declineButton;
 
@@ -26,6 +27,7 @@
 @synthesize eula = _eula;
 @synthesize acceptButton = _acceptButton;
 @synthesize declineButton = _declineButton;
+@synthesize closeButton = _closeButton;
 
 - (id)initWithDefault;
 {
@@ -64,7 +66,11 @@
     } else {
         [[self eulaToobar] setHidden:YES];
     }
-    
+ 
+    [self.closeButton setTitle:NSLocalizedString(@"Close", nil) forState:UIControlStateNormal];
+    [self.acceptButton setTitle:NSLocalizedString(@"Accept", nil) forState:UIControlStateNormal];
+    [self.declineButton setTitle:NSLocalizedString(@"Decline", nil) forState:UIControlStateNormal];
+
 }
 
 - (void)viewDidUnload

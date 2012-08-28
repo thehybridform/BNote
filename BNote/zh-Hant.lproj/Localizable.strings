@@ -1,146 +1,326 @@
-{
-	"All Data" = "All Data";
-	"Archive Options" = "Archive Options";
-	"Email Selected Topic" = "Email Selected Topic";
-	"Current Note" = "Current Note";
-	"Selected Topic Group" = "Selected Topic Group";
-	"Selected Topic" = "Selected Topic";
-	"Archive BeNote Data" = "Archive BeNote Data";
-	"Email Archiver Help Text" = "Send the BeNote archive as an email attachment.  This can be reimported via the email application on your iPad at a later date.";
-	"Email Archiver" = "Email Archiver";
-	About = About;
-	"More Information" = "More Information";
-	Help = Help;
-	"Create Help Notes" = "Create Help Notes";
-	Confirm = Confirm;
-	"Delete Note?" = "Delete Note?";
-	All = "All Topics";
-	"Completed On" = "Completed On";
-	"Splash Screen Lite Title" = "Thank you for installing BeNote Lite!";
-	"Splash Screen Full Title" = "Thank you for installing BeNote!";
-	"Splash Screen Line 1" = "Be sure to read the help notes from the \"Welcome to BeNote!\" topic.";
-	"Splash Screen Lite Line 2" = "If you like BeNote Lite please consider purchasing the full version of BeNote and spread the word.  There is no limitations on the number of Topics, Notes, etc and it supports iCloud for network storage.";
-	"Splash Screen Full Line 2" = "If you like BeNote please spread the word.  There is no limitations on the number of Topics, Notes, etc and it supports iCloud for network storage.";
-	"Splash Screen Line 3" = "Feedback is always welcome, we strive to make this your favorite notetaking application.";
-	"Search All Topics" = "Searcho All Topicose";
-	"Note Subject" = "Note Subject";
-	"Not assigned" = "Not Assigned";
-	"Assigned to" = "Assigned To";
-	"Created Date" = "Created Date";
-	Topic = Topic;
-	"More Topic Groups Not Supported" = "BeNote Lite does not support adding more topic groups.  Please consider buying the full verion.  Delete older topic groups to make room.";
-	"More Notes Not Supported" = "BeNote Lite does not support adding more notes.  Please consider buying the full verion.  Delete older notes to make room.";
-	"More Notes Entries Not Supported" = "BeNote Lite does not support adding more note entries.  Please consider buying the full verion.  Delete older note entries to make room.";
-	"More Topics Not Supported" = "BeNote Lite does not support adding more topics.  Please consider buying the full verion.  Delete older topics to make room.";
-	"EULA Message Action" = "Please accept the End User License Agreement, or press the home button to exit.";
-	"Action Required" = "Action Required";
-	"Thank you for contacting us!" = "Thank you for contacting us!";
-	"E-Mail Sent" = "E-Mail Sent";
-	"Failed to Send E-Mail" = "Failed to Send E-Mail";
-	"Action Items - Incomplete" = "Action Items - Incomplete";
-	"Action Item" = "Action Item";
-	"Add Key Word" = "Add Key Word";
-	"Action Items - Completed" = "Action Items - Completed";
-	"Add Note" = "Add Note";
-	"Add Summary" = "Add Summary";
-	"Add Topic" = "Add Topic";
-	"Address Book" = "Address Book";
-	Answer = Answer;
-	Associate = Associate;
-	"Associated Topics" = "Associated Topics";
-	"Attendant Options" = "Attendant Options";
-	Attendants = Attendants;
-	"Attendee Details" = "Attendee Details";
-	"Attendee Options" = "Attendee Options";
-	Attendees = Attendees;
-	Cancel = Cancel;
-	"Change Topic" = "Change Topic";
-	"Clear Due Date" = "Clear Due Date";
-	"Clear Responsibility" = "Clear Responsibility";
-	Close = Close;
-	Complete = COMPLETE;
-	Continue = Continue;
-	Copy = Copy;
-	"Copy to Topic" = "Copy to Topic";
-	Create = Create;
-	"Create New" = "Create New";
-	Dates = Dates;
-	Decision = Decision;
-	Decisions = Decisions;
-	Details = Details;
-	Disassociate = Disassociate;
-	Done = Done;
-	"Due Date" = "Due Date";
-	"Due Date Options" = "Due Date Options";
-	"Due On" = "Due On";
-	"E-Mail" = "E-Mail";
-	ENTRY = ENTRY;
-	"Enter Subject" = "Enter Subject";
-	"Filtered Group" = "Filtered Group";
-	FILTERING = FILTERING;
-	"First Name" = "First Name";
-	"Highlight topics to add." = "Highlight topics to add.";
-	"Image Options" = "Image Options";
-	"Key Point" = "Key Point";
-	"Key Points" = "Key Points";
-	"Key Word Options" = "Key Word Options";
-	"Key Words" = "Key Words";
-	"Last Name" = "Last Name";
-	Manage = Manage;
-	Move = Move;
-	"New Topic Group Name" = "New Topic Group Name";
-	"No Due Date" = "No Due Date";
-	"No Responsibility" = "No Responsibility";
-	"Not Complete" = "Not Complete";
-	"Note Options" = "Note Options";
-	"Note Summary" = "Note Summary";
-	Notes = Notes;
-	People = People;
-	Question = Question;
-	"Questions - Answered" = "Questions - Answered";
-	"Questions - Unanswered" = "Questions - Unanswered";
-	Redo = Redo;
-	Remove = Remove;
-	Reset = Reset;
-	"Responsibility Options" = "Responsibility Options";
-	REVIEW = REVIEW;
-	"Seacrh All Topics" = "Seacrh All Topics";
-	"Select topic for note." = "Select topic for note.";
-	"Select Topic Group" = "Select Topic Group";
-	"Select Topics for this group." = "Select topics for this group";
-	"Send E-mail" = "Send E-mail";
-	"Set Due Date" = "Set Due Date";
-	"Set Responsibility" = "Set Responsibility";
-	tomorrow = tomorrow;
-	"Topic Groups" = "Edit Topic Groups";
-	"Topic name already exists." = "Topic name already exists";
-	"Type in a new Topic Title" = "Type in a new Topic Title";
-	Undo = Undo;
-	Update = Update;
-	"week ago" = "week ago";
-	"week from now" = "week from now";
-	yesterday = yesterday;
-	"Topics Description" = "You can assign each topic a color. You can also group topics into custom Topic Groups. For example you could group all topics with notes from work into a topic group called \U201cWork\U201d. For all the topics from your lectures, you could groups them into \U201cCollege Classes\U201d.";
-	"Notes Description" = "Notes are arranged into Topics.  Notes are arranged according to the date and time of each note. Action Items, Questions and Decisions for each topic are summarized below the notes listing. You can select any of these summarized entries to open the selected entry in its corresponding note.";
-	"Sharing Description" = "Notes are arranged into Topics.  Notes are arranged according to the date and time of each note. Action Items, Questions and Decisions for each topic are summarized below the notes listing. You can select any of these summarized entries to open the selected entry in its corresponding note.";
-	"Search Description" = "You can search through all notes in a topic group, by selecting the search bar.";
-	"Overview Note Title" = Overview;
-	"Note Taking Title" = "Note Taking";
-	"Participants Description" = "You can add participants to your note if other people are present that would like to record. Participants are selected from the contact list on your device. If a participant is not in the contact list, this is a good opportunity add them.";
-	"Key Points Description" = "Add a key point to a note to record important information. Tip: If you\U2019re in a meeting, lecture or workshop, focus on participating in the discussion, not capturing everything that is said. Then it will be much easier to understand what is important and what is not.\nYou can add an image to key point by either selecting one you already have on you device, by taking a snapshot, or by using the sketchpad.  You can also sketch over an existing image.";
-	"Action Items Description" = "You can add an Action Item to assign yourself, or someone else present, something to do. Each action item can also be assigned a due date. Note that action items cannot be assigned to someone that is not present. If you would like to do that, it is recommended that you assign someone present the responsibility of communicating the action item to that person.  When the action item is completed you can open the action item and mark it complete.";
-	"Questions Description" = "Capture critical questions that come up during the course of taking notes by adding a question entry. Sometimes those questions may not be answered in the same note taking session, sometimes they will. Whenever a question is answered you can add that answer to the question entry so you can easily find it later.";
-	"Decisions Description" = "Important decisions can be captured by adding a decision entry. Decisions should be short concise statements.";
-	"Reviewing Your Notes Description" = "You\U2019re encouraged to review your notes to improve your recollection of the information that you captured. In the review mode you can filter note entries by the type of each note entry. You can also filter entries based on keywords that appear in each note. To add a keyword, simply highlight the text and select Add Keyword. The new keyword will appear in the review mode. When your review is complete you can summarize the note by adding a summary entry.";
-	"Quick Words Description" = "Sometime when you\U2019re entering notes it can be helpful to have a quick way to enter certain kinds of information like dates, the names of participants and even keywords. BeNote provides a simple way of doing that. When a note entry is open, above the keyboard is a set of tools that allow you to easily enter that information.";
-	"Multiple Note Topics Description" = "Each note has a main topic. However, sometimes a note you\U2019re taking may touch on another topic. BeNote allows you to add such topics to a note by selecting Note Topics.  Once other topics are added the note will show up under those topics as well. The topic color assigned to the note will always be the main topic color.";
-	"Welcome to BeNote Title" = "Welcome to BeNote!";
-	"Tap Me Title" = "Tap Me";
-	"Welcome 1" = "BeNote is a carefully crafted notetaking tool for your tablet device that helps you to efficiently capture and recall important information. Great for meetings, brainstorming sessions or just to capture a quick thought, BeNote helps to keep your notes organized and easily accessible.";
-	"Welcome 2" = "The purpose of notetaking is to capture information. BeNote is designed from the ground up to help you do that efficiently. Don't be forced to choose between a to-do list or text (or a picture), or to sign up for yet another service before actually taking notes. With BeNote, you can start taking notes immediately.";
-	"Welcome 3" = "Add any of the following entries on the fly to any note:\n * Participants\n * Key Points (with images, snapshots or sketches)\n * Action Items\n * Questions\n * Decisions";
-	"Welcome 4" = "BeNote handles each type of entry appropriately, exposing useful functions and capabilities exactly when you need them. Helpful entry tools are always available to help you quickly enter dates, times, the names of participants and more.";
-	"Welcome 5" = "Improve Recall\nNotetaking studies consistently support reviewing your notes to enhance recall.  BeNote's Review Mode allows you to filter your note entries by type, or by specified keywords. Add a summary to your notes when your review session is complete. BeNote shows all action items, questions and decisions across all notes in the topic overview.";
-	"Welcome 6" = "Flexible, Powerful Organization\nAssign multiple topics to a note.  Group topics so you can focus on only the topics that matter.  The powerful built-in search can quickly locate any note instantly.";
-	OK = OK;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Accept</key>
+	<string>Accept</string>
+	<key>Decline</key>
+	<string>Decline</string>
+	<key>Contact Us</key>
+	<string>Contact Us</string>
+	<key>Note</key>
+	<string>記事</string>
+	<key>Export</key>
+	<string>Export</string>
+	<key>Topic Group</key>
+	<string>主題群組</string>
+	<key>Edit</key>
+	<string>編輯</string>
+	<key>All Data</key>
+	<string>所有資料</string>
+	<key>Responsibility</key>
+	<string> 責任</string>
+	<key>Convert Note Entry To</key>
+	<string>記錄轉移到</string>
+	<key>import failed message</key>
+	<string>I may not have imported all the note data properly.  Please Review the imported notes.</string>
+	<key>import failed message corrupt xml</key>
+	<string>The BeNote archive file was corrupted.</string>
+	<key>Note Import Errors</key>
+	<string>Note Import Errors</string>
+	<key>Import Notes Title</key>
+	<string>匯入記事？</string>
+	<key>Stop</key>
+	<string>停止</string>
+	<key>Importing Notes</key>
+	<string>匯入筆記...</string>
+	<key>Selected Note</key>
+	<string>Selected Note</string>
+	<key>Email Selected Note</key>
+	<string>Email Selected Note</string>
+	<key>Archive Options</key>
+	<string>歸檔選項</string>
+	<key>Email Selected Topic</key>
+	<string>電子郵件發送選定的主題</string>
+	<key>Current Note</key>
+	<string>目前記事</string>
+	<key>Selected Topic Group</key>
+	<string>已選取主題群組</string>
+	<key>Selected Topic</key>
+	<string>已選取主題</string>
+	<key>Archive BeNote Data</key>
+	<string>BeNote資料歸 檔</string>
+	<key>Email Archiver Help Text</key>
+	<string>以附檔傳送BeNote檔案。日後可由電子郵件將檔案導入iPad。</string>
+	<key>Email Archiver</key>
+	<string>電子郵件檔案</string>
+	<key>About</key>
+	<string>關於</string>
+	<key>More Information</key>
+	<string>更多資訊</string>
+	<key>Help</key>
+	<string>幫助</string>
+	<key>Create Help Notes</key>
+	<string>建立幫助備註</string>
+	<key>Confirm</key>
+	<string>確認</string>
+	<key>Delete Note?</key>
+	<string>刪除記錄?</string>
+	<key>All</key>
+	<string>完部</string>
+	<key>Completed On</key>
+	<string>完成日</string>
+	<key>Splash Screen Lite Title</key>
+	<string>感謝您安裝BeNote Lite!</string>
+	<key>Splash Screen Full Title</key>
+	<string>感謝您安裝BeNote!</string>
+	<key>Splash Screen Line 1</key>
+	<string>請閱讀「歡迎使用BeNote」</string>
+	<key>Splash Screen Lite Line 2</key>
+	<string>如果您喜歡BeNote Lite請購買其完整版本並推薦我們。主題、記事等數量並無上限，網絡儲存時BeNote支援iCloud。</string>
+	<key>Splash Screen Full Line 2</key>
+	<string>If you like BeNote please spread the word.  There is no limitations on the number of Topics, Notes, etc and it supports iCloud for network storage.</string>
+	<key>Splash Screen Line 3</key>
+	<string>永遠歡迎您的反饋，我們希望能成為您最喜愛的記事應用程式。</string>
+	<key>Search All Topics</key>
+	<string>搜尋所有主題</string>
+	<key>Note Subject</key>
+	<string>記事主題</string>
+	<key>Not assigned</key>
+	<string>未分配</string>
+	<key>Assigned to</key>
+	<string>分派給</string>
+	<key>Created Date</key>
+	<string>建立日期</string>
+	<key>Topic</key>
+	<string>主題</string>
+	<key>More Topic Groups Not Supported</key>
+	<string>無法支援增加更多主題群組。請考慮購買完整版。請刪除舊主題群組以空出空間。</string>
+	<key>More Notes Not Supported</key>
+	<string>無法支援增加更多記事。請考慮購買完整版。請刪除舊記事以空出空間。</string>
+	<key>More Notes Entries Not Supported</key>
+	<string>無法支援增加更多記事條目。請考慮購買完整版。請刪除舊記事條目以空出空間。</string>
+	<key>More Topics Not Supported</key>
+	<string>無法支援增加更多主題。請考慮購買完整版。請刪除舊主題以空出空間。</string>
+	<key>EULA Message Action</key>
+	<string>請接受「終端使用者許可協議」或者按 home 鍵退出。</string>
+	<key>Action Required</key>
+	<string>行動需求</string>
+	<key>Thank you for contacting us!</key>
+	<string>感謝您與我們聯繫!</string>
+	<key>Failed to Send E-Mail</key>
+	<string>無法發送電子郵件</string>
+	<key>Action Items - Incomplete</key>
+	<string>行動項目 - 未完成</string>
+	<key>Action Item</key>
+	<string>行動項目</string>
+	<key>Add Key Word</key>
+	<string>添加關鍵詞</string>
+	<key>Action Items - Completed</key>
+	<string>行動項目 - 完成</string>
+	<key>Add Note</key>
+	<string>添加註釋</string>
+	<key>Add Summary</key>
+	<string>添加摘要</string>
+	<key>Add Topic</key>
+	<string>Add Topic</string>
+	<key>Address Book</key>
+	<string>通訊簿</string>
+	<key>Answer</key>
+	<string>回答</string>
+	<key>Associate</key>
+	<string>相關者</string>
+	<key>Associated Topics</key>
+	<string>相關主題</string>
+	<key>Attendant Options</key>
+	<string>出席選項</string>
+	<key>Attendants</key>
+	<string>出席</string>
+	<key>Attendee Details</key>
+	<string>與會者詳請</string>
+	<key>Attendee Options</key>
+	<string>與會者選項</string>
+	<key>Attendees</key>
+	<string>與會者</string>
+	<key>Cancel</key>
+	<string>取消</string>
+	<key>Change Topic</key>
+	<string>更改主題</string>
+	<key>Clear Due Date</key>
+	<string>清除到期日</string>
+	<key>Clear Responsibility</key>
+	<string>明確責任</string>
+	<key>Close</key>
+	<string>關閉</string>
+	<key>Complete</key>
+	<string>完成</string>
+	<key>Continue</key>
+	<string>繼續</string>
+	<key>Copy</key>
+	<string>複製</string>
+	<key>Copy to Topic</key>
+	<string>複製到主題</string>
+	<key>Create</key>
+	<string>建立</string>
+	<key>Create New</key>
+	<string>建立新</string>
+	<key>Dates</key>
+	<string>日期</string>
+	<key>Decision</key>
+	<string>決定</string>
+	<key>Decisions</key>
+	<string>決定</string>
+	<key>Details</key>
+	<string>詳情</string>
+	<key>Disassociate</key>
+	<string>分離</string>
+	<key>Done</key>
+	<string>完成</string>
+	<key>Due Date</key>
+	<string>截止日期</string>
+	<key>Due Date Options</key>
+	<string>截止日期選項</string>
+	<key>Due On</key>
+	<string>到期</string>
+	<key>E-Mail</key>
+	<string>電子郵件</string>
+	<key>ENTRY</key>
+	<string>記入</string>
+	<key>Enter Subject</key>
+	<string>輸入主題</string>
+	<key>Filtered Group</key>
+	<string>已篩選群組</string>
+	<key>FILTERING</key>
+	<string>篩選中</string>
+	<key>First Name</key>
+	<string>名字</string>
+	<key>Highlight topics to add.</key>
+	<string>選取主題加注</string>
+	<key>Image Options</key>
+	<string>圖像選項</string>
+	<key>Key Point</key>
+	<string>關鍵點</string>
+	<key>Key Points</key>
+	<string>關鍵點</string>
+	<key>Key Word Options</key>
+	<string>關鍵字選項</string>
+	<key>Key Words</key>
+	<string>關鍵字</string>
+	<key>Last Name</key>
+	<string>姓</string>
+	<key>Manage</key>
+	<string>Manage</string>
+	<key>Move</key>
+	<string>移動</string>
+	<key>New Topic Group Name</key>
+	<string>新主題群組名稱</string>
+	<key>No Due Date</key>
+	<string>無截止日期</string>
+	<key>No Responsibility</key>
+	<string>無責任</string>
+	<key>Not Complete</key>
+	<string>未完成</string>
+	<key>Note Options</key>
+	<string>記事選項</string>
+	<key>Note Summary</key>
+	<string>記事總結</string>
+	<key>Notes</key>
+	<string>記事</string>
+	<key>People</key>
+	<string>人</string>
+	<key>Question</key>
+	<string>問題</string>
+	<key>Questions - Answered</key>
+	<string>問題 - 已回答</string>
+	<key>Questions - Unanswered</key>
+	<string>問題 - 未回答</string>
+	<key>Redo</key>
+	<string>重復</string>
+	<key>Remove</key>
+	<string>清除</string>
+	<key>Reset</key>
+	<string>重設</string>
+	<key>Responsibility Options</key>
+	<string> 責任選項</string>
+	<key>REVIEW</key>
+	<string> 回顧</string>
+	<key>Seacrh All Topics</key>
+	<string>搜尋所有主題</string>
+	<key>Select topic for note.</key>
+	<string>給記事選取主題</string>
+	<key>Select Topic Group</key>
+	<string>選取主題群組</string>
+	<key>Select Topics for this group.</key>
+	<string>給此群組選取主題</string>
+	<key>Send E-mail</key>
+	<string>發送電子郵件</string>
+	<key>Set Due Date</key>
+	<string>設置截止日期</string>
+	<key>Set Responsibility</key>
+	<string>設置責任</string>
+	<key>tomorrow</key>
+	<string>明天</string>
+	<key>Topic Groups</key>
+	<string>主題群組</string>
+	<key>Topic name already exists.</key>
+	<string>主題名稱已存在</string>
+	<key>Type in a new Topic Title</key>
+	<string>輸入新主題名稱</string>
+	<key>Undo</key>
+	<string>復原</string>
+	<key>Update</key>
+	<string> 更新</string>
+	<key>week ago</key>
+	<string>一周前</string>
+	<key>week from now</key>
+	<string>(1)星期後</string>
+	<key>yesterday</key>
+	<string> 昨天</string>
+	<key>Topics Description</key>
+	<string>You can assign each topic a color. You can also group topics into custom Topic Groups. For example you could group all topics with notes from work into a topic group called “Work”. For all the topics from your lectures, you could groups them into “College Classes”.</string>
+	<key>Notes Description</key>
+	<string>記事依主題歸納，採時間先後排序。記事列表下方有行動項目、問題、決定等總結。您可選任一總結條目並閱讀它相應記事。</string>
+	<key>Sharing Description</key>
+	<string>記事依主題整理，依時間排列。每個主題的行動項目、問題和決定會總結於下面記事列表。您可任一總結的條目並打開其內容。</string>
+	<key>Search Description</key>
+	<string>您可在一主題群組中選取搜尋欄來搜尋</string>
+	<key>Overview Note Title</key>
+	<string>記事標題概述</string>
+	<key>Note Taking Title</key>
+	<string>記事標題</string>
+	<key>Participants Description</key>
+	<string>其他的在場者如果想參與，您可在記事添加參與者。參與者需從聯繫人清單中選取。如果參與者不在清單上，請在清單中新增他們。</string>
+	<key>Key Points Description</key>
+	<string>給記事新增關鍵點以記錄重要資訊時，提示: 你如是在會議，演講或研討會中，請專注於參與討論，而不是專注於記錄听到的每個字句。如此將有益於掌握重點。</string>
+	<key>Action Items Description</key>
+	<string>您可以新增一個行動項目給自已或別人。您也可給每自行動項目設置一個到期日。請注意，行動項目無法指派給不在場的人。我們見意您指派給在場者責任讓他向不在場者做行動項目的溝通。當此行重項目完成，您可將它打開並註明已完成。</string>
+	<key>Questions Description</key>
+	<string>您能在筆記過程中借添加問題至問題條目來捕捉關鍵問題。這些問題有時能有答案，有時則無解答。你能隨時將已解答的問題加到問題列表，以供日後查尋。</string>
+	<key>Decisions Description</key>
+	<string>您可抓出重要決定並加上決定條目。決定需明確精簡。</string>
+	<key>Reviewing Your Notes Description</key>
+	<string>我們鼓勵您回顧您的記事以提高資訊掌握力。在回顧模式中，您可用記事類型篩選記事條目，你也可用關鍵字篩選條目。如要添加關鍵字，你只需選取文字再選擇「添加關鍵字」。新的關鍵字會出現在回顧模式中。在回顧完畢後，您可加入總結條目來總結記事。</string>
+	<key>Quick Words Description</key>
+	<string>有時在記事時插入像數據、與會者、或關鍵字詞等資訊是很重要的。BeNote能輕鬆做到。當您開啟記事時，鍵盤上方有工具列，插入資訊是昜如反掌。</string>
+	<key>Multiple Note Topics Description</key>
+	<string>每個記事有一個主要的主題，但有時一個記事可能與別的記事相關。BeNote</string>
+	<key>Welcome to BeNote Title</key>
+	<string>歡迎 BeNote 標題</string>
+	<key>Tap Me</key>
+	<string> 點擊我</string>
+	<key>Welcome 1</key>
+	<string>BeNote是為您的平板電腦精心設計的工具。它能幫助您有效地捕捉回憶的重要資訊。 BeNote很適用於會議，集思廣益，或是您的一個靈感。您能輕鬆地組織、回顧、使用你的記事。</string>
+	<key>Welcome 2</key>
+	<string>記事的目的是為捕捉信息。 BeNote的設計能幫您輕鬆做到。使用BeNote, 您可以立即開始記事。</string>
+	<key>Welcome 3</key>
+	<string>在飛機上添加記事條目:  *參與者 *關鍵(可以是圖像，快照或草圖) *行動項目   *問題   *決定</string>
+	<key>Welcome 4</key>
+	<string>BeNote能適當處理不同類型的條目，您需要功能應有盡有。有效的輸入工具有助於快速輸入資料、時間、內容等。</string>
+	<key>Welcome 5</key>
+	<string>改善筆記回顧…回顧您的記事能幫助您的加強記憶。BeNote的回顧功能能用關鍵字詞或類型來過濾您的記事。回顧完成後請給你的記事新增總結。在主題總覽的可看到全部的行動項目，問題，記事。</string>
+	<key>Welcome 6</key>
+	<string>一個記事能有多個主題。依主題內容群主您的主題。強大的內建搜索引擊能立即幫您找到您想要的記事。</string>
+	<key>OK</key>
+	<string>確定</string>
+</dict>
+</plist>

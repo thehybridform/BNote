@@ -14,6 +14,7 @@
 
 @interface BNoteUnarshallingManager : NSObject <NSXMLParserDelegate> 
 @property (strong, nonatomic) ZipFile *zipFile;
+@property (strong, nonatomic) NSMutableArray *errors;
 
 + (BNoteUnarshallingManager *)instance;
 + (void)writeZipReadStream:(ZipReadStream *)stream toFile:(NSString *)filename;

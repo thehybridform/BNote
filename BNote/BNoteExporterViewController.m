@@ -73,6 +73,9 @@
     self.titleLabel.textColor = [BNoteConstants appHighlightColor1];
     self.titleLabel.font = [BNoteConstants font:RobotoBold andSize:20];
     
+    [self.cancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+    [self.exportButton setTitle:NSLocalizedString(@"Export", nil) forState:UIControlStateNormal];
+    
     self.helpView.font = [BNoteConstants font:RobotoRegular andSize:16];
     self.helpView.textColor = [BNoteConstants appHighlightColor1];
     

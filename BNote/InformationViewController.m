@@ -74,7 +74,7 @@
 #endif
     
     NSArray *aboutArray =
-    [NSArray arrayWithObjects:version, @"A musing of Uobia, Copyright 2012", @"License", @"Contact Us", nil];
+    [NSArray arrayWithObjects:version, @"A musing of Uobia, Copyright 2012", @"License", NSLocalizedString(@"Contact Us", nil), nil];
     [self setAboutArray:aboutArray];
     
     NSArray *storageArray =
@@ -90,6 +90,7 @@
     
     [LayerFormater addShadowToView:[self menu]];
 
+    [self.doneButton setTitle:NSLocalizedString(@"Close", nil) forState:UIControlStateNormal];
 }
 
 - (IBAction)done:(id)sender

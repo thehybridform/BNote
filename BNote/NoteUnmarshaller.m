@@ -135,11 +135,7 @@
         {
             Topic *topic = [[BNoteReader instance] getTopicForName:string];
             if (!topic) {
-                TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
-                if (!group) {
-                    group = [BNoteFactory createTopicGroup:kAllTopicGroupName];
-                }
-                
+                TopicGroup *group = [BNoteFactory createTopicGroup:string];
                 topic = [BNoteFactory createTopic:string forGroup:group];
             }
             [self.note addAssociatedTopicsObject:topic];

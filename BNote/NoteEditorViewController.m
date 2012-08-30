@@ -275,6 +275,10 @@ static NSString *spacing = @"   ";
                                                  name:kAttendantsEntryDeleted object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWordsUpdated:)
                                                  name:kKeyWordsUpdated object:nil];
+    
+    if (self.view.frame.size.width > 700) {
+        [self changeTheViewToPortrait:NO andDuration:0.5];
+    }
 }
 
 - (void)setNote:(Note *)note

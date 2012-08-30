@@ -28,7 +28,6 @@
 #import "Decision.h"
 
 @interface EntryConverterHelper()
-@property (strong, nonatomic) NSMutableArray *converters;
 @property (strong, nonatomic) Entry *entry;
 
 - (id)initSingleton;
@@ -36,7 +35,6 @@
 @end
 
 @implementation EntryConverterHelper
-@synthesize converters = _converters;
 @synthesize entry = _entry;
 
 static NSString *convertToText;
@@ -50,24 +48,6 @@ static NSString *actionItemText;
     self = [super init];
     
     if (self) {
-        NSMutableArray *converters = [[NSMutableArray alloc] init];
-        [self setConverters:converters];
-        
-        [converters addObject:[[KeyPointToActionItemConverter alloc] init]];
-        [converters addObject:[[KeyPointToQuestionConverter alloc] init]];
-        [converters addObject:[[KeyPointToDecisionConverter alloc] init]];
-
-        [converters addObject:[[QuestionToActionItemConverter alloc] init]];
-        [converters addObject:[[QuestionToDecisionConverter alloc] init]];
-        [converters addObject:[[QuestionToKeyPointConverter alloc] init]];
-        
-        [converters addObject:[[DecisionToActionItemConverter alloc] init]];
-        [converters addObject:[[DecisionToKeyPointConverter alloc] init]];
-        [converters addObject:[[DecisionToQuestionConverter alloc] init]];
-        
-        [converters addObject:[[ActionItemToDecisionConverter alloc] init]];
-        [converters addObject:[[ActionItemToKeyPointConverter alloc] init]];
-        [converters addObject:[[ActionItemToQuestionConverter alloc] init]];
     }
     
     convertToText = NSLocalizedString(@"Convert Note Entry To", nil);
@@ -121,6 +101,29 @@ static NSString *actionItemText;
             break;
         }
     }
+}
+
+- (NSArray *)converters
+{
+    NSMutableArray *converters = [[NSMutableArray alloc] init];
+    
+    [converters addObject:[[KeyPointToActionItemConverter alloc] init]];
+    [converters addObject:[[KeyPointToQuestionConverter alloc] init]];
+    [converters addObject:[[KeyPointToDecisionConverter alloc] init]];
+    
+    [converters addObject:[[QuestionToActionItemConverter alloc] init]];
+    [converters addObject:[[QuestionToDecisionConverter alloc] init]];
+    [converters addObject:[[QuestionToKeyPointConverter alloc] init]];
+    
+    [converters addObject:[[DecisionToActionItemConverter alloc] init]];
+    [converters addObject:[[DecisionToKeyPointConverter alloc] init]];
+    [converters addObject:[[DecisionToQuestionConverter alloc] init]];
+    
+    [converters addObject:[[ActionItemToDecisionConverter alloc] init]];
+    [converters addObject:[[ActionItemToKeyPointConverter alloc] init]];
+    [converters addObject:[[ActionItemToQuestionConverter alloc] init]];
+    
+    return converters;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

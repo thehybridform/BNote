@@ -12,10 +12,6 @@
 #import "ToTheLeftKeyWordFinder.h"
 #import "SelectedKeyWordFinder.h"
 
-@interface BNoteQuickWordUtils()
-- (NSArray *)finders;
-
-@end
 
 @implementation BNoteQuickWordUtils
 
@@ -23,17 +19,9 @@ static NSString *spaceRegex = @"^(\\w)";
 
 + (NSString *)extractKeyWordFromTextView:(UITextView *)textView
 {
-    static NSArray *_finders = nil;
-    
-    if (!_finders) {
-        static dispatch_once_t safer;
-        dispatch_once(&safer, ^{
-            _finders = [[BNoteQuickWordUtils alloc] finders];
-        });
-    }
     
     NSString *text;
-    for (id<KeyWordFinder> finder in _finders) {
+    for (id<KeyWordFinder> finder in [self finders]) {
         text = [finder find:textView];
         if (text) {
             return text;
@@ -54,7 +42,7 @@ static NSString *spaceRegex = @"^(\\w)";
 }
 
 
-- (NSArray *)finders
++ (NSArray *)finders
 {
     NSMutableArray *finders = [[NSMutableArray alloc] init];
     

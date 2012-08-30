@@ -19,29 +19,26 @@
 #import "NotePlainRenderer.h"
 
 @interface BNotePlainTextRenderer()
-@property (strong, nonatomic) NSArray *renderers;
 
 - (id)initSingleton;
 
 @end
 
 @implementation BNotePlainTextRenderer
-@synthesize renderers = _renderers;
 
 - (NSString *)render:(Topic *)topic
 {
+    NSArray *renderers = [self renderers];
+    
     NSString *text = [[[TopicSummaryPlainRenderer alloc] init] render:topic];
     
     NotePlainRenderer *noteRenderer = [[NotePlainRenderer alloc] init];
     
     for (Note *note in [topic notes]) {
         text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
-        NSEnumerator *entries = [[note entries] objectEnumerator];
-        Entry *entry;
-        while (entry = [entries nextObject]) {
-            NSEnumerator *renderers = [[self renderers] objectEnumerator];
-            id<EntityRenderHandler> renderer;
-            while (renderer = [renderers nextObject]) {
+        
+        for (Entry *entry in note.entries) {
+            for (id<EntityRenderHandler> renderer in renderers) {
                 if ([renderer accept:entry]) {
                     text = [BNoteStringUtils append:text, [renderer render:entry], nil];
                 }
@@ -51,12 +48,9 @@
     
     for (Note *note in [topic associatedNotes]) {
         text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
-        NSEnumerator *entries = [[note entries] objectEnumerator];
-        Entry *entry;
-        while (entry = [entries nextObject]) {
-            NSEnumerator *renderers = [[self renderers] objectEnumerator];
-            id<EntityRenderHandler> renderer;
-            while (renderer = [renderers nextObject]) {
+        
+        for (Entry *entry in note.entries) {
+            for (id<EntityRenderHandler> renderer in renderers) {
                 if ([renderer accept:entry]) {
                     text = [BNoteStringUtils append:text, [renderer render:entry], nil];
                 }
@@ -69,6 +63,8 @@
 
 - (NSString *)render:(Topic *)topic and:(Note *)selectedNote
 {
+    NSArray *renderers = [self renderers];
+
     NSString *text = [[[TopicSummaryPlainRenderer alloc] init] render:topic];
     
     NotePlainRenderer *noteRenderer = [[NotePlainRenderer alloc] init];
@@ -76,12 +72,9 @@
     for (Note *note in [topic notes]) {
         if (note == selectedNote) {
             text = [BNoteStringUtils append:text, [noteRenderer render:note], nil];
-            NSEnumerator *entries = [[note entries] objectEnumerator];
-            Entry *entry;
-            while (entry = [entries nextObject]) {
-                NSEnumerator *renderers = [[self renderers] objectEnumerator];
-                id<EntityRenderHandler> renderer;
-                while (renderer = [renderers nextObject]) {
+            
+            for (Entry *entry in note.entries) {
+                for (id<EntityRenderHandler> renderer in renderers) {
                     if ([renderer accept:entry]) {
                         text = [BNoteStringUtils append:text, [renderer render:entry], nil];
                     }
@@ -93,10 +86,8 @@
     return text;
 }
 
-- (id)initSingleton
+- (NSArray *)renderers
 {
-    self = [super init];
-    
     NSMutableArray *arrays = [[NSMutableArray alloc] init];
     
     [arrays addObject:[[QuestionPlainRenderer alloc] init]];
@@ -104,7 +95,12 @@
     [arrays addObject:[[DecisionPlainRenderer alloc] init]];
     [arrays addObject:[[KeyPointPlainRenderer alloc] init]];
 
-    [self setRenderers:arrays];
+    return arrays;
+}
+
+- (id)initSingleton
+{
+    self = [super init];
     
     return self;
 }

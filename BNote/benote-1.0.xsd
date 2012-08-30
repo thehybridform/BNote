@@ -26,13 +26,13 @@
                 <xs:element name="summary" type="xs:string" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="created-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="last-updated-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
-                <xs:element ref="topic" maxOccurs="1" minOccurs="1"/>
-                <xs:element name="associated-topic" type="topic" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="topic" type="topic-type" maxOccurs="1" minOccurs="1"/>
+                <xs:element name="associated-topic" type="topic-type" maxOccurs="unbounded" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     
-    <xs:complexType name="topic">
+    <xs:complexType name="topic-type">
         <xs:sequence>
             <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="0"/>
             <xs:element name="color" type="xs:long" maxOccurs="1" minOccurs="1"/>

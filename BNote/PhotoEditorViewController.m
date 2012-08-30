@@ -227,6 +227,8 @@ static NSString *resetText;
     
     [LayerFormater setBorderWidth:2 forView:[self drawView]];
     [LayerFormater setBorderWidth:1 forView:[self menuView]];
+    [LayerFormater setBorderColor:UIColorFromRGB(0x444444) forView:[self imageView]];
+    [LayerFormater setBorderColor:UIColorFromRGB(0x444444) forView:[self drawView]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:[self menuView]];
 
     [LayerFormater addShadowToView:[self menuView]];
@@ -389,7 +391,7 @@ static NSString *resetText;
 
 - (IBAction)selectColor:(UIButton *)button
 {
-    static int offset = 10;
+    static int offset = 7;
     
     UIButton *currentButton = self.selectedColorButton;
     
@@ -418,7 +420,7 @@ static NSString *resetText;
 
 - (IBAction)selectPencil:(UIButton *)button
 {
-    static int offset = 10;
+    static int offset = 7;
     
     UIButton *currentButton = self.selectedPencilButton;
     
@@ -464,11 +466,9 @@ static NSString *resetText;
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-        //self.view = portraitView;
         [self changeTheViewToPortrait:YES andDuration:duration];
         
     } else if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        //self.view = landscapeView;
         [self changeTheViewToPortrait:NO andDuration:duration];
     }
 }

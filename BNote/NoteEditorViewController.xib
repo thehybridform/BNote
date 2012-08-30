@@ -256,7 +256,7 @@
 								</object>
 							</object>
 						</array>
-						<string key="NSFrame">{{42, 63}, {664, 83}}</string>
+						<string key="NSFrame">{{42, 60}, {664, 83}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="806199216"/>
@@ -359,7 +359,7 @@
 							<object class="IBUIButton" id="492957008">
 								<reference key="NSNextResponder" ref="552553982"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{712, 9}, {35, 35}}</string>
+								<string key="NSFrame">{{715, 12}, {30, 30}}</string>
 								<reference key="NSSuperview" ref="552553982"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="344141282"/>
@@ -609,11 +609,10 @@
 					</object>
 					<object class="IBUITableView" id="18117635">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">274</int>
+						<int key="NSvFlags">273</int>
 						<string key="NSFrame">{{0, 198}, {748, 783}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="519478129"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -704,7 +703,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="92897031"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">bnote-144.png</string>
+									<string key="NSResourceName">bnote-100.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="826631238"/>
 								<reference key="IBUIFont" ref="376973252"/>
@@ -1331,6 +1330,7 @@
 				<string key="245.CustomClassName">BNoteButton</string>
 				<string key="245.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="257.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="270.CustomClassName">BNoteButton</string>
 				<string key="270.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="273.CustomClassName">EditNoteView</string>
 				<string key="273.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1340,6 +1340,7 @@
 				<string key="278.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="279.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="326.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="329.CustomClassName">BNoteButton</string>
 				<string key="329.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="346.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="348.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1611,7 +1612,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="bnote-144.png">{144, 144}</string>
+			<string key="bnote-100.png">{100, 100}</string>
 			<string key="bnote-action.png">{57, 57}</string>
 			<string key="bnote-organize.png">{57, 57}</string>
 		</dictionary>

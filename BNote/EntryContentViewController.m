@@ -80,7 +80,7 @@
         [[self mainTextView] setInputAccessoryView:[quick view]];
     }
 
-    [LayerFormater setBorderWidth:0.5 forView:self.view];
+    [LayerFormater setBorderWidth:0 forView:self.view];
     [LayerFormater setBorderColorWithInt:0xcccccc forView:self.view];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)

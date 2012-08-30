@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) QuickWordsViewController *quickWordsViewController;
+@property (strong, nonatomic) IBOutlet UIView *borderView;
 
 @end
 
@@ -24,6 +25,7 @@
 @synthesize note = _note;
 @synthesize summaryLabel = _summaryLabel;
 @synthesize quickWordsViewController = _quickWordsViewController;
+@synthesize borderView = _borderView;
 
 - (id)initWithNote:(Note *)note
 {
@@ -44,8 +46,10 @@
     [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [LayerFormater roundCornersForView:cell];
-    [LayerFormater setBorderColor:UIColorFromRGB(self.note.color) forView:cell];
-    [LayerFormater setBorderWidth:2 forView:cell];
+    [LayerFormater roundCornersForView:self.borderView];
+    [LayerFormater setBorderColor:UIColorFromRGB(self.note.color) forView:self.borderView];
+    [LayerFormater setBorderWidth:2 forView:self.borderView];
+    [LayerFormater setBorderWidth:0 forView:cell];
     
     UITextView *view = self.textView;
     view.delegate = self;
@@ -62,8 +66,8 @@
     [self setQuickWordsViewController:quick];
     [view setInputAccessoryView:[quick view]];
     
-    [[self summaryLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
-    [[self summaryLabel] setTextColor:[BNoteConstants appHighlightColor1]];
+    [[self summaryLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
+    self.summaryLabel.textColor = UIColorFromRGB(0x444444);
 
     self.summaryLabel.text = NSLocalizedString(@"Note Summary", @"Note summary title");
 }
@@ -74,6 +78,7 @@
 
     [self setTextView:nil];
     [self setSummaryLabel:nil];
+    self.borderView = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

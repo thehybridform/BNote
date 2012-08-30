@@ -165,7 +165,7 @@ static NSString *spacing = @"   ";
     closeText = NSLocalizedString(@"Close", @"Close window");
     reviewText = NSLocalizedString(@"REVIEW", @"Review");
     doneText = NSLocalizedString(@"Done", @"Done");
-    filteringText = NSLocalizedString(@"FILTERING", @"Note entry filtering lable");
+    filteringText = NSLocalizedString(@"REVIEW", @"Note entry filtering lable");
     entryText = NSLocalizedString(@"ENTRY", @"Note entry lable");
     addSummaryText = NSLocalizedString(@"Add Summary", @"Add summary entry to this note");
 

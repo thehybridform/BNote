@@ -83,6 +83,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{226, 151}, {334, 290}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="55373825"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -139,9 +140,9 @@
 							<object class="IBUIButton" id="898020508">
 								<reference key="NSNextResponder" ref="210886888"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{199, 2}, {35, 35}}</string>
+								<string key="NSFrame">{{196, 2}, {35, 35}}</string>
 								<reference key="NSSuperview" ref="210886888"/>
-								<reference key="NSNextKeyView" ref="815700796"/>
+								<reference key="NSNextKeyView" ref="118791742"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -257,7 +258,7 @@
 								<int key="NSvFlags">293</int>
 								<string key="NSFrame">{{123, 13}, {325, 27}}</string>
 								<reference key="NSSuperview" ref="491424316"/>
-								<reference key="NSNextKeyView" ref="101481292"/>
+								<reference key="NSNextKeyView" ref="815700796"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -278,7 +279,7 @@
 								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{485, 12}, {72, 30}}</string>
 								<reference key="NSSuperview" ref="491424316"/>
-								<reference key="NSNextKeyView" ref="118791742"/>
+								<reference key="NSNextKeyView" ref="101481292"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -595,11 +596,13 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="10.CustomClassName">BNoteButton</string>
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.CustomClassName">BNoteButton</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="18.CustomClassName">BNoteButton</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="28.CustomClassName">TopicGroupsTableViewController</string>
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

@@ -15,9 +15,8 @@
     <xs:element name="note">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="color" type="xs:long" maxOccurs="1" minOccurs="1"/>
                 <xs:element name="subject" type="xs:string" maxOccurs="1" minOccurs="0"/>
-                <xs:element ref="attendee" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="person" maxOccurs="unbounded" minOccurs="0"/>
                 <xs:choice maxOccurs="unbounded" minOccurs="0">
                     <xs:element name="question" type="question-type"/>
                     <xs:element name="decision" type="decision-type"/>
@@ -27,11 +26,18 @@
                 <xs:element name="summary" type="xs:string" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="created-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="last-updated-date" type="xs:dateTime" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="topic" type="xs:string" maxOccurs="1" minOccurs="1"/>
-                <xs:element name="associated-topic" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="topic" maxOccurs="1" minOccurs="1"/>
+                <xs:element name="associated-topic" type="topic" maxOccurs="unbounded" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    <xs:complexType name="topic">
+        <xs:sequence>
+            <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="0"/>
+            <xs:element name="color" type="xs:long" maxOccurs="1" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
     
     <xs:complexType name="entry-type">
         <xs:sequence>
@@ -66,7 +72,7 @@
                     <xs:element name="responsibility" maxOccurs="1" minOccurs="0">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="attendee" maxOccurs="unbounded" minOccurs="0"/>
+                                <xs:element ref="person" maxOccurs="unbounded" minOccurs="0"/>
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>
@@ -94,7 +100,7 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="attendee">
+    <xs:element name="person">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="firstname" type="xs:string" maxOccurs="1" minOccurs="0"/>

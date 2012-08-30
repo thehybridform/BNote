@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
+		<int key="IBDocument.SystemTarget">1296</int>
 		<string key="IBDocument.SystemVersion">12A269</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
@@ -333,7 +333,7 @@
 								<int key="NSvFlags">288</int>
 								<string key="NSFrame">{{15, 13}, {123, 30}}</string>
 								<reference key="NSSuperview" ref="881695004"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="974164259"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -366,7 +366,7 @@
 							<object class="IBUIButton" id="937712985">
 								<reference key="NSNextResponder" ref="881695004"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{987, 10}, {35, 35}}</string>
+								<string key="NSFrame">{{991, 13}, {30, 30}}</string>
 								<reference key="NSSuperview" ref="881695004"/>
 								<reference key="NSNextKeyView" ref="456762475"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -470,7 +470,7 @@
 							<object class="IBUIButton" id="467815127">
 								<reference key="NSNextResponder" ref="892000470"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{202, 5}, {35, 35}}</string>
+								<string key="NSFrame">{{197, 5}, {35, 35}}</string>
 								<reference key="NSSuperview" ref="892000470"/>
 								<reference key="NSNextKeyView" ref="525513212"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -497,6 +497,7 @@
 								<int key="NSvFlags">265</int>
 								<string key="NSFrame">{{990, 7}, {34, 34}}</string>
 								<reference key="NSSuperview" ref="892000470"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -510,7 +511,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="776479954"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">bnote-144.png</string>
+									<string key="NSResourceName">bnote-100.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="411917956"/>
 								<reference key="IBUIFont" ref="745260860"/>
@@ -1131,8 +1132,11 @@
 				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="48.CustomClassName">NotesViewController</string>
 				<string key="48.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="60.CustomClassName">BNoteButton</string>
 				<string key="60.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="63.CustomClassName">BNoteButton</string>
 				<string key="63.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="68.CustomClassName">BNoteButton</string>
 				<string key="68.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="78.CustomClassName">PeopleViewController</string>
@@ -1150,10 +1154,14 @@
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
+			<real value="1296" key="NS.object.0"/>
+		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="bnote-144.png">{144, 144}</string>
+			<string key="bnote-100.png">{100, 100}</string>
 			<string key="bnote-action.png">{57, 57}</string>
 			<string key="bnote-add-topic.png">{57, 57}</string>
 			<string key="bnote-organize.png">{57, 57}</string>

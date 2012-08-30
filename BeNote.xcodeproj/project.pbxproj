@@ -246,6 +246,15 @@
 		18BEF93615EC6DE400B37F29 /* PhotoUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */; };
 		18BEF93915EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */; };
 		18BEF93A15EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */; };
+		18BEF94015EF05CE00B37F29 /* bnote-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF93E15EF05CE00B37F29 /* bnote-100.png */; };
+		18BEF94115EF05CE00B37F29 /* bnote-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF93E15EF05CE00B37F29 /* bnote-100.png */; };
+		18BEF94215EF05CE00B37F29 /* bnote-320.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF93F15EF05CE00B37F29 /* bnote-320.png */; };
+		18BEF94315EF05CE00B37F29 /* bnote-320.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF93F15EF05CE00B37F29 /* bnote-320.png */; };
+		18BEF94615EF069200B37F29 /* bnote-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94415EF069200B37F29 /* bnote-72.png */; };
+		18BEF94715EF069200B37F29 /* bnote-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94415EF069200B37F29 /* bnote-72.png */; };
+		18BEF94815EF069200B37F29 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94515EF069200B37F29 /* bnote-144.png */; };
+		18BEF94915EF069200B37F29 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94515EF069200B37F29 /* bnote-144.png */; };
+		18BEF94B15EF06AE00B37F29 /* bnote-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94A15EF06AD00B37F29 /* bnote-72.png */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
@@ -883,6 +892,11 @@
 		18BEF93815EC7CFB00B37F29 /* BNoteFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFileUtils.m; sourceTree = "<group>"; };
 		18BEF93C15EC834600B37F29 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		18BEF93D15ECA44000B37F29 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18BEF93E15EF05CE00B37F29 /* bnote-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-100.png"; sourceTree = "<group>"; };
+		18BEF93F15EF05CE00B37F29 /* bnote-320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-320.png"; sourceTree = "<group>"; };
+		18BEF94415EF069200B37F29 /* bnote-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-72.png"; sourceTree = "<group>"; };
+		18BEF94515EF069200B37F29 /* bnote-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-144.png"; sourceTree = "<group>"; };
+		18BEF94A15EF06AD00B37F29 /* bnote-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-72.png"; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1112,6 +1126,10 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18BEF94415EF069200B37F29 /* bnote-72.png */,
+				18BEF94515EF069200B37F29 /* bnote-144.png */,
+				18BEF93E15EF05CE00B37F29 /* bnote-100.png */,
+				18BEF93F15EF05CE00B37F29 /* bnote-320.png */,
 				18653A4B15D842550017BD1E /* bnote-action.png */,
 				18653A4C15D842550017BD1E /* bnote-add-participant.png */,
 				18653A4D15D842550017BD1E /* bnote-add-topic.png */,
@@ -1178,6 +1196,7 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
+				18BEF94A15EF06AD00B37F29 /* bnote-72.png */,
 				1834D34115634A650065788F /* BNote */,
 				1834D33A15634A650065788F /* Frameworks */,
 				1834D33815634A650065788F /* Products */,
@@ -2092,6 +2111,11 @@
 				18BEF24615DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF25215DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
 				181A2CF515E7FFB50036FF2D /* BeNote-archive.benote in Resources */,
+				18BEF94015EF05CE00B37F29 /* bnote-100.png in Resources */,
+				18BEF94215EF05CE00B37F29 /* bnote-320.png in Resources */,
+				18BEF94615EF069200B37F29 /* bnote-72.png in Resources */,
+				18BEF94815EF069200B37F29 /* bnote-144.png in Resources */,
+				18BEF94B15EF06AE00B37F29 /* bnote-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2163,6 +2187,10 @@
 				18BEF24715DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF25315DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
 				181A2CF615E7FFB50036FF2D /* BeNote-archive.benote in Resources */,
+				18BEF94115EF05CE00B37F29 /* bnote-100.png in Resources */,
+				18BEF94315EF05CE00B37F29 /* bnote-320.png in Resources */,
+				18BEF94715EF069200B37F29 /* bnote-72.png in Resources */,
+				18BEF94915EF069200B37F29 /* bnote-144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

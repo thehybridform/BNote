@@ -108,7 +108,7 @@
 	"No Responsibility" = "No Responsibility";
 	"Not Complete" = "Not Complete";
 	"Note Options" = "Note Options";
-	"Note Summary" = "Note Summary";
+	"Note Summary" = SUMMARY;
 	Notes = Notes;
 	People = People;
 	Question = Question;

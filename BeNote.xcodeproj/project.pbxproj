@@ -1075,13 +1075,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18021C1515870B7600C15F3A /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Configuration;
-			sourceTree = "<group>";
-		};
 		18070DF115786123003486E3 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -1174,6 +1167,7 @@
 				181A2D0C15EABE680036FF2D /* NoteUnmarshaller.h */,
 				181A2D0D15EABE680036FF2D /* NoteUnmarshaller.m */,
 				18BEF90915EB340A00B37F29 /* EntryUnmarshallerBasis.h */,
+				18BEF92F15EC33EE00B37F29 /* ResponsibilityUnmarshaller.h */,
 				18BEF90A15EB340A00B37F29 /* EntryUnmarshallerBasis.m */,
 				181A2D1015EB1FB40036FF2D /* ActionItemUnmarshaller.h */,
 				181A2D1115EB1FB40036FF2D /* ActionItemUnmarshaller.m */,
@@ -1185,7 +1179,6 @@
 				18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */,
 				18BEF92B15EC311900B37F29 /* AttendeeUnmarshaller.h */,
 				18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */,
-				18BEF92F15EC33EE00B37F29 /* ResponsibilityUnmarshaller.h */,
 				18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */,
 				18BEF93315EC6DE200B37F29 /* PhotoUnmarshaller.h */,
 				18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */,
@@ -1238,7 +1231,6 @@
 				1851A626159E96270089EECF /* Photo Editor */,
 				18497682159053B300F49F5A /* Information Details */,
 				184CEAD0158F225900C67CF5 /* EULA */,
-				18021C1515870B7600C15F3A /* Configuration */,
 				1819675615699AB200DA31A3 /* Images */,
 				18E9FF0D156A340900F22272 /* UI */,
 				18368F5415662D8000E511CB /* Detail View */,

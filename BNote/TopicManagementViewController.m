@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLable;
 @property (strong, nonatomic) IBOutlet UILabel *helpLable;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) Note *note;
 @property (assign, nonatomic) TopicSelectType topicSelectType;
@@ -31,6 +32,7 @@
 @synthesize topicSelectType = _topicSelectType;
 @synthesize tableView = _tableView;
 @synthesize delegate = _delegate;
+@synthesize menuView = _menuView;
 
 static NSString *cancelText;
 static NSString *doneText;
@@ -48,6 +50,7 @@ static NSString *highligtTopicText;
     [self setData:nil];
     [self setHelpLable:nil];
     [self setTableView:nil];
+    self.menuView = nil;
 }
 
 - (id)initWithNote:(Note *)note forType:(TopicSelectType)type
@@ -74,7 +77,7 @@ static NSString *highligtTopicText;
 {
     [super viewDidLoad];
 
-    self.titleLable.font = [BNoteConstants font:RobotoBold andSize:24];
+    self.titleLable.font = [BNoteConstants font:RobotoBold andSize:20];
     self.titleLable.textColor = [BNoteConstants appHighlightColor1];
     
     self.helpLable.font = [BNoteConstants font:RobotoRegular andSize:18];
@@ -118,6 +121,10 @@ static NSString *highligtTopicText;
     [LayerFormater roundCornersForView:self.tableView];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:self.tableView];
     [LayerFormater setBorderWidth:1 forView:self.tableView];
+
+    [LayerFormater setBorderWidth:1 forView:self.menuView];
+    [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:self.menuView];
+    [LayerFormater addShadowToView:self.menuView];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

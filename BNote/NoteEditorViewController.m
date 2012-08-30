@@ -60,6 +60,7 @@
 
 @property (strong, nonatomic) IBOutlet EntriesViewController *entriesViewController;
 @property (strong, nonatomic) IBOutlet UIView *shadowView;
+@property (strong, nonatomic) IBOutlet UIView *entryTableView;
 
 @property (assign, nonatomic) BOOL isEditing;
 
@@ -100,9 +101,11 @@
 @synthesize addSummaryButton = _addSummaryButton;
 @synthesize closeButton = _closeButton;
 @synthesize shadowView = _shadowView;
+@synthesize entryTableView = _entryTableView;
 
 static NSString *closeText;
 static NSString *reviewText;
+static NSString *reviewButtonText;
 static NSString *doneText;
 static NSString *filteringText;
 static NSString *entryText;
@@ -151,6 +154,7 @@ static NSString *spacing = @"   ";
     [self setReviewScrollView:nil];
     [self setAddSummaryButton:nil];
     self.shadowView = nil;
+    self.entryTableView = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -164,6 +168,7 @@ static NSString *spacing = @"   ";
     
     closeText = NSLocalizedString(@"Close", @"Close window");
     reviewText = NSLocalizedString(@"REVIEW", @"Review");
+    reviewButtonText = NSLocalizedString(@"Review", @"Review");
     doneText = NSLocalizedString(@"Done", @"Done");
     filteringText = NSLocalizedString(@"REVIEW", @"Note entry filtering lable");
     entryText = NSLocalizedString(@"ENTRY", @"Note entry lable");
@@ -190,7 +195,7 @@ static NSString *spacing = @"   ";
     self.view.backgroundColor = UIColorFromRGB(0xf0f0f0);
     
     [self.closeButton setTitle:closeText forState:UIControlStateNormal];
-    [self.reviewButton setTitle:reviewText forState:UIControlStateNormal];
+    [self.reviewButton setTitle:reviewButtonText forState:UIControlStateNormal];
     [[self addSummaryButton] setTitle:addSummaryText forState:UIControlStateNormal];
 
     [[self keyPointButton] setTitle:[spacing stringByAppendingString:keyPointText] forState:UIControlStateNormal];
@@ -265,7 +270,7 @@ static NSString *spacing = @"   ";
     [LayerFormater roundCornersForView:[self infoView]];
     [LayerFormater setBorderWidth:2 forView:[self infoView]];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:[self infoView]];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolBar:)
                                                  name:kAttendantsEntryDeleted object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWordsUpdated:)
@@ -368,7 +373,7 @@ static NSString *spacing = @"   ";
 
 - (void)editing
 {
-    [[self reviewButton] setTitle:reviewText forState:UIControlStateNormal];
+    [[self reviewButton] setTitle:reviewButtonText forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:[BNoteEntryUtils noteContainsAttendants:[self note]]];
     [self setIsEditing:YES];
     
@@ -541,8 +546,10 @@ static NSString *spacing = @"   ";
         [[BNoteSessionData instance] setActionSheetDelegate:self];
         [[BNoteSessionData instance] setActionSheet:actionSheet];
         
-        [actionSheet addButtonWithTitle:changeTopicText];
-        [actionSheet addButtonWithTitle:topicAssociationsText];
+        if ([[[self note] topic] color] != kFilterColor) {
+            [actionSheet addButtonWithTitle:changeTopicText];
+            [actionSheet addButtonWithTitle:topicAssociationsText];
+        }
 
         if ([MFMailComposeViewController canSendMail]) {
             [actionSheet addButtonWithTitle:emailNoteText];
@@ -665,10 +672,57 @@ static NSString *spacing = @"   ";
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
     [[self subjectTextView] resignFirstResponder];
     [[self entriesViewController] resignControll];
     [[[BNoteSessionData instance] actionSheet] dismissWithClickedButtonIndex:-1 animated:YES];
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
+    
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        [self changeTheViewToPortrait:YES andDuration:duration];
+        
+    } else if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        [self changeTheViewToPortrait:NO andDuration:duration];
+    }
+}
+
+- (void)changeTheViewToPortrait:(BOOL)portrait andDuration:(NSTimeInterval)duration
+{
+    if (portrait) {
+        [UIView animateWithDuration:duration
+                         animations:^{
+                             self.infoView.frame = CGRectMake(50, 60, 666, 84);
+                             self.shadowView.frame = CGRectMake(54, 64, 658, 76);
+                             self.dateView.frame = CGRectMake(573, -7, 100, 60);
+                             self.year.frame = CGRectMake(615, 61, 45, 21);
+                             self.subjectTextView.frame = CGRectMake(95, 26, 477, 31);
+                             self.entryTableView.frame = CGRectMake(255, 199, 770, 783);
+                             
+                             self.normalEntryButtonsView.transform = CGAffineTransformIdentity;
+                             self.reviewEntryButtonsView.transform = CGAffineTransformIdentity;
+                         }
+                         completion:^(BOOL finished){
+                             [self.infoView setNeedsDisplay];
+                         }];
+    } else {
+        [UIView animateWithDuration:duration
+                         animations:^{
+                             self.infoView.frame = CGRectMake(20, 60, 210, 120);
+                             self.shadowView.frame = CGRectMake(22, 64, 206, 114);
+                             self.dateView.frame = CGRectMake(120, -7, 100, 60);
+                             self.year.frame = CGRectMake(160, 100, 45, 21);
+                             self.subjectTextView.frame = CGRectMake(4, 65, 206, 31);
+                             self.entryTableView.frame = CGRectMake(0, 85, 770, 620);
+
+                             CGAffineTransform translate = CGAffineTransformMakeTranslation(0, -114);
+                             self.normalEntryButtonsView.transform = translate;
+                             self.reviewEntryButtonsView.transform = translate;
+                         }
+                         completion:^(BOOL finished){
+                             [self.infoView setNeedsDisplay];
+                         }];
+    }
 }
 
 - (IBAction)addSummary:(id)sender

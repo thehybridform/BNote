@@ -1,4 +1,5 @@
 {
+	Review = Review;
 	Accept = Accept;
 	Decline = Decline;
 	"Contact Us" = "Contact Us";
@@ -36,7 +37,7 @@
 	"Splash Screen Full Title" = "Thank you for installing BeNote!";
 	"Splash Screen Line 1" = "Be sure to read the help notes from the \"Welcome to BeNote!\" topic.";
 	"Splash Screen Lite Line 2" = "If you like BeNote Lite please consider purchasing the full version of BeNote and spread the word.  There is no limitations on the number of Topics, Notes, etc and it supports iCloud for network storage.";
-	"Splash Screen Full Line 2" = "If you like BeNote please spread the word.  There is no limitations on the number of Topics, Notes, etc and it supports iCloud for network storage.";
+	"Splash Screen Full Line 2" = "If you like BeNote please spread the word.";
 	"Splash Screen Line 3" = "Feedback is always welcome, we strive to make this your favorite notetaking application.";
 	"Search All Topics" = "Searcho All Topicose";
 	"Note Subject" = "Note Subject";
@@ -118,7 +119,7 @@
 	Remove = Remove;
 	Reset = Reset;
 	"Responsibility Options" = "Responsibility Options";
-	REVIEW = Review;
+	REVIEW = REVIEW;
 	"Seacrh All Topics" = "Seacrh All Topics";
 	"Select topic for note." = "Select topic for note.";
 	"Select Topic Group" = "Select Topic Group";

@@ -30,7 +30,6 @@
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) UIColor *toolbarEditColor;
 @property (strong, nonatomic) Attendant *selectedAttendant;
-@property (strong, nonatomic) UIPopoverController *popup;
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 @property (strong, nonatomic) IBOutlet UIView *dateView;
 @property (strong, nonatomic) IBOutlet UILabel *year;
@@ -84,7 +83,6 @@
 @synthesize entriesViewController = _entriesViewController;
 @synthesize attendantsButton = _attendantsButton;
 @synthesize selectedAttendant = _selectedAttendant;
-@synthesize popup = _popup;
 @synthesize menuView = _menuView;
 @synthesize infoView = _infoView;
 @synthesize month = _month;
@@ -275,10 +273,6 @@ static NSString *spacing = @"   ";
                                                  name:kAttendantsEntryDeleted object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWordsUpdated:)
                                                  name:kKeyWordsUpdated object:nil];
-    
-    if (self.view.frame.size.width > 700) {
-        [self changeTheViewToPortrait:NO andDuration:0.5];
-    }
 }
 
 - (void)setNote:(Note *)note
@@ -507,12 +501,8 @@ static NSString *spacing = @"   ";
     [controller setListener:self];
     [controller setTitleText:NSLocalizedString(@"Created Date", nil)];
 
-    if ([self popup]) {
-        [[self popup] dismissPopoverAnimated:YES];
-    }
-
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [self setPopup:popup];
+    [[BNoteSessionData instance] setPopup:popup];
     [popup setDelegate:self];
     
     [popup setPopoverContentSize:[[controller view] bounds].size];
@@ -533,13 +523,13 @@ static NSString *spacing = @"   ";
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    [self setPopup:nil];
+    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (void)selectedDatePickerViewDone
 {
-    [[self popup] dismissPopoverAnimated:YES];
-    [self setPopup:nil];
+    [[BNoteSessionData instance].popup dismissPopoverAnimated:YES];
+    [[BNoteSessionData instance] setPopup:nil];
 }
 
 - (IBAction)presentShareOptions:(id)sender
@@ -682,50 +672,68 @@ static NSString *spacing = @"   ";
     [[self entriesViewController] resignControll];
     [[[BNoteSessionData instance] actionSheet] dismissWithClickedButtonIndex:-1 animated:YES];
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
-    
-    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-        [self changeTheViewToPortrait:YES andDuration:duration];
-        
-    } else if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        [self changeTheViewToPortrait:NO andDuration:duration];
-    }
+
+    self.infoView.alpha = 0.0;
+    self.shadowView.alpha = 0.0;
+    self.dateView.alpha = 0.0;
+    self.year.alpha = 0.0;
+    self.subjectTextView.alpha = 0.0;
+    self.entryTableView.alpha = 0.0;
+    self.normalEntryButtonsView.alpha = 0.0;
+    self.reviewEntryButtonsView.alpha = 0.0;
 }
 
-- (void)changeTheViewToPortrait:(BOOL)portrait andDuration:(NSTimeInterval)duration
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    if (portrait) {
-        [UIView animateWithDuration:duration
-                         animations:^{
-                             self.infoView.frame = CGRectMake(50, 60, 666, 84);
-                             self.shadowView.frame = CGRectMake(54, 64, 658, 76);
-                             self.dateView.frame = CGRectMake(573, -7, 100, 60);
-                             self.year.frame = CGRectMake(615, 61, 45, 21);
-                             self.subjectTextView.frame = CGRectMake(95, 26, 477, 31);
-                             self.entryTableView.frame = CGRectMake(255, 199, 770, 783);
-                             
-                             self.normalEntryButtonsView.transform = CGAffineTransformIdentity;
-                             self.reviewEntryButtonsView.transform = CGAffineTransformIdentity;
-                         }
-                         completion:^(BOOL finished){
-                             [self.infoView setNeedsDisplay];
-                         }];
-    } else {
-        [UIView animateWithDuration:duration
-                         animations:^{
-                             self.infoView.frame = CGRectMake(20, 60, 210, 120);
-                             self.shadowView.frame = CGRectMake(22, 64, 206, 114);
-                             self.dateView.frame = CGRectMake(120, -7, 100, 60);
-                             self.year.frame = CGRectMake(160, 100, 45, 21);
-                             self.subjectTextView.frame = CGRectMake(4, 65, 206, 31);
-                             self.entryTableView.frame = CGRectMake(0, 85, 770, 620);
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    
+    [self updateViewOrienation];
 
-                             CGAffineTransform translate = CGAffineTransformMakeTranslation(0, -114);
-                             self.normalEntryButtonsView.transform = translate;
-                             self.reviewEntryButtonsView.transform = translate;
-                         }
-                         completion:^(BOOL finished){
-                             [self.infoView setNeedsDisplay];
-                         }];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.infoView.alpha = 1.0;
+        self.shadowView.alpha = 1.0;
+        self.dateView.alpha = 1.0;
+        self.year.alpha = 1.0;
+        self.subjectTextView.alpha = 1.0;
+        self.entryTableView.alpha = 1.0;
+        self.normalEntryButtonsView.alpha = 1.0;
+        self.reviewEntryButtonsView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void)updateViewOrienation
+{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    BOOL portrait = UIInterfaceOrientationIsPortrait(orientation);
+
+    if (portrait) {
+        self.infoView.frame = CGRectMake(50, 60, 666, 84);
+        self.shadowView.frame = CGRectMake(54, 64, 658, 76);
+        self.dateView.frame = CGRectMake(573, -7, 100, 60);
+        self.year.frame = CGRectMake(615, 61, 45, 21);
+        self.subjectTextView.frame = CGRectMake(95, 26, 477, 31);
+        
+        CGRect frame = self.entryTableView.frame;
+        self.entryTableView.frame = CGRectMake(frame.origin.x, 199, 770, 783);
+                             
+        self.normalEntryButtonsView.transform = CGAffineTransformIdentity;
+        self.reviewEntryButtonsView.transform = CGAffineTransformIdentity;
+        [self.infoView setNeedsDisplay];
+    } else {
+        self.infoView.frame = CGRectMake(20, 60, 210, 120);
+        self.shadowView.frame = CGRectMake(22, 64, 206, 114);
+        self.dateView.frame = CGRectMake(120, -7, 100, 60);
+        self.year.frame = CGRectMake(160, 100, 45, 21);
+        self.subjectTextView.frame = CGRectMake(4, 65, 206, 31);
+
+        CGRect frame = self.entryTableView.frame;
+        self.entryTableView.frame = CGRectMake(frame.origin.x, 85, 770, 620);
+
+        CGAffineTransform translate = CGAffineTransformMakeTranslation(0, -114);
+        self.normalEntryButtonsView.transform = translate;
+        self.reviewEntryButtonsView.transform = translate;
+        [self.infoView setNeedsDisplay];
     }
 }
 
@@ -754,6 +762,11 @@ static NSString *spacing = @"   ";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self updateViewOrienation];
 }
 
 @end

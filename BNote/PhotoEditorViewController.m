@@ -256,9 +256,7 @@ static NSString *resetText;
     [[self actionView] setBackgroundColor:[UIColor clearColor]];
     self.view.backgroundColor = UIColorFromRGB(0xf0f0f0);
 
-
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    [self changeTheViewToPortrait:UIInterfaceOrientationIsPortrait(orientation) andDuration:0.3];
+    [self updateViewOrientation];
     
     NSArray *views1 = [[NSArray alloc]
                        initWithObjects:
@@ -465,39 +463,43 @@ static NSString *resetText;
 {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 
-    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-        [self changeTheViewToPortrait:YES andDuration:duration];
-        
-    } else if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        [self changeTheViewToPortrait:NO andDuration:duration];
-    }
+    self.buttonsView.alpha = 0.0;
+    self.actionView.alpha = 0.0;
 }
 
-- (void)changeTheViewToPortrait:(BOOL)portrait andDuration:(NSTimeInterval)duration
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    
+    [self updateViewOrientation];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.buttonsView.alpha = 1.0;
+        self.actionView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void)updateViewOrientation
+{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    BOOL portrait = UIInterfaceOrientationIsPortrait(orientation);
+
     if (portrait) {
-        [UIView animateWithDuration:duration
-                         animations:^{
-                             CGAffineTransform rotate = CGAffineTransformMakeRotation(90.0 * M_PI / 180.0);
-                             CGAffineTransform translate = CGAffineTransformMakeTranslation(300, 400);
-                             CGAffineTransform transform = CGAffineTransformConcat(rotate, translate);
+        CGAffineTransform rotate = CGAffineTransformMakeRotation(90.0 * M_PI / 180.0);
+        CGAffineTransform translate = CGAffineTransformMakeTranslation(300, 400);
+        CGAffineTransform transform = CGAffineTransformConcat(rotate, translate);
                              
-                             [[self buttonsView] setTransform:transform];
+        [[self buttonsView] setTransform:transform];
                              
-                             translate = CGAffineTransformMakeTranslation(0, 25);
-                             rotate = CGAffineTransformMakeRotation(-90.0 * M_PI / 180.0);
-                             transform = CGAffineTransformConcat(rotate, translate);
-                             [[self actionView] setTransform:transform];
-                             
-                         }
-                         completion:^(BOOL finished){ }];
-    } else {   
-        [UIView animateWithDuration:duration
-                         animations:^{
-                             [[self buttonsView] setTransform:CGAffineTransformIdentity];
-                             [[self actionView] setTransform:CGAffineTransformIdentity];
-                         }
-                         completion:^(BOOL finished){ }];
+        translate = CGAffineTransformMakeTranslation(0, 25);
+        rotate = CGAffineTransformMakeRotation(-90.0 * M_PI / 180.0);
+        transform = CGAffineTransformConcat(rotate, translate);
+        [[self actionView] setTransform:transform];
+
+    } else {
+        [[self buttonsView] setTransform:CGAffineTransformIdentity];
+        [[self actionView] setTransform:CGAffineTransformIdentity];
     }
 }
 

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Edit</key>
+	<string>Editar</string>
+	<key>Review</key>
+	<string>Examen</string>
+	<key>Accept</key>
+	<string>Aceptar</string>
+	<key>Decline</key>
+	<string>Rechazar</string>
+	<key>Contact Us</key>
+	<string>Contáctenos</string>
+	<key>Note</key>
+	<string>Nota</string>
+	<key>Export</key>
+	<string>Exportar</string>
+	<key>Topic Group</key>
+	<string>Topic Grupo</string>
+	<key>All Data</key>
+	<string>Todos los datos</string>
+	<key>Responsibility</key>
+	<string>Responsabilidad</string>
+	<key>Convert Note Entry To</key>
+	<string>Nota: Para convertir la entrada</string>
+	<key>import failed message</key>
+	<string>Puede que no haya importado todos los datos de la nota correctamente. Por favor revise las notas importadas.</string>
+	<key>import failed message corrupt xml</key>
+	<string>El archivo histórico BeNote está dañado.</string>
+	<key>Note Import Errors</key>
+	<string>Tenga en cuenta errores de importación</string>
+	<key>Import Notes Title</key>
+	<string>Importación de Notes?</string>
+	<key>Stop</key>
+	<string>Deténgase</string>
+	<key>Importing Notes</key>
+	<string>Importación Notas ...</string>
+	<key>Selected Note</key>
+	<string>Nota seleccionada</string>
+	<key>Email Selected Note</key>
+	<string>Nota Email seleccionado</string>
+	<key>Archive Options</key>
+	<string>Archivo de Opciones</string>
+	<key>Email Selected Topic</key>
+	<string>Tema correo electrónico seleccionado</string>
+	<key>Current Note</key>
+	<string>Nota actual</string>
+	<key>Selected Topic Group</key>
+	<string>Tema Seleccionado Grupo</string>
+	<key>Selected Topic</key>
+	<string>Tema seleccionado</string>
+	<key>Archive BeNote Data</key>
+	<string>Archivo de datos BeNote</string>
+	<key>Email Archiver Help Text</key>
+	<string>Envíe el archivo BeNote como un archivo adjunto de correo electrónico. Esto puede ser reintroducidas a través de la aplicación de correo electrónico en tu iPad en una fecha posterior.</string>
+	<key>Email Archiver</key>
+	<string>Email Archiver</string>
+	<key>About</key>
+	<string>Sobre</string>
+	<key>More Information</key>
+	<string>Más Información</string>
+	<key>Help</key>
+	<string>Ayudar</string>
+	<key>Create Help Notes</key>
+	<string>Crear notas de ayuda</string>
+	<key>Confirm</key>
+	<string>Confirmar</string>
+	<key>Delete Note?</key>
+	<string>Eliminar nota?</string>
+	<key>All</key>
+	<string>Todos</string>
+	<key>Completed On</key>
+	<string>Completado el</string>
+	<key>Splash Screen Lite Title</key>
+	<string>Gracias por instalar BeNote Lite!</string>
+	<key>Splash Screen Full Title</key>
+	<string>Gracias por instalar BeNote!</string>
+	<key>Splash Screen Line 1</key>
+	<string>Asegúrese de leer las notas de ayuda del &quot;Welcome to BeNote!&quot; tema.</string>
+	<key>Splash Screen Lite Line 2</key>
+	<string>Si te gusta BeNote favor Lite considerar la compra de la versión completa de BeNote y correr la voz. No hay limitaciones en el número de temas, notas, etc y es compatible con iCloud para el almacenamiento de la red.</string>
+	<key>Splash Screen Full Line 2</key>
+	<string>Si te gusta BeNote por favor corran la voz.</string>
+	<key>Splash Screen Line 3</key>
+	<string>La retroalimentación es siempre bienvenida, nos esforzamos por hacer de este su aplicación para tomar notas favorito.</string>
+	<key>Search All Topics</key>
+	<string>Buscar todos los temas</string>
+	<key>Note Subject</key>
+	<string>Nota Asunto</string>
+	<key>Not assigned</key>
+	<string>No asignado</string>
+	<key>Assigned to</key>
+	<string>Asignado a</string>
+	<key>Created Date</key>
+	<string>Fecha de Creación</string>
+	<key>Topic</key>
+	<string>Tema</string>
+	<key>More Topic Groups Not Supported</key>
+	<string>BeNote Lite no admite la adición de más grupos de temas. Por favor, considere la compra de la versión alemana completo. Eliminar mayores grupos de temas para hacer espacio.</string>
+	<key>More Notes Not Supported</key>
+	<string>BeNote Lite no permite agregar más notas. Por favor, considere la compra de la versión alemana completo. Eliminar notas antiguas para dejar espacio.</string>
+	<key>More Notes Entries Not Supported</key>
+	<string>BeNote Lite no permite agregar más entradas de notas. Por favor, considere la compra de la versión alemana completo. Eliminar las entradas más antiguas notas para hacer sitio.</string>
+	<key>More Topics Not Supported</key>
+	<string>BeNote Lite no admite la adición de más temas. Por favor, considere la compra de la versión alemana completo. Eliminar temas más viejos para hacer sitio.</string>
+	<key>EULA Message Action</key>
+	<string>Le ruego acepte el Acuerdo de licencia de usuario final, o presione el botón de inicio para salir.</string>
+	<key>Action Required</key>
+	<string>Medidas necesarias</string>
+	<key>Thank you for contacting us!</key>
+	<string>Gracias por contactar con nosotros!</string>
+	<key>Failed to Send E-Mail</key>
+	<string>No se pudo enviar E-Mail</string>
+	<key>Action Items - Incomplete</key>
+	<string>Puntos de Acción - Incomplete</string>
+	<key>Action Item</key>
+	<string>Línea de Acción</string>
+	<key>Add Key Word</key>
+	<string>Añadir palabra clave</string>
+	<key>Action Items - Completed</key>
+	<string>Puntos de Acción - Completo</string>
+	<key>Add Note</key>
+	<string>Añadir nota</string>
+	<key>Add Summary</key>
+	<string>Agregar Resumen</string>
+	<key>Add Topic</key>
+	<string>Añadir Tema</string>
+	<key>Address Book</key>
+	<string>Libreta de direcciones</string>
+	<key>Answer</key>
+	<string>Responder</string>
+	<key>Associate</key>
+	<string>Asociar</string>
+	<key>Associated Topics</key>
+	<string>Temas Asociados</string>
+	<key>Attendant Options</key>
+	<string>Opciones de operadora</string>
+	<key>Attendants</key>
+	<string>Asistentes</string>
+	<key>Attendee Details</key>
+	<string>Detalles de los asistentes</string>
+	<key>Attendee Options</key>
+	<string>Opciones de los asistentes</string>
+	<key>Attendees</key>
+	<string>Los asistentes</string>
+	<key>Cancel</key>
+	<string>Cancelar</string>
+	<key>Change Topic</key>
+	<string>Cambiar Tema</string>
+	<key>Clear Due Date</key>
+	<string>Fecha de vencimiento Clear</string>
+	<key>Clear Responsibility</key>
+	<string>Clara responsabilidad</string>
+	<key>Close</key>
+	<string>Cerrar</string>
+	<key>Complete</key>
+	<string>Completar</string>
+	<key>Continue</key>
+	<string>Continuar</string>
+	<key>Copy</key>
+	<string>Copiar</string>
+	<key>Copy to Topic</key>
+	<string>Copiar Topic</string>
+	<key>Create</key>
+	<string>Crear</string>
+	<key>Create New</key>
+	<string>Crear nuevo</string>
+	<key>Dates</key>
+	<string>Fechas</string>
+	<key>Decision</key>
+	<string>Decisión</string>
+	<key>Decisions</key>
+	<string>Decisiones</string>
+	<key>Details</key>
+	<string>Detalles</string>
+	<key>Disassociate</key>
+	<string>Desasociar</string>
+	<key>Done</key>
+	<string>Hecho</string>
+	<key>Due Date</key>
+	<string>Fecha de vencimiento</string>
+	<key>Due Date Options</key>
+	<string>Opciones de Fecha de vencimiento</string>
+	<key>Due On</key>
+	<string>Vence el</string>
+	<key>E-Mail</key>
+	<string>E-Mail</string>
+	<key>ENTRY</key>
+	<string>ENTRADA</string>
+	<key>Enter Subject</key>
+	<string>Introduzca un asunto</string>
+	<key>Filtered Group</key>
+	<string>Grupo filtrada</string>
+	<key>FILTERING</key>
+	<string>FILTRADO</string>
+	<key>First Name</key>
+	<string>Nombre</string>
+	<key>Highlight topics to add.</key>
+	<string>Resalte los temas que desea agregar.</string>
+	<key>Image Options</key>
+	<string>Opciones de imagen</string>
+	<key>Key Point</key>
+	<string>Punto clave</string>
+	<key>Key Points</key>
+	<string>Puntos clave</string>
+	<key>Key Word Options</key>
+	<string>Opciones de palabras clave</string>
+	<key>Key Words</key>
+	<string>Palabras Clave</string>
+	<key>Last Name</key>
+	<string>Apellido</string>
+	<key>Manage</key>
+	<string>Gestionar</string>
+	<key>Move</key>
+	<string>Mover</string>
+	<key>New Topic Group Name</key>
+	<string>Tema Nuevo nombre de grupo</string>
+	<key>No Due Date</key>
+	<string>Sin fecha límite</string>
+	<key>No Responsibility</key>
+	<string>No Responsabilidad</string>
+	<key>Not Complete</key>
+	<string>No es completa</string>
+	<key>Note Options</key>
+	<string>Nota Opciones</string>
+	<key>Note Summary</key>
+	<string>Nota Resumen</string>
+	<key>Notes</key>
+	<string>Notas</string>
+	<key>People</key>
+	<string>Personas</string>
+	<key>Question</key>
+	<string>Cuestión</string>
+	<key>Questions - Answered</key>
+	<string>Preguntas con respuesta</string>
+	<key>Questions - Unanswered</key>
+	<string>Preguntas sin respuesta</string>
+	<key>Redo</key>
+	<string>Rehacer</string>
+	<key>Remove</key>
+	<string>Quitar</string>
+	<key>Reset</key>
+	<string>Reajustar</string>
+	<key>Responsibility Options</key>
+	<string>Opciones Responsabilidad</string>
+	<key>REVIEW</key>
+	<string>EXAMEN</string>
+	<key>Seacrh All Topics</key>
+	<string>Buscar todos los temas</string>
+	<key>Select topic for note.</key>
+	<string>Seleccione un tema para la nota.</string>
+	<key>Select Topic Group</key>
+	<string>Seleccione Grupo Topic</string>
+	<key>Select Topics for this group.</key>
+	<string>Seleccione temas de este grupo.</string>
+	<key>Send E-mail</key>
+	<string>Enviar E-mail</string>
+	<key>Set Due Date</key>
+	<string>Establecer fecha de vencimiento</string>
+	<key>Set Responsibility</key>
+	<string>Establecer la responsabilidad</string>
+	<key>tomorrow</key>
+	<string>mañana</string>
+	<key>Topic Groups</key>
+	<string>Grupos temáticos</string>
+	<key>Topic name already exists.</key>
+	<string>Nombre del tema ya existe.</string>
+	<key>Type in a new Topic Title</key>
+	<string>Escriba un título nuevo tema</string>
+	<key>Undo</key>
+	<string>Deshacer</string>
+	<key>Update</key>
+	<string>Actualizar</string>
+	<key>week ago</key>
+	<string>semana</string>
+	<key>week from now</key>
+	<string>semana a partir de ahora</string>
+	<key>yesterday</key>
+	<string>ayer</string>
+	<key>Topics Description</key>
+	<string>Puede asignar a cada tema un color. También puede agrupar los temas en grupos de temas personalizados. Por ejemplo, puede agrupar todos los temas con notas de trabajo en un grupo de tema denominado &quot;Trabajo&quot;. Para todos los temas de sus conferencias, podrías grupos en &quot;Clases de universidad&quot;.</string>
+	<key>Notes Description</key>
+	<string>Las notas se organizan en Temas. Las notas están ordenadas según la fecha y hora de cada nota. Elementos de acción, preguntas y decisiones de cada tema se resumen a continuación la lista de notas. Usted puede seleccionar cualquiera de estas entradas resumidos para abrir la entrada seleccionada en la nota correspondiente.</string>
+	<key>Sharing Description</key>
+	<string>Las notas se organizan en Temas. Las notas están ordenadas según la fecha y hora de cada nota. Elementos de acción, preguntas y decisiones de cada tema se resumen a continuación la lista de notas. Usted puede seleccionar cualquiera de estas entradas resumidos para abrir la entrada seleccionada en la nota correspondiente.</string>
+	<key>Search Description</key>
+	<string>Usted puede buscar a través de todas las notas de un grupo de temas, mediante la selección de la barra de búsqueda.</string>
+	<key>Overview Note Title</key>
+	<string>Información general</string>
+	<key>Note Taking Title</key>
+	<string>Nota Tomando</string>
+	<key>Participants Description</key>
+	<string>Puede agregar participantes a su nota si hay otras personas presentes que desea grabar. Los participantes son seleccionados de la lista de contactos en su dispositivo. Si un participante no está en la lista de contactos, esta es una buena oportunidad agregarlos.</string>
+	<key>Key Points Description</key>
+	<string>Añadir un punto clave para una nota para registrar información importante. Consejo: Si estás en una reunión, conferencia o taller, se centran en la participación en la discusión, no captura todo lo que se dice. Entonces será mucho más fácil entender lo que es importante y lo que no lo es. Puedes añadir una imagen a aspecto clave, ya sea una selección que ya tiene en su dispositivo, al tomar una instantánea, o utilizando el bloc de dibujo. También puede dibujar sobre una imagen existente.</string>
+	<key>Action Items Description</key>
+	<string>Puede agregar un Punto de Acción para asignar usted mismo u otra persona presente, algo que hacer. Cada elemento de acción también se puede asignar una fecha de vencimiento. Tenga en cuenta que los elementos de acción no se puede asignar a alguien que no está presente. Si a usted le gustaría hacer eso, se recomienda que se asigne a alguien la responsabilidad de presentar la comunicación del elemento de acción para esa persona. Cuando el elemento de acción se completa puede abrir el elemento de acción y marcarlo como completado.
+</string>
+	<key>Questions Description</key>
+	<string>Captura de preguntas críticas que surgen en el curso de tomar notas mediante la adición de una entrada de pregunta. A veces esas preguntas no pueden ser contestadas en la misma nota sesión de toma, a veces lo harán. Cuando una pregunta se contesta puede agregar que la respuesta a la pregunta de entrada para que pueda encontrar más tarde.</string>
+	<key>Decisions Description</key>
+	<string>Las decisiones importantes se pueden capturar mediante la adición de una entrada de decisión. Las decisiones deben ser breves declaraciones concisas.</string>
+	<key>Reviewing Your Notes Description</key>
+	<string>Se le anima a revisar sus notas para mejorar su recuerdo de la información que ha capturado. En el modo de revisión puede filtrar las entradas de notas por el tipo de cada entrada de nota. También puede filtrar las entradas basadas en palabras clave que aparecen en cada nota. Para agregar una palabra clave, basta con resaltar el texto y seleccione Agregar palabra clave. La nueva palabra clave aparecerá en el modo de revisión. Cuando la revisión esté completa se puede resumir la nota mediante la adición de una entrada de resumen.</string>
+	<key>Quick Words Description</key>
+	<string>En algún momento cuando usted está entrando en las notas puede ser útil tener una forma rápida de introducir ciertos tipos de información como las fechas, los nombres de los participantes e incluso palabras clave. BeNote proporciona una forma sencilla de hacerlo. Cuando una entrada de nota abierta, por encima del teclado es un conjunto de herramientas que le permiten entrar fácilmente esa información.</string>
+	<key>Multiple Note Topics Description</key>
+	<string>Cada nota tiene un tema principal. Sin embargo, a veces una nota que está tomando puede tocar otro tema. BeNote le permite agregar temas a una nota de la selección de temas para las notas. Una vez que se han añadido otros temas de la nota aparecerá bajo esos temas también. El color de tema asignado a la nota siempre será el color de tema principal.</string>
+	<key>Welcome to BeNote Title</key>
+	<string>Bienvenido a BeNote</string>
+	<key>Tap Me</key>
+	<string>Puntee en Yo</string>
+	<key>Welcome 1</key>
+	<string>BeNote es una herramienta para tomar notas cuidadosamente elaborado para su dispositivo tablet que le ayuda a capturar de manera eficiente y recordar información importante. Ideal para reuniones, sesiones de lluvia de ideas o simplemente para capturar un pensamiento rápido, BeNote ayuda a mantener tus notas organizadas y fácilmente accesible.</string>
+	<key>Welcome 2</key>
+	<string>El propósito de la toma de notas es capturar información. BeNote ha sido diseñado desde el principio para ayudarle a hacer eso de manera eficiente. No se ven obligados a elegir entre una lista de tareas o el texto (o imagen), o para inscribirse en un nuevo servicio antes de tomar notas. Con BeNote, puede empezar a tomar notas inmediatamente.</string>
+	<key>Welcome 3</key>
+	<string>Añadir cualquiera de las siguientes entradas sobre la marcha a cualquier nota:
+  * Participantes
+  * Puntos clave (con imágenes, fotos o esquemas)
+  * Líneas de Acción
+  * Preguntas
+  * Decisiones</string>
+	<key>Welcome 4</key>
+	<string>BeNote maneja cada tipo de entrada adecuada, exponiendo a útiles funciones y capacidades exactamente cuando usted los necesita. Herramientas útiles de entrada están siempre disponibles para ayudarle rápidamente, introduzca las fechas, horas, los nombres de los participantes y mucho más.</string>
+	<key>Welcome 5</key>
+	<string>Mejorar Recordemos Notetaking estudios apoyan constantemente revisando sus notas para mejorar la memoria. Modo BeNote de Revisión le permite filtrar las entradas de notas por tipo, o por palabras clave especificadas. Agregar un resumen de sus notas cuando su sesión de revisión se haya completado. BeNote muestra todos los elementos de acción, preguntas y decisiones en todas las notas en el resumen de tema.</string>
+	<key>Welcome 6</key>
+	<string>Organización flexible, potente \ nAssign varios temas a una nota. Temas del grupo para que pueda centrarse únicamente en los temas que importan. La potente capacidad de búsqueda puede localizar rápidamente cualquier nota al instante.</string>
+	<key>OK</key>
+	<string>OK</string>
+</dict>
+</plist>

@@ -9,16 +9,9 @@
 #import "TopicUnmarshaller.h"
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
-#import "Topic.h"
-
-@interface TopicUnmarshaller()
-@property (strong, nonatomic) Topic *topic;
-
-@end
 
 @implementation TopicUnmarshaller
 @synthesize topic = _topic;
-@synthesize associated = _associated;
 
 - (NSString *)nodeName
 {
@@ -43,18 +36,8 @@
     switch (self.nodeType) {
         case TopicTitleNode:
         {
-            Topic *topic = [[BNoteReader instance] getTopicForName:string];
-            if (!topic) {
-                TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
-                if (!group) {
-                    group = [BNoteFactory createTopicGroup:kAllTopicGroupName];
-                }
-                
-                topic = [BNoteFactory createTopic:string forGroup:group];
-                topic.color = [BNoteXmlConstants longFromString:string];
-            }
-            
-            self.topic = topic;
+            self.topic = [self findOrCreateTopic:string];
+            self.note.topic = self.topic;
         }
             break;
             
@@ -62,12 +45,8 @@
             if (!self.topic.color) {
                 self.topic.color = [BNoteXmlConstants longFromString:string];
             }
-            
-            if (self.associated) {
-                [self.note addAssociatedTopicsObject:self.topic];
-            } else {
-                self.note.topic = self.topic;
-            }
+
+            self.note.color = self.topic.color;
             
             break;
             
@@ -76,5 +55,19 @@
     }
 }
 
+- (Topic *)findOrCreateTopic:(NSString *)name
+{
+    Topic *topic = [[BNoteReader instance] getTopicForName:name];
+    if (!topic) {
+        TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
+        if (!group) {
+            group = [BNoteFactory createTopicGroup:kAllTopicGroupName];
+        }
+        
+        topic = [BNoteFactory createTopic:name forGroup:group];
+    }
+    
+    return topic;
+}
 
 @end

@@ -7,9 +7,11 @@
 //
 
 #import "EntryUnmarshallerBasis.h"
+#import "Topic.h"
 
 @interface TopicUnmarshaller : EntryUnmarshallerBasis
+@property (strong, nonatomic) Topic *topic;
 
-@property (assign, nonatomic) BOOL associated;
+- (Topic *)findOrCreateTopic:(NSString *)name;
 
 @end

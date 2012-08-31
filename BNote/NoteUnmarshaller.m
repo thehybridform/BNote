@@ -15,6 +15,7 @@
 #import "DecisionUnmarshaller.h"
 #import "AttendeeUnmarshaller.h"
 #import "TopicUnmarshaller.h"
+#import "AssociatedTopicUnmarshaller.h"
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 #import "Topic.h"
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSMutableArray *parsers;
 @property (assign, nonatomic) CurrentNode nodeType;
 @property (strong, nonatomic) Note *note;
+@property (strong, nonatomic) TopicUnmarshaller *topicUnmarshaller;
 
 @end
 
@@ -32,6 +34,7 @@
 @synthesize parsers = _parsers;
 @synthesize nodeType = _nodeType;
 @synthesize note = _note;
+@synthesize topicUnmarshaller = _topicUnmarshaller;
 
 - (id)initWithNote:(Note *)note andPreviousParser:(id<NSXMLParserDelegate>)previousParser
 {
@@ -47,6 +50,8 @@
         [self.parsers addObject:[[KeyPointUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
         [self.parsers addObject:[[DecisionUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
         [self.parsers addObject:[[AttendeeUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
+        [self.parsers addObject:[[TopicUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
+        [self.parsers addObject:[[AssociatedTopicUnmarshaller alloc] initWithNote:note andPreviousParser:self]];
     }
     
     return self;
@@ -62,10 +67,6 @@
         self.nodeType = SummaryNode;
     } else if ([elementName isEqualToString:kSubject]) {
         self.nodeType = SubjectNode;
-    } else if ([elementName isEqualToString:kTopic]) {
-        self.nodeType = TopicNode;
-    } else if ([elementName isEqualToString:kAssociatedTopicName]) {
-        self.nodeType = AssociatedTopicNode;
     } else {
         self.nodeType = NoNode;
     }
@@ -87,7 +88,6 @@
         parser.delegate = self.previousParser;
     } else {
         self.nodeType = NoNode;
-        self.note.topic.color = self.note.color;
     }
 }
 
@@ -109,18 +109,6 @@
             
         case SubjectNode:
             self.note.subject = string;
-            break;
-            
-        case TopicNode:
-            parser.delegate = [[TopicUnmarshaller alloc] initWithNote:self.note andPreviousParser:self];
-            break;
-
-        case AssociatedTopicNode:
-        {
-            TopicUnmarshaller *unmarshaller = [[TopicUnmarshaller alloc] initWithNote:self.note andPreviousParser:self];
-            unmarshaller.associated = YES;
-            parser.delegate = unmarshaller;
-        }
             break;
 
         default:

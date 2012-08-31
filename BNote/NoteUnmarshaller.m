@@ -14,6 +14,7 @@
 #import "KeyPointUnmarshaller.h"
 #import "DecisionUnmarshaller.h"
 #import "AttendeeUnmarshaller.h"
+#import "TopicUnmarshaller.h"
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
 #import "Topic.h"
@@ -61,12 +62,10 @@
         self.nodeType = SummaryNode;
     } else if ([elementName isEqualToString:kSubject]) {
         self.nodeType = SubjectNode;
-    } else if ([elementName isEqualToString:kTopicName]) {
+    } else if ([elementName isEqualToString:kTopic]) {
         self.nodeType = TopicNode;
     } else if ([elementName isEqualToString:kAssociatedTopicName]) {
         self.nodeType = AssociatedTopicNode;
-    } else if ([elementName isEqualToString:kNoteColor]) {
-        self.nodeType = ColorNode;
     } else {
         self.nodeType = NoNode;
     }
@@ -104,10 +103,6 @@
             self.note.lastUpdated = [BNoteXmlConstants toTimeInterval:string];
             break;
             
-        case ColorNode:
-            self.note.color = [BNoteXmlConstants longFromString:string];
-            break;
-            
         case SummaryNode:
             self.note.summary = string;
             break;
@@ -117,28 +112,14 @@
             break;
             
         case TopicNode:
-        {
-            Topic *topic = [[BNoteReader instance] getTopicForName:string];
-            if (!topic) {
-                TopicGroup *group = [[BNoteReader instance] getTopicGroup:kAllTopicGroupName];
-                if (!group) {
-                    group = [BNoteFactory createTopicGroup:kAllTopicGroupName];
-                }
-                
-                topic = [BNoteFactory createTopic:string forGroup:group];
-            }
-            self.note.topic = topic;
-        }
+            parser.delegate = [[TopicUnmarshaller alloc] initWithNote:self.note andPreviousParser:self];
             break;
 
         case AssociatedTopicNode:
         {
-            Topic *topic = [[BNoteReader instance] getTopicForName:string];
-            if (!topic) {
-                TopicGroup *group = [BNoteFactory createTopicGroup:string];
-                topic = [BNoteFactory createTopic:string forGroup:group];
-            }
-            [self.note addAssociatedTopicsObject:topic];
+            TopicUnmarshaller *unmarshaller = [[TopicUnmarshaller alloc] initWithNote:self.note andPreviousParser:self];
+            unmarshaller.associated = YES;
+            parser.delegate = unmarshaller;
         }
             break;
 

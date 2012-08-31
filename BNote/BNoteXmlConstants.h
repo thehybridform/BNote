@@ -16,7 +16,7 @@ extern NSString *const kText;
 extern NSString *const kNote;
 extern NSString *const kSubject;
 extern NSString *const kSummary;
-extern NSString *const kTopicName;
+extern NSString *const kTopic;
 extern NSString *const kAssociatedTopicName;
 extern NSString *const kKeyPoint;
 extern NSString *const kPhoto;
@@ -33,8 +33,9 @@ extern NSString *const kResponsibility;
 extern NSString *const kFirstName;
 extern NSString *const kLastName;
 extern NSString *const kEmail;
-extern NSString *const kNoteColor;
+extern NSString *const kTopicColor;
 extern NSString *const kAttendee;
+extern NSString *const kTopicTitle;
 
 typedef enum {
     TextNode,
@@ -46,10 +47,11 @@ typedef enum {
     QuestionAnswerNode,
     PhotoNode,
     TopicNode,
+    TopicTitleNode,
     AssociatedTopicNode,
     SummaryNode,
     SubjectNode,
-    ColorNode,
+    TopicColorNode,
     AttendantNode,
     FirstNameNode,
     LastNameNode,

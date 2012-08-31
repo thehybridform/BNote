@@ -254,7 +254,8 @@
 		18BEF94715EF069200B37F29 /* bnote-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94415EF069200B37F29 /* bnote-72.png */; };
 		18BEF94815EF069200B37F29 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94515EF069200B37F29 /* bnote-144.png */; };
 		18BEF94915EF069200B37F29 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94515EF069200B37F29 /* bnote-144.png */; };
-		18BEF94B15EF06AE00B37F29 /* bnote-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94A15EF06AD00B37F29 /* bnote-72.png */; };
+		18BEF94E15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */; };
+		18BEF94F15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
 		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
@@ -352,7 +353,6 @@
 		18E9FF27156C6D7E00F22272 /* key_point_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF25156C6D7E00F22272 /* key_point_active_icon.png */; };
 		18E9FF28156C6D7E00F22272 /* key_point_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF26156C6D7E00F22272 /* key_point_icon.png */; };
 		18E9FF34156C791800F22272 /* bnote.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF32156C791800F22272 /* bnote.png */; };
-		18E9FF39156C7A2400F22272 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF38156C7A2400F22272 /* bnote-144.png */; };
 		18E9FF3B156C7C9600F22272 /* attendant_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF3A156C7C9500F22272 /* attendant_icon.png */; };
 		18E9FF57156DCE4600F22272 /* BNoteStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF56156DCE4600F22272 /* BNoteStringUtils.m */; };
 		18E9FF5B156DE6A200F22272 /* BNoteSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF5A156DE6A200F22272 /* BNoteSessionData.m */; };
@@ -897,6 +897,8 @@
 		18BEF94415EF069200B37F29 /* bnote-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-72.png"; sourceTree = "<group>"; };
 		18BEF94515EF069200B37F29 /* bnote-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-144.png"; sourceTree = "<group>"; };
 		18BEF94A15EF06AD00B37F29 /* bnote-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-72.png"; sourceTree = "<group>"; };
+		18BEF94C15F03B7C00B37F29 /* TopicUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicUnmarshaller.h; sourceTree = "<group>"; };
+		18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicUnmarshaller.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		18C03DC5158DA3C70035AFDA /* BeNote 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 4.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1182,6 +1184,8 @@
 				18BEF93015EC33EF00B37F29 /* ResponsibilityUnmarshaller.m */,
 				18BEF93315EC6DE200B37F29 /* PhotoUnmarshaller.h */,
 				18BEF93415EC6DE300B37F29 /* PhotoUnmarshaller.m */,
+				18BEF94C15F03B7C00B37F29 /* TopicUnmarshaller.h */,
+				18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */,
 			);
 			name = Unmarshalling;
 			sourceTree = "<group>";
@@ -2057,7 +2061,6 @@
 				18E9FF27156C6D7E00F22272 /* key_point_active_icon.png in Resources */,
 				18E9FF28156C6D7E00F22272 /* key_point_icon.png in Resources */,
 				18E9FF34156C791800F22272 /* bnote.png in Resources */,
-				18E9FF39156C7A2400F22272 /* bnote-144.png in Resources */,
 				18E9FF3B156C7C9600F22272 /* attendant_icon.png in Resources */,
 				1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */,
 				1879F06115747B18003814C2 /* QuickWordsViewController.xib in Resources */,
@@ -2107,7 +2110,6 @@
 				18BEF94215EF05CE00B37F29 /* bnote-320.png in Resources */,
 				18BEF94615EF069200B37F29 /* bnote-72.png in Resources */,
 				18BEF94815EF069200B37F29 /* bnote-144.png in Resources */,
-				18BEF94B15EF06AE00B37F29 /* bnote-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2382,6 +2384,7 @@
 				18BEF93115EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
 				18BEF93515EC6DE400B37F29 /* PhotoUnmarshaller.m in Sources */,
 				18BEF93915EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */,
+				18BEF94E15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2578,6 +2581,7 @@
 				18BEF93215EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
 				18BEF93615EC6DE400B37F29 /* PhotoUnmarshaller.m in Sources */,
 				18BEF93A15EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */,
+				18BEF94F15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

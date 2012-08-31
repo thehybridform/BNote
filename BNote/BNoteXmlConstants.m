@@ -22,10 +22,11 @@ NSString *const kLastUpdated = @"last-updated-date";
 NSString *const kText = @"text";
 
 NSString *const kNote = @"note";
-NSString *const kNoteColor = @"color";
+NSString *const kTopicColor = @"color";
 NSString *const kSubject = @"subject";
 NSString *const kSummary = @"summary";
-NSString *const kTopicName = @"topic";
+NSString *const kTopic = @"topic";
+NSString *const kTopicTitle = @"title";
 NSString *const kAssociatedTopicName = @"associated-topic";
 
 NSString *const kKeyPoint = @"key-point";
@@ -43,7 +44,7 @@ NSString *const kActionItem = @"action-item";
 NSString *const kDueDate = @"due-date";
 NSString *const kCompletedDate = @"completed-date";
 
-NSString *const kAttendee = @"attendee";
+NSString *const kAttendee = @"person";
 NSString *const kResponsibility = @"responsibility";
 NSString *const kFirstName = @"firstname";
 NSString *const kLastName = @"lastname";

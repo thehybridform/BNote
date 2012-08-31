@@ -12,6 +12,7 @@
 #import "RootUnmarshaller.h"
 #import "BNoteWriter.h"
 #import "BNoteFileUtils.h"
+#import "BNoteXmlConstants.h"
 
 @interface BNoteUnarshallingManager()
 @property (strong, nonatomic) id<NSXMLParserDelegate> benoteParser;
@@ -26,7 +27,6 @@
 @synthesize errors = _errors;
 
 static int BUFFER_SIZE = 1024;
-static NSString *xmlFile = @"bnote.xml";
 static NSString *kBeNote = @"benote";
 
 - (void)delegate:(id<UnmarshallerListener>)delegate unmarshallUrl:(NSURL *)url
@@ -37,7 +37,7 @@ static NSString *kBeNote = @"benote";
         self.zipFile = [[ZipFile alloc] initWithFileName:url.path mode:ZipFileModeUnzip];
 
         NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-        NSString *filename = [documentsDirectory stringByAppendingPathComponent:xmlFile];
+        NSString *filename = [documentsDirectory stringByAppendingPathComponent:kBeNoteXmlFile];
 
         BOOL result = [self extractXml:self.zipFile toFile:filename];
         if (result) {
@@ -91,7 +91,7 @@ static NSString *kBeNote = @"benote";
     NSString *xml;
     NSArray *infos= [zipFile listFileInZipInfos];
     for (FileInZipInfo *info in infos) {
-        if ([info.name hasSuffix:xmlFile]) {
+        if ([info.name hasSuffix:kBeNoteXmlFile]) {
             xml = info.name;
             break;
         }

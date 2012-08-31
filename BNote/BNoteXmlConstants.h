@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const kBeNoteXmlFile;
+
 extern NSString *const kBeNoteOpen;
 extern NSString *const kBeNoteClose;
 extern NSString *const kCreated;

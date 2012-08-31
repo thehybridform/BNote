@@ -8,6 +8,8 @@
 
 #import "BNoteXmlConstants.h"
 
+NSString *const kBeNoteXmlFile = @"benote.xml";
+
 NSString *const kBeNoteOpen =
     @"<?xml version=\"1.0\" encoding=\"UTF-16\"?>\
         <benote xmlns=\"http://docs.uobia.net/2012/benote/XMLSchema-instance-1.0\"\

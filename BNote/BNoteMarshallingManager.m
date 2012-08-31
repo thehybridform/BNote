@@ -30,14 +30,12 @@
 @implementation BNoteMarshallingManager
 @synthesize marshallers = _marshallers;
 
-static NSString *xmlFile = @"bnote.xml";
-
 - (BNoteExportFileWrapper *)marshall:(id)data
 {
     NSString *documentsDirectory = [NSHomeDirectory()
                                     stringByAppendingPathComponent:@"Documents"];
     NSString *path = [documentsDirectory
-                      stringByAppendingPathComponent:xmlFile];
+                      stringByAppendingPathComponent:kBeNoteXmlFile];
     
     [BNoteFileUtils primeFileForWriting:path];
     
@@ -69,7 +67,7 @@ static NSString *xmlFile = @"bnote.xml";
     
     [self clearMarshallers];
     
-    ZipWriteStream *stream = [zipFile writeFileInZipWithName:[@"benote/xml/" stringByAppendingString:xmlFile] compressionLevel:ZipCompressionLevelBest];
+    ZipWriteStream *stream = [zipFile writeFileInZipWithName:[@"benote/xml/" stringByAppendingString:kBeNoteXmlFile] compressionLevel:ZipCompressionLevelBest];
     [stream writeData:[NSData dataWithContentsOfFile:path]];
     [stream finishedWriting];
     

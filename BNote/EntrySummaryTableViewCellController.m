@@ -109,8 +109,9 @@
             [[self detailLable] setText:NSLocalizedString(@"Complete", @"This item is complete.")];
             return;
         } else if ([actionItem dueDate]) {
-            NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem dueDate]]; 
-            [[self detailLable] setText:[BNoteStringUtils dateToString:dueDate]];
+            NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem dueDate]];
+            NSString *dateText = [BNoteStringUtils dateToString:dueDate];
+            [[self detailLable] setText:[dateText uppercaseString]];
             return;
         }
     }

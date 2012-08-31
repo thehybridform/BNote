@@ -41,7 +41,7 @@ const int kMaxEntries = 5;
 #endif
 
 
-NSString * const kArchiveFilename = @"BeNote-archive.benote";
+NSString * const kArchiveFilename = @"BeNote-archive.bznote";
 
 NSString * const kKeyPointPhotoUpdated = @"kKeyPointPhotoUpdated";
 NSString * const kKeyWordsUpdated = @"kKeyWordsUpdated";

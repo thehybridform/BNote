@@ -42,10 +42,7 @@
             break;
             
         case TopicColorNode:
-            if (!self.topic.color) {
-                self.topic.color = [BNoteXmlConstants longFromString:string];
-            }
-
+            self.topic.color = [BNoteXmlConstants longFromString:string];
             self.note.color = self.topic.color;
             
             break;

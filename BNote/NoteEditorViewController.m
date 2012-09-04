@@ -24,8 +24,9 @@
 #import "EditNoteView.h"
 #import "BNoteFilterHelper.h"
 #import "BNoteAnimation.h"
-#import "InformationViewController.h"
+#import "BNoteLiteViewController.h"
 #import "BNoteExporterViewController.h"
+#import "ContactMailController.h"
 
 @interface NoteEditorViewController ()
 @property (strong, nonatomic) UIColor *toolbarEditColor;
@@ -120,6 +121,7 @@ static NSString *exportText;
 static NSString *changeTopicText;
 static NSString *topicAssociationsText;
 
+static NSString *contactUs;
 
 static NSString *spacing = @"   ";
 
@@ -182,6 +184,8 @@ static NSString *spacing = @"   ";
     exportText = NSLocalizedString(@"Archive Options", nil);
     changeTopicText = NSLocalizedString(@"Change Topic ", nil);
     topicAssociationsText = NSLocalizedString(@"Associated Topics", nil);
+
+    contactUs = NSLocalizedString(@"Contact Us", nil);
 
     return self;
 }
@@ -550,6 +554,7 @@ static NSString *spacing = @"   ";
         }
         
         [actionSheet addButtonWithTitle:exportText];
+        [actionSheet addButtonWithTitle:contactUs];
         
         UIView *view = self.shareButton;
         CGRect rect = view.bounds;
@@ -577,6 +582,13 @@ static NSString *spacing = @"   ";
             TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:ChangeMainTopic];
             controller.delegate = self;
             [self showPopup:controller];
+        } else if (title == contactUs) {
+            ContactMailController *controller = [[ContactMailController alloc] init];
+            [controller setModalInPopover:YES];
+            [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+            
+            [self presentModalViewController:controller animated:YES];
         }
     }
     
@@ -672,15 +684,6 @@ static NSString *spacing = @"   ";
     [[self entriesViewController] resignControll];
     [[[BNoteSessionData instance] actionSheet] dismissWithClickedButtonIndex:-1 animated:YES];
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
-
-    self.infoView.alpha = 0.0;
-    self.shadowView.alpha = 0.0;
-    self.dateView.alpha = 0.0;
-    self.year.alpha = 0.0;
-    self.subjectTextView.alpha = 0.0;
-    self.entryTableView.alpha = 0.0;
-    self.normalEntryButtonsView.alpha = 0.0;
-    self.reviewEntryButtonsView.alpha = 0.0;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -688,18 +691,6 @@ static NSString *spacing = @"   ";
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
     
     [self updateViewOrienation];
-
-    [UIView animateWithDuration:0.2 animations:^{
-        self.infoView.alpha = 1.0;
-        self.shadowView.alpha = 1.0;
-        self.dateView.alpha = 1.0;
-        self.year.alpha = 1.0;
-        self.subjectTextView.alpha = 1.0;
-        self.entryTableView.alpha = 1.0;
-        self.normalEntryButtonsView.alpha = 1.0;
-        self.reviewEntryButtonsView.alpha = 1.0;
-    } completion:^(BOOL finished) {
-    }];
 }
 
 - (void)updateViewOrienation
@@ -707,34 +698,38 @@ static NSString *spacing = @"   ";
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     BOOL portrait = UIInterfaceOrientationIsPortrait(orientation);
 
-    if (portrait) {
-        self.infoView.frame = CGRectMake(50, 60, 666, 84);
-        self.shadowView.frame = CGRectMake(54, 64, 658, 76);
-        self.dateView.frame = CGRectMake(573, -7, 100, 60);
-        self.year.frame = CGRectMake(615, 61, 45, 21);
-        self.subjectTextView.frame = CGRectMake(95, 26, 477, 31);
+    [UIView animateWithDuration:0.3 animations:^{
+        if (portrait) {
+            self.infoView.frame = CGRectMake(50, 60, 666, 84);
+            self.shadowView.frame = CGRectMake(54, 64, 658, 76);
+            self.dateView.frame = CGRectMake(573, -7, 100, 60);
+            self.year.frame = CGRectMake(615, 61, 45, 21);
+            self.subjectTextView.frame = CGRectMake(95, 26, 477, 31);
+            
+            CGRect frame = self.entryTableView.frame;
+            self.entryTableView.frame = CGRectMake(frame.origin.x, 199, 770, 783);
+            
+            self.normalEntryButtonsView.transform = CGAffineTransformIdentity;
+            self.reviewEntryButtonsView.transform = CGAffineTransformIdentity;
+        } else {
+            self.infoView.frame = CGRectMake(20, 60, 210, 120);
+            self.shadowView.frame = CGRectMake(22, 64, 206, 114);
+            self.dateView.frame = CGRectMake(120, -7, 100, 60);
+            self.year.frame = CGRectMake(160, 100, 45, 21);
+            self.subjectTextView.frame = CGRectMake(4, 65, 206, 31);
+            
+            CGRect frame = self.entryTableView.frame;
+            self.entryTableView.frame = CGRectMake(frame.origin.x, 85, 770, 620);
+            
+            CGAffineTransform translate = CGAffineTransformMakeTranslation(0, -114);
+            self.normalEntryButtonsView.transform = translate;
+            self.reviewEntryButtonsView.transform = translate;
+        }
+    } completion:^(BOOL finished) {
         
-        CGRect frame = self.entryTableView.frame;
-        self.entryTableView.frame = CGRectMake(frame.origin.x, 199, 770, 783);
-                             
-        self.normalEntryButtonsView.transform = CGAffineTransformIdentity;
-        self.reviewEntryButtonsView.transform = CGAffineTransformIdentity;
-        [self.infoView setNeedsDisplay];
-    } else {
-        self.infoView.frame = CGRectMake(20, 60, 210, 120);
-        self.shadowView.frame = CGRectMake(22, 64, 206, 114);
-        self.dateView.frame = CGRectMake(120, -7, 100, 60);
-        self.year.frame = CGRectMake(160, 100, 45, 21);
-        self.subjectTextView.frame = CGRectMake(4, 65, 206, 31);
-
-        CGRect frame = self.entryTableView.frame;
-        self.entryTableView.frame = CGRectMake(frame.origin.x, 85, 770, 620);
-
-        CGAffineTransform translate = CGAffineTransformMakeTranslation(0, -114);
-        self.normalEntryButtonsView.transform = translate;
-        self.reviewEntryButtonsView.transform = translate;
-        [self.infoView setNeedsDisplay];
-    }
+    }];
+    
+    [self.infoView setNeedsDisplay];
 }
 
 - (IBAction)addSummary:(id)sender
@@ -752,8 +747,10 @@ static NSString *spacing = @"   ";
 
 - (IBAction)about:(id)sender
 {
-    InformationViewController *controller = [[InformationViewController alloc] initWithDefault];
-    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
+    BNoteLiteViewController *controller = [[BNoteLiteViewController alloc] initWithDefault];
+    controller.firstLoad = NO;
+    
+    [controller setModalPresentationStyle:UIModalPresentationFormSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
     [self presentModalViewController:controller animated:YES];

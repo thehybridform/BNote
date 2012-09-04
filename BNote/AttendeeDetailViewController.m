@@ -23,7 +23,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *emailLable;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIView *menuView;
-@property (strong, nonatomic) IBOutlet UIButton *doneButton;
 
 @end
 
@@ -39,9 +38,7 @@
 @synthesize emailLable = _emailLable;
 @synthesize popup = _popup;
 @synthesize menuView = _menuView;
-@synthesize doneButton = _doneButton;
 
-static NSString *doneText;
 static NSString *menuTitleText;
 static NSString *firstNameText;
 static NSString *lastNameText;
@@ -60,7 +57,6 @@ static NSString *emailText;
     [self setLastNameLable:nil];
     [self setEmailLable:nil];
     [self setMenuView:nil];
-    self.doneButton = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -80,7 +76,6 @@ static NSString *emailText;
 {
     [super viewDidLoad];
 
-    doneText = NSLocalizedString(@"Done", @"Done");
     menuTitleText = NSLocalizedString(@"Attendee Details", @"Attendee details menu title.");
     firstNameText = NSLocalizedString(@"First Name", @"Attendee first name");
     lastNameText = NSLocalizedString(@"Last Name", @"Attendee last name");
@@ -104,7 +99,6 @@ static NSString *emailText;
     self.emailLable.text = emailText;
 
     self.titleLabel.text = menuTitleText;
-    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
     
     [LayerFormater roundCornersForView:[self view]];
     
@@ -154,14 +148,16 @@ static NSString *emailText;
     }
 }
 
-- (IBAction)done:(id)sender
-{
-    [[self popup] dismissPopoverAnimated:YES];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self done:nil];
+    if (textField == self.firstNameField) {
+        [self.lastNameField becomeFirstResponder];
+    } else if (textField == self.lastNameField) {
+        [self.emailField becomeFirstResponder];
+    } else {
+        [[self popup] dismissPopoverAnimated:YES];
+    }
+    
     return NO;
 }
 

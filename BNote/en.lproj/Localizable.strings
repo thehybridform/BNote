@@ -1,4 +1,5 @@
 {
+	License = License;
 	Edit = Edit;
 	Review = Review;
 	Accept = Accept;

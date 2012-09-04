@@ -8,7 +8,7 @@
 
 #import "MainViewViewController.h"
 #import "LayerFormater.h"
-#import "InformationViewController.h"
+#import "BNoteLiteViewController.h"
 #import "EntrySummariesTableViewController.h"
 #import "PeopleViewController.h"
 #import "Topic.h"
@@ -26,6 +26,7 @@
 #import "BNoteExporterViewController.h"
 #import "TopicGroupManagementViewController.h"
 #import "BNoteUnarshallingManager.h"
+#import "ContactMailController.h"
 
 @interface MainViewViewController ()
 @property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
@@ -69,6 +70,7 @@ static NSString *emailTopicText;
 static NSString *exportText;
 static NSString *notesText;
 static NSString *peopleText;
+static NSString *contactUs;
 
 - (void)viewDidUnload
 {
@@ -110,6 +112,8 @@ static NSString *peopleText;
     exportText = NSLocalizedString(@"Archive Options", nil);
     notesText = NSLocalizedString(@"Notes", nil);
     peopleText = NSLocalizedString(@"People", nil);
+    
+    contactUs = NSLocalizedString(@"Contact Us", nil);
 
     return self;
 }
@@ -247,10 +251,11 @@ static NSString *peopleText;
 
 - (IBAction)about:(id)sender
 {
-    InformationViewController *controller = [[InformationViewController alloc] initWithDefault];
+    BNoteLiteViewController *controller = [[BNoteLiteViewController alloc] initWithDefault];
     controller.topicGroupSelector = self;
+    controller.firstLoad = NO;
     
-    [controller setModalPresentationStyle:UIModalPresentationFullScreen];
+    [controller setModalPresentationStyle:UIModalPresentationFormSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     
     [self presentModalViewController:controller animated:YES];
@@ -269,6 +274,7 @@ static NSString *peopleText;
         }
         
         [actionSheet addButtonWithTitle:exportText];
+        [actionSheet addButtonWithTitle:contactUs];
         
         UIView *view = self.shareButton;
         CGRect rect = view.bounds;
@@ -287,6 +293,13 @@ static NSString *peopleText;
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
             controller.delegate = self;
+            
+            [self presentModalViewController:controller animated:YES];
+        } else if (title == contactUs) {
+            ContactMailController *controller = [[ContactMailController alloc] init];
+            [controller setModalInPopover:YES];
+            [controller setModalPresentationStyle:UIModalPresentationPageSheet];
+            [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
             
             [self presentModalViewController:controller animated:YES];
         }

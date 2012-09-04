@@ -28,8 +28,6 @@
 		181A2CE715E36B770036FF2D /* ButtonPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CE515E36B770036FF2D /* ButtonPair.m */; };
 		181A2CF215E4BD7F0036FF2D /* BNoteUnarshallingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CF115E4BD7F0036FF2D /* BNoteUnarshallingManager.m */; };
 		181A2CF315E4BD7F0036FF2D /* BNoteUnarshallingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CF115E4BD7F0036FF2D /* BNoteUnarshallingManager.m */; };
-		181A2CF515E7FFB50036FF2D /* BeNote-archive.benote in Resources */ = {isa = PBXBuildFile; fileRef = 181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */; };
-		181A2CF615E7FFB50036FF2D /* BeNote-archive.benote in Resources */ = {isa = PBXBuildFile; fileRef = 181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */; };
 		181A2CFE15EAB8E10036FF2D /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CFD15EAB8E00036FF2D /* TopicMarshaller.m */; };
 		181A2CFF15EAB8E10036FF2D /* TopicMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2CFD15EAB8E00036FF2D /* TopicMarshaller.m */; };
 		181A2D0A15EABCA10036FF2D /* RootUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D0915EABCA00036FF2D /* RootUnmarshaller.m */; };
@@ -62,8 +60,6 @@
 		1834D37E156351640065788F /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
 		1834D3A7156375560065788F /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
-		18497687159053DA00F49F5A /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
-		18497688159053DA00F49F5A /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
 		184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
 		184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
 		184976CD1597C20100F49F5A /* EntryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976CB1597C1FD00F49F5A /* EntryContentViewController.m */; };
@@ -339,6 +335,8 @@
 		18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F9C15D85BB300A9650D /* Localizable.strings */; };
 		18D87F1615F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D87F1515F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m */; };
 		18D87F1715F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D87F1515F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m */; };
+		18D87F1B15F5BD9B00A7CD41 /* gplus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D87F1A15F5BD9B00A7CD41 /* gplus-32.png */; };
+		18D87F1C15F5BD9B00A7CD41 /* gplus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D87F1A15F5BD9B00A7CD41 /* gplus-32.png */; };
 		18DE683C15B0D41E00311F16 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683B15B0D41E00311F16 /* PeopleViewController.m */; };
 		18DE683F15B0D49700311F16 /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE683E15B0D49700311F16 /* PersonView.m */; };
 		18DE684315B0D4C600311F16 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE684115B0D4C600311F16 /* PersonViewController.m */; };
@@ -416,7 +414,6 @@
 		18F4E1FB15CE4843002095A2 /* BeNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */; };
 		18F4E1FD15CE4843002095A2 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
 		18F4E1FE15CE4843002095A2 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
-		18F4E1FF15CE4843002095A2 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18497685159053DA00F49F5A /* InformationViewController.m */; };
 		18F4E20015CE4843002095A2 /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
 		18F4E20115CE4843002095A2 /* EntryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976CB1597C1FD00F49F5A /* EntryContentViewController.m */; };
 		18F4E20215CE4843002095A2 /* DecisionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D3159836AC00F49F5A /* DecisionContentViewController.m */; };
@@ -508,7 +505,6 @@
 		18F4E25C15CE4843002095A2 /* key_point_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF25156C6D7E00F22272 /* key_point_active_icon.png */; };
 		18F4E25D15CE4843002095A2 /* key_point_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF26156C6D7E00F22272 /* key_point_icon.png */; };
 		18F4E25E15CE4843002095A2 /* bnote.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF32156C791800F22272 /* bnote.png */; };
-		18F4E26015CE4843002095A2 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF38156C7A2400F22272 /* bnote-144.png */; };
 		18F4E26115CE4843002095A2 /* attendant_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF3A156C7C9500F22272 /* attendant_icon.png */; };
 		18F4E26215CE4843002095A2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		18F4E26315CE4843002095A2 /* QuickWordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05F15747B18003814C2 /* QuickWordsViewController.xib */; };
@@ -517,7 +513,6 @@
 		18F4E26715CE4843002095A2 /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
 		18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
-		18F4E26B15CE4843002095A2 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18497686159053DA00F49F5A /* InformationViewController.xib */; };
 		18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
 		18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1851A629159E964B0089EECF /* PhotoEditorViewController.xib */; };
 		18F4E26F15CE4843002095A2 /* small-penci.pngl.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A630159EA5760089EECF /* small-penci.pngl.png */; };
@@ -582,7 +577,6 @@
 		181A2CE515E36B770036FF2D /* ButtonPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonPair.m; sourceTree = "<group>"; };
 		181A2CF015E4BD7F0036FF2D /* BNoteUnarshallingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteUnarshallingManager.h; sourceTree = "<group>"; };
 		181A2CF115E4BD7F0036FF2D /* BNoteUnarshallingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteUnarshallingManager.m; sourceTree = "<group>"; };
-		181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeNote-archive.benote"; sourceTree = "<group>"; };
 		181A2CF715E804200036FF2D /* BNoteUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteUnmarshaller.h; sourceTree = "<group>"; };
 		181A2CFC15EAB8E00036FF2D /* TopicMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicMarshaller.h; sourceTree = "<group>"; };
 		181A2CFD15EAB8E00036FF2D /* TopicMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicMarshaller.m; sourceTree = "<group>"; };
@@ -637,9 +631,6 @@
 		1834D382156364840065788F /* TopicEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditorViewController.xib; path = ../TopicEditorViewController.xib; sourceTree = "<group>"; };
 		1834D3A5156375560065788F /* BNoteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFactory.h; sourceTree = "<group>"; };
 		1834D3A6156375560065788F /* BNoteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFactory.m; sourceTree = "<group>"; };
-		18497684159053DA00F49F5A /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
-		18497685159053DA00F49F5A /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
-		18497686159053DA00F49F5A /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 		184976B7159665DA00F49F5A /* AttendeeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeDetailViewController.h; sourceTree = "<group>"; };
 		184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeDetailViewController.m; sourceTree = "<group>"; };
 		184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendeeDetailViewController.xib; sourceTree = "<group>"; };
@@ -1000,6 +991,7 @@
 		18D87F1415F06CEB00A7CD41 /* AssociatedTopicUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociatedTopicUnmarshaller.h; sourceTree = "<group>"; };
 		18D87F1515F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedTopicUnmarshaller.m; sourceTree = "<group>"; };
 		18D87F1915F0841500A7CD41 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18D87F1A15F5BD9B00A7CD41 /* gplus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gplus-32.png"; sourceTree = "<group>"; };
 		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		18DE683B15B0D41E00311F16 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		18DE683D15B0D49700311F16 /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -1126,6 +1118,7 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18D87F1A15F5BD9B00A7CD41 /* gplus-32.png */,
 				18BEF94415EF069200B37F29 /* bnote-72.png */,
 				18BEF94515EF069200B37F29 /* bnote-144.png */,
 				18BEF93E15EF05CE00B37F29 /* bnote-100.png */,
@@ -1240,7 +1233,6 @@
 				18BAC1A915AD450500EEBE1E /* Main View */,
 				18A30FBD15BB1F9F00A2FD14 /* Topic Groups */,
 				1851A626159E96270089EECF /* Photo Editor */,
-				18497682159053B300F49F5A /* Information Details */,
 				184CEAD0158F225900C67CF5 /* EULA */,
 				1819675615699AB200DA31A3 /* Images */,
 				18E9FF0D156A340900F22272 /* UI */,
@@ -1257,7 +1249,6 @@
 		1834D34215634A650065788F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				181A2CF415E7FFB50036FF2D /* BeNote-archive.benote */,
 				18C2774F15E1B0FC009AC728 /* MiniZip */,
 				18C2775915E1B0FC009AC728 /* Objective-Zip */,
 				18C2776415E1B0FC009AC728 /* ZLib */,
@@ -1387,18 +1378,6 @@
 				1834D382156364840065788F /* TopicEditorViewController.xib */,
 			);
 			name = "Topic Editor";
-			sourceTree = "<group>";
-		};
-		18497682159053B300F49F5A /* Information Details */ = {
-			isa = PBXGroup;
-			children = (
-				18497684159053DA00F49F5A /* InformationViewController.h */,
-				18497685159053DA00F49F5A /* InformationViewController.m */,
-				18497686159053DA00F49F5A /* InformationViewController.xib */,
-				182F1E9915BFA5570038AC13 /* BNoteDefaultData.h */,
-				182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */,
-			);
-			name = "Information Details";
 			sourceTree = "<group>";
 		};
 		1849769715919D4A00F49F5A /* Question */ = {
@@ -1973,6 +1952,8 @@
 				18F4E2B915CE4F10002095A2 /* BNoteLiteViewController.h */,
 				18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */,
 				18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */,
+				182F1E9915BFA5570038AC13 /* BNoteDefaultData.h */,
+				182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */,
 			);
 			name = "Lite Version";
 			sourceTree = "<group>";
@@ -2077,7 +2058,6 @@
 				184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */,
 				184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */,
 				18D50F7215D85AFF00A9650D /* BeNote-EULA.rtf in Resources */,
-				18497688159053DA00F49F5A /* InformationViewController.xib in Resources */,
 				184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */,
 				1851A62B159E964B0089EECF /* PhotoEditorViewController.xib in Resources */,
 				1851A633159EA5760089EECF /* small-penci.pngl.png in Resources */,
@@ -2112,11 +2092,11 @@
 				18D50F9915D85BB300A9650D /* Localizable.strings in Resources */,
 				18BEF24615DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF25215DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
-				181A2CF515E7FFB50036FF2D /* BeNote-archive.benote in Resources */,
 				18BEF94015EF05CE00B37F29 /* bnote-100.png in Resources */,
 				18BEF94215EF05CE00B37F29 /* bnote-320.png in Resources */,
 				18BEF94615EF069200B37F29 /* bnote-72.png in Resources */,
 				18BEF94815EF069200B37F29 /* bnote-144.png in Resources */,
+				18D87F1B15F5BD9B00A7CD41 /* gplus-32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2142,7 +2122,6 @@
 				18F4E25C15CE4843002095A2 /* key_point_active_icon.png in Resources */,
 				18F4E25D15CE4843002095A2 /* key_point_icon.png in Resources */,
 				18F4E25E15CE4843002095A2 /* bnote.png in Resources */,
-				18F4E26015CE4843002095A2 /* bnote-144.png in Resources */,
 				18F4E26115CE4843002095A2 /* attendant_icon.png in Resources */,
 				18F4E26215CE4843002095A2 /* DatePickerViewController.xib in Resources */,
 				18F4E26315CE4843002095A2 /* QuickWordsViewController.xib in Resources */,
@@ -2152,7 +2131,6 @@
 				18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */,
 				18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */,
 				18D50F7315D85AFF00A9650D /* BeNote-EULA.rtf in Resources */,
-				18F4E26B15CE4843002095A2 /* InformationViewController.xib in Resources */,
 				18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */,
 				18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */,
 				18F4E26F15CE4843002095A2 /* small-penci.pngl.png in Resources */,
@@ -2187,11 +2165,11 @@
 				18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */,
 				18BEF24715DC71B000E16CFD /* benote-1.0.xsd in Resources */,
 				18BEF25315DCA72B00E16CFD /* BNoteExporterViewController.xib in Resources */,
-				181A2CF615E7FFB50036FF2D /* BeNote-archive.benote in Resources */,
 				18BEF94115EF05CE00B37F29 /* bnote-100.png in Resources */,
 				18BEF94315EF05CE00B37F29 /* bnote-320.png in Resources */,
 				18BEF94715EF069200B37F29 /* bnote-72.png in Resources */,
 				18BEF94915EF069200B37F29 /* bnote-144.png in Resources */,
+				18D87F1C15F5BD9B00A7CD41 /* gplus-32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2257,7 +2235,6 @@
 				18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */,
 				184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */,
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
-				18497687159053DA00F49F5A /* InformationViewController.m in Sources */,
 				184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */,
 				184976CD1597C20100F49F5A /* EntryContentViewController.m in Sources */,
 				184976D4159836AD00F49F5A /* DecisionContentViewController.m in Sources */,
@@ -2458,7 +2435,6 @@
 				18F4E1FB15CE4843002095A2 /* BeNote.xcdatamodeld in Sources */,
 				18F4E1FD15CE4843002095A2 /* EluaViewController.m in Sources */,
 				18F4E1FE15CE4843002095A2 /* TopicManagementViewController.m in Sources */,
-				18F4E1FF15CE4843002095A2 /* InformationViewController.m in Sources */,
 				18F4E20015CE4843002095A2 /* AttendeeDetailViewController.m in Sources */,
 				18F4E20115CE4843002095A2 /* EntryContentViewController.m in Sources */,
 				18F4E20215CE4843002095A2 /* DecisionContentViewController.m in Sources */,

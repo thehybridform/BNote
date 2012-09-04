@@ -154,9 +154,6 @@
     }
     
     [[BNoteWriter instance] update];
-    
-    [textView setInputAccessoryView:nil];
-    [self setQuickWordsViewController:nil];
 }
 
 - (UITableViewCell *)cell

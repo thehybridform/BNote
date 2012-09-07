@@ -10,8 +10,10 @@
 #import "EntryContent.h"
 #import "Entry.h"
 #import "EntryContentViewController.h"
+#import "QuickWordsViewControllerActionButtonSource.h"
 
 @interface QuickWordsViewController : UIViewController
+@property (strong, nonatomic) id<QuickWordsViewControllerActionButtonSource> delegate;
 
 - (id)initWithEntryContent:(id<EntryContent>)entryContentController;
 
@@ -23,4 +25,3 @@
 - (void)selectFirstButton;
 
 @end
-

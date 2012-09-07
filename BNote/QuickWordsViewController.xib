@@ -40,14 +40,27 @@
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">294</int>
 						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUIScrollView" id="280403202">
+								<reference key="NSNextResponder" ref="91955122"/>
+								<int key="NSvFlags">291</int>
+								<array class="NSMutableArray" key="NSSubviews"/>
+								<string key="NSFrame">{{600, 0}, {168, 50}}</string>
+								<reference key="NSSuperview" ref="91955122"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="892349933"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIMultipleTouchEnabled">YES</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
 							<object class="IBUIScrollView" id="541531706">
 								<reference key="NSNextResponder" ref="91955122"/>
 								<int key="NSvFlags">294</int>
 								<array class="NSMutableArray" key="NSSubviews"/>
-								<string key="NSFrameSize">{768, 50}</string>
+								<string key="NSFrameSize">{599, 50}</string>
 								<reference key="NSSuperview" ref="91955122"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="892349933"/>
+								<reference key="NSNextKeyView" ref="280403202"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">2</int>
@@ -64,6 +77,7 @@
 						<string key="NSFrameSize">{768, 50}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="541531706"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -184,6 +198,7 @@
 						<string key="NSFrame">{{0, 50}, {768, 40}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="208497003"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -195,7 +210,7 @@
 				<string key="NSFrame">{{0, 20}, {768, 89}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="541531706"/>
+				<reference key="NSNextKeyView" ref="91955122"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -265,6 +280,14 @@
 						<reference key="destination" ref="541531706"/>
 					</object>
 					<int key="connectionID">23</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">iconScrollView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="280403202"/>
+					</object>
+					<int key="connectionID">90</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -367,13 +390,22 @@
 						<reference key="object" ref="91955122"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="541531706"/>
+							<reference ref="280403202"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">89</int>
+						<reference key="object" ref="280403202"/>
+						<array class="NSMutableArray" key="children"/>
+						<reference key="parent" ref="91955122"/>
+						<string key="objectName">Icon Scroll View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">22</int>
 						<reference key="object" ref="541531706"/>
 						<reference key="parent" ref="91955122"/>
+						<string key="objectName">Buttons Scroll View</string>
 					</object>
 				</array>
 			</object>
@@ -394,12 +426,13 @@
 				<string key="75.CustomClassName">BNoteButton</string>
 				<string key="75.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="87.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="89.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">88</int>
+			<int key="maxID">90</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -442,6 +475,7 @@
 						<string key="attendantsButton">UIButton</string>
 						<string key="datesButton">UIButton</string>
 						<string key="doneButton">UIButton</string>
+						<string key="iconScrollView">UIScrollView</string>
 						<string key="keyWordsButton">UIButton</string>
 						<string key="menuView">UIView</string>
 						<string key="scrollView">UIScrollView</string>
@@ -458,6 +492,10 @@
 						<object class="IBToOneOutletInfo" key="doneButton">
 							<string key="name">doneButton</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="iconScrollView">
+							<string key="name">iconScrollView</string>
+							<string key="candidateClassName">UIScrollView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="keyWordsButton">
 							<string key="name">keyWordsButton</string>

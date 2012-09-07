@@ -13,32 +13,20 @@
 #import "BNoteStringUtils.h"
 #import "BNoteEntryUtils.h"
 #import "BNoteAnimation.h"
+#import "BNoteFactory.h"
 
 @interface ActionItemContentViewController()
 @property (strong, nonatomic) DatePickerViewController *datePickerViewController;
-@property (strong, nonatomic) IBOutlet UILabel *dueDateLabel;
-@property (strong, nonatomic) IBOutlet UIView *dueDateView;
-@property (strong, nonatomic) IBOutlet UILabel *responsibilityLabel;
-@property (strong, nonatomic) IBOutlet UIView *responsibilityView;
-@property (strong, nonatomic) IBOutlet UIView *caledarBlankView;
-@property (strong, nonatomic) IBOutlet UIView *circleBlankView;
-@property (strong, nonatomic) IBOutlet UIView *circleCheckView;
-@property (strong, nonatomic) IBOutlet UIView *completionView;
-@property (strong, nonatomic) IBOutlet UILabel *completionLabel;
+@property (strong, nonatomic) UIButton *responsibilityButton;
+@property (strong, nonatomic) UIButton *dueDateButton;
+@property (strong, nonatomic) UIButton *completedButton;
+@property (strong, nonatomic) IBOutlet UILabel *detailLabel;
 
 @end
 
 @implementation ActionItemContentViewController
 @synthesize datePickerViewController = _datePickerViewController;
-@synthesize dueDateLabel = _dueDateLabel;
-@synthesize dueDateView = _dueDateView;
-@synthesize responsibilityLabel = _responsibilityLabel;
-@synthesize responsibilityView = _responsibilityView;
-@synthesize circleCheckView = _circleCheckView;
-@synthesize completionView = _completionViewView;
-@synthesize circleBlankView = _circleBlankView;
-@synthesize completionLabel = _completionLabel;
-@synthesize caledarBlankView = _caledarBlankView;
+@synthesize detailLabel = _detailLabel;
 
 static NSString *responsibilityOptionsText;
 static NSString *setResponsibilityText;
@@ -59,15 +47,7 @@ static NSString *completedOnDateText;
 {
     [super viewDidUnload];
     
-    [self setDueDateView:nil];
-    [self setDueDateLabel:nil];
-    [self setResponsibilityView:nil];
-    [self setResponsibilityLabel:nil];
-    [self setCircleCheckView:nil];
-    [self setCompletionView:nil];
-    [self setCircleBlankView:nil];
-    [self setCompletionLabel:nil];
-    [self setCaledarBlankView:nil];
+    self.detailLabel = nil;
 }
 
 - (NSString *)localNibName
@@ -99,36 +79,50 @@ static NSString *completedOnDateText;
     clearDueDateText = NSLocalizedString(@"Clear Due Date", @"Clear the due date for this action item");
     dueOnText = NSLocalizedString(@"Due On", @"As in 'This action item is due on 12/1/1970'");
 
-    [[self dueDateLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-    [[self responsibilityLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
-    [[self completionLabel] setFont:[BNoteConstants font:RobotoLight andSize:11]];
+    self.detailLabel.font = [BNoteConstants font:RobotoItalic andSize:14];
+    self.detailLabel.textColor = [BNoteConstants appHighlightColor1];
     
-    [[self responsibilityView] setBackgroundColor:[BNoteConstants appColor1]];
-    [[self completionView] setBackgroundColor:[BNoteConstants appColor1]];
-    [[self dueDateView] setBackgroundColor:[BNoteConstants appColor1]];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleResponsibility:)];
-    [[self responsibilityView] addGestureRecognizer:tap];
-    
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDueDate:)];
-    [[self dueDateView] addGestureRecognizer:tap];
-    
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCompleted:)];
-    [[self completionView] addGestureRecognizer:tap];
+    [self updateDetail];
+}
 
-    [self updateDueDate];
-    [self updateResponsibility];
-    [self updateComplete];
+- (NSArray *)quickActionButtons
+{
+    NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    UIButton *button = [BNoteFactory buttonForImage:@"bnote-calendar.png"];
+    self.dueDateButton = button;
+    [button addTarget:self action:@selector(handleDueDate:) forControlEvents:UIControlEventTouchUpInside];
+    [buttons addObject:button];
+    
+    button = [BNoteFactory buttonForImage:@"bnote-contact.png"];
+    self.responsibilityButton = button;
+    [button addTarget:self action:@selector(handleResponsibility:) forControlEvents:UIControlEventTouchUpInside];
+    [buttons addObject:button];
+    
+    if ([[self actionItem] completed]) {
+        button = [BNoteFactory buttonForImage:@"bnote-complete.png"];
+    } else {
+        button = [BNoteFactory buttonForImage:@"bnote-incomplete.png"];
+    }
+    
+    self.completedButton = button;
+    [button addTarget:self action:@selector(handleCompleted:) forControlEvents:UIControlEventTouchUpInside];
+    [buttons addObject:button];
+    
+    return buttons;
 }
 
 - (float)height
 {
-    UITextView *view = [[UITextView alloc] init];
-    [view setText:[[self entry] text]];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, [self width] - 200, 90)];
-    
-    return MAX(90, [view contentSize].height + 10);
+    if ([BNoteStringUtils nilOrEmpty:self.detailLabel.text]) {
+        return [super height];
+    } else {
+        UITextView *view = [[UITextView alloc] init];
+        [view setText:[[self entry] text]];
+        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+        [view setFrame:CGRectMake(0, 0, [self width] - 100, 40)];
+        return MAX(60, [view contentSize].height + 60);
+    }
 }
 
 - (void)showResponsibilityPicker
@@ -140,7 +134,7 @@ static NSString *completedOnDateText;
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:tableController];
     [[BNoteSessionData instance] setPopup:popup];
     
-    UIView *view = [self responsibilityView];
+    UIView *view = self.responsibilityButton;
     CGRect rect = [view bounds];
     
     [popup presentPopoverFromRect:rect inView:view
@@ -153,7 +147,7 @@ static NSString *completedOnDateText;
 - (void)clearResponsibility
 {
     [self actionItem].attendant = nil;
-    [self updateResponsibility];
+    [self updateDetail];
 }
 
 - (void)selectedAttendant:(Attendant *)attendant
@@ -163,13 +157,13 @@ static NSString *completedOnDateText;
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
     [[BNoteSessionData instance] setPopup:nil];
 
-    [self updateResponsibility];
+    [self updateDetail];
 }
 
 - (void)clearDueDate
 {
     [[self actionItem] setDueDate:0];
-    [self updateDueDate];
+    [self updateDetail];
 }
 
 - (void)showDatePicker
@@ -185,7 +179,7 @@ static NSString *completedOnDateText;
     }
     
     [actionItem setDueDate:[NSDate timeIntervalSinceReferenceDate]];
-    [self updateDueDate];
+    [self updateDetail];
 
     DatePickerViewController *controller =
     [[DatePickerViewController alloc] initWithDate:date andMode:UIDatePickerModeDate];
@@ -200,7 +194,7 @@ static NSString *completedOnDateText;
     
     [[[BNoteSessionData instance] popup] setPopoverContentSize:[[controller view] bounds].size];
     
-    UIView *view = [self dueDateView];
+    UIView *view = self.dueDateButton;
     CGRect rect = [view bounds];
     
     [popup presentPopoverFromRect:rect inView:view
@@ -213,46 +207,37 @@ static NSString *completedOnDateText;
     ActionItem *actionItem = [self actionItem];
     [actionItem setDueDate:[date timeIntervalSinceReferenceDate]];
     
-    [self updateDueDate];
+    [self updateDetail];
 }
 
-- (void)updateDueDate
+- (void)updateDetail
 {
-    if ([[self actionItem] dueDate]) {
-        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]]; 
-        NSString *date = [BNoteStringUtils dateToString:dueDate];
-        [[self dueDateLabel] setText:[BNoteStringUtils append:dueOnText, @"\r\n", date, nil]];
-        [[self caledarBlankView] setHidden:YES];
-    } else {
-        [[self dueDateLabel] setText:noDueDateText];
-        [[self caledarBlankView] setHidden:NO];
+    NSString *detail = @"";
+    
+    if ([[self actionItem] completed]) {
+        NSDate *completedDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] completed]];
+        NSString *date = [BNoteStringUtils dateToString:completedDate];
+        detail = [BNoteStringUtils append:detail, @" (", completedOnDateText, @": ", date, @") ", nil];
     }
-}
+    
+    if ([[self actionItem] dueDate]) {
+        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]];
+        NSString *date = [BNoteStringUtils dateToString:dueDate];
+        detail = [BNoteStringUtils append:detail, @" (", dueOnText, @": ", date, @") ", nil];
+    }
 
-- (void)updateResponsibility
-{
     if ([[self actionItem] attendant]) {
         Attendant *attendant = [self actionItem].attendant;
-        NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, nil];
-
-        [[self responsibilityLabel] setText:name];
-    } else {
-        [[self responsibilityLabel] setText:noResponsibilityText];
+        NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, @") ", nil];
+        detail = [BNoteStringUtils append:detail, @" (", name, nil];
     }
-}
 
-- (void)updateComplete
-{
-    if ([[self actionItem] completed]) {
-        [[self circleBlankView] setHidden:YES];
-        [[self circleCheckView] setHidden:NO];
-        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] completed]]; 
-        NSString *date = [BNoteStringUtils dateToString:dueDate];
-        [[self completionLabel] setText:[BNoteStringUtils append:completedOnDateText, @"\r\n", date, nil]];
+    self.detailLabel.text = detail;
+
+    if ([BNoteStringUtils nilOrEmpty:detail]) {
+        self.detailLabel.hidden = YES;
     } else {
-        [[self circleBlankView] setHidden:NO];
-        [[self circleCheckView] setHidden:YES];
-        [[self completionLabel] setText:notCompleteText];
+        self.detailLabel.hidden = NO;
     }
 }
 
@@ -277,8 +262,9 @@ static NSString *completedOnDateText;
         int index = [actionSheet addButtonWithTitle:clearResponsibilityText];
         [actionSheet setDestructiveButtonIndex:index];
         
-        CGRect rect = [[self responsibilityView] frame];
-        [actionSheet showFromRect:rect inView:[self view] animated:NO];
+        UIView *view = self.responsibilityButton;
+        CGRect rect = view.frame;
+        [actionSheet showFromRect:rect inView:view animated:NO];
     } else {
         [self showResponsibilityPicker];
     }
@@ -297,8 +283,9 @@ static NSString *completedOnDateText;
         int index = [actionSheet addButtonWithTitle:clearDueDateText];
         [actionSheet setDestructiveButtonIndex:index];
         
-        CGRect rect = [[self dueDateView] frame];
-        [actionSheet showFromRect:rect inView:[self view] animated:NO];
+        UIView *view = self.dueDateButton;
+        CGRect rect = view.frame;
+        [actionSheet showFromRect:rect inView:view animated:NO];
     } else {
         [self showDatePicker];
     }
@@ -312,7 +299,7 @@ static NSString *completedOnDateText;
         [[self actionItem] setCompleted:[NSDate timeIntervalSinceReferenceDate]];
     }
     
-    [self updateComplete];
+    [self updateDetail];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -331,23 +318,6 @@ static NSString *completedOnDateText;
     }
     
     [[BNoteSessionData instance] setActionSheet:nil];
-}
-
-- (void)showControls
-{
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self responsibilityView],
-                      [self dueDateView],
-                      [self completionView],
-                      [self circleBlankView],
-                      [self circleCheckView],
-                      [self caledarBlankView],
-                      [self completionLabel],
-                      [self dueDateLabel],
-                      [self responsibilityLabel],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.1 andDelay:0.5 andDelayIncrement:0.08 spark:NO];
 }
 
 - (void)dealloc

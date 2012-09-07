@@ -19,10 +19,10 @@
 
 @interface KeyPointContentViewController()
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
-@property (strong, nonatomic) IBOutlet UIButton *photoAlbumButton;
-@property (strong, nonatomic) IBOutlet UIButton *cameraButton;
-@property (strong, nonatomic) IBOutlet UIButton *sketchButton;
-@property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (strong, nonatomic) UIButton *photoAlbumButton;
+@property (strong, nonatomic) UIButton *cameraButton;
+@property (strong, nonatomic) UIButton *sketchButton;
+@property (strong, nonatomic) UIImageView *photoImageView;
 
 @end
 
@@ -64,6 +64,7 @@ static NSString *imageOptionsText;
     imageOptionsText = NSLocalizedString(@"Image Options", @"Image options menu title");
     removeImageText = NSLocalizedString(@"Remove", @"Remove");
     
+    
     UITapGestureRecognizer *normalTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto:)];
     [[self photoImageView] addGestureRecognizer:normalTap];
@@ -79,21 +80,36 @@ static NSString *imageOptionsText;
                                                  name:kKeyPointPhotoUpdated object:nil];
 }
 
-- (float)height
-{
-    UITextView *view = [[UITextView alloc] init];
-    [view setText:[[self entry] text]];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, [self width] - 200, 90)];
-
-    return MAX(100, [view contentSize].height + 10);
-}
-
 - (void)updatePhotoImage:(NSNotification *)notification
 {
     if ([notification object] == [self keyPoint]) {
         [self handlePhotoImage];
     }
+}
+
+- (NSArray *)quickActionButtons
+{
+    NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    UIButton *button = [BNoteFactory buttonForImage:@"bnote-photos.png"];
+    self.photoAlbumButton = button;
+    [button addTarget:self action:@selector(presentPhotoAlbum:) forControlEvents:UIControlEventTouchUpInside];
+    [buttons addObject:button];
+    
+    button = [BNoteFactory buttonForImage:@"bnote-sketch.png"];
+    self.sketchButton = button;
+    [button addTarget:self action:@selector(presentPhotoEditor:) forControlEvents:UIControlEventTouchUpInside];
+    [buttons addObject:button];
+    
+    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    if (hasCamera) {
+        button = [BNoteFactory buttonForImage:@"bnote-take-snapshot.png"];
+        self.cameraButton = button;
+        [button addTarget:self action:@selector(presentCamera:) forControlEvents:UIControlEventTouchUpInside];
+        [buttons addObject:button];
+    }
+
+    return buttons;
 }
 
 - (void)handlePhotoImage
@@ -108,7 +124,7 @@ static NSString *imageOptionsText;
     }
 }
 
-- (IBAction)presentPhotoAlbum:(id)sender
+- (void)presentPhotoAlbum:(id)sender
 {
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     [controller setDelegate:self];
@@ -125,7 +141,7 @@ static NSString *imageOptionsText;
                          animated:NO];
 }
 
-- (IBAction)presentCamera:(id)sender
+- (void)presentCamera:(id)sender
 {
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     [controller setDelegate:self];
@@ -184,7 +200,7 @@ static NSString *imageOptionsText;
     [self handlePhotoImage];
 }
 
-- (IBAction)presentPhotoEditor:(id)sender
+- (void)presentPhotoEditor:(id)sender
 {
     if (![[self keyPoint] photo]) {
         Photo *photo = [BNoteFactory createPhoto:[self keyPoint]];
@@ -229,30 +245,6 @@ static NSString *imageOptionsText;
             [self handlePhotoImage];
         }
     }
-}
-
-- (void)hideControls
-{
-    [[self cameraButton] setHidden:YES];
-    [[self photoAlbumButton] setHidden:YES];
-    [[self sketchButton] setHidden:YES];
-}
-
-- (void)showControls
-{
-    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-    [[self cameraButton] setHidden:!hasCamera];
-    [[self photoAlbumButton] setHidden:NO];
-    [[self sketchButton] setHidden:NO];
-
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self photoImageView],
-                      [self cameraButton],
-                      [self photoAlbumButton],
-                      [self sketchButton],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.06 andDelay:0.5 andDelayIncrement:0.2 spark:NO];
 }
 
 - (void)dealloc

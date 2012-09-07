@@ -889,7 +889,7 @@
 		18BEF93F15EF05CE00B37F29 /* bnote-320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-320.png"; sourceTree = "<group>"; };
 		18BEF94415EF069200B37F29 /* bnote-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-72.png"; sourceTree = "<group>"; };
 		18BEF94515EF069200B37F29 /* bnote-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-144.png"; sourceTree = "<group>"; };
-		18BEF94A15EF06AD00B37F29 /* bnote-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnote-72.png"; sourceTree = "<group>"; };
+		18BEF94A15EF06AD00B37F29 /* bnote-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bnote-72.png"; path = "../bnote-72.png"; sourceTree = "<group>"; };
 		18BEF94C15F03B7C00B37F29 /* TopicUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicUnmarshaller.h; sourceTree = "<group>"; };
 		18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicUnmarshaller.m; sourceTree = "<group>"; };
 		18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -992,6 +992,7 @@
 		18D87F1515F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedTopicUnmarshaller.m; sourceTree = "<group>"; };
 		18D87F1915F0841500A7CD41 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D87F1A15F5BD9B00A7CD41 /* gplus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gplus-32.png"; sourceTree = "<group>"; };
+		18D87F1D15F9940900A7CD41 /* QuickWordsViewControllerActionButtonSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickWordsViewControllerActionButtonSource.h; sourceTree = "<group>"; };
 		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		18DE683B15B0D41E00311F16 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		18DE683D15B0D49700311F16 /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -1118,6 +1119,7 @@
 		1819675615699AB200DA31A3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18BEF94A15EF06AD00B37F29 /* bnote-72.png */,
 				18D87F1A15F5BD9B00A7CD41 /* gplus-32.png */,
 				18BEF94415EF069200B37F29 /* bnote-72.png */,
 				18BEF94515EF069200B37F29 /* bnote-144.png */,
@@ -1193,7 +1195,6 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
-				18BEF94A15EF06AD00B37F29 /* bnote-72.png */,
 				1834D34115634A650065788F /* BNote */,
 				1834D33A15634A650065788F /* Frameworks */,
 				1834D33815634A650065788F /* Products */,
@@ -1533,6 +1534,7 @@
 				1879F05D15747B18003814C2 /* QuickWordsViewController.h */,
 				1879F05E15747B18003814C2 /* QuickWordsViewController.m */,
 				1879F05F15747B18003814C2 /* QuickWordsViewController.xib */,
+				18D87F1D15F9940900A7CD41 /* QuickWordsViewControllerActionButtonSource.h */,
 			);
 			name = "Quick Buttons";
 			sourceTree = "<group>";

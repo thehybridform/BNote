@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuickWordsViewControllerActionButtonSource.h"
 #import "Entry.h"
 #import "EntryContent.h"
 
 @class QuickWordsViewController;
 
-@interface EntryContentViewController : UIViewController <EntryContent, UITextViewDelegate>
+@interface EntryContentViewController : UIViewController <EntryContent, UITextViewDelegate, QuickWordsViewControllerActionButtonSource>
+
 @property (strong, nonatomic) UITextView *selectedTextView;
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;

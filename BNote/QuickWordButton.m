@@ -33,15 +33,11 @@
         [self setEntryContent:controller];
         
         [self addTarget:self action:@selector(execute:) forControlEvents:UIControlEventTouchUpInside];
-        [self addTarget:self action:@selector(unhighlight:) forControlEvents:UIControlEventTouchUpInside];
-        [self addTarget:self action:@selector(highlight:) forControlEvents:UIControlEventTouchDown];
         
         float width = MAX([[[self titleLabel] text] length] * 10, 40);
         
         [self setFrame:CGRectMake(0, 0, width, 35)];
-        
-        [self setHighlightColor:[UIColor blueColor]];
-        
+                
         [self initCommon];
     }
     
@@ -51,17 +47,6 @@
 - (void)initCommon
 {
     
-}
-
-- (void)highlight:(id)sender
-{
-    [self setColor:[self backgroundColor]];
-    [self setBackgroundColor:[self highlightColor]];
-}
-
-- (void)unhighlight:(id)sender
-{
-    [self setBackgroundColor:[self color]];
 }
 
 - (void)execute:(id)sender

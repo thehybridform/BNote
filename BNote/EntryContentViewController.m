@@ -76,8 +76,9 @@
         view.delegate = self;
         
         QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-        [self setQuickWordsViewController:quick];
-        [[self mainTextView] setInputAccessoryView:[quick view]];
+        quick.delegate = self;
+        self.quickWordsViewController = quick;
+        self.mainTextView.inputAccessoryView = quick.view;
     }
 
     [LayerFormater setBorderWidth:0 forView:self.view];
@@ -108,7 +109,7 @@
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
     [view setFrame:CGRectMake(0, 0, [self width] - 100, 40)];
     
-    return MAX(80, [view contentSize].height + 10);
+    return MAX(60, [view contentSize].height + 20);
 }
 
 - (float)width
@@ -180,6 +181,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (NSArray *)quickActionButtons
+{
+    return nil;
 }
 
 - (void)hideControls

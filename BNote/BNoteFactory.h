@@ -105,4 +105,6 @@ typedef enum {
 + (EntryContentViewController *)createEntryContent:(Entry *)entry;
 + (NoteSummaryViewController *)createSummaryEntry:(Note *)note;
 
++ (UIButton *)buttonForImage:(NSString *)name;
+
 @end

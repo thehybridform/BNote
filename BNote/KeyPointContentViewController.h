@@ -10,9 +10,5 @@
 
 @interface KeyPointContentViewController : EntryContentViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
-- (IBAction)presentPhotoEditor:(id)sender;
-- (IBAction)presentCamera:(id)sender;
-- (IBAction)presentPhotoAlbum:(id)sender;
-
 @end
 

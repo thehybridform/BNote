@@ -440,4 +440,15 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return [controller view];
 }
 
++ (UIButton *)buttonForImage:(NSString *)name
+{
+    UIButton *button = [[UIButton alloc] init];
+    
+    UIImage *image = [UIImage imageNamed:name];
+    [button setImage:image forState:UIControlStateNormal];
+    
+    return button;
+}
+
+
 @end

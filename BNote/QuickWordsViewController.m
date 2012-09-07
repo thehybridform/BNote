@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *keyWordsButton;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *iconScrollView;
 
 @property (strong, nonatomic) id<EntryContent> entryContent;
 
@@ -38,6 +39,8 @@
 @synthesize scrollView = _scrollView;
 @synthesize entryContent = _entryContent;
 @synthesize attendantsButton = _attendantsButton;
+@synthesize iconScrollView = _iconScrollView;
+@synthesize delegate = _delegate;
 
 static float spacing = 10;
 
@@ -72,6 +75,8 @@ static NSString *attendenatsText;
     [self.datesButton setTitle:datesText forState:UIControlStateNormal];
     [self.keyWordsButton setTitle:keyWordsText forState:UIControlStateNormal];
     [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+
+    [self addActionButtons];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyWords:)
                                                  name:kKeyWordsUpdated object:nil];
@@ -87,7 +92,44 @@ static NSString *attendenatsText;
     [self setDoneButton:nil];
     [self setScrollView:nil];
     [self setMenuView:nil];
+    self.iconScrollView = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)addActionButtons
+{
+    if (self.delegate) {
+        int size = self.iconScrollView.frame.size.height - 8;
+        int x = 4;
+        for (UIButton *button in [self.delegate quickActionButtons]) {
+            [self.iconScrollView addSubview:button];
+
+            CGRect frame;
+            if ([self resizeActionButton]) {
+                int y = 4;
+                frame = CGRectMake(x, y, size, size);
+            } else {
+                CGRect buttonFrame = button.frame;
+                
+                int y = self.iconScrollView.frame.size.height / 2.0 - buttonFrame.size.height / 2.0;
+                
+                frame = CGRectMake(x, y, buttonFrame.size.width, buttonFrame.size.height);
+            }
+            
+            button.frame = frame;
+            x += size + 8;
+        }
+    }
+}
+
+- (BOOL)resizeActionButton
+{
+    if ([self.delegate respondsToSelector:@selector(doNotResizeActionButton)]) {
+        return ![self.delegate doNotResizeActionButton];
+    }
+    
+    return YES;
 }
 
 - (IBAction)dates:(id)sender

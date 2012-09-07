@@ -45,8 +45,8 @@
     [super viewDidLoad];
     
     self.answerLabel.text = NSLocalizedString(@"Answer", @"The answer to the question");
-    [[self answerLabel] setFont:[BNoteConstants font:RobotoRegular andSize:14]];
-    [[self answerLabel] setTextColor:UIColorFromRGB(0x444444)];
+    self.answerLabel.font = [BNoteConstants font:RobotoBold andSize:16];
+    self.answerLabel.textColor = [BNoteConstants appHighlightColor1];
 
     UITextView *view = [self answerTextView];
     [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
@@ -55,10 +55,8 @@
     QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
     [self setAnswerQuickWordsViewController:quick];
     [view setInputAccessoryView:[quick view]];
-    
-    [[self answerTextView] setText:[[self question] answer]];
-    
-    [LayerFormater roundCornersForView:[self answerTextView]];
+
+    [self setupDetail];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnswerText:)
                                                  name:UITextViewTextDidChangeNotification object:view];
@@ -79,23 +77,6 @@
     self.answerView = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (float)heights
-{
-    UITextView *view = [[UITextView alloc] init];
-    [view setText:[[self question] text]];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, [self width] - 240, 60)];
-    
-    float questionHeight = MAX(60, [view contentSize].height + 10);
-
-    [view setText:[[self question] answer]];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, 110, 20)];
-    float answerHeight = [view contentSize].height + 20;
-
-    return MAX(45, questionHeight + answerHeight);
 }
 
 - (BOOL)doNotResizeActionButton
@@ -124,15 +105,29 @@
     return buttons;
 }
 
+- (void)setupDetail
+{
+    if ([BNoteStringUtils nilOrEmpty:[self question].answer]) {
+        self.answerView.hidden = YES;
+    } else {
+        self.answerView.hidden = NO;
+    }
+}
+
 - (void)handleAnswer:(id)sender
 {
+    self.answerView.hidden = NO;
     
+    float height = self.answerTextView.contentSize.height;
+    CGRect frame = self.answerView.frame;
+    self.answerView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, height);
+    
+    [self.answerTextView becomeFirstResponder];
 }
 
 - (void)startedEditingAnswerText:(NSNotification *)notification
 {
     if ([notification object] == [self answerTextView]) {
-//        [[self answerTextView] setClipsToBounds:NO];
         [self handleImageIcon:YES];
         [self setSelectedTextView:[self answerTextView]];
         [[self answerQuickWordsViewController] selectFirstButton];
@@ -142,7 +137,6 @@
 - (void)stoppedEditingAnswerText:(NSNotification *)notification
 {
     if ([notification object] == [self answerTextView]) {
-//        [[self answerTextView] setClipsToBounds:YES];
         [self handleImageIcon:NO];
     }
 }

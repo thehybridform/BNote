@@ -20,10 +20,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
 @property (strong, nonatomic) IBOutlet UITextView *mainTextView;
 
+extern int const kDefaultCellHeight;
+
 - (id)initWithEntry:(Entry *)entry;
 - (void)handleImageIcon:(BOOL)active;
-
-- (void)hideControls;
-- (void)showControls;
 
 @end

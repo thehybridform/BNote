@@ -20,13 +20,17 @@
 @property (strong, nonatomic) UIButton *responsibilityButton;
 @property (strong, nonatomic) UIButton *dueDateButton;
 @property (strong, nonatomic) UIButton *completedButton;
-@property (strong, nonatomic) IBOutlet UILabel *detailLabel;
+@property (strong, nonatomic) UILabel *detailLabel;
+@property (strong, nonatomic) UIImage *completedImage;
+@property (strong, nonatomic) UIImage *notCompletedImage;
 
 @end
 
 @implementation ActionItemContentViewController
 @synthesize datePickerViewController = _datePickerViewController;
 @synthesize detailLabel = _detailLabel;
+@synthesize completedImage = _completedImage;
+@synthesize notCompletedImage = _notCompletedImage;
 
 static NSString *responsibilityOptionsText;
 static NSString *setResponsibilityText;
@@ -43,11 +47,48 @@ static NSString *dueOnText;
 static NSString *notCompleteText;
 static NSString *completedOnDateText;
 
+- (id)initWithEntry:(Entry *)entry
+{
+    self = [super initWithEntry:entry];
+    
+    if (self) {
+        self.mainTextView.frame = CGRectMake(104, 5, 600, 70);
+
+        UILabel *detailLabel = [[UILabel alloc] init];
+        self.detailLabel = detailLabel;
+        detailLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        
+        detailLabel.frame = CGRectMake(104, 72, 600, 25);
+        detailLabel.font = [BNoteConstants font:RobotoItalic andSize:12];
+        detailLabel.textColor = [BNoteConstants appHighlightColor1];
+
+        [self.view addSubview:detailLabel];
+    }
+    
+    self.completedImage = [UIImage imageNamed:@"bnote-complete.png"];
+    self.notCompletedImage = [UIImage imageNamed:@"bnote-incomplete.png"];
+
+    notCompleteText = NSLocalizedString(@"Not Complete", @"This action item is not complete");
+    completedOnDateText = NSLocalizedString(@"Completed On", @"As in 'This action item was ompleted On 12/1/1970'");
+    
+    noResponsibilityText = NSLocalizedString(@"No Responsibility", @"This action item has no resposibility assigned");
+    responsibilityOptionsText = NSLocalizedString(@"Responsibility Options", @"Responsibility options menu title");
+    setResponsibilityText = NSLocalizedString(@"Set Responsibility", @"Set the responsibility for this action item");
+    clearResponsibilityText = NSLocalizedString(@"Clear Responsibility", @"Clear the responsibility for this action item");
+    
+    noDueDateText = NSLocalizedString(@"No Due Date", @"This action item has no due date");
+    dueDateText = NSLocalizedString(@"Due Date", @"Due date label");
+    dueDateOptionsText = NSLocalizedString(@"Due Date Options", @"Due date options menu title");
+    setDueDateText = NSLocalizedString(@"Set Due Date", @"Set the due date for this action item");
+    clearDueDateText = NSLocalizedString(@"Clear Due Date", @"Clear the due date for this action item");
+    dueOnText = NSLocalizedString(@"Due On", @"As in 'This action item is due on 12/1/1970'");
+
+    return self;
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    self.detailLabel = nil;
 }
 
 - (NSString *)localNibName
@@ -64,25 +105,12 @@ static NSString *completedOnDateText;
 {
     [super viewDidLoad];
     
-    notCompleteText = NSLocalizedString(@"Not Complete", @"This action item is not complete");
-    completedOnDateText = NSLocalizedString(@"Completed On", @"As in 'This action item was ompleted On 12/1/1970'");
-    
-    noResponsibilityText = NSLocalizedString(@"No Responsibility", @"This action item has no resposibility assigned");
-    responsibilityOptionsText = NSLocalizedString(@"Responsibility Options", @"Responsibility options menu title");
-    setResponsibilityText = NSLocalizedString(@"Set Responsibility", @"Set the responsibility for this action item");
-    clearResponsibilityText = NSLocalizedString(@"Clear Responsibility", @"Clear the responsibility for this action item");
-    
-    noDueDateText = NSLocalizedString(@"No Due Date", @"This action item has no due date");
-    dueDateText = NSLocalizedString(@"Due Date", @"Due date label");
-    dueDateOptionsText = NSLocalizedString(@"Due Date Options", @"Due date options menu title");
-    setDueDateText = NSLocalizedString(@"Set Due Date", @"Set the due date for this action item");
-    clearDueDateText = NSLocalizedString(@"Clear Due Date", @"Clear the due date for this action item");
-    dueOnText = NSLocalizedString(@"Due On", @"As in 'This action item is due on 12/1/1970'");
+}
 
-    self.detailLabel.font = [BNoteConstants font:RobotoItalic andSize:14];
-    self.detailLabel.textColor = [BNoteConstants appHighlightColor1];
-    
+- (float)height
+{
     [self updateDetail];
+    return MAX(kDefaultCellHeight, self.mainTextView.contentSize.height + self.detailLabel.frame.size.height);
 }
 
 - (NSArray *)quickActionButtons
@@ -110,19 +138,6 @@ static NSString *completedOnDateText;
     [buttons addObject:button];
     
     return buttons;
-}
-
-- (float)height
-{
-    if ([BNoteStringUtils nilOrEmpty:self.detailLabel.text]) {
-        return [super height];
-    } else {
-        UITextView *view = [[UITextView alloc] init];
-        [view setText:[[self entry] text]];
-        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-        [view setFrame:CGRectMake(0, 0, [self width] - 100, 40)];
-        return MAX(60, [view contentSize].height + 60);
-    }
 }
 
 - (void)showResponsibilityPicker
@@ -233,12 +248,6 @@ static NSString *completedOnDateText;
     }
 
     self.detailLabel.text = detail;
-
-    if ([BNoteStringUtils nilOrEmpty:detail]) {
-        self.detailLabel.hidden = YES;
-    } else {
-        self.detailLabel.hidden = NO;
-    }
 }
 
 - (void)selectedDatePickerViewDone
@@ -295,8 +304,10 @@ static NSString *completedOnDateText;
 {
     if ([[self actionItem] completed]) {
         [[self actionItem] setCompleted:0];
+        [self.completedButton setImage:self.notCompletedImage forState:UIControlStateNormal];
     } else {
         [[self actionItem] setCompleted:[NSDate timeIntervalSinceReferenceDate]];
+        [self.completedButton setImage:self.completedImage forState:UIControlStateNormal];
     }
     
     [self updateDetail];

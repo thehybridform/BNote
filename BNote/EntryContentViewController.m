@@ -15,6 +15,8 @@
 #import "EntryConverterHelper.h"
 #import "BNoteAnimation.h"
 
+const int kDefaultCellHeight = 60;
+
 @interface EntryContentViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *entryMarginView;
@@ -30,12 +32,37 @@
 @synthesize iconView = _iconView;
 @synthesize entryMarginView = _entryMarginView;
 
+
 - (id)initWithEntry:(Entry *)entry
 {
     self = [super initWithNibName:[self localNibName] bundle:nil];
     
     if (self) {
         [self setEntry:entry];
+        
+        if (![entry isKindOfClass:[Attendants class]]) {
+            UITextView *textView = [[UITextView alloc] init];
+            self.mainTextView = textView;
+            
+            textView.frame = CGRectMake(104, 5, 600, 90);
+            [self.view addSubview:textView];
+            
+            textView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+
+            [self setSelectedTextView:textView];
+            [textView setText:[[self entry] text]];
+            
+            [textView setFont:[BNoteConstants font:RobotoRegular andSize:16]];
+            [textView setTextColor:UIColorFromRGB(0x444444)];
+            [textView setClipsToBounds:YES];
+            [textView setScrollEnabled:NO];
+            textView.delegate = self;
+            
+            QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+            quick.delegate = self;
+            self.quickWordsViewController = quick;
+            self.mainTextView.inputAccessoryView = quick.view;
+        }
     }
     
     return self;
@@ -56,29 +83,6 @@
         UITapGestureRecognizer *tap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEntryOptions:)];
         [[self entryMarginView] addGestureRecognizer:tap];
-    }
-
-    if ([[BNoteSessionData instance] editingNote]) {
-        [self showControls];
-    } else {
-        [self hideControls];
-    }
-
-    UITextView *view = [self mainTextView];
-    if (view) {
-        [self setSelectedTextView:view];
-        [view setText:[[self entry] text]];
-        
-        [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-        [view setTextColor:UIColorFromRGB(0x444444)];
-        [view setClipsToBounds:YES];
-        [view setScrollEnabled:NO];
-        view.delegate = self;
-        
-        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-        quick.delegate = self;
-        self.quickWordsViewController = quick;
-        self.mainTextView.inputAccessoryView = quick.view;
     }
 
     [LayerFormater setBorderWidth:0 forView:self.view];
@@ -104,23 +108,17 @@
 
 - (float)height
 {
-    UITextView *view = [[UITextView alloc] init];
-    [view setText:[[self entry] text]];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setFrame:CGRectMake(0, 0, [self width] - 100, 40)];
-    
-    return MAX(60, [view contentSize].height + 20);
+    return MAX(kDefaultCellHeight, self.mainTextView.contentSize.height);
 }
 
 - (float)width
 {
-    float width = 900;
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsPortrait(orientation)) {
-        width = 600;
+        return 600;
     }
     
-    return width;
+    return 900;
 }
 
 - (void)handleImageIcon:(BOOL)active
@@ -164,13 +162,12 @@
 
 - (void)reviewMode:(NSNotification *)notification
 {
-    [self hideControls];
     [[self mainTextView] resignFirstResponder];
 }
 
 - (void)editingNote:(NSNotification *)notification
 {
-    [self showControls];
+
 }
 
 - (void)showEntryOptions:(id)sender
@@ -186,14 +183,6 @@
 - (NSArray *)quickActionButtons
 {
     return nil;
-}
-
-- (void)hideControls
-{
-}
-
-- (void)showControls
-{
 }
 
 - (void)detatchFromNotificationCenter

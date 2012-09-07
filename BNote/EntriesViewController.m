@@ -107,8 +107,6 @@ static NSString *addKeyWordText;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]];
-    
-    [BNoteAnimation winkInView:[controller iconView] withDuration:0.2 andDelay:0.5 spark:NO];
 
     return [controller cell];
 }
@@ -189,7 +187,7 @@ static NSString *addKeyWordText;
 
 - (void)noteUpdated:(NSNotification *)notificaiton
 {
-    [self reload];
+    [[self tableView] reloadData];
 }
 
 - (void)reload
@@ -289,7 +287,9 @@ static NSString *addKeyWordText;
 - (void)stoppedEditingText:(NSNotification *)notification
 {
     [self setTextView:nil];
-    [self reload];
+//    [self reload];
+    [[self tableView] reloadData];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

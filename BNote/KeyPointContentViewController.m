@@ -22,7 +22,7 @@
 @property (strong, nonatomic) UIButton *photoAlbumButton;
 @property (strong, nonatomic) UIButton *cameraButton;
 @property (strong, nonatomic) UIButton *sketchButton;
-@property (strong, nonatomic) UIImageView *photoImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 
 @end
 
@@ -40,10 +40,8 @@ static NSString *imageOptionsText;
 {
     [super viewDidUnload];
     
-    [self setCameraButton:nil];
-    [self setPhotoAlbumButton:nil];
-    [self setSketchButton:nil];
     [self setPhotoImageView:nil];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

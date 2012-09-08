@@ -15,9 +15,9 @@
 #import "BNoteButton.h"
 
 @interface QuestionContentViewController()
-@property (strong, nonatomic) IBOutlet UITextView *answerTextView;
-@property (strong, nonatomic) IBOutlet UIView *answerView;
-@property (strong, nonatomic) IBOutlet UILabel *answerLabel;
+@property (strong, nonatomic) UITextView *answerTextView;
+@property (strong, nonatomic) UIView *answerView;
+@property (strong, nonatomic) UILabel *answerLabel;
 @property (strong, nonatomic) QuickWordsViewController *answerQuickWordsViewController;
 @property (strong, nonatomic) UIButton *answerButton;
 
@@ -40,32 +40,85 @@
     return @"QuestionContentView";
 }
 
-- (void)viewDidLoad
+- (id)initWithEntry:(Entry *)entry
 {
-    [super viewDidLoad];
+    self = [super initWithEntry:entry];
     
+    if (self) {
+        self.mainTextView.frame = CGRectMake(104, 5, 650, 65);
+        self.mainTextView.autoresizingMask =
+            UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+
+        UIView *answerView = [[UIView alloc] init];
+        self.answerView = answerView;
+        answerView.autoresizingMask =
+            UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
+        
+        answerView.frame = CGRectMake(104, 70, 650, 28);
+        [[self cell].contentView addSubview:answerView];
+        
+        UILabel *answerLabel = [[UILabel alloc] init];
+        self.answerLabel = answerLabel;
+        answerLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+        answerLabel.frame = CGRectMake(5, 5, 100, 25);
+        answerLabel.font = [BNoteConstants font:RobotoItalic andSize:12];
+        answerLabel.textColor = [BNoteConstants appHighlightColor1];
+        [answerView addSubview:answerLabel];
+        
+        UITextView *answerTextView = [[UITextView alloc] init];
+        self.answerTextView = answerTextView;
+        answerTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        answerTextView.frame = CGRectMake(105, 0, 550, 28);
+        answerTextView.font = [BNoteConstants font:RobotoItalic andSize:16];
+        answerTextView.textColor = [BNoteConstants appHighlightColor1];
+        answerTextView.clipsToBounds = YES;
+        answerTextView.scrollEnabled = YES;
+        answerTextView.text = [self question].answer;
+        [answerView addSubview:answerTextView];
+/*
+        [LayerFormater roundCornersForView:self.mainTextView];
+        [LayerFormater roundCornersForView:answerLabel];
+        [LayerFormater roundCornersForView:answerTextView];
+        [LayerFormater roundCornersForView:answerView];
+        
+        [LayerFormater setBorderColor:[UIColor grayColor] forView:self.mainTextView];
+        [LayerFormater setBorderColor:[UIColor redColor] forView:answerLabel];
+        [LayerFormater setBorderColor:[UIColor blueColor] forView:answerTextView];
+        [LayerFormater setBorderColor:[UIColor greenColor] forView:answerView];
+        
+        [LayerFormater setBorderWidth:5 forView:self.mainTextView];
+        [LayerFormater setBorderWidth:5 forView:answerLabel];
+        [LayerFormater setBorderWidth:5 forView:answerTextView];
+        [LayerFormater setBorderWidth:5 forView:answerView];
+*/        
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingAnswerText:)
+                                                     name:UITextViewTextDidBeginEditingNotification object:answerTextView];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingAnswerText:)
+                                                     name:UITextViewTextDidEndEditingNotification object:answerTextView];
+
+        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+        [self setAnswerQuickWordsViewController:quick];
+        [answerTextView setInputAccessoryView:[quick view]];
+    }
+
     self.answerLabel.text = NSLocalizedString(@"Answer", @"The answer to the question");
     self.answerLabel.font = [BNoteConstants font:RobotoBold andSize:16];
     self.answerLabel.textColor = [BNoteConstants appHighlightColor1];
-
-    UITextView *view = [self answerTextView];
-    [view setFont:[BNoteConstants font:RobotoRegular andSize:16]];
-    [view setTextColor:UIColorFromRGB(0x444444)];
     
-    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-    [self setAnswerQuickWordsViewController:quick];
-    [view setInputAccessoryView:[quick view]];
+    return self;
+}
 
-    [self setupDetail];
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnswerText:)
-                                                 name:UITextViewTextDidChangeNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingAnswerText:)
-                                                 name:UITextViewTextDidBeginEditingNotification object:view];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stoppedEditingAnswerText:)
-                                                 name:UITextViewTextDidEndEditingNotification object:view];
+- (float)height
+{
+    [self updateDetail];
+    return MAX(kDefaultCellHeight, self.mainTextView.contentSize.height + self.answerTextView.contentSize.height + 25);
 }
 
 - (void)viewDidUnload
@@ -86,7 +139,7 @@
 
 - (NSArray *)quickActionButtons
 {
-    NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:3];
+    NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:1];
     
     UIButton *button = [[BNoteButton alloc] init];
     self.answerButton = button;
@@ -105,7 +158,7 @@
     return buttons;
 }
 
-- (void)setupDetail
+- (void)updateDetail
 {
     if ([BNoteStringUtils nilOrEmpty:[self question].answer]) {
         self.answerView.hidden = YES;
@@ -138,18 +191,16 @@
 {
     if ([notification object] == [self answerTextView]) {
         [self handleImageIcon:NO];
-    }
-}
+        self.answerTextView.scrollEnabled = NO;
 
-- (void)updateAnswerText:(NSNotification *)notification
-{
-    if ([notification object] == [self answerTextView]) {
         NSString *text = [BNoteStringUtils trim:[[self answerTextView] text]];
         Question *question = [self question];
         if ([BNoteStringUtils nilOrEmpty:text]) {
             [question setAnswer:nil];
+            self.answerTextView.text = nil;
         } else {
             [question setAnswer:text];
+            self.answerTextView.text = text;
         }
     }
 }

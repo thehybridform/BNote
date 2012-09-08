@@ -45,7 +45,7 @@ const int kDefaultCellHeight = 60;
             self.mainTextView = textView;
             
             textView.frame = CGRectMake(104, 5, 600, 90);
-            [self.view addSubview:textView];
+            [[self cell].contentView addSubview:textView];
             
             textView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
@@ -145,11 +145,13 @@ const int kDefaultCellHeight = 60;
     [textView setScrollEnabled:NO];
     [self handleImageIcon:NO];
     
-    NSString *text = [textView text];
+    NSString *text = [BNoteStringUtils trim:textView.text];
     if ([BNoteStringUtils nilOrEmpty:text]) {
         [[self entry] setText:nil];
+        textView.text = nil;
     } else {
         [[self entry] setText:text];
+        textView.text = text;
     }
     
     [[BNoteWriter instance] update];

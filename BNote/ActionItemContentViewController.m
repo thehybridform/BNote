@@ -62,7 +62,7 @@ static NSString *completedOnDateText;
         detailLabel.font = [BNoteConstants font:RobotoItalic andSize:12];
         detailLabel.textColor = [BNoteConstants appHighlightColor1];
 
-        [self.view addSubview:detailLabel];
+        [[self cell].contentView addSubview:detailLabel];
     }
     
     self.completedImage = [UIImage imageNamed:@"bnote-complete.png"];

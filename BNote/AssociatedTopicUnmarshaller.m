@@ -7,8 +7,6 @@
 //
 
 #import "AssociatedTopicUnmarshaller.h"
-#import "BNoteReader.h"
-#import "BNoteFactory.h"
 
 @implementation AssociatedTopicUnmarshaller
 

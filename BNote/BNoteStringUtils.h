@@ -13,18 +13,11 @@
 
 + (NSString *)trim:(NSString *)string;
 + (BOOL)nilOrEmpty:(NSString *)string;
-
 + (NSString *)dateToString:(NSDate *)date;
-+ (NSString *)timeToString:(NSDate *)date;
 + (NSString *)formatDate:(NSTimeInterval)interval;
-+ (NSString *)intervalToString:(NSTimeInterval)interval;
-
-+ (NSString *)nameForEntry:(Entry *)entry;
-
 + (NSString *)append:(NSString *)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
 + (NSString *)ordinalNumberFormat:(NSInteger)num;
 + (NSString *)monthFor:(NSInteger)month;
-
 + (NSString *)guuid;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "QuestionPlainRenderer.h"
-#import "Question.h"
 
 @implementation QuestionPlainRenderer
 

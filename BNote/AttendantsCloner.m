@@ -7,8 +7,6 @@
 //
 
 #import "AttendantsCloner.h"
-#import "Attendants.h"
-#import "Attendant.h"
 #import "BNoteFactory.h"
 #import "BNoteImageUtils.h"
 

@@ -7,8 +7,6 @@
 //
 
 #import "KeyWordFilter.h"
-#import "Question.h"
-#import "Entry.h"
 
 @interface KeyWordFilter()
 @property (strong, nonatomic) NSString *text;

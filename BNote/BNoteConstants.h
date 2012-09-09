@@ -26,7 +26,6 @@ extern int const kColor12;
 extern int const kAppColor1;
 extern int const kAppColor2;
 extern int const kDarkGray;
-extern int const kAppHighlightColor1;
 
 extern int const kColorWhite;
 extern int const kFilterColor;
@@ -38,7 +37,6 @@ extern NSString * const kKeyWordsUpdated;
 extern NSString * const kNoteUpdated;
 extern NSString * const kNoteSelected;
 extern NSString * const kTopicCreated;
-extern NSString * const kEditTopicGroupSelected;
 extern NSString * const kTopicGroupSelected;
 extern NSString * const kTopicGroupManage;
 extern NSString * const kTopicSelected;
@@ -50,7 +48,6 @@ extern NSString * const kAttendeeUpdated;
 extern NSString * const kReviewingNote;
 extern NSString * const kEditingNote;
 extern NSString * const kActionItemActive;
-extern NSString * const kFocusTextInput;
 
 extern NSString * const kNewLine;
 
@@ -77,13 +74,6 @@ typedef enum {
     RobotoRegular
 } BNoteFont;
 
-typedef enum {
-    BNoteColorHighlight,
-    BNoteColorMain,
-    
-    BNoteColorGray
-} BNoteColor;
-
 @interface BNoteConstants : NSObject
 
 + (UIColor *)appColor1;
@@ -92,7 +82,5 @@ typedef enum {
 + (UIColor *)darkGray2;
 + (UIColor *)appHighlightColor1;
 + (UIFont *)font:(BNoteFont)font andSize:(float)size;
-
-+ (UIColor *)colorFor:(BNoteColor)color;
 
 @end

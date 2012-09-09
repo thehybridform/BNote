@@ -8,19 +8,15 @@
 
 #import "MasterViewController.h"
 #import "BNoteFactory.h"
-#import "BNoteReader.h"
 #import "BNoteWriter.h"
-#import "Topic.h"
 #import "LayerFormater.h"
 #import "BNoteSessionData.h"
-#import "BNoteDefaultData.h"
 
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableArray *data;
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
-@property (strong, nonatomic) Topic *searchTopic;
 @property (strong, nonatomic) TopicGroup *currentTopicGroup;
 
 @end
@@ -29,7 +25,6 @@
 
 @synthesize data = _data;
 @synthesize selectedIndex = _selectedIndex;
-@synthesize searchTopic = _searchTopic;
 @synthesize editButton = _editButton;
 @synthesize listener = _listener;
 @synthesize addTopicButton = _addTopicButton;

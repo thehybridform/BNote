@@ -7,16 +7,7 @@
 //
 
 #import "QuickWordsViewController.h"
-#import "LayerFormater.h"
-#import "BNoteStringUtils.h"
 #import "QuickWordsFactory.h"
-#import "QuickWordButton.h"
-
-#import "Question.h"
-#import "ActionItem.h"
-#import "KeyPoint.h"
-#import "Decision.h"
-#import "Attendant.h"
 
 @interface QuickWordsViewController ()
 @property (strong, nonatomic) IBOutlet UIView *menuView;

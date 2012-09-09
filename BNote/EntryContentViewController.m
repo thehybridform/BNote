@@ -10,10 +10,8 @@
 #import "QuickWordsViewController.h"
 #import "LayerFormater.h"
 #import "BNoteFactory.h"
-#import "BNoteSessionData.h"
 #import "BNoteWriter.h"
 #import "EntryConverterHelper.h"
-#import "BNoteAnimation.h"
 
 const int kDefaultCellHeight = 60;
 
@@ -187,7 +185,7 @@ const int kDefaultCellHeight = 60;
     return nil;
 }
 
-- (void)detatchFromNotificationCenter
+- (void)detachFromNotificationCenter
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

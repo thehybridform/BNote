@@ -7,9 +7,7 @@
 //
 
 #import "ActionItemMarshaller.h"
-#import "ActionItem.h"
 #import "BNoteXmlFormatter.h"
-#import "BNoteMarshallingManager.h"
 #import "BNoteXmlConstants.h"
 
 @implementation ActionItemMarshaller

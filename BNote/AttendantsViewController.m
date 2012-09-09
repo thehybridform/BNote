@@ -7,10 +7,6 @@
 //
 
 #import "AttendantsViewController.h"
-#import "BNoteFactory.h"
-#import "BNoteWriter.h"
-#import "LayerFormater.h"
-#import "Attendant.h"
 #import "AttendantView.h"
 
 @interface AttendantsViewController ()

@@ -7,7 +7,6 @@
 //
 
 #import "NotePlainRenderer.h"
-#import "Note.h"
 
 @implementation NotePlainRenderer
 

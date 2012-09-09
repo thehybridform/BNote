@@ -6,20 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "EmailViewController.h"
-#import "Note.h"
-#import "Entry.h"
-#import "Attendant.h"
-#import "Attendants.h"
-#import "AttendantFilter.h"
-#import "KeyPoint.h"
-#import "KeyPointFilter.h"
-#import "BNoteFilter.h"
 #import "Photo.h"
 #import "BNoteRenderer.h"
 #import "BNoteRenderFactory.h"
-#import "DrawingView.h"
 
 @interface EmailViewController ()
 

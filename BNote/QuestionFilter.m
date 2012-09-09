@@ -7,7 +7,6 @@
 //
 
 #import "QuestionFilter.h"
-#import "Question.h"
 
 @implementation QuestionFilter
 

@@ -7,14 +7,7 @@
 //
 
 #import "ClonerFactory.h"
-#import "ActionItem.h"
-#import "Attendants.h"
 #import "Decision.h"
-#import "KeyPoint.h"
-#import "Question.h"
-#import "Photo.h"
-#import "SketchPath.h"
-
 #import "DecisionCloner.h"
 #import "ActionItemCloner.h"
 #import "QuestionCloner.h"

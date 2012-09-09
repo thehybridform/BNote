@@ -12,7 +12,6 @@
 #import "LayerFormater.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
-#import "EmailViewController.h"
 
 @interface BNoteExporterViewController ()
 

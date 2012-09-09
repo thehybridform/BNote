@@ -7,9 +7,7 @@
 //
 
 #import "KeyPointMarshaller.h"
-#import "KeyPoint.h"
 #import "BNoteXmlFormatter.h"
-#import "BNoteMarshallingManager.h"
 #import "ZipWriteStream.h"
 #import "Photo.h"
 #import "BNoteXmlConstants.h"

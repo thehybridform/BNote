@@ -9,8 +9,6 @@
 #import "PhotoEditorViewController.h"
 #import "DrawingView.h"
 #import "LayerFormater.h"
-#import "Photo.h"
-#import "BNoteWriter.h"
 #import "BNoteAnimation.h"
 #import "ButtonPair.h"
 

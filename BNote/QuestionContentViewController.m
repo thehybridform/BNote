@@ -7,12 +7,10 @@
 //
 
 #import "QuestionContentViewController.h"
-#import "BNoteSessionData.h"
-#import "BNoteEntryUtils.h"
 #import "QuickWordsViewController.h"
 #import "LayerFormater.h"
-#import "BNoteAnimation.h"
 #import "BNoteButton.h"
+#import "BNoteWriter.h"
 
 @interface QuestionContentViewController()
 @property (strong, nonatomic) UITextView *answerTextView;
@@ -75,22 +73,6 @@
         answerTextView.scrollEnabled = YES;
         answerTextView.text = [self question].answer;
         [answerView addSubview:answerTextView];
-/*
-        [LayerFormater roundCornersForView:self.mainTextView];
-        [LayerFormater roundCornersForView:answerLabel];
-        [LayerFormater roundCornersForView:answerTextView];
-        [LayerFormater roundCornersForView:answerView];
-        
-        [LayerFormater setBorderColor:[UIColor grayColor] forView:self.mainTextView];
-        [LayerFormater setBorderColor:[UIColor redColor] forView:answerLabel];
-        [LayerFormater setBorderColor:[UIColor blueColor] forView:answerTextView];
-        [LayerFormater setBorderColor:[UIColor greenColor] forView:answerView];
-        
-        [LayerFormater setBorderWidth:5 forView:self.mainTextView];
-        [LayerFormater setBorderWidth:5 forView:answerLabel];
-        [LayerFormater setBorderWidth:5 forView:answerTextView];
-        [LayerFormater setBorderWidth:5 forView:answerView];
-*/        
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startedEditingAnswerText:)
                                                      name:UITextViewTextDidBeginEditingNotification object:answerTextView];
@@ -143,7 +125,7 @@
     
     UIButton *button = [[BNoteButton alloc] init];
     self.answerButton = button;
-    [button setTitle:self.answerLabel.text forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"Answer", @"The answer to the question") forState:UIControlStateNormal];
     button.titleLabel.font = [BNoteConstants font:RobotoRegular andSize:15];
     [LayerFormater roundCornersForView:button];
 
@@ -191,17 +173,18 @@
 {
     if ([notification object] == [self answerTextView]) {
         [self handleImageIcon:NO];
-        self.answerTextView.scrollEnabled = NO;
 
         NSString *text = [BNoteStringUtils trim:[[self answerTextView] text]];
         Question *question = [self question];
         if ([BNoteStringUtils nilOrEmpty:text]) {
-            [question setAnswer:nil];
+            question.answer = nil;
             self.answerTextView.text = nil;
         } else {
-            [question setAnswer:text];
+            question.answer = text;
             self.answerTextView.text = text;
         }
+
+        [[BNoteWriter instance] update];
     }
 }
 

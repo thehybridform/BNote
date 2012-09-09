@@ -8,7 +8,6 @@
 
 #import "NoteSummaryViewController.h"
 #import "LayerFormater.h"
-#import "Note.h"
 #import "QuickWordsViewController.h"
 
 @interface NoteSummaryViewController ()
@@ -138,7 +137,7 @@
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     [textView setScrollEnabled:NO];
-    NSString *text = [textView text];
+    NSString *text = [BNoteStringUtils trim:textView.text];
     if ([BNoteStringUtils nilOrEmpty:text]) {
         [[self note] setSummary:nil];
     } else {
@@ -151,7 +150,7 @@
     return YES;
 }
 
-- (void)detatchFromNotificationCenter
+- (void)detachFromNotificationCenter
 {
 }
 

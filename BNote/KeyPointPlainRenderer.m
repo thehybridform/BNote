@@ -7,7 +7,6 @@
 //
 
 #import "KeyPointPlainRenderer.h"
-#import "KeyPoint.h"
 
 @implementation KeyPointPlainRenderer
 

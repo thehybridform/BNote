@@ -16,16 +16,12 @@
 #import "AttendeeUnmarshaller.h"
 #import "TopicUnmarshaller.h"
 #import "AssociatedTopicUnmarshaller.h"
-#import "BNoteReader.h"
-#import "BNoteFactory.h"
-#import "Topic.h"
 
 @interface NoteUnmarshaller()
 @property (strong, nonatomic) id<NSXMLParserDelegate> previousParser;
 @property (strong, nonatomic) NSMutableArray *parsers;
 @property (assign, nonatomic) CurrentNode nodeType;
 @property (strong, nonatomic) Note *note;
-@property (strong, nonatomic) TopicUnmarshaller *topicUnmarshaller;
 
 @end
 
@@ -34,7 +30,6 @@
 @synthesize parsers = _parsers;
 @synthesize nodeType = _nodeType;
 @synthesize note = _note;
-@synthesize topicUnmarshaller = _topicUnmarshaller;
 
 - (id)initWithNote:(Note *)note andPreviousParser:(id<NSXMLParserDelegate>)previousParser
 {

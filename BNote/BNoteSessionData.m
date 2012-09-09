@@ -9,17 +9,13 @@
 #import "BNoteSessionData.h"
 
 @interface BNoteSessionData()
-@property (strong, nonatomic) NSMutableDictionary *imageIconViews;
 @property (strong, nonatomic) NSMutableDictionary *entrySummaryHeaderImageViews;
-@property (assign, nonatomic) BOOL keyboardVisible;
 
 - (id)initSingleton;
 
 @end
 
 @implementation BNoteSessionData
-@synthesize imageIconViews = _imageIconViews;
-@synthesize keyboardVisible = _keyboardVisible;
 @synthesize popup = _popup;
 @synthesize actionSheet = _actionSheet;
 @synthesize actionSheetDelegate = _actionSheetDelegate;
@@ -33,14 +29,8 @@
 {
     self = [super init];
 
-    [self setImageIconViews:[[NSMutableDictionary alloc] init]];
     [self setEntrySummaryHeaderImageViews:[[NSMutableDictionary alloc] init]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHideBNoteSessionData:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShowBNoteSessionData:)
-                                                 name:UIKeyboardDidShowNotification object:nil];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
                                                  name:kReviewingNote object:nil];
     
@@ -53,16 +43,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)keyboardDidHideBNoteSessionData:(id)sender
-{
-    [self setKeyboardVisible:NO];
-}
-
-- (void)keyboardDidShowBNoteSessionData:(id)sender
-{
-    [self setKeyboardVisible:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -20,7 +20,6 @@
 - (id)initWithDate:(NSDate *)date andMode:(UIDatePickerMode)mode;
 
 - (IBAction)updateDateTime:(id)sender;
-- (IBAction)didFinish:(id)sender;
 
 @end
 
@@ -28,6 +27,5 @@
 
 @required
 - (void)dateTimeUpdated:(NSDate *)date;
-- (void)selectedDatePickerViewDone;
 
 @end

@@ -6,16 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BNoteEntryUtils.h"
 #import "BNoteImageUtils.h"
-#import "BNoteFilterFactory.h"
-#import "BNoteFilter.h"
 #import "BNoteWriter.h"
 #import "BNoteFactory.h"
-#import "Entry.h"
-#import "Attendants.h"
-#import "Photo.h"
-#import "TopicGroup.h"
 
 @implementation BNoteEntryUtils
 
@@ -28,36 +21,6 @@
     }
     
     return nil;
-}
-
-+ (NSString *)formatDetailTextForActionItem:(ActionItem *)actionItem
-{
-    NSString *detailText = @"";
-    
-    if ([actionItem attendant]) {
-        Attendant *attendant = actionItem.attendant;
-        NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, nil];
-        detailText = [BNoteStringUtils append:@" ", NSLocalizedString(@"Responsibility", nil), @": ", name, nil];
-    }
-    
-    if ([actionItem dueDate]) {
-        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem dueDate]]; 
-        detailText = [BNoteStringUtils append:detailText, @" - ", NSLocalizedString(@"Due On", nil), @" ", [BNoteStringUtils dateToString:dueDate], nil];
-    }
-    
-    if ([actionItem completed]) {
-        NSDate *completed = [NSDate dateWithTimeIntervalSinceReferenceDate:[actionItem completed]]; 
-        detailText = [BNoteStringUtils append:detailText, @" - ", NSLocalizedString(@"Completed on", nil), @" ", [BNoteStringUtils dateToString:completed], nil];
-    }
-        
-    return [BNoteStringUtils nilOrEmpty:detailText] ? nil : detailText;
-}
-
-+ (NSString *)formatDetailTextForQuestion:(Question *)question
-{
-    NSString *detailText = [question answer];
-    
-    return [BNoteStringUtils nilOrEmpty:detailText] ? nil : detailText;
 }
 
 + (BOOL)topicContainsAttendants:(Topic *)topic

@@ -8,7 +8,6 @@
 
 #import "TopicGroupMarshaller.h"
 #import "BNoteMarshallingManager.h"
-#import "BNoteXmlFormatter.h"
 
 @implementation TopicGroupMarshaller
 

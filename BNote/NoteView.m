@@ -9,7 +9,6 @@
 #import "NoteView.h"
 #import "Topic.h"
 #import "LayerFormater.h"
-#import "NoteEditorViewController.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
 

@@ -7,8 +7,6 @@
 //
 
 #import "AttendeeUnmarshaller.h"
-#import "Attendants.h"
-#import "Attendant.h"
 #import "BNoteFactory.h"
 
 @interface AttendeeUnmarshaller()

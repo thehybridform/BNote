@@ -8,7 +8,6 @@
 
 #import "BNoteFilterHelper.h"
 #import "FilterButtonFactory.h"
-#import "LayerFormater.h"
 #import "BNoteAnimation.h"
 
 @implementation BNoteFilterHelper

@@ -11,7 +11,6 @@
 @implementation BNoteXmlFormatter
 
 static NSString *kOpenTag = @"<%@>\n";
-static NSString *kOpenTagWithAtribute = @"<%@ %@=\"%@\">\n";
 static NSString *kCloseTag = @"</%@>\n";
 static NSString *kNode = @"<%@>%@</%@>\n";
 

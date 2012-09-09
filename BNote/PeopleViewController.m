@@ -7,10 +7,7 @@
 //
 
 #import "PeopleViewController.h"
-#import "Attendants.h"
-#import "Attendant.h"
 #import "PersonViewController.h"
-#import "LayerFormater.h"
 
 @interface PeopleViewController ()
 @property (strong, nonatomic) NSMutableArray *peopleControllers;

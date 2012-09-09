@@ -8,10 +8,8 @@
 
 #import "PhotoCloner.h"
 #import "Photo.h"
-#import "KeyPoint.h"
 #import "BNoteFactory.h"
 #import "BNoteImageUtils.h"
-#import "ClonerFactory.h"
 
 @implementation PhotoCloner
 

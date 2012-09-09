@@ -8,8 +8,6 @@
 
 #import "AttendeeDetailViewController.h"
 #import "LayerFormater.h"
-#import "Attendant.h"
-#import "BNoteWriter.h"
 #import "BNoteFactory.h"
 
 @interface AttendeeDetailViewController ()

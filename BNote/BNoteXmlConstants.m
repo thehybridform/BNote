@@ -34,8 +34,6 @@ NSString *const kAssociatedTopicName = @"associated-topic";
 NSString *const kKeyPoint = @"key-point";
 NSString *const kPhoto = @"photo";
 NSString *const kLocation = @"location";
-NSString *const kFormat = @"format";
-NSString *const kJpeg = @"image/jpeg";
 
 NSString *const kDecision = @"decision";
 

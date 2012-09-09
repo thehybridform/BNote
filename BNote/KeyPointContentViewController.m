@@ -8,7 +8,6 @@
 
 #import "KeyPointContentViewController.h"
 #import "BNoteSessionData.h"
-#import "KeyPoint.h"
 #import "Photo.h"
 #import "BNoteWriter.h"
 #import "BNoteFactory.h"

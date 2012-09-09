@@ -7,7 +7,6 @@
 //
 
 #import "KeyPointCloner.h"
-#import "KeyPoint.h"
 #import "BNoteFactory.h"
 #import "PhotoCloner.h"
 

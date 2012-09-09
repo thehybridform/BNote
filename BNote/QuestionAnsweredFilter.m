@@ -7,8 +7,6 @@
 //
 
 #import "QuestionAnsweredFilter.h"
-#import "Question.h"
-#import "BNoteStringUtils.h"
 
 @implementation QuestionAnsweredFilter
 

@@ -7,7 +7,6 @@
 //
 
 #import "BNoteFilterButton.h"
-#import "LayerFormater.h"
 
 @interface BNoteFilterButton()
 @property (strong, nonatomic) UIColor *color;

@@ -21,8 +21,6 @@
 
 + (BNoteSessionData *)instance;
 
-- (BOOL)keyboardVisible;
-- (NSMutableDictionary *)imageIconViews;
 - (NSMutableDictionary *)entrySummaryHeaderImageViews;
 
 + (BOOL)booleanForKey:(NSString *)key;

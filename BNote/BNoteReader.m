@@ -8,7 +8,6 @@
 
 #import "BNoteReader.h"
 #import "BNoteFactory.h"
-#import "TopicGroup.h"
 #import "BNoteWriter.h"
 
 @interface BNoteReader()
@@ -106,7 +105,7 @@
     if ([allTopics count]) {
         TopicGroup *group = [self getTopicGroup:kAllTopicGroupName];
         if (!group) {
-            group = [BNoteFactory createTopicGroup:kAllTopicGroupName];
+            [BNoteFactory createTopicGroup:kAllTopicGroupName];
         }
         
         [[BNoteWriter instance] update];
@@ -117,7 +116,7 @@
     return nil;
 }
 
-- (NSMutableSet *)allKeyWords
+- (NSArray *)allKeyWords
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"KeyWord"];
     
@@ -178,7 +177,7 @@
     return [sortedArray mutableCopy];
 }
 
-- (NSSet *)findNotesWithText:(NSString *)searchText inTopicGroup:(TopicGroup *)group
+- (NSSet *)findNotesWithText:(NSString *)searchText
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Note"];
     NSPredicate *predicate =
@@ -196,14 +195,6 @@
     }
 
     return [NSMutableSet setWithArray:notes];
-}
-
-+ (NSString *)readString:(NSString *)filename
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
-    return [NSString stringWithContentsOfFile:path
-                                     encoding:NSUTF8StringEncoding
-                                        error:NULL];
 }
 
 @end

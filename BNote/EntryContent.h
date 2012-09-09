@@ -20,6 +20,6 @@
 - (float)height;
 - (float)width;
 
-- (void)detatchFromNotificationCenter;
+- (void)detachFromNotificationCenter;
 
 @end

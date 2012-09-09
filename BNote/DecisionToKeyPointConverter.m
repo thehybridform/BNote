@@ -8,7 +8,6 @@
 
 #import "DecisionToKeyPointConverter.h"
 #import "Decision.h"
-#import "KeyPoint.h"
 
 @implementation DecisionToKeyPointConverter
 

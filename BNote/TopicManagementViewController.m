@@ -10,7 +10,6 @@
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
 #import "BNoteFactory.h"
-#import "Topic.h"
 #import "LayerFormater.h"
 
 @interface TopicManagementViewController ()

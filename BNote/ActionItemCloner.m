@@ -7,9 +7,7 @@
 //
 
 #import "ActionItemCloner.h"
-#import "ActionItem.h"
 #import "BNoteFactory.h"
-#import "Attendant.h"
 
 @implementation ActionItemCloner
 

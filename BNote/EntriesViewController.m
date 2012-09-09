@@ -7,21 +7,11 @@
 //
 
 #import "EntriesViewController.h"
-#import "LayerFormater.h"
-#import "BNoteStringUtils.h"
 #import "EntryContent.h"
-#import "Entry.h"
 #import "BNoteWriter.h"
-#import "BNoteSessionData.h"
 #import "BNoteFactory.h"
-#import "Attendant.h"
-#import "KeyPoint.h"
-#import "BNoteEntryUtils.h"
-#import "QuickWordsViewController.h"
 #import "BNoteQuickWordUtils.h"
 #import "AttendantsContentViewController.h"
-#import "NoteSummaryViewController.h"
-#import "BNoteAnimation.h"
 
 @interface EntriesViewController ()
 @property (strong, nonatomic) NSMutableArray *filteredControllers;
@@ -193,7 +183,7 @@ static NSString *addKeyWordText;
 - (void)reload
 {
     for (id<EntryContent> ec in self.filteredControllers) {
-        [ec detatchFromNotificationCenter];
+        [ec detachFromNotificationCenter];
     }
     
     [[self filteredControllers] removeAllObjects];
@@ -240,11 +230,6 @@ static NSString *addKeyWordText;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-}
-
-- (void)selectFirstCell
-{
-    [self selectEntryCell:0];
 }
 
 - (void)selectEntryCell:(int)index

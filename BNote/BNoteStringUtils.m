@@ -6,14 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BNoteStringUtils.h"
-#import "Question.h"
-#import "ActionItem.h"
-#import "KeyPoint.h"
-#import "Decision.h"
-#import "Attendant.h"
-#import "BNoteSessionData.h"
-
 @implementation BNoteStringUtils
 
 + (NSString *)trim:(NSString *)string
@@ -39,42 +31,11 @@
     return s == nil || [s length] == 0;
 }
 
-+ (NSString *)nameForEntry:(Entry *)entry
-{
-    if ([entry isKindOfClass:[ActionItem class]]) {
-        return @"Action Item";
-    } else if ([entry isKindOfClass:[Attendant class]]) {
-        return @"Attendant";
-    } else if ([entry isKindOfClass:[Decision class]]) {
-        return @"Decision";
-    } else if ([entry isKindOfClass:[KeyPoint class]]) {
-        return @"Key Point";
-    } else if ([entry isKindOfClass:[Question class]]) {
-        return @"Question";
-    }
-    
-    return @"Details";
-}
-
 + (NSString *)dateToString:(NSDate *)date
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM dd, YYYY"];
     return [format stringFromDate:date];
-}
-
-+ (NSString *)timeToString:(NSDate *)date
-{
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"hh:mm aaa"];
-    return [format stringFromDate:date];
-}
-
-+ (NSString *)intervalToString:(NSTimeInterval)interval
-{
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMM dd, YYYY"];
-    return [format stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:interval]];
 }
 
 + (NSString *)formatDate:(NSTimeInterval)interval

@@ -250,14 +250,6 @@ static NSString *completedOnDateText;
     self.detailLabel.text = detail;
 }
 
-- (void)selectedDatePickerViewDone
-{
-    [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
-    [[BNoteSessionData instance] setPopup:nil];
-    [self setDatePickerViewController:nil];
-    [self handleImageIcon:NO];
-}
-
 - (void)handleResponsibility:(id)sender
 {
     if ([[self actionItem] attendant]) {

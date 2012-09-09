@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BNoteFilterFactory.h"
 #import "IdentityFillter.h"
 #import "KeyPointFilter.h"
 #import "ActionItemFilter.h"

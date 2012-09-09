@@ -7,7 +7,6 @@
 //
 
 #import "KeyPointFilterButton.h"
-#import "BNoteFilterFactory.h"
 
 @implementation KeyPointFilterButton
 

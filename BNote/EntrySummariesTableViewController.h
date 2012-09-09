@@ -12,16 +12,7 @@
 
 @interface EntrySummariesTableViewController : UITableViewController
 
-typedef enum {
-    None,
-    DateAcending,
-    DateDecending,
-    
-    Unknown
-} SortType;
-
 @property (strong, nonatomic) Topic *topic;
-@property (strong, nonatomic) UIViewController *parentController;
 @property (strong, nonatomic) NSString *searchText;
 
 @end

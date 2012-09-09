@@ -8,7 +8,6 @@
 
 #import "ActionItemUnmarshaller.h"
 #import "BNoteFactory.h"
-#import "BNoteXmlConstants.h"
 #import "ResponsibilityUnmarshaller.h"
 
 @interface ActionItemUnmarshaller()

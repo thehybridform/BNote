@@ -9,8 +9,6 @@
 #import "AttendeeMarshaller.h"
 #import "BNoteXmlFormatter.h"
 #import "BNoteXmlConstants.h"
-#import "Attendants.h"
-#import "Attendant.h"
 
 @implementation AttendeeMarshaller
 

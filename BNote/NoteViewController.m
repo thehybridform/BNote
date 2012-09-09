@@ -26,7 +26,6 @@
 @synthesize year = _year;
 @synthesize time = _time;
 @synthesize note = _note;
-@synthesize detailViewController = _detailViewController;
 @synthesize dateView = _dateView;
 
 - (id)initWithNote:(Note *)note isAssociated:(BOOL)associated
@@ -112,11 +111,6 @@
     [format setDateFormat:@"yyyy"];
     str = [format stringFromDate:date];
     [[self year] setText:str];
-}
-
-- (void)updateNote:(id)sender
-{
-    [self setup];
 }
 
 -(void)normalPressTap:(id)sender

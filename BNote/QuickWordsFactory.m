@@ -11,13 +11,7 @@
 #import "DateQuickButton.h"
 #import "KeyWordButton.h"
 #import "AttendantQuickButton.h"
-#import "KeyWord.h"
 #import "BNoteReader.h"
-#import "BNoteEntryUtils.h"
-#import "LayerFormater.h"
-#import "Attendants.h"
-#import "Attendant.h"
-#import "KeyPointContentViewController.h"
 
 @implementation QuickWordsFactory
 

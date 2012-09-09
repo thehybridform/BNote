@@ -11,12 +11,8 @@
 #import "ActionItemPlainRenderer.h"
 #import "DecisionPlainRenderer.h"
 #import "KeyPointPlainRenderer.h"
-#import "Note.h"
-#import "Entry.h"
-#import "EntityRenderHandler.h"
 #import "NotePlainRenderer.h"
 #import "TopicSummaryPlainRenderer.h"
-#import "NotePlainRenderer.h"
 
 @interface BNotePlainTextRenderer()
 

@@ -14,7 +14,6 @@
 #import "ActionItemToDecisionConverter.h"
 #import "ActionItemToKeyPointConverter.h"
 #import "ActionItemToQuestionConverter.h"
-#import "ActionItemToKeyPointConverter.h"
 #import "KeyPointToActionItemConverter.h"
 #import "KeyPointToDecisionConverter.h"
 #import "KeyPointToQuestionConverter.h"
@@ -24,8 +23,6 @@
 #import "DecisionToActionItemConverter.h"
 #import "DecisionToKeyPointConverter.h"
 #import "DecisionToQuestionConverter.h"
-#import "KeyPoint.h"
-#import "Decision.h"
 
 @interface EntryConverterHelper()
 @property (strong, nonatomic) Entry *entry;

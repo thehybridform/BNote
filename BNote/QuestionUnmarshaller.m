@@ -8,8 +8,6 @@
 
 #import "QuestionUnmarshaller.h"
 #import "BNoteFactory.h"
-#import "BNoteXmlConstants.h"
-#import "Question.h"
 
 @interface QuestionUnmarshaller()
 @property (strong, nonatomic) Question *question;

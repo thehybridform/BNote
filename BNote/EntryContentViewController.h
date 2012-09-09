@@ -13,14 +13,14 @@
 
 @class QuickWordsViewController;
 
+extern int const kDefaultCellHeight;
+
 @interface EntryContentViewController : UIViewController <EntryContent, UITextViewDelegate, QuickWordsViewControllerActionButtonSource>
 
 @property (strong, nonatomic) UITextView *selectedTextView;
 @property (strong, nonatomic) Entry *entry;
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
 @property (strong, nonatomic) IBOutlet UITextView *mainTextView;
-
-extern int const kDefaultCellHeight;
 
 - (id)initWithEntry:(Entry *)entry;
 - (void)handleImageIcon:(BOOL)active;

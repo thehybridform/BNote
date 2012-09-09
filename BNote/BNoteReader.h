@@ -15,19 +15,17 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
-+ (NSString *)readString:(NSString *)filename;
-
 + (BNoteReader *)instance;
 - (NSMutableArray *)allTopics;
 - (NSMutableArray *)allTopicGroups;
-- (NSMutableSet *)allKeyWords;
+- (NSArray *)allKeyWords;
 - (KeyWord *)keyWordFor:(NSString *)word;
 
 - (TopicGroup *)getTopicGroup:(NSString *)name;
 - (Topic *)getFilteredTopic;
 - (Topic *)getTopicForName:(NSString *)name;
 
-- (NSSet *)findNotesWithText:(NSString *)searchText inTopicGroup:(TopicGroup *)group;
+- (NSSet *)findNotesWithText:(NSString *)searchText;
 
 
 @end

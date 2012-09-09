@@ -7,7 +7,6 @@
 //
 
 #import "TopicSummaryPlainRenderer.h"
-#import "Topic.h"
 
 @implementation TopicSummaryPlainRenderer
 

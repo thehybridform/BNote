@@ -7,7 +7,6 @@
 //
 
 #import "KeyPointFilter.h"
-#import "KeyPoint.h"
 
 @implementation KeyPointFilter
 

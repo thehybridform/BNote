@@ -7,7 +7,6 @@
 //
 
 #import "BNoteLiteViewController.h"
-#import "BNoteSessionData.h"
 #import "EluaViewController.h"
 #import "BNoteDefaultData.h"
 #import "BNoteReader.h"

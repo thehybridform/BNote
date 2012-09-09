@@ -7,7 +7,6 @@
 //
 
 #import "AttendantFilter.h"
-#import "Attendants.h"
 
 @implementation AttendantFilter
 

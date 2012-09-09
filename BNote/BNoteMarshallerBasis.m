@@ -7,7 +7,6 @@
 //
 
 #import "BNoteMarshallerBasis.h"
-#import "BNoteXmlConstants.h"
 
 @interface BNoteMarshallerBasis()
 

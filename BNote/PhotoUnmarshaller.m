@@ -8,10 +8,7 @@
 
 #import "PhotoUnmarshaller.h"
 #import "BNoteFactory.h"
-#import "Photo.h"
 #import "BNoteUnarshallingManager.h"
-#import "ZipFile.h"
-#import "ZipReadStream.h"
 #import "BNoteFileUtils.h"
 
 @implementation PhotoUnmarshaller

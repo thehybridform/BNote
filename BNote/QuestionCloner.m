@@ -7,7 +7,6 @@
 //
 
 #import "QuestionCloner.h"
-#import "Question.h"
 #import "BNoteFactory.h"
 
 @implementation QuestionCloner

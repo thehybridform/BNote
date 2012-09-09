@@ -7,7 +7,6 @@
 //
 
 #import "ResponsibilityUnmarshaller.h"
-#import "Attendant.h"
 #import "BNoteFactory.h"
 
 @implementation ResponsibilityUnmarshaller

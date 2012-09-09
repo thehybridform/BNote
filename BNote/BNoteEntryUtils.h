@@ -20,8 +20,6 @@
 
 + (Attendant *)findMatch:(Attendants *)attendants withFirstName:(NSString *)first andLastName:(NSString *)last;
 
-+ (NSString *)formatDetailTextForActionItem:(ActionItem *)actionItem;
-+ (NSString *)formatDetailTextForQuestion:(Question *)question;
 + (BOOL)topicContainsAttendants:(Topic *)topic;
 + (BOOL)noteContainsAttendants:(Note *)note;
 + (BOOL)multipleTopics:(Note *)note;

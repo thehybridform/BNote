@@ -19,8 +19,7 @@ typedef enum {
     QuestionAnsweredType,
     QuestionUnansweredType,
     DecistionType,
-    AttendantType,
-    KeyWordType
+    AttendantType
 } BNoteFilterType;
 
 @interface BNoteFilterFactory : NSObject

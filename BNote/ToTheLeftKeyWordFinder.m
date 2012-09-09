@@ -8,7 +8,6 @@
 
 #import "ToTheLeftKeyWordFinder.h"
 #import "BNoteQuickWordUtils.h"
-#import "ToTheRightKeyWordFinder.h"
 
 @implementation ToTheLeftKeyWordFinder
 @synthesize finder= _finder;

@@ -7,7 +7,6 @@
 //
 
 #import "ActionItemPlainRenderer.h"
-#import "ActionItem.h"
 
 @implementation ActionItemPlainRenderer
 

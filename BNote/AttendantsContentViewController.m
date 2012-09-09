@@ -11,7 +11,6 @@
 #import "AttendeeDetailViewController.h"
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
-#import "LayerFormater.h"
 #import "BNoteSessionData.h"
 #import "BNoteAnimation.h"
 

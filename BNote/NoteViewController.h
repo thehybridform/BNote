@@ -15,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *subject;
 
 @property (strong, nonatomic) Note *note;
-@property (strong, nonatomic) UIViewController *detailViewController;
 
 - (id)initWithNote:(Note *)note isAssociated:(BOOL)associated;
 

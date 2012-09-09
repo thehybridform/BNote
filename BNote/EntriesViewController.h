@@ -16,7 +16,7 @@
 @property (strong, nonatomic) id<BNoteFilter> filter;
 
 - (void)addAndSelectLastEntry:(Entry *)entry;
-- (void)selectFirstCell;
+
 - (void)selectEntry:(Entry *)entry;
 - (void)resignControll;
 - (void)displaySummary;

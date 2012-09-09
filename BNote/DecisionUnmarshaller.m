@@ -8,7 +8,6 @@
 
 #import "DecisionUnmarshaller.h"
 #import "BNoteFactory.h"
-#import "BNoteXmlConstants.h"
 
 @interface DecisionUnmarshaller()
 @property (strong, nonatomic) Decision *decision;

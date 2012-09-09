@@ -7,7 +7,6 @@
 //
 
 #import "DatePickerViewController.h"
-#import "LayerFormater.h"
 
 @interface DatePickerViewController ()
 @property (strong, nonatomic) NSDate *date;
@@ -41,11 +40,6 @@
 {
     UIDatePicker *picker = sender;
     [[self listener] dateTimeUpdated:[picker date]];
-}
-
-- (IBAction)didFinish:(id)sender
-{
-    [[self listener] selectedDatePickerViewDone];
 }
 
 - (void)viewDidLoad

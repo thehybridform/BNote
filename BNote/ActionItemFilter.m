@@ -7,7 +7,6 @@
 //
 
 #import "ActionItemFilter.h"
-#import "ActionItem.h"
 
 @implementation ActionItemFilter
 

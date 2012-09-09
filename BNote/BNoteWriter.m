@@ -142,11 +142,6 @@
     }
 }
 
-- (void)addTopic:(Topic *)topic toGroup:(TopicGroup *)group
-{
-    [group addTopicsObject:topic];
-}
-
 - (void)update
 {
     NSError *error = nil;
@@ -162,7 +157,7 @@
     }    
 }
 
-// these methods work aroung an ios 5.1 bug
+// these methods work around an ios 5.1 bug
 - (void)moveEntry:(Entry *)entry toIndex:(NSUInteger)index
 {
     Note *note = [entry note];

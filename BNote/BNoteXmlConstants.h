@@ -23,8 +23,6 @@ extern NSString *const kAssociatedTopicName;
 extern NSString *const kKeyPoint;
 extern NSString *const kPhoto;
 extern NSString *const kLocation;
-extern NSString *const kFormat;
-extern NSString *const kJpeg;
 extern NSString *const kDecision;
 extern NSString *const kQuestion;
 extern NSString *const kAnswer;
@@ -43,24 +41,18 @@ typedef enum {
     TextNode,
     DueDateNode,
     CompletedDateNode,
-    ResponsibilityNode,
     CreatedDateNode,
     LastUpdatedDateNode,
     QuestionAnswerNode,
-    PhotoNode,
-    TopicNode,
     TopicTitleNode,
-    AssociatedTopicNode,
     SummaryNode,
     SubjectNode,
     TopicColorNode,
-    AttendantNode,
     FirstNameNode,
     LastNameNode,
     EmailNode,
     LocationNode,
-    MimeTypeNode,
-    
+
     NoNode
 } CurrentNode;
 

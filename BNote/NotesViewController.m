@@ -9,12 +9,8 @@
 #import "NotesViewController.h"
 #import "LayerFormater.h"
 #import "BNoteAnimation.h"
-#import "BNoteWriter.h"
-#import "NoteView.h"
-#import "Note.h"
 #import "NoteViewController.h"
 #import "BNoteFactory.h"
-#import "BNoteAnimation.h"
 
 @interface NotesViewController()
 @property (strong, nonatomic) NSMutableArray *noteControllers;
@@ -44,10 +40,10 @@
     _topic = topic;
     
     [self setNoteControllers:[[NSMutableArray alloc] init]];
-    [self setSearchText:nil];
+    [self setSearchText];
 }
 
-- (void)setSearchText:(NSString *)searchText
+- (void)setSearchText
 {
     [self reload];
 }

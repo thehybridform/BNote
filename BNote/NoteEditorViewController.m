@@ -9,28 +9,19 @@
 #import "NoteEditorViewController.h"
 #import "LayerFormater.h"
 #import "Topic.h"
-#import "KeyPoint.h"
-#import "Attendant.h"
-#import "ActionItem.h"
-#import "Question.h"
 #import "Decision.h"
 #import "BNoteFactory.h"
 #import "BNoteSessionData.h"
 #import "BNoteWriter.h"
-#import "BNoteStringUtils.h"
-#import "BNoteEntryUtils.h"
 #import "EmailViewController.h"
 #import "BNoteButton.h"
 #import "EditNoteView.h"
 #import "BNoteFilterHelper.h"
 #import "BNoteAnimation.h"
 #import "BNoteLiteViewController.h"
-#import "BNoteExporterViewController.h"
 #import "ContactMailController.h"
 
 @interface NoteEditorViewController ()
-@property (strong, nonatomic) UIColor *toolbarEditColor;
-@property (strong, nonatomic) Attendant *selectedAttendant;
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 @property (strong, nonatomic) IBOutlet UIView *dateView;
 @property (strong, nonatomic) IBOutlet UILabel *year;
@@ -74,7 +65,6 @@
 @synthesize time = _time;
 @synthesize subjectTextView = _subjectTextView;
 @synthesize note = _note;
-@synthesize toolbarEditColor = _toolbarEditColor;
 @synthesize keyPointButton = _keyPointButton;
 @synthesize questionButton= _questionButton;
 @synthesize decisionButton = _decisionButton;
@@ -83,7 +73,6 @@
 @synthesize trashButton = _trashButton;
 @synthesize entriesViewController = _entriesViewController;
 @synthesize attendantsButton = _attendantsButton;
-@synthesize selectedAttendant = _selectedAttendant;
 @synthesize menuView = _menuView;
 @synthesize infoView = _infoView;
 @synthesize month = _month;
@@ -527,12 +516,6 @@ static NSString *spacing = @"   ";
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    [[BNoteSessionData instance] setPopup:nil];
-}
-
-- (void)selectedDatePickerViewDone
-{
-    [[BNoteSessionData instance].popup dismissPopoverAnimated:YES];
     [[BNoteSessionData instance] setPopup:nil];
 }
 

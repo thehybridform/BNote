@@ -9,7 +9,6 @@
 #import "DecisionMarshaller.h"
 #import "Decision.h"
 #import "BNoteXmlFormatter.h"
-#import "BNoteMarshallingManager.h"
 #import "BNoteXmlConstants.h"
 
 @implementation DecisionMarshaller

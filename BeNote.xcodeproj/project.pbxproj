@@ -258,7 +258,6 @@
 		18C2653B15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653A15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m */; };
 		18C2654115859E4F005FA6C5 /* QuestionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654015859E4F005FA6C5 /* QuestionPlainRenderer.m */; };
 		18C2654415859E7F005FA6C5 /* ActionItemPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */; };
-		18C2654715859EB4005FA6C5 /* AttendantPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */; };
 		18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
 		18C2773515DEF936009AC728 /* NoteMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773415DEF936009AC728 /* NoteMarshaller.m */; };
 		18C2773615DEF936009AC728 /* NoteMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2773415DEF936009AC728 /* NoteMarshaller.m */; };
@@ -407,7 +406,6 @@
 		18F4E1F415CE4843002095A2 /* TopicSummaryPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653A15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m */; };
 		18F4E1F515CE4843002095A2 /* QuestionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654015859E4F005FA6C5 /* QuestionPlainRenderer.m */; };
 		18F4E1F615CE4843002095A2 /* ActionItemPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */; };
-		18F4E1F715CE4843002095A2 /* AttendantPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */; };
 		18F4E1F815CE4843002095A2 /* NotePlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */; };
 		18F4E1F915CE4843002095A2 /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18F4E1FA15CE4843002095A2 /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
@@ -908,8 +906,6 @@
 		18C2654015859E4F005FA6C5 /* QuestionPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionPlainRenderer.m; sourceTree = "<group>"; };
 		18C2654215859E7E005FA6C5 /* ActionItemPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemPlainRenderer.h; sourceTree = "<group>"; };
 		18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemPlainRenderer.m; sourceTree = "<group>"; };
-		18C2654515859EB2005FA6C5 /* AttendantPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantPlainRenderer.h; sourceTree = "<group>"; };
-		18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantPlainRenderer.m; sourceTree = "<group>"; };
 		18C2654B15859FE3005FA6C5 /* NotePlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePlainRenderer.h; sourceTree = "<group>"; };
 		18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePlainRenderer.m; sourceTree = "<group>"; };
 		18C2773315DEF936009AC728 /* NoteMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteMarshaller.h; sourceTree = "<group>"; };
@@ -1766,8 +1762,6 @@
 				18C2654015859E4F005FA6C5 /* QuestionPlainRenderer.m */,
 				18C2654215859E7E005FA6C5 /* ActionItemPlainRenderer.h */,
 				18C2654315859E7E005FA6C5 /* ActionItemPlainRenderer.m */,
-				18C2654515859EB2005FA6C5 /* AttendantPlainRenderer.h */,
-				18C2654615859EB3005FA6C5 /* AttendantPlainRenderer.m */,
 				18C2654B15859FE3005FA6C5 /* NotePlainRenderer.h */,
 				18C2654C15859FE4005FA6C5 /* NotePlainRenderer.m */,
 				18BBD3501585BA9800B1709E /* KeyPointPlainRenderer.h */,
@@ -2230,7 +2224,6 @@
 				18C2653B15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m in Sources */,
 				18C2654115859E4F005FA6C5 /* QuestionPlainRenderer.m in Sources */,
 				18C2654415859E7F005FA6C5 /* ActionItemPlainRenderer.m in Sources */,
-				18C2654715859EB4005FA6C5 /* AttendantPlainRenderer.m in Sources */,
 				18C2654D15859FE5005FA6C5 /* NotePlainRenderer.m in Sources */,
 				18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */,
 				18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */,
@@ -2430,7 +2423,6 @@
 				18F4E1F415CE4843002095A2 /* TopicSummaryPlainRenderer.m in Sources */,
 				18F4E1F515CE4843002095A2 /* QuestionPlainRenderer.m in Sources */,
 				18F4E1F615CE4843002095A2 /* ActionItemPlainRenderer.m in Sources */,
-				18F4E1F715CE4843002095A2 /* AttendantPlainRenderer.m in Sources */,
 				18F4E1F815CE4843002095A2 /* NotePlainRenderer.m in Sources */,
 				18F4E1F915CE4843002095A2 /* KeyPointPlainRenderer.m in Sources */,
 				18F4E1FA15CE4843002095A2 /* DecisionPlainRenderer.m in Sources */,

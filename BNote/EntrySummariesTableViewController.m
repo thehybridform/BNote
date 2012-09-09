@@ -7,12 +7,7 @@
 //
 
 #import "EntrySummariesTableViewController.h"
-#import "Note.h"
-#import "Entry.h"
 #import "BNoteFactory.h"
-#import "LayerFormater.h"
-#import "NoteEditorViewController.h"
-#import "TableCellHeaderViewController.h"
 #import "OrderedDictionary.h"
 #import "EntrySummaryTableViewCellController.h"
 
@@ -25,7 +20,6 @@
 @property (strong, nonatomic) NSArray *decisions;
 @property (strong, nonatomic) NSArray *entries;
 @property (assign, nonatomic) BOOL groupEntries;
-@property (assign, nonatomic) SortType sortType;
 @property (strong, nonatomic) OrderedDictionary *data;
 @property (strong, nonatomic) OrderedDictionary *dataHeaderView;
 
@@ -41,8 +35,6 @@
 @synthesize actionItemsUncomplete = _actionItemsUncomplete;
 @synthesize groupEntries = _groupEntries;
 @synthesize entries = _entries;
-@synthesize sortType = _sortType;
-@synthesize parentController = _parentController;
 @synthesize data = _data;
 @synthesize dataHeaderView = _dataHeaderView;
 @synthesize searchText = _searchText;

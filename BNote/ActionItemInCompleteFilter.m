@@ -7,7 +7,6 @@
 //
 
 #import "ActionItemInCompleteFilter.h"
-#import "ActionItem.h"
 
 @implementation ActionItemInCompleteFilter
 

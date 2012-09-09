@@ -8,8 +8,6 @@
 
 #import "KeyPointUnmarshaller.h"
 #import "BNoteFactory.h"
-#import "BNoteXmlConstants.h"
-#import "KeyPoint.h"
 #import "PhotoUnmarshaller.h"
 
 @interface KeyPointUnmarshaller()

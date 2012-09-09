@@ -9,7 +9,6 @@
 #import "NoteMarshaller.h"
 #import "BNoteXmlFormatter.h"
 #import "BNoteMarshallingManager.h"
-#import "Note.h"
 #import "Topic.h"
 #import "BNoteXmlConstants.h"
 

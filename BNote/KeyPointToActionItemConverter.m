@@ -7,7 +7,6 @@
 //
 
 #import "KeyPointToActionItemConverter.h"
-#import "ActionItem.h"
 
 @implementation KeyPointToActionItemConverter
 

@@ -7,7 +7,6 @@
 //
 
 #import "ResponsibilityTableViewController.h"
-#import "BNoteEntryUtils.h"
 
 @interface ResponsibilityTableViewController ()
 @property (strong, nonatomic) NSMutableArray *data;

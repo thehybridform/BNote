@@ -8,17 +8,9 @@
 
 #import "BNoteDefaultData.h"
 #import "Topic.h"
-#import "TopicGroup.h"
-#import "BNoteSessionData.h"
 #import "BNoteFactory.h"
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
-#import "KeyPoint.h"
-#import "Decision.h"
-#import "Question.h"
-#import "ActionItem.h"
-#import "Attendant.h"
-#import "Attendants.h"
 
 @implementation BNoteDefaultData
 

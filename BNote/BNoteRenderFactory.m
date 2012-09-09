@@ -17,8 +17,7 @@
     switch (type) {
         case Html:
             return nil;
-            break;
-            
+
         default:
             break;
     }

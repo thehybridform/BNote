@@ -8,7 +8,6 @@
 
 #import "TopicMarshaller.h"
 #import "Topic.h"
-#import "BNoteXmlFormatter.h"
 #import "BNoteMarshallingManager.h"
 
 @implementation TopicMarshaller

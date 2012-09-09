@@ -9,20 +9,15 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "BNoteReader.h"
-#import "Attendants.h"
 #import "AttendantsContentViewController.h"
 #import "QuestionContentViewController.h"
 #import "ActionItemContentViewController.h"
 #import "KeyPointContentViewController.h"
 #import "DecisionContentViewController.h"
 #import "BNoteSessionData.h"
-#import "SketchPath.h"
 #import "Cloner.h"
 #import "ClonerFactory.h"
 #import "TableCellHeaderViewController.h"
-#import "DecisionContentViewController.h"
-#import "NoteSummaryViewController.h"
-#import "BNoteStringUtils.h"
 
 NSString *const kActionItemActive = @"action_item_active_icon.png";
 NSString *const ACTION_ITEM_INACTIVE = @"action_item_icon.png";
@@ -84,7 +79,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
 
     Topic *topic = [BNoteFactory createTopic:name forGroup:group];
     
-    for (Note *note in [[BNoteReader instance] findNotesWithText:text inTopicGroup:group]) {
+    for (Note *note in [[BNoteReader instance] findNotesWithText:text]) {
         [topic addAssociatedNotesObject:note];
     }
     

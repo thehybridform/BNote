@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BNoteConstants.h"
-
-
 const int kColor1 = 0xd7a779;
 const int kColor2 = 0xd1c5a4;
 const int kColor3 = 0x6C7A7D;
@@ -49,7 +46,6 @@ NSString * const kNoteUpdated = @"kNoteUpdated";
 NSString * const kNoteSelected = @"kNoteSelected";
 NSString * const kTopicCreated = @"kTopicCreated";
 NSString * const kTopicSelected = @"kTopicSelected";
-NSString * const kEditTopicGroupSelected = @"kEditTopicGroupSelected";
 NSString * const kTopicGroupSelected = @"TopicGroupSelected";
 NSString * const kTopicGroupManage = @"kTopicGroupManage";
 NSString * const kTopicUpdated = @"kTopicUpdated";
@@ -59,7 +55,6 @@ NSString * const kAttendeeDeleted = @"kAttendeeDeleted";
 NSString * const kAttendeeUpdated = @"kAttendeeUpdated";
 NSString * const kReviewingNote = @"kReviewingNote";
 NSString * const kEditingNote = @"kEditingNote";
-NSString * const kFocusTextInput = @"kFocusTextInput";
 
 
 NSString * const kNewLine = @"\r\n";
@@ -71,27 +66,6 @@ NSString * const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdy
 NSString * const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";
 
 @implementation BNoteConstants
-
-+ (UIColor *)colorFor:(BNoteColor)color
-{
-    switch (color) {
-        case BNoteColorHighlight:
-            return UIColorFromRGB(AppHighlightColor1);
-            break;
-            
-        case BNoteColorMain:
-            return UIColorFromRGB(kAppColor1);
-            break;
-            
-        case BNoteColorGray:
-            return UIColorFromRGB(kAppColor1);
-            break;
-            
-        default:
-            break;
-    }
-    return [UIColor blackColor];
-}
 
 + (UIColor *)appHighlightColor1
 {

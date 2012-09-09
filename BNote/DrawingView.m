@@ -9,7 +9,6 @@
 #import "DrawingView.h"
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
-#import "SketchPath.h"
 #import "PhotoSketchPath.h"
 
 @interface DrawingView()

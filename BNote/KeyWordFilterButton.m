@@ -7,7 +7,6 @@
 //
 
 #import "KeyWordFilterButton.h"
-#import "KeyWordFilter.h"
 #import "LayerFormater.h"
 
 @interface KeyWordFilterButton()

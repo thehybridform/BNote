@@ -8,10 +8,7 @@
 
 #import "EntrySummaryTableViewCellController.h"
 #import "LayerFormater.h"
-#import "KeyPoint.h"
 #import "Photo.h"
-#import "ActionItem.h"
-#import "Question.h"
 #import "BNoteFactory.h"
 
 @interface EntrySummaryTableViewCellController ()

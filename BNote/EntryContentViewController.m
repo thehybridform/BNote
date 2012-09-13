@@ -13,7 +13,7 @@
 #import "BNoteWriter.h"
 #import "EntryConverterHelper.h"
 
-const int kDefaultCellHeight = 60;
+const float kDefaultCellHeight = 50;
 
 @interface EntryContentViewController ()
 
@@ -41,21 +41,19 @@ const int kDefaultCellHeight = 60;
         if (![entry isKindOfClass:[Attendants class]]) {
             UITextView *textView = [[UITextView alloc] init];
             self.mainTextView = textView;
-            
-            textView.frame = CGRectMake(104, 5, 600, 90);
-            [[self cell].contentView addSubview:textView];
-            
-            textView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
             [self setSelectedTextView:textView];
             [textView setText:[[self entry] text]];
-            
+
             [textView setFont:[BNoteConstants font:RobotoRegular andSize:16]];
             [textView setTextColor:UIColorFromRGB(0x444444)];
             [textView setClipsToBounds:YES];
             [textView setScrollEnabled:NO];
             textView.delegate = self;
-            
+
+            textView.frame = CGRectMake(104, 0, 600, 90);
+            [[self cell].contentView addSubview:textView];
+
             QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
             quick.delegate = self;
             self.quickWordsViewController = quick;
@@ -86,11 +84,7 @@ const int kDefaultCellHeight = 60;
     [LayerFormater setBorderWidth:0 forView:self.view];
     [LayerFormater setBorderColorWithInt:0xcccccc forView:self.view];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
-                                                 name:kReviewingNote object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
-                                                 name:kEditingNote object:nil];
+    self.mainTextView.frame = [self makeFrame:self.mainTextView];
 }
 
 - (void)viewDidUnload
@@ -127,6 +121,8 @@ const int kDefaultCellHeight = 60;
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    [[[self cell] superview] bringSubviewToFront:[self cell]];
+
     [textView setScrollEnabled:YES];
     [self handleImageIcon:YES];
     [self setSelectedTextView:textView];
@@ -142,7 +138,7 @@ const int kDefaultCellHeight = 60;
 {
     [textView setScrollEnabled:NO];
     [self handleImageIcon:NO];
-    
+
     NSString *text = [BNoteStringUtils trim:textView.text];
     if ([BNoteStringUtils nilOrEmpty:text]) {
         [[self entry] setText:nil];
@@ -151,8 +147,22 @@ const int kDefaultCellHeight = 60;
         [[self entry] setText:text];
         textView.text = text;
     }
-    
+
+    textView.frame = [self makeFrame:textView];
+
     [[BNoteWriter instance] update];
+}
+
+- (CGRect)makeFrame:(UITextView *)textView
+{
+    float height;
+    if ([BNoteStringUtils nilOrEmpty:textView.text]) {
+        height = kDefaultCellHeight;
+    } else {
+        height = MAX(kDefaultCellHeight, textView.contentSize.height);
+    }
+
+    return CGRectMake(textView.frame.origin.x, textView.frame.origin.y, textView.contentSize.width, height);
 }
 
 - (UITableViewCell *)cell
@@ -160,19 +170,12 @@ const int kDefaultCellHeight = 60;
     return (UITableViewCell *) [self view];
 }
 
-- (void)reviewMode:(NSNotification *)notification
-{
-    [[self mainTextView] resignFirstResponder];
-}
-
-- (void)editingNote:(NSNotification *)notification
-{
-
-}
-
 - (void)showEntryOptions:(id)sender
 {
-    [[EntryConverterHelper instance] handleConvertion:[self entry] withinView:[self entryMarginView]];
+    [self resignFirstResponder];
+
+    EntryConverterHelper *helper = [[EntryConverterHelper alloc] init];
+    [helper handleConvertion:[self entry] withinView:[self entryMarginView]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -188,6 +191,11 @@ const int kDefaultCellHeight = 60;
 - (void)detachFromNotificationCenter
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)resignFirstResponder
+{
+    [self.mainTextView resignFirstResponder];
 }
 
 @end

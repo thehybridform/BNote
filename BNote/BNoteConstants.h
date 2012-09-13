@@ -45,8 +45,6 @@ extern NSString * const kClosedNoteEditor;
 extern NSString * const kAttendantsEntryDeleted;
 extern NSString * const kAttendeeDeleted;
 extern NSString * const kAttendeeUpdated;
-extern NSString * const kReviewingNote;
-extern NSString * const kEditingNote;
 extern NSString * const kActionItemActive;
 
 extern NSString * const kNewLine;

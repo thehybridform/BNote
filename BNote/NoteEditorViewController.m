@@ -374,8 +374,6 @@ static NSString *spacing = @"   ";
     [[self addSummaryButton] setHidden:YES];
     
     [self showNormalButtons];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kEditingNote object:nil];
 }
 
 - (void)reviewing
@@ -392,7 +390,6 @@ static NSString *spacing = @"   ";
     [[self addSummaryButton] setHidden:showingSummary];
 
     [BNoteFilterHelper setupFilterButtonsFor:self inView:[self reviewScrollView]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewingNote object:nil];
 }
 
 - (void)keyWordsUpdated:(NSNotification *)notification

@@ -22,7 +22,6 @@
 @synthesize entrySummaryHeaderImageViews = _entrySummaryHeaderImageViews;
 @synthesize selectedTopic = _selectedTopic;
 @synthesize selectedTopicGroup = _selectedTopicGroup;
-@synthesize editingNote = _editingNote;
 @synthesize mainViewController = _mainViewController;
 
 - (id)initSingleton
@@ -30,19 +29,8 @@
     self = [super init];
 
     [self setEntrySummaryHeaderImageViews:[[NSMutableDictionary alloc] init]];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewMode:)
-                                                 name:kReviewingNote object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingNote:)
-                                                 name:kEditingNote object:nil];
 
     return self;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -55,16 +43,6 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [self setActionSheet:nil];
-}
-
-- (void)reviewMode:(NSNotification *)notification
-{
-    self.editingNote = NO;
-}
-
-- (void)editingNote:(NSNotification *)notification
-{
-    self.editingNote = YES;
 }
 
 + (BNoteSessionData *)instance

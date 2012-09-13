@@ -53,9 +53,6 @@ NSString * const kClosedNoteEditor = @"kClosedNoteEditor";
 NSString * const kAttendantsEntryDeleted = @"kAttendantsEntryDeleted";
 NSString * const kAttendeeDeleted = @"kAttendeeDeleted";
 NSString * const kAttendeeUpdated = @"kAttendeeUpdated";
-NSString * const kReviewingNote = @"kReviewingNote";
-NSString * const kEditingNote = @"kEditingNote";
-
 
 NSString * const kNewLine = @"\r\n";
 

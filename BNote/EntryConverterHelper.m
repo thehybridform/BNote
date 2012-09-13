@@ -27,8 +27,6 @@
 @interface EntryConverterHelper()
 @property (strong, nonatomic) Entry *entry;
 
-- (id)initSingleton;
-
 @end
 
 @implementation EntryConverterHelper
@@ -40,12 +38,9 @@ static NSString *questionText;
 static NSString *decisionText;
 static NSString *actionItemText;
 
-- (id)initSingleton
+- (id)init
 {
     self = [super init];
-    
-    if (self) {
-    }
     
     convertToText = NSLocalizedString(@"Convert Note Entry To", nil);
     keyPointText = NSLocalizedString(@"Key Point", nil);
@@ -155,29 +150,11 @@ static NSString *actionItemText;
     }
     
     [[BNoteSessionData instance] setActionSheet:nil];
-    [self setEntry:nil];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [[BNoteSessionData instance] setActionSheet:nil];
-    [self setEntry:nil];
-}
-
-+ (EntryConverterHelper *)instance
-{
-    static EntryConverterHelper *_default = nil;
-    
-    if (_default != nil) {
-        return _default;
-    }
-    
-    static dispatch_once_t safer;
-    dispatch_once(&safer, ^{
-        _default = [[EntryConverterHelper alloc] initSingleton];
-    });
-    
-    return _default;
 }
 
 @end

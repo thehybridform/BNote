@@ -52,13 +52,10 @@ static NSString *completedOnDateText;
     self = [super initWithEntry:entry];
     
     if (self) {
-        self.mainTextView.frame = CGRectMake(104, 5, 600, 70);
-
         UILabel *detailLabel = [[UILabel alloc] init];
         self.detailLabel = detailLabel;
-        detailLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        
-        detailLabel.frame = CGRectMake(104, 72, 600, 25);
+
+        detailLabel.frame = self.mainTextView.frame;
         detailLabel.font = [BNoteConstants font:RobotoItalic andSize:12];
         detailLabel.textColor = [BNoteConstants appHighlightColor1];
 
@@ -82,6 +79,8 @@ static NSString *completedOnDateText;
     setDueDateText = NSLocalizedString(@"Set Due Date", @"Set the due date for this action item");
     clearDueDateText = NSLocalizedString(@"Clear Due Date", @"Clear the due date for this action item");
     dueOnText = NSLocalizedString(@"Due On", @"As in 'This action item is due on 12/1/1970'");
+
+    [self handleDetailFrame];
 
     return self;
 }
@@ -109,8 +108,14 @@ static NSString *completedOnDateText;
 
 - (float)height
 {
-    [self updateDetail];
-    return MAX(kDefaultCellHeight, self.mainTextView.contentSize.height + self.detailLabel.frame.size.height);
+    [self handleDetailFrame];
+
+    if ([self hasDetail]) {
+        float mainHeight = MAX(kDefaultCellHeight, self.mainTextView.contentSize.height);
+        return MAX(kDefaultCellHeight, mainHeight + self.detailLabel.frame.size.height);
+    } else {
+        return [super height];
+    }
 }
 
 - (NSArray *)quickActionButtons
@@ -162,7 +167,7 @@ static NSString *completedOnDateText;
 - (void)clearResponsibility
 {
     [self actionItem].attendant = nil;
-    [self updateDetail];
+    [self handleDetailFrame];
 }
 
 - (void)selectedAttendant:(Attendant *)attendant
@@ -172,13 +177,13 @@ static NSString *completedOnDateText;
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
     [[BNoteSessionData instance] setPopup:nil];
 
-    [self updateDetail];
+    [self handleDetailFrame];
 }
 
 - (void)clearDueDate
 {
     [[self actionItem] setDueDate:0];
-    [self updateDetail];
+    [self handleDetailFrame];
 }
 
 - (void)showDatePicker
@@ -194,7 +199,7 @@ static NSString *completedOnDateText;
     }
     
     [actionItem setDueDate:[NSDate timeIntervalSinceReferenceDate]];
-    [self updateDetail];
+    [self handleDetailFrame];
 
     DatePickerViewController *controller =
     [[DatePickerViewController alloc] initWithDate:date andMode:UIDatePickerModeDate];
@@ -221,33 +226,8 @@ static NSString *completedOnDateText;
 {
     ActionItem *actionItem = [self actionItem];
     [actionItem setDueDate:[date timeIntervalSinceReferenceDate]];
-    
-    [self updateDetail];
-}
 
-- (void)updateDetail
-{
-    NSString *detail = @"";
-    
-    if ([[self actionItem] completed]) {
-        NSDate *completedDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] completed]];
-        NSString *date = [BNoteStringUtils dateToString:completedDate];
-        detail = [BNoteStringUtils append:detail, @" (", completedOnDateText, @": ", date, @") ", nil];
-    }
-    
-    if ([[self actionItem] dueDate]) {
-        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]];
-        NSString *date = [BNoteStringUtils dateToString:dueDate];
-        detail = [BNoteStringUtils append:detail, @" (", dueOnText, @": ", date, @") ", nil];
-    }
-
-    if ([[self actionItem] attendant]) {
-        Attendant *attendant = [self actionItem].attendant;
-        NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, @") ", nil];
-        detail = [BNoteStringUtils append:detail, @" (", name, nil];
-    }
-
-    self.detailLabel.text = detail;
+    [self handleDetailFrame];
 }
 
 - (void)handleResponsibility:(id)sender
@@ -301,8 +281,8 @@ static NSString *completedOnDateText;
         [[self actionItem] setCompleted:[NSDate timeIntervalSinceReferenceDate]];
         [self.completedButton setImage:self.completedImage forState:UIControlStateNormal];
     }
-    
-    [self updateDetail];
+
+    [self handleDetailFrame];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -323,9 +303,44 @@ static NSString *completedOnDateText;
     [[BNoteSessionData instance] setActionSheet:nil];
 }
 
-- (void)dealloc
+- (void)handleDetailFrame
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (![self hasDetail]) {
+        self.detailLabel.hidden = YES;
+        return;
+    }
+
+    self.detailLabel.hidden = NO;
+
+    NSString *detail = @"";
+
+    if ([[self actionItem] completed]) {
+        NSDate *completedDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] completed]];
+        NSString *date = [BNoteStringUtils dateToString:completedDate];
+        detail = [BNoteStringUtils append:detail, @" (", completedOnDateText, @": ", date, @") ", nil];
+    }
+
+    if ([[self actionItem] dueDate]) {
+        NSDate *dueDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[[self actionItem] dueDate]];
+        NSString *date = [BNoteStringUtils dateToString:dueDate];
+        detail = [BNoteStringUtils append:detail, @" (", dueOnText, @": ", date, @") ", nil];
+    }
+
+    if ([[self actionItem] attendant]) {
+        Attendant *attendant = [self actionItem].attendant;
+        NSString *name  = [BNoteStringUtils append:attendant.firstName, @" ", attendant.lastName, @") ", nil];
+        detail = [BNoteStringUtils append:detail, @" (", name, nil];
+    }
+
+    self.detailLabel.text = detail;
+
+    float y = self.mainTextView.frame.origin.y + self.mainTextView.frame.size.height;
+    self.detailLabel.frame = CGRectMake(self.detailLabel.frame.origin.x, y, self.detailLabel.frame.size.width, 30);
+}
+
+- (BOOL)hasDetail
+{
+    return [[self actionItem] completed] || [[self actionItem] dueDate] || [[self actionItem] attendant];
 }
 
 @end

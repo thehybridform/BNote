@@ -11,8 +11,7 @@
 
 @interface EntryConverterHelper : NSObject <UIActionSheetDelegate>
 
-+ (EntryConverterHelper *)instance;
-
 - (void)handleConvertion:(Entry *)entry withinView:(UIView *)view;
 
 @end
+

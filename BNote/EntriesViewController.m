@@ -175,9 +175,9 @@ static NSString *addKeyWordText;
     return [controller height];
 }
 
-- (void)noteUpdated:(NSNotification *)notificaiton
+- (void)noteUpdated:(NSNotification *)notification
 {
-    [[self tableView] reloadData];
+    [self reload];
 }
 
 - (void)reload

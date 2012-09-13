@@ -13,7 +13,7 @@
 
 @class QuickWordsViewController;
 
-extern int const kDefaultCellHeight;
+extern float const kDefaultCellHeight;
 
 @interface EntryContentViewController : UIViewController <EntryContent, UITextViewDelegate, QuickWordsViewControllerActionButtonSource>
 
@@ -24,5 +24,6 @@ extern int const kDefaultCellHeight;
 
 - (id)initWithEntry:(Entry *)entry;
 - (void)handleImageIcon:(BOOL)active;
+- (void)resignFirstResponder;
 
 @end

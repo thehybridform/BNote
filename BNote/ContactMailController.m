@@ -10,6 +10,8 @@
 
 @implementation ContactMailController
 
+static NSString *kMessageBody = @"BeNote v1.0 for iPad";
+
 - (id)init
 {
     self = [super init];
@@ -18,6 +20,8 @@
         [self setMailComposeDelegate:self];
         [self setSubject:@"BeNote "];
         [self setToRecipients:[NSArray arrayWithObject:@"benotesupport@uobia.net"]];
+
+        [self setMessageBody:kMessageBody isHTML:NO];
     }
     
     return self;

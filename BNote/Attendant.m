@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Attendant.h"
-#import "Attendants.h"
-
 
 @implementation Attendant
 

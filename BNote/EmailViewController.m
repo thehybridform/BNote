@@ -33,7 +33,7 @@
 
 - (id)initWithTopic:(Topic *)topic
 {
-    NSMutableArray *allNotes = [[topic notes] mutableCopy];
+    NSMutableOrderedSet *allNotes = [[topic notes] mutableCopy];
 
     for (Note *note in [topic associatedNotes]) {
         [allNotes addObject:note];
@@ -58,7 +58,7 @@
     return self;
 }
 
-- (id)initCommon:(Topic *)topic and:(NSArray *)allNotes
+- (id)initCommon:(Topic *)topic and:(NSOrderedSet *)allNotes
 {
     self = [super init];
     
@@ -121,7 +121,7 @@
     for (Note *note in allNotes) {
         NSEnumerator *entries = [[note entries] objectEnumerator];
         Entry *entry;
-        while (entry = [entries nextObject]) {
+        while ((entry = [entries nextObject])) {
             if ([filter accept:entry]) {
                 [filtered addObject:entry];
             }

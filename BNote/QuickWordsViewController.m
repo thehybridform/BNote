@@ -91,7 +91,7 @@ static NSString *attendenatsText;
 - (void)addActionButtons
 {
     if (self.delegate) {
-        int size = self.iconScrollView.frame.size.height - 8;
+        CGFloat size = self.iconScrollView.frame.size.height - 8;
         int x = 4;
         for (UIButton *button in [self.delegate quickActionButtons]) {
             [self.iconScrollView addSubview:button];
@@ -102,8 +102,8 @@ static NSString *attendenatsText;
                 frame = CGRectMake(x, y, size, size);
             } else {
                 CGRect buttonFrame = button.frame;
-                
-                int y = self.iconScrollView.frame.size.height / 2.0 - buttonFrame.size.height / 2.0;
+
+                CGFloat y = self.iconScrollView.frame.size.height / 2.0 - buttonFrame.size.height / 2.0;
                 
                 frame = CGRectMake(x, y, buttonFrame.size.width, buttonFrame.size.height);
             }
@@ -154,7 +154,7 @@ static NSString *attendenatsText;
     float y = [[self scrollView] bounds].size.height / 2.0;
     
     UIView *view;
-    while (view = [items nextObject]) {
+    while ((view = [items nextObject])) {
         float width = [view bounds].size.width;
         
         [view setCenter:CGPointMake(next + width/2.0, y)];
@@ -170,7 +170,7 @@ static NSString *attendenatsText;
 {
     NSEnumerator *items = [[[self scrollView] subviews] objectEnumerator];
     UIView *view;
-    while (view = [items nextObject]) {
+    while ((view = [items nextObject])) {
         [view setHidden:YES];
     }
 }

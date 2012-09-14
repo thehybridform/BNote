@@ -446,11 +446,6 @@ static NSString *contactUs;
     [[BNoteUnarshallingManager instance] delegate:nil unmarshallUrl:url];
 }
 
-- (void)finishedImporting:(int)count
-{
-    [self.modalViewController dismissViewControllerAnimated:YES completion:^{}];
-}
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

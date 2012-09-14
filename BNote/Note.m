@@ -6,10 +6,6 @@
 //
 //
 
-#import "Note.h"
-#import "Entry.h"
-#import "Topic.h"
-
 
 @implementation Note
 

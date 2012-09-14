@@ -148,7 +148,7 @@ static NSString *highligtTopicText;
         cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
     }
 
-    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+    Topic *topic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     [[cell textLabel] setText:[@"  " stringByAppendingString:[topic title]]];
     
     [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([topic color])]];
@@ -166,7 +166,7 @@ static NSString *highligtTopicText;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+    Topic *topic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     switch ([self topicSelectType]) {
         case ChangeMainTopic:
         {
@@ -196,7 +196,7 @@ static NSString *highligtTopicText;
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+    Topic *topic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     [[BNoteWriter instance] disassociateNote:self.note toTopic:topic];
 }
 

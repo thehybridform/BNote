@@ -7,7 +7,6 @@
 //
 
 #import "TableCellHeaderViewController.h"
-#import "LayerFormater.h"
 
 @interface TableCellHeaderViewController ()
 @property (strong, nonatomic) NSString *name;

@@ -41,7 +41,7 @@
     
     if ([item text]) {
         NSRange range = [[item text] rangeOfString:[self text] options:NSCaseInsensitiveSearch];
-        return range.length;
+        return range.length > 0;
     }
     
     return NO;

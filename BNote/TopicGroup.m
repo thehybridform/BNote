@@ -6,7 +6,6 @@
 //
 //
 
-#import "TopicGroup.h"
 #import "Topic.h"
 
 

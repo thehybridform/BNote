@@ -11,7 +11,6 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "LayerFormater.h"
-#import "BNoteSessionData.h"
 
 @interface TopicEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIView *buttonControlView;
@@ -48,7 +47,6 @@
 @property (strong, nonatomic) IBOutlet UIView *shadowView10;
 @property (strong, nonatomic) IBOutlet UIView *shadowView11;
 @property (strong, nonatomic) IBOutlet UIView *shadowView12;
-@property (assign, nonatomic) BOOL canDismiss;
 
 @end
 
@@ -87,7 +85,6 @@
 @synthesize shadowView10 = _shadowView10;
 @synthesize shadowView11 = _shadowView11;
 @synthesize shadowView12 = _shadowView12;
-@synthesize canDismiss = _canDismiss;
 
 @synthesize delegate = _delegate;
 
@@ -239,11 +236,6 @@ static NSString *placeHolderText;
     }
 
     [[self nameTextField] resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:^{}];
-}
-
-- (IBAction)cancel:(id)sender
-{
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 

@@ -52,9 +52,7 @@ static NSString *kAnswerText;
 
         [[self cell].contentView addSubview:answerTextView];
 
-        QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-        self.answerQuickWordsViewController = quick;
-        answerTextView.inputAccessoryView = quick.view;
+        [self reset];
     }
 
     kAnswerText = NSLocalizedString(@"Answer", @"The answer to the question");
@@ -185,10 +183,20 @@ static NSString *kAnswerText;
     self.answerTextView.frame = CGRectMake(self.answerTextView.frame.origin.x, y, self.answerTextView.frame.size.width, height);
 }
 
-- (void)resignFirstResponder
+- (void)resign
 {
-    [super resignFirstResponder];
+    [super resign];
     [self.answerTextView resignFirstResponder];
+}
+
+- (void)reset
+{
+    [super reset];
+    [self resign];
+
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+    self.answerQuickWordsViewController = quick;
+    self.answerTextView.inputAccessoryView = quick.view;
 }
 
 @end

@@ -12,7 +12,6 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "BNoteSessionData.h"
-#import "BNoteAnimation.h"
 
 @interface AttendantsContentViewController()
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
@@ -27,7 +26,6 @@
 @synthesize peoplePicker = _peoplePicker;
 @synthesize selectedAttendant = _selectedAttendant;
 @synthesize addAttendantView = _addAttendantView;
-@synthesize iconView = _iconView;
 
 static NSString *addressBook;
 static NSString *createNew;
@@ -205,22 +203,6 @@ static NSString *attendants;
     }
 
     [[BNoteSessionData instance] setActionSheet:nil];
-}
-
-- (void)hideControls
-{
-    [[self addAttendantView] setHidden:YES];
-}
-
-- (void)showControls
-{
-    [[self addAttendantView] setHidden:NO];
-
-    NSArray *views = [[NSArray alloc]
-                      initWithObjects:
-                      [self addAttendantView],
-                      nil];
-    [BNoteAnimation winkInView:views withDuration:0.25 andDelay:0.7 andDelayIncrement:0.1 spark:NO];
 }
 
 - (void)dealloc

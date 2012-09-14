@@ -68,7 +68,7 @@
     NSString *ending;
     
     int ones = num % 10;
-    int tens = floor(num / 10);
+    int tens = (int) floor(num / 10);
     tens = tens % 10;
     if(tens == 1){
         ending = @"th";
@@ -127,7 +127,7 @@
 {
     CFUUIDRef uuid = CFUUIDCreate(NULL);
     CFStringRef guiid = CFUUIDCreateString(NULL, uuid);
-    CFRelease(uuid);
+    CFRelease((CFTypeRef) uuid);
     
     return (__bridge NSString *)(guiid);
 }

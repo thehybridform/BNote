@@ -163,8 +163,8 @@
     UIScrollView *view = (UIScrollView *)[self view];
     
     CGFloat pageWidth = [view frame].size.width;
-    int page = floor((view.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    [[self pageControlNotes] setCurrentPage:page];
+    double page = floor((view.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    [[self pageControlNotes] setCurrentPage:(NSInteger) page];
 
     [[self pageControlNotes] setNeedsDisplay];
 }

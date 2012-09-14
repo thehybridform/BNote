@@ -18,7 +18,7 @@
     NSRange cursorPosition = [textView selectedRange];
 
     int start = [self findEndOfPreviousWord:text from:cursorPosition.location];
-    [textView setSelectedRange:NSMakeRange(start, 1)];
+    [textView setSelectedRange:NSMakeRange((NSUInteger) start, 1)];
     
     return [[self finder] find:textView];
 }

@@ -10,11 +10,6 @@
 
 @implementation NotePlainRenderer
 
-- (BOOL)accept:(id)entry
-{
-    return NO;
-}
-
 - (NSString *)render:(Note *)note
 {
     NSString *title = NSLocalizedString(@"Note Subject", nil);

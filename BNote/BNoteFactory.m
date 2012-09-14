@@ -99,16 +99,6 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return copy;
 }
 
-+ (Note *)createNote
-{
-    Note *note = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Note"];
-    [note setCreated:[NSDate timeIntervalSinceReferenceDate]];
-    [note setLastUpdated:[note created]];
-    note.id = [BNoteStringUtils guuid];
-    
-    return note;
-}
-
 + (Note *)createNote:(Topic *)topic
 {
     Note *note = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Note"];
@@ -157,14 +147,6 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     return entry;
 }
 
-+ (ActionItem *)copyActionItem:(ActionItem *)actionItem
-{
-    ActionItem *copy = [BNoteFactory createActionItem:[actionItem note]];
-    [copy setText:[actionItem text]];
-    
-    return copy;
-}
-
 + (KeyPoint *)createKeyPoint:(Note *)note
 {
     KeyPoint *entry = (KeyPoint *)[BNoteFactory createEntry:@"KeyPoint" forNote:note];
@@ -187,14 +169,6 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     [entry setNote:note];
     
     return entry;
-}
-
-+ (Photo *)createPhoto
-{
-    Photo *photo = [[BNoteWriter instance] insertNewObjectForEntityForName:@"Photo"];
-    [photo setCreated:[NSDate timeIntervalSinceReferenceDate]];
-    
-    return photo;
 }
 
 + (Photo *)createPhoto:(KeyPoint *)keyPoint
@@ -348,7 +322,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
         return QuestionIconActive;
     }
 
-    return -1;
+    return (BNoteIconType) -1;
 }
 
 + (BNoteIconType)inactiveType:(Entry *)entry
@@ -365,7 +339,7 @@ NSString *const keyPointsEntryHeader = @"Key Points";
         return QuestionIcon;
     }
     
-    return -1;
+    return (BNoteIconType) -1;
 }
 
 + (EntryContentViewController *)createEntryContent:(Entry *)entry

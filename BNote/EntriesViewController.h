@@ -18,7 +18,6 @@
 - (void)addAndSelectLastEntry:(Entry *)entry;
 
 - (void)selectEntry:(Entry *)entry;
-- (void)resignControll;
 - (void)displaySummary;
 - (BOOL)showingSummary;
 

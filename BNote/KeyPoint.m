@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "KeyPoint.h"
-#import "Photo.h"
-
 
 @implementation KeyPoint
 

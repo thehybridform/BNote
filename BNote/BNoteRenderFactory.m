@@ -6,9 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BNoteRenderFactory.h"
-#import "BNoteHtmlRenderer.h"
 #import "BNotePlainTextRenderer.h"
+#import "BNoteRenderFactory.h"
 
 @implementation BNoteRenderFactory
 

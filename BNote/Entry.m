@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Entry.h"
-#import "Note.h"
-
 
 @implementation Entry
 

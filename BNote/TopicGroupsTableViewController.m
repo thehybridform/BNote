@@ -138,7 +138,7 @@ static NSString *normalText;
         [cell setSelectedBackgroundView:[BNoteFactory createHighlight:[BNoteConstants appHighlightColor1]]];
     }
     
-    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
+    TopicGroup *topicGroup = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     NSString *name = [BNoteEntryUtils topicGroupName:topicGroup];
 
     if ([BNoteStringUtils nilOrEmpty:name]) {
@@ -153,8 +153,8 @@ static NSString *normalText;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
-        [[self data] removeObjectAtIndex:[indexPath row]];
+        TopicGroup *topicGroup = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
+        [[self data] removeObjectAtIndex:(NSUInteger) [indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
 
@@ -191,7 +191,7 @@ static NSString *normalText;
 {
     self.selectedCellLabel = [tableView cellForRowAtIndexPath:indexPath].textLabel;
     
-    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
+    TopicGroup *topicGroup = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     [self setSelectedTopicGroup:topicGroup];
     
     [self.listener selectedTopicGroup:topicGroup];

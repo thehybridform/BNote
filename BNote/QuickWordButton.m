@@ -11,13 +11,11 @@
 
 @interface QuickWordButton()
 @property (strong, nonatomic) UIColor *color;
-@property (strong, nonatomic) UIColor *highlightColor;
 @property (strong, nonatomic) id<EntryContent> entryContent;
 @end
 
 @implementation QuickWordButton
 @synthesize color = _color;
-@synthesize highlightColor = _highlightColor;
 @synthesize entryContent = _entryContent;
 
 - (id)initWithName:(NSString *)name andEntryContentViewController:(id<EntryContent>)controller

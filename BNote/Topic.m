@@ -7,8 +7,6 @@
 //
 
 #import "Topic.h"
-#import "Note.h"
-#import "TopicGroup.h"
 
 
 @implementation Topic

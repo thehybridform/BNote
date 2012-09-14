@@ -7,8 +7,6 @@
 //
 
 #import "Photo.h"
-#import "KeyPoint.h"
-#import "SketchPath.h"
 
 
 @implementation Photo

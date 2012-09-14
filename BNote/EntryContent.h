@@ -19,7 +19,7 @@
 - (UITableViewCell *)cell;
 - (float)height;
 - (float)width;
-
 - (void)detachFromNotificationCenter;
+- (void)reset;
 
 @end

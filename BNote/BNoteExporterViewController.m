@@ -160,7 +160,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<BNoteArchiver> archiver = [self.archiveOutlets objectAtIndex:[indexPath row]];
+    id<BNoteArchiver> archiver = [self.archiveOutlets objectAtIndex:(NSUInteger) [indexPath row]];
 
     self.selectedArchiver = archiver;
     self.helpView.text = [archiver helpText];
@@ -184,7 +184,7 @@
         [LayerFormater setBorderWidth:1 forView:cell];
     }
     
-    id<BNoteArchiver> archiver = [self.archiveOutlets objectAtIndex:[indexPath row]];
+    id<BNoteArchiver> archiver = [self.archiveOutlets objectAtIndex:(NSUInteger) [indexPath row]];
     
     cell.textLabel.text = [archiver displayName];
     

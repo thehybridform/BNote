@@ -24,6 +24,6 @@ extern float const kDefaultCellHeight;
 
 - (id)initWithEntry:(Entry *)entry;
 - (void)handleImageIcon:(BOOL)active;
-- (void)resignFirstResponder;
+- (void)resign;
 
 @end

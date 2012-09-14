@@ -484,14 +484,14 @@ static NSString *resetText;
     BOOL portrait = UIInterfaceOrientationIsPortrait(orientation);
 
     if (portrait) {
-        CGAffineTransform rotate = CGAffineTransformMakeRotation(90.0 * M_PI / 180.0);
+        CGAffineTransform rotate = CGAffineTransformMakeRotation((CGFloat) (90.0 * M_PI / 180.0));
         CGAffineTransform translate = CGAffineTransformMakeTranslation(300, 400);
         CGAffineTransform transform = CGAffineTransformConcat(rotate, translate);
                              
         [[self buttonsView] setTransform:transform];
                              
         translate = CGAffineTransformMakeTranslation(0, 25);
-        rotate = CGAffineTransformMakeRotation(-90.0 * M_PI / 180.0);
+        rotate = CGAffineTransformMakeRotation((CGFloat) (-90.0 * M_PI / 180.0));
         transform = CGAffineTransformConcat(rotate, translate);
         [[self actionView] setTransform:transform];
 

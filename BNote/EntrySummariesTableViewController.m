@@ -201,13 +201,13 @@
         return [self entries];
     }
     
-    NSString *key = [[self data] keyAtIndex:section];
+    NSString *key = [[self data] keyAtIndex:(NSUInteger) section];
     return [[self data] objectForKey:key];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
+    Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:(NSUInteger) [indexPath row]];
 
     EntrySummaryTableViewCellController *controller =
             [[EntrySummaryTableViewCellController alloc] initWithEntry:entry];
@@ -218,7 +218,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:[indexPath row]];
+    Entry *entry = [[self entriesForSection:[indexPath section]] objectAtIndex:(NSUInteger) [indexPath row]];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNoteSelected object:entry];
 }
 
@@ -228,7 +228,7 @@
         return [BNoteFactory createEntrySummaryHeaderView:AllHeader];
     }
     
-    NSString *key = [[self dataHeaderView] keyAtIndex:section];
+    NSString *key = [[self dataHeaderView] keyAtIndex:(NSUInteger) section];
     return [[self dataHeaderView] objectForKey:key];
 }
 

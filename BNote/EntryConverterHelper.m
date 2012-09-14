@@ -142,7 +142,7 @@ static NSString *actionItemText;
             [[BNoteWriter instance] removeEntry:[self entry]];
             
             [note removeEntriesObject:entry];
-            [note insertObject:entry inEntriesAtIndex:index];
+            [note insertObject:entry inEntriesAtIndex:(NSUInteger) index];
 
             [[BNoteWriter instance] update];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNoteUpdated object:nil];

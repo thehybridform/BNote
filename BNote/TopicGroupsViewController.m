@@ -105,7 +105,7 @@ static NSString *manageText;
         [cell setSelectedBackgroundView:[BNoteFactory createHighlight:[BNoteConstants appHighlightColor1]]];
     }
 
-    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
+    TopicGroup *topicGroup = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     NSString *text = @"   ";
     [[cell textLabel] setText:[text stringByAppendingString:[BNoteEntryUtils topicGroupName:topicGroup]]];
     
@@ -121,7 +121,7 @@ static NSString *manageText;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     [[self popup] dismissPopoverAnimated:YES];
-    TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
+    TopicGroup *topicGroup = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     
     NSString *currentGroup = [BNoteSessionData stringForKey:kTopicGroupSelected];
     if (![[topicGroup name] isEqualToString:currentGroup]) {

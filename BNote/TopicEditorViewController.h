@@ -18,7 +18,7 @@
 @property (strong, nonatomic) id<TopicEditorDelegate> delegate;
 
 - (IBAction)done:(id)sender;
-- (IBAction)cancel:(id)sender;
+
 - (IBAction)color1Selected:(id)sender;
 - (IBAction)color2Selected:(id)sender;
 - (IBAction)color3Selected:(id)sender;

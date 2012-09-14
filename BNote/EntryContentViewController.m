@@ -54,10 +54,7 @@ const float kDefaultCellHeight = 50;
             textView.frame = CGRectMake(104, 0, 600, 90);
             [[self cell].contentView addSubview:textView];
 
-            QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-            quick.delegate = self;
-            self.quickWordsViewController = quick;
-            self.mainTextView.inputAccessoryView = quick.view;
+            [self reset];
         }
     }
     
@@ -172,7 +169,7 @@ const float kDefaultCellHeight = 50;
 
 - (void)showEntryOptions:(id)sender
 {
-    [self resignFirstResponder];
+    [self resign];
 
     EntryConverterHelper *helper = [[EntryConverterHelper alloc] init];
     [helper handleConvertion:[self entry] withinView:[self entryMarginView]];
@@ -181,6 +178,16 @@ const float kDefaultCellHeight = 50;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void)reset
+{
+    [self resign];
+
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+    quick.delegate = self;
+    self.quickWordsViewController = quick;
+    self.mainTextView.inputAccessoryView = quick.view;
 }
 
 - (NSArray *)quickActionButtons
@@ -193,7 +200,7 @@ const float kDefaultCellHeight = 50;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)resignFirstResponder
+- (void)resign
 {
     [self.mainTextView resignFirstResponder];
 }

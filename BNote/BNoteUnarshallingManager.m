@@ -48,8 +48,8 @@ static NSString *kBeNote = @"benote";
             
             parser.delegate = self;
         
-            BOOL result = [parser parse];
-            if (!result) {
+            BOOL parseResult = [parser parse];
+            if (!parseResult) {
                 NSLog(@"failed to parse");
             }
         }
@@ -136,16 +136,16 @@ static NSString *kBeNote = @"benote";
 + (void)writeZipReadStream:(ZipReadStream *)stream toFile:(NSString *)filename
 {
     NSFileHandle *tempFile= [NSFileHandle fileHandleForWritingAtPath:filename];
-    NSMutableData *buffer= [[NSMutableData alloc] initWithLength:BUFFER_SIZE];
+    NSMutableData *buffer= [[NSMutableData alloc] initWithLength:(NSUInteger) BUFFER_SIZE];
     
     int bytesRead;
     do {
-        
-        [buffer setLength:BUFFER_SIZE];
+
+        [buffer setLength:(NSUInteger) BUFFER_SIZE];
         
         bytesRead = [stream readDataWithBuffer:buffer];
         if (bytesRead > 0) {
-            [buffer setLength:bytesRead];
+            [buffer setLength:(NSUInteger) bytesRead];
             [tempFile writeData:buffer];
         }
         

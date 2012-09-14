@@ -661,7 +661,7 @@ static NSString *spacing = @"   ";
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 
     [[self subjectTextView] resignFirstResponder];
-    [[self entriesViewController] resignControll];
+    [[self entriesViewController] willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     [[[BNoteSessionData instance] actionSheet] dismissWithClickedButtonIndex:-1 animated:YES];
     [[[BNoteSessionData instance] popup] dismissPopoverAnimated:YES];
 }

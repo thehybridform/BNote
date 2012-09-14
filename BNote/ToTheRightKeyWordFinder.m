@@ -21,7 +21,7 @@ static NSString *regex = @"^\\W*(\\w+)\\W?";
     if (cursorPosition.location < [text length] - 1) {
         int start = [self findStartOfWord:text from:cursorPosition.location];
         
-        NSRange rangeToSearch = NSMakeRange(start, [text length] - 1 - start);
+        NSRange rangeToSearch = NSMakeRange((NSUInteger) start, [text length] - 1 - start);
         NSRange range = [text rangeOfString:regex options:NSRegularExpressionSearch range:rangeToSearch];
         
         [textView setSelectedRange:range];

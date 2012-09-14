@@ -8,7 +8,6 @@
 
 #import "BNoteButton.h"
 #import "LayerFormater.h"
-#import "TopicGroup.h"
 
 @interface BNoteButton()
 

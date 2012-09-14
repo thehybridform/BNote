@@ -68,34 +68,24 @@ NSString *const identityFilter = @"Identity Filter";
     switch (filterType) {
         case KeyPointType:
             return [[self filters] objectForKey:keyPointsFilter];
-            break;
         case ActionItemType:
             return [[self filters] objectForKey:actionItemFilter];
-            break;
         case ActionItemCompleteType:
             return [[self filters] objectForKey:actionItemCompleteFilter];
-            break;
         case ActionItemsIncompleteType:
             return [[self filters] objectForKey:actionItemIncompleteFilter];
-            break;
         case QuestionType:
             return [[self filters] objectForKey:questionFilter];
-            break;
         case QuestionAnsweredType:
             return [[self filters] objectForKey:questionAnsweredFilter];
-            break;
         case QuestionUnansweredType:
             return [[self filters] objectForKey:questionUnansweredFilter];
-            break;
         case DecistionType:
             return [[self filters] objectForKey:decisionsFilter];
-            break;
         case AttendantType:
             return [[self filters] objectForKey:attendantsFilter];
-            break;
         default:
             return [[self filters] objectForKey:identityFilter];
-            break;
     }
 }
 

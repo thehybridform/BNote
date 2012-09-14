@@ -14,7 +14,7 @@
 {
     if ([item isKindOfClass:[ActionItem class]]) {
         ActionItem *actionItem = (ActionItem *) item;
-        return [actionItem completed];
+        return [actionItem completed] > 0;
     }
     
     return NO;

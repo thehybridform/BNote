@@ -8,11 +8,6 @@
 
 #import "ActionItemContentViewController.h"
 #import "BNoteSessionData.h"
-#import "BNoteEntryUtils.h"
-#import "LayerFormater.h"
-#import "BNoteStringUtils.h"
-#import "BNoteEntryUtils.h"
-#import "BNoteAnimation.h"
 #import "BNoteFactory.h"
 
 @interface ActionItemContentViewController()

@@ -10,10 +10,6 @@
 #import "SelectedTopicsTableViewController.h"
 #import "BNoteWriter.h"
 #import "BNoteReader.h"
-#import "BNoteFactory.h"
-#import "BNoteSessionData.h"
-#import "BNoteStringUtils.h"
-#import "TopicGroup.h"
 #import "LayerFormater.h"
 
 @interface TopicGroupManagementViewController ()

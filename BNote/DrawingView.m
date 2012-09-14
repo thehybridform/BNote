@@ -41,7 +41,7 @@
 {
     for (UITouch *touch in touches) {
         [self setPath:[UIBezierPath bezierPath]];
-        [[self path] setLineCapStyle:kCGLineJoinRound];
+        [[self path] setLineCapStyle:(CGLineCap) kCGLineJoinRound];
         [[self path] setLineWidth:[self strokeWidth]];
         [[self path] moveToPoint:[touch locationInView:self]];
         

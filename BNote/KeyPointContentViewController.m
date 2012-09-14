@@ -14,7 +14,6 @@
 #import "PhotoViewController.h"
 #import "PhotoEditorViewController.h"
 #import "LayerFormater.h"
-#import "BNoteAnimation.h"
 
 @interface KeyPointContentViewController()
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
@@ -167,13 +166,6 @@ static NSString *imageOptionsText;
     }
 }
 
-- (void)removePhotos
-{
-    KeyPoint *keyPoint = [self keyPoint];
-    [[BNoteWriter instance] removePhoto:[keyPoint photo]];
-    [self handleImageIcon:NO];
-}
-
 - (void)showPhoto:(id)sender
 {
     KeyPoint *keyPoint = [self keyPoint];
@@ -190,11 +182,6 @@ static NSString *imageOptionsText;
     [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         
     [[[BNoteSessionData instance] mainViewController] presentModalViewController:controller animated:YES];
-}
-
-- (void)updateImageView:(NSNotification *)notification
-{
-    [self handlePhotoImage];
 }
 
 - (void)presentPhotoEditor:(id)sender

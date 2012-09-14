@@ -13,7 +13,7 @@
 #import "BNoteSessionData.h"
 
 @interface MasterViewController () 
-@property (strong, nonatomic) NSMutableArray *data;
+@property (strong, nonatomic) NSMutableOrderedSet *data;
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
@@ -114,7 +114,7 @@ static NSString *falteredGroupText;
         [cell addGestureRecognizer:longPress];
     }
     
-    Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
+    Topic *currentTopic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
     [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     
@@ -136,7 +136,7 @@ static NSString *falteredGroupText;
         
     int index = [self.tableView indexPathForCell:cell].row;
         
-    Topic *topic = [[self data] objectAtIndex:index];
+    Topic *topic = [[self data] objectAtIndex:(NSUInteger) index];
         
     if (topic.color == kFilterColor) {
         return;
@@ -159,17 +159,20 @@ static NSString *falteredGroupText;
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    Topic *topic = [[self data] objectAtIndex:[sourceIndexPath row]];
-    [[BNoteWriter instance] moveTopic:topic toIndex:[destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
+    Topic *topic = [[self data] objectAtIndex:(NSUInteger) [sourceIndexPath row]];
+    [[BNoteWriter instance] moveTopic:topic toIndex:(NSUInteger) [destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
+
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:(NSUInteger) [sourceIndexPath row]];
+    [self.data moveObjectsAtIndexes:indexSet toIndex:(NSUInteger) [destinationIndexPath row]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+        Topic *topic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
         [[BNoteWriter instance] removeTopic:topic];
 
-        [[self data] removeObjectAtIndex:[indexPath row]];
+        [[self data] removeObjectAtIndex:(NSUInteger) [indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
 
@@ -185,7 +188,7 @@ static NSString *falteredGroupText;
 {
     [self setSelectedIndex:[indexPath row]];
     
-    Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+    Topic *topic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     [[BNoteSessionData instance] setSelectedTopic:topic];
     [BNoteSessionData setString:topic.title forKey:kTopicSelected];
 

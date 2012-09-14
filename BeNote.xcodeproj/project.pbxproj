@@ -80,7 +80,6 @@
 		1851A634159EA5760089EECF /* medium-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A631159EA5760089EECF /* medium-pencil.png */; };
 		1851A635159EA5760089EECF /* large-pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851A632159EA5760089EECF /* large-pencil.png */; };
 		1851A638159ECBDE0089EECF /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A637159ECBDE0089EECF /* DrawingView.m */; };
-		18539D5715AEBD8500D7DC55 /* BNoteLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5615AEBD8500D7DC55 /* BNoteLabel.m */; };
 		18539D5D15AFEBF200D7DC55 /* ClonerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5C15AFEBF200D7DC55 /* ClonerFactory.m */; };
 		18539D6015AFEF2100D7DC55 /* DecisionCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5F15AFEF2100D7DC55 /* DecisionCloner.m */; };
 		18539D6315AFF56D00D7DC55 /* ActionItemCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6215AFF56D00D7DC55 /* ActionItemCloner.m */; };
@@ -253,7 +252,6 @@
 		18BEF94E15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */; };
 		18BEF94F15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
-		18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
 		18C2653B15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653A15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m */; };
 		18C2654115859E4F005FA6C5 /* QuestionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654015859E4F005FA6C5 /* QuestionPlainRenderer.m */; };
@@ -401,7 +399,6 @@
 		18F4E1EF15CE4843002095A2 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ABD15852FA700A54205 /* EmailViewController.m */; };
 		18F4E1F015CE4843002095A2 /* BNoteRenderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4AC91585626600A54205 /* BNoteRenderFactory.m */; };
 		18F4E1F115CE4843002095A2 /* BNoteFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF4ACC1585632E00A54205 /* BNoteFilterFactory.m */; };
-		18F4E1F215CE4843002095A2 /* BNoteHtmlRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */; };
 		18F4E1F315CE4843002095A2 /* BNotePlainTextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */; };
 		18F4E1F415CE4843002095A2 /* TopicSummaryPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2653A15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m */; };
 		18F4E1F515CE4843002095A2 /* QuestionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2654015859E4F005FA6C5 /* QuestionPlainRenderer.m */; };
@@ -427,7 +424,6 @@
 		18F4E20C15CE4843002095A2 /* BNoteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */; };
 		18F4E20D15CE4843002095A2 /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */; };
 		18F4E20E15CE4843002095A2 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B446315AE8BF0008F11D2 /* NoteViewController.m */; };
-		18F4E20F15CE4843002095A2 /* BNoteLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5615AEBD8500D7DC55 /* BNoteLabel.m */; };
 		18F4E21015CE4843002095A2 /* ClonerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5C15AFEBF200D7DC55 /* ClonerFactory.m */; };
 		18F4E21115CE4843002095A2 /* DecisionCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D5F15AFEF2100D7DC55 /* DecisionCloner.m */; };
 		18F4E21215CE4843002095A2 /* ActionItemCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6215AFF56D00D7DC55 /* ActionItemCloner.m */; };
@@ -663,8 +659,6 @@
 		1851A636159ECBDE0089EECF /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		1851A637159ECBDE0089EECF /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
 		1851A641159EF10F0089EECF /* BeNote 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 8.xcdatamodel"; sourceTree = "<group>"; };
-		18539D5515AEBD8500D7DC55 /* BNoteLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteLabel.h; sourceTree = "<group>"; };
-		18539D5615AEBD8500D7DC55 /* BNoteLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteLabel.m; sourceTree = "<group>"; };
 		18539D5A15AFEB6400D7DC55 /* Cloner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cloner.h; sourceTree = "<group>"; };
 		18539D5B15AFEBF200D7DC55 /* ClonerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClonerFactory.h; sourceTree = "<group>"; };
 		18539D5C15AFEBF200D7DC55 /* ClonerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClonerFactory.m; sourceTree = "<group>"; };
@@ -895,8 +889,6 @@
 		18C03E09158DA5140035AFDA /* BeNote 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 5.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E2B158DA5910035AFDA /* BeNote 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 6.xcdatamodel"; sourceTree = "<group>"; };
 		18C03E53158DAC2D0035AFDA /* BeNote 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 7.xcdatamodel"; sourceTree = "<group>"; };
-		18C2653015856907005FA6C5 /* BNoteHtmlRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteHtmlRenderer.h; sourceTree = "<group>"; };
-		18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteHtmlRenderer.m; sourceTree = "<group>"; };
 		18C265341585696E005FA6C5 /* BNotePlainTextRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNotePlainTextRenderer.h; sourceTree = "<group>"; };
 		18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNotePlainTextRenderer.m; sourceTree = "<group>"; };
 		18C2653815859A94005FA6C5 /* EntityRenderHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntityRenderHandler.h; sourceTree = "<group>"; };
@@ -1601,8 +1593,6 @@
 				18AF4AC71585621000A54205 /* BNoteRenderer.h */,
 				18AF4AC81585626600A54205 /* BNoteRenderFactory.h */,
 				18AF4AC91585626600A54205 /* BNoteRenderFactory.m */,
-				18C2653015856907005FA6C5 /* BNoteHtmlRenderer.h */,
-				18C2653115856908005FA6C5 /* BNoteHtmlRenderer.m */,
 				18C265341585696E005FA6C5 /* BNotePlainTextRenderer.h */,
 				18C265351585696E005FA6C5 /* BNotePlainTextRenderer.m */,
 			);
@@ -1873,8 +1863,6 @@
 				18E9FF10156A343700F22272 /* LayerFormater.m */,
 				18BAC1A415AD2DED00EEBE1E /* BNoteButton.h */,
 				18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */,
-				18539D5515AEBD8500D7DC55 /* BNoteLabel.h */,
-				18539D5615AEBD8500D7DC55 /* BNoteLabel.m */,
 				18A721AD15B0EF8F00653382 /* TableCellHeaderViewController.h */,
 				18A721AE15B0EF8F00653382 /* TableCellHeaderViewController.m */,
 				18A721AF15B0EF8F00653382 /* TableCellHeaderViewController.xib */,
@@ -2219,7 +2207,6 @@
 				18AF4ABE15852FA700A54205 /* EmailViewController.m in Sources */,
 				18AF4ACA1585626600A54205 /* BNoteRenderFactory.m in Sources */,
 				18AF4ACD1585632F00A54205 /* BNoteFilterFactory.m in Sources */,
-				18C2653215856908005FA6C5 /* BNoteHtmlRenderer.m in Sources */,
 				18C265361585696E005FA6C5 /* BNotePlainTextRenderer.m in Sources */,
 				18C2653B15859D1F005FA6C5 /* TopicSummaryPlainRenderer.m in Sources */,
 				18C2654115859E4F005FA6C5 /* QuestionPlainRenderer.m in Sources */,
@@ -2245,7 +2232,6 @@
 				18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */,
 				18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */,
 				189B446515AE8BF0008F11D2 /* NoteViewController.m in Sources */,
-				18539D5715AEBD8500D7DC55 /* BNoteLabel.m in Sources */,
 				18539D5D15AFEBF200D7DC55 /* ClonerFactory.m in Sources */,
 				18539D6015AFEF2100D7DC55 /* DecisionCloner.m in Sources */,
 				18539D6315AFF56D00D7DC55 /* ActionItemCloner.m in Sources */,
@@ -2418,7 +2404,6 @@
 				18F4E1EF15CE4843002095A2 /* EmailViewController.m in Sources */,
 				18F4E1F015CE4843002095A2 /* BNoteRenderFactory.m in Sources */,
 				18F4E1F115CE4843002095A2 /* BNoteFilterFactory.m in Sources */,
-				18F4E1F215CE4843002095A2 /* BNoteHtmlRenderer.m in Sources */,
 				18F4E1F315CE4843002095A2 /* BNotePlainTextRenderer.m in Sources */,
 				18F4E1F415CE4843002095A2 /* TopicSummaryPlainRenderer.m in Sources */,
 				18F4E1F515CE4843002095A2 /* QuestionPlainRenderer.m in Sources */,
@@ -2444,7 +2429,6 @@
 				18F4E20C15CE4843002095A2 /* BNoteButton.m in Sources */,
 				18F4E20D15CE4843002095A2 /* MainViewViewController.m in Sources */,
 				18F4E20E15CE4843002095A2 /* NoteViewController.m in Sources */,
-				18F4E20F15CE4843002095A2 /* BNoteLabel.m in Sources */,
 				18F4E21015CE4843002095A2 /* ClonerFactory.m in Sources */,
 				18F4E21115CE4843002095A2 /* DecisionCloner.m in Sources */,
 				18F4E21215CE4843002095A2 /* ActionItemCloner.m in Sources */,

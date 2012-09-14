@@ -42,7 +42,7 @@
     [super viewDidLoad];
     
     UITableViewCell *cell = (UITableViewCell *) [self view];
-    [cell setEditingAccessoryType:UITableViewCellEditingStyleNone];
+    [cell setEditingAccessoryType:(UITableViewCellAccessoryType) UITableViewCellEditingStyleNone];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [LayerFormater roundCornersForView:cell];
     [LayerFormater roundCornersForView:self.borderView];
@@ -60,11 +60,9 @@
     
     [LayerFormater roundCornersForView:view];
     [LayerFormater setBorderColor:[BNoteConstants appHighlightColor1] forView:view];
-    
-    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
-    [self setQuickWordsViewController:quick];
-    [view setInputAccessoryView:[quick view]];
-    
+
+    [self reset];
+
     [[self summaryLabel] setFont:[BNoteConstants font:RobotoRegular andSize:15]];
     self.summaryLabel.textColor = UIColorFromRGB(0x444444);
 
@@ -152,6 +150,15 @@
 
 - (void)detachFromNotificationCenter
 {
+}
+
+- (void)reset
+{
+    [self.textView resignFirstResponder];
+
+    QuickWordsViewController *quick = [[QuickWordsViewController alloc] initWithEntryContent:self];
+    [self setQuickWordsViewController:quick];
+    [self.textView setInputAccessoryView:[quick view]];
 }
 
 @end

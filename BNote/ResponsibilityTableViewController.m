@@ -66,7 +66,7 @@
         cell.textLabel.textColor = [BNoteConstants appHighlightColor1];
     }
     
-    Attendant *attendant = [[self data] objectAtIndex:[indexPath row]];
+    Attendant *attendant = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     NSString *name = [BNoteStringUtils append:[attendant firstName], @" ", [attendant lastName], nil];
     [[cell textLabel] setText:name];
     
@@ -84,7 +84,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Attendant *attendant = [[self data] objectAtIndex:[indexPath row]];
+    Attendant *attendant = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     [[self delegate] selectedAttendant:attendant];
 }
 

@@ -96,14 +96,14 @@ static NSString *addKeyWordText;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]];
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:(NSUInteger) [indexPath row]];
 
     return [controller cell];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]];
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:(NSUInteger) [indexPath row]];
     
     if ([controller isKindOfClass:[AttendantsContentViewController class]]) {
         return NO;
@@ -118,10 +118,14 @@ static NSString *addKeyWordText;
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    id<EntryContent> sourceController = [[self filteredControllers] objectAtIndex:[sourceIndexPath row]]; 
+    id<EntryContent> sourceController = [[self filteredControllers] objectAtIndex:(NSUInteger) [sourceIndexPath row]];
    
     Entry *entry = [sourceController entry];
-    [[BNoteWriter instance] moveEntry:entry toIndex:[destinationIndexPath row]];
+    [[BNoteWriter instance] moveEntry:entry toIndex:(NSUInteger) [destinationIndexPath row]];
+
+    id<EntryContent> controller = [self.filteredControllers objectAtIndex:(NSUInteger) [sourceIndexPath row]];
+    [self.filteredControllers removeObjectAtIndex:(NSUInteger) [sourceIndexPath row]];
+    [self.filteredControllers insertObject:controller atIndex:(NSUInteger) [destinationIndexPath row]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,7 +135,7 @@ static NSString *addKeyWordText;
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [[NSNotificationCenter defaultCenter] removeObserver:cell];
         
-        id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+        id<EntryContent> controller = [[self filteredControllers] objectAtIndex:(NSUInteger) [indexPath row]];
 
         [[self filteredControllers] removeObject:controller];
         
@@ -155,7 +159,7 @@ static NSString *addKeyWordText;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[proposedDestinationIndexPath row]];
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:(NSUInteger) [proposedDestinationIndexPath row]];
     
     if ([controller isKindOfClass:[AttendantsContentViewController class]]) {
         return sourceIndexPath;
@@ -170,7 +174,7 @@ static NSString *addKeyWordText;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:[indexPath row]]; 
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:(NSUInteger) [indexPath row]];
     
     return [controller height];
 }
@@ -225,7 +229,7 @@ static NSString *addKeyWordText;
     }
     
     EntryContentViewController *controller = [BNoteFactory createEntryContent:entry];
-    [self.filteredControllers insertObject:controller atIndex:index];
+    [self.filteredControllers insertObject:controller atIndex:(NSUInteger) index];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -237,7 +241,7 @@ static NSString *addKeyWordText;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [[self tableView] scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
-    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:index];
+    id<EntryContent> controller = [[self filteredControllers] objectAtIndex:(NSUInteger) index];
     [controller.selectedTextView becomeFirstResponder];
 }
 
@@ -272,9 +276,7 @@ static NSString *addKeyWordText;
 - (void)stoppedEditingText:(NSNotification *)notification
 {
     [self setTextView:nil];
-//    [self reload];
     [[self tableView] reloadData];
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -282,9 +284,16 @@ static NSString *addKeyWordText;
     return YES;
 }
 
-- (void)resignControll
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
     [[self textView] resignFirstResponder];
+
+    for (id<EntryContent> ec in self.filteredControllers) {
+        [ec reset];
+    }
+
 }
 
 - (void)displaySummary

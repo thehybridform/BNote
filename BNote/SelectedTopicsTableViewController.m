@@ -8,9 +8,7 @@
 
 #import "SelectedTopicsTableViewController.h"
 #import "Topic.h"
-#import "TopicGroup.h"
 #import "BNoteReader.h"
-#import "BNoteWriter.h"
 #import "BNoteFactory.h"
 #import "LayerFormater.h"
 
@@ -89,7 +87,7 @@
         [[cell textLabel] setFont:[BNoteConstants font:RobotoLight andSize:15]];
     }
     
-    Topic *currentTopic = [[self data] objectAtIndex:[indexPath row]];
+    Topic *currentTopic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
     [cell addSubview:[BNoteFactory createHighlightSliver:UIColorFromRGB([currentTopic color])]];
     [cell setSelectedBackgroundView:[BNoteFactory createHighlight:UIColorFromRGB([currentTopic color])]];
     
@@ -118,7 +116,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self topicGroup] && ![[[self topicGroup] name] isEqualToString:kAllTopicGroupName]) {
-        Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+        Topic *topic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
         [[self topicGroup] addTopicsObject:topic];
     }
 }
@@ -126,7 +124,7 @@
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self topicGroup] && ![[[self topicGroup] name] isEqualToString:kAllTopicGroupName]) {
-        Topic *topic = [[self data] objectAtIndex:[indexPath row]];
+        Topic *topic = [[self data] objectAtIndex:(NSUInteger) [indexPath row]];
         [[self topicGroup] removeTopicsObject:topic];
     }
 }

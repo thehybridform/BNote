@@ -7,7 +7,6 @@
 //
 
 #import "TopicSearchBar.h"
-#import "BNoteFactory.h"
 
 @implementation TopicSearchBar
 

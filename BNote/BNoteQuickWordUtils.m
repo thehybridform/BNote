@@ -33,7 +33,7 @@ static NSString *spaceRegex = @"^(\\w)";
 
 + (BOOL)leftCharacterIsWord:(NSString *)text at:(int)position
 {
-    NSRange range = NSMakeRange(position - 1, 1);
+    NSRange range = NSMakeRange((NSUInteger) (position - 1), 1);
     NSString *character = [text substringWithRange:range];
     
     range = [character rangeOfString:spaceRegex options:NSRegularExpressionSearch];

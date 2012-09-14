@@ -17,7 +17,6 @@
 @property (strong, nonatomic) id<TopicSelector> listener;
 
 - (IBAction)editTopicCell:(id)sender;
-- (Topic *)searchTopic;
 - (void)selectTopicGroup:(TopicGroup *)topicGroup;
 - (IBAction)addTopic:(id)sender;
 

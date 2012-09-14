@@ -170,6 +170,10 @@ static NSString *normalText;
         self.nameText.hidden = NO;
         self.textLabel.hidden = NO;
 
+        if (index < 0) {
+            index = 0;
+        }
+
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
         [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];

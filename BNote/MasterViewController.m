@@ -30,7 +30,7 @@
 @synthesize addTopicButton = _addTopicButton;
 @synthesize currentTopicGroup = _currentTopicGroup;
 
-static NSString *filterdGroupText;
+static NSString *falteredGroupText;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -63,7 +63,7 @@ static NSString *filterdGroupText;
                                                  name:kClosedNoteEditor
                                                object:nil];
     
-    filterdGroupText = NSLocalizedString(@"Filtered Group", @"The filtered topic title.");
+    falteredGroupText = NSLocalizedString(@"Filtered Group", @"The filtered topic title.");
 }
 
 - (void)updateData
@@ -80,11 +80,6 @@ static NSString *filterdGroupText;
     self.listener = nil;
     [self setEditButton:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (Topic *)searchTopic
-{
-    return [self searchTopic];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -127,7 +122,7 @@ static NSString *filterdGroupText;
     static NSString *spacingText = @"  ";
     NSString *name = [currentTopic title];
     if ([name isEqualToString:kFilteredTopicName]) {
-        name = filterdGroupText;
+        name = falteredGroupText;
     }
     
     [[cell textLabel] setText:[spacingText stringByAppendingString:name]];
@@ -178,10 +173,7 @@ static NSString *filterdGroupText;
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                          withRowAnimation:UITableViewRowAnimationFade];
 
-        int index = [indexPath row] - 1;
-        if (index >= 0) {
-            [self selectCell:index];
-        }
+        [self selectCell:[indexPath row] - 1];
     }
     
     [[BNoteWriter instance] update];
@@ -202,9 +194,17 @@ static NSString *filterdGroupText;
 
 - (void)selectCell:(int)index
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    if ([self.data count] == 0) {
+        [self.listener selectedTopic:nil];
+    } else {
+        if (index < 0) {
+            index = 0;
+        }
+
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    }
 }
 
 - (void)selectTopic:(NSNotification *)notification

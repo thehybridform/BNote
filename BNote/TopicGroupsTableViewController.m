@@ -7,11 +7,8 @@
 //
 
 #import "TopicGroupsTableViewController.h"
-#import "Topic.h"
-#import "TopicGroup.h"
 #import "BNoteReader.h"
 #import "BNoteWriter.h"
-#import "BNoteSessionData.h"
 #import "LayerFormater.h"
 #import "BNoteFactory.h"
 
@@ -142,7 +139,13 @@ static NSString *normalText;
     }
     
     TopicGroup *topicGroup = [[self data] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[BNoteEntryUtils topicGroupName:topicGroup]];
+    NSString *name = [BNoteEntryUtils topicGroupName:topicGroup];
+
+    if ([BNoteStringUtils nilOrEmpty:name]) {
+        cell.textLabel.text = @" ";
+    } else {
+        cell.textLabel.text = name;
+    }
 
     return cell;
 }
@@ -157,11 +160,8 @@ static NSString *normalText;
 
         [[BNoteWriter instance] removeObjects:[NSArray arrayWithObject:topicGroup]];
 
-        int index = [indexPath row] - 1;
-        if (index >= 0) {
-            [self selectCell:index];
-        }
-    }   
+        [self selectCell:[indexPath row] - 1];
+    }
 }
 
 - (void)selectCell:(int)index
@@ -169,14 +169,15 @@ static NSString *normalText;
     if (self.data.count > 0) {
         self.nameText.hidden = NO;
         self.textLabel.hidden = NO;
-        
+
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+        [[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
     } else {
         self.nameText.hidden = YES;
         self.textLabel.hidden = YES;
         [self.listener selectedTopicGroup:nil];
+        [[self tableView] setEditing:NO animated:YES];
     }
 }
 
@@ -191,7 +192,6 @@ static NSString *normalText;
     
     [self.listener selectedTopicGroup:topicGroup];
     self.nameText.text = topicGroup.name;
-
 }
 
 - (IBAction)edit:(id)sender
@@ -212,12 +212,8 @@ static NSString *normalText;
 
 - (void)updateTopicGroupName:(NSNotification *)notification
 {
-    if ([self nameText] == [notification object]) {
-        UITextField *nameText = [self nameText];
-        [[self selectedTopicGroup] setName:[nameText text]];
-        
-        self.selectedCellLabel.text = nameText.text;
-    }
+    self.selectedTopicGroup.name = self.nameText.text;
+    self.selectedCellLabel.text = self.nameText.text;
 }
 
 - (void)refreshTopicGroupData
@@ -233,8 +229,8 @@ static NSString *normalText;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.nameText resignFirstResponder];
-    
+    [textField resignFirstResponder];
+
     return NO;
 }
 

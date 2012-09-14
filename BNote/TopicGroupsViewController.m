@@ -10,8 +10,6 @@
 #import "BNoteSessionData.h"
 #import "LayerFormater.h"
 #import "BNoteReader.h"
-#import "TopicGroup.h"
-#import "Topic.h"
 #import "BNoteFactory.h"
 
 @interface TopicGroupsViewController ()

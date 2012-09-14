@@ -56,7 +56,6 @@ static NSString *doneText;
     self = [super init];
     
     if (self) {
-
     }
     
     topicGroupText = NSLocalizedString(@"Topic Groups", @"Topic groups menu title.");

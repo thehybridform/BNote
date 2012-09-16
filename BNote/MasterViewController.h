@@ -14,6 +14,8 @@
 
 @interface MasterViewController : UITableViewController <TopicEditorDelegate>
 
+@property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) id<TopicSelector> listener;
 
 - (IBAction)editTopicCell:(id)sender;

@@ -11,12 +11,11 @@
 #import "BNoteWriter.h"
 #import "LayerFormater.h"
 #import "BNoteSessionData.h"
+#import "HelpViewController.h"
 
 @interface MasterViewController () 
 @property (strong, nonatomic) NSMutableOrderedSet *data;
 @property (assign, nonatomic) NSInteger selectedIndex;
-@property (strong, nonatomic) IBOutlet UIButton *addTopicButton;
-@property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) TopicGroup *currentTopicGroup;
 
 @end
@@ -38,7 +37,9 @@ static NSString *falteredGroupText;
     
     if (self) {
     }
-    
+
+    falteredGroupText = NSLocalizedString(@"Filtered Group", @"The filtered topic title.");
+
     return self;
 }
 
@@ -63,7 +64,7 @@ static NSString *falteredGroupText;
                                                  name:kClosedNoteEditor
                                                object:nil];
     
-    falteredGroupText = NSLocalizedString(@"Filtered Group", @"The filtered topic title.");
+
 }
 
 - (void)updateData
@@ -298,6 +299,22 @@ static NSString *falteredGroupText;
     
     int index = [self.data indexOfObject:topic];
     [self selectCell:index];
+
+    if (![BNoteSessionData booleanForKey:kFirstTopicAdd]) {
+        HelpViewController *controller = [[HelpViewController alloc] initWithKey:kFirstTopicAdd];
+        UIView *view = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+        UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+        [[BNoteSessionData instance] setPopup:popup];
+
+        CGRect rect = [view bounds];
+
+        [popup setPopoverContentSize:CGSizeMake(300, 50)];
+        [popup presentPopoverFromRect:rect inView:view
+             permittedArrowDirections:UIPopoverArrowDirectionAny
+                             animated:NO];
+
+        [BNoteSessionData setBoolean:YES forKey:kFirstTopicAdd];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -132,12 +132,12 @@ static NSString *removeAttendanText;
     [controller setPopup:popup];
     
     [popup setDelegate:self];
-    
+
+    [popup setPopoverContentSize:CGSizeMake(367, 224)];
     [popup presentPopoverFromRect:[self frame]
                            inView:[self superview] permittedArrowDirections:
                                             (UIPopoverArrowDirectionAny) animated:NO];
 
-    [popup setPopoverContentSize:CGSizeMake(367, 224)];
     [self setPopup:popup];
 }
 

@@ -151,12 +151,11 @@ static CGFloat kDetailHeight = 20;
     
     UIView *view = self.responsibilityButton;
     CGRect rect = [view bounds];
-    
+
+    [popup setPopoverContentSize:CGSizeMake(367, 300)];
     [popup presentPopoverFromRect:rect inView:view
          permittedArrowDirections:UIPopoverArrowDirectionAny
                          animated:NO];
-
-    [popup setPopoverContentSize:CGSizeMake(367, 300)];
 }
 
 - (void)clearResponsibility

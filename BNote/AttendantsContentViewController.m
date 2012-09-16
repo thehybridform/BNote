@@ -153,11 +153,11 @@ static NSString *attendants;
     [popup setDelegate:self];
     
     UIView *view = [self addAttendantView];
+    [popup setPopoverContentSize:CGSizeMake(367, 224)];
     [popup presentPopoverFromRect:[view frame]
                            inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
     
-    [popup setPopoverContentSize:CGSizeMake(367, 224)];
-    
+
     [controller focus];
 }
 

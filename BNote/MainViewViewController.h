@@ -10,8 +10,9 @@
 #import "BNoteExporterViewController.h"
 #import "TopicGroupSelector.h"
 #import "MasterViewController.h"
+#import "ShowHelpProtocol.h"
 
-@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate, UIActionSheetDelegate, BNoteExportedDelegate, TopicGroupSelector, TopicSelector>
+@interface MainViewViewController : UIViewController <UIPopoverControllerDelegate, UISearchBarDelegate, UIActionSheetDelegate, BNoteExportedDelegate, TopicGroupSelector, TopicSelector, ShowHelpProtocol>
 
 @property (strong, nonatomic) Topic *searchTopic;
 

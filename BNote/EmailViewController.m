@@ -49,7 +49,7 @@
 
 - (id)initWithNote:(Note *)note
 {
-    NSArray *allNotes = [NSArray arrayWithObject:note];
+    NSOrderedSet *allNotes = [NSOrderedSet orderedSetWithObject:note];
     self = [self initCommon:[note topic] and:allNotes];
 
     id<BNoteRenderer> renderer = [BNoteRenderFactory create:Plain];
@@ -114,7 +114,7 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (NSArray *)filterEntries:(id <BNoteFilter>)filter for:(NSArray *)allNotes
+- (NSArray *)filterEntries:(id <BNoteFilter>)filter for:(NSOrderedSet *)allNotes
 {
     NSMutableArray *filtered = [[NSMutableArray alloc] init];
     

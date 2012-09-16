@@ -22,6 +22,7 @@
 #import "TopicGroupManagementViewController.h"
 #import "BNoteUnarshallingManager.h"
 #import "ContactMailController.h"
+#import "HelpViewController.h"
 
 @interface MainViewViewController ()
 @property (strong, nonatomic) IBOutlet BNoteButton *topicsButton;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *liteLable;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
+@property (assign, nonatomic) int firstRunStep;
 
 
 @end
@@ -60,6 +62,7 @@
 @synthesize topicGroup = _topicGroup;
 @synthesize searchBar = _searchBar;
 @synthesize liteLable = _liteLable;
+@synthesize firstRunStep = _firstRunStep;
 
 static NSString *emailTopicText;
 static NSString *exportText;
@@ -159,7 +162,7 @@ static NSString *contactUs;
 #else
     [[self liteLable] setHidden:YES];
 #endif
-    
+
 }
 
 - (void)updateReceived:(NSNotification *)notification
@@ -324,11 +327,6 @@ static NSString *contactUs;
     }];
 }
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [[BNoteSessionData instance] setPopup:nil];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
@@ -440,6 +438,54 @@ static NSString *contactUs;
 - (void)presentImportController:(NSURL *)url
 {
     [[BNoteUnarshallingManager instance] delegate:nil unmarshallUrl:url];
+}
+
+- (void)showHelp
+{
+    if (![BNoteSessionData booleanForKey:kFirstMainView]) {
+        [self popoverControllerDidDismissPopover:nil];
+        [BNoteSessionData setBoolean:YES forKey:kFirstMainView];
+    }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    HelpViewController *controller;
+    UIView *view;
+
+    switch (self.firstRunStep) {
+        case 0:
+            controller = [[HelpViewController alloc] initWithKey:kFirstMainView];
+            view = self.topicsTable.addTopicButton;
+            break;
+        case 1:
+            controller = [[HelpViewController alloc] initWithKey:kFirstMainViewStep2];
+            view = self.topicsTable.editButton;
+            break;
+        case 2:
+            controller = [[HelpViewController alloc] initWithKey:kFirstMainViewStep3];
+            view = self.topicsButton;
+            break;
+        case 3:
+            controller = [[HelpViewController alloc] initWithKey:kFirstMainViewStep4];
+            view = self.shareButton;
+            break;
+        default:
+            return;
+    }
+
+    self.firstRunStep++;
+
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [[BNoteSessionData instance] setPopup:popup];
+    popup.delegate = self;
+
+    CGRect rect = [view bounds];
+
+    [popup setPopoverContentSize:CGSizeMake(300, 50)];
+    [popup presentPopoverFromRect:rect inView:view
+         permittedArrowDirections:UIPopoverArrowDirectionAny
+                         animated:NO];
 }
 
 - (void)dealloc

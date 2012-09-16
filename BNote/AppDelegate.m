@@ -46,8 +46,8 @@
     
         
     if (![BNoteSessionData booleanForKey:kEulaFlag]) {
-        UIViewController *controller;
-        controller = [[BNoteLiteViewController alloc] initWithDefault];
+        BNoteLiteViewController *controller = [[BNoteLiteViewController alloc] initWithDefault];
+        controller.helpDelegate = mainViewViewController;
         controller.modalPresentationStyle = UIModalPresentationFormSheet;
         controller.modalInPopover = YES;
         controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

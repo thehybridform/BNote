@@ -58,6 +58,12 @@ NSString * const kNewLine = @"\r\n";
 
 NSString * const kRefetchAllDatabaseData = @"kRefetchAllDatabaseData";
 NSString * const kEulaFlag = @"kEulaFlag";
+NSString * const kFirstMainView = @"kFirstMainView";
+NSString * const kFirstMainViewStep2 = @"kFirstMainViewStep2";
+NSString * const kFirstMainViewStep3 = @"kFirstMainViewStep3";
+NSString * const kFirstMainViewStep4 = @"kFirstMainViewStep4";
+NSString * const kFirstTopicAdd = @"kFirstTopicAdd";
+NSString * const kFirstNoteAdd = @"kFirstNoteAdd";
 
 NSString * const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdyd63hvbdkc+_)(*ndjgddnjk<>?/.,ml9912";
 NSString * const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";

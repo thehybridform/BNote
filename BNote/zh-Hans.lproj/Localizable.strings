@@ -1,4 +1,5 @@
 {
+	kFirstMainView = "";
 	"Topic Group name already exists." = "Topic Group name already exists.";
 	"Clear Answer" = "Clear Answer";
 	Accept = Accept;

@@ -349,7 +349,7 @@ static NSString *spacing = @"   ";
     [self setupTableViewAddingEntries];
 
     [[BNoteSessionData instance] setMainViewController:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kClosedNoteEditor object:[[self note] topic]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kClosedNoteEditor object:self.note];
 }
 
 - (IBAction)editMode:(id)sender

@@ -203,6 +203,10 @@
 		18BAC1A615AD2DED00EEBE1E /* BNoteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1A515AD2DED00EEBE1E /* BNoteButton.m */; };
 		18BAC1AD15AD453700EEBE1E /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */; };
 		18BAC1AE15AD453700EEBE1E /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */; };
+		18BAEC771606873B0056E34A /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAEC761606873B0056E34A /* HelpViewController.m */; };
+		18BAEC781606873B0056E34A /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAEC761606873B0056E34A /* HelpViewController.m */; };
+		18BAEC8016068CF50056E34A /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAEC7F16068CF50056E34A /* HelpViewController.xib */; };
+		18BAEC8116068CF50056E34A /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BAEC7F16068CF50056E34A /* HelpViewController.xib */; };
 		18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
 		18BEF24615DC71B000E16CFD /* benote-1.0.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF24515DC71B000E16CFD /* benote-1.0.xsd */; };
@@ -832,6 +836,9 @@
 		18BAC1AA15AD453700EEBE1E /* MainViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewViewController.h; sourceTree = "<group>"; };
 		18BAC1AB15AD453700EEBE1E /* MainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewViewController.m; sourceTree = "<group>"; };
 		18BAC1AC15AD453700EEBE1E /* MainViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewViewController.xib; sourceTree = "<group>"; };
+		18BAEC751606873B0056E34A /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		18BAEC761606873B0056E34A /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		18BAEC7F16068CF50056E34A /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		18BBD3501585BA9800B1709E /* KeyPointPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointPlainRenderer.h; sourceTree = "<group>"; };
 		18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointPlainRenderer.m; sourceTree = "<group>"; };
 		18BBD3541585BB2800B1709E /* DecisionPlainRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionPlainRenderer.h; sourceTree = "<group>"; };
@@ -1025,6 +1032,7 @@
 		18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteLiteViewController.m; sourceTree = "<group>"; };
 		18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNoteLiteViewController.xib; sourceTree = "<group>"; };
 		18F7994515AA14E800DEAB1F /* BeNote 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 13.xcdatamodel"; sourceTree = "<group>"; };
+		D8FE041079FEA7702B26A879 /* ShowHelpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowHelpProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1231,6 +1239,7 @@
 				18368F5515662DAF00E511CB /* Master View */,
 				18368F5615662DC200E511CB /* Topic Editor */,
 				1834D34215634A650065788F /* Supporting Files */,
+				D8FE015554001D606C2A65DB /* HelpViews */,
 			);
 			path = BNote;
 			sourceTree = "<group>";
@@ -1942,6 +1951,17 @@
 			name = "Lite Version";
 			sourceTree = "<group>";
 		};
+		D8FE015554001D606C2A65DB /* HelpViews */ = {
+			isa = PBXGroup;
+			children = (
+				D8FE041079FEA7702B26A879 /* ShowHelpProtocol.h */,
+				18BAEC751606873B0056E34A /* HelpViewController.h */,
+				18BAEC761606873B0056E34A /* HelpViewController.m */,
+				18BAEC7F16068CF50056E34A /* HelpViewController.xib */,
+			);
+			path = HelpViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2081,6 +2101,7 @@
 				18BEF94615EF069200B37F29 /* bnote-72.png in Resources */,
 				18BEF94815EF069200B37F29 /* bnote-144.png in Resources */,
 				18D87F1B15F5BD9B00A7CD41 /* gplus-32.png in Resources */,
+				18BAEC8016068CF50056E34A /* HelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2154,6 +2175,7 @@
 				18BEF94715EF069200B37F29 /* bnote-72.png in Resources */,
 				18BEF94915EF069200B37F29 /* bnote-144.png in Resources */,
 				18D87F1C15F5BD9B00A7CD41 /* gplus-32.png in Resources */,
+				18BAEC8116068CF50056E34A /* HelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2351,6 +2373,7 @@
 				18BEF93915EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */,
 				18BEF94E15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */,
 				18D87F1615F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m in Sources */,
+				18BAEC771606873B0056E34A /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2545,6 +2568,7 @@
 				18BEF93A15EC7CFE00B37F29 /* BNoteFileUtils.m in Sources */,
 				18BEF94F15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */,
 				18D87F1715F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m in Sources */,
+				18BAEC781606873B0056E34A /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

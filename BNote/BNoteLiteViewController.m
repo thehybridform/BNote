@@ -10,6 +10,7 @@
 #import "EluaViewController.h"
 #import "BNoteDefaultData.h"
 #import "BNoteReader.h"
+#import "ShowHelpProtocol.h"
 
 @interface BNoteLiteViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *thankYouLabel;
@@ -40,6 +41,7 @@
 @synthesize helpNotesButton = _helpNotesButton;
 @synthesize versionLabel = _versionLabel;
 @synthesize licenseButton = _licenseButton;
+@synthesize helpDelegate = _helpDelegate;
 
 - (void)viewDidUnload
 {
@@ -68,11 +70,14 @@
 
 - (IBAction)close:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
-    
     if (self.firstLoad) {
         [BNoteDefaultData setup];
         [[NSNotificationCenter defaultCenter] postNotificationName:kRefetchAllDatabaseData object:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self.helpDelegate showHelp];
+        }];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:^{}];
     }
 }
 

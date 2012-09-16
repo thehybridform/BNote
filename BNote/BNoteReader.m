@@ -197,7 +197,7 @@
     return [NSMutableSet setWithArray:notes];
 }
 
-- (NSArray *)topicNames
+- (NSMutableArray *)topicNames
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
     [fetchRequest setResultType:NSDictionaryResultType];
@@ -211,7 +211,7 @@
         NSLog(@"Error: %@", error);
     }
 
-    return names;
+    return [names mutableCopy];
 }
 
 @end

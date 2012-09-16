@@ -49,7 +49,7 @@
 @property (strong, nonatomic) IBOutlet UIView *shadowView11;
 @property (strong, nonatomic) IBOutlet UIView *shadowView12;
 
-@property (strong, nonatomic) NSArray *topicNames;
+@property (strong, nonatomic) NSMutableArray *topicNames;
 @property (strong, nonatomic) NSString *currentTitle;
 
 @end
@@ -160,6 +160,22 @@ static NSString *kTopicNameExists;
     return self;
 }
 
+- (void)setTopic:(Topic *)topic
+{
+    _topic = topic;
+
+    NSString *text = [BNoteStringUtils trim:topic.title.lowercaseString];
+
+    for (NSDictionary *dictionary in self.topicNames) {
+        NSString *name = [dictionary valueForKey:@"title"];
+
+        if ([text isEqualToString:[BNoteStringUtils trim:name.lowercaseString]]) {
+            [self.topicNames removeObject:dictionary];
+            break;
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -235,9 +251,12 @@ static NSString *kTopicNameExists;
 
 - (BOOL)topicNameExists
 {
+    NSString *text = [BNoteStringUtils trim:self.nameTextField.text.lowercaseString];
+
     for (NSDictionary *dictionary in self.topicNames) {
         NSString *name = [dictionary valueForKey:@"title"];
-        if (name && [name.lowercaseString isEqualToString:self.nameTextField.text.lowercaseString]) {
+
+        if ([text isEqualToString:[BNoteStringUtils trim:name.lowercaseString]]) {
             return YES;
         }
     }

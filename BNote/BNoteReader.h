@@ -27,6 +27,6 @@
 
 - (NSSet *)findNotesWithText:(NSString *)searchText;
 
-- (NSArray *)topicNames;
+- (NSMutableArray *)topicNames;
 
 @end

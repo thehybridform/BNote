@@ -257,9 +257,12 @@ static NSString *kTopicGroupExists;
     if ([BNoteStringUtils nilOrEmpty:name]) {
         return NO;
     }
+
     int count = 0;
+    NSString *name2 = [BNoteStringUtils trim:name.lowercaseString];
     for (TopicGroup *topicGroup in self.data) {
-        if ([topicGroup.name.lowercaseString isEqualToString:name.lowercaseString]) {
+        NSString *name1 = [BNoteStringUtils trim:topicGroup.name.lowercaseString];
+        if ([name1 isEqualToString:name2]) {
             count++;
         }
     }

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *nameText;
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
 @property (strong, nonatomic) UILabel *selectedCellLabel;
+@property (assign, nonatomic) BOOL invalidName;
 
 @end
 
@@ -31,10 +32,13 @@
 @synthesize addButton = _addButton;
 @synthesize textLabel = _textLabel;
 @synthesize selectedCellLabel = _selectedCellLabel;
+@synthesize invalidNameListener = _invalidNameListener;
+@synthesize invalidName = _invalidName;
 
-static NSString *editText;
-static NSString *newTopicGroupPlaceHolderText;
-static NSString *normalText;
+static NSString *kEditText;
+static NSString *kNewTopicGroupPlaceHolderText;
+static NSString *kNormalText;
+static NSString *kTopicGroupExists;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -44,9 +48,10 @@ static NSString *normalText;
         [self refreshTopicGroupData];
     }
     
-    editText = NSLocalizedString(@"Edit", @"Edit");
-    newTopicGroupPlaceHolderText = NSLocalizedString(@"New Topic Group Name", @"New topic group name place holder.");
-    normalText = NSLocalizedString(@"Select Topics for this group.", @"Instruciton to select topic group to be included.");
+    kEditText = NSLocalizedString(@"Edit", @"Edit");
+    kNewTopicGroupPlaceHolderText = NSLocalizedString(@"New Topic Group Name", @"New topic group name place holder.");
+    kNormalText = NSLocalizedString(@"Select Topics for this group.", @"Instruciton to select topic group to be included.");
+    kTopicGroupExists = NSLocalizedString(@"Topic Group name already exists.", @"Topic Group name already exists.");
 
     return self;
 }
@@ -58,17 +63,17 @@ static NSString *normalText;
     self.nameText.hidden = YES;
     self.textLabel.hidden = YES;
     [self.listener selectedTopicGroup:nil];
-    
-    [self.editButton setTitle:editText forState:UIControlStateNormal];
+
+    [self.editButton setTitle:kEditText forState:UIControlStateNormal];
     
     [LayerFormater setBorderWidth:1 forView:self.view];
     [LayerFormater setBorderColor:[BNoteConstants darkGray] forView:self.view];
     
     [[self nameText] setFont:[BNoteConstants font:RobotoLight andSize:14]];
-    self.nameText.placeholder = newTopicGroupPlaceHolderText;
+    self.nameText.placeholder = kNewTopicGroupPlaceHolderText;
     self.nameText.delegate = self;
 
-    self.textLabel.text = normalText;
+    self.textLabel.text = kNormalText;
     [[self textLabel] setFont:[BNoteConstants font:RobotoRegular andSize:12]];
     [[self textLabel] setTextColor:[BNoteConstants appHighlightColor1]];
 
@@ -218,6 +223,22 @@ static NSString *normalText;
 {
     self.selectedTopicGroup.name = self.nameText.text;
     self.selectedCellLabel.text = self.nameText.text;
+
+    self.invalidName = [self nameExists:self.nameText.text];
+
+    if (self.invalidName) {
+        self.textLabel.text = kTopicGroupExists;
+        self.textLabel.textColor = [UIColor redColor];
+        [self.invalidNameListener invalidName:YES];
+        [self.tableView setUserInteractionEnabled:NO];
+        self.tableView.backgroundColor = [UIColor lightGrayColor];
+    } else {
+        self.textLabel.text = kNormalText;
+        self.textLabel.textColor = [BNoteConstants appHighlightColor1];
+        [self.invalidNameListener invalidName:NO];
+        [self.tableView setUserInteractionEnabled:YES];
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }
 }
 
 - (void)refreshTopicGroupData
@@ -229,6 +250,21 @@ static NSString *normalText;
             break;
         }
     }
+}
+
+- (BOOL)nameExists:(NSString *)name
+{
+    if ([BNoteStringUtils nilOrEmpty:name]) {
+        return NO;
+    }
+    int count = 0;
+    for (TopicGroup *topicGroup in self.data) {
+        if ([topicGroup.name.lowercaseString isEqualToString:name.lowercaseString]) {
+            count++;
+        }
+    }
+
+    return count >= 2;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

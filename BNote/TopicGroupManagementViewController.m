@@ -32,8 +32,8 @@
 @synthesize menu = _menu;
 @synthesize delegate = _delegate;
 
-static NSString *topicGroupText;
-static NSString *doneText;
+static NSString *kTopicGroupText;
+static NSString *kDoneText;
 
 - (void)viewDidUnload
 {
@@ -54,9 +54,9 @@ static NSString *doneText;
     if (self) {
     }
     
-    topicGroupText = NSLocalizedString(@"Topic Groups", @"Topic groups menu title.");
-    doneText = NSLocalizedString(@"Done", @"Done");
-    
+    kTopicGroupText = NSLocalizedString(@"Topic Groups", @"Topic groups menu title.");
+    kDoneText = NSLocalizedString(@"Done", @"Done");
+
     return self;
 }
 
@@ -67,8 +67,8 @@ static NSString *doneText;
     [[self titleLabel] setFont:[BNoteConstants font:RobotoBold andSize:15]];
     [[self titleLabel] setTextColor:[BNoteConstants appHighlightColor1]];
     
-    self.titleLabel.text = topicGroupText;
-    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+    self.titleLabel.text = kTopicGroupText;
+    [self.doneButton setTitle:kDoneText forState:UIControlStateNormal];
     
     [LayerFormater setBorderWidth:1 forView:[self footer]];
     [LayerFormater setBorderColor:[BNoteConstants darkGray2] forView:self.footer];
@@ -79,6 +79,7 @@ static NSString *doneText;
     [LayerFormater addShadowToView:[self menu]];
         
     self.topicGroupsTableViewController.listener = self.selectedTopicsTableViewController;
+    self.topicGroupsTableViewController.invalidNameListener = self;
 }
 
 - (IBAction)done:(id)sender
@@ -115,6 +116,12 @@ static NSString *doneText;
     _currentTopicGroup = currentTopicGroup;
     
     [self.topicGroupsTableViewController selectTopicGroup:currentTopicGroup];
+}
+
+- (void)invalidName:(BOOL)flag
+{
+    self.doneButton.hidden = flag;
+    self.selectedTopicsTableViewController.view.hidden = flag;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

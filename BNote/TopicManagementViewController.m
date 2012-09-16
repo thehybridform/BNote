@@ -34,7 +34,7 @@
 @synthesize menuView = _menuView;
 
 static NSString *cancelText;
-static NSString *doneText;
+static NSString *kDoneText;
 static NSString *changeTopicText;
 static NSString *selectTopicText;
 static NSString *associateTopic;
@@ -62,7 +62,7 @@ static NSString *highligtTopicText;
     }
     
     cancelText = NSLocalizedString(@"Cancel", @"Cancel");
-    doneText = NSLocalizedString(@"Done", @"Done");
+    kDoneText = NSLocalizedString(@"Done", @"Done");
     changeTopicText = NSLocalizedString(@"Change Topic", @"Change the note topic owner");
     selectTopicText = NSLocalizedString(@"Select topic for note.", @"Select topic for this note");
     associateTopic = NSLocalizedString(@"Associated Topics", @"Topics associated to with this note");

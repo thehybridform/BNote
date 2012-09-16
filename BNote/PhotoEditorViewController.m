@@ -119,7 +119,7 @@ static const CGFloat small = 5;
 static const CGFloat medium = 10;
 static const CGFloat large = 20;
 
-static NSString *doneText;
+static NSString *kDoneText;
 static NSString *undoText;
 static NSString *redoText;
 static NSString *resetText;
@@ -188,12 +188,12 @@ static NSString *resetText;
 {
     [super viewDidLoad];
 
-    doneText = NSLocalizedString(@"Done", @"Done");
+    kDoneText = NSLocalizedString(@"Done", @"Done");
     redoText = NSLocalizedString(@"Redo", @"Redo last action");
     undoText = NSLocalizedString(@"Undo", @"Undo last action");
     resetText = NSLocalizedString(@"Reset", @"Reset image");
-    
-    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+
+    [self.doneButton setTitle:kDoneText forState:UIControlStateNormal];
     [self.redoButton setTitle:redoText forState:UIControlStateNormal];
     [self.undoButton setTitle:undoText forState:UIControlStateNormal];
     [self.resetButton setTitle:resetText forState:UIControlStateNormal];

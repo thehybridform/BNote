@@ -10,7 +10,7 @@
 #import "TopicGroupSelector.h"
 #import "TopicGroupsTableViewController.h"
 
-@interface TopicGroupManagementViewController : UIViewController
+@interface TopicGroupManagementViewController : UIViewController <InvalidTopicGroupNameListener>
 
 @property (strong, nonatomic) id<TopicGroupSelector> delegate;
 @property (strong, nonatomic) TopicGroup *currentTopicGroup;

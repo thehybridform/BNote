@@ -11,6 +11,7 @@
 #import "BNoteFactory.h"
 #import "BNoteWriter.h"
 #import "LayerFormater.h"
+#import "BNoteReader.h"
 
 @interface TopicEditorViewController ()
 @property (strong, nonatomic) IBOutlet UIView *buttonControlView;
@@ -47,6 +48,9 @@
 @property (strong, nonatomic) IBOutlet UIView *shadowView10;
 @property (strong, nonatomic) IBOutlet UIView *shadowView11;
 @property (strong, nonatomic) IBOutlet UIView *shadowView12;
+
+@property (strong, nonatomic) NSArray *topicNames;
+@property (strong, nonatomic) NSString *currentTitle;
 
 @end
 
@@ -88,11 +92,15 @@
 
 @synthesize delegate = _delegate;
 
-static NSString *createText;
-static NSString *updateText;
-static NSString *addTopicText;
-static NSString *editTopicText;
-static NSString *placeHolderText;
+@synthesize topicNames = _topicNames;
+@synthesize currentTitle = _currentTitle;
+
+static NSString *kCreateText;
+static NSString *kUpdateText;
+static NSString *kAddTopicText;
+static NSString *kEditTopicText;
+static NSString *kPlaceHolderText;
+static NSString *kTopicNameExists;
 
 
 - (void)viewDidUnload
@@ -139,13 +147,15 @@ static NSString *placeHolderText;
     
     if (self) {
         [self setTopicGroup:group];
+        self.topicNames = [[BNoteReader instance] topicNames];
     }
     
-    createText = NSLocalizedString(@"Create", @"Commit create.");
-    updateText = NSLocalizedString(@"Update", @"Commit update.");
-    addTopicText = NSLocalizedString(@"Add Topic", @"Add Topic text.");
-    editTopicText = NSLocalizedString(@"Edit Topic", @"Edit Topic text.");
-    placeHolderText = NSLocalizedString(@"Type in a new Topic Title", @"New top place holder text.");
+    kCreateText = NSLocalizedString(@"Create", @"Commit create.");
+    kUpdateText = NSLocalizedString(@"Update", @"Commit update.");
+    kAddTopicText = NSLocalizedString(@"Add Topic", @"Add Topic text.");
+    kEditTopicText = NSLocalizedString(@"Edit Topic", @"Edit Topic text.");
+    kPlaceHolderText = NSLocalizedString(@"Type in a new Topic Title", @"New top place holder text.");
+    kTopicNameExists = NSLocalizedString(@"Topic name already exists.", nil);
 
     return self;
 }
@@ -160,12 +170,14 @@ static NSString *placeHolderText;
         [[self view] setBackgroundColor:UIColorFromRGB([[self topic] color])];
         [self setSelectedColor:[[self topic] color]];
         [[self nameTextField] setText:[[self topic] title]];
-        self.menuLabel.text = editTopicText;
+        self.menuLabel.text = kEditTopicText;
     } else {
         [self setSelectedColor:kColor1];
         [[self view] setBackgroundColor:UIColorFromRGB(kColor1)];
-        self.menuLabel.text = addTopicText;
+        self.menuLabel.text = kAddTopicText;
     }
+
+    self.currentTitle = self.menuLabel.text;
     
     [self initButton:[self button_1] withColor:kColor1];
     [self initButton:[self button_2] withColor:kColor2];
@@ -203,7 +215,34 @@ static NSString *placeHolderText;
     self.menuLabel.font = [BNoteConstants font:RobotoBold andSize:15];
     self.menuLabel.textColor = [BNoteConstants appHighlightColor1];
     
-    self.nameTextField.placeholder = placeHolderText;
+    self.nameTextField.placeholder = kPlaceHolderText;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkTopicName:) name:UITextFieldTextDidChangeNotification object:self.nameTextField];
+}
+
+- (void)checkTopicName:(id)sender
+{
+    if ([self topicNameExists]) {
+        self.buttonAction.hidden = YES;
+        self.menuLabel.text = kTopicNameExists;
+        self.menuLabel.textColor = [UIColor redColor];
+    } else {
+        self.buttonAction.hidden = NO;
+        self.menuLabel.text = self.currentTitle;
+        self.menuLabel.textColor = [BNoteConstants appHighlightColor1];
+    }
+}
+
+- (BOOL)topicNameExists
+{
+    for (NSDictionary *dictionary in self.topicNames) {
+        NSString *name = [dictionary valueForKey:@"title"];
+        if (name && [name.lowercaseString isEqualToString:self.nameTextField.text.lowercaseString]) {
+            return YES;
+        }
+    }
+
+    return NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -329,6 +368,11 @@ static NSString *placeHolderText;
 {
     [self done:nil];
     return NO;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

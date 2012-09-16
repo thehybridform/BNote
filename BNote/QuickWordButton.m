@@ -32,7 +32,7 @@
         
         [self addTarget:self action:@selector(execute:) forControlEvents:UIControlEventTouchUpInside];
         
-        float width = MAX([[[self titleLabel] text] length] * 10, 40);
+        float width = MAX([[[self titleLabel] text] length] * 12, 40);
         
         [self setFrame:CGRectMake(0, 0, width, 35)];
                 

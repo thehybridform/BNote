@@ -224,10 +224,6 @@ static NSString *contactUs;
     [BNoteSessionData instance].mainViewController = noteController;
 
     [noteController setNote:note];
-
-//    if (entry) {
-//        [noteController selectEntry:entry];
-//    }
 }
 
 - (void)updateNoteCount:(NSNotification *)notification

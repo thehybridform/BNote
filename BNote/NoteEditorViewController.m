@@ -94,7 +94,7 @@
 static NSString *closeText;
 static NSString *reviewText;
 static NSString *reviewButtonText;
-static NSString *doneText;
+static NSString *kDoneText;
 static NSString *filteringText;
 static NSString *entryText;
 static NSString *addSummaryText;
@@ -158,7 +158,7 @@ static NSString *spacing = @"   ";
     closeText = NSLocalizedString(@"Close", @"Close window");
     reviewText = NSLocalizedString(@"REVIEW", @"Review");
     reviewButtonText = NSLocalizedString(@"Review", @"Review");
-    doneText = NSLocalizedString(@"Done", @"Done");
+    kDoneText = NSLocalizedString(@"Done", @"Done");
     filteringText = NSLocalizedString(@"REVIEW", @"Note entry filtering lable");
     entryText = NSLocalizedString(@"ENTRY", @"Note entry lable");
     addSummaryText = NSLocalizedString(@"Add Summary", @"Add summary entry to this note");
@@ -378,7 +378,7 @@ static NSString *spacing = @"   ";
 
 - (void)reviewing
 {
-    [[self reviewButton] setTitle:doneText forState:UIControlStateNormal];
+    [[self reviewButton] setTitle:kDoneText forState:UIControlStateNormal];
     [[self attendantsButton] setHidden:YES];
     [self setIsEditing:NO];
     

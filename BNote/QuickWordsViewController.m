@@ -42,7 +42,7 @@
 
 static float spacing = 10;
 
-static NSString *doneText;
+static NSString *kDoneText;
 static NSString *datesText;
 static NSString *keyWordsText;
 static NSString *attendantsText;
@@ -54,7 +54,7 @@ static NSString *attendantsText;
         [self setEntryContent:entryContent];
     }
     
-    doneText = NSLocalizedString(@"Done", @"Done");
+    kDoneText = NSLocalizedString(@"Done", @"Done");
     datesText = NSLocalizedString(@"Dates", @"Select dates menu item");
     keyWordsText = NSLocalizedString(@"Key Words", @"Select key words menu item");
     attendantsText = NSLocalizedString(@"Attendants", @"Select attendants menu item");
@@ -72,7 +72,7 @@ static NSString *attendantsText;
     [self.attendantsButton setTitle:attendantsText forState:UIControlStateNormal];
     [self.datesButton setTitle:datesText forState:UIControlStateNormal];
     [self.keyWordsButton setTitle:keyWordsText forState:UIControlStateNormal];
-    [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+    [self.doneButton setTitle:kDoneText forState:UIControlStateNormal];
 
     self.highColor = self.doneButton.highColor;
     self.lowColor = self.doneButton.lowColor;

@@ -133,6 +133,7 @@
 	tomorrow = tomorrow;
 	"Topic Groups" = "Edit Topic Groups";
 	"Topic name already exists." = "Topic name already exists";
+	"Topic Group name already exists." = "Topic Group name already exists";
 	"Type in a new Topic Title" = "Topic Title";
 	Undo = Undo;
 	Update = Update;

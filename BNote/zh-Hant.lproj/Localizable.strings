@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Topic Group name already exists.</key>
+	<string>Topic Group name already exists.</string>
 	<key>Clear Answer</key>
 	<string>Clear Answer</string>
 	<key>Accept</key>

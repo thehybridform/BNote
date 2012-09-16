@@ -197,4 +197,21 @@
     return [NSMutableSet setWithArray:notes];
 }
 
+- (NSArray *)topicNames
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Topic"];
+    [fetchRequest setResultType:NSDictionaryResultType];
+    [fetchRequest setPropertiesToFetch:
+            [NSArray arrayWithObjects:@"title", nil]];
+
+    NSError *error = nil;
+    NSArray *names = [[self context] executeFetchRequest:fetchRequest error:&error];
+
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+
+    return names;
+}
+
 @end

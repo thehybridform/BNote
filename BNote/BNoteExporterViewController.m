@@ -58,12 +58,12 @@
     
     [self.destinationSegmentedControl setTitle:NSLocalizedString(@"Topic Group", nil) forSegmentAtIndex:0];
     [self.destinationSegmentedControl setTitle:NSLocalizedString(@"Topic", nil) forSegmentAtIndex:1];
-    [self.destinationSegmentedControl setTitle:NSLocalizedString(@"All Data", nil) forSegmentAtIndex:2];
+    //[self.destinationSegmentedControl setTitle:NSLocalizedString(@"All Data", nil) forSegmentAtIndex:2];
     [self.destinationSegmentedControl setTintColor:[BNoteConstants appHighlightColor1]];
 
     if (self.note) {
-        [self.destinationSegmentedControl insertSegmentWithTitle:NSLocalizedString(@"Note", nil) atIndex:3 animated:YES];
-        self.destinationSegmentedControl.selectedSegmentIndex = 3;
+        [self.destinationSegmentedControl insertSegmentWithTitle:NSLocalizedString(@"Note", nil) atIndex:2 animated:YES];
+        self.destinationSegmentedControl.selectedSegmentIndex = 2;
     } else {
         self.destinationSegmentedControl.selectedSegmentIndex = 0;
     }
@@ -132,10 +132,6 @@
                 break;
                 
             case 2:
-                fileWrapper = [archiver archiveAll];
-                break;
-                
-            case 3:
                 fileWrapper = [archiver archiveData:self.note];
                 break;
                 

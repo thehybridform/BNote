@@ -30,7 +30,6 @@ const float kDefaultCellHeight = 50;
 @synthesize iconView = _iconView;
 @synthesize entryMarginView = _entryMarginView;
 
-
 - (id)initWithEntry:(Entry *)entry
 {
     self = [super initWithNibName:[self localNibName] bundle:nil];

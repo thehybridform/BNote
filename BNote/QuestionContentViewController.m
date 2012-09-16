@@ -119,12 +119,15 @@ static NSString *kAnswerText;
     }
 
     [self handleAnswerFrame];
+
     [self.answerTextView becomeFirstResponder];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     if (textView == self.answerTextView) {
+        [LayerFormater addShadowToView:self.answerTextView];
+
         [textView setScrollEnabled:YES];
         [self handleImageIcon:YES];
         [self setSelectedTextView:textView];
@@ -162,6 +165,7 @@ static NSString *kAnswerText;
 
         [[BNoteWriter instance] update];
 
+        [LayerFormater removeShadowFromView:self.answerTextView];
     } else {
         [super textViewDidEndEditing:textView];
     }

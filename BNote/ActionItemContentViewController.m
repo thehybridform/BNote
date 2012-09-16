@@ -42,15 +42,19 @@ static NSString *dueOnText;
 static NSString *notCompleteText;
 static NSString *completedOnDateText;
 
+static CGFloat kDetailHeight = 20;
+
 - (id)initWithEntry:(Entry *)entry
 {
     self = [super initWithEntry:entry];
     
     if (self) {
+        self.mainTextView.frame = CGRectMake(self.mainTextView.frame.origin.x, kDetailHeight, self.mainTextView.frame.size.width, self.mainTextView.frame.size.height);
+
         UILabel *detailLabel = [[UILabel alloc] init];
         self.detailLabel = detailLabel;
 
-        detailLabel.frame = self.mainTextView.frame;
+        detailLabel.frame = CGRectMake(self.mainTextView.frame.origin.x, 0, self.mainTextView.frame.size.width, kDetailHeight);
         detailLabel.font = [BNoteConstants font:RobotoItalic andSize:12];
         detailLabel.textColor = [BNoteConstants appHighlightColor1];
 
@@ -105,12 +109,8 @@ static NSString *completedOnDateText;
 {
     [self handleDetailFrame];
 
-    if ([self hasDetail]) {
-        float mainHeight = MAX(kDefaultCellHeight, self.mainTextView.contentSize.height);
-        return MAX(kDefaultCellHeight, mainHeight + self.detailLabel.frame.size.height);
-    } else {
-        return [super height];
-    }
+    float mainHeight = MAX(kDefaultCellHeight, self.mainTextView.contentSize.height);
+    return MAX(kDefaultCellHeight, mainHeight + kDetailHeight);
 }
 
 - (NSArray *)quickActionButtons
@@ -294,8 +294,6 @@ static NSString *completedOnDateText;
             [self clearDueDate];
         }
     }
-    
-    [[BNoteSessionData instance] setActionSheet:nil];
 }
 
 - (void)handleDetailFrame
@@ -328,9 +326,6 @@ static NSString *completedOnDateText;
     }
 
     self.detailLabel.text = detail;
-
-    float y = self.mainTextView.frame.origin.y + self.mainTextView.frame.size.height;
-    self.detailLabel.frame = CGRectMake(self.detailLabel.frame.origin.x, y, self.detailLabel.frame.size.width, 30);
 }
 
 - (BOOL)hasDetail

@@ -8,15 +8,20 @@
 
 #import "QuickWordsViewController.h"
 #import "QuickWordsFactory.h"
+#import "BNoteButton.h"
 
 @interface QuickWordsViewController ()
 @property (strong, nonatomic) IBOutlet UIView *menuView;
-@property (strong, nonatomic) IBOutlet UIButton *attendantsButton;
-@property (strong, nonatomic) IBOutlet UIButton *datesButton;
-@property (strong, nonatomic) IBOutlet UIButton *keyWordsButton;
-@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *attendantsButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *datesButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *keyWordsButton;
+@property (strong, nonatomic) IBOutlet BNoteButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIScrollView *iconScrollView;
+
+@property (strong, nonatomic) UIColor *highColor;
+@property (strong, nonatomic) UIColor *lowColor;
+@property (strong, nonatomic) UIColor *textColor;
 
 @property (strong, nonatomic) id<EntryContent> entryContent;
 
@@ -32,13 +37,15 @@
 @synthesize attendantsButton = _attendantsButton;
 @synthesize iconScrollView = _iconScrollView;
 @synthesize delegate = _delegate;
+@synthesize highColor = _highColor;
+@synthesize lowColor = _lowColor;
 
 static float spacing = 10;
 
 static NSString *doneText;
 static NSString *datesText;
 static NSString *keyWordsText;
-static NSString *attendenatsText;
+static NSString *attendantsText;
 
 - (id)initWithEntryContent:(id<EntryContent>)entryContent
 {
@@ -50,7 +57,7 @@ static NSString *attendenatsText;
     doneText = NSLocalizedString(@"Done", @"Done");
     datesText = NSLocalizedString(@"Dates", @"Select dates menu item");
     keyWordsText = NSLocalizedString(@"Key Words", @"Select key words menu item");
-    attendenatsText = NSLocalizedString(@"Attendants", @"Select attendants menu item");
+    attendantsText = NSLocalizedString(@"Attendants", @"Select attendants menu item");
 
     return self;
 }
@@ -61,11 +68,15 @@ static NSString *attendenatsText;
     
     [[self view] setBackgroundColor:[UIColor clearColor]];
     [[self scrollView] setBackgroundColor:[UIColor clearColor]];
-    
-    [self.attendantsButton setTitle:attendenatsText forState:UIControlStateNormal];
+
+    [self.attendantsButton setTitle:attendantsText forState:UIControlStateNormal];
     [self.datesButton setTitle:datesText forState:UIControlStateNormal];
     [self.keyWordsButton setTitle:keyWordsText forState:UIControlStateNormal];
     [self.doneButton setTitle:doneText forState:UIControlStateNormal];
+
+    self.highColor = self.doneButton.highColor;
+    self.lowColor = self.doneButton.lowColor;
+    self.textColor = self.doneButton.titleLabel.textColor;
 
     [self addActionButtons];
     
@@ -127,18 +138,27 @@ static NSString *attendenatsText;
 {
     NSEnumerator *items = [[QuickWordsFactory buildDateButtonsForEntryContent:[self entryContent]] objectEnumerator];
     [self buildButtons:items];
+
+    [self resetButtonColor];
+    [self handleButtonColor:self.datesButton];
 }
 
 - (IBAction)keyWords:(id)sender
 {
     NSEnumerator *items = [[QuickWordsFactory buildKeyWordButtionsForEntryContent:[self entryContent]] objectEnumerator];
     [self buildButtons:items];
+
+    [self resetButtonColor];
+    [self handleButtonColor:self.keyWordsButton];
 }
 
 - (IBAction)attendants:(id)sender
 {
     NSEnumerator *items = [[QuickWordsFactory buildAttendantButtionsForEntryContent:[self entryContent]] objectEnumerator];
     [self buildButtons:items];
+
+    [self resetButtonColor];
+    [self handleButtonColor:self.attendantsButton];
 }
 
 - (IBAction)done:(id)sender
@@ -173,6 +193,28 @@ static NSString *attendenatsText;
     while ((view = [items nextObject])) {
         [view setHidden:YES];
     }
+}
+
+- (void)resetButtonColor
+{
+    self.attendantsButton.highColor = self.highColor;
+    self.attendantsButton.lowColor = self.lowColor;
+    [self.attendantsButton setNeedsDisplay];
+
+    self.datesButton.highColor = self.highColor;
+    self.datesButton.lowColor = self.lowColor;
+    [self.datesButton setNeedsDisplay];
+
+    self.keyWordsButton.highColor = self.highColor;
+    self.keyWordsButton.lowColor = self.lowColor;
+    [self.keyWordsButton setNeedsDisplay];
+}
+
+- (void)handleButtonColor:(BNoteButton *)button
+{
+    button.highColor = self.lowColor;
+    button.lowColor = self.highColor;
+    [button setNeedsDisplay];
 }
 
 - (void)selectFirstButton

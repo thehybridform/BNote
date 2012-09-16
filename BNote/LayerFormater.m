@@ -31,18 +31,18 @@ static float shawdowOpacity = 0.5;
 
 + (void)roundCornersForLayer:(CALayer *)layer to:(float)radius
 {
-    [layer setCornerRadius:radius];
-    [layer setMasksToBounds:YES];
+    layer.cornerRadius = radius;
+    layer.masksToBounds = YES;
 }
 
 + (void)setBorderWidth:(CGFloat)thickness forView:(UIView *)view
 {
-    [[view layer] setBorderWidth:thickness];
+    view.layer.borderWidth = thickness;
 }
 
 + (void)setBorderColor:(UIColor *)color forView:(UIView *)view
 {
-    [[view layer] setBorderColor:[color CGColor]];
+    view.layer.borderColor = color.CGColor;
 }
 
 + (void)setBorderColorWithInt:(int)color forView:(UIView *)view
@@ -52,20 +52,27 @@ static float shawdowOpacity = 0.5;
 
 + (void)addShadowToView:(UIView *)view ofSize:(float)size
 {
-    [view.layer setMasksToBounds:NO];
-    [view.layer setShadowColor:[UIColor blackColor].CGColor];
-    [view.layer setShadowOpacity:shawdowOpacity];
-    [view.layer setShadowRadius:size];
-    [view.layer setShadowOffset:CGSizeMake(2.0, 2.0)];    
+    view.layer.masksToBounds = NO;
+    view.layer.shadowColor = [UIColor blackColor].CGColor;
+    view.layer.shadowOpacity = shawdowOpacity;
+    view.layer.shadowRadius = size;
+    view.layer.shadowOffset = CGSizeMake(2.0, 2.0);
 }
 
 + (void)addShadowToView:(UIView *)view
 {
-    [view.layer setMasksToBounds:NO];
-    [view.layer setShadowColor:[UIColor blackColor].CGColor];
-    [view.layer setShadowOpacity:shawdowOpacity];
-    [view.layer setShadowRadius:shadowRadius];
-    [view.layer setShadowOffset:CGSizeMake(shadowOffset, shadowOffset)];
+    view.layer.masksToBounds = NO;
+    view.layer.shadowColor = [UIColor blackColor].CGColor;
+    view.layer.shadowOpacity = shawdowOpacity;
+    view.layer.shadowRadius = shadowRadius;
+    view.layer.shadowOffset = CGSizeMake(shadowOffset, shadowOffset);
+}
+
++ (void)removeShadowFromView:(UIView *)view
+{
+    view.layer.masksToBounds = YES;
+    view.layer.shadowColor = [UIColor clearColor].CGColor;
+    view.layer.shadowOffset = CGSizeMake(0, 0);
 }
 
 @end

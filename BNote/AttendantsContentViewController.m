@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet AttendantsViewController *attendantsViewController;
 @property (strong, nonatomic) ABPeoplePickerNavigationController *peoplePicker; 
 @property (strong, nonatomic) Attendant *selectedAttendant;
-@property (strong, nonatomic) IBOutlet UIView *addAttendantView;
+@property (strong, nonatomic) IBOutlet UIButton *addAttendantView;
 
 @end
 
@@ -48,17 +48,12 @@ static NSString *attendants;
     addressBook = NSLocalizedString(@"Address Book", @"ipad addres book");
     createNew = NSLocalizedString(@"Create New", @"Create new attendants");
     attendants = NSLocalizedString(@"Attendants", @"Attendants menu title");
-    
-    [[self addAttendantView] setBackgroundColor:[BNoteConstants appColor1]];
-    
+
     AttendantsViewController *controller = [self attendantsViewController];
     [controller setAttendants:[self attendants]];
     
     [controller update];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
-    [[self addAttendantView] addGestureRecognizer:tap];
-
     [[NSNotificationCenter defaultCenter]
      addObserver:self
         selector:@selector(keyboardDidHideAttendantsContentViewController:)
@@ -176,7 +171,7 @@ static NSString *attendants;
     [[NSNotificationCenter defaultCenter] postNotificationName:kAttendeeUpdated object:nil];    
 }
 
-- (void)showOptions:(id)sender
+- (IBAction)showOptions:(id)sender
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
     [[BNoteSessionData instance] setActionSheet:actionSheet];

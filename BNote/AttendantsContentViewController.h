@@ -10,4 +10,6 @@
 
 @interface AttendantsContentViewController : EntryContentViewController <UIActionSheetDelegate, ABPeoplePickerNavigationControllerDelegate, UIPopoverControllerDelegate>
 
+- (IBAction)showOptions:(id)sender;
+
 @end

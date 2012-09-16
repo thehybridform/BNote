@@ -225,9 +225,9 @@ static NSString *contactUs;
 
     [noteController setNote:note];
 
-    if (entry) {
-        [noteController selectEntry:entry];
-    }
+//    if (entry) {
+//        [noteController selectEntry:entry];
+//    }
 }
 
 - (void)updateNoteCount:(NSNotification *)notification

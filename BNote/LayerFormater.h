@@ -20,6 +20,7 @@
 + (void)setBorderColorWithInt:(int)color forView:(UIView *)view;
 + (void)addShadowToView:(UIView *)view;
 + (void)addShadowToView:(UIView *)view ofSize:(float)size;
++ (void)removeShadowFromView:(UIView *)view;
 
 
 @end

@@ -369,7 +369,6 @@ static NSString *contactUs;
     
     UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
     [[BNoteSessionData instance] setPopup:popup];
-    [popup setDelegate:self];
     [controller setPopup:popup];
 
     [popup setPopoverContentSize:[[controller view] bounds].size];

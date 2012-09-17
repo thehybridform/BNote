@@ -985,7 +985,6 @@
 		18D50F9B15D85BB300A9650D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D87F1415F06CEB00A7CD41 /* AssociatedTopicUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociatedTopicUnmarshaller.h; sourceTree = "<group>"; };
 		18D87F1515F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedTopicUnmarshaller.m; sourceTree = "<group>"; };
-		18D87F1915F0841500A7CD41 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D87F1A15F5BD9B00A7CD41 /* gplus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gplus-32.png"; sourceTree = "<group>"; };
 		18D87F1D15F9940900A7CD41 /* QuickWordsViewControllerActionButtonSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickWordsViewControllerActionButtonSource.h; sourceTree = "<group>"; };
 		18DE683A15B0D41E00311F16 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
@@ -2595,7 +2594,6 @@
 				18D50F9B15D85BB300A9650D /* en */,
 				18BEF93C15EC834600B37F29 /* zh-Hant */,
 				18BEF93D15ECA44000B37F29 /* zh-Hans */,
-				18D87F1915F0841500A7CD41 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

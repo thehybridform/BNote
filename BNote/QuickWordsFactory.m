@@ -34,7 +34,7 @@
     [button setOffset:-7];
     [button setBackgroundColor:[QuickWordsFactory normal]];
     [data addObject:button];
-    
+
     button = [[DateQuickButton alloc] initWithName:NSLocalizedString(@"week from now", @"A week from now") andEntryContentViewController:controller];
     [button setOffset:7];
     [button setBackgroundColor:[QuickWordsFactory normal]];

@@ -55,7 +55,7 @@
     self.okButton = nil;
     self.closeButton = nil;
     self.helpNotesButton = nil;
-    self.versionLabel = _versionLabel;
+    self.versionLabel = nil;
     self.licenseButton = nil;
 }
 
@@ -101,6 +101,8 @@
 
     [self.closeButton setTitle:NSLocalizedString(@"Close", @"Close current window") forState:UIControlStateNormal];
     [self.okButton setTitle:NSLocalizedString(@"Continue", @"Continue to the next window") forState:UIControlStateNormal];
+    [self.licenseButton setTitle:NSLocalizedString(@"License", nil) forState:UIControlStateNormal];
+    [self.helpNotesButton setTitle:NSLocalizedString(@"Generate Help Notes", nil) forState:UIControlStateNormal];
 
 #ifdef LITE
     self.thankYouLabel.text = NSLocalizedString(@"Splash Screen Lite Title", nil);
@@ -115,7 +117,7 @@
     self.line4TextView.text = NSLocalizedString(@"Splash Screen Line 3", nil);
     
     self.uobiaLabel.text = NSLocalizedString(@"A musing of Uobia, Copyright 2012", nil);
-    
+
     self.thankYouLabel.font = [BNoteConstants font:RobotoRegular andSize:20];
     self.uobiaLabel.font = [BNoteConstants font:RobotoRegular andSize:14];
     self.line1TextView.font = [BNoteConstants font:RobotoRegular andSize:14];
@@ -138,7 +140,6 @@
     self.versionLabel.text = @"BeNote Version 1.0";
 #endif
 
-
     if (self.firstLoad) {
         [[self closeButton] setHidden:YES];
         self.helpNotesButton.hidden = YES;
@@ -147,7 +148,6 @@
         [[self closeButton] setHidden:NO];
         [[self okButton] setHidden:YES];
     }
-    
 }
 
 - (IBAction)generateHelpNotes:(id)sender

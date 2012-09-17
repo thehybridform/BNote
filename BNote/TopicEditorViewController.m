@@ -101,6 +101,7 @@ static NSString *kAddTopicText;
 static NSString *kEditTopicText;
 static NSString *kPlaceHolderText;
 static NSString *kTopicNameExists;
+static NSString *kDoneText;
 
 
 - (void)viewDidUnload
@@ -156,6 +157,7 @@ static NSString *kTopicNameExists;
     kEditTopicText = NSLocalizedString(@"Edit Topic", @"Edit Topic text.");
     kPlaceHolderText = NSLocalizedString(@"Type in a new Topic Title", @"New top place holder text.");
     kTopicNameExists = NSLocalizedString(@"Topic name already exists.", nil);
+    kDoneText = NSLocalizedString(@"Done", nil);
 
     return self;
 }
@@ -232,6 +234,7 @@ static NSString *kTopicNameExists;
     self.menuLabel.textColor = [BNoteConstants appHighlightColor1];
     
     self.nameTextField.placeholder = kPlaceHolderText;
+    self.buttonAction.titleLabel.text = kDoneText;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkTopicName:) name:UITextFieldTextDidChangeNotification object:self.nameTextField];
 }

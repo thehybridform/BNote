@@ -2,22 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Edit Topic</key>
+	<string>編輯標題</string>
+	<key>Generate Help Notes</key>
+	<string>產生幫助記事</string>
+	<key>kFirstNoteAdd</key>
+	<string>按住此處以查看記事選項。</string>
+	<key>License</key>
+	<string>許可證</string>
+	<key>kFirstMainViewStep4</key>
+	<string>請點擊此處來查看分享選擇。</string>
+	<key>kFirstMainViewStep2</key>
+	<string>請點擊此處來記錄或刪除標題。</string>
+	<key>kFirstMainViewStep3</key>
+	<string>請點擊此處來查看或整理標題群組。</string>
+	<key>kFirstTopicAdd</key>
+	<string>按住此處以編輯主題。</string>
 	<key>kFirstMainView</key>
-	<string></string>
+	<string>請在此群組點擊以新增標題</string>
 	<key>Topic Group name already exists.</key>
-	<string>Topic Group name already exists.</string>
+	<string>標題群組名稱已存在。</string>
 	<key>Clear Answer</key>
-	<string>Clear Answer</string>
+	<string>清除答案</string>
 	<key>Accept</key>
-	<string>Accept</string>
+	<string>接受</string>
 	<key>Decline</key>
-	<string>Decline</string>
+	<string>拒絕</string>
 	<key>Contact Us</key>
-	<string>Contact Us</string>
+	<string>聯絡我們</string>
 	<key>Note</key>
 	<string>記事</string>
 	<key>Export</key>
-	<string>Export</string>
+	<string>輸出</string>
 	<key>Topic Group</key>
 	<string>主題群組</string>
 	<key>Edit</key>
@@ -29,11 +45,11 @@
 	<key>Convert Note Entry To</key>
 	<string>記錄轉移到</string>
 	<key>import failed message</key>
-	<string>I may not have imported all the note data properly.  Please Review the imported notes.</string>
+	<string>尚未適當地輸入資料。請您回顧已輸入的資料。</string>
 	<key>import failed message corrupt xml</key>
-	<string>The BeNote archive file was corrupted.</string>
+	<string>BeNote檔案文件已損壞。</string>
 	<key>Note Import Errors</key>
-	<string>Note Import Errors</string>
+	<string>記事输入錯誤</string>
 	<key>Import Notes Title</key>
 	<string>匯入記事？</string>
 	<key>Stop</key>
@@ -41,9 +57,9 @@
 	<key>Importing Notes</key>
 	<string>匯入筆記...</string>
 	<key>Selected Note</key>
-	<string>Selected Note</string>
+	<string>已選取記事</string>
 	<key>Email Selected Note</key>
-	<string>Email Selected Note</string>
+	<string>傳送選取記事</string>
 	<key>Archive Options</key>
 	<string>歸檔選項</string>
 	<key>Email Selected Topic</key>
@@ -85,7 +101,7 @@
 	<key>Splash Screen Lite Line 2</key>
 	<string>如果您喜歡BeNote Lite請購買其完整版本並推薦我們。主題、記事等數量並無上限，網絡儲存時BeNote支援iCloud。</string>
 	<key>Splash Screen Full Line 2</key>
-	<string>If you like BeNote please spread the word.  There is no limitations on the number of Topics, Notes, etc and it supports iCloud for network storage.</string>
+	<string>如果您喜歡BeNote, 請推薦我們</string>
 	<key>Splash Screen Line 3</key>
 	<string>永遠歡迎您的反饋，我們希望能成為您最喜愛的記事應用程式。</string>
 	<key>Search All Topics</key>
@@ -125,11 +141,11 @@
 	<key>Action Items - Completed</key>
 	<string>行動項目 - 完成</string>
 	<key>Add Note</key>
-	<string>添加註釋</string>
+	<string>添加記事</string>
 	<key>Add Summary</key>
 	<string>添加摘要</string>
 	<key>Add Topic</key>
-	<string>Add Topic</string>
+	<string>新增標題</string>
 	<key>Address Book</key>
 	<string>通訊簿</string>
 	<key>Answer</key>
@@ -215,7 +231,7 @@
 	<key>Last Name</key>
 	<string>姓</string>
 	<key>Manage</key>
-	<string>Manage</string>
+	<string>管理</string>
 	<key>Move</key>
 	<string>移動</string>
 	<key>New Topic Group Name</key>
@@ -241,14 +257,14 @@
 	<key>Questions - Unanswered</key>
 	<string>問題 - 未回答</string>
 	<key>Redo</key>
-	<string>重復</string>
+	<string>重做</string>
 	<key>Remove</key>
 	<string>清除</string>
 	<key>Reset</key>
 	<string>重設</string>
 	<key>Responsibility Options</key>
 	<string> 責任選項</string>
-	<key>REVIEW</key>
+	<key>Review</key>
 	<string> 回顧</string>
 	<key>Seacrh All Topics</key>
 	<string>搜尋所有主題</string>
@@ -277,13 +293,13 @@
 	<key>Update</key>
 	<string> 更新</string>
 	<key>week ago</key>
-	<string>一周前</string>
+	<string>一週前</string>
 	<key>week from now</key>
-	<string>(1)星期後</string>
+	<string>一週後</string>
 	<key>yesterday</key>
 	<string> 昨天</string>
 	<key>Topics Description</key>
-	<string>You can assign each topic a color. You can also group topics into custom Topic Groups. For example you could group all topics with notes from work into a topic group called “Work”. For all the topics from your lectures, you could groups them into “College Classes”.</string>
+	<string>標題說明</string>
 	<key>Notes Description</key>
 	<string>記事依主題歸納，採時間先後排序。記事列表下方有行動項目、問題、決定等總結。您可選任一總結條目並閱讀它相應記事。</string>
 	<key>Sharing Description</key>
@@ -311,7 +327,7 @@
 	<key>Multiple Note Topics Description</key>
 	<string>每個記事有一個主要的主題，但有時一個記事可能與別的記事相關。BeNote</string>
 	<key>Welcome to BeNote Title</key>
-	<string>歡迎 BeNote 標題</string>
+	<string>歡迎 BeNote</string>
 	<key>Tap Me</key>
 	<string> 點擊我</string>
 	<key>Welcome 1</key>

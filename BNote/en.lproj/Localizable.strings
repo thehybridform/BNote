@@ -1,9 +1,10 @@
 {
-	kFirstNoteAdd = "Press and hold for note options.";
-	kFirstTopicAdd = "Press and hold to edit topic.";
-	kFirstMainViewStep4 = "Tap to view sharing options.";
-	kFirstMainViewStep3 = "Tap to view and organize topic groups.";
-	kFirstMainViewStep2 = "Tap to reorder or remove topics.";
+	"Generate Help Notes" = "Generate Help Notes";
+	kFirstNoteAdd = "Press and hold here for note options.";
+	kFirstTopicAdd = "Press and hold here to edit topic.";
+	kFirstMainViewStep4 = "Tap here to view sharing options.";
+	kFirstMainViewStep3 = "Tap here to view and organize topic groups.";
+	kFirstMainViewStep2 = "Tap here to reorder or remove topics.";
 	kFirstMainView = "Select to add new topics to the current topic group.";
 	"Clear Answer" = "Clear Answer";
 	License = License;

@@ -120,7 +120,7 @@ static NSString *attendantOptionsText;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == emailText) {
+        if ([title isEqualToString:emailText]) {
             [self presentEmailer];
         }
     }

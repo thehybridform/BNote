@@ -89,7 +89,7 @@
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle:NSNumberFormatterBehaviorDefault];
+    [numberFormatter setNumberStyle:(NSNumberFormatterStyle) NSNumberFormatterBehaviorDefault];
     
     [format setDateFormat:@"MM"];
     NSString *str = [format stringFromDate:date];

@@ -16,7 +16,7 @@
     NSString *subject = [note subject];
     NSString *created = [BNoteStringUtils formatDate:[note created]];
     
-    NSString *text = [BNoteStringUtils append:title, subject, @" - ", NSLocalizedString(@"Created Date", nil), @": ", created, kNewLine, kNewLine, nil];
+    NSString *text = [BNoteStringUtils append:title, @": ", subject, @" - ", NSLocalizedString(@"Created Date", nil), @": ", created, kNewLine, kNewLine, nil];
     
     if ([note summary]) {
         text = [BNoteStringUtils append:text, NSLocalizedString(@"Note Summary", nil), @": ", kNewLine, [note summary], kNewLine, kNewLine, nil];

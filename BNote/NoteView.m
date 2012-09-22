@@ -75,7 +75,7 @@ const static float h2 = h1 - 8;
         [text setFrame:CGRectMake(5, 43, 90, 30)];
         [text setTextColor:[BNoteConstants appHighlightColor1]];
         [text setCenter:CGPointMake(48, 65)];
-        [text setTextAlignment:UITextAlignmentCenter];
+        [text setTextAlignment:(NSTextAlignment) UITextAlignmentCenter];
         [text setBackgroundColor:[UIColor clearColor]];
         [text setClipsToBounds:NO];
  
@@ -191,15 +191,15 @@ const static float h2 = h1 - 8;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == removeNoteText) {
+        if ([title isEqualToString:removeNoteText]) {
             [self comfirmDelete];
-        } else if (title == moveNoteText) {
+        } else if ([title isEqualToString:moveNoteText]) {
             [self presentTopicSelectionForType:ChangeMainTopic];
-        } else if (title == copyNoteText) {
+        } else if ([title isEqualToString:copyNoteText]) {
             [self presentTopicSelectionForType:CopyToTopic];
-        } else if (title == associateNoteText) {
+        } else if ([title isEqualToString:associateNoteText]) {
             [self presentTopicSelectionForType:AssociateTopic];
-        } else if (title == disassociateNoteText) {
+        } else if ([title isEqualToString:disassociateNoteText]) {
             Topic *topic = [[BNoteSessionData instance] selectedTopic];
             [[BNoteWriter instance] disassociateNote:[self note] toTopic:topic];
             [[BNoteWriter instance] update];

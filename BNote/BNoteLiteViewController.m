@@ -7,10 +7,10 @@
 //
 
 #import "BNoteLiteViewController.h"
-#import "EluaViewController.h"
 #import "BNoteDefaultData.h"
 #import "BNoteReader.h"
 #import "ShowHelpProtocol.h"
+#import "BNoteSessionData.h"
 
 @interface BNoteLiteViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *thankYouLabel;
@@ -20,10 +20,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *line2TextView;
 @property (strong, nonatomic) IBOutlet UITextView *line3TextView;
 @property (strong, nonatomic) IBOutlet UITextView *line4TextView;
-@property (strong, nonatomic) IBOutlet UIButton *okButton;
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIButton *helpNotesButton;
-@property (strong, nonatomic) IBOutlet UIButton *licenseButton;
 
 @end
 
@@ -33,14 +31,12 @@
 @synthesize line2TextView = _line2TextView;
 @synthesize line3TextView = _line3TextView;
 @synthesize line4TextView = _line4TextView;
-@synthesize okButton = _okButton;
 @synthesize closeButton = _closeButton;
 @synthesize topicGroupSelector = _topicGroupSelector;
 @synthesize firstLoad = _firstLoad;
 @synthesize uobiaLabel = _uobiaLabel;
 @synthesize helpNotesButton = _helpNotesButton;
 @synthesize versionLabel = _versionLabel;
-@synthesize licenseButton = _licenseButton;
 @synthesize helpDelegate = _helpDelegate;
 
 - (void)viewDidUnload
@@ -52,11 +48,9 @@
     self.line2TextView = nil;
     self.line3TextView = nil;
     self.line4TextView = nil;
-    self.okButton = nil;
     self.closeButton = nil;
     self.helpNotesButton = nil;
     self.versionLabel = nil;
-    self.licenseButton = nil;
 }
 
 - (id)initWithDefault
@@ -76,23 +70,11 @@
         [self dismissViewControllerAnimated:YES completion:^{
             [self.helpDelegate showHelp];
         }];
+
+        [BNoteSessionData setBoolean:YES forKey:kFirstLoad];
     } else {
         [self dismissViewControllerAnimated:YES completion:^{}];
     }
-}
-
-- (IBAction)ok:(id)sender
-{
-    [[self closeButton] setHidden:NO];
-    [[self okButton] setHidden:YES];
-
-    EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
-    [controller setEula:YES];
-    [controller setModalInPopover:YES];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    
-    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)viewDidLoad
@@ -100,8 +82,6 @@
     [super viewDidLoad];
 
     [self.closeButton setTitle:NSLocalizedString(@"Close", @"Close current window") forState:UIControlStateNormal];
-    [self.okButton setTitle:NSLocalizedString(@"Continue", @"Continue to the next window") forState:UIControlStateNormal];
-    [self.licenseButton setTitle:NSLocalizedString(@"License", nil) forState:UIControlStateNormal];
     [self.helpNotesButton setTitle:NSLocalizedString(@"Generate Help Notes", nil) forState:UIControlStateNormal];
 
 #ifdef LITE
@@ -141,12 +121,7 @@
 #endif
 
     if (self.firstLoad) {
-        [[self closeButton] setHidden:YES];
         self.helpNotesButton.hidden = YES;
-        self.licenseButton.hidden = YES;
-    } else {
-        [[self closeButton] setHidden:NO];
-        [[self okButton] setHidden:YES];
     }
 }
 
@@ -167,16 +142,6 @@
     [self dismissModalViewControllerAnimated:YES];
     NSURL *url = [NSURL URLWithString:@"http://plus.google.com/113838676367829565073/"];
     [[UIApplication sharedApplication] openURL:url];
-}
-
-- (IBAction)showLicense:(id)sender
-{
-    EluaViewController *controller = [[EluaViewController alloc] initWithDefault];
-    [controller setModalInPopover:YES];
-    [controller setModalPresentationStyle:UIModalPresentationPageSheet];
-    [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    
-    [self presentModalViewController:controller animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

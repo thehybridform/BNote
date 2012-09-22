@@ -223,7 +223,7 @@ static NSString *imageOptionsText;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == removeImageText) {
+        if ([title isEqualToString:removeImageText]) {
             [[BNoteWriter instance] removePhoto:[[self keyPoint] photo]];
             [[BNoteWriter instance] update];
             [self handlePhotoImage];

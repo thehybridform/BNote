@@ -12,7 +12,7 @@
 
 static float shadowOffset = 0.5;
 static float shadowRadius = 5.0;
-static float shawdowOpacity = 0.5;
+static float shadowOpacity = 0.5;
 
 + (void)roundCornersForView:(UIView *)view
 {
@@ -54,7 +54,7 @@ static float shawdowOpacity = 0.5;
 {
     view.layer.masksToBounds = NO;
     view.layer.shadowColor = [UIColor blackColor].CGColor;
-    view.layer.shadowOpacity = shawdowOpacity;
+    view.layer.shadowOpacity = shadowOpacity;
     view.layer.shadowRadius = size;
     view.layer.shadowOffset = CGSizeMake(2.0, 2.0);
 }
@@ -63,7 +63,7 @@ static float shawdowOpacity = 0.5;
 {
     view.layer.masksToBounds = NO;
     view.layer.shadowColor = [UIColor blackColor].CGColor;
-    view.layer.shadowOpacity = shawdowOpacity;
+    view.layer.shadowOpacity = shadowOpacity;
     view.layer.shadowRadius = shadowRadius;
     view.layer.shadowOffset = CGSizeMake(shadowOffset, shadowOffset);
 }

@@ -20,9 +20,7 @@
 - (id)initWithDefault;
 
 - (IBAction)close:(id)sender;
-- (IBAction)ok:(id)sender;
 - (IBAction)generateHelpNotes:(id)sender;
 - (IBAction)openGoolePlus:(id)sender;
-- (IBAction)showLicense:(id)sender;
 
 @end

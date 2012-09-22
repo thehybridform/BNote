@@ -315,7 +315,7 @@ static NSString *spacing = @"   ";
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle:NSNumberFormatterBehaviorDefault];
+    [numberFormatter setNumberStyle:(NSNumberFormatterStyle) NSNumberFormatterBehaviorDefault];
     
     [format setDateFormat:@"MM"];
     NSString *str = [format stringFromDate:date];
@@ -546,23 +546,23 @@ static NSString *spacing = @"   ";
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == emailNoteText) {
+        if ([title isEqualToString:emailNoteText]) {
             UIViewController *controller = [[EmailViewController alloc] initWithNote:[self note]];
             [self showModal:controller style:UIModalPresentationPageSheet];
-        } else if (title == exportText) {
+        } else if ([title isEqualToString:exportText]) {
             BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
             controller.note = self.note;
             controller.delegate = self;
             [self showModal:controller style:UIModalPresentationFormSheet];
-        } else if (title == topicAssociationsText) {
+        } else if ([title isEqualToString:topicAssociationsText]) {
             TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:AssociateTopic];
             controller.delegate = self;
             [self showPopup:controller];
-        } else if (title == changeTopicText) {
+        } else if ([title isEqualToString:changeTopicText]) {
             TopicManagementViewController *controller = [[TopicManagementViewController alloc] initWithNote:[self note] forType:ChangeMainTopic];
             controller.delegate = self;
             [self showPopup:controller];
-        } else if (title == contactUs) {
+        } else if ([title isEqualToString:contactUs]) {
             ContactMailController *controller = [[ContactMailController alloc] init];
             [controller setModalInPopover:YES];
             [controller setModalPresentationStyle:UIModalPresentationPageSheet];

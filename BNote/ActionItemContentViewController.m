@@ -283,13 +283,13 @@ static CGFloat kDetailHeight = 20;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == setResponsibilityText) {
+        if ([title isEqualToString:setResponsibilityText]) {
             [self showResponsibilityPicker];
-        } else if (title == clearResponsibilityText) {
+        } else if ([title isEqualToString:clearResponsibilityText]) {
             [self clearResponsibility];
-        } else if (title == setDueDateText) {
+        } else if ([title isEqualToString:setDueDateText]) {
             [self showDatePicker];
-        } else if (title == clearDueDateText) {
+        } else if ([title isEqualToString:clearDueDateText]) {
             [self clearDueDate];
         }
     }

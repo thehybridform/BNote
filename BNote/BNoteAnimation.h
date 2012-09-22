@@ -13,7 +13,6 @@
 @interface BNoteAnimation : NSObject
 
 + (void)winkInView:(UIView *)view withDuration:(float)duration andDelay:(float)delay spark:(BOOL)spark;
-+ (void)winkOutView:(UIView *)view withDuration:(float)duration andDelay:(float)delay;
 
 + (void)winkInView:(NSArray *)views withDuration:(float)duration andDelay:(float)delay andDelayIncrement:(float)increment spark:(BOOL)spark;
 

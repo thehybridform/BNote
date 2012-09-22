@@ -280,16 +280,16 @@ static NSString *contactUs;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == emailTopicText) {
+        if ([title isEqualToString:emailTopicText]) {
             [self presentEmailer];
-        } else if (title == exportText) {
+        } else if ([title isEqualToString:exportText]) {
             BNoteExporterViewController *controller = [[BNoteExporterViewController alloc] initWithDefault];
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
             controller.delegate = self;
             
             [self presentModalViewController:controller animated:YES];
-        } else if (title == contactUs) {
+        } else if ([title isEqualToString:contactUs]) {
             ContactMailController *controller = [[ContactMailController alloc] init];
             [controller setModalInPopover:YES];
             [controller setModalPresentationStyle:UIModalPresentationPageSheet];

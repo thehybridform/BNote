@@ -27,15 +27,13 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>bnote.png</string>
-				<string>bnote-144.png</string>
-				<string>Default-Portrait~ipad.png</string>
-				<string>Default-Landscape~ipad.png</string>
+				<string>benote-lite-72.png</string>
+				<string>benote-lite-144.png</string>
 			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.kristinyoung.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.kristinyoung.BeNoteLite</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLocalizations</key>

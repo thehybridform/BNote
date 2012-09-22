@@ -35,7 +35,7 @@
 - (void)removeObjectFromEntriesAtIndex:(NSUInteger)idx;
 - (void)insertEntries:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
 - (void)removeEntriesAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInEntriesAtIndex:(NSUInteger)idx withObject:(Entry *)value;
+
 - (void)replaceEntriesAtIndexes:(NSIndexSet *)indexes withEntries:(NSArray *)values;
 - (void)addEntriesObject:(Entry *)value;
 - (void)removeEntriesObject:(Entry *)value;

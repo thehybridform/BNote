@@ -69,31 +69,4 @@
      ];
 }
 
-+ (void)winkOutView:(UIView *)view withDuration:(float)duration andDelay:(float)delay
-{
-    CGRect initialFrame = [view frame];
-    CGRect frame = CGRectMake(initialFrame.origin.x, initialFrame.origin.y + initialFrame.size.height / 2.0, initialFrame.size.width, 0);
-    [view setFrame:initialFrame];
-
-    [UIView animateWithDuration:duration
-                          delay:delay
-                        options:(UIViewAnimationOptionCurveEaseOut)
-                     animations:^(void) {
-                         [view setFrame:frame];
-                     }
-                     completion:^(BOOL finished) {
-                     }
-     ];
-    
-    
-    [UIView animateWithDuration:0.1
-                          delay:delay
-                        options:(UIViewAnimationOptionCurveEaseOut)
-                     animations:^(void) {
-                         [view setAlpha:0];
-                     }
-                     completion:^(BOOL finished) {
-                     }];
-}
-
 @end

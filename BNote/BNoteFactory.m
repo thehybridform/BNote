@@ -272,17 +272,6 @@ NSString *const keyPointsEntryHeader = @"Key Points";
     }
 
     if (icon) {
-        /*
-        UIImageView *view = [[[BNoteSessionData instance] imageIconViews] objectForKey:icon];
-        if (!view) {
-            UIImage *image = [UIImage imageNamed:icon];
-            view = [[UIImageView alloc] initWithImage:image];
-            [view setFrame:CGRectMake(0, 0, 25, 25)];
-            
-            [[[BNoteSessionData instance] imageIconViews] setObject:view forKey:icon];
-        }
-        */
-        
         UIImage *image = [UIImage imageNamed:icon];
         UIImageView *view = [[UIImageView alloc] initWithImage:image];
         [view setFrame:CGRectMake(0, 0, 25, 25)];

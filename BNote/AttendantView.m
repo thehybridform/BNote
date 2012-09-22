@@ -79,8 +79,8 @@ static NSString *removeAttendanText;
     _attendant = attendant;
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 90, 10)];
-    [nameLabel setLineBreakMode:UILineBreakModeTailTruncation];
-    [nameLabel setTextAlignment:UITextAlignmentCenter];
+    [nameLabel setLineBreakMode:(NSLineBreakMode) UILineBreakModeTailTruncation];
+    [nameLabel setTextAlignment:(NSTextAlignment) UITextAlignmentCenter];
     [nameLabel setFont:[BNoteConstants font:RobotoLight andSize:10]];
     [nameLabel setNumberOfLines:1];
 
@@ -88,8 +88,8 @@ static NSString *removeAttendanText;
     [nameLabel setText:name];
 
     UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 60, 90, 10)];
-    [emailLabel setLineBreakMode:UILineBreakModeTailTruncation];
-    [emailLabel setTextAlignment:UITextAlignmentCenter];
+    [emailLabel setLineBreakMode:(NSLineBreakMode) UILineBreakModeTailTruncation];
+    [emailLabel setTextAlignment:(NSTextAlignment) UITextAlignmentCenter];
     [emailLabel setFont:[BNoteConstants font:RobotoLight andSize:10]];
     [emailLabel setNumberOfLines:1];
     [emailLabel setText:[attendant email]];
@@ -113,9 +113,9 @@ static NSString *removeAttendanText;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == detailsText) {
+        if ([title isEqualToString:detailsText]) {
             [self presentAttendeeDetail];
-        } else if (title == removeAttendanText) {
+        } else if ([title isEqualToString:removeAttendanText]) {
             Attendants *parent = [[self attendant] parent];
             [parent removeChildrenObject:[self attendant]];
             [[NSNotificationCenter defaultCenter] postNotificationName:kAttendeeDeleted object:nil];

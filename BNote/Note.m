@@ -20,31 +20,6 @@
 @dynamic topic;
 
 static NSString *const kItemsKey = @"entries";
-//static NSString *const kTopicKey = @"associatedTopics";
-
-/*
-- (void)removeAssociatedTopicsObject:(Topic *)value
-{
-    NSMutableSet *tmpOrderedSet = [NSMutableSet setWithSet:[self valueForKey:kTopicKey]];
-    NSUInteger idx = [tmpOrderedSet indexOfObject:value];
-    if (idx != NSNotFound) {
-        NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
-        [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:kTopicKey];
-        [tmpOrderedSet removeObject:value];
-        [self setPrimitiveValue:tmpOrderedSet forKey:kTopicKey];
-        [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:kTopicKey];
-    }
-}
-*/
-- (void)replaceObjectInEntriesAtIndex:(NSUInteger)idx withObject:(Entry *)value
-{
-    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
-    [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:kItemsKey];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self mutableOrderedSetValueForKey:kItemsKey]];
-    [tmpOrderedSet replaceObjectAtIndex:idx withObject:value];
-    [self setPrimitiveValue:tmpOrderedSet forKey:kItemsKey];
-    [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:kItemsKey];
-}
 
 - (void)removeEntriesObject:(Entry *)value
 {

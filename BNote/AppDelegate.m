@@ -43,9 +43,9 @@
     
     self.window.rootViewController = mainViewViewController;
     [self.window makeKeyAndVisible];
-    
-        
-    if (![BNoteSessionData booleanForKey:kEulaFlag]) {
+
+
+    if (![BNoteSessionData booleanForKey:kFirstLoad]) {
         BNoteLiteViewController *controller = [[BNoteLiteViewController alloc] initWithDefault];
         controller.helpDelegate = mainViewViewController;
         controller.modalPresentationStyle = UIModalPresentationFormSheet;

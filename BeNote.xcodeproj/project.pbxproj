@@ -68,8 +68,6 @@
 		184976DA159843B400F49F5A /* ActionItemContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976D9159843B300F49F5A /* ActionItemContentViewController.m */; };
 		184976DD159843C900F49F5A /* QuestionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976DC159843C900F49F5A /* QuestionContentViewController.m */; };
 		184976E0159843E400F49F5A /* AttendantsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976DF159843E100F49F5A /* AttendantsContentViewController.m */; };
-		184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
-		184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
 		184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
 		1851A619159984640089EECF /* EntryContectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851A618159984640089EECF /* EntryContectView.m */; };
@@ -123,6 +121,7 @@
 		18653A6915D842550017BD1E /* bnote-sketch.png in Resources */ = {isa = PBXBuildFile; fileRef = 18653A5415D842550017BD1E /* bnote-sketch.png */; };
 		18653A6A15D842550017BD1E /* bnote-take-snapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 18653A5515D842550017BD1E /* bnote-take-snapshot.png */; };
 		18653A6B15D842550017BD1E /* bnote-take-snapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 18653A5515D842550017BD1E /* bnote-take-snapshot.png */; };
+		18653DEE16070EB1005DC58A /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94515EF069200B37F29 /* bnote-144.png */; };
 		1879F05A15746E9A003814C2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05815746E9A003814C2 /* DatePickerViewController.m */; };
 		1879F05B15746E9A003814C2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		1879F06015747B18003814C2 /* QuickWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879F05E15747B18003814C2 /* QuickWordsViewController.m */; };
@@ -251,8 +250,6 @@
 		18BEF94315EF05CE00B37F29 /* bnote-320.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF93F15EF05CE00B37F29 /* bnote-320.png */; };
 		18BEF94615EF069200B37F29 /* bnote-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94415EF069200B37F29 /* bnote-72.png */; };
 		18BEF94715EF069200B37F29 /* bnote-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94415EF069200B37F29 /* bnote-72.png */; };
-		18BEF94815EF069200B37F29 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94515EF069200B37F29 /* bnote-144.png */; };
-		18BEF94915EF069200B37F29 /* bnote-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BEF94515EF069200B37F29 /* bnote-144.png */; };
 		18BEF94E15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */; };
 		18BEF94F15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF94D15F03B7F00B37F29 /* TopicUnmarshaller.m */; };
 		18BF3F5B157AC12300B6E226 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BF3F5A157AC12300B6E226 /* AddressBookUI.framework */; };
@@ -330,8 +327,7 @@
 		18C5E89915C7C0D9005590A2 /* NoteSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5E89715C7C0D9005590A2 /* NoteSummaryViewController.xib */; };
 		18C5E89C15C8DE7A005590A2 /* ToTheLeftKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */; };
 		18CC190C15B929A60080C017 /* TopicSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CC190B15B929A60080C017 /* TopicSearchBar.m */; };
-		18D50F7215D85AFF00A9650D /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */; };
-		18D50F7315D85AFF00A9650D /* BeNote-EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */; };
+		18D2D2121606FAF2001C315B /* benote-lite-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D2D2111606FAF2001C315B /* benote-lite-144.png */; };
 		18D50F9915D85BB300A9650D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F9C15D85BB300A9650D /* Localizable.strings */; };
 		18D50F9A15D85BB300A9650D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D50F9C15D85BB300A9650D /* Localizable.strings */; };
 		18D87F1615F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D87F1515F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m */; };
@@ -411,7 +407,6 @@
 		18F4E1F915CE4843002095A2 /* KeyPointPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3511585BA9800B1709E /* KeyPointPlainRenderer.m */; };
 		18F4E1FA15CE4843002095A2 /* DecisionPlainRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBD3551585BB2800B1709E /* DecisionPlainRenderer.m */; };
 		18F4E1FB15CE4843002095A2 /* BeNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */; };
-		18F4E1FD15CE4843002095A2 /* EluaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD3158F227A00C67CF5 /* EluaViewController.m */; };
 		18F4E1FE15CE4843002095A2 /* TopicManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */; };
 		18F4E20015CE4843002095A2 /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
 		18F4E20115CE4843002095A2 /* EntryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976CB1597C1FD00F49F5A /* EntryContentViewController.m */; };
@@ -502,14 +497,12 @@
 		18F4E25B15CE4843002095A2 /* question_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF1C156B772D00F22272 /* question_icon.png */; };
 		18F4E25C15CE4843002095A2 /* key_point_active_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF25156C6D7E00F22272 /* key_point_active_icon.png */; };
 		18F4E25D15CE4843002095A2 /* key_point_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF26156C6D7E00F22272 /* key_point_icon.png */; };
-		18F4E25E15CE4843002095A2 /* bnote.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF32156C791800F22272 /* bnote.png */; };
 		18F4E26115CE4843002095A2 /* attendant_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9FF3A156C7C9500F22272 /* attendant_icon.png */; };
 		18F4E26215CE4843002095A2 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05915746E9A003814C2 /* DatePickerViewController.xib */; };
 		18F4E26315CE4843002095A2 /* QuickWordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879F05F15747B18003814C2 /* QuickWordsViewController.xib */; };
 		18F4E26415CE4843002095A2 /* bnote-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A056C9157C905D002A4A78 /* bnote-big.png */; };
 		18F4E26615CE4843002095A2 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A056FA157F3762002A4A78 /* PhotoViewController.xib */; };
 		18F4E26715CE4843002095A2 /* ResponsibilityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818B54D15803C2500928BAF /* ResponsibilityTableViewController.xib */; };
-		18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD4158F227A00C67CF5 /* EluaViewController.xib */; };
 		18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */; };
 		18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
 		18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1851A629159E964B0089EECF /* PhotoEditorViewController.xib */; };
@@ -644,9 +637,6 @@
 		184976DC159843C900F49F5A /* QuestionContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionContentViewController.m; sourceTree = "<group>"; };
 		184976DE159843E000F49F5A /* AttendantsContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsContentViewController.h; sourceTree = "<group>"; };
 		184976DF159843E100F49F5A /* AttendantsContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsContentViewController.m; sourceTree = "<group>"; };
-		184CEAD2158F227A00C67CF5 /* EluaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EluaViewController.h; sourceTree = "<group>"; };
-		184CEAD3158F227A00C67CF5 /* EluaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EluaViewController.m; sourceTree = "<group>"; };
-		184CEAD4158F227A00C67CF5 /* EluaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EluaViewController.xib; sourceTree = "<group>"; };
 		184CEAD715901FFC00C67CF5 /* TopicManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicManagementViewController.h; sourceTree = "<group>"; };
 		184CEAD815901FFC00C67CF5 /* TopicManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicManagementViewController.m; sourceTree = "<group>"; };
 		184CEAD915901FFC00C67CF5 /* TopicManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicManagementViewController.xib; sourceTree = "<group>"; };
@@ -852,8 +842,6 @@
 		18BEF25A15DCB4CB00E16CFD /* EmailArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailArchiver.h; sourceTree = "<group>"; };
 		18BEF25B15DCB4CB00E16CFD /* EmailArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailArchiver.m; sourceTree = "<group>"; };
 		18BEF25E15DCB95400E16CFD /* BNoteArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteArchiver.h; sourceTree = "<group>"; };
-		18BEF26115DCD6A900E16CFD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18BEF26315DCD6B100E16CFD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hant"; path = "zh-Hant.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
 		18BEF26615DDF28400E16CFD /* BNoteMarshallingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshallingManager.h; sourceTree = "<group>"; };
 		18BEF26715DDF28400E16CFD /* BNoteMarshallingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteMarshallingManager.m; sourceTree = "<group>"; };
 		18BEF26A15DDF38200E16CFD /* BNoteMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteMarshaller.h; sourceTree = "<group>"; };
@@ -978,10 +966,8 @@
 		18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToTheLeftKeyWordFinder.m; sourceTree = "<group>"; };
 		18CC190A15B929A60080C017 /* TopicSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSearchBar.h; sourceTree = "<group>"; };
 		18CC190B15B929A60080C017 /* TopicSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicSearchBar.m; sourceTree = "<group>"; };
-		18D50F7415D85AFF00A9650D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "en.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18D50F7715D85B0D00A9650D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = "es.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18D50F7815D85B0E00A9650D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = "ja.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
-		18D50F9515D85B7E00A9650D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "de.lproj/BeNote-EULA.rtf"; sourceTree = "<group>"; };
+		18D2D20F1606FAE6001C315B /* benote-lite-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "benote-lite-72.png"; sourceTree = "<group>"; };
+		18D2D2111606FAF2001C315B /* benote-lite-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "benote-lite-144.png"; sourceTree = "<group>"; };
 		18D50F9B15D85BB300A9650D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18D87F1415F06CEB00A7CD41 /* AssociatedTopicUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociatedTopicUnmarshaller.h; sourceTree = "<group>"; };
 		18D87F1515F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedTopicUnmarshaller.m; sourceTree = "<group>"; };
@@ -1190,6 +1176,8 @@
 		1834D32C15634A650065788F = {
 			isa = PBXGroup;
 			children = (
+				18D2D2111606FAF2001C315B /* benote-lite-144.png */,
+				18D2D20F1606FAE6001C315B /* benote-lite-72.png */,
 				1834D34115634A650065788F /* BNote */,
 				1834D33A15634A650065788F /* Frameworks */,
 				1834D33815634A650065788F /* Products */,
@@ -1229,7 +1217,6 @@
 				18BAC1A915AD450500EEBE1E /* Main View */,
 				18A30FBD15BB1F9F00A2FD14 /* Topic Groups */,
 				1851A626159E96270089EECF /* Photo Editor */,
-				184CEAD0158F225900C67CF5 /* EULA */,
 				1819675615699AB200DA31A3 /* Images */,
 				18E9FF0D156A340900F22272 /* UI */,
 				18368F5415662D8000E511CB /* Detail View */,
@@ -1255,7 +1242,6 @@
 				189B445915AE809D008F11D2 /* RobotoLight.ttf */,
 				189B445A15AE809D008F11D2 /* RobotoRegular.ttf */,
 				18558C451589AE9100BCB45C /* BeNote.entitlements */,
-				18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */,
 				1834D34315634A650065788F /* BeNote-Info.plist */,
 				18F291CF15CE43F900543E65 /* BeNote Lite-Info.plist */,
 				1834D34715634A650065788F /* main.m */,
@@ -1421,16 +1407,6 @@
 				18A721BD15B5126800653382 /* DecisionContentView.xib */,
 			);
 			name = Decision;
-			sourceTree = "<group>";
-		};
-		184CEAD0158F225900C67CF5 /* EULA */ = {
-			isa = PBXGroup;
-			children = (
-				184CEAD2158F227A00C67CF5 /* EluaViewController.h */,
-				184CEAD3158F227A00C67CF5 /* EluaViewController.m */,
-				184CEAD4158F227A00C67CF5 /* EluaViewController.xib */,
-			);
-			name = EULA;
 			sourceTree = "<group>";
 		};
 		1851A626159E96270089EECF /* Photo Editor */ = {
@@ -2058,9 +2034,7 @@
 				18A056CA157C905D002A4A78 /* bnote-big.png in Resources */,
 				18A056FC157F3762002A4A78 /* PhotoViewController.xib in Resources */,
 				1818B54F15803C2500928BAF /* ResponsibilityTableViewController.xib in Resources */,
-				184CEAD6158F227A00C67CF5 /* EluaViewController.xib in Resources */,
 				184CEADB15901FFC00C67CF5 /* TopicManagementViewController.xib in Resources */,
-				18D50F7215D85AFF00A9650D /* BeNote-EULA.rtf in Resources */,
 				184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */,
 				1851A62B159E964B0089EECF /* PhotoEditorViewController.xib in Resources */,
 				1851A633159EA5760089EECF /* small-penci.pngl.png in Resources */,
@@ -2098,9 +2072,9 @@
 				18BEF94015EF05CE00B37F29 /* bnote-100.png in Resources */,
 				18BEF94215EF05CE00B37F29 /* bnote-320.png in Resources */,
 				18BEF94615EF069200B37F29 /* bnote-72.png in Resources */,
-				18BEF94815EF069200B37F29 /* bnote-144.png in Resources */,
 				18D87F1B15F5BD9B00A7CD41 /* gplus-32.png in Resources */,
 				18BAEC8016068CF50056E34A /* HelpViewController.xib in Resources */,
+				18653DEE16070EB1005DC58A /* bnote-144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2125,16 +2099,13 @@
 				18F4E25B15CE4843002095A2 /* question_icon.png in Resources */,
 				18F4E25C15CE4843002095A2 /* key_point_active_icon.png in Resources */,
 				18F4E25D15CE4843002095A2 /* key_point_icon.png in Resources */,
-				18F4E25E15CE4843002095A2 /* bnote.png in Resources */,
 				18F4E26115CE4843002095A2 /* attendant_icon.png in Resources */,
 				18F4E26215CE4843002095A2 /* DatePickerViewController.xib in Resources */,
 				18F4E26315CE4843002095A2 /* QuickWordsViewController.xib in Resources */,
 				18F4E26415CE4843002095A2 /* bnote-big.png in Resources */,
 				18F4E26615CE4843002095A2 /* PhotoViewController.xib in Resources */,
 				18F4E26715CE4843002095A2 /* ResponsibilityTableViewController.xib in Resources */,
-				18F4E26815CE4843002095A2 /* EluaViewController.xib in Resources */,
 				18F4E26915CE4843002095A2 /* TopicManagementViewController.xib in Resources */,
-				18D50F7315D85AFF00A9650D /* BeNote-EULA.rtf in Resources */,
 				18F4E26C15CE4843002095A2 /* AttendeeDetailViewController.xib in Resources */,
 				18F4E26D15CE4843002095A2 /* PhotoEditorViewController.xib in Resources */,
 				18F4E26F15CE4843002095A2 /* small-penci.pngl.png in Resources */,
@@ -2172,9 +2143,9 @@
 				18BEF94115EF05CE00B37F29 /* bnote-100.png in Resources */,
 				18BEF94315EF05CE00B37F29 /* bnote-320.png in Resources */,
 				18BEF94715EF069200B37F29 /* bnote-72.png in Resources */,
-				18BEF94915EF069200B37F29 /* bnote-144.png in Resources */,
 				18D87F1C15F5BD9B00A7CD41 /* gplus-32.png in Resources */,
 				18BAEC8116068CF50056E34A /* HelpViewController.xib in Resources */,
+				18D2D2121606FAF2001C315B /* benote-lite-144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2236,7 +2207,6 @@
 				18BBD3521585BA9800B1709E /* KeyPointPlainRenderer.m in Sources */,
 				18BBD3561585BB2800B1709E /* DecisionPlainRenderer.m in Sources */,
 				18B2361C158AEC4B009D17D2 /* BeNote.xcdatamodeld in Sources */,
-				184CEAD5158F227A00C67CF5 /* EluaViewController.m in Sources */,
 				184CEADA15901FFC00C67CF5 /* TopicManagementViewController.m in Sources */,
 				184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */,
 				184976CD1597C20100F49F5A /* EntryContentViewController.m in Sources */,
@@ -2434,7 +2404,6 @@
 				18F4E1F915CE4843002095A2 /* KeyPointPlainRenderer.m in Sources */,
 				18F4E1FA15CE4843002095A2 /* DecisionPlainRenderer.m in Sources */,
 				18F4E1FB15CE4843002095A2 /* BeNote.xcdatamodeld in Sources */,
-				18F4E1FD15CE4843002095A2 /* EluaViewController.m in Sources */,
 				18F4E1FE15CE4843002095A2 /* TopicManagementViewController.m in Sources */,
 				18F4E20015CE4843002095A2 /* AttendeeDetailViewController.m in Sources */,
 				18F4E20115CE4843002095A2 /* EntryContentViewController.m in Sources */,
@@ -2574,20 +2543,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		18D50F7515D85AFF00A9650D /* BeNote-EULA.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18D50F7415D85AFF00A9650D /* en */,
-				18D50F7715D85B0D00A9650D /* es */,
-				18D50F7815D85B0E00A9650D /* ja */,
-				18D50F9515D85B7E00A9650D /* de */,
-				18BEF26115DCD6A900E16CFD /* zh-Hans */,
-				18BEF26315DCD6B100E16CFD /* zh-Hant */,
-			);
-			name = "BeNote-EULA.rtf";
-			path = ..;
-			sourceTree = "<group>";
-		};
 		18D50F9C15D85BB300A9650D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2607,7 +2562,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kristin Young";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2622,6 +2578,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C3AE6D42-5813-461D-AF3D-1BD7DAE82825";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -2633,7 +2591,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kristin Young";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -2642,6 +2601,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C3AE6D42-5813-461D-AF3D-1BD7DAE82825";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -2652,11 +2613,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BeNote.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				INFOPLIST_FILE = "BNote/BeNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = BeNote;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2665,18 +2629,78 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BeNote.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				INFOPLIST_FILE = "BNote/BeNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = BeNote;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
+		1853534716070CBA00AEC454 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kristin Young";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C3AE6D42-5813-461D-AF3D-1BD7DAE82825";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		1853534816070CBA00AEC454 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BeNote.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
+				INFOPLIST_FILE = "BNote/BeNote-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = BeNote;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
+		1853534916070CBA00AEC454 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = LITE;
+				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "BeNote Lite";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
 		18F4E2B215CE4843002095A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2687,6 +2711,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "BeNote Lite";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2694,12 +2720,15 @@
 		18F4E2B315CE4843002095A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = LITE;
 				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "BeNote Lite";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -2712,6 +2741,7 @@
 			buildConfigurations = (
 				1834D35915634A650065788F /* Debug */,
 				1834D35A15634A650065788F /* Release */,
+				1853534716070CBA00AEC454 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2721,6 +2751,7 @@
 			buildConfigurations = (
 				1834D35C15634A650065788F /* Debug */,
 				1834D35D15634A650065788F /* Release */,
+				1853534816070CBA00AEC454 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2730,6 +2761,7 @@
 			buildConfigurations = (
 				18F4E2B215CE4843002095A2 /* Debug */,
 				18F4E2B315CE4843002095A2 /* Release */,
+				1853534916070CBA00AEC454 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

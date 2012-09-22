@@ -190,9 +190,9 @@ static NSString *attendants;
 {
     if (buttonIndex >= 0) {
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == addressBook) {
+        if ([title isEqualToString:addressBook]) {
             [self presentAttendeePicker];
-        } else if (title == createNew) {
+        } else if ([title isEqualToString:createNew]) {
             [self presentAttendeeAdder];
         }
     }

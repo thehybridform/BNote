@@ -51,13 +51,12 @@ extern NSString * const kNewLine;
 
 extern NSString * const kRefetchAllDatabaseData;
 
-extern NSString * const kEulaFlag;
+extern NSString * const kFirstLoad;
 extern NSString * const kFirstMainView;
 extern NSString * const kFirstMainViewStep2;
 extern NSString * const kFirstMainViewStep3;
 extern NSString * const kFirstMainViewStep4;
 extern NSString * const kFirstTopicAdd;
-extern NSString * const kFirstNoteAdd;
 
 extern NSString * const kFilteredTopicName;
 extern NSString * const kAllTopicGroupName;

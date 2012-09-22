@@ -124,13 +124,13 @@ static NSString *actionItemText;
         Note *note = [[self entry] note];
         Entry *entry;
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-        if (title == keyPointText) {
+        if ([title isEqualToString:keyPointText]) {
             entry = [BNoteFactory createKeyPoint:note];
-        } else if (title == questionText) {
+        } else if ([title isEqualToString:questionText]) {
             entry = [BNoteFactory createQuestion:note];
-        } else if (title == decisionText) {
+        } else if ([title isEqualToString:decisionText]) {
             entry = [BNoteFactory createDecision:note];
-        } else if (title == actionItemText) {
+        } else if ([title isEqualToString:actionItemText]) {
             entry = [BNoteFactory createActionItem:note];
         }
         

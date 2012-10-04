@@ -113,7 +113,7 @@ static NSString *attendantOptionsText;
     
     [controller setToRecipients:[NSArray arrayWithObject:[[self attendant] email]]];
 
-    [self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

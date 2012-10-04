@@ -345,7 +345,7 @@ static NSString *spacing = @"   ";
     [BNoteEntryUtils cleanUpEntriesForNote:[self note]];
     [[BNoteWriter instance] update];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
     [self setupTableViewAddingEntries];
 
     [[BNoteSessionData instance] setMainViewController:nil];
@@ -567,8 +567,8 @@ static NSString *spacing = @"   ";
             [controller setModalInPopover:YES];
             [controller setModalPresentationStyle:UIModalPresentationPageSheet];
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-            
-            [self presentModalViewController:controller animated:YES];
+
+            [self presentViewController:controller animated:YES completion:^{}];
         }
     }
     
@@ -579,7 +579,7 @@ static NSString *spacing = @"   ";
 {
     [controller setModalPresentationStyle:style];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    [self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)showPopup:(UIViewController *)controller
@@ -616,8 +616,8 @@ static NSString *spacing = @"   ";
         
         [controller setModalPresentationStyle:UIModalPresentationPageSheet];
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-        
-        [self presentModalViewController:controller animated:YES];
+
+        [self presentViewController:controller animated:YES completion:^{}];
     }];
 }
 
@@ -732,8 +732,8 @@ static NSString *spacing = @"   ";
     
     [controller setModalPresentationStyle:UIModalPresentationFormSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    
-    [self presentModalViewController:controller animated:YES];
+
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)dealloc

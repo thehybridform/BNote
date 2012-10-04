@@ -47,7 +47,7 @@ static NSString *kMessageBody = @"BeNote v1.0 for iPad";
         [alert show];
     }
 
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)viewDidLoad

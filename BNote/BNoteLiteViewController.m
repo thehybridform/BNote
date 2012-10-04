@@ -139,7 +139,8 @@
 
 - (IBAction)openGoolePlus:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES completion:^{}];
     NSURL *url = [NSURL URLWithString:@"http://plus.google.com/113838676367829565073/"];
     [[UIApplication sharedApplication] openURL:url];
 }

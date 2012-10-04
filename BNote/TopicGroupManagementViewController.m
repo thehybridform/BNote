@@ -108,7 +108,7 @@ static NSString *kDoneText;
 
     [self.delegate selectTopicGroup:group];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)setCurrentTopicGroup:(TopicGroup *)currentTopicGroup

@@ -147,7 +147,7 @@ static NSString *imageOptionsText;
     
     [self setImagePickerController:controller];
 
-    [[[BNoteSessionData instance] mainViewController] presentModalViewController:controller animated:YES];
+    [[[BNoteSessionData instance] mainViewController] presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -161,7 +161,7 @@ static NSString *imageOptionsText;
     }
     
     if ([self imagePickerController]) {
-        [[self imagePickerController] dismissModalViewControllerAnimated:YES];
+        [[self imagePickerController] dismissViewControllerAnimated:YES completion:^{}];
         [self setImagePickerController:nil];
     }
 }
@@ -181,7 +181,7 @@ static NSString *imageOptionsText;
     [controller setModalPresentationStyle:UIModalPresentationFullScreen];
     [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         
-    [[[BNoteSessionData instance] mainViewController] presentModalViewController:controller animated:YES];
+    [[[BNoteSessionData instance] mainViewController] presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)presentPhotoEditor:(id)sender
@@ -198,7 +198,7 @@ static NSString *imageOptionsText;
     
     [controller setKeyPoint:[self keyPoint]];
     
-    [[[BNoteSessionData instance] mainViewController] presentModalViewController:controller animated:YES];
+    [[[BNoteSessionData instance] mainViewController] presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)showDelete:(id)sender

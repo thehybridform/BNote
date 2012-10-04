@@ -82,7 +82,7 @@ static NSString *attendants;
     [controller setPeoplePickerDelegate:self];
     [controller setModalPresentationStyle:UIModalPresentationPageSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
@@ -135,7 +135,7 @@ static NSString *attendants;
 {
     [self setSelectedAttendant:nil];
     [self setPeoplePicker:nil];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
     
     [[self attendantsViewController] update];
     [self handleImageIcon:NO];

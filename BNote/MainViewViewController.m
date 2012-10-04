@@ -223,7 +223,7 @@ static NSString *contactUs;
     NoteEditorViewController *noteController = [[NoteEditorViewController alloc] init];
     [noteController setModalPresentationStyle:UIModalPresentationFullScreen];
     [noteController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self presentModalViewController:noteController animated:YES];
+    [self presentViewController:noteController animated:YES completion:^{}];
     [BNoteSessionData instance].mainViewController = noteController;
 
     [noteController setNote:note];
@@ -251,8 +251,8 @@ static NSString *contactUs;
     
     [controller setModalPresentationStyle:UIModalPresentationFormSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    
-    [self presentModalViewController:controller animated:YES];
+
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (IBAction)presentShareOptions:(id)sender
@@ -287,15 +287,15 @@ static NSString *contactUs;
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
             controller.delegate = self;
-            
-            [self presentModalViewController:controller animated:YES];
+
+            [self presentViewController:controller animated:YES completion:^{}];
         } else if ([title isEqualToString:contactUs]) {
             ContactMailController *controller = [[ContactMailController alloc] init];
             [controller setModalInPopover:YES];
             [controller setModalPresentationStyle:UIModalPresentationPageSheet];
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-            
-            [self presentModalViewController:controller animated:YES];
+
+            [self presentViewController:controller animated:YES completion:^{}];
         }
     }
 
@@ -307,8 +307,8 @@ static NSString *contactUs;
     EmailViewController *controller = [[EmailViewController alloc] initWithTopic:[[self entriesTable] topic]];
     [controller setModalPresentationStyle:UIModalPresentationPageSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-        
-    [self presentModalViewController:controller animated:YES];
+
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)finishedWithFile:(BNoteExportFileWrapper *)file
@@ -322,8 +322,8 @@ static NSString *contactUs;
         
         [controller setModalPresentationStyle:UIModalPresentationPageSheet];
         [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-        
-        [self presentModalViewController:controller animated:YES];
+
+        [self presentViewController:controller animated:YES completion:^{}];
     }];
 }
 

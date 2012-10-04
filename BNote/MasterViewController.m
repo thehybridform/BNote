@@ -150,7 +150,7 @@ static NSString *falteredGroupText;
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     controller.delegate = self;
         
-    [self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -289,8 +289,8 @@ static NSString *falteredGroupText;
     [controller setModalPresentationStyle:UIModalPresentationFormSheet];
     [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
     controller.delegate = self;
-    
-    [self presentModalViewController:controller animated:YES];
+
+    [self presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)finishedWith:(Topic *)topic

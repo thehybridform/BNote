@@ -250,6 +250,24 @@ static NSString *resetText;
     [LayerFormater addShadowToView:[self mediumPencileButton]];
     [LayerFormater addShadowToView:[self largePencileButton]];
 
+    NSMutableArray *buttons = [[NSMutableArray alloc] init];
+    self.buttons = buttons;
+
+    [self button:self.color0Button paired:self.shadowView0];
+    [self button:self.color1Button paired:self.shadowView1];
+    [self button:self.color2Button paired:self.shadowView2];
+    [self button:self.color3Button paired:self.shadowView3];
+    [self button:self.color4Button paired:self.shadowView4];
+    [self button:self.color5Button paired:self.shadowView5];
+    [self button:self.color6Button paired:self.shadowView6];
+    [self button:self.color7Button paired:self.shadowView7];
+    [self button:self.color8Button paired:self.shadowView8];
+    [self button:self.color9Button paired:self.shadowView9];
+    [self button:self.color10Button paired:self.shadowView10];
+    [self button:self.color11Button paired:self.shadowView11];
+    [self button:self.color12Button paired:self.shadowView12];
+    [self button:self.color13Button paired:self.shadowView13];
+
     [[self buttonsView] setBackgroundColor:[UIColor clearColor]];
     [[self actionView] setBackgroundColor:[UIColor clearColor]];
     self.view.backgroundColor = UIColorFromRGB(0xf0f0f0);
@@ -265,7 +283,7 @@ static NSString *resetText;
                        [self color4Button],
                        [self color5Button],
                        [self color6Button],
-                       
+
                        self.shadowView0,
                        self.shadowView1,
                        self.shadowView2,
@@ -273,7 +291,7 @@ static NSString *resetText;
                        self.shadowView4,
                        self.shadowView5,
                        self.shadowView6,
-                       
+
                        nil];
     NSArray *views4 = [[NSArray alloc]
                        initWithObjects:
@@ -284,7 +302,7 @@ static NSString *resetText;
                        [self color11Button],
                        [self color12Button],
                        [self color13Button],
-                       
+
                        self.shadowView7,
                        self.shadowView8,
                        self.shadowView9,
@@ -313,24 +331,6 @@ static NSString *resetText;
     
     [self selectPencil:self.smallPencileButton];
     [self selectColor:self.color11Button];
-    
-    NSMutableArray *buttons = [[NSMutableArray alloc] init];
-    self.buttons = buttons;
-    
-    [self button:self.color0Button paired:self.shadowView0];
-    [self button:self.color1Button paired:self.shadowView1];
-    [self button:self.color2Button paired:self.shadowView2];
-    [self button:self.color3Button paired:self.shadowView3];
-    [self button:self.color4Button paired:self.shadowView4];
-    [self button:self.color5Button paired:self.shadowView5];
-    [self button:self.color6Button paired:self.shadowView6];
-    [self button:self.color7Button paired:self.shadowView7];
-    [self button:self.color8Button paired:self.shadowView8];
-    [self button:self.color9Button paired:self.shadowView9];
-    [self button:self.color10Button paired:self.shadowView10];
-    [self button:self.color11Button paired:self.shadowView11];
-    [self button:self.color12Button paired:self.shadowView12];
-    [self button:self.color13Button paired:self.shadowView13];
 }
 
 - (void)button:(UIButton *)button paired:(UIView *)view
@@ -382,7 +382,7 @@ static NSString *resetText;
         
     [BNoteEntryUtils updateThumbnailPhotos:image forKeyPoint:[self keyPoint]];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)selectColor:(UIButton *)button

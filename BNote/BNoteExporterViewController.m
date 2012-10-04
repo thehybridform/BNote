@@ -114,7 +114,7 @@
 
 - (IBAction)close:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)export:(id)sender

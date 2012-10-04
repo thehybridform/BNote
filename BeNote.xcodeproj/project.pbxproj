@@ -40,15 +40,6 @@
 		181A2D1615EB22690036FF2D /* BNoteXmlConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D1515EB22670036FF2D /* BNoteXmlConstants.m */; };
 		181A2D1715EB22690036FF2D /* BNoteXmlConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A2D1515EB22670036FF2D /* BNoteXmlConstants.m */; };
 		182F1DE815BE75DF0038AC13 /* EditNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1DE715BE75DF0038AC13 /* EditNoteView.m */; };
-		182F1E6615BE9EAF0038AC13 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6515BE9EAF0038AC13 /* Photo.m */; };
-		182F1E6915BE9EB00038AC13 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6815BE9EB00038AC13 /* Question.m */; };
-		182F1E6C15BE9EB00038AC13 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6B15BE9EB00038AC13 /* KeyPoint.m */; };
-		182F1E7515BE9EB10038AC13 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7415BE9EB10038AC13 /* Entry.m */; };
-		182F1E7815BE9EB10038AC13 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7715BE9EB10038AC13 /* Attendant.m */; };
-		182F1E7E15BE9EB10038AC13 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7D15BE9EB10038AC13 /* Attendants.m */; };
-		182F1E8115BE9EB20038AC13 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8015BE9EB20038AC13 /* Decision.m */; };
-		182F1E8415BE9EB20038AC13 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8315BE9EB20038AC13 /* KeyWord.m */; };
-		182F1E8715BE9EB20038AC13 /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8615BE9EB20038AC13 /* SketchPath.m */; };
 		182F1E9B15BFA5570038AC13 /* BNoteDefaultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */; };
 		182F1EAD15C136600038AC13 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1EAB15C136600038AC13 /* ProgressViewController.m */; };
 		1834D33C15634A650065788F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834D33B15634A650065788F /* UIKit.framework */; };
@@ -86,8 +77,6 @@
 		18539D6915AFF6D900D7DC55 /* KeyPointCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6815AFF6D900D7DC55 /* KeyPointCloner.m */; };
 		18539D6C15AFF73F00D7DC55 /* PhotoCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D6B15AFF73E00D7DC55 /* PhotoCloner.m */; };
 		18539D7215AFFF6900D7DC55 /* AttendantsCloner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */; };
-		185C403315CD97300036BCBD /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C403215CD972C0036BCBD /* Note.m */; };
-		185C403615CD97370036BCBD /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C403515CD97360036BCBD /* Topic.m */; };
 		1860688C15C62F8D003DC4EB /* BNoteFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860688B15C62F8D003DC4EB /* BNoteFilterButton.m */; };
 		1860688F15C632EB003DC4EB /* FilterButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860688E15C632EB003DC4EB /* FilterButtonFactory.m */; };
 		1860689215C63356003DC4EB /* KeyPointFilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860689115C63356003DC4EB /* KeyPointFilterButton.m */; };
@@ -233,8 +222,6 @@
 		18BEF91515EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91315EB359500B37F29 /* KeyPointUnmarshaller.m */; };
 		18BEF91815EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */; };
 		18BEF91915EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */; };
-		18BEF92515EC2AF400B37F29 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92415EC2AF400B37F29 /* ActionItem.m */; };
-		18BEF92615EC2AF400B37F29 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92415EC2AF400B37F29 /* ActionItem.m */; };
 		18BEF92915EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92815EC2E8D00B37F29 /* AttendeeMarshaller.m */; };
 		18BEF92A15EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92815EC2E8D00B37F29 /* AttendeeMarshaller.m */; };
 		18BEF92D15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BEF92C15EC311A00B37F29 /* AttendeeUnmarshaller.m */; };
@@ -357,7 +344,32 @@
 		18E9FF6A1571835600F22272 /* BNoteAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF691571835600F22272 /* BNoteAnimation.m */; };
 		18E9FF6D15729EFA00F22272 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FF6C15729EF900F22272 /* NotesViewController.m */; };
 		18ECE92F15A2A9A6009E5D0B /* Squared_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */; };
-		18F290D015CD9CEE00543E65 /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F290CF15CD9CEE00543E65 /* TopicGroup.m */; };
+		18F1633B161D448F00344FD6 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1633A161D448F00344FD6 /* Decision.m */; };
+		18F1633C161D448F00344FD6 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1633A161D448F00344FD6 /* Decision.m */; };
+		18F16340161D448F00344FD6 /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1633F161D448F00344FD6 /* TopicGroup.m */; };
+		18F16341161D448F00344FD6 /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1633F161D448F00344FD6 /* TopicGroup.m */; };
+		18F16344161D448F00344FD6 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16343161D448F00344FD6 /* Topic.m */; };
+		18F16345161D448F00344FD6 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16343161D448F00344FD6 /* Topic.m */; };
+		18F16348161D449000344FD6 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16347161D448F00344FD6 /* KeyPoint.m */; };
+		18F16349161D449000344FD6 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16347161D448F00344FD6 /* KeyPoint.m */; };
+		18F1634C161D449000344FD6 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1634B161D449000344FD6 /* ActionItem.m */; };
+		18F1634D161D449000344FD6 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1634B161D449000344FD6 /* ActionItem.m */; };
+		18F16350161D449000344FD6 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1634F161D449000344FD6 /* Note.m */; };
+		18F16351161D449000344FD6 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1634F161D449000344FD6 /* Note.m */; };
+		18F16354161D449000344FD6 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16353161D449000344FD6 /* Entry.m */; };
+		18F16355161D449000344FD6 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16353161D449000344FD6 /* Entry.m */; };
+		18F16358161D449000344FD6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16357161D449000344FD6 /* Question.m */; };
+		18F16359161D449000344FD6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16357161D449000344FD6 /* Question.m */; };
+		18F1635C161D449000344FD6 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1635B161D449000344FD6 /* Attendants.m */; };
+		18F1635D161D449000344FD6 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1635B161D449000344FD6 /* Attendants.m */; };
+		18F16360161D449000344FD6 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1635F161D449000344FD6 /* Attendant.m */; };
+		18F16361161D449000344FD6 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1635F161D449000344FD6 /* Attendant.m */; };
+		18F16364161D449000344FD6 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16363161D449000344FD6 /* KeyWord.m */; };
+		18F16365161D449000344FD6 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16363161D449000344FD6 /* KeyWord.m */; };
+		18F16368161D449100344FD6 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16367161D449100344FD6 /* Photo.m */; };
+		18F16369161D449100344FD6 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F16367161D449100344FD6 /* Photo.m */; };
+		18F1636C161D449100344FD6 /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1636B161D449100344FD6 /* SketchPath.m */; };
+		18F1636D161D449100344FD6 /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1636B161D449100344FD6 /* SketchPath.m */; };
 		18F4E1C715CE4843002095A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34715634A650065788F /* main.m */; };
 		18F4E1C815CE4843002095A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34B15634A650065788F /* AppDelegate.m */; };
 		18F4E1C915CE4843002095A2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D34E15634A650065788F /* MasterViewController.m */; };
@@ -445,15 +457,6 @@
 		18F4E22215CE4843002095A2 /* TopicGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FCA15BB43AE00A2FD14 /* TopicGroupsTableViewController.m */; };
 		18F4E22315CE4843002095A2 /* SelectedTopicsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A30FCD15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m */; };
 		18F4E22415CE4843002095A2 /* EditNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1DE715BE75DF0038AC13 /* EditNoteView.m */; };
-		18F4E22515CE4843002095A2 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6515BE9EAF0038AC13 /* Photo.m */; };
-		18F4E22615CE4843002095A2 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6815BE9EB00038AC13 /* Question.m */; };
-		18F4E22715CE4843002095A2 /* KeyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E6B15BE9EB00038AC13 /* KeyPoint.m */; };
-		18F4E22815CE4843002095A2 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7415BE9EB10038AC13 /* Entry.m */; };
-		18F4E22915CE4843002095A2 /* Attendant.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7715BE9EB10038AC13 /* Attendant.m */; };
-		18F4E22B15CE4843002095A2 /* Attendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E7D15BE9EB10038AC13 /* Attendants.m */; };
-		18F4E22C15CE4843002095A2 /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8015BE9EB20038AC13 /* Decision.m */; };
-		18F4E22D15CE4843002095A2 /* KeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8315BE9EB20038AC13 /* KeyWord.m */; };
-		18F4E22E15CE4843002095A2 /* SketchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E8615BE9EB20038AC13 /* SketchPath.m */; };
 		18F4E22F15CE4843002095A2 /* BNoteDefaultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */; };
 		18F4E23015CE4843002095A2 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F1EAB15C136600038AC13 /* ProgressViewController.m */; };
 		18F4E23115CE4843002095A2 /* BNotePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9AC915C4F568007BE5E9 /* BNotePageControl.m */; };
@@ -471,9 +474,6 @@
 		18F4E23D15CE4843002095A2 /* SelectedKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E88A15C7B89C005590A2 /* SelectedKeyWordFinder.m */; };
 		18F4E23E15CE4843002095A2 /* NoteSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89615C7C0D9005590A2 /* NoteSummaryViewController.m */; };
 		18F4E23F15CE4843002095A2 /* ToTheLeftKeyWordFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5E89B15C8DE79005590A2 /* ToTheLeftKeyWordFinder.m */; };
-		18F4E24015CE4843002095A2 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C403215CD972C0036BCBD /* Note.m */; };
-		18F4E24115CE4843002095A2 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C403515CD97360036BCBD /* Topic.m */; };
-		18F4E24215CE4843002095A2 /* TopicGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F290CF15CD9CEE00543E65 /* TopicGroup.m */; };
 		18F4E24415CE4843002095A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186068C515C7979C003DC4EB /* QuartzCore.framework */; };
 		18F4E24515CE4843002095A2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AF4ABF15852FFC00A54205 /* MessageUI.framework */; };
 		18F4E24615CE4843002095A2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A05684157B5BCC002A4A78 /* AddressBook.framework */; };
@@ -584,24 +584,6 @@
 		182F1DE715BE75DF0038AC13 /* EditNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteView.m; sourceTree = "<group>"; };
 		182F1DEA15BE9B9D0038AC13 /* BeNote 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 14.xcdatamodel"; sourceTree = "<group>"; };
 		182F1E1515BE9D6A0038AC13 /* BeNote 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 15.xcdatamodel"; sourceTree = "<group>"; };
-		182F1E6415BE9EAF0038AC13 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		182F1E6515BE9EAF0038AC13 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		182F1E6715BE9EAF0038AC13 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		182F1E6815BE9EB00038AC13 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		182F1E6A15BE9EB00038AC13 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
-		182F1E6B15BE9EB00038AC13 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
-		182F1E7315BE9EB10038AC13 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		182F1E7415BE9EB10038AC13 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		182F1E7615BE9EB10038AC13 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
-		182F1E7715BE9EB10038AC13 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
-		182F1E7C15BE9EB10038AC13 /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
-		182F1E7D15BE9EB10038AC13 /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
-		182F1E7F15BE9EB20038AC13 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
-		182F1E8015BE9EB20038AC13 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
-		182F1E8215BE9EB20038AC13 /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
-		182F1E8315BE9EB20038AC13 /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
-		182F1E8515BE9EB20038AC13 /* SketchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchPath.h; sourceTree = "<group>"; };
-		182F1E8615BE9EB20038AC13 /* SketchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SketchPath.m; sourceTree = "<group>"; };
 		182F1E9915BFA5570038AC13 /* BNoteDefaultData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteDefaultData.h; sourceTree = "<group>"; };
 		182F1E9A15BFA5570038AC13 /* BNoteDefaultData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteDefaultData.m; sourceTree = "<group>"; };
 		182F1EAA15C136600038AC13 /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressViewController.h; sourceTree = "<group>"; };
@@ -671,10 +653,6 @@
 		18539D7115AFFF6900D7DC55 /* AttendantsCloner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsCloner.m; sourceTree = "<group>"; };
 		18558C451589AE9100BCB45C /* BeNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeNote.entitlements; path = ../BeNote.entitlements; sourceTree = "<group>"; };
 		185C402F15CD96730036BCBD /* BeNote 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 17.xcdatamodel"; sourceTree = "<group>"; };
-		185C403115CD972A0036BCBD /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		185C403215CD972C0036BCBD /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		185C403415CD97350036BCBD /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		185C403515CD97360036BCBD /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 		1860688915C62D99003DC4EB /* BNoteFilterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNoteFilterDelegate.h; sourceTree = "<group>"; };
 		1860688A15C62F8D003DC4EB /* BNoteFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFilterButton.h; sourceTree = "<group>"; };
 		1860688B15C62F8D003DC4EB /* BNoteFilterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFilterButton.m; sourceTree = "<group>"; };
@@ -859,8 +837,6 @@
 		18BEF91615EB35A500B37F29 /* DecisionUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionUnmarshaller.h; sourceTree = "<group>"; };
 		18BEF91715EB35A500B37F29 /* DecisionUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionUnmarshaller.m; sourceTree = "<group>"; };
 		18BEF91A15EC293E00B37F29 /* BeNote 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 19.xcdatamodel"; sourceTree = "<group>"; };
-		18BEF92315EC2AF400B37F29 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
-		18BEF92415EC2AF400B37F29 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
 		18BEF92715EC2E8D00B37F29 /* AttendeeMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeMarshaller.h; sourceTree = "<group>"; };
 		18BEF92815EC2E8D00B37F29 /* AttendeeMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeMarshaller.m; sourceTree = "<group>"; };
 		18BEF92B15EC311900B37F29 /* AttendeeUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeUnmarshaller.h; sourceTree = "<group>"; };
@@ -1009,8 +985,32 @@
 		18ECE8E415A15BC3009E5D0B /* BeNote 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 11.xcdatamodel"; sourceTree = "<group>"; };
 		18ECE90915A1726E009E5D0B /* BeNote 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 12.xcdatamodel"; sourceTree = "<group>"; };
 		18ECE92E15A2A9A6009E5D0B /* Squared_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Squared_paper.jpg; sourceTree = "<group>"; };
-		18F290CE15CD9CEE00543E65 /* TopicGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroup.h; sourceTree = "<group>"; };
-		18F290CF15CD9CEE00543E65 /* TopicGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroup.m; sourceTree = "<group>"; };
+		18F16339161D448F00344FD6 /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decision.h; sourceTree = "<group>"; };
+		18F1633A161D448F00344FD6 /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decision.m; sourceTree = "<group>"; };
+		18F1633E161D448F00344FD6 /* TopicGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroup.h; sourceTree = "<group>"; };
+		18F1633F161D448F00344FD6 /* TopicGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroup.m; sourceTree = "<group>"; };
+		18F16342161D448F00344FD6 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		18F16343161D448F00344FD6 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		18F16346161D448F00344FD6 /* KeyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		18F16347161D448F00344FD6 /* KeyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPoint.m; sourceTree = "<group>"; };
+		18F1634A161D449000344FD6 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItem.h; sourceTree = "<group>"; };
+		18F1634B161D449000344FD6 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItem.m; sourceTree = "<group>"; };
+		18F1634E161D449000344FD6 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		18F1634F161D449000344FD6 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		18F16352161D449000344FD6 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		18F16353161D449000344FD6 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		18F16356161D449000344FD6 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		18F16357161D449000344FD6 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		18F1635A161D449000344FD6 /* Attendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendants.h; sourceTree = "<group>"; };
+		18F1635B161D449000344FD6 /* Attendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendants.m; sourceTree = "<group>"; };
+		18F1635E161D449000344FD6 /* Attendant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendant.h; sourceTree = "<group>"; };
+		18F1635F161D449000344FD6 /* Attendant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendant.m; sourceTree = "<group>"; };
+		18F16362161D449000344FD6 /* KeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWord.h; sourceTree = "<group>"; };
+		18F16363161D449000344FD6 /* KeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWord.m; sourceTree = "<group>"; };
+		18F16366161D449100344FD6 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		18F16367161D449100344FD6 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		18F1636A161D449100344FD6 /* SketchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchPath.h; sourceTree = "<group>"; };
+		18F1636B161D449100344FD6 /* SketchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SketchPath.m; sourceTree = "<group>"; };
 		18F290D115CD9D1D00543E65 /* BeNote 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BeNote 18.xcdatamodel"; sourceTree = "<group>"; };
 		18F291CF15CE43F900543E65 /* BeNote Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BeNote Lite-Info.plist"; path = "/Users/kristinyoung/projects/bnote-projects/BNote - github/BeNote Lite-Info.plist"; sourceTree = "<absolute>"; };
 		18F4E2B415CE4843002095A2 /* BeNote Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BeNote Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1271,32 +1271,32 @@
 			isa = PBXGroup;
 			children = (
 				18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */,
-				18BEF92315EC2AF400B37F29 /* ActionItem.h */,
-				18BEF92415EC2AF400B37F29 /* ActionItem.m */,
-				18F290CE15CD9CEE00543E65 /* TopicGroup.h */,
-				18F290CF15CD9CEE00543E65 /* TopicGroup.m */,
-				185C403115CD972A0036BCBD /* Note.h */,
-				185C403415CD97350036BCBD /* Topic.h */,
-				185C403515CD97360036BCBD /* Topic.m */,
-				185C403215CD972C0036BCBD /* Note.m */,
-				182F1E8515BE9EB20038AC13 /* SketchPath.h */,
-				182F1E8615BE9EB20038AC13 /* SketchPath.m */,
-				182F1E8215BE9EB20038AC13 /* KeyWord.h */,
-				182F1E8315BE9EB20038AC13 /* KeyWord.m */,
-				182F1E7F15BE9EB20038AC13 /* Decision.h */,
-				182F1E8015BE9EB20038AC13 /* Decision.m */,
-				182F1E7C15BE9EB10038AC13 /* Attendants.h */,
-				182F1E7D15BE9EB10038AC13 /* Attendants.m */,
-				182F1E7615BE9EB10038AC13 /* Attendant.h */,
-				182F1E7715BE9EB10038AC13 /* Attendant.m */,
-				182F1E7315BE9EB10038AC13 /* Entry.h */,
-				182F1E7415BE9EB10038AC13 /* Entry.m */,
-				182F1E6A15BE9EB00038AC13 /* KeyPoint.h */,
-				182F1E6B15BE9EB00038AC13 /* KeyPoint.m */,
-				182F1E6715BE9EAF0038AC13 /* Question.h */,
-				182F1E6815BE9EB00038AC13 /* Question.m */,
-				182F1E6415BE9EAF0038AC13 /* Photo.h */,
-				182F1E6515BE9EAF0038AC13 /* Photo.m */,
+				18F1636A161D449100344FD6 /* SketchPath.h */,
+				18F1636B161D449100344FD6 /* SketchPath.m */,
+				18F16366161D449100344FD6 /* Photo.h */,
+				18F16367161D449100344FD6 /* Photo.m */,
+				18F16362161D449000344FD6 /* KeyWord.h */,
+				18F16363161D449000344FD6 /* KeyWord.m */,
+				18F1635E161D449000344FD6 /* Attendant.h */,
+				18F1635F161D449000344FD6 /* Attendant.m */,
+				18F1635A161D449000344FD6 /* Attendants.h */,
+				18F1635B161D449000344FD6 /* Attendants.m */,
+				18F16356161D449000344FD6 /* Question.h */,
+				18F16357161D449000344FD6 /* Question.m */,
+				18F16352161D449000344FD6 /* Entry.h */,
+				18F16353161D449000344FD6 /* Entry.m */,
+				18F1634E161D449000344FD6 /* Note.h */,
+				18F1634F161D449000344FD6 /* Note.m */,
+				18F1634A161D449000344FD6 /* ActionItem.h */,
+				18F1634B161D449000344FD6 /* ActionItem.m */,
+				18F16346161D448F00344FD6 /* KeyPoint.h */,
+				18F16347161D448F00344FD6 /* KeyPoint.m */,
+				18F16342161D448F00344FD6 /* Topic.h */,
+				18F16343161D448F00344FD6 /* Topic.m */,
+				18F1633E161D448F00344FD6 /* TopicGroup.h */,
+				18F1633F161D448F00344FD6 /* TopicGroup.m */,
+				18F16339161D448F00344FD6 /* Decision.h */,
+				18F1633A161D448F00344FD6 /* Decision.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -2246,15 +2246,6 @@
 				18A30FCB15BB43AE00A2FD14 /* TopicGroupsTableViewController.m in Sources */,
 				18A30FCE15BB43BE00A2FD14 /* SelectedTopicsTableViewController.m in Sources */,
 				182F1DE815BE75DF0038AC13 /* EditNoteView.m in Sources */,
-				182F1E6615BE9EAF0038AC13 /* Photo.m in Sources */,
-				182F1E6915BE9EB00038AC13 /* Question.m in Sources */,
-				182F1E6C15BE9EB00038AC13 /* KeyPoint.m in Sources */,
-				182F1E7515BE9EB10038AC13 /* Entry.m in Sources */,
-				182F1E7815BE9EB10038AC13 /* Attendant.m in Sources */,
-				182F1E7E15BE9EB10038AC13 /* Attendants.m in Sources */,
-				182F1E8115BE9EB20038AC13 /* Decision.m in Sources */,
-				182F1E8415BE9EB20038AC13 /* KeyWord.m in Sources */,
-				182F1E8715BE9EB20038AC13 /* SketchPath.m in Sources */,
 				182F1E9B15BFA5570038AC13 /* BNoteDefaultData.m in Sources */,
 				182F1EAD15C136600038AC13 /* ProgressViewController.m in Sources */,
 				187F9ACA15C4F568007BE5E9 /* BNotePageControl.m in Sources */,
@@ -2272,9 +2263,6 @@
 				18C5E88B15C7B89C005590A2 /* SelectedKeyWordFinder.m in Sources */,
 				18C5E89815C7C0D9005590A2 /* NoteSummaryViewController.m in Sources */,
 				18C5E89C15C8DE7A005590A2 /* ToTheLeftKeyWordFinder.m in Sources */,
-				185C403315CD97300036BCBD /* Note.m in Sources */,
-				185C403615CD97370036BCBD /* Topic.m in Sources */,
-				18F290D015CD9CEE00543E65 /* TopicGroup.m in Sources */,
 				18B4FB3515D0D82E00619E27 /* EntryConverterHelper.m in Sources */,
 				18B4FB3815D0DA4700619E27 /* KeyPointToQuestionConverter.m in Sources */,
 				18B4FB3B15D0DA5800619E27 /* KeyPointToDecisionConverter.m in Sources */,
@@ -2336,7 +2324,6 @@
 				18BEF91015EB357800B37F29 /* QuestionUnmarshaller.m in Sources */,
 				18BEF91415EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */,
 				18BEF91815EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */,
-				18BEF92515EC2AF400B37F29 /* ActionItem.m in Sources */,
 				18BEF92915EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */,
 				18BEF92D15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */,
 				18BEF93115EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
@@ -2345,6 +2332,19 @@
 				18BEF94E15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */,
 				18D87F1615F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m in Sources */,
 				18BAEC771606873B0056E34A /* HelpViewController.m in Sources */,
+				18F1633B161D448F00344FD6 /* Decision.m in Sources */,
+				18F16340161D448F00344FD6 /* TopicGroup.m in Sources */,
+				18F16344161D448F00344FD6 /* Topic.m in Sources */,
+				18F16348161D449000344FD6 /* KeyPoint.m in Sources */,
+				18F1634C161D449000344FD6 /* ActionItem.m in Sources */,
+				18F16350161D449000344FD6 /* Note.m in Sources */,
+				18F16354161D449000344FD6 /* Entry.m in Sources */,
+				18F16358161D449000344FD6 /* Question.m in Sources */,
+				18F1635C161D449000344FD6 /* Attendants.m in Sources */,
+				18F16360161D449000344FD6 /* Attendant.m in Sources */,
+				18F16364161D449000344FD6 /* KeyWord.m in Sources */,
+				18F16368161D449100344FD6 /* Photo.m in Sources */,
+				18F1636C161D449100344FD6 /* SketchPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2443,15 +2443,6 @@
 				18F4E22215CE4843002095A2 /* TopicGroupsTableViewController.m in Sources */,
 				18F4E22315CE4843002095A2 /* SelectedTopicsTableViewController.m in Sources */,
 				18F4E22415CE4843002095A2 /* EditNoteView.m in Sources */,
-				18F4E22515CE4843002095A2 /* Photo.m in Sources */,
-				18F4E22615CE4843002095A2 /* Question.m in Sources */,
-				18F4E22715CE4843002095A2 /* KeyPoint.m in Sources */,
-				18F4E22815CE4843002095A2 /* Entry.m in Sources */,
-				18F4E22915CE4843002095A2 /* Attendant.m in Sources */,
-				18F4E22B15CE4843002095A2 /* Attendants.m in Sources */,
-				18F4E22C15CE4843002095A2 /* Decision.m in Sources */,
-				18F4E22D15CE4843002095A2 /* KeyWord.m in Sources */,
-				18F4E22E15CE4843002095A2 /* SketchPath.m in Sources */,
 				18F4E22F15CE4843002095A2 /* BNoteDefaultData.m in Sources */,
 				18F4E23015CE4843002095A2 /* ProgressViewController.m in Sources */,
 				18F4E23115CE4843002095A2 /* BNotePageControl.m in Sources */,
@@ -2469,9 +2460,6 @@
 				18F4E23D15CE4843002095A2 /* SelectedKeyWordFinder.m in Sources */,
 				18F4E23E15CE4843002095A2 /* NoteSummaryViewController.m in Sources */,
 				18F4E23F15CE4843002095A2 /* ToTheLeftKeyWordFinder.m in Sources */,
-				18F4E24015CE4843002095A2 /* Note.m in Sources */,
-				18F4E24115CE4843002095A2 /* Topic.m in Sources */,
-				18F4E24215CE4843002095A2 /* TopicGroup.m in Sources */,
 				18B4FB3F15D0DA7300619E27 /* KeyPointToActionItemConverter.m in Sources */,
 				18B4FB4615D0DAB500619E27 /* QuestionToKeyPointConverter.m in Sources */,
 				18B4FB4E15D0DAD500619E27 /* QuestionToActionItemConverter.m in Sources */,
@@ -2530,7 +2518,6 @@
 				18BEF91115EB357800B37F29 /* QuestionUnmarshaller.m in Sources */,
 				18BEF91515EB359600B37F29 /* KeyPointUnmarshaller.m in Sources */,
 				18BEF91915EB35A500B37F29 /* DecisionUnmarshaller.m in Sources */,
-				18BEF92615EC2AF400B37F29 /* ActionItem.m in Sources */,
 				18BEF92A15EC2E8E00B37F29 /* AttendeeMarshaller.m in Sources */,
 				18BEF92E15EC311A00B37F29 /* AttendeeUnmarshaller.m in Sources */,
 				18BEF93215EC33EF00B37F29 /* ResponsibilityUnmarshaller.m in Sources */,
@@ -2539,6 +2526,19 @@
 				18BEF94F15F03B8000B37F29 /* TopicUnmarshaller.m in Sources */,
 				18D87F1715F06CEC00A7CD41 /* AssociatedTopicUnmarshaller.m in Sources */,
 				18BAEC781606873B0056E34A /* HelpViewController.m in Sources */,
+				18F1633C161D448F00344FD6 /* Decision.m in Sources */,
+				18F16341161D448F00344FD6 /* TopicGroup.m in Sources */,
+				18F16345161D448F00344FD6 /* Topic.m in Sources */,
+				18F16349161D449000344FD6 /* KeyPoint.m in Sources */,
+				18F1634D161D449000344FD6 /* ActionItem.m in Sources */,
+				18F16351161D449000344FD6 /* Note.m in Sources */,
+				18F16355161D449000344FD6 /* Entry.m in Sources */,
+				18F16359161D449000344FD6 /* Question.m in Sources */,
+				18F1635D161D449000344FD6 /* Attendants.m in Sources */,
+				18F16361161D449000344FD6 /* Attendant.m in Sources */,
+				18F16365161D449000344FD6 /* KeyWord.m in Sources */,
+				18F16369161D449100344FD6 /* Photo.m in Sources */,
+				18F1636D161D449100344FD6 /* SketchPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2564,7 +2564,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kristin Young (4Q4H2ZXL5Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kristin Young";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2580,7 +2580,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1B6AB9ED-BFC4-4BC0-9F42-A1A693792B2E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C3AE6D42-5813-461D-AF3D-1BD7DAE82825";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2593,7 +2593,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kristin Young (4Q4H2ZXL5Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kristin Young";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2603,7 +2603,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1B6AB9ED-BFC4-4BC0-9F42-A1A693792B2E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C3AE6D42-5813-461D-AF3D-1BD7DAE82825";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2615,13 +2615,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BeNote.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kristin Young";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				INFOPLIST_FILE = "BNote/BeNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = BeNote;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5131343B-F122-4D4E-9275-DF368064873A";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2631,13 +2631,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BeNote.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kristin Young";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				INFOPLIST_FILE = "BNote/BeNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = BeNote;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5131343B-F122-4D4E-9275-DF368064873A";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2649,7 +2649,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kristin Young (4Q4H2ZXL5Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kristin Young";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2659,7 +2659,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1B6AB9ED-BFC4-4BC0-9F42-A1A693792B2E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C3AE6D42-5813-461D-AF3D-1BD7DAE82825";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2671,13 +2671,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BeNote.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kristin Young";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				INFOPLIST_FILE = "BNote/BeNote-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = BeNote;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5131343B-F122-4D4E-9275-DF368064873A";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2686,14 +2686,14 @@
 		1853534916070CBA00AEC454 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kristin Young (4Q4H2ZXL5Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = LITE;
 				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "BeNote Lite";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "79655C4B-F6B0-4049-898E-CD5B70EFC88B";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2702,7 +2702,7 @@
 		18F4E2B215CE4843002095A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kristin Young (4Q4H2ZXL5Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2713,7 +2713,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "BeNote Lite";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "79655C4B-F6B0-4049-898E-CD5B70EFC88B";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2722,14 +2722,14 @@
 		18F4E2B315CE4843002095A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kristin Young (4Q4H2ZXL5Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BNote/BeNote-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = LITE;
 				INFOPLIST_FILE = "$(SRCROOT)/BeNote Lite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "BeNote Lite";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "79655C4B-F6B0-4049-898E-CD5B70EFC88B";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

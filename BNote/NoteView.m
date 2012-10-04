@@ -75,7 +75,7 @@ const static float h2 = h1 - 8;
         [text setFrame:CGRectMake(5, 43, 90, 30)];
         [text setTextColor:[BNoteConstants appHighlightColor1]];
         [text setCenter:CGPointMake(48, 65)];
-        [text setTextAlignment:(NSTextAlignment) UITextAlignmentCenter];
+        [text setTextAlignment:NSTextAlignmentCenter];
         [text setBackgroundColor:[UIColor clearColor]];
         [text setClipsToBounds:NO];
  

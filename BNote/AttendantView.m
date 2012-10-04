@@ -79,8 +79,8 @@ static NSString *removeAttendanText;
     _attendant = attendant;
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 90, 10)];
-    [nameLabel setLineBreakMode:(NSLineBreakMode) UILineBreakModeTailTruncation];
-    [nameLabel setTextAlignment:(NSTextAlignment) UITextAlignmentCenter];
+    [nameLabel setLineBreakMode:NSLineBreakByTruncatingTail];
+    [nameLabel setTextAlignment:NSLineBreakByTruncatingMiddle];
     [nameLabel setFont:[BNoteConstants font:RobotoLight andSize:10]];
     [nameLabel setNumberOfLines:1];
 
@@ -88,8 +88,8 @@ static NSString *removeAttendanText;
     [nameLabel setText:name];
 
     UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 60, 90, 10)];
-    [emailLabel setLineBreakMode:(NSLineBreakMode) UILineBreakModeTailTruncation];
-    [emailLabel setTextAlignment:(NSTextAlignment) UITextAlignmentCenter];
+    [emailLabel setLineBreakMode:NSLineBreakByTruncatingTail];
+    [emailLabel setTextAlignment:NSLineBreakByTruncatingMiddle];
     [emailLabel setFont:[BNoteConstants font:RobotoLight andSize:10]];
     [emailLabel setNumberOfLines:1];
     [emailLabel setText:[attendant email]];

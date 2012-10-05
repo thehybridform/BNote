@@ -2,7 +2,7 @@
 //  Topic.h
 //  BeNote
 //
-//  Created by kristin young on 8/4/12.
+//  Created by kristin young on 10/4/12.
 //
 //
 
@@ -15,9 +15,9 @@
 
 @property (nonatomic) int32_t color;
 @property (nonatomic) NSTimeInterval created;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSOrderedSet *associatedNotes;
 @property (nonatomic, retain) NSOrderedSet *groups;
 @property (nonatomic, retain) NSOrderedSet *notes;

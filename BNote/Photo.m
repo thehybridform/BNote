@@ -2,11 +2,13 @@
 //  Photo.m
 //  BeNote
 //
-//  Created by Young Kristin on 7/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by kristin young on 10/4/12.
+//
 //
 
 #import "Photo.h"
+#import "KeyPoint.h"
+#import "SketchPath.h"
 
 
 @implementation Photo

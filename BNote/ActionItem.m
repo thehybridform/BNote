@@ -2,9 +2,12 @@
 //  ActionItem.m
 //  BeNote
 //
-//  Created by kristin young on 8/27/12.
+//  Created by kristin young on 10/4/12.
 //
 //
+
+#import "ActionItem.h"
+#import "Attendant.h"
 
 
 @implementation ActionItem

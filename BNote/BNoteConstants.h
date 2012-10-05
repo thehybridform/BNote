@@ -61,6 +61,9 @@ extern NSString * const kFirstTopicAdd;
 extern NSString * const kFilteredTopicName;
 extern NSString * const kAllTopicGroupName;
 
+extern NSString * const kUobiaHomePage;
+extern NSString * const kUobia;
+
 #ifdef LITE
 
 extern int const kMaxTopicGroups;

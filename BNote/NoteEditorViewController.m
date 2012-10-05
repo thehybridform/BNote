@@ -535,7 +535,8 @@ static NSString *spacing = @"   ";
         
         [actionSheet addButtonWithTitle:exportText];
         [actionSheet addButtonWithTitle:contactUs];
-        
+        [actionSheet addButtonWithTitle:kUobia];
+
         UIView *view = self.shareButton;
         CGRect rect = view.bounds;
         [actionSheet showFromRect:rect inView:view animated:NO];
@@ -569,6 +570,9 @@ static NSString *spacing = @"   ";
             [controller setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
 
             [self presentViewController:controller animated:YES completion:^{}];
+        } else if ([title isEqualToString:kUobia]) {
+            NSURL *url = [NSURL URLWithString:kUobiaHomePage];
+            [[UIApplication sharedApplication] openURL:url];
         }
     }
     

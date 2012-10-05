@@ -388,7 +388,10 @@ static NSString *kDoneText;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self done:nil];
+    if (![self topicNameExists]) {
+        [self done:nil];
+    }
+
     return NO;
 }
 

@@ -161,10 +161,12 @@ static NSString *falteredGroupText;
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     Topic *topic = [[self data] objectAtIndex:(NSUInteger) [sourceIndexPath row]];
-    [[BNoteWriter instance] moveTopic:topic toIndex:(NSUInteger) [destinationIndexPath row] inGroup:[[topic groups] objectAtIndex:0]];
+    [[BNoteWriter instance] moveTopic:topic toIndex:(NSUInteger) [destinationIndexPath row] inGroup:self.currentTopicGroup];
 
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:(NSUInteger) [sourceIndexPath row]];
     [self.data moveObjectsAtIndexes:indexSet toIndex:(NSUInteger) [destinationIndexPath row]];
+
+    [[BNoteWriter instance] update];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

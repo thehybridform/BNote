@@ -2,7 +2,7 @@
 //  TopicGroup.h
 //  BeNote
 //
-//  Created by kristin young on 8/4/12.
+//  Created by kristin young on 10/4/12.
 //
 //
 
@@ -14,9 +14,9 @@
 @interface TopicGroup : NSManagedObject
 
 @property (nonatomic) NSTimeInterval created;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSOrderedSet *topics;
 @end
 

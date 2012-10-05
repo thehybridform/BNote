@@ -2,7 +2,7 @@
 //  Note.h
 //  BeNote
 //
-//  Created by kristin young on 8/4/12.
+//  Created by kristin young on 10/4/12.
 //
 //
 
@@ -15,10 +15,10 @@
 
 @property (nonatomic) int32_t color;
 @property (nonatomic) NSTimeInterval created;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic) NSTimeInterval lastUpdated;
 @property (nonatomic, retain) NSString * subject;
 @property (nonatomic, retain) NSString * summary;
-@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSSet *associatedTopics;
 @property (nonatomic, retain) NSOrderedSet *entries;
 @property (nonatomic, retain) Topic *topic;
@@ -35,7 +35,7 @@
 - (void)removeObjectFromEntriesAtIndex:(NSUInteger)idx;
 - (void)insertEntries:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
 - (void)removeEntriesAtIndexes:(NSIndexSet *)indexes;
-
+- (void)replaceObjectInEntriesAtIndex:(NSUInteger)idx withObject:(Entry *)value;
 - (void)replaceEntriesAtIndexes:(NSIndexSet *)indexes withEntries:(NSArray *)values;
 - (void)addEntriesObject:(Entry *)value;
 - (void)removeEntriesObject:(Entry *)value;

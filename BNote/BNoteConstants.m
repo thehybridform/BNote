@@ -67,6 +67,9 @@ NSString * const kFirstTopicAdd = @"kFirstTopicAdd";
 NSString * const kFilteredTopicName = @"random name - 01pq92ow83ie847rut75thfgdyd63hvbdkc+_)(*ndjgddnjk<>?/.,ml9912";
 NSString * const kAllTopicGroupName = @"random name - 234234098lskdjlksdc09rsdjkv$&^%TIDHCVKN88934cndjSDGERERGERGH";
 
+NSString * const kUobiaHomePage = @"http://http://benote.uobia.net";
+NSString * const kUobia = @"Uobia";
+
 @implementation BNoteConstants
 
 + (UIColor *)appHighlightColor1

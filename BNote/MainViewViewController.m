@@ -39,6 +39,10 @@
 @property (strong, nonatomic) IBOutlet PeopleViewController *peopleViewController;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UILabel *liteLable;
+@property (strong, nonatomic) IBOutlet UIView *progressView;
+@property (strong, nonatomic) IBOutlet UIView *progressBackgroundView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+@property (strong, nonatomic) IBOutlet UILabel *syncingLabel;
 
 @property (strong, nonatomic) TopicGroup *topicGroup;
 @property (assign, nonatomic) int firstRunStep;
@@ -63,12 +67,17 @@
 @synthesize searchBar = _searchBar;
 @synthesize liteLable = _liteLable;
 @synthesize firstRunStep = _firstRunStep;
+@synthesize progressView = _progressView;
+@synthesize progressBackgroundView = _progressBackgroundView;
+@synthesize activityView = _activityView;
+@synthesize syncingLabel = _syncingLabel;
 
 static NSString *emailTopicText;
 static NSString *exportText;
 static NSString *notesText;
 static NSString *peopleText;
 static NSString *contactUs;
+static NSString *syncingNotesText;
 
 - (void)viewDidUnload
 {
@@ -87,7 +96,11 @@ static NSString *contactUs;
     [self setFooter:nil];
     [self setTopicsButton:nil];
     [self setLiteLable:nil];
-    
+    [self setProgressView:nil];
+    [self setProgressBackgroundView:nil];
+    [self setActivityView:nil];
+    self.syncingLabel = nil;
+
     if ([self searchTopic]) {
         [[BNoteWriter instance] removeTopic:[self searchTopic]];
     }
@@ -112,6 +125,8 @@ static NSString *contactUs;
     peopleText = NSLocalizedString(@"People", nil);
     
     contactUs = NSLocalizedString(@"Contact Us", nil);
+    
+    syncingNotesText = NSLocalizedString(@"Syncing Notes...", nil);
 
     return self;
 }
@@ -162,7 +177,16 @@ static NSString *contactUs;
 #else
     [[self liteLable] setHidden:YES];
 #endif
-
+    
+    
+    [LayerFormater roundCornersForView:[self progressBackgroundView]];
+    [[self progressView] setBackgroundColor:[UIColor clearColor]];
+    [[self view] bringSubviewToFront:[self progressView]];
+    [[self activityView] startAnimating];
+    
+    self.syncingLabel.text = syncingNotesText;
+    self.syncingLabel.font = [BNoteConstants font:RobotoRegular andSize:14.0];
+    self.syncingLabel.textColor = [BNoteConstants appColor1];
 }
 
 - (void)updateReceived:(NSNotification *)notification
@@ -182,6 +206,8 @@ static NSString *contactUs;
     }
     
     [self selectTopicGroup:group];
+
+    [[self progressView] removeFromSuperview];
 }
 
 

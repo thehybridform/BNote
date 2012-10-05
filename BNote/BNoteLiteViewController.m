@@ -65,9 +65,9 @@
 - (IBAction)close:(id)sender
 {
     if (self.firstLoad) {
-        [BNoteDefaultData setup];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kRefetchAllDatabaseData object:nil];
         [self dismissViewControllerAnimated:YES completion:^{
+            [BNoteDefaultData setup];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kRefetchAllDatabaseData object:nil];
             [self.helpDelegate showHelp];
         }];
 

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Syncing Notes</key>
+	<string>記事本同步...</string>
 	<key>Edit Topic</key>
 	<string>編輯標題</string>
 	<key>Generate Help Notes</key>

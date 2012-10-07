@@ -162,7 +162,7 @@
     if (__persistentStoreCoordinator != nil) {
         return __persistentStoreCoordinator;
     }
-    
+
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                     initWithManagedObjectModel: [self managedObjectModel]];
     NSPersistentStoreCoordinator *psc = __persistentStoreCoordinator;
@@ -186,7 +186,9 @@
 #endif
         
         if (iCloud != nil) {
-            
+
+            [BNoteSessionData instance].syncingNotes = YES;
+
             NSURL *iCloudLogsPath = [NSURL fileURLWithPath:[[iCloud path] stringByAppendingPathComponent:iCloudLogsDirectoryName]];
 
             if([fileManager fileExistsAtPath:[[iCloud path] stringByAppendingPathComponent:iCloudDataDirectoryName]] == NO) {

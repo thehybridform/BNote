@@ -17,6 +17,7 @@
 @property (strong, nonatomic) Topic *selectedTopic;
 @property (strong, nonatomic) TopicGroup *selectedTopicGroup;
 @property (strong, nonatomic) UIViewController *mainViewController;
+@property (assign, nonatomic) BOOL syncingNotes;
 
 + (BNoteSessionData *)instance;
 

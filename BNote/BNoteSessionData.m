@@ -23,6 +23,7 @@
 @synthesize selectedTopic = _selectedTopic;
 @synthesize selectedTopicGroup = _selectedTopicGroup;
 @synthesize mainViewController = _mainViewController;
+@synthesize syncingNotes = _syncingNotes;
 
 - (id)initSingleton
 {

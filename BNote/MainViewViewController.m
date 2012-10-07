@@ -126,7 +126,7 @@ static NSString *syncingNotesText;
     
     contactUs = NSLocalizedString(@"Contact Us", nil);
     
-    syncingNotesText = NSLocalizedString(@"Syncing Notes...", nil);
+    syncingNotesText = NSLocalizedString(@"Syncing Notes", nil);
 
     return self;
 }
@@ -177,16 +177,21 @@ static NSString *syncingNotesText;
 #else
     [[self liteLable] setHidden:YES];
 #endif
-    
-    
-    [LayerFormater roundCornersForView:[self progressBackgroundView]];
-    [[self progressView] setBackgroundColor:[UIColor clearColor]];
-    [[self view] bringSubviewToFront:[self progressView]];
-    [[self activityView] startAnimating];
-    
+
+
     self.syncingLabel.text = syncingNotesText;
     self.syncingLabel.font = [BNoteConstants font:RobotoRegular andSize:14.0];
     self.syncingLabel.textColor = [BNoteConstants appColor1];
+
+    if ([BNoteSessionData instance].syncingNotes) {
+        [LayerFormater roundCornersForView:[self progressBackgroundView]];
+        [[self progressView] setBackgroundColor:[UIColor clearColor]];
+        [[self view] bringSubviewToFront:[self progressView]];
+        [[self activityView] startAnimating];
+    } else {
+        [[self activityView] stopAnimating];
+        [[self progressView] removeFromSuperview];
+    }
 }
 
 - (void)updateReceived:(NSNotification *)notification
@@ -207,6 +212,7 @@ static NSString *syncingNotesText;
     
     [self selectTopicGroup:group];
 
+    [[self activityView] stopAnimating];
     [[self progressView] removeFromSuperview];
 }
 

@@ -531,12 +531,16 @@
 		18F4E2C115CE52DA002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
 		18F4E2C215CF7171002095A2 /* BNoteLiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */; };
 		18F4E2C915CF7406002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
+		D8FE011C7F113D089FADDB98 /* ManagedObjectContextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0E9653483C437804C894 /* ManagedObjectContextFactory.m */; };
 		D8FE0333804E2024B94F5069 /* Note+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE05D0B5F647B454E8F3D3 /* Note+methods.m */; };
 		D8FE05DE6930E9195572032D /* Attendants+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0211B6DA237A42025868 /* Attendants+methods.m */; };
+		D8FE09998205CF284808E418 /* DatabaseMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */; };
 		D8FE0A7AD3E1500776DFB499 /* Topic+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04AC6788533D6B16E536 /* Topic+methods.m */; };
+		D8FE0C23B484E4862231B780 /* DatabaseMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */; };
 		D8FE0C8332704EAAF7AFB0BD /* Note+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE05D0B5F647B454E8F3D3 /* Note+methods.m */; };
 		D8FE0DF1EC6ECA8D1BF04A1D /* Topic+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04AC6788533D6B16E536 /* Topic+methods.m */; };
 		D8FE0EEC69713DCFD503C5C3 /* Attendants+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0211B6DA237A42025868 /* Attendants+methods.m */; };
+		D8FE0FC8C333C856F2BD42A9 /* ManagedObjectContextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0E9653483C437804C894 /* ManagedObjectContextFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1065,8 +1069,10 @@
 		D8FE0659C3EB95EEC9F85003 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE06965EAA8D9B46F3CC05 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE070CEB43CDCECBA0718C /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
+		D8FE07190A62E789E84EBB0E /* ManagedObjectContextFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedObjectContextFactory.h; sourceTree = "<group>"; };
 		D8FE073A35840C70A2A537D8 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0762D38DD7B8A845EBF9 /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
+		D8FE076E6275598E5B509B25 /* DatabaseMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseMigrator.h; sourceTree = "<group>"; };
 		D8FE0790E186FAF4F54ECA72 /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE08A4BB97DBD1D7E64B2E /* 18C54305-3EB7-4D63-85DF-35E3DE7FB601__37E2D1B8-9327-4309-AA69-1E5C337C9121.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "18C54305-3EB7-4D63-85DF-35E3DE7FB601__37E2D1B8-9327-4309-AA69-1E5C337C9121.scc"; sourceTree = "<group>"; };
 		D8FE08A9529FD64F43E7413B /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
@@ -1079,6 +1085,7 @@
 		D8FE09AE47E0141BF872494F /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE0A082B338696B1E3C313 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE0A4FD55364FE32F0DFA4 /* LaunchingBeBote.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = LaunchingBeBote.mov; sourceTree = "<group>"; };
+		D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigrator.m; sourceTree = "<group>"; };
 		D8FE0AC03FB7026C0E99CDDA /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0AE28945BF2F4D02B849 /* Attendees.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Attendees.mov; sourceTree = "<group>"; };
 		D8FE0B601DDF93043264BFDB /* 742099E8-328F-420E-A923-421AB44B3D2B__E87C68E1-E5A1-40B0-9A79-F4613259D1A5.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "742099E8-328F-420E-A923-421AB44B3D2B__E87C68E1-E5A1-40B0-9A79-F4613259D1A5.scc"; sourceTree = "<group>"; };
@@ -1095,6 +1102,7 @@
 		D8FE0DCF3F084A3694CC46D9 /* E6955E91-6DBF-424C-95C3-6A24B1AB078C__3202457A-8E07-49B0-9F07-5911EB05DA19.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "E6955E91-6DBF-424C-95C3-6A24B1AB078C__3202457A-8E07-49B0-9F07-5911EB05DA19.scc"; sourceTree = "<group>"; };
 		D8FE0E559F43D689B1C319AB /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE0E6945312D2755B4AEEC /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
+		D8FE0E9653483C437804C894 /* ManagedObjectContextFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectContextFactory.m; sourceTree = "<group>"; };
 		D8FE0E9F93B158BA8BD1BFB0 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0F12D5B2592F317F7195 /* Key Point.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Key Point.mov"; sourceTree = "<group>"; };
 		D8FE0F21C0C55443A480E7A9 /* B8756301-FCE4-40B3-8D0D-51266F74671C__A4B50547-E495-454F-A6C9-06C2FB425258.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "B8756301-FCE4-40B3-8D0D-51266F74671C__A4B50547-E495-454F-A6C9-06C2FB425258.scc"; sourceTree = "<group>"; };
@@ -1382,6 +1390,9 @@
 				18F163DD161E8E2F00344FD6 /* ActionItem.m */,
 				18F163D7161E8E2F00344FD6 /* Note.h */,
 				18F163D8161E8E2F00344FD6 /* Note.m */,
+				D8FE0E9653483C437804C894 /* ManagedObjectContextFactory.m */,
+				D8FE07190A62E789E84EBB0E /* ManagedObjectContextFactory.h */,
+				D8FE0D6135D2EBD229E4C090 /* Migration */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -2249,6 +2260,15 @@
 			path = Decisions.screenflow;
 			sourceTree = "<group>";
 		};
+		D8FE0D6135D2EBD229E4C090 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */,
+				D8FE076E6275598E5B509B25 /* DatabaseMigrator.h */,
+			);
+			name = Migration;
+			sourceTree = "<group>";
+		};
 		D8FE0DD61E34B2E0877CBDE1 /* Media */ = {
 			isa = PBXGroup;
 			children = (
@@ -2715,6 +2735,8 @@
 				18F16402161E8E3000344FD6 /* Entry.m in Sources */,
 				18F16406161E8E3000344FD6 /* TopicGroup.m in Sources */,
 				18F1640A161E8E3000344FD6 /* KeyWord.m in Sources */,
+				D8FE0FC8C333C856F2BD42A9 /* ManagedObjectContextFactory.m in Sources */,
+				D8FE0C23B484E4862231B780 /* DatabaseMigrator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2913,6 +2935,8 @@
 				18F16403161E8E3000344FD6 /* Entry.m in Sources */,
 				18F16407161E8E3000344FD6 /* TopicGroup.m in Sources */,
 				18F1640B161E8E3000344FD6 /* KeyWord.m in Sources */,
+				D8FE011C7F113D089FADDB98 /* ManagedObjectContextFactory.m in Sources */,
+				D8FE09998205CF284808E418 /* DatabaseMigrator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -541,6 +541,7 @@
 		D8FE0333804E2024B94F5069 /* Note+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE05D0B5F647B454E8F3D3 /* Note+methods.m */; };
 		D8FE0382D455596DA2B894F8 /* ActionItemMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE02EAF7F3084B3E46BE23 /* ActionItemMigrator.m */; };
 		D8FE03A32FC0BBFA1A71DDF3 /* TopicMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04816ED2F146B30A8D4D /* TopicMigrator.m */; };
+		D8FE03A77E2115BC4C2D545C /* RemoveDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0B0799A2C05DAC59CA59 /* RemoveDatabase.m */; };
 		D8FE04B03B7119AA6344D90D /* QuestionMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE00860A4D38954DA39ECD /* QuestionMigrator.m */; };
 		D8FE056EB84B8852B910A591 /* EntityMigratorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE028D10E4A25EAB115152 /* EntityMigratorFactory.m */; };
 		D8FE05DE6930E9195572032D /* Attendants+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0211B6DA237A42025868 /* Attendants+methods.m */; };
@@ -554,6 +555,7 @@
 		D8FE0A71689BA9BFF1B261F4 /* AttendantsMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE033502D9136E9625E40D /* AttendantsMigrator.m */; };
 		D8FE0A7AD3E1500776DFB499 /* Topic+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04AC6788533D6B16E536 /* Topic+methods.m */; };
 		D8FE0AA6BC60B733DB437416 /* EntityMigratorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE028D10E4A25EAB115152 /* EntityMigratorFactory.m */; };
+		D8FE0ABF4CA8021B5234D1BE /* RemoveDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0B0799A2C05DAC59CA59 /* RemoveDatabase.m */; };
 		D8FE0C23B484E4862231B780 /* DatabaseMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */; };
 		D8FE0C3A5459813877F1A22B /* ActionItemMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE02EAF7F3084B3E46BE23 /* ActionItemMigrator.m */; };
 		D8FE0C8332704EAAF7AFB0BD /* Note+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE05D0B5F647B454E8F3D3 /* Note+methods.m */; };
@@ -1071,6 +1073,7 @@
 		D8FE025D60B1FFB726959F17 /* NoteMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteMigrator.h; sourceTree = "<group>"; };
 		D8FE028D10E4A25EAB115152 /* EntityMigratorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityMigratorFactory.m; sourceTree = "<group>"; };
 		D8FE02C977ADCE8C8B5B3558 /* TopicAndTopicGroups.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = TopicAndTopicGroups.mov; sourceTree = "<group>"; };
+		D8FE02E1B52B48B6932E2B10 /* RemoveDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveDatabase.h; sourceTree = "<group>"; };
 		D8FE02E52ECC695651658323 /* review note.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "review note.mov"; sourceTree = "<group>"; };
 		D8FE02EAF7F3084B3E46BE23 /* ActionItemMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemMigrator.m; sourceTree = "<group>"; };
 		D8FE02F536E8FCAF6290504E /* quick words.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "quick words.mov"; sourceTree = "<group>"; };
@@ -1128,6 +1131,7 @@
 		D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigrator.m; sourceTree = "<group>"; };
 		D8FE0AC03FB7026C0E99CDDA /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0AE28945BF2F4D02B849 /* Attendees.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Attendees.mov; sourceTree = "<group>"; };
+		D8FE0B0799A2C05DAC59CA59 /* RemoveDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveDatabase.m; sourceTree = "<group>"; };
 		D8FE0B3C2366457844A4567B /* QuestionMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionMigrator.h; sourceTree = "<group>"; };
 		D8FE0B601DDF93043264BFDB /* 742099E8-328F-420E-A923-421AB44B3D2B__E87C68E1-E5A1-40B0-9A79-F4613259D1A5.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "742099E8-328F-420E-A923-421AB44B3D2B__E87C68E1-E5A1-40B0-9A79-F4613259D1A5.scc"; sourceTree = "<group>"; };
 		D8FE0B93FAAE01E7C00A7130 /* AttendantMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantMigrator.m; sourceTree = "<group>"; };
@@ -2339,6 +2343,8 @@
 				D8FE05E5C73F4E93514C3E28 /* AttendantMigrator.h */,
 				D8FE042F4D343E0A72BC2F60 /* KeyPointMigrator.m */,
 				D8FE0FBFA96D4A403B29A670 /* KeyPointMigrator.h */,
+				D8FE0B0799A2C05DAC59CA59 /* RemoveDatabase.m */,
+				D8FE02E1B52B48B6932E2B10 /* RemoveDatabase.h */,
 			);
 			name = Migration;
 			sourceTree = "<group>";
@@ -2823,6 +2829,7 @@
 				D8FE0CD0BE9307C34C1643EF /* AttendantsMigrator.m in Sources */,
 				D8FE0E45070CF66AE24B0EAB /* AttendantMigrator.m in Sources */,
 				D8FE065B6E50432BF33E9BCC /* KeyPointMigrator.m in Sources */,
+				D8FE03A77E2115BC4C2D545C /* RemoveDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3035,6 +3042,7 @@
 				D8FE0A71689BA9BFF1B261F4 /* AttendantsMigrator.m in Sources */,
 				D8FE02BB418464B5E04BE3CE /* AttendantMigrator.m in Sources */,
 				D8FE07DBE7E21E330440B060 /* KeyPointMigrator.m in Sources */,
+				D8FE0ABF4CA8021B5234D1BE /* RemoveDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

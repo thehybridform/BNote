@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12A269" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ActionItem" representedClassName="ActionItem" parentEntity="Entry" syncable="YES">
         <attribute name="completed" optional="YES" attributeType="Date" defaultDateTimeInterval="0" defaultValueString="0" syncable="YES"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -28,6 +28,10 @@
     </entity>
     <entity name="KeyWord" representedClassName="KeyWord" syncable="YES">
         <attribute name="word" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Migration" representedClassName="Migration" syncable="YES">
+        <attribute name="local" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="remote" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="color" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -76,18 +80,19 @@
         <relationship name="topics" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Topic" inverseName="groups" inverseEntity="Topic" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ActionItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Attendants" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Attendees" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Decision" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Entry" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="KeyPoint" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="KeyWord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Note" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Photo" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Question" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="SketchPath" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Topic" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TopicGroup" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ActionItem" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Attendants" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="Attendees" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Decision" positionX="0" positionY="0" width="128" height="45"/>
+        <element name="Entry" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="KeyPoint" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="KeyWord" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="Note" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="Photo" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Question" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="SketchPath" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Topic" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="TopicGroup" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Migration" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

@@ -11,7 +11,7 @@
 @implementation RemoveDatabase {
 
 }
-- (BOOL)migrateFrom:(NSManagedObjectContext *)context to:(NSManagedObjectContext *)to {
+- (BOOL)remove:(NSManagedObjectContext *)context {
 
     for (id entity in [self entities:context for:@"TopicGroup"]) {
         [context deleteObject:entity];

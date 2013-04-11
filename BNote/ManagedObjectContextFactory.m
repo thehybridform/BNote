@@ -64,9 +64,7 @@
         __managedObjectContext = moc;
     }
 
-    if ([BNoteSessionData booleanForKey:kFirstLoad]) {
-        [DatabaseMigrator migrate:__managedObjectContext];
-    }
+    [DatabaseMigrator migrate:__managedObjectContext];
 
     return __managedObjectContext;
 }

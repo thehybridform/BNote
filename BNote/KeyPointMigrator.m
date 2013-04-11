@@ -27,21 +27,23 @@
     to.note = note;
 
     Photo *photo = from.photo;
-    Photo *newPhoto = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
-    newPhoto.created = photo.created;
-    newPhoto.original = photo.original;
-    newPhoto.sketch = photo.sketch;
-    newPhoto.small = photo.small;
-    newPhoto.thumbnail = photo.thumbnail;
-    to.photo = newPhoto;
 
-    for (SketchPath *sketchPath in photo.sketchPaths) {
-        SketchPath *newSketchPath = [NSEntityDescription insertNewObjectForEntityForName:@"SketchPath" inManagedObjectContext:context];
-        newSketchPath.bezierPath = sketchPath.bezierPath;
-        newSketchPath.pathColor = sketchPath.pathColor;
-        [newPhoto addSketchPathsObject:newSketchPath];
+    if (photo) {
+        Photo *newPhoto = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
+        newPhoto.created = photo.created;
+        newPhoto.original = photo.original;
+        newPhoto.sketch = photo.sketch;
+        newPhoto.small = photo.small;
+        newPhoto.thumbnail = photo.thumbnail;
+        to.photo = newPhoto;
+
+        for (SketchPath *sketchPath in photo.sketchPaths) {
+            SketchPath *newSketchPath = [NSEntityDescription insertNewObjectForEntityForName:@"SketchPath" inManagedObjectContext:context];
+            newSketchPath.bezierPath = sketchPath.bezierPath;
+            newSketchPath.pathColor = sketchPath.pathColor;
+            [newPhoto addSketchPathsObject:newSketchPath];
+        }
     }
-
 }
 
 @end

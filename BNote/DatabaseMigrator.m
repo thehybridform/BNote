@@ -8,21 +8,81 @@
 #import "DatabaseMigrator.h"
 #import "EntityMigratorFactory.h"
 #import "EntityMigrator.h"
+#import "RemoveDatabase.h"
+#import "Migration.h"
 
 @implementation DatabaseMigrator
 
 + (void)migrate:(NSManagedObjectContext *)destination {
-    NSManagedObjectContext *remoteContext = [self remoteContext];
-    if ([remoteContext persistentStoreCoordinator]) {
-        [self migrateFrom:remoteContext to:destination];
+    Migration *migration = [self migrationRecord:destination];
+
+    if (!migration.remote) {
+        BOOL success = YES;
+        NSManagedObjectContext *remoteContext = [self remoteContext];
+        if ([remoteContext persistentStoreCoordinator]) {
+            success = [self migrateFrom:remoteContext to:destination];
+        }
+
+        if (success) {
+            migration.remote = YES;
+            [self save:destination];
+        }
     }
 
-    [self migrateFrom:[self localContext] to:destination];
+    if (!migration.local) {
+        BOOL success = [self migrateFrom:[self localContext] to:destination];
+        if (success) {
+            migration.local = YES;
+            [self save:destination];
+        }
+    }
 }
 
-+ (void)migrateFrom:(NSManagedObjectContext *)context to:(NSManagedObjectContext *)to {
++ (BOOL)migrateFrom:(NSManagedObjectContext *)context to:(NSManagedObjectContext *)to {
+    BOOL success = true;
     for (id<EntityMigrator> migrator in [EntityMigratorFactory migrators]) {
-        [migrator migrateFrom:context to:to];
+        success = success && [migrator migrateFrom:context to:to];
+    }
+
+    if (success) {
+        RemoveDatabase *removeDatabase = [[RemoveDatabase alloc] init];
+        [removeDatabase remove:context];
+    }
+
+    return success;
+}
+
++(Migration *)migrationRecord:(NSManagedObjectContext *)context {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Migration"];
+    NSError *error = nil;
+    NSArray *entities = [context executeFetchRequest:fetchRequest error:&error];
+
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+
+    Migration *migration;
+    if ([entities count]) {
+        migration = [entities objectAtIndex:0];
+    } else {
+        migration = [NSEntityDescription insertNewObjectForEntityForName:@"Migration" inManagedObjectContext:context];
+        [self save:context];
+    }
+
+    return migration;
+}
+
++ (void)save:(NSManagedObjectContext *)context {
+    NSError *error = nil;
+
+    BOOL success = [context save:&error];
+
+    if (error != nil) {
+        NSLog(@"Error: %@", error);
+    }
+
+    if (!success) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
 }
 
@@ -49,7 +109,6 @@
         NSString *iCloudDataDirectoryName = @"BeNote-data.nosync";
         NSString *iCloudLogsDirectoryName = @"BeNoteLogs";
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSURL *localStore = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:dataFileName];
 
         NSURL *iCloud = [fileManager URLForUbiquityContainerIdentifier:nil];
 

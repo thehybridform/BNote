@@ -9,5 +9,8 @@
 #import "EntityMigrator.h"
 
 
-@interface RemoveDatabase : NSObject <EntityMigrator>
+@interface RemoveDatabase : NSObject
+
+- (BOOL)remove:(NSManagedObjectContext *)context;
+
 @end

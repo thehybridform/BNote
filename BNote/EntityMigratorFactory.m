@@ -15,7 +15,6 @@
 #import "AttendantsMigrator.h"
 #import "AttendantMigrator.h"
 #import "KeyPointMigrator.h"
-#import "RemoveDatabase.h"
 
 
 @implementation EntityMigratorFactory {
@@ -34,7 +33,6 @@
     [migrator addObject:[[AttendantsMigrator alloc] init]];
     [migrator addObject:[[AttendantMigrator alloc] init]];
     [migrator addObject:[[KeyPointMigrator alloc] init]];
-    [migrator addObject:[[RemoveDatabase alloc] init]];
 
     return migrator;
 }

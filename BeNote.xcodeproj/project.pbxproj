@@ -52,6 +52,8 @@
 		1834D37E156351640065788F /* TopicEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D37C156351640065788F /* TopicEditorViewController.m */; };
 		1834D383156364840065788F /* TopicEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834D382156364840065788F /* TopicEditorViewController.xib */; };
 		1834D3A7156375560065788F /* BNoteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834D3A6156375560065788F /* BNoteFactory.m */; };
+		18424A77171753960020FBA2 /* Migration.m in Sources */ = {isa = PBXBuildFile; fileRef = 18424A76171753960020FBA2 /* Migration.m */; };
+		18424A78171753960020FBA2 /* Migration.m in Sources */ = {isa = PBXBuildFile; fileRef = 18424A76171753960020FBA2 /* Migration.m */; };
 		184976BA159665DC00F49F5A /* AttendeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */; };
 		184976BB159665DC00F49F5A /* AttendeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */; };
 		184976CD1597C20100F49F5A /* EntryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184976CB1597C1FD00F49F5A /* EntryContentViewController.m */; };
@@ -643,6 +645,8 @@
 		1834D382156364840065788F /* TopicEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditorViewController.xib; path = ../TopicEditorViewController.xib; sourceTree = "<group>"; };
 		1834D3A5156375560065788F /* BNoteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNoteFactory.h; sourceTree = "<group>"; };
 		1834D3A6156375560065788F /* BNoteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNoteFactory.m; sourceTree = "<group>"; };
+		18424A75171753960020FBA2 /* Migration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Migration.h; sourceTree = "<group>"; };
+		18424A76171753960020FBA2 /* Migration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Migration.m; sourceTree = "<group>"; };
 		184976B7159665DA00F49F5A /* AttendeeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeDetailViewController.h; sourceTree = "<group>"; };
 		184976B8159665DB00F49F5A /* AttendeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeDetailViewController.m; sourceTree = "<group>"; };
 		184976B9159665DC00F49F5A /* AttendeeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendeeDetailViewController.xib; sourceTree = "<group>"; };
@@ -1416,6 +1420,8 @@
 		18368F4A156610B800E511CB /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				18424A75171753960020FBA2 /* Migration.h */,
+				18424A76171753960020FBA2 /* Migration.m */,
 				18B2361A158AEC4B009D17D2 /* BeNote.xcdatamodeld */,
 				18F16408161E8E3000344FD6 /* KeyWord.h */,
 				18F16409161E8E3000344FD6 /* KeyWord.m */,
@@ -2830,6 +2836,7 @@
 				D8FE0E45070CF66AE24B0EAB /* AttendantMigrator.m in Sources */,
 				D8FE065B6E50432BF33E9BCC /* KeyPointMigrator.m in Sources */,
 				D8FE03A77E2115BC4C2D545C /* RemoveDatabase.m in Sources */,
+				18424A77171753960020FBA2 /* Migration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3043,6 +3050,7 @@
 				D8FE02BB418464B5E04BE3CE /* AttendantMigrator.m in Sources */,
 				D8FE07DBE7E21E330440B060 /* KeyPointMigrator.m in Sources */,
 				D8FE0ABF4CA8021B5234D1BE /* RemoveDatabase.m in Sources */,
+				18424A78171753960020FBA2 /* Migration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

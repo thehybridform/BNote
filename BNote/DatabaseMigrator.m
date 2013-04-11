@@ -6,13 +6,12 @@
 
 
 #import "DatabaseMigrator.h"
+#import "EntityMigratorFactory.h"
+#import "EntityMigrator.h"
 
+@implementation DatabaseMigrator
 
-@implementation DatabaseMigrator {
-
-}
 + (void)migrate:(NSManagedObjectContext *)destination {
-
     NSManagedObjectContext *remoteContext = [self remoteContext];
     if ([remoteContext persistentStoreCoordinator]) {
         [self migrateFrom:remoteContext to:destination];
@@ -22,7 +21,9 @@
 }
 
 + (void)migrateFrom:(NSManagedObjectContext *)context to:(NSManagedObjectContext *)to {
-
+    for (id<EntityMigrator> migrator in [EntityMigratorFactory migrators]) {
+        [migrator migrateFrom:context to:to];
+    }
 }
 
 + (NSURL *)applicationDocumentsDirectory
@@ -34,7 +35,7 @@
 
     NSManagedObjectContext* moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
         NSURL *modelURL = [[NSBundle mainBundle]
             URLForResource:@"BeNote"
@@ -98,7 +99,7 @@
                 [moc setPersistentStoreCoordinator: psc];
             }];
         }
-    });
+//    });
 
 
     return moc;
@@ -107,7 +108,7 @@
 + (NSManagedObjectContext *)localContext {
     NSManagedObjectContext* moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
         NSURL *modelURL = [[NSBundle mainBundle]
             URLForResource:@"BeNote"
@@ -144,7 +145,7 @@
             [moc setPersistentStoreCoordinator: psc];
         }];
 
-    });
+//    });
 
     return moc;
 }

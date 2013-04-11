@@ -531,14 +531,38 @@
 		18F4E2C115CE52DA002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
 		18F4E2C215CF7171002095A2 /* BNoteLiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4E2BA15CE4F10002095A2 /* BNoteLiteViewController.m */; };
 		18F4E2C915CF7406002095A2 /* BNoteLiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4E2BB15CE4F10002095A2 /* BNoteLiteViewController.xib */; };
+		D8FE0015B62E7A615934F531 /* KeyWordMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE07F490E923D0309E4EEB /* KeyWordMigrator.m */; };
+		D8FE0117E327B3C7008B4279 /* EntityMigratorBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0BAD41EEDFEF4745D7B9 /* EntityMigratorBasis.m */; };
 		D8FE011C7F113D089FADDB98 /* ManagedObjectContextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0E9653483C437804C894 /* ManagedObjectContextFactory.m */; };
+		D8FE015EF5C968256CB252CF /* TopicGroupMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0A2DE590E10C3B848E11 /* TopicGroupMigrator.m */; };
+		D8FE01DC53A3E29B8C1D5A1F /* NoteMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE08C81221D7A1B099F2C0 /* NoteMigrator.m */; };
+		D8FE028EC705A18F9CDDCDC6 /* KeyWordMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE07F490E923D0309E4EEB /* KeyWordMigrator.m */; };
+		D8FE02BB418464B5E04BE3CE /* AttendantMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0B93FAAE01E7C00A7130 /* AttendantMigrator.m */; };
 		D8FE0333804E2024B94F5069 /* Note+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE05D0B5F647B454E8F3D3 /* Note+methods.m */; };
+		D8FE0382D455596DA2B894F8 /* ActionItemMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE02EAF7F3084B3E46BE23 /* ActionItemMigrator.m */; };
+		D8FE03A32FC0BBFA1A71DDF3 /* TopicMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04816ED2F146B30A8D4D /* TopicMigrator.m */; };
+		D8FE04B03B7119AA6344D90D /* QuestionMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE00860A4D38954DA39ECD /* QuestionMigrator.m */; };
+		D8FE056EB84B8852B910A591 /* EntityMigratorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE028D10E4A25EAB115152 /* EntityMigratorFactory.m */; };
 		D8FE05DE6930E9195572032D /* Attendants+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0211B6DA237A42025868 /* Attendants+methods.m */; };
+		D8FE061953A5DD6957FF2E54 /* DecisionMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0E196EB34822D4C2B84B /* DecisionMigrator.m */; };
+		D8FE065B6E50432BF33E9BCC /* KeyPointMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE042F4D343E0A72BC2F60 /* KeyPointMigrator.m */; };
+		D8FE06AB503B037E8C191A38 /* NoteMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE08C81221D7A1B099F2C0 /* NoteMigrator.m */; };
+		D8FE071B5720797DAB098508 /* TopicMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04816ED2F146B30A8D4D /* TopicMigrator.m */; };
+		D8FE07DBE7E21E330440B060 /* KeyPointMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE042F4D343E0A72BC2F60 /* KeyPointMigrator.m */; };
+		D8FE08926C620C50F7A746BD /* QuestionMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE00860A4D38954DA39ECD /* QuestionMigrator.m */; };
 		D8FE09998205CF284808E418 /* DatabaseMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */; };
+		D8FE0A71689BA9BFF1B261F4 /* AttendantsMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE033502D9136E9625E40D /* AttendantsMigrator.m */; };
 		D8FE0A7AD3E1500776DFB499 /* Topic+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04AC6788533D6B16E536 /* Topic+methods.m */; };
+		D8FE0AA6BC60B733DB437416 /* EntityMigratorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE028D10E4A25EAB115152 /* EntityMigratorFactory.m */; };
 		D8FE0C23B484E4862231B780 /* DatabaseMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */; };
+		D8FE0C3A5459813877F1A22B /* ActionItemMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE02EAF7F3084B3E46BE23 /* ActionItemMigrator.m */; };
 		D8FE0C8332704EAAF7AFB0BD /* Note+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE05D0B5F647B454E8F3D3 /* Note+methods.m */; };
+		D8FE0C987D2DB4B5B87DBA14 /* EntityMigratorBasis.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0BAD41EEDFEF4745D7B9 /* EntityMigratorBasis.m */; };
+		D8FE0CC170D6341F1B39D6B5 /* DecisionMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0E196EB34822D4C2B84B /* DecisionMigrator.m */; };
+		D8FE0CD0BE9307C34C1643EF /* AttendantsMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE033502D9136E9625E40D /* AttendantsMigrator.m */; };
+		D8FE0D217CED4FAE1A69AC46 /* TopicGroupMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0A2DE590E10C3B848E11 /* TopicGroupMigrator.m */; };
 		D8FE0DF1EC6ECA8D1BF04A1D /* Topic+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE04AC6788533D6B16E536 /* Topic+methods.m */; };
+		D8FE0E45070CF66AE24B0EAB /* AttendantMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0B93FAAE01E7C00A7130 /* AttendantMigrator.m */; };
 		D8FE0EEC69713DCFD503C5C3 /* Attendants+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0211B6DA237A42025868 /* Attendants+methods.m */; };
 		D8FE0FC8C333C856F2BD42A9 /* ManagedObjectContextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FE0E9653483C437804C894 /* ManagedObjectContextFactory.m */; };
 /* End PBXBuildFile section */
@@ -1034,6 +1058,7 @@
 		D8FE0000DCF3B36FCB3959EF /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE0072DB54A670AE43B66A /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE0073D3DD230370C11482 /* DA8E3BE4-F6C9-483A-B51F-BB88413442CE__CE29A765-0287-498F-B32E-48B8EEB3F2D1.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "DA8E3BE4-F6C9-483A-B51F-BB88413442CE__CE29A765-0287-498F-B32E-48B8EEB3F2D1.scc"; sourceTree = "<group>"; };
+		D8FE00860A4D38954DA39ECD /* QuestionMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionMigrator.m; sourceTree = "<group>"; };
 		D8FE008D9F2691A16229F00A /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
 		D8FE00CF37BC32F8B0D179A8 /* 4A5C9F0E-4445-4621-92B0-ED125574FE96__E3AB4EB4-6751-41F0-B786-4FCF39AD8A39.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "4A5C9F0E-4445-4621-92B0-ED125574FE96__E3AB4EB4-6751-41F0-B786-4FCF39AD8A39.scc"; sourceTree = "<group>"; };
 		D8FE00E8632D6B82DA29D451 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
@@ -1042,15 +1067,23 @@
 		D8FE0168F5937B06D2946241 /* 85807CDB-02C2-4402-A01A-D5CC68CDDFB9__D00670FB-56DF-4F75-AD37-D77E5CD05697.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "85807CDB-02C2-4402-A01A-D5CC68CDDFB9__D00670FB-56DF-4F75-AD37-D77E5CD05697.scc"; sourceTree = "<group>"; };
 		D8FE0211B6DA237A42025868 /* Attendants+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Attendants+methods.m"; sourceTree = "<group>"; };
 		D8FE022209D6A0913E7E88DB /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
+		D8FE022AB4B706AD3A644376 /* KeyWordMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordMigrator.h; sourceTree = "<group>"; };
+		D8FE025D60B1FFB726959F17 /* NoteMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteMigrator.h; sourceTree = "<group>"; };
+		D8FE028D10E4A25EAB115152 /* EntityMigratorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityMigratorFactory.m; sourceTree = "<group>"; };
 		D8FE02C977ADCE8C8B5B3558 /* TopicAndTopicGroups.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = TopicAndTopicGroups.mov; sourceTree = "<group>"; };
 		D8FE02E52ECC695651658323 /* review note.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "review note.mov"; sourceTree = "<group>"; };
+		D8FE02EAF7F3084B3E46BE23 /* ActionItemMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemMigrator.m; sourceTree = "<group>"; };
 		D8FE02F536E8FCAF6290504E /* quick words.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "quick words.mov"; sourceTree = "<group>"; };
 		D8FE030552A180BAFD1BBFD0 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
+		D8FE033502D9136E9625E40D /* AttendantsMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantsMigrator.m; sourceTree = "<group>"; };
 		D8FE0358371A68E4CC4E4781 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
+		D8FE03664DDFA65430A551F8 /* EntityMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityMigrator.h; sourceTree = "<group>"; };
 		D8FE0372E589FCE4740DF30B /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
 		D8FE03894D3A4F68BA0312B0 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE041079FEA7702B26A879 /* ShowHelpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowHelpProtocol.h; sourceTree = "<group>"; };
+		D8FE042F4D343E0A72BC2F60 /* KeyPointMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPointMigrator.m; sourceTree = "<group>"; };
 		D8FE047EE614D0B7D2B4C153 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
+		D8FE04816ED2F146B30A8D4D /* TopicMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicMigrator.m; sourceTree = "<group>"; };
 		D8FE04AC6788533D6B16E536 /* Topic+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Topic+methods.m"; sourceTree = "<group>"; };
 		D8FE04B158960847FA289979 /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE04EC86301F7707F4FDC3 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
@@ -1062,6 +1095,7 @@
 		D8FE05C7AC9B6CBF89C47335 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE05D0B5F647B454E8F3D3 /* Note+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Note+methods.m"; sourceTree = "<group>"; };
 		D8FE05E39006C6CC9E733D6B /* 068AAAB0-EB1E-42A9-AD7A-467ED85844C0__5FD3E54E-3EEB-47AD-8A34-73E1B03C8438.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "068AAAB0-EB1E-42A9-AD7A-467ED85844C0__5FD3E54E-3EEB-47AD-8A34-73E1B03C8438.scc"; sourceTree = "<group>"; };
+		D8FE05E5C73F4E93514C3E28 /* AttendantMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantMigrator.h; sourceTree = "<group>"; };
 		D8FE0601F4C58FC043170559 /* 42E59718-232A-45C2-AFF2-70DB6B5D9773__7E14D615-4D11-4DB8-A18D-2A650AB4D88E.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "42E59718-232A-45C2-AFF2-70DB6B5D9773__7E14D615-4D11-4DB8-A18D-2A650AB4D88E.scc"; sourceTree = "<group>"; };
 		D8FE060B755C5EAC915A445E /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE0610640226588320FEDE /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
@@ -1073,10 +1107,14 @@
 		D8FE073A35840C70A2A537D8 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0762D38DD7B8A845EBF9 /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE076E6275598E5B509B25 /* DatabaseMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseMigrator.h; sourceTree = "<group>"; };
+		D8FE07903EB66BB2CC402450 /* EntityMigratorBasis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityMigratorBasis.h; sourceTree = "<group>"; };
 		D8FE0790E186FAF4F54ECA72 /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
+		D8FE07F490E923D0309E4EEB /* KeyWordMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordMigrator.m; sourceTree = "<group>"; };
+		D8FE0886CF092E2CC698AAFE /* TopicMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicMigrator.h; sourceTree = "<group>"; };
 		D8FE08A4BB97DBD1D7E64B2E /* 18C54305-3EB7-4D63-85DF-35E3DE7FB601__37E2D1B8-9327-4309-AA69-1E5C337C9121.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "18C54305-3EB7-4D63-85DF-35E3DE7FB601__37E2D1B8-9327-4309-AA69-1E5C337C9121.scc"; sourceTree = "<group>"; };
 		D8FE08A9529FD64F43E7413B /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE08BEC68587E4D1A8E03B /* D6C9603E-D267-4E39-BA9B-82035F937BF9__4CDCCE5D-35D0-4193-BF7B-6951379D6C90.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "D6C9603E-D267-4E39-BA9B-82035F937BF9__4CDCCE5D-35D0-4193-BF7B-6951379D6C90.scc"; sourceTree = "<group>"; };
+		D8FE08C81221D7A1B099F2C0 /* NoteMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteMigrator.m; sourceTree = "<group>"; };
 		D8FE08C951CD09063F59B527 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE092C9C7E38CAA47050C7 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE093036C6E7F1EB253453 /* Notes.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Notes.mov; sourceTree = "<group>"; };
@@ -1084,11 +1122,17 @@
 		D8FE097B7671CF7D8431AE61 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE09AE47E0141BF872494F /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE0A082B338696B1E3C313 /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
+		D8FE0A2DE590E10C3B848E11 /* TopicGroupMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicGroupMigrator.m; sourceTree = "<group>"; };
+		D8FE0A30AABE09376CD8DBBE /* EntityMigratorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityMigratorFactory.h; sourceTree = "<group>"; };
 		D8FE0A4FD55364FE32F0DFA4 /* LaunchingBeBote.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = LaunchingBeBote.mov; sourceTree = "<group>"; };
 		D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigrator.m; sourceTree = "<group>"; };
 		D8FE0AC03FB7026C0E99CDDA /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0AE28945BF2F4D02B849 /* Attendees.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Attendees.mov; sourceTree = "<group>"; };
+		D8FE0B3C2366457844A4567B /* QuestionMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionMigrator.h; sourceTree = "<group>"; };
 		D8FE0B601DDF93043264BFDB /* 742099E8-328F-420E-A923-421AB44B3D2B__E87C68E1-E5A1-40B0-9A79-F4613259D1A5.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "742099E8-328F-420E-A923-421AB44B3D2B__E87C68E1-E5A1-40B0-9A79-F4613259D1A5.scc"; sourceTree = "<group>"; };
+		D8FE0B93FAAE01E7C00A7130 /* AttendantMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendantMigrator.m; sourceTree = "<group>"; };
+		D8FE0BAD41EEDFEF4745D7B9 /* EntityMigratorBasis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityMigratorBasis.m; sourceTree = "<group>"; };
+		D8FE0BC1F24774ECECF50A21 /* AttendantsMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendantsMigrator.h; sourceTree = "<group>"; };
 		D8FE0BD4B6196044F127453A /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
 		D8FE0C06C134CF1C9CFC2C52 /* Action Items.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Action Items.mov"; sourceTree = "<group>"; };
 		D8FE0C27A19B0E6FAE680D61 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbnail.jpg; sourceTree = "<group>"; };
@@ -1098,18 +1142,23 @@
 		D8FE0CF4D6B03069B0C6C224 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0D21BB1AE4D0E8B8B6A4 /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE0D4E84491601C7F8C13E /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
+		D8FE0D67F10CC86FB67FBC21 /* DecisionMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionMigrator.h; sourceTree = "<group>"; };
 		D8FE0DC214DD19038D4ECEBF /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE0DCF3F084A3694CC46D9 /* E6955E91-6DBF-424C-95C3-6A24B1AB078C__3202457A-8E07-49B0-9F07-5911EB05DA19.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "E6955E91-6DBF-424C-95C3-6A24B1AB078C__3202457A-8E07-49B0-9F07-5911EB05DA19.scc"; sourceTree = "<group>"; };
+		D8FE0E196EB34822D4C2B84B /* DecisionMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionMigrator.m; sourceTree = "<group>"; };
 		D8FE0E559F43D689B1C319AB /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
+		D8FE0E5A8C19C3E35BB7D081 /* ActionItemMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemMigrator.h; sourceTree = "<group>"; };
 		D8FE0E6945312D2755B4AEEC /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0E9653483C437804C894 /* ManagedObjectContextFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectContextFactory.m; sourceTree = "<group>"; };
 		D8FE0E9F93B158BA8BD1BFB0 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = version.plist; sourceTree = "<group>"; };
 		D8FE0F12D5B2592F317F7195 /* Key Point.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Key Point.mov"; sourceTree = "<group>"; };
 		D8FE0F21C0C55443A480E7A9 /* B8756301-FCE4-40B3-8D0D-51266F74671C__A4B50547-E495-454F-A6C9-06C2FB425258.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "B8756301-FCE4-40B3-8D0D-51266F74671C__A4B50547-E495-454F-A6C9-06C2FB425258.scc"; sourceTree = "<group>"; };
+		D8FE0F3499CF53798F6EB644 /* TopicGroupMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicGroupMigrator.h; sourceTree = "<group>"; };
 		D8FE0F349A997F90B6F152ED /* 321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "321AD532-2E3B-4ED4-A8C6-20B6911E7EC1__01-Hybrid Forms-Hybrid Form.mp3"; sourceTree = "<group>"; };
 		D8FE0F94DB9AC39120E5DD37 /* Questions.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Questions.mov; sourceTree = "<group>"; };
 		D8FE0FAF4BDF3D69C6EE37F8 /* ScreenFlowDocument.dat */ = {isa = PBXFileReference; lastKnownFileType = file.dat; path = ScreenFlowDocument.dat; sourceTree = "<group>"; };
 		D8FE0FBD45BD849D050FFEFB /* A28D4AFC-F60D-4C67-A511-DDADB3F08DAC__1ADB31B1-0EFB-45B9-B67E-56F000B30460.scc */ = {isa = PBXFileReference; lastKnownFileType = file.scc; path = "A28D4AFC-F60D-4C67-A511-DDADB3F08DAC__1ADB31B1-0EFB-45B9-B67E-56F000B30460.scc"; sourceTree = "<group>"; };
+		D8FE0FBFA96D4A403B29A670 /* KeyPointMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPointMigrator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2265,6 +2314,31 @@
 			children = (
 				D8FE0AB5833D2519D6A98DA8 /* DatabaseMigrator.m */,
 				D8FE076E6275598E5B509B25 /* DatabaseMigrator.h */,
+				D8FE03664DDFA65430A551F8 /* EntityMigrator.h */,
+				D8FE0A2DE590E10C3B848E11 /* TopicGroupMigrator.m */,
+				D8FE0F3499CF53798F6EB644 /* TopicGroupMigrator.h */,
+				D8FE0BAD41EEDFEF4745D7B9 /* EntityMigratorBasis.m */,
+				D8FE07903EB66BB2CC402450 /* EntityMigratorBasis.h */,
+				D8FE04816ED2F146B30A8D4D /* TopicMigrator.m */,
+				D8FE0886CF092E2CC698AAFE /* TopicMigrator.h */,
+				D8FE028D10E4A25EAB115152 /* EntityMigratorFactory.m */,
+				D8FE0A30AABE09376CD8DBBE /* EntityMigratorFactory.h */,
+				D8FE08C81221D7A1B099F2C0 /* NoteMigrator.m */,
+				D8FE025D60B1FFB726959F17 /* NoteMigrator.h */,
+				D8FE07F490E923D0309E4EEB /* KeyWordMigrator.m */,
+				D8FE022AB4B706AD3A644376 /* KeyWordMigrator.h */,
+				D8FE00860A4D38954DA39ECD /* QuestionMigrator.m */,
+				D8FE0B3C2366457844A4567B /* QuestionMigrator.h */,
+				D8FE0E196EB34822D4C2B84B /* DecisionMigrator.m */,
+				D8FE0D67F10CC86FB67FBC21 /* DecisionMigrator.h */,
+				D8FE02EAF7F3084B3E46BE23 /* ActionItemMigrator.m */,
+				D8FE0E5A8C19C3E35BB7D081 /* ActionItemMigrator.h */,
+				D8FE033502D9136E9625E40D /* AttendantsMigrator.m */,
+				D8FE0BC1F24774ECECF50A21 /* AttendantsMigrator.h */,
+				D8FE0B93FAAE01E7C00A7130 /* AttendantMigrator.m */,
+				D8FE05E5C73F4E93514C3E28 /* AttendantMigrator.h */,
+				D8FE042F4D343E0A72BC2F60 /* KeyPointMigrator.m */,
+				D8FE0FBFA96D4A403B29A670 /* KeyPointMigrator.h */,
 			);
 			name = Migration;
 			sourceTree = "<group>";
@@ -2737,6 +2811,18 @@
 				18F1640A161E8E3000344FD6 /* KeyWord.m in Sources */,
 				D8FE0FC8C333C856F2BD42A9 /* ManagedObjectContextFactory.m in Sources */,
 				D8FE0C23B484E4862231B780 /* DatabaseMigrator.m in Sources */,
+				D8FE015EF5C968256CB252CF /* TopicGroupMigrator.m in Sources */,
+				D8FE0117E327B3C7008B4279 /* EntityMigratorBasis.m in Sources */,
+				D8FE03A32FC0BBFA1A71DDF3 /* TopicMigrator.m in Sources */,
+				D8FE0AA6BC60B733DB437416 /* EntityMigratorFactory.m in Sources */,
+				D8FE01DC53A3E29B8C1D5A1F /* NoteMigrator.m in Sources */,
+				D8FE0015B62E7A615934F531 /* KeyWordMigrator.m in Sources */,
+				D8FE08926C620C50F7A746BD /* QuestionMigrator.m in Sources */,
+				D8FE0CC170D6341F1B39D6B5 /* DecisionMigrator.m in Sources */,
+				D8FE0382D455596DA2B894F8 /* ActionItemMigrator.m in Sources */,
+				D8FE0CD0BE9307C34C1643EF /* AttendantsMigrator.m in Sources */,
+				D8FE0E45070CF66AE24B0EAB /* AttendantMigrator.m in Sources */,
+				D8FE065B6E50432BF33E9BCC /* KeyPointMigrator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2937,6 +3023,18 @@
 				18F1640B161E8E3000344FD6 /* KeyWord.m in Sources */,
 				D8FE011C7F113D089FADDB98 /* ManagedObjectContextFactory.m in Sources */,
 				D8FE09998205CF284808E418 /* DatabaseMigrator.m in Sources */,
+				D8FE0D217CED4FAE1A69AC46 /* TopicGroupMigrator.m in Sources */,
+				D8FE0C987D2DB4B5B87DBA14 /* EntityMigratorBasis.m in Sources */,
+				D8FE071B5720797DAB098508 /* TopicMigrator.m in Sources */,
+				D8FE056EB84B8852B910A591 /* EntityMigratorFactory.m in Sources */,
+				D8FE06AB503B037E8C191A38 /* NoteMigrator.m in Sources */,
+				D8FE028EC705A18F9CDDCDC6 /* KeyWordMigrator.m in Sources */,
+				D8FE04B03B7119AA6344D90D /* QuestionMigrator.m in Sources */,
+				D8FE061953A5DD6957FF2E54 /* DecisionMigrator.m in Sources */,
+				D8FE0C3A5459813877F1A22B /* ActionItemMigrator.m in Sources */,
+				D8FE0A71689BA9BFF1B261F4 /* AttendantsMigrator.m in Sources */,
+				D8FE02BB418464B5E04BE3CE /* AttendantMigrator.m in Sources */,
+				D8FE07DBE7E21E330440B060 /* KeyPointMigrator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

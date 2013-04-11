@@ -101,7 +101,7 @@
             initWithManagedObjectModel: [self managedObjectModel]];
     NSPersistentStoreCoordinator *psc = __persistentStoreCoordinator;
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *dataFileName = @"BeNote-data2.sqlite";
         NSURL *localStore = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:dataFileName];
 
@@ -131,7 +131,7 @@
                                   object:self
                                 userInfo:nil];
         });
-    });
+//    });
 
     return __persistentStoreCoordinator;
 }
